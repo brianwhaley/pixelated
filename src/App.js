@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Header from './header'
+
+import Header from './header';
+import Menu from './menu';
+import BodyContent from './bodycontent'
 
 class App extends Component {
   render() {
@@ -8,7 +11,9 @@ class App extends Component {
       <div id="page-container">
 
         <div id="panel-menu" class="pad">
-          <div class="accordion-menu"></div>
+          <div class="accordion-menu">
+            <Menu></Menu>
+          </div>
         </div>
       
         <div id="fixed-header" class="grid12">
@@ -25,9 +30,7 @@ class App extends Component {
         
         <div id="page-body" class="grid12">
           <div class="content-container">
-          
-            <h2 class="title-bar">Grid System</h2>
-            
+            <BodyContent></BodyContent>
           </div>
         </div>
         

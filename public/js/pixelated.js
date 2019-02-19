@@ -512,11 +512,11 @@ console.log("pagename = " + pagename);
 /* ========== ALLPAGES ========== */
 $(document).ready(function() {
 	// ===== MENUS =====
-	$( ".accordion-menu" ).load( "_page_nav.html", function() {
+	// $( ".accordion-menu" ).load( "_page_nav.html", function() {
 		// ===== SLIDING PANEL AND ACCORDION =====
 		slideMobilePanel();
 		accordionMenu();
-	});
+	// });
 });
 
 $(document).ready(function() {
