@@ -1,0 +1,1237 @@
+
+/* ========================================
+===========  GENERAL STYLES   =============
+======================================== */
+
+* { 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-background-clip: padding-box !important;
+	-webkit-background-clip: padding-box !important;
+	background-clip: padding-box !important;
+    
+	margin: 0px;
+	padding: 0px;
+	/* -ms-touch-action: none; */
+}
+
+.box * {
+	border: 1px solid #000;
+	margin: 5px 0px;
+	padding: 5px
+}
+
+body { 
+	background: #EEE !important;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+a:link,
+a:visited,
+a:active {
+	color: #369; 
+	text-decoration: none;
+}
+
+a:hover {  
+	text-decoration: underline;
+}
+
+img {
+    text-align: center;
+	max-width: 100%;
+	height: auto;
+}
+
+input {
+	font-size: 1.1em;
+	padding: 2px 5px;
+	margin: 1px 5px !important;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus { 
+    outline: none;
+	border: 1px solid #CCC;
+	-webkit-box-shadow: 0 0 5px 2px #EEE;
+	-moz-box-shadow: 0 0 5px 2px #EEE;
+    box-shadow: 0 0 5px 2px #EEE;
+}
+
+ol, ul {
+	margin: 20px 0;
+	padding-left: 40px;
+}
+
+pre {
+	/* USED FOR SYNTAX HIGHLIGHTING */
+	white-space: pre-wrap;
+	width: 83.33%; /* grid10 */
+	display: inline-block;
+	margin: 10px 8.33%;
+	border: 1px solid #CCC;
+	background: #EEE;
+}
+
+
+/* ========================================
+===============    GRID     ===============
+======================================== */
+
+.row {
+	padding: 0.5% 0;
+	width: 100%;
+	overflow: hidden;
+	clear: both;
+}
+
+.column {
+	padding: 0 0.5%;
+}
+
+.row .column:first-child {
+	/* padding-left: 0; */
+}
+
+.row .column:last-child {
+	/* padding-right: 0; */
+}
+
+@media screen and (max-width: 480px) {
+    .row {
+        /* padding: 0; */
+        padding: 1%;
+    }
+    .column, 
+    .row .column:first-child, 
+    .row .column:last-child {
+    	/* padding: 1%; */
+    }
+}
+
+@grids: 12;
+@gutter: 100% / (@grids - 1);
+.gridLoop (@index) when (@index > 0) {
+	@gridVal: (100% / @grids * @index);
+    .grid@{index}, .grid@{index}fix { display: inline; float: left; /* margin-left: @gutter; */ width: @gridVal; }
+	.push@{index}{ margin-left: @gridVal; }
+	.pull@{index}{ margin-right: @gridVal; }
+	@media screen and (max-width: 480px) {
+		.grid@{index}{ width: 100%; }
+		.push@{index}{ margin-left: 0; }
+		.pull@{index}{ margin-right: 0; }
+	}
+    .gridLoop(@index - 1);
+}
+.gridLoop (0) {}
+.gridLoop (@grids);
+
+/* USE THE FIX VERSIONS TO PREVENT MEDIA QUERIES FROM REDRAWING THEM */
+
+.pull-left {
+	float: left !important;
+	position: relative;
+}
+
+.push-right {
+	float: right !important;
+	position: relative;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.margin {
+	margin: 5px;
+}
+
+.margin-horiz {
+	margin: 5px 0px;
+}
+
+.pad {
+	padding: 5px;
+}
+
+.centered {
+	float: none !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	text-align: center !important;
+}
+
+.vertical-centered {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.top { vertical-align: top; }
+.middle { vertical-align: middle; }
+.bottom { vertical-align: bottom; }
+
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
+.bold { font-weight: bold; }
+
+.inherit {
+  background: transparent;
+  border: inherit;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+}
+
+@media screen and (max-width: 480px) {
+    .noMobile {
+        display: none;
+    }
+}
+
+.wrapword {
+	white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	white-space: pre-wrap;       /* css-3 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+	word-break: break-all;
+	white-space: normal;
+}
+
+
+/* ========================================
+=============    MASONRY     ==============
+======================================== */
+
+/* http://w3bits.com/css-masonry/ */
+
+.masonry { /* Masonry container */
+	-webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+	-webkit-column-gap: 0px; /* 0.5em */
+	-moz-column-gap: 0px;
+	column-gap: 0px;
+}
+@media screen and (max-width: 1024px) {
+	/* small desktop */
+	.masonry {
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		column-count: 3;
+	}
+}
+@media screen and (max-width: 768px) {
+	/* tablet */
+	.masonry {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+}
+@media screen and (max-width: 480px) {
+	/* mobile device */
+	.masonry {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+}
+
+
+.masonry-item { /* Masonry bricks or child elements */
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+	-webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+
+/* ========================================
+===========  PAGE SCAFFOLDING   ===========
+======================================== */
+
+#page-container {
+	margin: 0px;
+	padding: 0px;
+}
+
+.page-content-section {
+	margin-bottom: 50px;
+	padding: 30px 0
+}
+
+.page-content-section-alt {
+	margin-bottom: 50px;
+	padding: 30px 0;
+    background-color: #CCC;
+
+}
+
+.content-container {
+	margin: 0px auto;
+	padding: 0px 5px;
+	/* max-width: 1280px; */
+	max-width: 1024px;
+}
+
+/* @media screen and (max-width: 1280px) {
+    .content-container {
+		max-width: 960px;
+    }
+} */
+
+@media screen and (max-width: 480px) {
+	/* same as grid system */
+	.content-container {
+		/* margin: 0px 5px; */
+	}
+}
+
+#fixed-header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+#fixed-header-spacer {
+	margin-top: 60px;
+}
+
+#page-header {
+	background-color: #369;
+	background-image: url(../images/bg6.gif);
+	color: #FFF;
+	height: 60px;
+	padding: 15px;
+}
+
+.header2 {
+	background-color: #EEE;
+	background-image: url(../images/bg7-dk.gif);
+	border: 1px solid #CCC;
+	color: #000;
+	font-size: 22px; 
+	margin: 30px 0px;
+	padding: 14px; 
+	float: left;
+	width: 100%;
+}
+
+.header3 {
+	background-color: #F9F9F9;
+	border: 1px solid #CCC;
+	color: #000;
+	font-size: 18px;
+	margin: 20px 0;
+	padding: 10px; 
+	float: left;
+	width: 100%;
+}
+
+/* .header3:nth-of-type(n+2) {
+	margin-top: 40px;
+} */
+
+.header4 {
+	color: #454545; 
+	font-family: Lucida Sans Unicode, Lucida, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: italic;
+	margin-top: 20px;
+}
+
+#page-nav {
+	background-color: #369;
+	border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+	display: none;
+	z-index: 200;
+}
+
+#page-sub-nav {
+	background-color: #8AC;
+    border-bottom: 1px solid #000;
+	z-index: 300; 
+}
+
+@media screen and (max-width: 480px) {
+	#page-nav {
+		display: none;
+	}
+}
+
+#page-hero {
+	background-color: #EEE;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+}
+
+@media screen and (max-width: 480px) {
+    #page-hero {
+		height: 200px;
+    }
+}
+
+#page-hero-overlay {
+	background: rgba(240,240,240,0.5);
+	font-size: 1.2em;
+	padding: 10px 0;
+	position: absolute;
+	text-align: center;
+	top: 15px;
+	z-index: 10;
+}
+
+@media screen and (max-width: 480px) {
+    #page-hero-overlay {
+		font-size: 1.0em;
+    }
+}
+
+#page-search {
+	min-height: 50px; 
+}
+
+#page-body {
+	min-height: 400px;
+}
+
+.page-body-section {
+}
+
+#page-body p {
+	margin-bottom: 20px;
+}
+
+/* #page-body h2 { margin: 15px 0; } */
+#page-body h3 { margin: 14px 0; }
+#page-body ul, page-body ol { margin: 12px 0; padding: 0 0 0 40px; }
+
+#page-footer {
+	min-height: 50px;
+}
+
+
+/* ========================================
+==========  CUSTOM SCAFFOLDING   ==========
+======================================== */
+#social-cards-section {
+}
+
+
+
+/* ========================================
+=============  PRESENTATION   =============
+======================================== */
+
+.title-bar {
+	background-color: #EEE;
+	background-image: url(../images/bg7.gif);
+	border: 1px solid #CCC;
+	color: #666;
+	padding: 5px;
+}
+
+.button {
+	background-image: url(../images/bg7-dk.gif);
+    border: 1px solid #999;
+    display: inline-block;
+    font-size: 14px; 
+    font-weight: bold;
+	margin: 5px;
+    padding: 5px 20px;
+	.rounded;
+}
+
+.centeredbutton {
+	.button;
+	display: block;
+	margin: 5px auto;
+    text-align: center;
+    max-width: 200px;
+}
+
+/* http://www.mademyday.de/css-height-equals-width-with-pure-css.html */
+
+.round-img-container {
+    background: #fff;
+    border: 1px solid #AAA;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+    margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.round-img-container:before,
+.round-img-container-before {
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* initial ratio of 1:1*/
+}
+
+.round-img-container img,
+.round-img {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: none;
+    max-width: none;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+}
+
+.rounded {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.rounded-top {
+    -moz-border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.rounded-bottom {
+    -moz-border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+	border-radius: 0px 0px 5px 5px;
+}
+
+.rounded-left {
+    -moz-border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+	border-radius: 5px 0px 0px 5px;
+}
+
+.rounded-right {
+    -moz-border-radius: 0px 5px 5px 0px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+	border-radius: 0px 5px 5px 0px;
+}
+
+.shadow {
+	-webkit-box-shadow: 5px 5px 5px #AAA;
+	-moz-box-shadow: 5px 5px 5px #AAA;
+	box-shadow: 5px 5px 5px #AAA;
+}
+
+.shadow-in {
+	-moz-box-shadow: inset 0 0 5px 5px #CCC;
+	-webkit-box-shadow: inset 0 0 5px 5px #CCC;
+	box-shadow: inset 0 0 5px 5px #CCC;
+}
+
+.gradient {
+	background: #CCC;
+	background-image: linear-gradient(top, #EEE 0%, #CCC 100%);
+	background-image: -o-linear-gradient(top, #EEE 0%, #CCC 100%);
+	background-image: -moz-linear-gradient(top, #EEE 0%, #CCC 100%);
+	background-image: -webkit-linear-gradient(top, #EEE 0%, #CCC 100%);
+	background-image: -ms-linear-gradient(top, #EEE 0%, #CCC 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEE), color-stop(1, #CCC));
+}
+
+.outline {
+  border: 1px solid #CCC;
+}
+
+.text-outline {
+	text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF
+}
+
+.border-bottom {
+  border-bottom: 1px solid #AAA;
+  padding-bottom: 5px;
+}
+
+.textAlignLeft {
+	/* for images */
+	float: left;
+    margin: 0 10px 10px 0;
+}
+
+.textAlignRight {
+	/* for images */
+	float: right;
+    margin: 0 0 10px 10px;
+}
+
+
+/* ========================================
+===============  CALLOUTS   ===============
+======================================== */
+
+.callout {
+	padding: 20px;
+}
+
+.callout-header {
+	padding: 8px;
+	clear: both;
+	text-align: center;
+	overflow: hidden;
+}
+
+.callout-title {
+	text-transform: uppercase;
+}
+
+.callout-body {
+	border-top: 0px solid transparent;
+	display: inline-block;
+	padding: 5px;
+}
+
+.callout-body li {
+	margin-bottom: 7px;
+}
+
+.callout-image {
+    width: 70%;
+    height: 70%;
+    .round-img-container;
+}
+
+.callout-image-horiz {
+    .callout-image;
+    float: right;
+}
+
+@media screen and (max-width: 480px) {
+	.callout-image-horiz {
+		float: none;
+	}
+}
+
+.callout-image:before,
+.callout-image-horiz:before {
+	.round-img-container-before ;
+}
+
+.callout-image img,
+.callout-image-horiz img {
+	.round-img ;
+}
+
+
+
+/* ========================================
+================  CARDS   =================
+======================================== */
+
+.card {
+	border: 1px solid #999;
+	margin: 5px 0px 0px 0px;
+	.shadow ;
+	.wrapword ;
+}
+
+.cardTitle {
+	background-color: #EEE;
+	background-image: url("../images/bg7.gif");
+	border-bottom: 1px solid #999;
+	font-size: 1.3em;
+	padding: 5px;
+}
+
+.cardTitle a {
+
+}
+
+.cardIcon {
+	background: #FFF;
+	border: 0;
+	height: 20px;
+	width: 20px;
+	vertical-align: bottom;
+	margin: 0px 5px 0px 0px;
+}
+
+.cardDate {
+	background-color: #DDD;
+	border-top: 1px solid #999);
+	font-size: 0.8em;
+	padding: 5px;
+	text-align: right;
+}
+
+.cardBody {
+	background-color: #fff;
+	display: inline-block;
+	padding: 5px;
+	width: 100%;
+}
+
+
+
+/* ========================================
+===============  SOCIAL   =================
+======================================== */
+
+.social-image {
+    /* width: 90%;
+    height: 90%; */
+    .round-img-container;
+}
+
+.social-image:before {
+	.round-img-container-before ;
+}
+
+.social-image img{
+	.round-img ;
+}
+
+
+/* ========================================
+   MEDIA QUERIES - PRINT
+   ======================================== */
+
+@media print {
+
+    .page-header,
+    .page-nav,
+    .page-footer {
+        display: none;                
+    }
+    
+    body {
+        background: none !important
+    }
+    
+    /* THIS IS DONE TO MAINTAIN PAGE STRUCTURE AND LAYOUT */
+    .noPrint {
+        visibility: hidden;
+    }
+
+}
+
+/* ========================================
+=====           MEGA MENU             =====
+======================================== */
+
+/* ===== MEGAMENU TOP LEVEL ===== */
+
+.megamenu a {
+	/* ALL ANCHOR TAGS */
+	display: block;
+	text-decoration: none;  
+}
+
+.megamenu > ul {
+	background: #369;
+	margin: 1px auto 0px;
+	padding: 0px;
+}
+
+.megamenu > ul > li { 
+	float: left; 
+	list-style: none; 
+	padding: 0; 
+	position: relative; 
+}
+
+.megamenu > ul > li:hover { 
+	background: #036;
+}
+
+.megamenu > ul > li > a {
+	border-right: 1px solid #EEE;
+	color: #fff;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 15px; 
+	text-decoration: none;
+}
+
+.megamenu > ul > li:first-child {
+	border-left: 1px solid #EEE;
+}
+
+/* ===== MEGAMENU DROP DOWNS ===== */
+
+.megamenu > ul > li > ul {
+	background: #DDD;
+	border: 1px solid #FFF;
+	display: none;
+	left: 0;
+	min-width: 180px;
+	overflow: hidden;
+	position: absolute;
+	top: 30px;
+	z-index: 5;
+}
+
+.megamenu > ul > li > ul .right { 
+	right: 0; 
+	left: auto 
+}
+
+.megamenu > ul > li > ul > li {
+	border-bottom: 1px solid #FFF;
+}
+
+.accordion-menu > ul > li > ul > li:first-child { 
+	border-top: 1px solid #FFF;
+}
+
+.megamenu > ul > li > ul > li > a {
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px 0 0;
+    text-indent: 10px;
+	white-space: nowrap;
+}
+
+.megamenu > ul > li > ul > li > a:hover {
+	background: #EEE;
+	border-left: 5px solid #369;
+    text-indent: 5px;
+}
+
+
+/* ========================================
+=====      SLIDING PANEL MENU         =====
+======================================== */
+
+.panel-menu-button {
+	background-color: rgba(255,255,255,0.7);
+	.rounded;
+	/* display: none; */
+	display: inline;
+	margin: 0px 10px 0px 0px;
+	padding: 5px;
+	text-align: center;
+	width: 32px;
+}
+
+#panel-menu {
+	/* background: #FFF; */
+	background: rgba(150, 190, 250, 0.7);
+	border-right: 1px solid #ccc;
+	/* height: auto; */
+	height: 100%;
+	left: -320px;
+	position: fixed;
+	top: 60px;
+	width: 220px;
+	z-index: 500;
+}
+
+.panel-menu-header {
+	background-color: #336699;
+	background-image: url(../images/bg6.gif);
+	.rounded;
+	color: #FFFFFF;
+	padding: 15px;
+}
+
+@media screen and (max-width: 480px) {
+
+	.panel-menu-button {
+		display: inline;
+	}
+
+}
+
+/* ========================================
+============  ACCORDION MENU   ============
+======================================== */
+
+.accordion-menu, 
+.accordion-menu ul {
+	/* ALL LIST LEVELS */
+	display: inline-block;
+	list-style-type: none;
+	padding: 0;
+	width: 200px;
+}
+
+.accordion-menu li {
+	/* ALL LIST ITEM LEVELS */
+	border-bottom: 1px solid #FFF;
+}
+
+.accordion-menu li:first-child { 
+	/* ALL LIST ITEM LEVELS */
+	border-top: 1px solid #FFF;
+}
+
+.accordion-menu a {
+	color: #000;    
+	display: block;
+	text-decoration: none;  
+}
+
+.accordion-menu > ul {
+	margin: 0px 0px 0px 5px;
+	padding: 0;
+	width: 200px;
+}
+
+.accordion-menu > ul > li > a {
+	background: #CCC;
+	height: 30px;
+	line-height:30px;
+	text-indent: 10px;
+}
+
+.accordion-menu > ul > li > a:hover {
+	background: #EDD;
+	text-indent: 5px;
+	border-left: 5px #000 solid;
+}
+
+.accordion-menu > ul > li > ul > li > a {
+	background: #EEE;
+	height: 25px;
+	line-height: 25px;
+	text-indent: 20px;
+	font-size:0.9em;
+}
+
+.accordion-menu > ul > li > ul > li > a:hover {
+	text-indent: 15px;
+	border-left: 5px #900 solid;
+	background: #FFE;
+}
+
+
+
+
+/* ========================================
+============  ADDTHIS WIDGET    ===========
+======================================== */
+
+.addthis_sharing_toolbox {
+    /* background-color: #CCC;
+    border: 1px solid #FFF; */
+    height: 30px;
+	clear: none !important ;
+}
+
+.at-icon-wrapper {
+	/* HEIGHT from 32 to 25 */
+    line-height: 30px !important;
+    height: 30px !important;
+    width: 30px !important;
+    /* ROUNDED BUTTONS */
+    -moz-border-radius: 15px !important;
+    -webkit-border-radius: 15px !important;
+    border-radius: 15px !important;
+}
+
+.at-icon {
+	/* HEIGHT from 32 to 25 */
+    width: 30px !important;
+    height: 30px !important;
+    /* ROUNDED BUTTONS */
+    border: 1px solid #999 !important;
+    -moz-border-radius: 15px !important;
+    -webkit-border-radius: 15px !important;
+    border-radius: 15px !important;
+}
+
+
+
+
+/* ========================================
+============  GOOGLE SEARCH    ============
+======================================== */
+
+.gsib_a {
+    padding: 1px 8px !important;
+}
+
+.gsc-tabsArea {
+    border-color: #336699;
+}
+
+.gsc-tabHeader.gsc-tabhActive {
+    border-color: #336699;
+}
+
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+    box-sizing: content-box;
+}
+
+input.gsc-input {
+	font-size: 1.0em !important;
+}
+
+.gsc-control-cse {
+    border-color: transparent !important;
+    background-color: transparent !important;
+	padding: .5em !important;
+}
+
+
+
+/* ========================================
+============  FLICKR HERO API   ===========
+======================================== */
+
+#flickrHero {
+	height: auto;
+	margin: 0px auto;
+	min-width: 480px; /* 3:2 ratio to height */
+    /* opacity: .5; */
+    position: absolute;
+    /* opacity for IE */
+    /* -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; */
+    width: 100%;
+}
+
+#flickrHeroByline {
+	bottom: 5px;
+	color: #FFF;
+	font-size: 1.0em;
+	position: absolute;
+	right: 5px;
+}
+
+#flickrHeroCount {
+	bottom: 5px;
+	color: #FFF;
+	font-size: 1.0em;
+	position: absolute;
+	left: 5px;
+}
+
+/* ========================================
+==============  FLICKR API   ==============
+======================================== */
+
+#blog li,
+#pinterest li,
+#tumblr li {
+	margin-left: 20px;
+}
+
+#flickr{
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+#flickrImg {
+	display: inline-block !important;
+	margin: 0 auto;
+	width: 100%;
+}
+
+
+#flickrImgCount {
+	bottom: 5px;
+	color: #FFF;
+	font-size: 1.0em;
+	position: absolute;
+	right: 5px;
+}
+
+#flickrImgModal {
+	padding: 10px;
+	border-radius: 10px;
+}
+
+
+/* ========================================
+==============  SLICK FLICKR  =============
+======================================== */
+#slick-flickr {
+	/* width: 100%; */
+	margin: 0px 30px;
+	min-height: 250px;
+}
+
+#slick-flickr img{
+	max-height: 250px;
+	height: 250px;
+	width: auto !important;
+	margin: 0px 10px;
+}
+
+.slick-next:before, .slick-prev:before {
+    color: #999;
+}
+	
+
+/* ========================================
+===========  TWITTER WIDGETS    ===========
+======================================== */
+
+#twitter-widget-0, 
+#twitter-widget-1 {
+	width: 100% !important;
+}
+
+/* check JS for css changes too */
+
+
+	
+
+
+
+/* ========================================
+==============    RECIPES    ==============
+======================================== */
+
+.recipe-page-header {
+	margin-bottom: 0px !important;
+}
+
+#recipes a[name] {
+    display: block;
+    position: relative;
+    top: -85px;
+    visibility: hidden;
+}
+
+#recipes a[name*="r0"] {
+    top: 0px;
+}
+
+/* #recipes ul, 
+#recipes ol, 
+#recipes li {
+	margin-left: 20px;
+} */
+
+.recipe {
+}
+
+/* ===== RECIPE MEGAMENU TOP LEVEL ===== */
+
+#recipe-toc {
+	margin-top: 0px;
+}
+
+#recipe-toc.megamenu > ul {
+	background-color: #8AC;
+}
+
+#recipe-toc.megamenu > ul > li > a{
+	font-size: 11px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 10px; 
+	color: #000;
+}
+#recipe-toc.megamenu > ul > li > a:hover  { 
+	color: #FFF;
+}
+
+/* ===== RECIPE MEGAMENU DROP DOWNS ===== */
+
+#recipe-toc.megamenu > ul > li > ul {
+	top: 30px;
+}
+
+#recipe-toc.megamenu > ul > li > ul > li > a {
+	font-size:11px;
+	height: 25px;
+	line-height: 25px;
+}
+
+@media screen and (max-width: 480px) {
+	#recipe-toc {
+		display: none;
+	}
+}
+
+
+
+/* ========================================
+==========    BACK TO TOP    ==============
+======================================== */
+
+.backToTop {
+	background: #FFF;
+	border: 1px solid #CCC;
+	color: #000;
+	font-size: 10px;
+	padding: 5px;
+	position: fixed;
+	right: 10px;
+	text-align: center;
+	text-decoration: none;
+	top: 10px;
+	width: 50px;
+	z-index: 400;
+	.rounded;
+}
+
+
+
+/* ========================================
+==========       MISC        ==============
+======================================== */
+
+.dragging, .dragging * {
+/* 	cursor: move !important;
+	pointer-events: none !important;
+	-webkit-touch-callout: none !important;
+	-webkit-user-drag: none !important;
+	user-drag: none !important; */
+	-webkit-user-select: none !important;
+	-khtml-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+}
