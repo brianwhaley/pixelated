@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './header';
 import Menu from './menu';
+import Hero from './hero'
 import BodyContent from './bodycontent'
 
 class App extends Component {
@@ -24,14 +26,19 @@ class App extends Component {
 
         <div id="fixed-header-spacer" class="grid12"></div>
 
+        <Router>
+          <div>
+            <Route exact path='/' component={Hero}/>
+            <Route exact path='/index.html' component={Hero}/>
+          </div>
+        </Router>
+
         <div id="page-search" class="grid12 noMobile">
           <div class="content-container"></div>
         </div>
         
         <div id="page-body" class="grid12">
-          <div class="content-container">
             <BodyContent></BodyContent>
-          </div>
         </div>
         
         <div id="page-footer" class="grid12">
