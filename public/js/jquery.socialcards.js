@@ -108,6 +108,12 @@ function socialCards() {
 				entryCount: 0,
 				iconSrc: 'images/youtube-logo.png',
 				iconSrcAlt: 'Youtube Favorite Video'
+			},
+			other: {
+				url: '',
+				entryCount: 0,
+				iconSrc: 'images/blog-logo.png',
+				iconSrcAlt: 'Post'
 			}
 		}, options );
 		
@@ -154,6 +160,7 @@ function socialCards() {
 			);
 		}
 
+
 		function feedToCards(data){
 			$.each(data.query.results.rss.channel.item, function(itemIndex, thisItem){
 				var myNewCard = [];
@@ -175,6 +182,33 @@ function socialCards() {
 				mySocialCards.cards.sort(sortCardsByPubDate);
 			});	
 			renderSocialCards(options.targetID, mySocialCards);
+		};
+
+		function unifiedFeedToCards(myURL){
+			/* http://www.rssmix.com/ */
+			/* https://rss2json.com/ */
+			$.get( "https://api.rss2json.com/v1/api.json?rss_url=" + myURL, function(data) {
+				$.each(data.items, function(itemIndex, thisItem){
+					var myNewCard = [];
+					myNewCard = data.items[itemIndex];
+					myNewCard.content = thisItem.description;
+					if ( $(thisItem).hasOwnProperty("source") ) {
+					} else {
+						if($.isArray(thisItem.link)) {
+							if($.isPlainObject(thisItem.link[0])){
+								myNewCard.source = thisItem.link[0].href;
+							} else {
+								myNewCard.source = thisItem.link[0];
+							}
+						} else {
+							myNewCard.source = thisItem.link;
+						}
+					}
+					mySocialCards.cards.push(myNewCard);
+					mySocialCards.cards.sort(sortCardsByPubDate);
+				});	
+				renderSocialCards(options.targetID, mySocialCards);
+			});
 		};
 		
 		function feedItemToCard(thisItem, thisURL){
@@ -323,6 +357,7 @@ function socialCards() {
 					case (entry.source.indexOf("tumblr.com") > -1): myOptions = options.tumblr; break;
 					case (entry.source.indexOf("twitter") > -1): myOptions = options.twitter; break;
 					case (entry.source.indexOf("youtube") > -1): myOptions = options.youtube; break;
+					case (entry.source.indexOf("other") > -1): myOptions = options.other; break;
 					default: myOptions = options.blank; break;
 				}
 				myFeedIcon = '<img class="cardIcon" src="' + myOptions.iconSrc + '" alt="' + myOptions.iconSrcAlt + '" />';
@@ -356,7 +391,23 @@ function socialCards() {
 			if(options.tumblr.url){ getFeedEntries(options.tumblr.url, options.tumblr.entryCount); }
 			if(options.twitter.url){ getFeedEntries(options.twitter.url, options.twitter.entryCount); }
 			if(options.youtube.url){ getFeedEntries(options.youtube.url, options.youtube.entryCount); }
+			if(options.other.url){ unifiedFeedToCards(options.other.url); }
 		};
+
+
+		function createCORSRequest(method, url) {
+			var xhr = new XMLHttpRequest();
+			if ("withCredentials" in xhr) {
+			  xhr.open(method, url, true);
+			} else if (typeof XDomainRequest != "undefined") {
+			  xhr = new XDomainRequest();
+			  xhr.open(method, url);
+			} else {
+			  xhr = null;
+			}
+			return xhr;
+		}
+		  
 		
 		
 		/* ========== ========== ========== */

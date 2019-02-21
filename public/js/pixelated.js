@@ -629,6 +629,7 @@ if ( pagename == "socialmedia"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#social", 
+			/* 
 			blog: {
 				url: 'https://blog.pixelatedviews.com/feed/',
 				entryCount: 5,
@@ -676,6 +677,12 @@ if ( pagename == "socialmedia"){
 				entryCount: 5,
 				iconSrc: 'images/youtube-logo.png',
 				iconSrcAlt: 'Youtube Favorite Video'
+			} */
+			other: {
+				url: 'http://www.rssmix.com/u/8311244/rss.xml',
+				entryCount: 5,
+				iconSrc: 'images/blog-logo.png',
+				iconSrcAlt: 'Pixelated Views Social Post'
 			}
 		});
 	});
@@ -689,7 +696,8 @@ if ( pagename == "photography"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#photocards", 
-			flickr: {
+			/* https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery */
+			/* flickr: {
 				userID: '15473210@N04',
 				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
 				tags: 'pixelatedviewsgallery',
@@ -708,6 +716,12 @@ if ( pagename == "photography"){
 				entryCount: 5,
 				iconSrc: 'images/twitter-logo.png',
 				iconSrcAlt: 'Twitter Tweet'
+			} */
+			other: {
+				url: 'http://www.rssmix.com/u/8311245/rss.xml',
+				entryCount: 5,
+				iconSrc: 'images/blog-logo.png',
+				iconSrcAlt: 'Pixelated Views Photo Post'
 			}
 		});
 	});
