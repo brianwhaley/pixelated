@@ -853,14 +853,14 @@ pre {
 ======================================== */
 
 .panel-menu-button {
-	background-color: rgba(255,255,255,0.7);
+	/* background-color: rgba(255,255,255,0.7); */
 	.rounded;
 	/* display: none; */
 	display: inline;
 	margin: 0px 10px 0px 0px;
 	padding: 5px;
 	text-align: center;
-	width: 32px;
+	width: 35px;
 }
 
 #panel-menu {
@@ -928,7 +928,10 @@ pre {
 }
 
 .accordion-menu > ul > li > a {
+	/* this is the button */
 	background: #CCC;
+	background-image: url(../images/bg6-lt.jpg);
+	font-weight: bold;
 	height: 30px;
 	line-height:30px;
 	text-indent: 10px;
@@ -936,6 +939,7 @@ pre {
 
 .accordion-menu > ul > li > a:hover {
 	background: #EDD;
+	background-image: url(../images/bg7-dk.gif);
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }

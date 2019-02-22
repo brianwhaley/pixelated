@@ -8,6 +8,7 @@ import BodyContent from './bodycontent'
 
 class App extends Component {
   render() {
+    const gcse = '<gcse:search></gcse:search>';
     return (
 	
       <div id="page-container">
@@ -34,7 +35,8 @@ class App extends Component {
         </Router>
 
         <div id="page-search" class="grid12 noMobile">
-          <div class="content-container"></div>
+          <div class="content-container" dangerouslySetInnerHTML={{__html: '<gcse:search></gcse:search>'}}>
+          </div>
         </div>
         
         <div id="page-body" class="grid12">

@@ -187,7 +187,7 @@ function socialCards() {
 		function unifiedFeedToCards(myURL){
 			/* http://www.rssmix.com/ */
 			/* https://rss2json.com/ */
-			$.get( "https://api.rss2json.com/v1/api.json?rss_url=" + myURL, function(data) {
+			$.get( "https://api.rss2json.com/v1/api.json?rss_url=" + myURL + "&api_key=c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd&count=30", function(data) {
 				$.each(data.items, function(itemIndex, thisItem){
 					var myNewCard = [];
 					myNewCard = data.items[itemIndex];
