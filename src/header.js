@@ -8,7 +8,8 @@ class Header extends Component {
                 <div class="panel-menu-button pull-left">
                     <img src="images/mobile-menu2.png" alt="Mobile Menu"/>
                 </div>
-                <h1 class="pull-left">Pixelated - by Brian Whaley</h1>
+                <h1 class="pull-left">Pixelated </h1>
+                <h2 class="pull-left pad"> - by Brian Whaley</h2>
                 <div class="addthis_sharing_toolbox push-right noMobile"></div>
             </div>
 

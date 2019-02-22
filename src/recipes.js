@@ -12,7 +12,7 @@ class Recipes extends Component {
 			
             <div class="backToTop">
                 <a href="#top">
-                    <div><img src="images/up.jpg"/></div>
+                    <div><img src="images/up.jpg" alt="Back To Top" /></div>
                     <div>Back To Top</div>
                 </a>
             </div>
