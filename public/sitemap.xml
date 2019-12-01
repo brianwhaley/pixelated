@@ -22,7 +22,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
-	<url>
+	<!--url>
 		<loc>https://pixelated.tech/gallery.html?tag=portfolio-adp-2014</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
@@ -45,7 +45,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
-	</url>
+	</url-->
 	<url>
 		<loc>https://pixelated.tech/index.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
