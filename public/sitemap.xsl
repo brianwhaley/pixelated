@@ -9,7 +9,7 @@
 			<head>
 				<title>XML Sitemap</title>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 				<style type="text/css">
 					body {
 						font-family:Verdana;
