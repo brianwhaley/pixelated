@@ -4,7 +4,7 @@ class Menu extends Component {
     render() {
         return (
 
-				<ul class="grid12 clearfix">
+		<ul class="grid12 clearfix">
                     <li><a href="./index.html">Home</a></li>
                     <li><a href="./gallery.html?tag=portfolio-all">Work Portfolio</a></li>
                     <li><a href="./gallery.html?tag=pixelatedviewsgallery">Photo Gallery</a></li>
