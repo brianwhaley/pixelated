@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://www.pixelatedviews.com/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://pixelated.tech/sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.pixelatedviews.com/</loc>
+		<loc>https://pixelated.tech/</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=pixelatedviewsgallery</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=pixelatedviewsgallery</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=portfolio-all</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=portfolio-all</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=portfolio-adp-2014</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=portfolio-adp-2014</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=portfolio-ap-2012</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=portfolio-ap-2012</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=portfolio-bms-2005</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=portfolio-bms-2005</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/gallery.html?tag=portfolio-bms-1998</loc>
+		<loc>https://pixelated.tech/gallery.html?tag=portfolio-bms-1998</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/index.html</loc>
+		<loc>https://pixelated.tech/index.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/photography.html</loc>
+		<loc>https://pixelated.tech/photography.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/recipes.html</loc>
+		<loc>https://pixelated.tech/recipes.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.pixelatedviews.com/socialmedia.html</loc>
+		<loc>https://pixelated.tech/socialmedia.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
