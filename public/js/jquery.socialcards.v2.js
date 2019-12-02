@@ -1,21 +1,13 @@
 /*!
- * SocialCards v. 3.0
+ * SocialCards v. 2.0
  * http://www.pixelatedviews.com/socialcards.html
  *
  * Copyright (c) 2016, Brian Whaley <brian.whaley@gmail.com>
  * Released under the MIT license
  * https://opensource.org/licenses/mit-license.php
  *
- * Date: 2019-12-01T12:58Z
+ * Date: 2016-06-08T12:58Z
  *
- * FIXED: Instagram feed
- * FIXED: Remove use of QUERY.YAHOOAPIS.COM YQL
- * FIXED: YouTube card content
- * FIXED: Use of entryCount
- * FIXED: Remove Google Plus
- * TODO: Goodreads Cards
- * TODO: Foursquare Feed
- * 
  */
 
 
@@ -83,8 +75,12 @@ function socialCards() {
 				iconSrc: 'images/goodreads-logo.png',
 				iconSrcAlt: 'GoodReads Currently Reading'
 			},
+			/* google: {
+				iconSrc: 'images/google-plus-logo.png',
+				iconSrcAlt: 'Google Plus Post'
+			}, */
 			instagram: {
-				userID: '',
+				url: '',
 				entryCount: 0,
 				iconSrc: 'images/instagram-logo.jpg',
 				iconSrcAlt: 'Instagram Photo'
@@ -130,7 +126,7 @@ function socialCards() {
     	// Private function for debugging.
 		function debug( obj ) {
 			if ( window.console && window.console.log ) {
-				window.console.log( "DEBUG: " + obj );
+				window.console.log( "hilight selection count: " + obj.length );
 			}
 		};
 		
@@ -141,27 +137,61 @@ function socialCards() {
 		======================================== */
 
 		function getFeedEntries(myURL, entryCount) {
-			$.ajax({
-				url: 'https://api.rss2json.com/v1/api.json',
-				method: 'GET',
-				dataType: 'json',
-				data: {
-					rss_url: myURL,
-					api_key: 'c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd', 
-					count: entryCount
+			$.get("https://query.yahooapis.com/v1/public/yql",
+				{
+					q: "select * from xml where url in (\"" + myURL + "\") limit " + entryCount + " offset 0 ",
+					format: "json"
+				},				
+				function(data){
+					/* feedToCards(data); */
+					/* LIMIT DOESNT WORK - LOOP THROUGH RESULTS */
+					for (i = 0; i< entryCount; i++) {
+						if (myURL.indexOf("goodreads") > -1) {
+							goodreadsItemToCard(data.query.results.GoodreadsResponse.reviews.review[i]);
+						} else if (myURL.indexOf("fetchrss") > -1) {
+							fetchRSSItemToCard(data.query.results.rss.channel.item[i]);
+						} else if (myURL.indexOf("youtube") > -1) {
+							youTubeItemToCard(data.query.results.feed.entry[i]);
+						} else {
+							feedItemToCard(data.query.results.rss.channel.item[i]);
+						}
+					}
 				}
-			}).done( function(data) {
+			);
+		}
+
+
+		function feedToCards(data){
+			$.each(data.query.results.rss.channel.item, function(itemIndex, thisItem){
+				var myNewCard = [];
+				myNewCard = data.query.results.rss.channel.item[itemIndex];
+				myNewCard.content = thisItem.description;
+				if ( $(thisItem).hasOwnProperty("source") ) {
+				} else {
+					if($.isArray(data.query.results.rss.channel.link)) {
+						if($.isPlainObject(data.query.results.rss.channel.link[0])){
+							myNewCard.source = data.query.results.rss.channel.link[0].href;
+						} else {
+							myNewCard.source = data.query.results.rss.channel.link[0];
+						}
+					} else {
+						myNewCard.source = data.query.results.rss.channel.link;
+					}
+				}
+				mySocialCards.cards.push(myNewCard);
+				mySocialCards.cards.sort(sortCardsByPubDate);
+			});	
+			renderSocialCards(options.targetID, mySocialCards);
+		};
+
+		function unifiedFeedToCards(myURL){
+			/* http://www.rssmix.com/ */
+			/* https://rss2json.com/ */
+			$.get( "https://api.rss2json.com/v1/api.json?rss_url=" + myURL + "&api_key=c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd&count=30", function(data) {
 				$.each(data.items, function(itemIndex, thisItem){
 					var myNewCard = [];
 					myNewCard = data.items[itemIndex];
 					myNewCard.content = thisItem.description;
-					if ( thisItem.description ) {
-					} else {
-						var myImgBase = thisItem.thumbnail ;
-						var myImgTag = '<img src="' + myImgBase + '" alt="' + thisItem.title + '" title="' + thisItem.title + '">';
-						myNewCard.content = '<p>' + myImgTag + thisItem.title + '</p>' ;
-						myNewCard.description = myNewCard.content; 
-					} 
 					if ( $(thisItem).hasOwnProperty("source") ) {
 					} else {
 						if($.isArray(thisItem.link)) {
@@ -176,15 +206,67 @@ function socialCards() {
 					}
 					mySocialCards.cards.push(myNewCard);
 					mySocialCards.cards.sort(sortCardsByPubDate);
-					if (itemIndex >= entryCount) { return false; }
 				});	
 				renderSocialCards(options.targetID, mySocialCards);
-			})
-			.fail(function() {
-				console.log("RSS2JSON API Call failed.");
-			})
-			.always(function() {
-			});	
+			});
+		};
+		
+		function feedItemToCard(thisItem, thisURL){
+			var myNewCard = [];
+			// myNewCard = thisItem;
+			myNewCard.title = thisItem.title;
+			myNewCard.content = thisItem.description;
+			myNewCard.pubDate = thisItem.pubDate;
+			myNewCard.link = thisItem.link;
+			if ( $(thisItem).hasOwnProperty("source") ) {
+			} else {
+				myNewCard.source = myNewCard.link;
+			}
+			mySocialCards.cards.push(myNewCard);
+			mySocialCards.cards.sort(sortCardsByPubDate);
+			renderSocialCards(options.targetID, mySocialCards);
+		};
+
+		function fetchRSSItemToCard(thisItem){
+			var myNewCard = [];
+			// myNewCard = thisItem;
+			myNewCard.content = thisItem.description;
+			myNewCard.pubDate = thisItem.pubDate;
+			myNewCard.link = thisItem.link;
+			myNewCard.source = myNewCard.link;
+			myNewCard.title = thisItem.title;
+			mySocialCards.cards.push(myNewCard);
+			mySocialCards.cards.sort(sortCardsByPubDate);
+			renderSocialCards(options.targetID, mySocialCards);
+		};
+
+		function youTubeItemToCard(thisItem){
+			var myNewCard = [];
+			// myNewCard = thisItem;
+			myNewCard.content = thisItem.link.href + "<br><img src='" + thisItem.group.thumbnail.url + "'>";
+			myNewCard.pubDate = thisItem.published;
+			myNewCard.link = thisItem.link.href;
+			myNewCard.source = myNewCard.link;
+			myNewCard.title = thisItem.title;
+			mySocialCards.cards.push(myNewCard);
+			mySocialCards.cards.sort(sortCardsByPubDate);
+			renderSocialCards(options.targetID, mySocialCards);
+		};
+
+		function goodreadsItemToCard(thisItem){
+			if (thisItem) {
+				var myNewCard = [];
+				myNewCard = {
+					content: '<p><img src="' + thisItem.book.image_url + '" alt="GoodReads Currently Reading" class="textAlignLeft outline" />' + thisItem.book.description + '</p>',
+					link: thisItem.book.link ,
+					pubDate: thisItem.date_added ,
+					source: "www.goodreads.com",
+					title: thisItem.book.title 
+				};
+				mySocialCards.cards.push(myNewCard);
+				mySocialCards.cards.sort(sortCardsByPubDate);
+				renderSocialCards(options.targetID, mySocialCards);
+			}
 		}
 
 
@@ -205,18 +287,19 @@ function socialCards() {
 				extras: "description, date_upload, date_taken, owner_name, tags"
 			})
 			.done(function(data){
-				flickrToCards(data, entryCount);
+				flickrToCards(data);
 			})
 			.fail(function() {
 				console.log("Flickr API Call failed.");
 			})
 			.always(function() {
 			});		
+	
 		};	
 
 
 		/* ========== ========== ========== */
-		function flickrToCards(data, entryCount){
+		function flickrToCards(data){
 			$.each(data.photos.photo, function(index) {
 				var myImg = data.photos.photo[index];
 				var myImgBase = "https://farm" + myImg.farm + ".static.flickr.com/" + myImg.server + "/" + myImg.id + "_" + myImg.secret + ".jpg";
@@ -234,76 +317,10 @@ function socialCards() {
 				};
 				mySocialCards.cards.push(myCard);
 				mySocialCards.cards.sort(sortCardsByPubDate);
-				if (index >= entryCount) { return false; }
 			});
 			renderSocialCards(options.targetID, mySocialCards);
 		}
-
-
-		/* ========================================
-		=====       GOODREADS API             =====
-		======================================== */
-
-		/* ========== ========== ========== */
-		function getGoodreadsEntries(myURL, entryCount){
-			$.getJSON( myURL, {
-			})
-			.done(function(data){
-				console.log(data);
-			})
-			.fail(function() {
-				console.log("Goodreads Call failed.");
-			})
-			.always(function() {
-			});		
-		};
-
-
-		/* ========================================
-		=====       INSTAGRAM API             =====
-		======================================== */
-
-		/* ========== ========== ========== */
-		function getInstagramEntries(userID, entryCount){
-			$.getJSON("https://www.instagram.com/" + userID + "/?__a=1",{
-			})
-			.done(function(data){
-				instagramToCards(data, entryCount);
-			})
-			.fail(function() {
-				console.log("Instagram Call failed.");
-			})
-			.always(function() {
-			});		
-		};
-
-
-		/* ========== ========== ========== */
-		function instagramToCards(data, entryCount){
-			$.each(data.graphql.user.edge_owner_to_timeline_media.edges, function(index) {
-				var myGram = data.graphql.user.edge_owner_to_timeline_media.edges[index].node;
-				var myGramBase = myGram.thumbnail_src;
-				var myGramName = myGram.owner.username;
-				if (myGram.location) { myGramName = myGram.location.name; }
-				var myGramTag = '<img src="' + myGramBase + '" alt="' + myGramName + '" title="' + myGramName + '">';
-				var myCard = {};
-				myCard = {
-					author: myGram.owner.username,
-					categories: [],
-					content: '<p>' + myGramTag + myGramName + '</p>',
-					contentSnippet: "",
-					link: myGramBase ,
-					pubDate: new Date(myGram.taken_at_timestamp * 1000) ,
-					source: "www.instagram.com",
-					title: myGramName
-				};
-				mySocialCards.cards.push(myCard);
-				mySocialCards.cards.sort(sortCardsByPubDate);
-				if (index >= entryCount) { return false; }
-			});
-			renderSocialCards(options.targetID, mySocialCards);
-		}
-
+		
 
 		/* ========================================
 		=====        CARD GENERATION          =====
@@ -368,14 +385,28 @@ function socialCards() {
 			if(options.etsy.url){ getFeedEntries(options.etsy.url, options.etsy.entryCount); }
 			if(options.flickr.userID){ getFlickrEntries(options.flickr.userID, options.flickr.apiKey, options.flickr.tags, options.flickr.entryCount); }
 			if(options.foursquare.url){ getFeedEntries(options.foursquare.url, options.foursquare.entryCount); }
-			if(options.goodreads.url){ getGoodreadsEntries(options.goodreads.url, options.goodreads.entryCount); }
-			if(options.instagram.userID){ getInstagramEntries(options.instagram.userID, options.instagram.entryCount); }
+			if(options.goodreads.url){ getFeedEntries(options.goodreads.url, options.goodreads.entryCount); }
+			if(options.instagram.url){ getFeedEntries(options.instagram.url, options.instagram.entryCount); };
 			if(options.pinterest.url){ getFeedEntries(options.pinterest.url, options.pinterest.entryCount); }
 			if(options.tumblr.url){ getFeedEntries(options.tumblr.url, options.tumblr.entryCount); }
 			if(options.twitter.url){ getFeedEntries(options.twitter.url, options.twitter.entryCount); }
 			if(options.youtube.url){ getFeedEntries(options.youtube.url, options.youtube.entryCount); }
-			if(options.other.url){ getFeedEntries(options.other.url, options.other.entryCount); }
+			if(options.other.url){ unifiedFeedToCards(options.other.url); }
 		};
+
+
+		function createCORSRequest(method, url) {
+			var xhr = new XMLHttpRequest();
+			if ("withCredentials" in xhr) {
+			  xhr.open(method, url, true);
+			} else if (typeof XDomainRequest != "undefined") {
+			  xhr = new XDomainRequest();
+			  xhr.open(method, url);
+			} else {
+			  xhr = null;
+			}
+			return xhr;
+		}
 		  
 		
 		

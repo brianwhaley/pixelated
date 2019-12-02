@@ -629,9 +629,8 @@ if ( pagename == "socialmedia"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#social", 
-			/* 
 			blog: {
-				url: 'https://blog.pixelatedviews.com/feed/',
+				url: 'https://blog.pixelated.tech/feed/',
 				entryCount: 5,
 				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Pixelated Views Blog Post'
@@ -677,13 +676,13 @@ if ( pagename == "socialmedia"){
 				entryCount: 5,
 				iconSrc: 'images/youtube-logo.png',
 				iconSrcAlt: 'Youtube Favorite Video'
-			} */
-			other: {
+			}
+			/* other: {
 				url: 'http://www.rssmix.com/u/8311244/rss.xml',
 				entryCount: 5,
 				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Pixelated Views Social Post'
-			}
+			} */
 		});
 	});
 }
@@ -697,7 +696,7 @@ if ( pagename == "photography"){
 		$.socialCards({
 			targetID: "#photocards", 
 			/* https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery */
-			/* flickr: {
+			flickr: {
 				userID: '15473210@N04',
 				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
 				tags: 'pixelatedviewsgallery',
@@ -706,7 +705,8 @@ if ( pagename == "photography"){
 				iconSrcAlt: 'Flickr Photo'
 			},
 			instagram: {
-				url: 'http://fetchrss.com/rss/5aed1a4f8a93f8442b8b4567351605368.xml',
+				/* url: 'http://fetchrss.com/rss/5aed1a4f8a93f8442b8b4567351605368.xml', */
+				userID: 'pixelated.views',
 				entryCount: 5,
 				iconSrc: 'images/instagram-logo.jpg',
 				iconSrcAlt: 'Instagram Photo'
@@ -716,13 +716,13 @@ if ( pagename == "photography"){
 				entryCount: 5,
 				iconSrc: 'images/twitter-logo.png',
 				iconSrcAlt: 'Twitter Tweet'
-			} */
-			other: {
+			}
+			/* other: {
 				url: 'http://www.rssmix.com/u/8311245/rss.xml',
 				entryCount: 5,
 				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Pixelated Views Photo Post'
-			}
+			} */
 		});
 	});
 }
