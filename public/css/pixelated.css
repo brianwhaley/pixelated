@@ -298,12 +298,12 @@ pre {
 }
 
 .page-content-section {
-	margin-bottom: 50px;
-	padding: 30px 0
+	/* margin-bottom: 50px; */
+	padding: 10px 0
 }
 
 .page-content-section-alt {
-	margin-bottom: 50px;
+	/* margin-bottom: 50px; */
 	padding: 30px 0;
     background-color: #CCC;
 
@@ -406,7 +406,7 @@ pre {
 
 #page-hero {
 	background-color: #EEE;
-	height: 300px;
+	height: 150px;
 	overflow: hidden;
 	position: relative;
 	z-index: 5;
@@ -494,7 +494,12 @@ pre {
 	display: block;
 	margin: 5px auto;
     text-align: center;
-    max-width: 200px;
+	max-width: 220px;
+	transition: all .2s ease ;
+}
+
+.centeredbutton:hover {
+	font-size: 16px ;
 }
 
 /* http://www.mademyday.de/css-height-equals-width-with-pure-css.html */
@@ -529,7 +534,14 @@ pre {
     top: -100%;
     right: -100%;
     bottom: -100%;
-    left: -100%;
+	left: -100%;
+	transition: transform .3s ease; /* Animation */
+}
+
+.round-img-container:hover img,
+.round-img:hover,
+.round-img-hover {
+    transform: scale(1.2) ;
 }
 
 .rounded {
@@ -670,6 +682,11 @@ pre {
 	.round-img ;
 }
 
+.callout-image:hover img,
+.callout-image-horiz:hover img {
+	.round-img-hover ;
+}
+
 
 
 /* ========================================
@@ -737,6 +754,10 @@ pre {
 
 .social-image img{
 	.round-img ;
+}
+
+.social-image:hover img{
+	.round-img-hover ;
 }
 
 

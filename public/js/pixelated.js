@@ -631,58 +631,29 @@ if ( pagename == "socialmedia"){
 			targetID: "#social", 
 			blog: {
 				url: 'https://blog.pixelated.tech/feed/',
-				entryCount: 5,
-				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Pixelated Views Blog Post'
 			},
 			etsy: {
-				url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss',
-				entryCount: 5,
-				iconSrc: 'images/etsy-logo.png',
-				iconSrcAlt: 'Etsy Favorite'
+				url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss'
 			},
 			foursquare: {
-				url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss',
-				entryCount: 5,
-				iconSrc: 'images/foursquare-logo.png',
-				iconSrcAlt: 'FourSquare Checkin'
+				url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss'
 			},
 			goodreads:{
-				url: 'https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading',
-				entryCount: 5,
-				iconSrc: 'images/goodreads-logo.png',
-				iconSrcAlt: 'GoodReads Currently Reading'
+				url: 'https://crossorigin.me/https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading'
 			},
 			pinterest: {
-				url: 'https://www.pinterest.com/brianwhaley/feed.rss',
-				entryCount: 5,
-				iconSrc: 'images/pinterest-logo.png',
-				iconSrcAlt: 'Pinterest Pin'
+				url: 'https://www.pinterest.com/brianwhaley/feed.rss'
 			},
 			tumblr: {
-				url: 'http://pixelatedviews.tumblr.com/rss',
-				entryCount: 5,
-				iconSrc: 'images/tumblr-logo.png',
-				iconSrcAlt: 'Tumblr Post'
+				url: 'http://pixelatedviews.tumblr.com/rss'
 			},
 			twitter: {
-				url: 'https://twitrss.me/twitter_user_to_rss/?user=brianwhaley',
-				entryCount: 5,
-				iconSrc: 'images/twitter-logo.png',
-				iconSrcAlt: 'Twitter Tweet'
+				url: 'https://twitrss.me/twitter_user_to_rss/?user=brianwhaley'
 			},
 			youtube: {
-				url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCKk2eBwml-4mEsmMK-dK6sQ',
-				entryCount: 5,
-				iconSrc: 'images/youtube-logo.png',
-				iconSrcAlt: 'Youtube Favorite Video'
+				url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCKk2eBwml-4mEsmMK-dK6sQ'
 			}
-			/* other: {
-				url: 'http://www.rssmix.com/u/8311244/rss.xml',
-				entryCount: 5,
-				iconSrc: 'images/blog-logo.png',
-				iconSrcAlt: 'Pixelated Views Social Post'
-			} */
 		});
 	});
 }
@@ -695,34 +666,24 @@ if ( pagename == "photography"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#photocards", 
-			/* https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery */
+			SOOpx: {
+				url: 'https://500px.com/brianwhaley/rss',
+			},
 			flickr: {
+				/* https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery */
 				userID: '15473210@N04',
 				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
-				tags: 'pixelatedviewsgallery',
-				entryCount: 5,
-				iconSrc: 'images/flickr-logo.png',
-				iconSrcAlt: 'Flickr Photo'
+				tags: 'pixelatedviewsgallery'
 			},
 			instagram: {
-				/* url: 'http://fetchrss.com/rss/5aed1a4f8a93f8442b8b4567351605368.xml', */
-				userID: 'pixelated.views',
-				entryCount: 5,
-				iconSrc: 'images/instagram-logo.jpg',
-				iconSrcAlt: 'Instagram Photo'
+				userID: 'pixelated.views'
+			},
+			shutterfly: {
+				url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley'
 			},
 			twitter: {
-				url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews',
-				entryCount: 5,
-				iconSrc: 'images/twitter-logo.png',
-				iconSrcAlt: 'Twitter Tweet'
+				url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews'
 			}
-			/* other: {
-				url: 'http://www.rssmix.com/u/8311245/rss.xml',
-				entryCount: 5,
-				iconSrc: 'images/blog-logo.png',
-				iconSrcAlt: 'Pixelated Views Photo Post'
-			} */
 		});
 	});
 }

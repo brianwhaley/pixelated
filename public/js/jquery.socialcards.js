@@ -8,6 +8,8 @@
  *
  * Date: 2019-12-01T12:58Z
  *
+ * ADDED: Shutterfly
+ * ADDED 500px (NOTE must use 'SOOpx' for properties - numerics not allowed)
  * FIXED: Instagram feed
  * FIXED: Remove use of QUERY.YAHOOAPIS.COM YQL
  * FIXED: YouTube card content
@@ -34,28 +36,33 @@ function socialCards() {
 
 
 (function($) {
- 
+
     /* $.fn.socialCards = function(options) { */
     $.socialCards = function(options) {
 
-		/* ========== ========== ========== */
-		var options = $.extend({
+		this.defaults = {
 			targetID: "#social", 
 			blank: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: '',
 				iconSrcAlt: ''
 			},
+			SOOpx: {
+				url: '',
+				entryCount: 5,
+				iconSrc: 'images/500px-logo.png',
+				iconSrcAlt: '500px Post'
+			},
 			blog: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Blog Post'
 			},
 			etsy: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/etsy-logo.png',
 				iconSrcAlt: 'Etsy Favorite'
 			},
@@ -67,74 +74,73 @@ function socialCards() {
 				userID: '',
 				apiKey: '',
 				tags: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/flickr-logo.png',
 				iconSrcAlt: 'Flickr Photo'
 			},
 			foursquare: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/foursquare-logo.png',
 				iconSrcAlt: 'FourSquare Checkin'
 			},
 			goodreads:{
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/goodreads-logo.png',
 				iconSrcAlt: 'GoodReads Currently Reading'
 			},
 			instagram: {
 				userID: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/instagram-logo.jpg',
 				iconSrcAlt: 'Instagram Photo'
 			},
 			pinterest: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/pinterest-logo.png',
 				iconSrcAlt: 'Pinterest Pin'
 			},
+			shutterfly: {
+				url: '',
+				entryCount: 5,
+				iconSrc: 'images/shutterfly-logo.jpg',
+				iconSrcAlt: 'Shutterfly Items'
+			},
 			tumblr: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/tumblr-logo.png',
 				iconSrcAlt: 'Tumblr Post'
 			},
 			twitter: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/twitter-logo.png',
 				iconSrcAlt: 'Twitter Tweet'
 			},
 			youtube: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/youtube-logo.png',
 				iconSrcAlt: 'Youtube Favorite Video'
 			},
 			other: {
 				url: '',
-				entryCount: 0,
+				entryCount: 5,
 				iconSrc: 'images/blog-logo.png',
 				iconSrcAlt: 'Post'
 			}
-		}, options );
-		
+		};
+
+		/* first param true = recursive */
+		var options = $.extend( true, this.defaults, options );
+
 		var mySocialCards = [];
 		mySocialCards.cards = [];
 		
 		this.myCards = function() { return mySocialCards.cards ; }
-
-		/* ========== ========== ========== */
-    	// Private function for debugging.
-		function debug( obj ) {
-			if ( window.console && window.console.log ) {
-				window.console.log( "DEBUG: " + obj );
-			}
-		};
-		
-		
 
 		/* ========================================
 		=====        FEEDS API                =====
@@ -154,6 +160,7 @@ function socialCards() {
 				$.each(data.items, function(itemIndex, thisItem){
 					var myNewCard = [];
 					myNewCard = data.items[itemIndex];
+					/* ===== FIX FOR DESCRIPTION ===== */
 					myNewCard.content = thisItem.description;
 					if ( thisItem.description ) {
 					} else {
@@ -161,7 +168,8 @@ function socialCards() {
 						var myImgTag = '<img src="' + myImgBase + '" alt="' + thisItem.title + '" title="' + thisItem.title + '">';
 						myNewCard.content = '<p>' + myImgTag + thisItem.title + '</p>' ;
 						myNewCard.description = myNewCard.content; 
-					} 
+					}
+ 					/* ===== FIX FOR SOURCE ===== */
 					if ( $(thisItem).hasOwnProperty("source") ) {
 					} else {
 						if($.isArray(thisItem.link)) {
@@ -246,7 +254,7 @@ function socialCards() {
 
 		/* ========== ========== ========== */
 		function getGoodreadsEntries(myURL, entryCount){
-			$.getJSON( myURL, {
+			$.get( myURL, {
 			})
 			.done(function(data){
 				console.log(data);
@@ -330,6 +338,7 @@ function socialCards() {
 			$.each(data.cards, function(entryIndex, entry){
 				var myFeedIcon = "";
 				switch (true) {
+					case (entry.source.indexOf("500px.com") > -1): myOptions = options.SOOpx; break;
 					case (entry.source.indexOf("blog") > -1): myOptions = options.blog; break;
 					case (entry.source.indexOf("etsy.com") > -1): myOptions = options.etsy; break;
 					case (entry.source.indexOf("foursquare.com") > -1): myOptions = options.foursquare; break;
@@ -337,6 +346,7 @@ function socialCards() {
 					case (entry.source.indexOf("goodreads.com") > -1): myOptions = options.goodreads; break;
 					case (entry.source.indexOf("instagram") > -1): myOptions = options.instagram; break;
 					case (entry.source.indexOf("pinterest.com") > -1): myOptions = options.pinterest; break;
+					case (entry.source.indexOf("shutterfly.com") > -1): myOptions = options.shutterfly; break;
 					case (entry.source.indexOf("tumblr.com") > -1): myOptions = options.tumblr; break;
 					case (entry.source.indexOf("twitter") > -1): myOptions = options.twitter; break;
 					case (entry.source.indexOf("youtube") > -1): myOptions = options.youtube; break;
@@ -364,6 +374,7 @@ function socialCards() {
 		
 		/* ========== ========== ========== */
 		function gatherData() {
+			if(options.SOOpx.url){ getFeedEntries(options.SOOpx.url, options.SOOpx.entryCount); }
 			if(options.blog.url){ getFeedEntries(options.blog.url, options.blog.entryCount); }
 			if(options.etsy.url){ getFeedEntries(options.etsy.url, options.etsy.entryCount); }
 			if(options.flickr.userID){ getFlickrEntries(options.flickr.userID, options.flickr.apiKey, options.flickr.tags, options.flickr.entryCount); }
@@ -371,6 +382,7 @@ function socialCards() {
 			if(options.goodreads.url){ getGoodreadsEntries(options.goodreads.url, options.goodreads.entryCount); }
 			if(options.instagram.userID){ getInstagramEntries(options.instagram.userID, options.instagram.entryCount); }
 			if(options.pinterest.url){ getFeedEntries(options.pinterest.url, options.pinterest.entryCount); }
+			if(options.shutterfly.url){ getFeedEntries(options.shutterfly.url, options.shutterfly.entryCount); }
 			if(options.tumblr.url){ getFeedEntries(options.tumblr.url, options.tumblr.entryCount); }
 			if(options.twitter.url){ getFeedEntries(options.twitter.url, options.twitter.entryCount); }
 			if(options.youtube.url){ getFeedEntries(options.youtube.url, options.youtube.entryCount); }
@@ -388,6 +400,6 @@ function socialCards() {
 
         return this.init();
  
-    };
+	};
  
 }( jQuery ));

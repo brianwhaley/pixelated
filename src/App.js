@@ -13,19 +13,19 @@ class App extends Component {
 	
       <div id="page-container">
 
-        <div id="panel-menu" class="pad">
-          <div class="accordion-menu">
+        <div id="panel-menu" className="pad">
+          <div className="accordion-menu">
             <Menu></Menu>
           </div>
         </div>
       
-        <div id="fixed-header" class="grid12">
-          <div id="page-header" class="grid12">
+        <div id="fixed-header" className="grid12">
+          <div id="page-header" className="grid12">
             <Header></Header>
           </div>
         </div>
 
-        <div id="fixed-header-spacer" class="grid12"></div>
+        <div id="fixed-header-spacer" className="grid12"></div>
 
         <Router>
           <div>
@@ -34,17 +34,17 @@ class App extends Component {
           </div>
         </Router>
 
-        <div id="page-search" class="grid12 noMobile">
-          <div class="content-container" dangerouslySetInnerHTML={{__html: '<gcse:search></gcse:search>'}}>
+        <div id="page-search" className="grid12 noMobile">
+          <div className="content-container" dangerouslySetInnerHTML={{__html: '<gcse:search></gcse:search>'}}>
           </div>
         </div>
         
-        <div id="page-body" class="grid12">
+        <div id="page-body" className="grid12">
             <BodyContent></BodyContent>
         </div>
         
-        <div id="page-footer" class="grid12">
-          <div class="content-container"></div>
+        <div id="page-footer" className="grid12">
+          <div className="content-container"></div>
         </div>
         
       </div>

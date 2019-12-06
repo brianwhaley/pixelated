@@ -5,12 +5,12 @@ class Recipes extends Component {
         return (
 
 
-            <div class="content-container">
+            <div className="content-container">
 			
 
 			
 			
-            <div class="backToTop">
+            <div className="backToTop">
                 <a href="#top">
                     <div><img src="images/up.jpg" alt="Back To Top" /></div>
                     <div>Back To Top</div>
@@ -36,22 +36,22 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Breads</h2>
+            <h2 className="header2">Breads</h2>
             
             
             {/* ##############################======= */}
             
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Cukol Bread</h3>
+            <h3 className="header3">Grandma's Cukol Bread</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li></li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li></li>
             </ol>
@@ -61,13 +61,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Italian Easter Bread</h3>
+            <h3 className="header3">Grandma's Italian Easter Bread</h3>
             
             <p>Other recipes include adding in mixed candied fruits or chopped almonds.</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>6 cups flour</li>
             <li>1 tsp. Salt</li>
@@ -83,7 +83,7 @@ class Recipes extends Component {
             <li>Juice from 1 lemon</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix well - flour, salt anise seed, baking powder, sugar and lemon rind.</li>
             <li>Beat together eggs.  </li>
@@ -109,10 +109,10 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's Zucchini Bread</h3>
-            <h4 class="header4">Ingredients</h4>
+            <h3 className="header3">Mom's Zucchini Bread</h3>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>3 eggs</li>
             <li>1 tsp vanilla</li>
@@ -127,7 +127,7 @@ class Recipes extends Component {
             <li>3/4 cup raisins and walnuts</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix all ingredients in a large bowl</li>
             <li>Grease 2 bread pans</li>
@@ -141,18 +141,18 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Appetizers</h2>
+            <h2 className="header2">Appetizers</h2>
             
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Hummus with Tahini</h3>
+            <h3 className="header3">Hummus with Tahini</h3>
             
             <p>http://mideastfood.about.com/od/appetizerssnacks/r/hummusbitahini.htm</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 - 16 oz can of chickpeas or garbanzo beans</li>
             <li>1/4 cup liquid from can of chickpeas</li>
@@ -165,13 +165,13 @@ class Recipes extends Component {
             <li>parsley for garnish (optional)</li>
             </ul>
             
-            <h4 class="header4">Ingredients - Roasted Red Pepper and Feta Variant</h4>
+            <h4 className="header4">Ingredients - Roasted Red Pepper and Feta Variant</h4>
             <ul>
             <li>1/2 cup crumbled feta cheese</li>
             <li>1 (4 ounce) jar roasted red bell peppers, drained</li>
             </ul>
             
-            <h4 class="header4">Ingredients - Spicy 3 Pepper Variant</h4>
+            <h4 className="header4">Ingredients - Spicy 3 Pepper Variant</h4>
             <ul>
             <li>2 slices jarred jalapeno pepper, chopped</li>
             <li>1 teaspoon liquid from the jar of jalapeno peppers</li>
@@ -181,7 +181,7 @@ class Recipes extends Component {
             <li>1 teaspoon (1/3 palm full) ground coriander (optional)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Drain chickpeas and set aside liquid from can. </li>
             <li>Combine remaining ingredients in blender or food processor. </li>
@@ -191,7 +191,7 @@ class Recipes extends Component {
             <li>Add a small amount (1-2 tablespoons) of olive oil in the well. Garnish with parsley (optional).</li>
             </ol>
             
-            <h4 class="header4">Storing Hummus</h4>
+            <h4 className="header4">Storing Hummus</h4>
             <ul>
             <li>Serve immediately with fresh, warm or toasted pita bread, or cover and refrigerate.</li>
             <li>Make sure your container is sealed well, or your fridge will smell like garlic!</li>
@@ -204,9 +204,9 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mary Ann's Sweet & Spicy Meatballs</h3>
+            <h3 className="header3">Mary Ann's Sweet & Spicy Meatballs</h3>
             
             <ul>
             Prep Time: 10 minutes
@@ -214,7 +214,7 @@ class Recipes extends Component {
             Serves: 48 meatballs
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 1/2 pound lean ground beef</li>
             <li>2 tablespoons parsley</li>
@@ -228,7 +228,7 @@ class Recipes extends Component {
             <li>1/2 teaspoon ginger</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a large bowl, mix ground beef, parsley, and onion powder with your hands.</li>
             <li>Shape the ground beef mix into meatballs approximately 1 inch in diameter.</li>
@@ -247,18 +247,18 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Dinners</h2>
+            <h2 className="header2">Dinners</h2>
             
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Alton Brown's Chicken Fried Steak</h3>
+            <h3 className="header3">Alton Brown's Chicken Fried Steak</h3>
             
             <p>http://www.foodnetwork.com/recipes/alton-brown/chicken-fried-steak-recipe/index.html</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 pounds beef bottom round, trimmed of excess fat</li>
             <li>2 teaspoons kosher salt</li>
@@ -271,7 +271,7 @@ class Recipes extends Component {
             <li>1/2 teaspoon fresh thyme leaves</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Preheat oven to 250 degrees F.</li>
             <li>Cut the meat with the grain into 1/2-inch thick slices. </li>
@@ -302,9 +302,9 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Beef Stroganoff</h3>
+            <h3 className="header3">Beef Stroganoff</h3>
             
             <p>According to Wikipedia, Beef Stroganoff was invented by a chef working for a Russian general, Count Pavel Stroganov, in the 1890s. It became popular in the U.S. in the 1950s from servicemen returning from Europe and China after WWII. Beef Stroganoff is basically tender strips of beef and mushrooms cooked in a sour cream sauce and served over noodles, rice, or even French fries. You will want to make this with a tender cut of beef, such as tenderloin or top sirloin. For a quick version you can use ground beef instead of beef strips. You can also easily substitute yogurt for sour cream and leave out the mushrooms entirely.</p>
             <p>http://www.elise.com/recipes/archives/001976beef_stroganoff.php </p>
@@ -314,7 +314,7 @@ class Recipes extends Component {
             <li>Serves 4</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 pounds top lean sirloin roast, trimmed</li>
             <li>1 teaspoon salt</li>
@@ -331,7 +331,7 @@ class Recipes extends Component {
             <li>1 bag egg noodles</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Cut the sirloin into narrow 2-inch long strips about 1/4 inch thick</li>
             <li>Sprinkle the meat with salt and pepper to your taste</li>
@@ -358,9 +358,9 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Black Bean Soup</h3>
+            <h3 className="header3">Black Bean Soup</h3>
             
             <ul>
             <li>Prep Time: 10 minutes</li>
@@ -368,7 +368,7 @@ class Recipes extends Component {
             <li>Serves: 6 to 8</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 1/2 cups boneless skinless white-meat chicken, ham, or sausage, chopped into bite size pieces</li>
             <li>2 15-ounce cans reduced sodium black beans, rinsed and drained or 1 bag dried black beans</li>
@@ -391,7 +391,7 @@ class Recipes extends Component {
             <li>1 cup rice</li>
             </ul>
             
-            <h4 class="header4">Other possible ingredients</h4>
+            <h4 className="header4">Other possible ingredients</h4>
             <ul>
             <li>1/2 large red pepper</li>
             <li>1 teaspoon worchestershire sauce</li>
@@ -399,7 +399,7 @@ class Recipes extends Component {
             <li>4 teasoons white vinegar</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Boil black beans for 60 to 90 minutes, or as instructed on the package of black beans</li>
             <li>Chop carrots, celery, onion, and chicken</li>
@@ -420,11 +420,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Brian's Fried Shrimp Parmesan</h3>
+            <h3 className="header3">Brian's Fried Shrimp Parmesan</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 bag (2 pounds) frozen, peeled, deveined shrimp</li>
             <li>3 eggs</li>
@@ -440,7 +440,7 @@ class Recipes extends Component {
             <li>Parsley to taste</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Defrost shrimp in a collander under cold running water</li>
             <li>Be sure all the shrimp are peeled and deveined</li>
@@ -464,13 +464,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Brian's Kielbasa and Potatoes</h3>
+            <h3 className="header3">Brian's Kielbasa and Potatoes</h3>
             
             <p>When I was in Munich, Germany, I found a dish just like this being served in a bier garden.  They were making this by the cauldron-ful.  The food was fantastic, the atmosphere was great, and I had a wonderful time.</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 whole kielbasa (approx 2 lb)</li>
             <li>5 to 6 large potatoes</li>
@@ -480,7 +480,7 @@ class Recipes extends Component {
             <li>2 tablespoons olive oil</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a large frying pan, heat the olive oil</li>
             <li>Dice the onion and add to the frying pan at high heat</li>
@@ -499,11 +499,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Brian's Lemon Garlic Chicken</h3>
+            <h3 className="header3">Brian's Lemon Garlic Chicken</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 packages (approx. 10 pieces) boneless skinless chicken thighs</li>
             <li>2 tablespoons olive oil</li>
@@ -518,7 +518,7 @@ class Recipes extends Component {
             <li>1 teaspoon corn starch</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Add oil to a large sauce pan </li>
             <li>Once hot, add garlic and lemon zest and juice</li>
@@ -537,9 +537,9 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Cashew Chicken</h3>
+            <h3 className="header3">Cashew Chicken</h3>
             
             <p>A Chinese-American dish that is growing in popularity is Cashew Chicken. This dish actually originated in the United States in Springfield, Missouri. Cashew Chicken can be found at many Chinese buffets across the country. This recipe for Cashew chicken consists of fried chicken bits with cashews and vegetables in a delicious oyster sauce.  This recipe differs from others and those at the buffets because the chicken is breaded and then deep fried leaving the chicken pieces nice and crispy. The vegetables I added were green peppers, onions and scallions, but you could also add some sliced mushrooms as well if you want. Cashew Chicken is best served on top of white rice.</p>
             
@@ -547,7 +547,7 @@ class Recipes extends Component {
             
             <p>http://blogchef.net/cashew-chicken-recipe/</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2lbs boneless skinless chicken breasts (cut into 1" chunks)</li>
             <li>2 cups flour</li>
@@ -557,7 +557,7 @@ class Recipes extends Component {
             <li>extra virgin olive oil (for frying)</li>
             </ul>
             
-            <h4 class="header4">Sauce</h4>
+            <h4 className="header4">Sauce</h4>
             <ul>
             <li>2 cups chicken broth</li>
             <li>2 tablespoons oyster sauce</li>
@@ -569,7 +569,7 @@ class Recipes extends Component {
             <li>1/3 cup green onions (chopped)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a bowl mix flour, baking soda and 1 teaspoon of corn starch. </li>
             <li>In another bowl beat the eggs. </li>
@@ -590,13 +590,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Chicken Kielbasa Gumbo</h3>
+            <h3 className="header3">Chicken Kielbasa Gumbo</h3>
             
             <p>This recipe is very flexible.  It is a great way to recycle leftover chicken meals.  Some versions of this recipe also like to use the more flavorful chicken thighs instead of the chicken breasts.  You can make it more or less spicy by adjusting the amount of chili powder and black pepper.  And some versions of this recipe call for okra or diced tomatoes.  </p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2 pounds chicken (both white and dark meat)</li>
             <li>1 package Kielbasa</li>
@@ -620,7 +620,7 @@ class Recipes extends Component {
             <li>4 tablespoons Flour</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a large pot, add the olive oil</li>
             <li>Once hot, add the onions and sauté until translucent </li>
@@ -639,15 +639,15 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Chicken Quesadillas</h3>
+            <h3 className="header3">Chicken Quesadillas</h3>
             
             <ul>
             <li>Creates 6 Quesadillas</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 small onion</li>
             <li>(can also add scallions)</li>
@@ -663,7 +663,7 @@ class Recipes extends Component {
             <li>1 small container fat free sour cream</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Dice the onion and set aside</li>
             <li>Dice the bell pepper and set aside</li>
@@ -686,13 +686,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Chicken Marsala</h3>
+            <h3 className="header3">Chicken Marsala</h3>
             
             <p>http://allrecipes.com/Recipe/Chicken-Marsala/Detail.aspx</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1/4 cup all-purpose flour for coating</li>
             <li>1/2 teaspoon salt</li>
@@ -711,7 +711,7 @@ class Recipes extends Component {
             <li>1/2 cup chicken stock</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a shallow dish or bowl, mix together the flour, salt, pepper, garlic powder, cayenne, thyme, paprika and oregano. </li>
             <li>Coat chicken pieces in flour mixture. </li>
@@ -727,14 +727,14 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Cappellettis</h3>
+            <h3 className="header3">Grandma's Cappellettis</h3>
             
             <p>The word cappelletto means little hat, which is what this pasta should resemble; they're from Modena. They are traditionally served in broth, as are their cousins, tortellini (the difference lies in the stuffing). Indeed, the traditional North Italian Christmas dinner starts with cappelletti in capon broth.</p>
             <p>http://italianfood.about.com/od/stuffedpasta/r/blr0102a.htm </p>
             
-            <h4 class="header4">Ingredients - Dough</h4> 
+            <h4 className="header4">Ingredients - Dough</h4> 
             <ul>
             <li>4 cups of flour</li>
             <li>3 eggs</li>
@@ -742,7 +742,7 @@ class Recipes extends Component {
             <li>Salt to taste</li>
             </ul>
             
-            <h4 class="header4">Ingredients - Filling</h4>
+            <h4 className="header4">Ingredients - Filling</h4>
             <ul>
             <li>1 1/2 pounds Ground beef </li>
             <li>Salt</li>
@@ -753,7 +753,7 @@ class Recipes extends Component {
             <li>Chopped spinach (frozen - thawed)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix dough ingredients to make a medium soft dough comfortable to roll out. Add more flour or water as needed.</li>
             <li>Thaw spinach, cool and squeeze out all of the water before mixing with meat. </li>
@@ -771,15 +771,15 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Pizza Gaine</h3>
+            <h3 className="header3">Grandma's Pizza Gaine</h3>
             
             <p>This has been a family tradition at Easter ever since I can remember. The dish is sometimes known as Pizza Rustica, filled pizza, or meat pie. It is similar to a modern day quiche but much more dense and flavorful. Tradition says to make it on Good Friday and serve on Sunday when you can have meat again. Served in small quantities it is a wonderful addition to Easter brunch or an appetizer to a big Easter feast.</p>
             <p>http://www.tastebook.com/recipes/628567-Easter-Pizza-Gaine</p>
             <p>Recipe makes 1 pie</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1lb Canned ham (you can also make this with a wide variety of Italian meats - sausage, pepperoni, salami, prosciutto,  etc)</li>
             <li>3/4 lb. White American Cheese</li>
@@ -789,7 +789,7 @@ class Recipes extends Component {
             <li>3 tablespoons Ricotta cheese</li>
             </ul>
             
-            <h4 class="header4">Preparation - Filling</h4>
+            <h4 className="header4">Preparation - Filling</h4>
             <ol>
             <li>Boil ham and cut into pieces </li>
             <li>Cut up cheese the same way </li>
@@ -799,7 +799,7 @@ class Recipes extends Component {
             <li>Add ricotta cheese</li>
             </ol>
             
-            <h4 class="header4">Preparation - Crust</h4>
+            <h4 className="header4">Preparation - Crust</h4>
             <ol>
             <li>Use regular boxed pie crust mix. </li>
             <li>Top should be a crisscross design or use the form that you press on the top crust and it puts holes in it.  The top crust should not be solid. </li>
@@ -811,11 +811,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Porkette Sandwiches</h3>
+            <h3 className="header3">Grandma's Porkette Sandwiches</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>2-4 pound pork loin</li>
             <li>Garlic</li>
@@ -825,7 +825,7 @@ class Recipes extends Component {
             <li>Your favorite type of rolls</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Preheat the oven to 450 degrees</li>
             <li>Try to trim away as much excess fat from around the pork loin as possible.</li>
@@ -844,11 +844,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Laurent's Chicken Dijon Creme Fraiche</h3>
+            <h3 className="header3">Laurent's Chicken Dijon Creme Fraiche</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>4 tablespoons Olive Oil</li>
             <li>2 pounds Boneless Skinless Chicken Thighs</li>
@@ -860,7 +860,7 @@ class Recipes extends Component {
             <li>(you can also try 1 small diced onion and /or 1.5 cups diced mushrooms)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Put the rice on to cook</li>
             <li>In a large saucepan, heat the olive oil over medium heat</li>
@@ -878,11 +878,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mary Ann's Curry Chicken Salad</h3>
+            <h3 className="header3">Mary Ann's Curry Chicken Salad</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 whole rotisserie chicken</li>
             <li>1 1/2 cups diced carrots</li>
@@ -892,7 +892,7 @@ class Recipes extends Component {
             <li>1 to 1 1/2 cups low fat mayonnaise</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Strip all the chicken meat  from the bones.  Do not use the skin.</li>
             <li>Dice the chicken and place into a large bowl</li>
@@ -905,7 +905,7 @@ class Recipes extends Component {
             <li>Make sure that there is enough curry to taste, but not too much to be overwhelming</li>
             </ol>
             
-            <h4 class="header4">Variations</h4>
+            <h4 className="header4">Variations</h4>
             <ul>
             <li>You can also add one diced medium red onion, scallions, diced cashews, orange zest and juice, diced dried apricots, watercress, olives, etc.</li>
             </ul>
@@ -915,11 +915,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's Spaghetti Sauce and Meatballs</h3>
+            <h3 className="header3">Mom's Spaghetti Sauce and Meatballs</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>3 pounds ground meatloaf meat (pork, veal, beef)</li>
             <li>1 pound cube stew beef</li>
@@ -934,7 +934,7 @@ class Recipes extends Component {
             <li>Parsley</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Take 1 pound ground meat and brown in the bottom of a large cauldron</li>
             <li>Add in cube beef stew</li>
@@ -961,11 +961,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Pita Pizza</h3>
+            <h3 className="header3">Pita Pizza</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 1/2 cup tomato sauce</li>
             <li>10 (4 to 6 inch) pita pocket breads</li>
@@ -984,7 +984,7 @@ class Recipes extends Component {
             <li>1 pinch garlic powder</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Thin crusts can be made by cutting a pita in half horizontally. </li>
             <li>Thick crusts can be made by not cutting the pita open.</li>
@@ -1002,11 +1002,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Sam Cohen's New Year's Chili</h3>
+            <h3 className="header3">Sam Cohen's New Year's Chili</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>2 pound ground beef, turkey or meatloaf mix (beef, pork, veal)</li>
@@ -1037,7 +1037,7 @@ class Recipes extends Component {
             <li>Hot sauce - for serving</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li>Place the oil in a large pot.</li>
@@ -1058,14 +1058,14 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Slow Cooker Dinners</h2>
+            <h2 className="header2">Slow Cooker Dinners</h2>
             
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Barbecue Ribs</h3>
+            <h3 className="header3">Slow Cooker Barbecue Ribs</h3>
             
             <ul>
             <li>Prep: 15 minutes</li>
@@ -1073,7 +1073,7 @@ class Recipes extends Component {
             <li>Yield: Makes 8 servings</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>2 racks baby back ribs</li>
@@ -1088,7 +1088,7 @@ class Recipes extends Component {
             <li>2 tablespoons black pepper</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li></li>
@@ -1104,13 +1104,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Beef Stew</h3>
+            <h3 className="header3">Slow Cooker Beef Stew</h3>
             
             <p>http://allrecipes.com/Recipe/Hearty-Beef-Stew/Detail.aspx</p>
             
-            <h4 class="header4">Ingredients</h4> 
+            <h4 className="header4">Ingredients</h4> 
             <ul>
             <li>1 pound cubed beef stew meat</li>
             <li>1/4 cup all-purpose flour</li>
@@ -1127,7 +1127,7 @@ class Recipes extends Component {
             <li>1 bay leaf</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Place beef stew meat into a slow cooker. </li>
             <li>In a small bowl, mix together flour, paprika, salt, and pepper.</li>
@@ -1142,9 +1142,9 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Chicken Thighs</h3>
+            <h3 className="header3">Slow Cooker Chicken Thighs</h3>
             
             <ul>
             <li>Prep: 15 minutes</li>
@@ -1152,7 +1152,7 @@ class Recipes extends Component {
             <li>Yield: Makes 6 servings</li>
             </ul>
             
-            <h4 class="header4">Special Crock Pot Chicken Instructions</h4>
+            <h4 className="header4">Special Crock Pot Chicken Instructions</h4>
             
             <ul>
             <li>Remember that boneless, skinless chicken breasts can overcook in the crockpot.  Make sure that these cuts don't cook longer than 6-7 hours on low. </li>
@@ -1161,7 +1161,7 @@ class Recipes extends Component {
             <li>Be sure to follow the layering instructions in the recipe; chicken should be placed on top of root vegetables.</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>1  medium onion, halved lengthwise and sliced</li>
@@ -1178,7 +1178,7 @@ class Recipes extends Component {
             <li>6  bone-in, skinless chicken thighs</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li>Place onion in a 6-qt. slow cooker; </li>
@@ -1195,11 +1195,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Italian Beef</h3>
+            <h3 className="header3">Slow Cooker Italian Beef</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>4 to 5 lbs. roast, cut up</li>
@@ -1219,7 +1219,7 @@ class Recipes extends Component {
             <li>Rolls, Garlic bread or French bread</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li>Place roast, bouillon, spices, water, and Italian dressing in crock pot. </li>
@@ -1234,9 +1234,9 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Jambalaya</h3>
+            <h3 className="header3">Slow Cooker Jambalaya</h3>
             
             <ul>
             <li>Prep Time: 15 minutes</li>
@@ -1245,7 +1245,7 @@ class Recipes extends Component {
             <li>http://www.foodnetwork.com/recipes/robin-miller/slow-cooker-jambalaya-recipe/index.html</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 pound boneless skinless chicken breasts, cut into 1-inch cubes</li>
             <li>1/2 pound andouille sausage, diced</li>
@@ -1263,7 +1263,7 @@ class Recipes extends Component {
             <li>2 cups cooked rice</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In a slow cooker, combine chicken, sausage, tomatoes, onion, green pepper, celery, and chicken broth. </li>
             <li>Stir in oregano, Cajun seasoning, hot sauce, bay leaves, and thyme.</li>
@@ -1277,9 +1277,9 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Pulled Pork</h3>
+            <h3 className="header3">Slow Cooker Pulled Pork</h3>
             
             <ul>
             <li>Prep: 15 minutes</li>
@@ -1287,7 +1287,7 @@ class Recipes extends Component {
             <li>Yield: Makes 6 servings</li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>3 Pounds Pork Shoulder, Trimmed of Fat</li>
@@ -1310,7 +1310,7 @@ class Recipes extends Component {
             <li>Pepper to taste</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li>Combine all ingredients except for onion and pork into crock pot. Whisk all ingredients until well blended.</li>
@@ -1327,11 +1327,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Slow Cooker Southwest Chicken</h3>
+            <h3 className="header3">Slow Cooker Southwest Chicken</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <li>2 or 3 chicken breasts (frozen or thawed)</li>
             <li>1 can black beans (drained and rinsed)</li>
@@ -1341,7 +1341,7 @@ class Recipes extends Component {
             <li>1 16 oz sour cream</li>
             <li>1 16 oz salsa con queso</li>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <li>In crock pot mix salsa and taco seasoning. </li>
             <li>Place chicken in crock pot. </li>
@@ -1357,16 +1357,16 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Side Dishes and Salads</h2>
+            <h2 className="header2">Side Dishes and Salads</h2>
             
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Apple Cinnamon Cranberry Sauce</h3>
+            <h3 className="header3">Apple Cinnamon Cranberry Sauce</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 bag (12 oz) fresh cranberries</li>
             <li>2 cups water</li>
@@ -1375,7 +1375,7 @@ class Recipes extends Component {
             <li>1 teaspoon cinnamon</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Place the cranberries and water to a small saucepan</li>
             <li>Bring the water & cranberries to a boil</li>
@@ -1392,18 +1392,18 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Brian's Cucumber Salad</h3>
+            <h3 className="header3">Brian's Cucumber Salad</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>3 cucumbers</li>
             <li>1 small onion</li>
             <li>Your favorite Italian or Balsamic salad dressing</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Quarter the cucumbers the long way</li>
             <li>Dice the cucumbers into bite size pieces</li>
@@ -1420,11 +1420,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's Candied Yams</h3>
+            <h3 className="header3">Mom's Candied Yams</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>4 large yams</li>
             <li>1 stick margarine</li>
@@ -1432,7 +1432,7 @@ class Recipes extends Component {
             <li>1 bag mini marshmallows</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Peel all the yams</li>
             <li>Slice all the yams into 1/2 inch slices (do not quarter the yams - leave the slices whole</li>
@@ -1452,11 +1452,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's Macaroni Salad</h3>
+            <h3 className="header3">Mom's Macaroni Salad</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 lb cavateppi macaroni</li>
             <li>3-4 stalks celery</li>
@@ -1469,7 +1469,7 @@ class Recipes extends Component {
             <li>parsley</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Bring a pot of water to boil.  Boild pasta as recommended until cooked.  Place in a large bowl.</li>
             <li>Dice celery very fine.  Add to the bowl.</li>
@@ -1487,16 +1487,16 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <h2 class="header2">Desserts</h2>
+            <h2 className="header2">Desserts</h2>
             
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Fruit Sorbet</h3>
+            <h3 className="header3">Fruit Sorbet</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 1/2 cups sugar </li>
             <li>1 1/2 cups water </li>
@@ -1505,7 +1505,7 @@ class Recipes extends Component {
             <li>Mint sprigs (optional)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Combine sugar and water in a saucepan. </li>
             <li>Heat on medium high heat just to a boil, stirring until the sugar has dissolved. </li>
@@ -1527,11 +1527,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Helene's Better Than Sex Cake</h3>
+            <h3 className="header3">Helene's Better Than Sex Cake</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 chocolate cake mix</li>
             <li>(This is also good with yellow cake)</li>
@@ -1548,7 +1548,7 @@ class Recipes extends Component {
             <li>1 tsp. vanilla</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>In bowl combine 2 tablespoons cake mix, pecans and chocolate chips. Stir to coat; set aside.</li>
             <li>Combine remaining cake mix, eggs, oil, water, sour cream, vanilla and pudding.  Mix well with mixer. </li>
@@ -1559,7 +1559,7 @@ class Recipes extends Component {
             <li>Cool 25 minutes and remove from pan.</li>
             </ol>
             
-            <h4 class="header4">Ingredients - Better Than Sex Frosting</h4>
+            <h4 className="header4">Ingredients - Better Than Sex Frosting</h4>
             <ul>
             <li>1/2 c. butter</li>
             <li>1 c. brown sugar</li>
@@ -1567,7 +1567,7 @@ class Recipes extends Component {
             <li>1/4 c. sifted powdered sugar</li>
             </ul>
             
-            <h4 class="header4">Preparation - Better Than Sex Frosting</h4>
+            <h4 className="header4">Preparation - Better Than Sex Frosting</h4>
             <ol>
             <li>Melt butter</li>
             <li>Add brown sugar.  Cook until it bubbles. </li>
@@ -1582,11 +1582,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">No Bake Cookies</h3>
+            <h3 className="header3">No Bake Cookies</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             
             <ul>
             <li>2 cups Splenda</li>
@@ -1608,7 +1608,7 @@ class Recipes extends Component {
             <li>1 cup crushed pretzels</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             
             <ol>
             <li>In large saucepan, combine Splenda, milk, salt, vanilla and mix well. </li>
@@ -1628,11 +1628,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Peanut Butter Cookies</h3>
+            <h3 className="header3">Peanut Butter Cookies</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 egg</li>
             <li>1 cup peanut butter</li>
@@ -1645,14 +1645,14 @@ class Recipes extends Component {
             <li>1/4 tsp salt</li>
             </ul>
             
-            <h4 class="header4">Not-Low-Carb options</h4>
+            <h4 className="header4">Not-Low-Carb options</h4>
             <ul>
             <li>1/4 cup honey</li>
             <li>1/2 cup flour</li>
             <li>1 tbsp molasses</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Chop the oats in a food processor into fine bits</li>
             <li>Mix all ingredients</li>
@@ -1667,11 +1667,11 @@ class Recipes extends Component {
             {/* ##############################======= */}
             
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Aunt Edith's Cheesecake</h3>
+            <h3 className="header3">Aunt Edith's Cheesecake</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 stick butter</li>
             <li>2 cups graham cracker crumbs</li>
@@ -1682,7 +1682,7 @@ class Recipes extends Component {
             <li>1 tablespoon vanilla</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Melt butter</li>
             <li>Mix with graham cracker crumbs</li>
@@ -1693,14 +1693,14 @@ class Recipes extends Component {
             <li>THE SECRET - After 1 1/2 hours, turn the oven off but leave the cheesecake in for another 2 hours.  DO NOT OPEN THE OVEN!</li>
             </ol>
             
-            <h4 class="header4">Variation - Pumpkin Cheesecake</h4>
+            <h4 className="header4">Variation - Pumpkin Cheesecake</h4>
             <ol>
             <li>Use 1 small can of pumpkin instead of sour cream</li>
             <li>Use only 3 cream cheese packages</li>
             <li>Use only 3 eggs</li>
             </ol>
             
-            <h4 class="header4">Variation - Nutella Cheesecake</h4>
+            <h4 className="header4">Variation - Nutella Cheesecake</h4>
             <ol>
             <li>Use Nutella instead of sour cream</li>
             <li>Use only 3 cream cheese packages</li>
@@ -1719,11 +1719,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Biscotti</h3>
+            <h3 className="header3">Grandma's Biscotti</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>9 cups flower</li>
             <li>18 heaping tablespoons (1 1/2 cups) sugar</li>
@@ -1735,7 +1735,7 @@ class Recipes extends Component {
             <li>3/4 pound butter or margarine</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix dry ingredients well</li>
             <li>Mix together eggs, anisette extract, milk and butter</li>
@@ -1752,11 +1752,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Fried Twisties</h3>
+            <h3 className="header3">Grandma's Fried Twisties</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>5 cups flour</li>
             <li>6 large egg yolks</li>
@@ -1768,7 +1768,7 @@ class Recipes extends Component {
             <li>1/4 # Oleo (1 bar or a little less)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Makes 1 1/2 very large wide bowls</li>
             <li>Roll out dough on lightly floured board or table</li>
@@ -1786,14 +1786,14 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Grandma's Pizelles</h3>
+            <h3 className="header3">Grandma's Pizelles</h3>
             
             <p>Pizzelle are traditional Italian waffle cookies originally made in the Abruzzo region of south-central Italy. The name comes from the Italian word for "round" and "flat" (pizze); this is also the meaning of the word pizza. Many other cultures have developed a pizzelle-type cookie as part of their culture. It is known to be one of the oldest cookies, and is believed to have developed from the ancient Roman crustulum.  The cookie dough or batter is put into a pizzelle iron, which resembles a waffle iron. Typically, the iron stamps a snowflake pattern onto both sides of the thin golden-brown cookie, which has a crisp texture once it is cooled.  Pizzelle are popular during Christmas and Easter. They are often found at Italian weddings, alongside other traditional pastries such as cannoli and traditional Italian cookies.  It is also common for two pizzelle to be sandwiched with cannoli cream or hazelnut spread. Pizzelle, while still warm, can also be rolled using a wodden dowel to create cannoli shells.</p>
             <p>http://en.wikipedia.org/wiki/Pizzelle</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>12 eggs</li>
             <li>11 oz Honey</li>
@@ -1807,7 +1807,7 @@ class Recipes extends Component {
             <li>5 to 6 cups flour (enough to make the batter thick)</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix everything but the flour together</li>
             <li>Add flour gradually, while using an electric mixer</li>
@@ -1815,7 +1815,7 @@ class Recipes extends Component {
             <li>Pour two tablespoons or so on hot pizzelle iron.</li>
             </ol>
             
-            <h4 class="header4">Variation - Chocolate Pizzelles</h4>
+            <h4 className="header4">Variation - Chocolate Pizzelles</h4>
             <ul>
             <li>Add:</li>
             <li>1/2 cup cocoa</li>
@@ -1830,16 +1830,16 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mary Ann's Tiramisu</h3>
+            <h3 className="header3">Mary Ann's Tiramisu</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li></li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li></li>
             </ol>
@@ -1849,13 +1849,13 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's Butterball Cookies</h3>
+            <h3 className="header3">Mom's Butterball Cookies</h3>
             
             <p>Also called clothespin cookies</p>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>3/4 pound butter</li>
             <li>3/4 cup sugar</li>
@@ -1865,7 +1865,7 @@ class Recipes extends Component {
             <li>Confectionary sugar</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Melt butter, and wait for it to cool.  </li>
             <li>Cream Butter, sugar, and egg yolks</li>
@@ -1882,11 +1882,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Mom's M and M Cookies</h3>
+            <h3 className="header3">Mom's M and M Cookies</h3>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li>1 cup shortening</li>
             <li>1 cup brown sugar (packed)</li>
@@ -1899,7 +1899,7 @@ class Recipes extends Component {
             <li>1 1/2 cup plain M and Ms</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Blend shortening and sugars</li>
             <li>Beat in vanilla and eggs</li>
@@ -1917,11 +1917,11 @@ class Recipes extends Component {
             
             {/* ##############################======= */}
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3">Valia's Pepper Cookies</h3>
+            <h3 className="header3">Valia's Pepper Cookies</h3>
             
-            <h4 class="header4">Ingredients - cookies</h4>
+            <h4 className="header4">Ingredients - cookies</h4>
             <ul>
             <li>5 cups flour</li>
             <li>2 cups sugar</li>
@@ -1940,14 +1940,14 @@ class Recipes extends Component {
             <li>1/2 cup milk</li>
             </ul>
             
-            <h4 class="header4">Ingredients - Icing</h4>
+            <h4 className="header4">Ingredients - Icing</h4>
             <ul>
             <li>1 pound confectioners sugar</li>
             <li>1/2 bottle anisette extract (or more if you like)</li>
             <li>Water as needed</li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li>Mix all ingredients</li>
             <li>Add milk as needed to make a stiff dough</li>
@@ -1971,9 +1971,9 @@ class Recipes extends Component {
             {/* 
             ##### RECIPE TEMPLATE #####
             
-            <div class="recipe"> 
+            <div className="recipe"> 
             
-            <h3 class="header3"></h3>
+            <h3 className="header3"></h3>
             
             <ul>
             <li>Prep Time: </li>
@@ -1981,7 +1981,7 @@ class Recipes extends Component {
             <li>Serves: </li>
             </ul>
             
-            <h4 class="header4">Ingredients</h4>
+            <h4 className="header4">Ingredients</h4>
             <ul>
             <li></li>
             <li></li>
@@ -1990,7 +1990,7 @@ class Recipes extends Component {
             <li></li>
             </ul>
             
-            <h4 class="header4">Preparation</h4>
+            <h4 className="header4">Preparation</h4>
             <ol>
             <li></li>
             <li></li>
