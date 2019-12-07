@@ -82,10 +82,11 @@ class Home extends Component {
                             <CalloutRoundTiny url="http://www.pinterest.com/brianwhaley" img="images/pinterest-logo.png" title="Pinterest" />
                             <CalloutRoundTiny url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="images/goodreads-logo.png" title="Goodreads" />
                             <CalloutRoundTiny url="http://www.youtube.com/user/brianwhaley" img="images/youtube-logo.png" title="YouTube" />
-                            <CalloutRoundTiny url="http://www.google.com/profiles/brian.whaley" img="images/google-plus-logo.png" title="Google Plus" />
+                            {/* <CalloutRoundTiny url="http://www.google.com/profiles/brian.whaley" img="images/google-plus-logo.png" title="Google Plus" /> */}
+                            <CalloutRoundTiny url="http://pixelatedviews.tumblr.com" img="images/tumblr-logo.png" title="Feed Reader" />
                         </div>
                         <div className="column grid6">
-                            <CalloutRoundTiny url="http://pixelatedviews.tumblr.com" img="images/google-reader-logo.png" title="Feed Reader" />
+                            <CalloutRoundTiny url="http://blog.pixelated.tech" img="images/google-reader-logo.png" title="Pixelated Blog" />
                             <CalloutRoundTiny url="http://www.amazon.com/gp/pdp/profile/AMIS1GDCT1RZ?ie=UTF8&amp;ref_=ya_T9_56" img="images/amazon-logo.png" title="Amazon" />
                             <CalloutRoundTiny url="https://www.etsy.com/people/bwhaley73" img="images/etsy-logo.png" title="Etsy" />
                             <CalloutRoundTiny url="https://foursquare.com/brianwhaley" img="images/foursquare-logo.png" title="Foursquare" />
