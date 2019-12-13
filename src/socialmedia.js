@@ -16,7 +16,7 @@ let myState = {
         url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss'
     },
     goodreads:{
-        url: 'https://crossorigin.me/https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading'
+        url: 'https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading'
     },
     pinterest: {
         url: 'https://www.pinterest.com/brianwhaley/feed.rss'
@@ -98,7 +98,7 @@ class SocialMedia extends Component {
             </div>
 
             </div>
-            
+
 
         );
     }

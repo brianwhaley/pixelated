@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 
-import CalloutRoundSm from './callout-round-sm';
 import CalloutHeader from './callout-header';
+import CalloutRoundSm from './callout-round-sm';
+import SocialCards from './socialcards';
 
 class Photography extends Component {
     render() {
-        return (
 
+		let myState = {
+			SOOpx: {
+				url: 'https://500px.com/brianwhaley/rss',
+			},
+			shutterfly: {
+				url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley'
+			},
+			twitter: {
+				url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews'
+			}
+		};
+
+        return (
 
             <div>
 		
@@ -64,6 +77,7 @@ class Photography extends Component {
 							<div className="callout-body">
 								<div className="grid12">
 									<div className="masonry" id="photocards">
+                                        <SocialCards props={myState}></SocialCards>
 									</div>
 								</div>
 							</div>

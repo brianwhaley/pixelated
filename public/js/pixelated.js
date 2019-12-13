@@ -625,7 +625,7 @@ if ( pagename == "urls" ){
 
 
 /* ========== SOCIAL MEDIA PAGE ========== */
-if ( pagename == "socialmedia"){
+/* if ( pagename == "socialmedia"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#social", 
@@ -656,13 +656,13 @@ if ( pagename == "socialmedia"){
 			}
 		});
 	});
-}
+} */
 
 
 
 
 /* ========== PHOTOGRAPHY PAGE ========== */
-if ( pagename == "photography"){
+/* if ( pagename == "photography"){
 	$(document).ready(function() {
 		$.socialCards({
 			targetID: "#photocards", 
@@ -670,7 +670,7 @@ if ( pagename == "photography"){
 				url: 'https://500px.com/brianwhaley/rss',
 			},
 			flickr: {
-				/* https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery */
+				//https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery
 				userID: '15473210@N04',
 				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
 				tags: 'pixelatedviewsgallery'
@@ -686,7 +686,7 @@ if ( pagename == "photography"){
 			}
 		});
 	});
-}
+} */
 
 
 

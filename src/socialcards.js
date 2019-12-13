@@ -15,7 +15,7 @@ class SocialCards extends Component {
             myCardData: [] ,
             mySocialCards: [] ,
             rss2json: {
-                url: 'https://api.rss2json.com/v1/api.json' ,
+                apiURL: 'https://api.rss2json.com/v1/api.json' ,
                 apiKey: 'c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd' ,
             }, 
             blank: {
@@ -141,7 +141,7 @@ class SocialCards extends Component {
 
     getFeedEntries(myURL, entryCount) {
         var api_key = this.state.rss2json.apiKey ;
-        var result = fetch(this.state.rss2json.url + '?rss_url=' + myURL + '&api_key=' + api_key + '&count=' + entryCount)
+        var result = fetch(this.state.rss2json.apiURL + '?rss_url=' + myURL + '&api_key=' + api_key + '&count=' + entryCount)
         .then(res => res.json())
         .then(
             (result) => {
@@ -264,7 +264,7 @@ class SocialCards extends Component {
             return(<div />);
         }
         */
-       
+
     }
 
 }
