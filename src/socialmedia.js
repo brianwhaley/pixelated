@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
 
-import CalloutRoundSm from './callout-round-sm';
 import CalloutHeader from './callout-header';
+import CalloutRoundSm from './callout-round-sm';
+import SocialCards from './socialcards';
+
+let myState = {
+    blog: {
+        url: 'https://blog.pixelated.tech/feed/',
+        iconSrcAlt: 'Pixelated Views Blog Post'
+    },
+    etsy: {
+        url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss'
+    },
+    foursquare: {
+        url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss'
+    },
+    goodreads:{
+        url: 'https://crossorigin.me/https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading'
+    },
+    pinterest: {
+        url: 'https://www.pinterest.com/brianwhaley/feed.rss'
+    },
+    tumblr: {
+        url: 'http://pixelatedviews.tumblr.com/rss'
+    },
+    twitter: {
+        url: 'https://twitrss.me/twitter_user_to_rss/?user=brianwhaley'
+    },
+    youtube: {
+        url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCKk2eBwml-4mEsmMK-dK6sQ'
+    }
+};
 
 class SocialMedia extends Component {
     render() {
         return (
             
             <div>
-
+            
             <div className="page-content-section" id="social-links-section">
                 
                 <div className="content-container callout">
@@ -51,8 +80,6 @@ class SocialMedia extends Component {
                 
             </div>
 
-
-
             <div className="page-content-section" id="social-cards-section">
                 <div className="content-container">
                     <CalloutHeader title="Social Posts" />
@@ -61,6 +88,7 @@ class SocialMedia extends Component {
                             <div className="callout-body">
                                 <div className="grid12">
                                     <div className="masonry" id="social">
+                                        <SocialCards props={myState}></SocialCards>
                                     </div>
                                 </div>
                             </div>
@@ -70,8 +98,7 @@ class SocialMedia extends Component {
             </div>
 
             </div>
-
-
+            
 
         );
     }

@@ -8,7 +8,7 @@ import BodyContent from './bodycontent'
 
 class App extends Component {
   render() {
-    const gcse = '<gcse:search></gcse:search>';
+    
     return (
 	
       <div id="page-container">

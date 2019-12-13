@@ -374,19 +374,17 @@ function socialCards() {
 		
 		/* ========== ========== ========== */
 		function gatherData() {
-			if(options.SOOpx.url){ getFeedEntries(options.SOOpx.url, options.SOOpx.entryCount); }
-			if(options.blog.url){ getFeedEntries(options.blog.url, options.blog.entryCount); }
-			if(options.etsy.url){ getFeedEntries(options.etsy.url, options.etsy.entryCount); }
+			for(var prop in options) {
+				var option = options[prop] ;
+				if (option.hasOwnProperty("url")) {
+					if (option.url){
+						getFeedEntries(option.url, option.entryCount);
+					}
+				}
+			}
 			if(options.flickr.userID){ getFlickrEntries(options.flickr.userID, options.flickr.apiKey, options.flickr.tags, options.flickr.entryCount); }
-			if(options.foursquare.url){ getFeedEntries(options.foursquare.url, options.foursquare.entryCount); }
 			if(options.goodreads.url){ getGoodreadsEntries(options.goodreads.url, options.goodreads.entryCount); }
 			if(options.instagram.userID){ getInstagramEntries(options.instagram.userID, options.instagram.entryCount); }
-			if(options.pinterest.url){ getFeedEntries(options.pinterest.url, options.pinterest.entryCount); }
-			if(options.shutterfly.url){ getFeedEntries(options.shutterfly.url, options.shutterfly.entryCount); }
-			if(options.tumblr.url){ getFeedEntries(options.tumblr.url, options.tumblr.entryCount); }
-			if(options.twitter.url){ getFeedEntries(options.twitter.url, options.twitter.entryCount); }
-			if(options.youtube.url){ getFeedEntries(options.youtube.url, options.youtube.entryCount); }
-			if(options.other.url){ getFeedEntries(options.other.url, options.other.entryCount); }
 		};
 		  
 		
