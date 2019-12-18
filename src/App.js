@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from './header';
-import Menu from './menu';
-import Hero from './hero'
-import BodyContent from './bodycontent'
+import Menu from './pages/menu';
+import Header from './pages/header';
+import Hero from './pages/hero';
+import Search from './pages/search';
+import BodyContent from './pages/bodycontent';
+import Footer from './pages/footer';
 
 class App extends Component {
   render() {
-    
+
     return (
-	
+
       <div id="page-container">
 
         <div id="panel-menu" className="pad">
@@ -18,7 +20,7 @@ class App extends Component {
             <Menu></Menu>
           </div>
         </div>
-      
+
         <div id="fixed-header" className="grid12">
           <div id="page-header" className="grid12">
             <Header></Header>
@@ -35,18 +37,17 @@ class App extends Component {
         </Router>
 
         <div id="page-search" className="grid12 noMobile">
-          <div className="content-container" dangerouslySetInnerHTML={{__html: '<gcse:search></gcse:search>'}}>
-          </div>
+          <Search></Search>
         </div>
-        
+
         <div id="page-body" className="grid12">
             <BodyContent></BodyContent>
         </div>
-        
+
         <div id="page-footer" className="grid12">
-          <div className="content-container"></div>
+          <Footer></Footer>
         </div>
-        
+
       </div>
 
     );

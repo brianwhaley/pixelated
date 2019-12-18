@@ -2,29 +2,90 @@
   "name": "pixelated",
   "version": "0.2.0",
   "private": true,
+  "engines": {
+    "node": ">=4"
+  },
   "dependencies": {
     "aws-amplify": "^2.2.0",
     "aws-amplify-react": "^3.1.1",
+    "jquery": "^3.4.1",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
-    "sass-loader": "^8.0.0",
-    "typescript": "^3.7.3"
+    "react-scripts": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.4.5",
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "cssnano": "^4.1.10",
+    "del": "^4.1.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-config-jquery": "^2.0.0",
+    "eslint-plugin-requirejs": "^3.2.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-useref": "^3.1.6",
+    "jest": "^24.8.0",
+    "yargs": "13.2.4"
+  },
+  "devDependencies comments": {
+    "mocha": "^6.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "gulpserve:test": "cross-env NODE_ENV=test gulp serve",
+    "gulpserve:dist": "cross-env NODE_ENV=production gulp serve",
+    "gulpstart": "gulp serve",
+    "gulpbuild": "cross-env NODE_ENV=production gulp",
+    "gulptest": "npm run serve:test",
+    "gulptasks": "gulp --tasks"
+  },
+  "scripts comments": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
+  "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true,
+      "jquery": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  }
 }
