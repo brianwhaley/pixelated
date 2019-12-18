@@ -561,42 +561,6 @@ if ( pagename == 'recipes'){
 
 
 
-/* ========== GALLERY PAGE ========== */
-/*
-if ( pagename == 'gallery'){
-	$(document).ready(function() {
-		require(['jquery','pixelated','galleria','galleriaflickr'], function(){
-			$(document).loadGallery();
-		});
-	});
-}
-*/
-
-
-
-
-
-/* ========== RIVIERA MAYA PAGE ========== */
-/*
-if ( pagename == 'rivieramaya'){
-	$(document).ready(function() {
-		require(['jquery','pixelated','galleria'], function(){
-			Galleria.loadTheme('galleria/galleria.pixelated.js');
-			Galleria.run('#galleria', {
-				autoplay: 4000,  // will move forward every 7 seconds
-				theme: 'pixelated',
-				transition: 'fadeslide',
-				transitionSpeed: 1000,
-				height: 0.5625,
-				dataSource: rivieraMayaPhotos,
-			});
-		});
-	});
-}
-*/
-
-
-
 /* ========== URLs PAGE ========== */
 if ( pagename == 'urls' ){
 	$(document).ready(function() {
@@ -626,71 +590,6 @@ if ( pagename == 'urls' ){
 	});
 }
 
-
-
-/* ========== SOCIAL MEDIA PAGE ========== */
-/* if ( pagename == "socialmedia"){
-	$(document).ready(function() {
-		$.socialCards({
-			targetID: "#social",
-			blog: {
-				url: 'https://blog.pixelated.tech/feed/',
-				iconSrcAlt: 'Pixelated Views Blog Post'
-			},
-			etsy: {
-				url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss'
-			},
-			foursquare: {
-				url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss'
-			},
-			goodreads:{
-				url: 'https://crossorigin.me/https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading'
-			},
-			pinterest: {
-				url: 'https://www.pinterest.com/brianwhaley/feed.rss'
-			},
-			tumblr: {
-				url: 'http://pixelatedviews.tumblr.com/rss'
-			},
-			twitter: {
-				url: 'https://twitrss.me/twitter_user_to_rss/?user=brianwhaley'
-			},
-			youtube: {
-				url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCKk2eBwml-4mEsmMK-dK6sQ'
-			}
-		});
-	});
-} */
-
-
-
-
-/* ========== PHOTOGRAPHY PAGE ========== */
-/* if ( pagename == "photography"){
-	$(document).ready(function() {
-		$.socialCards({
-			targetID: "#photocards",
-			SOOpx: {
-				url: 'https://500px.com/brianwhaley/rss',
-			},
-			flickr: {
-				//https://api.flickr.com/services/feeds/photos_public.gne?tags=pixelatedviewsgallery
-				userID: '15473210@N04',
-				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
-				tags: 'pixelatedviewsgallery'
-			},
-			instagram: {
-				userID: 'pixelated.views'
-			},
-			shutterfly: {
-				url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley'
-			},
-			twitter: {
-				url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews'
-			}
-		});
-	});
-} */
 
 
 

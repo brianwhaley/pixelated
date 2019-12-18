@@ -127,7 +127,9 @@ class Carousel extends Component {
 			direction: 'next'
 		};
 		if(this.props.qsParams){
-			this.state.flickr.tags = this.props.qsParams.tag;
+			if(this.props.qsParams.tag){
+				this.state.flickr.tags = this.props.qsParams.tag;
+			}
 		}
 		this.previousImage = this.previousImage.bind(this);
 		this.nextImage = this.nextImage.bind(this);
