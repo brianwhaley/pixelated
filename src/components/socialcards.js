@@ -176,7 +176,7 @@ class SocialCards extends Component {
 
     getFeedEntries(myURL, entryCount) {
         var api_key = this.state.rss2json.apiKey ;
-        var result = fetch(this.state.rss2json.apiURL + '?rss_url=' + myURL + '&api_key=' + api_key + '&count=' + entryCount)
+		var result = fetch(this.state.rss2json.apiURL + '?rss_url=' + myURL + '&api_key=' + api_key + '&count=' + entryCount, { method: 'GET', credentials: 'same-origin' } )
         .then(res => res.json())
         .then(
             (result) => {

@@ -4,7 +4,39 @@ import '../css/pixelated.carousel.css';
 
 /* https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na */
 
-class CarouselImage extends Component{
+/* ========== GET FLICKR DATA ========== */
+function getFlickrData(flickrProps, myCallback) {
+
+	var apiURL = flickrProps.baseURL +
+			'method=' + flickrProps.method +
+			'&api_key=' + flickrProps.apiKey +
+			'&user_id=' + flickrProps.userId +
+			'&tags=' + flickrProps.tags +
+			'&extras=' + flickrProps.extras +
+			'&sort=' + flickrProps.sort +
+			'&per_page=' + flickrProps.perPage +
+			'&format=' + flickrProps.format ;
+			console.log(apiURL);
+
+	var xhr = new XMLHttpRequest();
+	console.log(xhr);
+	xhr.open("GET", apiURL + "&nojsoncallback=true", true);
+	console.log(xhr);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			// JSON.parse does not evaluate the attacker's scripts.
+			var response = JSON.parse(xhr.responseText);
+			console.log("XHR : ");
+			console.log(response.photos.photo);
+			myCallback(response.photos.photo);
+		}
+	}
+	xhr.send();
+}
+
+
+/* ========== CAROUSEL IMAGE ========== */
+export class CarouselImage extends Component{
 	static propTypes = {
         direction: PropTypes.string.isRequired ,
         activeIndex: PropTypes.number.isRequired ,
@@ -56,7 +88,9 @@ class CarouselImage extends Component{
 	}
 }
 
-class CarouselArrow extends Component{
+
+/* ========== CAROUSEL ARROW ========== */
+export class CarouselArrow extends Component{
 	static propTypes = {
         direction: PropTypes.string.isRequired,
         clickFunction: PropTypes.func.isRequired,
@@ -78,7 +112,9 @@ class CarouselArrow extends Component{
 	}
 }
 
-class CarouselDetails extends Component{
+
+/* ========== CAROUSEL DETAIS ========== */
+export class CarouselDetails extends Component{
 	static propTypes = {
         index: PropTypes.number.isRequired,
         length: PropTypes.number.isRequired,
@@ -99,17 +135,18 @@ class CarouselDetails extends Component{
 	}
 }
 
-class Carousel extends Component {
+
+/* ========== CAROUSEL ========== */
+export class Carousel extends Component {
 
 	static propTypes = {
-        qsParams: PropTypes.object.isRequired,
+        qsParams: PropTypes.object,
 	}
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			flickr: {
-				/* baseURL: 'https://api.flickr.com/services/rest/?jsoncallback=?', */
 				baseURL: 'https://api.flickr.com/services/rest/?',
 				method: 'flickr.photos.search',
 				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
@@ -154,37 +191,13 @@ class Carousel extends Component {
 		}
 	}
 
-	imageWidth = () => {
-		return document.querySelector('.carousel-image').clientWidth
-	}
-
 	componentDidMount() {
-		var apiURL = this.state.flickr.baseURL +
-			'method=' + this.state.flickr.method +
-			'&api_key=' + this.state.flickr.apiKey +
-			'&user_id=' + this.state.flickr.userId +
-			'&tags=' + this.state.flickr.tags +
-			'&extras=' + this.state.flickr.extras +
-			'&sort=' + this.state.flickr.sort +
-			'&per_page=' + this.state.flickr.perPage +
-			'&format=' + this.state.flickr.format ;
-
-		var script = document.createElement('script');
-		script.innerHTML = 'window.jsonFlickrApi = function(response){window.flickrData = response;}' ;
-		document.querySelector('head').appendChild(script);
-
-		var script2 = document.createElement('script');
-		script2.src = apiURL;
-		document.querySelector('head').appendChild(script2);
-
-		var getFlickrData = () => {
-			if (window.flickrData) {
-				this.setState({ images: window.flickrData.photos.photo });
-			} else {
-				setTimeout(getFlickrData, 1000);
-			}
-		};
-		getFlickrData();
+		// let that = this ;
+		getFlickrData(this.state.flickr, (flickrData) => {
+			console.log("got data");
+			console.log(flickrData);
+			this.setState({ images: flickrData });
+		})
 	}
 
 	render() {
