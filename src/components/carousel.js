@@ -5,29 +5,20 @@ import '../css/pixelated.carousel.css';
 /* https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na */
 
 /* ========== GET FLICKR DATA ========== */
-function getFlickrData(flickrProps, myCallback) {
-
-	var apiURL = flickrProps.baseURL +
-			'method=' + flickrProps.method +
-			'&api_key=' + flickrProps.apiKey +
-			'&user_id=' + flickrProps.userId +
-			'&tags=' + flickrProps.tags +
-			'&extras=' + flickrProps.extras +
-			'&sort=' + flickrProps.sort +
-			'&per_page=' + flickrProps.perPage +
-			'&format=' + flickrProps.format ;
-			console.log(apiURL);
-
+export function getFlickrData(flickrProps, myCallback) {
+	var apiURL = '' ;
+	for (var prop in flickrProps) {
+		if(!apiURL) {
+			apiURL = flickrProps[prop];
+		} else {
+			apiURL += '&' + prop + '=' + flickrProps[prop] ;
+		}
+	}
 	var xhr = new XMLHttpRequest();
-	console.log(xhr);
 	xhr.open("GET", apiURL + "&nojsoncallback=true", true);
-	console.log(xhr);
 	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4) {
-			// JSON.parse does not evaluate the attacker's scripts.
+		if (xhr.readyState === 4) {
 			var response = JSON.parse(xhr.responseText);
-			console.log("XHR : ");
-			console.log(response.photos.photo);
 			myCallback(response.photos.photo);
 		}
 	}
@@ -149,12 +140,12 @@ export class Carousel extends Component {
 			flickr: {
 				baseURL: 'https://api.flickr.com/services/rest/?',
 				method: 'flickr.photos.search',
-				apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
-				userId: '15473210@N04',
+				api_key: '882cab5548d53c9e6b5fb24d59cc321d',
+				user_id: '15473210@N04',
 				tags: 'pixelatedviewsgallery',
 				extras: 'date_taken,description,owner_name',
 				sort: 'date-taken-desc',
-				perPage: 500,
+				per_page: 500,
 				format: 'json' /*,
 				photoSize: "",
 				startPos: 0 */
@@ -192,10 +183,7 @@ export class Carousel extends Component {
 	}
 
 	componentDidMount() {
-		// let that = this ;
 		getFlickrData(this.state.flickr, (flickrData) => {
-			console.log("got data");
-			console.log(flickrData);
 			this.setState({ images: flickrData });
 		})
 	}

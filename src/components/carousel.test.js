@@ -11,8 +11,8 @@ describe('Carousel', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test('previousImage renders', () => {
-    const prev = getFlickrData();
+  test('data collected', () => {
+    const data = getFlickrData();
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
