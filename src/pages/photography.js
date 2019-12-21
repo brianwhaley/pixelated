@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
-
-import CalloutHeader from '../components/callout-header';
-import CalloutRoundSm from '../components/callout-round-sm';
+import { CalloutHeader, CalloutRoundSm } from '../components/callout';
 import SocialCards from '../components/socialcards';
 
 class Photography extends Component {
     render() {
 
 		let myState = {
-			SOOpx: {
-				url: 'https://500px.com/brianwhaley/rss',
-			},
-			shutterfly: {
-				url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley'
-			},
-			twitter: {
-				url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews'
-			}
+			SOOpx: { url: 'https://500px.com/brianwhaley/rss', },
+			shutterfly: { url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley' },
+			twitter: { url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews' }
 		};
 
         return (

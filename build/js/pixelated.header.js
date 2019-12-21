@@ -31,7 +31,6 @@ var prodScriptFiles = {
 		datamain : ''
 	}, */
 	require : {
-		// src : "//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js",
 		src : 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js',
 		datamain : 'js/require-main.js'
 	}

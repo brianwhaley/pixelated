@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/* ==========
+NOTE - FourSquare RSS stopped working March 2019
+========== */
+
 /* ========== SOCIALCARD ========== */
-class SocialCard extends Component {
+export class SocialCard extends Component {
 
     static propTypes = {
-        guid: PropTypes.string.isRequired,
-        link: PropTypes.string.isRequired,
         iconSrc: PropTypes.string.isRequired,
-        iconSrcAlt: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        content: PropTypes.string.isRequired,
-        pubDate: PropTypes.string.isRequired
+		iconSrcAlt: PropTypes.string.isRequired,
+		card: PropTypes.object.isRequired
     }
 
     render() {
         return (
-            <div className="masonry-item" key={this.props.guid}>
+            <div className="masonry-item" key={this.props.card.guid}>
                 <div className="card">
                     <div className="cardTitle">
-                        <a href={this.props.link} target="_blank" rel="noopener noreferrer">
+                        <a href={this.props.card.link} target="_blank" rel="noopener noreferrer">
                         <img className="cardIcon" src={this.props.iconSrc} alt={this.props.iconSrcAlt} />
-                        {this.props.title}
+                        {this.props.card.title}
                         </a>
                     </div>
-                    <div className="cardBody" dangerouslySetInnerHTML={{__html: this.props.content}} />
-                    <div className="cardDate">{this.props.pubDate}</div>
+                    <div className="cardBody" dangerouslySetInnerHTML={{__html: this.props.card.content}} />
+                    <div className="cardDate">{this.props.card.pubDate}</div>
 				</div>
 			</div>
         );
@@ -34,7 +34,7 @@ class SocialCard extends Component {
 }
 
 /* ========== SOCIALCARDS ========== */
-class SocialCards extends Component {
+export class SocialCards extends Component {
 
     static propTypes = {
         props: PropTypes.object.isRequired
@@ -89,12 +89,12 @@ class SocialCards extends Component {
                 iconSrc: 'images/flickr-logo.png',
                 iconSrcAlt: 'Flickr Photo'
             },
-            foursquare: {
+            /* foursquare: {
                 url: '',
                 entryCount: 5,
                 iconSrc: 'images/foursquare-logo.png',
                 iconSrcAlt: 'FourSquare Checkin'
-            },
+            }, */
             goodreads:{
                 url: '',
                 entryCount: 5,
@@ -213,16 +213,17 @@ class SocialCards extends Component {
             // instead of a catch() block so that we don't swallow
             // exceptions from actual bugs in components.
             (error) => {
-                /* console.log(error + "\n" + "RSS2JSON API Call failed."); */
                 console.log(error + " \n RSS2JSON API Call failed.");
             }
         );
-        /* ===== UPDATE STATE ===== */
-        var myPromisesFromState = this.state.myPromises ;
-        myPromisesFromState.push(result);
-        this.setState({ myPromises: myPromisesFromState });
+		/* ===== UPDATE STATE ===== */
+		this.pushNewValueToStateArray('myPromises', result);
 
-    }
+	}
+
+	getFlickrEntries(){
+
+	}
 
     sortCardsByPubDate(a, b) {
         var property = "pubDate";
@@ -252,7 +253,13 @@ class SocialCards extends Component {
             }
         }
         return extended;
-    }
+	}
+
+	pushNewValueToStateArray(oldState, newValue){
+		var myNewArray = this.state[oldState] ;
+        myNewArray.push(newValue);
+        this.setState({ [oldState]: myNewArray });
+	}
 
     componentDidMount(){
         var myOptions = [] ;
@@ -261,7 +268,7 @@ class SocialCards extends Component {
         // Promise.all(this.state.myPromises).then(function(){
         Promise.all(this.state.myPromises).then( () => {
             for (var prop in this.state.myCardData){
-                var card = this.state.myCardData[prop];
+				var card = this.state.myCardData[prop];
                 switch (true) {
                     case (card.link.indexOf("500px.com") > -1): myOptions = this.state.SOOpx; break;
                     case (card.link.indexOf("blog") > -1): myOptions = this.state.blog; break;
@@ -278,11 +285,9 @@ class SocialCards extends Component {
                     case (card.link.indexOf("other") > -1): myOptions = this.state.other; break;
                     default: myOptions = this.state.blank; break;
                 }
-                /* ===== UPDATE STATE ===== */
-                var newSocialCard = <SocialCard iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} key={card.guid} link={card.link} title={card.title} content={card.content} pubDate={card.pubDate} /> ;
-                var mySocialCardsFromState = this.state.mySocialCards ;
-                mySocialCardsFromState.push(newSocialCard);
-                this.setState({ mySocialCards: mySocialCardsFromState });
+				/* ===== UPDATE STATE ===== */
+                var newSocialCard = <SocialCard key={card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} /> ;
+				this.pushNewValueToStateArray('mySocialCards', newSocialCard);
 
                 this.setState({ cardCount: prop })
             }
@@ -294,14 +299,6 @@ class SocialCards extends Component {
     render() {
 
         return this.state.mySocialCards
-
-        /*
-        if(this.state.promiseReady) {
-            return this.state.mySocialCards  ;
-        } else {
-            return(<div />);
-        }
-        */
 
     }
 

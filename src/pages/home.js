@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import Callout from '../components/callout'
-import CalloutRoundTiny from '../components/callout-round-tiny'
+import Callout, { CalloutRoundTiny } from '../components/callout'
 
 class Home extends Component {
     render() {

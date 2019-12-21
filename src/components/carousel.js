@@ -1,30 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { getXHRData, generateURL } from './api.js';
 import '../css/pixelated.carousel.css';
 
 /* https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na */
-
-/* ========== GET FLICKR DATA ========== */
-export function getFlickrData(flickrProps, myCallback) {
-	var apiURL = '' ;
-	for (var prop in flickrProps) {
-		if(!apiURL) {
-			apiURL = flickrProps[prop];
-		} else {
-			apiURL += '&' + prop + '=' + flickrProps[prop] ;
-		}
-	}
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", apiURL + "&nojsoncallback=true", true);
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState === 4) {
-			var response = JSON.parse(xhr.responseText);
-			myCallback(response.photos.photo);
-		}
-	}
-	xhr.send();
-}
-
 
 /* ========== CAROUSEL IMAGE ========== */
 export class CarouselImage extends Component{
@@ -139,16 +118,19 @@ export class Carousel extends Component {
 		this.state = {
 			flickr: {
 				baseURL: 'https://api.flickr.com/services/rest/?',
-				method: 'flickr.photos.search',
-				api_key: '882cab5548d53c9e6b5fb24d59cc321d',
-				user_id: '15473210@N04',
-				tags: 'pixelatedviewsgallery',
-				extras: 'date_taken,description,owner_name',
-				sort: 'date-taken-desc',
-				per_page: 500,
-				format: 'json' /*,
-				photoSize: "",
-				startPos: 0 */
+				urlProps: {
+					method: 'flickr.photos.search',
+					api_key: '882cab5548d53c9e6b5fb24d59cc321d',
+					user_id: '15473210@N04',
+					tags: 'pixelatedviewsgallery',
+					extras: 'date_taken,description,owner_name',
+					sort: 'date-taken-desc',
+					per_page: 500,
+					format: 'json',
+					nojsoncallback: 'true' /*,
+					photoSize: "",
+					startPos: 0 */
+				}
 			},
 			images: [],
 			activeIndex: 0,
@@ -156,7 +138,7 @@ export class Carousel extends Component {
 		};
 		if(this.props.qsParams){
 			if(this.props.qsParams.tag){
-				this.state.flickr.tags = this.props.qsParams.tag;
+				this.state.flickr.urlProps.tags = this.props.qsParams.tag;
 			}
 		}
 		this.previousImage = this.previousImage.bind(this);
@@ -183,8 +165,10 @@ export class Carousel extends Component {
 	}
 
 	componentDidMount() {
-		getFlickrData(this.state.flickr, (flickrData) => {
-			this.setState({ images: flickrData });
+		var myURL = generateURL(this.state.flickr.baseURL, this.state.flickr.urlProps);
+		getXHRData(generateURL(myURL, this.state.flickr.urlProps), (flickrData) => {
+			var myFlickrData = flickrData.photos.photo ;
+			this.setState({ images: myFlickrData });
 		})
 	}
 

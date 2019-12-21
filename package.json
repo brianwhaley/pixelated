@@ -14,7 +14,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
-				"react-test-renderer": "^16.12.0"
+    "react-test-renderer": "^16.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -25,6 +25,8 @@
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "del": "^4.1.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.17.0",
     "eslint-config-jquery": "^2.0.0",
@@ -43,7 +45,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^3.1.6",
-				"jest": "^24.8.0",
+    "jest": "^24.8.0",
     "yargs": "13.2.4"
   },
   "devDependencies comments": {

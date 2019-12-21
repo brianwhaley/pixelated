@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialCards SocialCard snapshot renders 1`] = `
+<div
+  className="masonry-item"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="cardTitle"
+    >
+      <a
+        href="https://www.etsy.com/listing/744423345/vintage-1960s-american-express-credit?ref=rss"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="Etsy Favorite"
+          className="cardIcon"
+          src="images/etsy-logo.png"
+        />
+        Vintage 1960’s AMERICAN EXPRESS Credit Cards Sign by MoonshineMantiques
+      </a>
+    </div>
+    <div
+      className="cardBody"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<img src=\\"https://i.etsystatic.com/14377257/r/il/4b3d2f/1928553244/il_570xN.1928553244_je4r.jpg\\" border=\\"0\\" width=\\"570\\" height=\\"429\\">",
+        }
+      }
+    />
+    <div
+      className="cardDate"
+    >
+      2019-10-14 01:43:16
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SocialCards SocialCards snapshot renders 1`] = `null`;

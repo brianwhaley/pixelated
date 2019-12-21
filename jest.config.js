@@ -123,7 +123,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: [ "src/setupTests.js" ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -143,7 +143,8 @@ module.exports = {
   // The glob patterns Jest uses to detect test files
   	testMatch: [
 		"***/Tests/**/*.js?(x)",
-		"**/?(*.)(spec|test).js?(x)"
+		"**/?(*.)(spec|test).js?(x)",
+		"**/**/*.test.js?(x)"
 	],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -178,7 +179,7 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true,
+  verbose: false,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],
