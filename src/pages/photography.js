@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { CalloutHeader, CalloutRoundSm } from '../components/callout';
 import SocialCards from '../components/socialcards';
 
-class Photography extends Component {
+export default class Photography extends Component {
     render() {
 
 		let myState = {
@@ -19,7 +19,11 @@ class Photography extends Component {
 
 				<div className="content-container callout">
 
-					<CalloutHeader title="Photography Links" />
+					<div className="row">
+						<div className="column grid12">
+							<CalloutHeader title="Photography Links" />
+						</div>
+					</div>
 
 					<div className="row grid8 push2">
 
@@ -84,5 +88,3 @@ class Photography extends Component {
         );
     }
 }
-
-export default Photography;

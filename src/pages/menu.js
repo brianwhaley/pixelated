@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Menu extends Component {
+export default class Menu extends Component {
     render() {
         return (
 
@@ -12,10 +12,8 @@ class Menu extends Component {
             <li><a href="./socialmedia.html">Social Media</a></li>
             <li><a href="./photography.html">Photography</a></li>
             <li><a href="./recipes.html">Recipes</a></li>
-        </ul>			
+        </ul>
 
         );
     }
 }
-
-export default Menu;

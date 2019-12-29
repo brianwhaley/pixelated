@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class Callout extends Component {
+
+/* ========== CALLOUT ========== */
+
+export default class Callout extends Component {
     static propTypes = {
-        url: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        content: PropTypes.string.isRequired
+        url: PropTypes.string ,
+        img: PropTypes.string.isRequired ,
+        title: PropTypes.string.isRequired ,
+        content: PropTypes.string.isRequired ,
+        direction: PropTypes.string ,
+        columnCount: PropTypes.number
 	}
 	constructor(props) {
 		super(props);
@@ -14,31 +19,44 @@ export class Callout extends Component {
 		};
 	}
     render() {
+        var columnGridStyle = this.props.columnCount ? 'grid' + (12 / this.props.columnCount) : 'grid4' ;
+        var calloutGridStyle = this.props.direction && this.props.direction === 'horizontal' ? 'grid6' : 'grid12' ;
+        var calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'callout-image-horiz' : 'callout-image' ;
         return (
-			<div className="column callout grid4">
-				<div className="grid12">
-					<div className="callout-image">
-						<a href={this.props.url} target="_blank" rel="noopener noreferrer">
-						<img src={this.props.img} alt={this.props.title} /></a>
+			<div className={"column callout " + columnGridStyle}>
+				<div className={calloutGridStyle}>
+					<div className={calloutImageStyle}>
+                        { this.props.url
+                            ? <a href={this.props.url} target="_blank" rel="noopener noreferrer"><img src={this.props.img} alt={this.props.title} /></a>
+                            : <img src={this.props.img} alt={this.props.title} />
+                        }
 					</div>
 				</div>
-				<div className="callout-header grid12">
-					<h2 className="callout-title">
-					<a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.title}</a></h2>
-				</div>
-				<div className="callout-body grid12">
-					{this.props.content}
-					<br/><br/>
-					<div className="centeredbutton"><a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.title}</a></div>
-				</div>
+				<div className={calloutGridStyle}>
+					{ this.props.url
+                            ? <CalloutHeader url={this.props.url} title={this.props.title} />
+                            : <CalloutHeader title={this.props.title} />
+                    }
+                    <div className="callout-body grid12">
+                        {this.props.content}
+                        <br/><br/>
+                        { this.props.url
+                            ? <div className="centeredbutton"><a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.title}</a></div>
+                            : null
+                        }
+                    </div>
+                </div>
 			</div>
         );
     }
 }
 
+/* ========== CALLOUT HEADER ========== */
+
 export class CalloutHeader extends Component {
     static propTypes = {
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        url: PropTypes.string
     }
 	constructor(props) {
 		super(props);
@@ -47,27 +65,14 @@ export class CalloutHeader extends Component {
 	}
     render() {
         return (
-
-            <div className="row">
-                <div className="column grid12">
-                    <div className="callout-header">
-                        <h2 className="callout-title">{this.props.title}</h2>
-                    </div>
-                </div>
-            </div>
+			<div className="callout-header grid12">
+				{this.props.url
+				? <a href={this.props.url} target="_blank" rel="noopener noreferrer"><h2 className="callout-title">{this.props.title}</h2></a>
+				: <h2 className="callout-title">{this.props.title}</h2>
+				}
+			</div>
         );
     }
-}
-
-export class CalloutHorizontal extends Component {
-    static propTypes = {
-		props: PropTypes.object
-	}
-	render() {
-        return (
-            <div></div>
-        );
-	}
 }
 
 export class CalloutRoundSm extends Component {
@@ -119,5 +124,3 @@ export class CalloutRoundTiny extends Component {
         );
     }
 }
-
-export default Callout;

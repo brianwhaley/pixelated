@@ -422,8 +422,8 @@ function createTOC() {
 	myTOC = '<ul class="grid12">\n' ;
 	$($recipeGroups).each( function(i,$recipeGroup) {
 		$($recipeGroup).before('<a name=\'grp' + i + '\'></a>');
-		myTOC += '<li><a href="#">' + $($recipeGroup).text() + '</a>\n';
-		var $recipes = $($recipeGroup ).nextUntil('h2').filter('div');
+		myTOC += '<li><a href="#">' + $($recipeGroup).text().toUpperCase() + '</a>\n';
+		var $recipes = $($recipeGroup ).nextUntil('h2').filter('article');
 		if ( $($recipes).exists()) {
 			myTOC += '<ul>\n';
 			$recipes.each( function(k, $recipe) {
@@ -445,9 +445,9 @@ function fillPicklist(myFieldID) {
 	var $recipeGroups = $($recipeMain).children('h2');
 	$($recipeGroups).each( function(i,$recipeGroup) {
 		// $($myField).append( $('<option>', { value: '', text: '=== ' + $($recipeGroup).text() + ' ===' }));
-		$($myField).append( new Option('=== ' + $($recipeGroup).text() + ' ===', '') );
+		$($myField).append( new Option('=== ' + $($recipeGroup).text().toUpperCase() + ' ===', '') );
 		// $($myField).append( $('<option value="">=== ' + $($recipeGroup).text() + ' ===</option>'));
-		var $recipes = $($recipeGroup ).nextUntil('h2').filter('div');
+		var $recipes = $($recipeGroup ).nextUntil('h2').filter('article');
 		if ( $($recipes).exists()) {
 			$recipes.each( function(k, $recipe) {
 				var $myDivID = 'grp' + i + 'r' + k ;
@@ -468,12 +468,12 @@ function fillPicklist(myFieldID) {
 
 function showAllRecipes(){
 	$('h2').show();
-	$('.recipe').show();
+	$('.h-recipe').show();
 }
 
 function hideAllShowOne(divToShow) {
 	$('h2').hide();
-	$('.recipe').hide();
+	$('.h-recipe').hide();
 	$('#' + divToShow).show();
 }
 

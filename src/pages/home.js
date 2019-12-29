@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import Callout, { CalloutRoundTiny } from '../components/callout'
+import Callout, { CalloutHeader, CalloutRoundTiny } from '../components/callout'
 
-class Home extends Component {
+export default class Home extends Component {
     render() {
         return (
-
 
 
 
@@ -14,54 +13,28 @@ class Home extends Component {
                 <div className="content-container">
                     <div className="row">
 
-                        <div className="grid12">
-                            <div className="column callout grid6">
+						<div className="grid12">
 
-                                <div className="grid6">
-                                    <div className="callout-image-horiz">
-                                        <img src="images/brianwhaley-headshot.jpg" alt="Brian Whaley"/>
-                                    </div>
-                                </div>
+							<Callout
+								img='images/brianwhaley-headshot.jpg'
+								title='Brian T. Whaley'
+								content='Technologist,
+									Digital Transformation Professional,
+									User Experience Champion,
+									Landscape and Macro Photographer,
+									Avid World Traveler,
+									Advanced Open Water Scuba Diver,
+									Enthusiast of Home-Cooked Food'
+								direction='horizontal'
+								columnCount={2}/>
 
-                                <div className="grid6">
-                                    <div className="callout-header grid12">
-                                        <h2 className="callout-title">Brian T. Whaley</h2>
-                                    </div>
-                                    <div className="callout-body grid12">
-                                        Technologist,
-                                        Digital Transformation Professional,
-                                        User Experience Champion,
-                                        Landscape & Macro Photographer,
-                                        Avid World Traveler,
-                                        Advanced Open Water Scuba Diver,
-                                        Enthusiast of Home-Cooked Food
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div className="column callout grid6">
-
-                                <div className="grid6">
-                                    <div className="callout-image-horiz">
-                                        <a href="https://www.linkedin.com/in/brianwhaley">
-                                        <img src="images/linkedin-logo.png" alt="LinkedIn" /></a>
-                                    </div>
-                                </div>
-
-                                <div className="grid6">
-                                    <div className="callout-header grid12">
-                                        <h2 className="callout-title">
-                                        <a href="https://www.linkedin.com/in/brianwhaley">LinkedIn Profile</a></h2>
-                                    </div>
-                                    <div className="callout-body grid12">
-                                        My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.
-                                        <br/>
-                                        <div className="centeredbutton"><a href="https://www.linkedin.com/in/brianwhaley" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></div>
-                                    </div>
-                                </div>
-
-                            </div>
+							<Callout
+								url='https://www.linkedin.com/in/brianwhaley'
+								img='images/linkedin-logo.png'
+								title='LinkedIn Profile'
+								content='My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.'
+								direction='horizontal'
+								columnCount={2}/>
 
                         </div>
 
@@ -95,13 +68,11 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="callout-header grid12">
-                            <h2 className="callout-title"><a href="socialmedia.html">My Social Media</a></h2>
-                        </div>
+						<CalloutHeader url="socialmedia.html" title="My Social Media" />
                         <div className="callout-body grid12">
                             Links to each of my social media accounts and a few recent postings from each,
                             including Amazon, Ancestry, my Blog, Etsy, Facebook, Foursquare, Goodreads,
-                            Google Plus, LinkedIn, Pinterest, Twitter, Youtube.
+                            LinkedIn, Pinterest, Twitter, Youtube.
                             Check out the use of RSS feeds and APIs to generate dynamic cards on the page
                             using my SocialCards jQuery library.
                             <br/>
@@ -126,7 +97,7 @@ class Home extends Component {
 							img='images/circuitboard.jpg'
 							title='Work Portfolio'
 							content='A carousel of screenshots from my work at BMS, AP, ADP, and PR Newswire.
-							The carousel was built using the Galleria jQuery plugin.
+							The carousel was built with a native React compnent that I built myself.
 							You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
 
 						<Callout
@@ -136,8 +107,8 @@ class Home extends Component {
 							content='This is a link to my GitHub account.  I have only uploaded a few pieces of code.
 							Pieces include a library of LotusScripts and agents;
 							pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android;
-							a jQuery library of functions for use when integrating with Flickr,
-							and a jQuery library that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
+							a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr,
+							and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
 
 						<Callout
 							url='gallery.html'
@@ -177,9 +148,7 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="callout-header grid12">
-                            <h2 className="callout-title"><a href="photography.html">Photography</a></h2>
-                        </div>
+						<CalloutHeader url="photography.html" title="My Photography" />
                         <div className="callout-body grid12">
                             Links to each of my social media accounts related to photography,
                             as well as a few recent postings from each,
@@ -187,7 +156,7 @@ class Home extends Component {
                             Check out the use of RSS feeds and APIs to generate dynamic cards on the page
                             using my SocialCards jQuery library.
                             <br/>
-                            <div className="centeredbutton"><a href="photography.html">Photography</a></div>
+                            <div className="centeredbutton"><a href="photography.html">My Photography</a></div>
                         </div>
                     </div>
                 </div>
@@ -216,11 +185,11 @@ class Home extends Component {
 								url='recipes.html'
 								img='images/pizza-gaine.jpg'
 								title='My Recipe Book'
-								content='This is <a href="recipes.html">my recipe book</a>.
+								content="This is <a href='recipes.html'>my recipe book</a>.
 								It is a collection of recipes from 3 generations of my family, from my friends, and
 								my life as an Italian-American and as a Bariatric Patient.
 								I have cooked most of the recipes myself.
-								I have tasted them all, however, and they are fantastic!  Please enjoy!'/>
+								I have tasted them all, however, and they are fantastic!  Please enjoy!"/>
 
                         </div>
 
@@ -236,5 +205,3 @@ class Home extends Component {
         );
     }
 }
-
-export default Home;

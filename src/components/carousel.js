@@ -107,7 +107,7 @@ export class CarouselDetails extends Component{
 
 
 /* ========== CAROUSEL ========== */
-export class Carousel extends Component {
+export default class Carousel extends Component {
 
 	static propTypes = {
         qsParams: PropTypes.object,
@@ -194,5 +194,3 @@ export class Carousel extends Component {
 		}
 	}
 }
-
-export default Carousel;

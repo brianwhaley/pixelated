@@ -34,7 +34,7 @@ export class SocialCard extends Component {
 }
 
 /* ========== SOCIALCARDS ========== */
-export class SocialCards extends Component {
+export default class SocialCards extends Component {
 
     static propTypes = {
         props: PropTypes.object.isRequired
@@ -303,5 +303,3 @@ export class SocialCards extends Component {
     }
 
 }
-
-export default SocialCards;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+export default class Header extends Component {
     render() {
         return (
-            
+
             <div className="content-container">
                 <div className="panel-menu-button pull-left">
                     <img src="images/mobile-menu2.png" alt="Mobile Menu"/>
@@ -16,5 +16,3 @@ class Header extends Component {
         );
     }
 }
-
-export default Header;

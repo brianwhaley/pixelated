@@ -14,7 +14,7 @@ let myState = {
     youtube: { url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCKk2eBwml-4mEsmMK-dK6sQ' }
 };
 
-class SocialMedia extends Component {
+export default class SocialMedia extends Component {
     render() {
         return (
 
@@ -24,7 +24,11 @@ class SocialMedia extends Component {
 
                 <div className="content-container callout">
 
-                    <CalloutHeader title="Social Media Links" />
+					<div className="row">
+						<div className="column grid12">
+							<CalloutHeader title="Social Media Links" />
+						</div>
+					</div>
 
                     <div className="row grid8 push2">
 
@@ -85,5 +89,3 @@ class SocialMedia extends Component {
         );
     }
 }
-
-export default SocialMedia;

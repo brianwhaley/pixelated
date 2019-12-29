@@ -23,36 +23,40 @@ exports[`Callout Callout snapshot renders 1`] = `
     </div>
   </div>
   <div
-    className="callout-header grid12"
+    className="grid12"
   >
-    <h2
-      className="callout-title"
-    >
-      <a
-        href="gallery.html"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Photo Gallery
-      </a>
-    </h2>
-  </div>
-  <div
-    className="callout-body grid12"
-  >
-    A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. The carousel was built using the Galleria jQuery plugin. You can click on the left or right arrows to navigate, or swipe on a touch enabled device.
-    <br />
-    <br />
     <div
-      className="centeredbutton"
+      className="callout-header grid12"
     >
       <a
         href="gallery.html"
         rel="noopener noreferrer"
         target="_blank"
       >
-        Photo Gallery
+        <h2
+          className="callout-title"
+        >
+          Photo Gallery
+        </h2>
       </a>
+    </div>
+    <div
+      className="callout-body grid12"
+    >
+      A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. The carousel was built using the Galleria jQuery plugin. You can click on the left or right arrows to navigate, or swipe on a touch enabled device.
+      <br />
+      <br />
+      <div
+        className="centeredbutton"
+      >
+        <a
+          href="gallery.html"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Photo Gallery
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -60,21 +64,13 @@ exports[`Callout Callout snapshot renders 1`] = `
 
 exports[`Callout CalloutHeader snapshot renders 1`] = `
 <div
-  className="row"
+  className="callout-header grid12"
 >
-  <div
-    className="column grid12"
+  <h2
+    className="callout-title"
   >
-    <div
-      className="callout-header"
-    >
-      <h2
-        className="callout-title"
-      >
-        Photo Gallery
-      </h2>
-    </div>
-  </div>
+    Photo Gallery
+  </h2>
 </div>
 `;
 

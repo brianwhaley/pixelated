@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Carousel from '../components/carousel';
 import queryString from 'query-string';
 
-class Gallery extends Component {
+export default class Gallery extends Component {
     render() {
 		let myParams = queryString.parse(this.props.location.search);
         return (
@@ -10,5 +10,3 @@ class Gallery extends Component {
         );
     }
 }
-
-export default Gallery;
