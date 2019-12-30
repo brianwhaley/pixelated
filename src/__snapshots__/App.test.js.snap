@@ -1,0 +1,1048 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe App snapshot renders 1`] = `
+<div
+  id="page-container"
+>
+  <div
+    className="pad"
+    id="panel-menu"
+  >
+    <div
+      className="accordion-menu"
+    >
+      <ul
+        className="grid12 clearfix"
+      >
+        <li>
+          <a
+            href="./index.html"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="./gallery.html?tag=portfolio-all"
+          >
+            Work Portfolio
+          </a>
+        </li>
+        <li>
+          <a
+            href="./gallery.html?tag=pixelatedviewsgallery"
+          >
+            Photo Gallery
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://blog.pixelated.tech"
+          >
+            Pixelated Views Blog
+          </a>
+        </li>
+        <li>
+          <a
+            href="./socialmedia.html"
+          >
+            Social Media
+          </a>
+        </li>
+        <li>
+          <a
+            href="./photography.html"
+          >
+            Photography
+          </a>
+        </li>
+        <li>
+          <a
+            href="./recipes.html"
+          >
+            Recipes
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="grid12"
+    id="fixed-header"
+  >
+    <div
+      className="grid12"
+      id="page-header"
+    >
+      <div
+        className="content-container"
+      >
+        <div
+          className="panel-menu-button pull-left"
+        >
+          <img
+            alt="Mobile Menu"
+            src="images/mobile-menu2.png"
+          />
+        </div>
+        <h1
+          className="pull-left"
+        >
+          Pixelated 
+        </h1>
+        <h2
+          className="pull-left pad"
+        >
+           - by Brian Whaley
+        </h2>
+        <div
+          className="addthis_sharing_toolbox push-right noMobile"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid12"
+    id="fixed-header-spacer"
+  />
+  <div>
+    <div
+      className="grid12"
+      id="page-hero"
+    >
+      <img
+        alt="Pixelated Hero"
+        className="hidden"
+        id="flickrHeroPreload"
+        src="#"
+      />
+      <img
+        alt="Pixelated Hero"
+        id="flickrHero"
+        src="https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg"
+      />
+      <div
+        id="flickrHeroByline"
+      >
+        Original Photos by Brian T. Whaley
+      </div>
+      <div
+        id="flickrHeroCount"
+      >
+        0 / 0
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid12 noMobile"
+    id="page-search"
+  >
+    <div
+      className="content-container"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<gcse:search></gcse:search>",
+        }
+      }
+    />
+  </div>
+  <div
+    className="grid12"
+    id="page-body"
+  >
+    <div>
+      <div
+        className="page-content-section"
+        id="intro-section"
+      >
+        <div
+          className="content-container"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="grid12"
+            >
+              <div
+                className="column callout grid6"
+              >
+                <div
+                  className="grid6"
+                >
+                  <div
+                    className="callout-image-horiz"
+                  >
+                    <img
+                      alt="Brian T. Whaley"
+                      src="images/brianwhaley-headshot.jpg"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="grid6"
+                >
+                  <div
+                    className="callout-header grid12"
+                  >
+                    <h2
+                      className="callout-title"
+                    >
+                      Brian T. Whaley
+                    </h2>
+                  </div>
+                  <div
+                    className="callout-body grid12"
+                  >
+                    Technologist, Digital Transformation Professional, User Experience Champion, Landscape and Macro Photographer, Avid World Traveler, Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="column callout grid6"
+              >
+                <div
+                  className="grid6"
+                >
+                  <div
+                    className="callout-image-horiz"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/brianwhaley"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt="LinkedIn Profile"
+                        src="images/linkedin-logo.png"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div
+                  className="grid6"
+                >
+                  <div
+                    className="callout-header grid12"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/brianwhaley"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h2
+                        className="callout-title"
+                      >
+                        LinkedIn Profile
+                      </h2>
+                    </a>
+                  </div>
+                  <div
+                    className="callout-body grid12"
+                  >
+                    My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.
+                    <br />
+                    <br />
+                    <div
+                      className="centeredbutton"
+                    >
+                      <a
+                        href="https://www.linkedin.com/in/brianwhaley"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        LinkedIn Profile
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="page-content-section-alt"
+        id="social-section"
+      >
+        <div
+          className="content-container"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column grid6"
+            >
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.linkedin.com/in/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="LinkedIn"
+                    src="images/linkedin-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://twitter.com/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Twitter"
+                    src="images/twitter-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.pinterest.com/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Pinterest"
+                    src="images/pinterest-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://www.goodreads.com/user/show/49377228-brian-whaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Goodreads"
+                    src="images/goodreads-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.youtube.com/user/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="YouTube"
+                    src="images/youtube-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://pixelatedviews.tumblr.com"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Feed Reader"
+                    src="images/tumblr-logo.png"
+                  />
+                </a>
+              </div>
+            </div>
+            <div
+              className="column grid6"
+            >
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://blog.pixelated.tech"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Pixelated Blog"
+                    src="images/google-reader-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.amazon.com/gp/pdp/profile/AMIS1GDCT1RZ?ie=UTF8&ref_=ya_T9_56"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Amazon"
+                    src="images/amazon-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://www.etsy.com/people/bwhaley73"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Etsy"
+                    src="images/etsy-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://foursquare.com/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Foursquare"
+                    src="images/foursquare-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://trees.ancestry.com/tree/7237865"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Ancestry"
+                    src="images/ancestry-logo.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.facebook.com/brian.t.whaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Facebook"
+                    src="images/facebook-logo.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="callout-header grid12"
+            >
+              <a
+                href="socialmedia.html"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <h2
+                  className="callout-title"
+                >
+                  My Social Media
+                </h2>
+              </a>
+            </div>
+            <div
+              className="callout-body grid12"
+            >
+              Links to each of my social media accounts and a few recent postings from each, including Amazon, Ancestry, my Blog, Etsy, Facebook, Foursquare, Goodreads, LinkedIn, Pinterest, Twitter, Youtube. Check out the use of RSS feeds and APIs to generate dynamic cards on the page using my SocialCards jQuery library.
+              <br />
+              <div
+                className="centeredbutton"
+              >
+                <a
+                  href="socialmedia.html"
+                >
+                  My Social Media
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="page-content-section"
+        id="portfolio-section"
+      >
+        <div
+          className="content-container"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column callout grid4"
+            >
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-image"
+                >
+                  <a
+                    href="gallery.html?tag=portfolio-all"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt="Work Portfolio"
+                      src="images/circuitboard.jpg"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-header grid12"
+                >
+                  <a
+                    href="gallery.html?tag=portfolio-all"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <h2
+                      className="callout-title"
+                    >
+                      Work Portfolio
+                    </h2>
+                  </a>
+                </div>
+                <div
+                  className="callout-body grid12"
+                >
+                  A carousel of screenshots from my work at BMS, AP, ADP, and PR Newswire. The carousel was built with a native React compnent that I built myself. You can click on the left or right arrows to navigate, or swipe on a touch enabled device.
+                  <br />
+                  <br />
+                  <div
+                    className="centeredbutton"
+                  >
+                    <a
+                      href="gallery.html?tag=portfolio-all"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Work Portfolio
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="column callout grid4"
+            >
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-image"
+                >
+                  <a
+                    href="https://github.com/brianwhaley"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt="GitHub Portfolio"
+                      src="images/github-logo.png"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-header grid12"
+                >
+                  <a
+                    href="https://github.com/brianwhaley"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <h2
+                      className="callout-title"
+                    >
+                      GitHub Portfolio
+                    </h2>
+                  </a>
+                </div>
+                <div
+                  className="callout-body grid12"
+                >
+                  This is a link to my GitHub account.  I have only uploaded a few pieces of code. Pieces include a library of LotusScripts and agents; pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android; a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr, and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.
+                  <br />
+                  <br />
+                  <div
+                    className="centeredbutton"
+                  >
+                    <a
+                      href="https://github.com/brianwhaley"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      GitHub Portfolio
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="column callout grid4"
+            >
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-image"
+                >
+                  <a
+                    href="gallery.html"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      alt="Photo Gallery"
+                      src="https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div
+                className="grid12"
+              >
+                <div
+                  className="callout-header grid12"
+                >
+                  <a
+                    href="gallery.html"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <h2
+                      className="callout-title"
+                    >
+                      Photo Gallery
+                    </h2>
+                  </a>
+                </div>
+                <div
+                  className="callout-body grid12"
+                >
+                  A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. The carousel was built using the Galleria jQuery plugin. You can click on the left or right arrows to navigate, or swipe on a touch enabled device.
+                  <br />
+                  <br />
+                  <div
+                    className="centeredbutton"
+                  >
+                    <a
+                      href="gallery.html"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Photo Gallery
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="page-content-section-alt"
+        id="photo-section"
+      >
+        <div
+          className="content-container"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column grid6"
+            >
+              <div
+                className="grid2fix"
+              >
+                <a
+                  href=""
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt=""
+                    src=""
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://500px.com/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="500px"
+                    src="images/500px-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.flickr.com/photos/brianwhaley/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Flickr"
+                    src="images/flickr-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.shutterstock.com/g/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Shutter Stock"
+                    src="images/shutterstock-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://secure.istockphoto.com/portfolio/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="iStock Photo"
+                    src="images/istock-logo.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix"
+              >
+                <a
+                  href=""
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt=""
+                    src=""
+                  />
+                </a>
+              </div>
+            </div>
+            <div
+              className="column grid6"
+            >
+              <div
+                className="grid2fix"
+              >
+                <a
+                  href=""
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt=""
+                    src=""
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="https://www.instagram.com/pixelated.views/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Instagram"
+                    src="images/instagram-logo.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://www.blurb.com/user/brianwhaley"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Blurb"
+                    src="images/blurb-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://brianwhaley.shutterfly.com"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Shutterfly"
+                    src="images/shutterfly-logo.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix social-image"
+              >
+                <a
+                  href="http://twitter.com/pixelatedviews"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt="Twitter"
+                    src="images/twitter-logo.png"
+                  />
+                </a>
+              </div>
+              <div
+                className="grid2fix"
+              >
+                <a
+                  href=""
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    alt=""
+                    src=""
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="callout-header grid12"
+            >
+              <a
+                href="photography.html"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <h2
+                  className="callout-title"
+                >
+                  My Photography
+                </h2>
+              </a>
+            </div>
+            <div
+              className="callout-body grid12"
+            >
+              Links to each of my social media accounts related to photography, as well as a few recent postings from each, including 500px, Blurb, Flickr, Instagram, iStock Photo, Shutterfly, Shutterstock, Twitter. Check out the use of RSS feeds and APIs to generate dynamic cards on the page using my SocialCards jQuery library.
+              <br />
+              <div
+                className="centeredbutton"
+              >
+                <a
+                  href="photography.html"
+                >
+                  My Photography
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="page-content-section"
+        id="book-section"
+      >
+        <div
+          className="content-container"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="grid12 push2"
+            >
+              <div
+                className="column callout grid4"
+              >
+                <div
+                  className="grid12"
+                >
+                  <div
+                    className="callout-image"
+                  >
+                    <a
+                      href="http://www.blurb.com/user/brianwhaley"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt="My Blurb Books"
+                        src="images/blurb-logo.png"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div
+                  className="grid12"
+                >
+                  <div
+                    className="callout-header grid12"
+                  >
+                    <a
+                      href="http://www.blurb.com/user/brianwhaley"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h2
+                        className="callout-title"
+                      >
+                        My Blurb Books
+                      </h2>
+                    </a>
+                  </div>
+                  <div
+                    className="callout-body grid12"
+                  >
+                    A storefront for my custom made books.  This includes books for our trip to Italy, a memorial for our rabbit Sunshine, a Whaley / Pace family album, A wedding album for Matt and Alex, a memorial book for my mom, and a collection of recipes from the Pace family. More to come!
+                    <br />
+                    <br />
+                    <div
+                      className="centeredbutton"
+                    >
+                      <a
+                        href="http://www.blurb.com/user/brianwhaley"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        My Blurb Books
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="column callout grid4"
+              >
+                <div
+                  className="grid12"
+                >
+                  <div
+                    className="callout-image"
+                  >
+                    <a
+                      href="recipes.html"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <img
+                        alt="My Recipe Book"
+                        src="images/pizza-gaine.jpg"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div
+                  className="grid12"
+                >
+                  <div
+                    className="callout-header grid12"
+                  >
+                    <a
+                      href="recipes.html"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <h2
+                        className="callout-title"
+                      >
+                        My Recipe Book
+                      </h2>
+                    </a>
+                  </div>
+                  <div
+                    className="callout-body grid12"
+                  >
+                    This is &lt;a href='recipes.html'&gt;my recipe book&lt;/a&gt;. It is a collection of recipes from 3 generations of my family, from my friends, and my life as an Italian-American and as a Bariatric Patient. I have cooked most of the recipes myself. I have tasted them all, however, and they are fantastic!  Please enjoy!
+                    <br />
+                    <br />
+                    <div
+                      className="centeredbutton"
+                    >
+                      <a
+                        href="recipes.html"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        My Recipe Book
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="grid12"
+    id="page-footer"
+  >
+    <div
+      className="content-container"
+    />
+  </div>
+</div>
+`;
