@@ -66,6 +66,14 @@
   	clear: both;
 }
 
+@media screen and (max-width: 480px) {
+	.u-photo {
+		float: none;
+		margin: 10px auto;
+		display: block;
+	}
+}
+
 /*
 .p-summary {}
 

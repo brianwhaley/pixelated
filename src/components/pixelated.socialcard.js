@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { html2dom , mergeDeep , pushNewValueToStateArray } from "./pixelated.functions.js"
+import '../css/pixelated.socialcard.css';
 
 /* ==========
 NOTE - FourSquare RSS stopped working March 2019
@@ -145,7 +147,7 @@ export default class SocialCards extends Component {
             }
         };
 
-        this.state = this.mergeDeep(this.state, props.props);
+        this.state = mergeDeep(this.state, props.props);
 
     }
 
@@ -163,17 +165,6 @@ export default class SocialCards extends Component {
         /* if(this.state.instagram.userID){ this.getInstagramEntries(this.state.instagram.userID, this.state.instagram.entryCount); } */
     }
 
-    html2dom(str) {
-        if (window.DOMParser) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(str, 'text/html');
-            return doc.body.firstChild;
-        }
-        var dom = document.createElement('div');
-        dom.innerHTML = str;
-        return dom;
-    }
-
     getFeedEntries(myURL, entryCount) {
         var api_key = this.state.rss2json.apiKey ;
 		var result = fetch(this.state.rss2json.apiURL + '?rss_url=' + myURL + '&api_key=' + api_key + '&count=' + entryCount, { method: 'GET', credentials: 'same-origin' } )
@@ -189,7 +180,7 @@ export default class SocialCards extends Component {
                     /* ===== FIX FOR DESCRIPTION ===== */
                     if ( item.content ) {
                         if (item.content.length > 500) {
-                            var doc = this.html2dom(item.content);
+                            var doc = html2dom(item.content);
                             var itemContent = doc.innerHTML ;
                             myNewCard.content = itemContent;
                         }
@@ -217,7 +208,7 @@ export default class SocialCards extends Component {
             }
         );
 		/* ===== UPDATE STATE ===== */
-		this.pushNewValueToStateArray('myPromises', result);
+		pushNewValueToStateArray (this, 'myPromises', result);
 
 	}
 
@@ -237,29 +228,6 @@ export default class SocialCards extends Component {
             return 0;
         }
     }
-
-    mergeDeep = function() {
-        var extended = {};
-        for (var i=0; i < arguments.length; i++) {
-            var thisObj = arguments[i];
-            for (var prop in thisObj) {
-                if (Object.prototype.hasOwnProperty.call(thisObj, prop)) {
-                    if (Object.prototype.toString.call(thisObj[prop]) === '[object Object]') {
-                        extended[prop] = this.mergeDeep(true, extended[prop], thisObj[prop]);
-                    } else {
-                        extended[prop] = thisObj[prop];
-                    }
-                }
-            }
-        }
-        return extended;
-	}
-
-	pushNewValueToStateArray(oldState, newValue){
-		var myNewArray = this.state[oldState] ;
-        myNewArray.push(newValue);
-        this.setState({ [oldState]: myNewArray });
-	}
 
     componentDidMount(){
         var myOptions = [] ;
@@ -287,7 +255,7 @@ export default class SocialCards extends Component {
                 }
 				/* ===== UPDATE STATE ===== */
                 var newSocialCard = <SocialCard key={card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} /> ;
-				this.pushNewValueToStateArray('mySocialCards', newSocialCard);
+				pushNewValueToStateArray(this, 'mySocialCards', newSocialCard);
 
                 this.setState({ cardCount: prop })
             }

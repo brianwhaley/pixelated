@@ -1,7 +1,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Callout, { CalloutHeader, CalloutRoundSm , CalloutRoundTiny } from './callout';
+import Callout, { CalloutHeader, CalloutRoundSm , CalloutRoundTiny } from './pixelated.callout.js';
 
 const calloutProps = {
 	url: "gallery.html",

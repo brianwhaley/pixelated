@@ -1,5 +1,5 @@
 
-import { getXHRData, generateURL } from './api.js';
+import { getXHRData, generateURL } from './pixelated.api.js';
 
   test('Flickr data returns properly', () => {
 

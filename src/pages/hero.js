@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
+import Carousel from '../components/pixelated.carousel.js';
 
 export default class Hero extends Component {
     render() {
         return (
-
-            <div id="page-hero" className="grid12">
-                <img src="#" id="flickrHeroPreload" alt="Pixelated Hero" className="hidden" />
-                <img src="https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg" id="flickrHero" alt="Pixelated Hero"/>
-                <div id="flickrHeroByline">Original Photos by Brian T. Whaley</div>
-                <div id="flickrHeroCount">0 / 0</div>
-            </div>
-
+			<div id="page-hero" className="grid12">
+				<Carousel type='hero' />
+			</div>
         );
     }
 }

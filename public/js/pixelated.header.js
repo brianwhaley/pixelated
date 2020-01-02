@@ -6,7 +6,7 @@ var prodCssFiles = {
 	/* jquerymodal : {
 		rel : "stylesheet,
 		href : "css/jquery.modal.css"
-	}, */
+	},
 	slick : {
 		rel : 'stylesheet',
 		href : 'css/slick.min.css'
@@ -14,7 +14,7 @@ var prodCssFiles = {
 	slicktheme : {
 		rel : 'stylesheet',
 		href : 'css/slick-theme.min.css'
-	},
+	}, */
 	pixelated : {
 		rel : 'stylesheet/less',
 		href : 'css/pixelated.less'

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Carousel Hero Details snapshot renders 1`] = `
+<div
+  className="carousel-hero-details"
+>
+  <div
+    className="carousel-hero-details-left"
+  >
+    1
+     of 
+    135
+     - 
+    Sunflower Picking at Alstede Farm 2018-07-30
+     
+  </div>
+  <div
+    className="carousel-hero-details-right"
+  >
+    by 
+    brianwhaley
+     on 
+    2018-07-30 15:21:06
+  </div>
+</div>
+`;
+
+exports[`Carousel Carousel Hero Image snapshot renders 1`] = `
+<img
+  alt="Sunflower Picking at Alstede Farm 2018-07-30"
+  className="carousel-hero-image carousel-hero-hidden"
+  src="https://farm1.static.flickr.com/852/42079144500_c28146304a.jpg"
+  style={
+    Object {
+      "zIndex": 134,
+    }
+  }
+  title="Sunflower Picking at Alstede Farm 2018-07-30"
+/>
+`;
+
+exports[`Carousel Carousel Slider Arrow Next snapshot renders 1`] = `
+<div
+  className="carousel-arrow next"
+  onClick={[MockFunction]}
+>
+  &#9654;
+</div>
+`;
+
+exports[`Carousel Carousel Slider Arrow Prev snapshot renders 1`] = `
+<div
+  className="carousel-arrow prev"
+  onClick={[MockFunction]}
+>
+  &#9664;
+</div>
+`;
+
+exports[`Carousel Carousel Slider Details snapshot renders 1`] = `
+<div
+  className="carousel-slider-details"
+>
+  1
+   of 
+  135
+   - 
+  Sunflower Picking at Alstede Farm 2018-07-30
+   
+  <br />
+  by 
+  brianwhaley
+   on 
+  2018-07-30 15:21:06
+</div>
+`;
+
+exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
+<div
+  className="carousel-slider-container"
+  id="42079144500"
+  style={
+    Object {
+      "transform": "translateX(100%)",
+      "transition": "transform 1.0s ease-in 0.1s",
+      "zIndex": 134,
+    }
+  }
+>
+  <img
+    alt="Sunflower Picking at Alstede Farm 2018-07-30"
+    className="carousel-slider-image"
+    src="https://farm1.static.flickr.com/852/42079144500_c28146304a.jpg"
+    title="Sunflower Picking at Alstede Farm 2018-07-30"
+  />
+</div>
+`;
+
+exports[`Carousel Carousel snapshot renders 1`] = `
+<div
+  className="carousel"
+/>
+`;

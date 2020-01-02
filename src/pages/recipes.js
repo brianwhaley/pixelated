@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Recipe from '../components/recipe';
-import '../css/pixelated.recipe.css';
+import Recipe from '../components/pixelated.recipe.js';
 import recipeData from '../data/recipes.json';
 
 export default class Recipes extends Component {

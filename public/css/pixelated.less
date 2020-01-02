@@ -443,6 +443,12 @@ pre {
 	min-height: 400px;
 }
 
+@media screen and (max-width: 480px) {
+    #page-body {
+		margin-top: 10px;
+	}
+}
+
 /* .page-body-section {
 } */
 
@@ -503,47 +509,7 @@ pre {
 	font-size: 16px ;
 }
 
-/* http://www.mademyday.de/css-height-equals-width-with-pure-css.html */
 
-.round-img-container {
-    background: #fff;
-    border: 1px solid #AAA;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-    margin: auto;
-	overflow: hidden;
-	position: relative;
-}
-
-.round-img-container:before,
-.round-img-container-before {
-	content: "";
-	display: block;
-	padding-top: 100%; 	/* initial ratio of 1:1*/
-}
-
-.round-img-container img,
-.round-img {
-    min-width: 100%;
-    min-height: 100%;
-    max-height: none;
-    max-width: none;
-    height: 100%;
-    margin: auto;
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-	left: -100%;
-	transition: transform .3s ease; /* Animation */
-}
-
-.round-img-container:hover img,
-.round-img:hover,
-.round-img-hover {
-    transform: scale(1.2) ;
-}
 
 .rounded {
 	-moz-border-radius: 5px;
@@ -627,68 +593,6 @@ pre {
 }
 
 
-/* ========================================
-===============  CALLOUTS   ===============
-======================================== */
-
-.callout {
-	padding: 20px;
-}
-
-.callout-header {
-	padding: 8px;
-	clear: both;
-	text-align: center;
-	overflow: hidden;
-}
-
-.callout-title {
-	text-transform: uppercase;
-}
-
-.callout-body {
-	border-top: 0px solid transparent;
-	/* display: inline-block; */
-	padding: 5px;
-}
-
-.callout-body li {
-	margin-bottom: 7px;
-}
-
-.callout-image {
-    width: 70%;
-    height: 70%;
-    .round-img-container;
-}
-
-.callout-image-horiz {
-    .callout-image;
-    float: right;
-}
-
-@media screen and (max-width: 480px) {
-	.callout-image-horiz {
-		float: none;
-	}
-}
-
-.callout-image:before,
-.callout-image-horiz:before {
-	.round-img-container-before ;
-}
-
-.callout-image img,
-.callout-image-horiz img {
-	.round-img ;
-}
-
-.callout-image:hover img,
-.callout-image-horiz:hover img {
-	.round-img-hover ;
-}
-
-
 
 /* ========================================
 ================  CARDS   =================
@@ -736,29 +640,6 @@ pre {
 	width: 100%;
 }
 
-
-
-/* ========================================
-===============  SOCIAL   =================
-======================================== */
-
-.social-image {
-    /* width: 90%;
-    height: 90%; */
-    .round-img-container;
-}
-
-.social-image:before {
-	.round-img-container-before ;
-}
-
-.social-image img{
-	.round-img ;
-}
-
-.social-image:hover img{
-	.round-img-hover ;
-}
 
 
 /* ========================================
@@ -1049,96 +930,6 @@ input.gsc-input {
 }
 
 
-
-/* ========================================
-============  FLICKR HERO API   ===========
-======================================== */
-
-#flickrHero {
-	height: auto;
-	margin: 0px auto;
-	min-width: 480px; /* 3:2 ratio to height */
-    /* opacity: .5; */
-    position: absolute;
-    /* opacity for IE */
-    /* -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; */
-    width: 100%;
-}
-
-#flickrHeroByline {
-	bottom: 5px;
-	color: #FFF;
-	font-size: 1.0em;
-	position: absolute;
-	right: 5px;
-}
-
-#flickrHeroCount {
-	bottom: 5px;
-	color: #FFF;
-	font-size: 1.0em;
-	position: absolute;
-	left: 5px;
-}
-
-/* ========================================
-==============  FLICKR API   ==============
-======================================== */
-
-#blog li,
-#pinterest li,
-#tumblr li {
-	margin-left: 20px;
-}
-
-#flickr{
-	height: 100%;
-	overflow: hidden;
-	position: relative;
-	text-align: center;
-	width: 100%;
-}
-
-#flickrImg {
-	display: inline-block !important;
-	margin: 0 auto;
-	width: 100%;
-}
-
-
-#flickrImgCount {
-	bottom: 5px;
-	color: #FFF;
-	font-size: 1.0em;
-	position: absolute;
-	right: 5px;
-}
-
-#flickrImgModal {
-	padding: 10px;
-	border-radius: 10px;
-}
-
-
-/* ========================================
-==============  SLICK FLICKR  =============
-======================================== */
-#slick-flickr {
-	/* width: 100%; */
-	margin: 0px 30px;
-	min-height: 250px;
-}
-
-#slick-flickr img{
-	max-height: 250px;
-	height: 250px;
-	width: auto !important;
-	margin: 0px 10px;
-}
-
-.slick-next:before, .slick-prev:before {
-    color: #999;
-}
 
 
 /* ========================================

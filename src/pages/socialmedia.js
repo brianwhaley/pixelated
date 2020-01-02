@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { CalloutHeader, CalloutRoundSm } from '../components/callout';
-import SocialCards from '../components/socialcards';
+import { CalloutHeader, CalloutRoundSm } from '../components/pixelated.callout.js';
+import SocialCards from '../components/pixelated.socialcard.js';
 
 let myState = {
     blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Views Blog Post' },

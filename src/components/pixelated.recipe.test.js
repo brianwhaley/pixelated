@@ -1,7 +1,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Recipe from './recipe';
+import Recipe from './pixelated.recipe.js';
 
 const recipe = {
 	type: ["h-recipe"],

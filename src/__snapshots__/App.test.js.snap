@@ -110,27 +110,9 @@ exports[`Recipe App snapshot renders 1`] = `
       className="grid12"
       id="page-hero"
     >
-      <img
-        alt="Pixelated Hero"
-        className="hidden"
-        id="flickrHeroPreload"
-        src="#"
-      />
-      <img
-        alt="Pixelated Hero"
-        id="flickrHero"
-        src="https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg"
-      />
       <div
-        id="flickrHeroByline"
-      >
-        Original Photos by Brian T. Whaley
-      </div>
-      <div
-        id="flickrHeroCount"
-      >
-        0 / 0
-      </div>
+        className="carousel"
+      />
     </div>
   </div>
   <div

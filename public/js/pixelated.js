@@ -9,62 +9,10 @@
 =====      GENERAL FUNCTIONS          =====
 ======================================== */
 
-$.fn.equalHeight = function() {
-    $this = $(this);
-    $this2 = $(this);
-    var maxHeight = 0;
-    $this.css('height','');
-    $this.each(function () {
-		$this = $(this);
-    	if ($this.height() > maxHeight) {
-        	maxHeight = $this.height();
-    	}
-    });
-    $this2.each(function () {
-		$this = $(this);
-        if($this.height() < maxHeight) {
-        	// $this.css("height","");
-        	$this.height(maxHeight);
-        };
-    });
-};
-
 
 $.fn.exists = function(){
 	return this.length > 0;
 };
-
-
-$.fn.maxZIndex = function(){
-	var highest = -999;
-	$('*').each(function() {
-		var current = parseInt($(this).css('z-index'), 10);
-		if(current && highest < current) highest = current;
-	});
-	return highest;
-};
-
-
-$.fn.consoleClear = function() {
-	if (typeof console._commandLineAPI !== 'undefined') {
-		console._commandLineAPI.clear();
-	} else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
-		console._inspectorCommandLineAPI.clear();
-	} else if (typeof console.clear !== 'undefined') {
-		console.clear();
-	}
-};
-
-
-function randomBetween(min, max) {
-	/* ===== RANDOM NUM BETWEEN MIN AND MAX ===== */
-    if (min < 0) {
-        return min + Math.random() * (Math.abs(min) + max);
-    } else {
-        return min + Math.random() * (max - min)
-    }
-}
-
 
 $.fn.hasBinding = function() {
 	/* ===== DOES ELEMENT HAVE AN EVENT BINDING ===== */
@@ -75,7 +23,6 @@ $.fn.hasBinding = function() {
     return true;
 };
 
-
 $.fn.isBound = function(type) {
 	/* ===== DOES ELEMENT HAVE A SPECIFIC EVENT BINDING TYPE ===== */
 	var data = $._data(this[0], 'events')[type];
@@ -84,7 +31,6 @@ $.fn.isBound = function(type) {
     }
     return true;
 };
-
 
 $.fn.center = function() {
     // this.css("position","absolute");
@@ -100,16 +46,6 @@ $.fn.center = function() {
 =====        OTHER FUNCTIONS          =====
 ======================================== */
 
-function GetQueryStringParams(sParam) {
-	var sPageURL = window.location.search.substring(1);
-	var sURLVariables = sPageURL.split('&');
-	for (var i = 0; i < sURLVariables.length; i++) {
-		var sParameterName = sURLVariables[i].split('=');
-		if (sParameterName[0] == sParam) {
-			return sParameterName[1];
-		}
-	}
-}
 
 Object.size = function(obj) {
     var size = 0, key;
@@ -147,24 +83,6 @@ less = {
 };
 
 
-
-/* ========================================
-=====         JQUERY MOBILE           =====
-======================================== */
-
-$(document).bind('mobileinit', function(){
-	// $.mobile.autoInitializePage = false;
-	$.mobile.ajaxEnabled = false;
-	// $.mobile.ignoreContentEnabled = true;
-	// $.mobile.page.prototype.options.keepNative = "select, input, textarea";
-});
-
-$(document).on('pagebeforeshow', function(){
-	$('.ui-overlay-c').removeClass('ui-overlay-c');
-	$('.ui-body-c').removeClass('ui-body-c');
-	$('a').removeClass('ui-link');
-	// $( "input, textarea, select", ).attr( "data-role", "none" );
-});
 
 
 
@@ -333,85 +251,6 @@ function accordionMenu() {
 
 
 /* ========================================
-=====    RESIZE HOME PAGE CALLOUTS    =====
-======================================== */
-
-var calloutsEventListener = false;
-
-function global_function() {
-    $.calloutsEqualHeight();
-}
-
-$.calloutsEqualHeight = function(){
-	/* http://modernweb.com/2014/03/24/using-media-queries-in-javascript/ */
-	/* http://www.javascriptkit.com/javatutors/matchmediamultiple.shtml */
-	cards = [
-		'#pixelated-section .row .callout-body .cardBody' ,
-		'#twitter-section .row .callout-body .cardBody'
-	];
-	var mqls = [ // list of window.matchMedia() queries
-		window.matchMedia('only screen and (max-width: 480px)'),
-		window.matchMedia('only screen and (max-width: 1024px)'),
-		window.matchMedia('only screen and (max-height: 1280px)')
-	];
-	if (calloutsEventListener == false) {
-		if (matchMedia) {
-			for (var i=0; i<mqls.length; i++){ // loop through queries
-				mqls[i].addListener(function(){
-					$.calloutsEqualHeight();
-				});
-			}
-			calloutsEventListener = true;
-			$.calloutsEqualHeight();
-		}
-	}
-	if (mqls[0].matches) {
-		/* ===== mobile device - clear height ===== */
-		$.each(cards, function(index,value) {
-			$(value).css('height','');
-		});
-	} else {
-		/* ===== equal height for callouts ===== */
-		$.each(cards, function(index,value) {
-			$(value).equalHeight();
-		});
-	}
-};
-
-
-
-
-
-/* ========================================
-=====        GALLERIA GALLERY         =====
-======================================== */
-/*
-$.fn.loadGallery = function(options){
-	options = $.extend ({
-		tag: 'pixelatedviewsgallery'
-	}, options);
-	// var tag = 'pixelatedviewsgallery';
-	if (GetQueryStringParams('tag')) {
-		options.tag = GetQueryStringParams('tag');
-	}
-	Galleria.loadTheme('galleria/galleria.pixelated.js');
-	var flickr = new Galleria.Flickr();
-	flickr.setOptions({
-		imageSize: 'big',
-		max: 100,
-		sort: 'date-taken-desc'
-	}).tags(options.tag, function(data) {
-		Galleria.run('#galleria', {
-			dataSource: data
-		});
-	});
-};
-*/
-
-
-
-
-/* ========================================
 =====         RECIPE TOC              =====
 ======================================== */
 // http://www.johnstoncountyarts.org/Gallery_testingmenu.html
@@ -526,21 +365,6 @@ $(document).ready(function() {
 
 
 
-/* ========== HOME PAGE ========== */
-if ( pagename == 'index'){
-	$(document).ready(function() {
-		$.getFlickrData({
-			userId: '15473210@N04',
-			apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
-			tags: 'pixelatedviewsgallery'
-		})
-		.done(function(data){
-			$.rotateFlickrHero({flickrData: data, targetID: '#flickrHero'});
-		});
-	});
-
-}
-
 
 
 /* ========== RECIPE PAGE ========== */
@@ -555,69 +379,5 @@ if ( pagename == 'recipes'){
 		createTOC();
 		fillPicklist('recipe-list');
 		$('#recipe-toc.megamenu').megamenu({parents:' > ul > li', children:' > ul'});
-	});
-}
-
-
-
-
-/* ========== URLs PAGE ========== */
-if ( pagename == 'urls' ){
-	$(document).ready(function() {
-		$( '#urlPortfolio a' ).click(function(event) {
-			event.preventDefault();
-			var url = './redirect.html?url=' + $(this).attr('href');
-
-			/*
-			var container = $('#urlPreview');
-			$.getJSON("https://query.yahooapis.com/v1/public/yql?"+
-                "q=select%20*%20from%20html%20where%20url%3D%22"+
-                encodeURIComponent(url)+
-                "%22&format=xml'&callback=?",
-				function(data){
-					if(data.results[0]){
-						container.html(data.results[0]);
-					} else {
-						var errormsg = "<p>Error: can't load the page.</p>";
-						container.html(errormsg);
-					}
-				}
-			);
-			*/
-			// $('#urlPreviewFrame').attr('src', url)
-			$('#urlPreviewFrame').attr('src', $(this).attr('href'))	;
-		});
-	});
-}
-
-
-
-
-/* ========== CAROUSEL PAGE ========== */
-if ( pagename == 'carousel'){
-	$(document).ready(function(){
-		$('#slick-flickr').slick({
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			centerMode: true,
-			centerPadding: '60px',
-			autoplay: true,
-			autoplaySpeed: 2000,
-			arrows: true,
-			focusOnSelect: true,
-			infinite: true,
-			lazyLoad: 'ondemand',
-			variableWidth: true
-		});
-
-		$.getFlickrData({
-			userId: '15473210@N04',
-			apiKey: '882cab5548d53c9e6b5fb24d59cc321d',
-			tags: 'pixelatedviewsgallery'
-		})
-		.done(function(data){
-			$.loadSlickFromFlickr({flickrData: data, targetID: '#slick-flickr'});
-		});
-
 	});
 }

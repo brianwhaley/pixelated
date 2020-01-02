@@ -6,7 +6,7 @@
     border: 1px solid #CCC;
 }
 
-.carousel-image-container {
+.carousel-slider-container {
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -21,7 +21,7 @@
 	max-height: none; */
 }
 
-.carousel-image {
+.carousel-slider-image {
 	height: 100%;
 	margin: 0 auto;
 	padding: 10px;
@@ -39,13 +39,64 @@
     border: 1px solid gray;
 }
 
-.carousel-details {
+.carousel-slider-details {
 	position: absolute;
 	bottom: 20px;
 	z-index: 1000;
 	color: white;
     width: 100%;
     text-align: center;
+}
+
+.carousel-hero-image {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	width: 100%;
+	margin: auto 0;
+	display: block;
+}
+
+.carousel-hero-visible {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1.0s linear;
+}
+
+.carousel-hero-hide {
+	display: block;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 1.0s, opacity 1.0s linear;
+}
+
+.carousel-hero-hidden {
+	display: none;
+}
+
+.carousel-hero-details {
+	position: absolute;
+	bottom: 5px;
+	z-index: 1000;
+	color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-hero-details-left {
+	float: left;
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.carousel-hero-details-right {
+	float: right;
+    width: 50%;
+    text-align: right;
+    padding-right: 10px;
 }
 
 .left{
