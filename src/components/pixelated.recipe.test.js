@@ -3,6 +3,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Recipe from './pixelated.recipe.js';
 
+const recipeCategories = ["bread", "appetizer","dinner","slow cooker","side dish","salad","dessert"];
+
 const recipe = {
 	type: ["h-recipe"],
 	properties: {
@@ -24,7 +26,7 @@ const recipe = {
 describe('Recipe', () => {
 
 	test('Recipe with props snapshot renders', () => {
-		const cRecipe = renderer.create(<Recipe recipeData={recipe}/>);
+		const cRecipe = renderer.create(<Recipe recipeData={recipe} recipeCategories={recipeCategories}/>);
 		let tree = cRecipe.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

@@ -22,7 +22,7 @@ export default class Callout extends Component {
     render() {
         var columnGridStyle = this.props.columnCount ? 'grid' + (12 / this.props.columnCount) : 'grid4' ;
         var calloutGridStyle = this.props.direction && this.props.direction === 'horizontal' ? 'grid6' : 'grid12' ;
-        var calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'callout-image-horiz' : 'callout-image' ;
+        var calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'round-img-container callout-image callout-image-horiz' : 'round-img-container callout-image' ;
         return (
 			<div className={"column callout " + columnGridStyle}>
 				<div className={calloutGridStyle}>
@@ -118,7 +118,7 @@ export class CalloutRoundTiny extends Component {
 	}
     render() {
         return (
-            <div className={ this.props.img ? 'grid2fix social-image' : 'grid2fix' }>
+            <div className={ this.props.img ? 'grid2fix round-img-container' : 'grid2fix' }>
                 <a href={this.props.url} target="_blank" rel="noopener noreferrer">
                 <img src={this.props.img} alt={this.props.title}/></a>
             </div>

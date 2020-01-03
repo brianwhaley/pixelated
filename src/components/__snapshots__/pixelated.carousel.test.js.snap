@@ -7,20 +7,25 @@ exports[`Carousel Carousel Hero Details snapshot renders 1`] = `
   <div
     className="carousel-hero-details-left"
   >
-    1
-     of 
-    135
-     - 
-    Sunflower Picking at Alstede Farm 2018-07-30
-     
+    <div>
+      1
+       of 
+      135
+    </div>
+    <div>
+      Sunflower Picking at Alstede Farm 2018-07-30
+    </div>
   </div>
   <div
     className="carousel-hero-details-right"
   >
-    by 
-    brianwhaley
-     on 
-    2018-07-30 15:21:06
+    <div>
+      by 
+      brianwhaley
+    </div>
+    <div>
+      2018-07-30 15:21:06
+    </div>
   </div>
 </div>
 `;

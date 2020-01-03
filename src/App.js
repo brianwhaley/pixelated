@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Menu from './pages/menu';
+import MyMenu from './pages/mymenu';
 import Header from './pages/header';
 import Hero from './pages/hero';
 import Search from './pages/search';
@@ -15,10 +15,8 @@ class App extends Component {
 
       <div id="page-container">
 
-        <div id="panel-menu" className="pad">
-          <div className="accordion-menu">
-            <Menu></Menu>
-          </div>
+        <div id="panel-menu">
+            <MyMenu></MyMenu>
         </div>
 
         <div id="fixed-header" className="grid12">

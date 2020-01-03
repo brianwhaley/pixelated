@@ -212,10 +212,6 @@ export default class SocialCards extends Component {
 
 	}
 
-	getFlickrEntries(){
-
-	}
-
     sortCardsByPubDate(a, b) {
         var property = "pubDate";
         var dateA = new Date(a[property]);

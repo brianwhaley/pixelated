@@ -249,75 +249,6 @@ function accordionMenu() {
 
 
 
-
-/* ========================================
-=====         RECIPE TOC              =====
-======================================== */
-// http://www.johnstoncountyarts.org/Gallery_testingmenu.html
-function createTOC() {
-	var myTOC;
-	var $recipeMain = $('#recipes');
-	var $recipeGroups = $($recipeMain).children('h2');
-	myTOC = '<ul class="grid12">\n' ;
-	$($recipeGroups).each( function(i,$recipeGroup) {
-		$($recipeGroup).before('<a name=\'grp' + i + '\'></a>');
-		myTOC += '<li><a href="#">' + $($recipeGroup).text().toUpperCase() + '</a>\n';
-		var $recipes = $($recipeGroup ).nextUntil('h2').filter('article');
-		if ( $($recipes).exists()) {
-			myTOC += '<ul>\n';
-			$recipes.each( function(k, $recipe) {
-				var $myDivID = 'grp' + i + 'r' + k ;
-				$($recipe).before('<a name=\'' + $myDivID + '\'></a>');
-				$($recipe).attr('id', $myDivID);
-				myTOC += '<li><a href="#' + $myDivID + '" onclick="hideAllShowOne(\'' + $myDivID + '\')">' + $($recipe).find('h3').text() + '</a></li>\n';
-			});
-			myTOC += '</ul>\n';
-		}
-	});
-	myTOC += '</ul>\n' ;
-	$('#recipe-toc').html(myTOC);
-}
-
-function fillPicklist(myFieldID) {
-	var $myField = $('select[name=' + myFieldID + ']')
-	var $recipeMain = $('#recipes');
-	var $recipeGroups = $($recipeMain).children('h2');
-	$($recipeGroups).each( function(i,$recipeGroup) {
-		// $($myField).append( $('<option>', { value: '', text: '=== ' + $($recipeGroup).text() + ' ===' }));
-		$($myField).append( new Option('=== ' + $($recipeGroup).text().toUpperCase() + ' ===', '') );
-		// $($myField).append( $('<option value="">=== ' + $($recipeGroup).text() + ' ===</option>'));
-		var $recipes = $($recipeGroup ).nextUntil('h2').filter('article');
-		if ( $($recipes).exists()) {
-			$recipes.each( function(k, $recipe) {
-				var $myDivID = 'grp' + i + 'r' + k ;
-				// $($myField).append( $('<option>', { value: $myDivID, text: $($recipe).find('h3').text() }));
-				// $($myField).append( $('<option value="' + $myDivID + '">' + $($recipe).find('h3').text() + '</option>'));
-				$($myField).append( new Option( $($recipe).find('h3').text(), $myDivID) );
-			});
-		}
-	});
-	$($myField).on('change', function() {
-		if(this.value.length > 0){
-			hideAllShowOne(this.value);
-		} else {
-			showAllRecipes();
-		}
-	})
-}
-
-function showAllRecipes(){
-	$('h2').show();
-	$('.h-recipe').show();
-}
-
-function hideAllShowOne(divToShow) {
-	$('h2').hide();
-	$('.h-recipe').hide();
-	$('#' + divToShow).show();
-}
-
-
-
 /* ========================================
 =====         SYNTAX HIGHLIGHT        =====
 ======================================== */
@@ -365,19 +296,3 @@ $(document).ready(function() {
 
 
 
-
-
-/* ========== RECIPE PAGE ========== */
-if ( pagename == 'recipes'){
-	$(document).ready(function() {
-		/* ===== RECIPES - BACK TO TOP BUTTON ===== */
-		$('a[href=\'#top\']').click(function() {
-			$('html, body').animate({ scrollTop: 0 }, 1000);
-			return false;
-		});
-		/* ===== RECIPES - TABLE OF CONTENTS ===== */
-		createTOC();
-		fillPicklist('recipe-list');
-		$('#recipe-toc.megamenu').megamenu({parents:' > ul > li', children:' > ul'});
-	});
-}

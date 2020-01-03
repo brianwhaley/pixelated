@@ -1,139 +1,162 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Recipe Recipe with props snapshot renders 1`] = `
-<article
-  className="h-recipe"
+<div
+  id="recipes"
 >
-  <h3
-    className="p-name"
+  <div
+    className="backToTop"
   >
-    Brian's Kielbasa and Potatoes
-  </h3>
-  <p
-    className="p-summary"
+    <a
+      href="#top"
+      onClick={[Function]}
+    >
+      <div>
+        <img
+          alt="Back To Top"
+          src="images/up.jpg"
+        />
+      </div>
+      <div>
+        Back To Top
+      </div>
+    </a>
+  </div>
+  <form>
+    <select
+      name="recipe-list"
+      onChange={[Function]}
+    >
+      <option
+        value=""
+      />
+      <option
+        value="c1"
+      >
+        === 
+        BREAD
+         ===
+      </option>
+      <option
+        value="c2"
+      >
+        === 
+        APPETIZER
+         ===
+      </option>
+      <option
+        value="c3"
+      >
+        === 
+        DINNER
+         ===
+      </option>
+      <option
+        value="c4"
+      >
+        === 
+        SLOW COOKER
+         ===
+      </option>
+      <option
+        value="c5"
+      >
+        === 
+        SIDE DISH
+         ===
+      </option>
+      <option
+        value="c6"
+      >
+        === 
+        SALAD
+         ===
+      </option>
+      <option
+        value="c7"
+      >
+        === 
+        DESSERT
+         ===
+      </option>
+    </select>
+  </form>
+  <h2
+    className="h-recipe-category"
+    id="c1"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    When I was in Munich, Germany, I found a dish just…atmosphere was great, and I had a wonderful time.
-  </p>
-  <p>
-     
-  </p>
-  <p
-    className="p-author"
+    bread
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c2"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Author: 
-    Brian T. Whaley
-  </p>
-  <p
-    className="p-published"
+    appetizer
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c3"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Published: 
-    
-  </p>
-  <p
-    className="dt-duration"
+    dinner
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c4"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Duration: 
-    30 minutes
-  </p>
-  <p
-    className="p-yield"
+    slow cooker
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c5"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Yield: 
-    Serves 4 to 6 people
-  </p>
-  <h4
-    className="e-ingredients"
+    side dish
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c6"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Ingredients
-  </h4>
-  <ul>
-    <li
-      className="p-ingredient"
-    >
-      2 whole kielbasa (approx 2 lb)
-    </li>
-    <li
-      className="p-ingredient"
-    >
-      5 to 6 large potatoes
-    </li>
-    <li
-      className="p-ingredient"
-    >
-      1 large onion
-    </li>
-    <li
-      className="p-ingredient"
-    >
-      1 green bell pepper
-    </li>
-    <li
-      className="p-ingredient"
-    >
-      Black pepper
-    </li>
-    <li
-      className="p-ingredient"
-    >
-      2 tablespoons olive oil
-    </li>
-  </ul>
-  <h4
-    className="e-instructions"
+    salad
+  </h2>
+  <h2
+    className="h-recipe-category"
+    id="c7"
+    style={
+      Object {
+        "display": "initial",
+      }
+    }
   >
-    Instructions
-  </h4>
-  <ol>
-    <li
-      className="p-instruction"
-    >
-      In a large frying pan, heat the olive oil
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Dice the onion and add to the frying pan at high heat
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Quarter the kielbasa lengthwise, and dice into small pieces
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Once the onion pieces are translucent, add in the kielbasa
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Peel and dice the potatoes, and then add to the frying pan
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Cover and place at medium heat for 15 minutes, mixing every 3 to 5 minutes
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Dice the bell pepper and add to the frying pan
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Add black pepper to taste
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Place at high heat and mix every 3 to 5 minutes.
-    </li>
-    <li
-      className="p-instruction"
-    >
-      Stop when the potatoes begin to fall apart, and th…basa and potatoes are browned (approx 20 minutes)
-    </li>
-  </ol>
-</article>
+    dessert
+  </h2>
+</div>
 `;

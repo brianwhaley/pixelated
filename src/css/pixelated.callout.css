@@ -1,4 +1,5 @@
 
+
 /* ========================================
 ===============  CALLOUTS   ===============
 ======================================== */
@@ -28,12 +29,8 @@
 	margin-bottom: 7px;
 }
 
-.callout-image {
-    width: 70%;
-	height: 70%;
-
-	/* .round-img-container; */
-	background: #fff;
+.round-img-container {
+    background: #fff;
     border: 1px solid #AAA;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -43,106 +40,44 @@
 	position: relative;
 }
 
-.callout-image-horiz {
-	/* .callout-image; */
+.round-img-container:before,
+.round-img-container-before {
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* initial ratio of 1:1*/
+}
 
+.round-img-container img,
+.round-img {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: none;
+    max-width: none;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+}
+
+.callout-image {
+	/* .round-img-container */
     width: 70%;
 	height: 70%;
+}
 
-	background: #fff;
-    border: 1px solid #AAA;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-    margin: auto;
-	overflow: hidden;
-	position: relative;
-
+.callout-image-horiz {
+	/* .round-img-container */
+	/* .callout-image */
     float: right;
 }
 
 @media screen and (max-width: 480px) {
 	.callout-image-horiz {
+		/* .round-img-container */
+		/* .callout-image */
 		float: none;
 	}
 }
-
-.callout-image:before,
-.callout-image-horiz:before {
-	/* .round-img-container-before ; */
-	content: "";
-	display: block;
-	padding-top: 100%; 	/* initial ratio of 1:1*/
-}
-
-.callout-image img,
-.callout-image-horiz img {
-	/* .round-img ; */
-	min-width: 100%;
-    min-height: 100%;
-    max-height: none;
-    max-width: none;
-    height: 100%;
-    margin: auto;
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-	left: -100%;
-	transition: transform .3s ease; /* Animation */
-}
-
-.callout-image:hover img,
-.callout-image-horiz:hover img {
-	/* .round-img-hover ; */
-	transform: scale(1.2) ;
-}
-
-
-/* ========================================
-===============  SOCIAL   =================
-======================================== */
-
-.social-image {
-    /* width: 90%;
-    height: 90%; */
-
-	/* .round-img-container; */
-	background: #fff;
-    border: 1px solid #AAA;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-    margin: auto;
-	overflow: hidden;
-	position: relative;
-}
-
-.social-image:before {
-	/* .round-img-container-before ; */
-	content: "";
-	display: block;
-	padding-top: 100%; 	/* initial ratio of 1:1*/
-}
-
-.social-image img{
-	/* .round-img ; */
-	min-width: 100%;
-    min-height: 100%;
-    max-height: none;
-    max-width: none;
-    height: 100%;
-    margin: auto;
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-	left: -100%;
-	transition: transform .3s ease; /* Animation */
-}
-
-.social-image:hover img{
-	/* .round-img-hover ; */
-	transform: scale(1.2) ;
-}
-

@@ -340,8 +340,14 @@ export class CarouselHeroDetails extends Component{
 	render() {
 		return (
 		<div className="carousel-hero-details">
-			<div className="carousel-hero-details-left">{this.props.index} of {this.props.length} - {this.props.image.title} </div>
-			<div className="carousel-hero-details-right">by {this.props.image.ownername} on {this.props.image.datetaken}</div>
+			<div className="carousel-hero-details-left">
+				<div>{this.props.index} of {this.props.length}</div>
+				<div>{this.props.image.title}</div>
+			</div>
+			<div className="carousel-hero-details-right">
+				<div>by {this.props.image.ownername}</div>
+				<div>{this.props.image.datetaken}</div>
+			</div>
 		</div>
 		);
 	}

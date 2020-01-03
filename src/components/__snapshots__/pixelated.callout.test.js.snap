@@ -8,7 +8,7 @@ exports[`Callout Callout snapshot renders 1`] = `
     className="grid12"
   >
     <div
-      className="callout-image"
+      className="round-img-container callout-image"
     >
       <a
         href="gallery.html"
@@ -112,7 +112,7 @@ exports[`Callout CalloutRoundSm snapshot renders 1`] = `
 
 exports[`Callout CalloutRoundTiny snapshot renders 1`] = `
 <div
-  className="grid2fix social-image"
+  className="grid2fix round-img-container"
 >
   <a
     href="gallery.html"

@@ -5,65 +5,75 @@ exports[`Recipe App snapshot renders 1`] = `
   id="page-container"
 >
   <div
-    className="pad"
     id="panel-menu"
   >
     <div
-      className="accordion-menu"
+      className="accordion-menu-wrapper"
+      style={
+        Object {
+          "left": "0px",
+          "transform": "translateX(-350px)",
+          "transition": "transform 1.0s ease-in-out 0.1s",
+        }
+      }
     >
-      <ul
-        className="grid12 clearfix"
+      <div
+        className="accordion-menu"
       >
-        <li>
-          <a
-            href="./index.html"
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <a
-            href="./gallery.html?tag=portfolio-all"
-          >
-            Work Portfolio
-          </a>
-        </li>
-        <li>
-          <a
-            href="./gallery.html?tag=pixelatedviewsgallery"
-          >
-            Photo Gallery
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://blog.pixelated.tech"
-          >
-            Pixelated Views Blog
-          </a>
-        </li>
-        <li>
-          <a
-            href="./socialmedia.html"
-          >
-            Social Media
-          </a>
-        </li>
-        <li>
-          <a
-            href="./photography.html"
-          >
-            Photography
-          </a>
-        </li>
-        <li>
-          <a
-            href="./recipes.html"
-          >
-            Recipes
-          </a>
-        </li>
-      </ul>
+        <ul
+          className="grid12 clearfix"
+        >
+          <li>
+            <a
+              href="./index.html"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="./gallery.html?tag=portfolio-all"
+            >
+              Work Portfolio
+            </a>
+          </li>
+          <li>
+            <a
+              href="./gallery.html?tag=pixelatedviewsgallery"
+            >
+              Photo Gallery
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://blog.pixelated.tech"
+            >
+              Pixelated Views Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="./socialmedia.html"
+            >
+              Social Media
+            </a>
+          </li>
+          <li>
+            <a
+              href="./photography.html"
+            >
+              Photography
+            </a>
+          </li>
+          <li>
+            <a
+              href="./recipes.html"
+            >
+              Recipes
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div
@@ -79,6 +89,7 @@ exports[`Recipe App snapshot renders 1`] = `
       >
         <div
           className="panel-menu-button pull-left"
+          onClick={[Function]}
         >
           <img
             alt="Mobile Menu"
@@ -153,7 +164,7 @@ exports[`Recipe App snapshot renders 1`] = `
                   className="grid6"
                 >
                   <div
-                    className="callout-image-horiz"
+                    className="round-img-container callout-image callout-image-horiz"
                   >
                     <img
                       alt="Brian T. Whaley"
@@ -189,7 +200,7 @@ exports[`Recipe App snapshot renders 1`] = `
                   className="grid6"
                 >
                   <div
-                    className="callout-image-horiz"
+                    className="round-img-container callout-image callout-image-horiz"
                   >
                     <a
                       href="https://www.linkedin.com/in/brianwhaley"
@@ -259,7 +270,7 @@ exports[`Recipe App snapshot renders 1`] = `
               className="column grid6"
             >
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.linkedin.com/in/brianwhaley"
@@ -273,7 +284,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://twitter.com/brianwhaley"
@@ -287,7 +298,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.pinterest.com/brianwhaley"
@@ -301,7 +312,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://www.goodreads.com/user/show/49377228-brian-whaley"
@@ -315,7 +326,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.youtube.com/user/brianwhaley"
@@ -329,7 +340,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://pixelatedviews.tumblr.com"
@@ -347,7 +358,7 @@ exports[`Recipe App snapshot renders 1`] = `
               className="column grid6"
             >
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://blog.pixelated.tech"
@@ -361,7 +372,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.amazon.com/gp/pdp/profile/AMIS1GDCT1RZ?ie=UTF8&ref_=ya_T9_56"
@@ -375,7 +386,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://www.etsy.com/people/bwhaley73"
@@ -389,7 +400,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://foursquare.com/brianwhaley"
@@ -403,7 +414,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://trees.ancestry.com/tree/7237865"
@@ -417,7 +428,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.facebook.com/brian.t.whaley"
@@ -485,7 +496,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 className="grid12"
               >
                 <div
-                  className="callout-image"
+                  className="round-img-container callout-image"
                 >
                   <a
                     href="gallery.html?tag=portfolio-all"
@@ -544,7 +555,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 className="grid12"
               >
                 <div
-                  className="callout-image"
+                  className="round-img-container callout-image"
                 >
                   <a
                     href="https://github.com/brianwhaley"
@@ -603,7 +614,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 className="grid12"
               >
                 <div
-                  className="callout-image"
+                  className="round-img-container callout-image"
                 >
                   <a
                     href="gallery.html"
@@ -686,7 +697,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://500px.com/brianwhaley"
@@ -700,7 +711,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.flickr.com/photos/brianwhaley/"
@@ -714,7 +725,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.shutterstock.com/g/brianwhaley"
@@ -728,7 +739,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://secure.istockphoto.com/portfolio/brianwhaley"
@@ -774,7 +785,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="https://www.instagram.com/pixelated.views/"
@@ -788,7 +799,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://www.blurb.com/user/brianwhaley"
@@ -802,7 +813,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://brianwhaley.shutterfly.com"
@@ -816,7 +827,7 @@ exports[`Recipe App snapshot renders 1`] = `
                 </a>
               </div>
               <div
-                className="grid2fix social-image"
+                className="grid2fix round-img-container"
               >
                 <a
                   href="http://twitter.com/pixelatedviews"
@@ -901,7 +912,7 @@ exports[`Recipe App snapshot renders 1`] = `
                   className="grid12"
                 >
                   <div
-                    className="callout-image"
+                    className="round-img-container callout-image"
                   >
                     <a
                       href="http://www.blurb.com/user/brianwhaley"
@@ -960,7 +971,7 @@ exports[`Recipe App snapshot renders 1`] = `
                   className="grid12"
                 >
                   <div
-                    className="callout-image"
+                    className="round-img-container callout-image"
                   >
                     <a
                       href="recipes.html"
