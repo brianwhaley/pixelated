@@ -28,12 +28,13 @@ export default class Carousel extends Component {
 					sort: 'date-taken-desc',
 					per_page: 500,
 					format: 'json',
+					photoSize: 'Large',
 					nojsoncallback: 'true' /*,
-					photoSize: "",
 					startPos: 0 */
 				}
 			},
 			images: [],
+			size: '',
 			type: "slider"
 		};
 		if(this.props.qsParams){
@@ -42,7 +43,12 @@ export default class Carousel extends Component {
 			}
 		}
 		if(this.props.type){
-				this.state.type = this.props.type ;
+			this.state.type = this.props.type ;
+		}
+		if(this.state.flickr.urlProps.photoSize){
+			this.state.size = this.flickrSize(this.state.flickr.urlProps.photoSize) ;
+		} else {
+			this.state.size = this.flickrSize("Medium") ;
 		}
 	}
 
@@ -52,6 +58,21 @@ export default class Carousel extends Component {
 			var myFlickrData = flickrData.photos.photo ;
 			this.setState({ images: myFlickrData });
 		})
+	}
+
+	flickrSize(size){
+		switch (size) {
+			case "Square" : return "_s";
+			case "Large Square" : return "_q";
+			case "Thumbnail" : return "_t";
+			case "Small" : return "_m";
+			case "Small 320" : return "_n";
+			case "Medium" : return "";
+			case "Medium 640" : return "_z";
+			case "Medium 800" : return "_c";
+			case "Large" : return "_b";
+			case "Original" : return "_o";
+		}
 	}
 
 	render() {
@@ -113,7 +134,7 @@ export class CarouselSlider extends Component {
 					<div className="carousel-container">
 						<CarouselSliderArrow direction='left' clickFunction={ this.previousImage } glyph='&#9664;' />
 							{ this.props.props.images.map((image, i) => (
-								<CarouselSliderImage key={image.id} direction={this.state.direction} activeIndex={myActiveIndex} index={i} imagesLength={this.props.props.images.length} image={image} />
+								<CarouselSliderImage key={image.id} direction={this.state.direction} activeIndex={myActiveIndex} index={i} imagesLength={this.props.props.images.length} image={image} size={this.props.props.size} />
 							))}
 						<CarouselSliderArrow direction='right' clickFunction={ this.nextImage } glyph='&#9654;' />
 						<CarouselSliderDetails index={this.state.activeIndex + 1} length={this.props.props.images.length} image={this.props.props.images[myActiveIndex]} />
@@ -135,7 +156,8 @@ export class CarouselSliderImage extends Component{
         activeIndex: PropTypes.number.isRequired ,
         index: PropTypes.number.isRequired ,
         imagesLength: PropTypes.number.isRequired ,
-        image: PropTypes.object.isRequired
+        image: PropTypes.object.isRequired ,
+        size: PropTypes.string.isRequired
 	}
 	constructor(props) {
 		super(props);
@@ -175,7 +197,7 @@ export class CarouselSliderImage extends Component{
 
 		return (
 			<div className="carousel-slider-container" id={myImg.id} style={styles}>
-			<img className="carousel-slider-image" src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + '.jpg'} alt={myImg.title} title={myImg.title} />
+			<img className="carousel-slider-image" src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'} alt={myImg.title} title={myImg.title} />
 			</div>
 		);
 	}
@@ -270,7 +292,7 @@ export class CarouselHero extends Component {
 			return (
 				<div >
 					{ this.props.props.images.map((image, i) => (
-						<CarouselHeroImage key={image.id} direction={this.state.direction} activeIndex={this.state.activeIndex} index={i} imagesLength={this.props.props.images.length} image={image} />
+						<CarouselHeroImage key={image.id} direction={this.state.direction} activeIndex={this.state.activeIndex} index={i} imagesLength={this.props.props.images.length} image={image} size={this.props.props.size} />
 					))}
 					<CarouselHeroDetails index={this.state.activeIndex + 1} length={this.props.props.images.length} image={this.props.props.images[this.state.activeIndex]} />
 				</div>
@@ -292,7 +314,8 @@ export class CarouselHeroImage extends Component{
         activeIndex: PropTypes.number.isRequired ,
         index: PropTypes.number.isRequired ,
         imagesLength: PropTypes.number.isRequired ,
-        image: PropTypes.object.isRequired
+        image: PropTypes.object.isRequired ,
+        size: PropTypes.string.isRequired
 	}
 	constructor(props) {
 		super(props);
@@ -307,20 +330,19 @@ export class CarouselHeroImage extends Component{
 		}
 		var classes = "carousel-hero-image" ;
 
-
-			if(this.props.index > this.props.activeIndex){
-				classes += ' carousel-hero-hidden' ;
-			} else if(this.props.index === this.props.activeIndex - 1){
-				classes += ' carousel-hero-hide' ;
-			}else if(this.props.index === this.props.activeIndex){
-				classes += ' carousel-hero-visible' ;
-			} else if(this.props.index < this.props.activeIndex){
-				classes += ' carousel-hero-hidden' ;
-			}
+		if(this.props.index > this.props.activeIndex){
+			classes += ' carousel-hero-hidden' ;
+		} else if(this.props.index === this.props.activeIndex - 1){
+			classes += ' carousel-hero-hide' ;
+		}else if(this.props.index === this.props.activeIndex){
+			classes += ' carousel-hero-visible' ;
+		} else if(this.props.index < this.props.activeIndex){
+			classes += ' carousel-hero-hidden' ;
+		}
 
 
 		return (
-			<img className={classes} style={styles} src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + '.jpg'} alt={myImg.title} title={myImg.title} />
+			<img className={classes} style={styles} src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'} alt={myImg.title} title={myImg.title} />
 		);
 	}
 }

@@ -42,7 +42,8 @@ describe('Carousel', () => {
         const activeIndex = 0 ;
         const index = 1 ;
         const imagesLength = 135 ;
-		const cCarouselImage = renderer.create(<CarouselSliderImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image}/>);
+        const size = '_b' ;
+		const cCarouselImage = renderer.create(<CarouselSliderImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>);
 		let tree = cCarouselImage.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
@@ -80,7 +81,8 @@ describe('Carousel', () => {
         const activeIndex = 0 ;
         const index = 1 ;
         const imagesLength = 135 ;
-		const cCarouselImage = renderer.create(<CarouselHeroImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image}/>);
+        const size = '_b' ;
+		const cCarouselImage = renderer.create(<CarouselHeroImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>);
 		let tree = cCarouselImage.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

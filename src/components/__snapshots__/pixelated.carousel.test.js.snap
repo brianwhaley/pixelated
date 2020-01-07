@@ -34,7 +34,7 @@ exports[`Carousel Carousel Hero Image snapshot renders 1`] = `
 <img
   alt="Sunflower Picking at Alstede Farm 2018-07-30"
   className="carousel-hero-image carousel-hero-hidden"
-  src="https://farm1.static.flickr.com/852/42079144500_c28146304a.jpg"
+  src="https://farm1.static.flickr.com/852/42079144500_c28146304a_b.jpg"
   style={
     Object {
       "zIndex": 134,
@@ -95,7 +95,7 @@ exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
   <img
     alt="Sunflower Picking at Alstede Farm 2018-07-30"
     className="carousel-slider-image"
-    src="https://farm1.static.flickr.com/852/42079144500_c28146304a.jpg"
+    src="https://farm1.static.flickr.com/852/42079144500_c28146304a_b.jpg"
     title="Sunflower Picking at Alstede Farm 2018-07-30"
   />
 </div>
