@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from '../components/pixelated.menu.js';
 
-export default class MyMenu extends Component {
+export default class Nav extends Component {
 
     render() {
 

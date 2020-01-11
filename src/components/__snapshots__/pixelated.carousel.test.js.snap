@@ -2,7 +2,7 @@
 
 exports[`Carousel Carousel Hero Details snapshot renders 1`] = `
 <div
-  className="carousel-hero-details"
+  className="carousel-hero-details text-outline-halo"
 >
   <div
     className="carousel-hero-details-left"
@@ -46,7 +46,7 @@ exports[`Carousel Carousel Hero Image snapshot renders 1`] = `
 
 exports[`Carousel Carousel Slider Arrow Next snapshot renders 1`] = `
 <div
-  className="carousel-arrow next"
+  className="carousel-arrow text-outline-halo next"
   onClick={[MockFunction]}
 >
   &#9654;
@@ -55,7 +55,7 @@ exports[`Carousel Carousel Slider Arrow Next snapshot renders 1`] = `
 
 exports[`Carousel Carousel Slider Arrow Prev snapshot renders 1`] = `
 <div
-  className="carousel-arrow prev"
+  className="carousel-arrow text-outline-halo prev"
   onClick={[MockFunction]}
 >
   &#9664;
@@ -64,7 +64,7 @@ exports[`Carousel Carousel Slider Arrow Prev snapshot renders 1`] = `
 
 exports[`Carousel Carousel Slider Details snapshot renders 1`] = `
 <div
-  className="carousel-slider-details"
+  className="carousel-slider-details text-outline-halo"
 >
   1
    of 

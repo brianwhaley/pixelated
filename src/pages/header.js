@@ -5,7 +5,7 @@ export default class Header extends Component {
     render() {
         return (
 
-            <div className="content-container">
+            <div className="section-container">
 				<MenuButton />
                 <h1 className="pull-left">Pixelated </h1>
                 <h2 className="pull-left pad"> - by Brian Whaley</h2>

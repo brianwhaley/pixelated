@@ -1,55 +1,63 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import MyMenu from './pages/mymenu';
+import Nav from './pages/nav';
 import Header from './pages/header';
 import Hero from './pages/hero';
 import Search from './pages/search';
-import BodyContent from './pages/bodycontent';
 import Footer from './pages/footer';
 
-class App extends Component {
-  render() {
+import Home from './pages/home';
+import Gallery from './pages/gallery';
+import SocialMedia from './pages/socialmedia';
+import Photography from './pages/photography';
+import Recipes from './pages/recipes';
+import NotFound from './pages/notfound';
 
-    return (
+export default class App extends Component {
+	render() {
+		return (
 
-      <div id="page-container">
+			<Fragment>
 
-        <div id="panel-menu">
-            <MyMenu></MyMenu>
-        </div>
+			<header className="grid12">
+				<div id="page-header" className="grid12 fixed-header">
+					<Header></Header>
+				</div>
+				<div id="fixed-header-spacer" className="grid12"></div>
+					<Router>
+						<Route exact path='/' component={Hero}/>
+						<Route exact path='/index.html' component={Hero}/>
+					</Router>
+				<div id="page-search" className="grid12 noMobile">
+					<Search></Search>
+				</div>
+			</header>
 
-        <div id="fixed-header" className="grid12">
-          <div id="page-header" className="grid12">
-            <Header></Header>
-          </div>
-        </div>
+			<nav>
+				<Nav></Nav>
+			</nav>
 
-        <div id="fixed-header-spacer" className="grid12"></div>
+			<main className="grid12">
+				<Router>
+					<Switch>
+						<Route exact path='/' component={Home}/>
+						<Route path='/index.html' component={Home}/>
+						<Route path='/gallery.html' component={Gallery}/>
+						<Route path='/socialmedia.html' component={SocialMedia}/>
+						<Route path='/photography.html' component={Photography}/>
+						<Route path='/recipes.html' component={Recipes}/>
+						<Route exact path='*' component={NotFound} />
+					</Switch>
+				</Router>
+			</main>
 
-        <Router>
-          <div>
-            <Route exact path='/' component={Hero}/>
-            <Route exact path='/index.html' component={Hero}/>
-          </div>
-        </Router>
+			<footer className="grid12">
+				<Footer></Footer>
+			</footer>
 
-        <div id="page-search" className="grid12 noMobile">
-          <Search></Search>
-        </div>
+			</Fragment>
 
-        <div id="page-body" className="grid12">
-            <BodyContent></BodyContent>
-        </div>
-
-        <div id="page-footer" className="grid12">
-          <Footer></Footer>
-        </div>
-
-      </div>
-
-    );
-  }
+		);
+	}
 }
-
-export default App;

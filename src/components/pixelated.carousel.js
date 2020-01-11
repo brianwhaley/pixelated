@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { getXHRData, generateURL } from './pixelated.api.js';
 import { mergeDeep } from "./pixelated.functions.js"
@@ -72,6 +72,7 @@ export default class Carousel extends Component {
 			case "Medium 800" : return "_c";
 			case "Large" : return "_b";
 			case "Original" : return "_o";
+			default : return "";
 		}
 	}
 
@@ -130,7 +131,7 @@ export class CarouselSlider extends Component {
 		if (this.props.props.images.length > 0){
 			var myActiveIndex = this.state.activeIndex;
 			return (
-				<div className="content-container">
+				<div className="section-container">
 					<div className="carousel-container">
 						<CarouselSliderArrow direction='left' clickFunction={ this.previousImage } glyph='&#9664;' />
 							{ this.props.props.images.map((image, i) => (
@@ -217,7 +218,7 @@ export class CarouselSliderDetails extends Component{
 	}
 	render() {
 		return (
-		<div className="carousel-slider-details">
+		<div className="carousel-slider-details text-outline-halo">
 			{this.props.index} of {this.props.length} - {this.props.image.title} <br/>
 			by {this.props.image.ownername} on {this.props.image.datetaken}
 		</div>
@@ -239,8 +240,7 @@ export class CarouselSliderArrow extends Component{
 	}
 	render() {
 		return (
-			<div
-				className={'carousel-arrow ' + this.props.direction}
+			<div className={'carousel-arrow text-outline-halo ' + this.props.direction}
 				onClick={ this.props.clickFunction }>
 				{ this.props.glyph }
 			</div>
@@ -290,12 +290,12 @@ export class CarouselHero extends Component {
 			}
 
 			return (
-				<div >
+				<Fragment >
 					{ this.props.props.images.map((image, i) => (
 						<CarouselHeroImage key={image.id} direction={this.state.direction} activeIndex={this.state.activeIndex} index={i} imagesLength={this.props.props.images.length} image={image} size={this.props.props.size} />
 					))}
 					<CarouselHeroDetails index={this.state.activeIndex + 1} length={this.props.props.images.length} image={this.props.props.images[this.state.activeIndex]} />
-				</div>
+				</Fragment>
 			);
 
 		} else {
@@ -361,7 +361,7 @@ export class CarouselHeroDetails extends Component{
 	}
 	render() {
 		return (
-		<div className="carousel-hero-details">
+		<div className="carousel-hero-details text-outline-halo">
 			<div className="carousel-hero-details-left">
 				<div>{this.props.index} of {this.props.length}</div>
 				<div>{this.props.image.title}</div>

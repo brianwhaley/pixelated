@@ -19,8 +19,11 @@
 	border-radius: 5px;
 }
 
-/* #panel-menu {
-} */
+@media screen and (max-width: 480px) {
+	.panel-menu-button {
+		display: inline;
+	}
+}
 
 .panel-menu-header {
 	background-color: #336699;
@@ -32,14 +35,6 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-}
-
-@media screen and (max-width: 480px) {
-
-	.panel-menu-button {
-		display: inline;
-	}
-
 }
 
 

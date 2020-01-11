@@ -24,12 +24,15 @@ exports[`Recipe Recipe with props snapshot renders 1`] = `
   </div>
   <form>
     <select
+      id="recipe-list"
       name="recipe-list"
       onChange={[Function]}
     >
       <option
         value=""
-      />
+      >
+        Choose a recipe below:
+      </option>
       <option
         value="c1"
       >

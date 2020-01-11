@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Callout, { CalloutHeader, CalloutRoundTiny } from '../components/pixelated.callout.js'
 
 export default class Home extends Component {
     render() {
         return (
 
+		<Fragment>
 
-
-		<div>
-            <div className="page-content-section" id="intro-section">
-                <div className="content-container">
+            <section id="intro-section">
+                <div className="section-container">
                     <div className="row">
-
 						<div className="grid12">
-
 							<Callout
 								img='images/brianwhaley-headshot.jpg'
 								title='Brian T. Whaley'
@@ -26,7 +23,6 @@ export default class Home extends Component {
 									Enthusiast of Home-Cooked Food'
 								direction='horizontal'
 								columnCount={2}/>
-
 							<Callout
 								url='https://www.linkedin.com/in/brianwhaley'
 								img='images/linkedin-logo.png'
@@ -34,19 +30,13 @@ export default class Home extends Component {
 								content='My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.'
 								direction='horizontal'
 								columnCount={2}/>
-
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </section>
 
-
-
-
-            <div className="page-content-section-alt" id="social-section">
-                <div className="content-container">
-
+            <section className="section-alt" id="social-section">
+                <div className="section-container">
                     <div className="row">
                         <div className="column grid6">
                             <CalloutRoundTiny url="http://www.linkedin.com/in/brianwhaley" img="images/linkedin-logo.png" title="LinkedIn" />
@@ -78,19 +68,12 @@ export default class Home extends Component {
                             <div className="centeredbutton"><a href="socialmedia.html">My Social Media</a></div>
                         </div>
                     </div>
-
-
                 </div>
-            </div>
+            </section>
 
-
-
-
-
-            <div className="page-content-section" id="portfolio-section">
-                <div className="content-container">
+            <section id="portfolio-section">
+                <div className="section-container">
                     <div className="row">
-
 						<Callout
 							url='gallery.html?tag=portfolio-all'
 							img='images/circuitboard.jpg'
@@ -98,7 +81,6 @@ export default class Home extends Component {
 							content='A carousel of screenshots from my work at BMS, AP, ADP, and PR Newswire.
 							The carousel was built with a native React compnent that I built myself.
 							You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
-
 						<Callout
 							url='https://github.com/brianwhaley'
 							img='images/github-logo.png'
@@ -108,7 +90,6 @@ export default class Home extends Component {
 							pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android;
 							a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr,
 							and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
-
 						<Callout
 							url='gallery.html'
 							img='https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg'
@@ -117,17 +98,12 @@ export default class Home extends Component {
 							They are primarily landscape photographs, macro photographs, and travel photographs.
 							The carousel was built using the Galleria jQuery plugin.
 							You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
-
                     </div>
                 </div>
-            </div>
+            </section>
 
-
-
-
-
-            <div className="page-content-section-alt" id="photo-section">
-                <div className="content-container">
+            <section className="section-alt" id="photo-section">
+                <div className="section-container">
                     <div className="row">
                         <div className="column grid6">
                             <CalloutRoundTiny url="" img="" title="" />
@@ -159,19 +135,12 @@ export default class Home extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-
-
-
-
-
-            <div className="page-content-section" id="book-section">
-                <div className="content-container">
+            <section id="book-section">
+                <div className="section-container">
                     <div className="row">
-
                         <div className="grid12 push2">
-
 							<Callout
 								url='http://www.blurb.com/user/brianwhaley'
 								img='images/blurb-logo.png'
@@ -179,7 +148,6 @@ export default class Home extends Component {
 								content='A storefront for my custom made books.  This includes books for our trip to Italy,
 								a memorial for our rabbit Sunshine, a Whaley / Pace family album, A wedding album for Matt and Alex,
 								a memorial book for my mom, and a collection of recipes from the Pace family. More to come!'/>
-
 							<Callout
 								url='recipes.html'
 								img='images/pizza-gaine.jpg'
@@ -188,18 +156,13 @@ export default class Home extends Component {
 								It is a collection of recipes from 3 generations of my family, from my friends, and
 								my life as an Italian-American and as a Bariatric Patient.
 								I have cooked most of the recipes myself.
-								I have tasted them all, however, and they are fantastic!  Please enjoy!"/>
-
+								I have tasted them all, however, and they are fantastic!  Please enjoy! "/>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </section>
 
-
-        </div>
-
-
+        </Fragment>
 
         );
     }

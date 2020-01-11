@@ -8,7 +8,7 @@ export default class Recipes extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className="section-container">
 				<RecipeBook recipeData={recipeData} recipeCategories={this.recipeCategories} />
 			</div>
         );

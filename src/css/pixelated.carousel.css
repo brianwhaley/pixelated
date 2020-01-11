@@ -44,20 +44,16 @@
 	top: 50%;
     opacity: .5;
 	z-index: 1000;
-    background-color: white;
     padding: 5px;
-    border: 1px solid gray;
 }
 
 .carousel-slider-details {
 	position: absolute;
 	bottom: 20px;
 	z-index: 1000;
-	color: white;
     width: 100%;
 	font-size: 11px;
 	text-align: center;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .carousel-hero-image {
@@ -92,11 +88,8 @@
 	position: absolute;
 	bottom: 5px;
 	z-index: 1000;
-	color: white;
 	width: 100%;
 	font-size: 11px;
-	/* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-	text-shadow: 0 0 1px black, 0 0 3px black, 0 0 5px black ;
 }
 
 .carousel-hero-details-left {
@@ -121,3 +114,15 @@
 	right: 0;
 }
 
+.text-outline-halo {
+	color: white;
+	text-shadow:
+		-1px 1px 1px black,
+		1px 1px 1px black,
+		1px -1px 1px black,
+		-1px -1px 1px black,
+		-1px 1px 5px black,
+		1px 1px 5px black,
+		1px -1px 5px black,
+		-1px -1px 5px black
+}

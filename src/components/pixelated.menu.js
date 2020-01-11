@@ -35,7 +35,7 @@ export default class Menu extends Component {
 
 	render(){
 		var styles = { left: "0px" };
-		styles.transition = "transform 1.0s ease-in-out 0.1s";
+		styles.transition = "transform 0.7s ease-in 0.0s";
 		styles.transform = "translateX(" + this.state.left + "px)";
 		return (
 			<div className="accordion-menu-wrapper" style={styles}>
@@ -80,16 +80,6 @@ export class MenuButton extends Component {
 	}
 
 	slideMobilePanel(){
-			/* var myOffset = $('#panel-menu').offset().left;
-			if(myOffset < 0 ) {
-				$('#panel-menu').animate({ left: 0 }, 'slow', 'swing', function() {
-					// $('#button').html('Close');
-				});
-			} else {
-				$('#panel-menu').animate({ left: -350 }, 'slow', 'swing', function() {
-					// $('#button').html('Menu');
-				});
-			} */
 			window.myMenu.moveMenu();
 	}
 
