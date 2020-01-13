@@ -37,126 +37,124 @@ export class SocialCard extends Component {
 
 /* ========== SOCIALCARDS ========== */
 export default class SocialCards extends Component {
-
     static propTypes = {
-        props: PropTypes.object.isRequired
+        sources: PropTypes.object.isRequired
     }
     constructor(props) {
-
         super(props);
         this.state = {
-            targetID: "#social",
-            myPromises: [] ,
-            promiseReady: false,
-            cardCount: 0,
-            myCardData: [] ,
-            mySocialCards: [] ,
-            rss2json: {
-                apiURL: 'https://api.rss2json.com/v1/api.json' ,
-                apiKey: 'c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd' ,
-            },
-            blank: {
-                url: '',
-                entryCount: 5,
-                iconSrc: '',
-                iconSrcAlt: ''
-            },
-            SOOpx: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/500px-logo.png',
-                iconSrcAlt: '500px Post'
-            },
-            blog: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/blog-logo.png',
-                iconSrcAlt: 'Blog Post'
-            },
-            etsy: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/etsy-logo.png',
-                iconSrcAlt: 'Etsy Favorite'
-            },
-            /* facebook: {
-                iconSrc: 'images/facebook-logo.png',
-                iconSrcAlt: 'Facebook Wall Post'
-            }, */
-            flickr: {
-                userID: '',
-                apiKey: '',
-                tags: '',
-                entryCount: 5,
-                iconSrc: 'images/flickr-logo.png',
-                iconSrcAlt: 'Flickr Photo'
-            },
-            /* foursquare: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/foursquare-logo.png',
-                iconSrcAlt: 'FourSquare Checkin'
-            }, */
-            goodreads:{
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/goodreads-logo.png',
-                iconSrcAlt: 'GoodReads Currently Reading'
-            },
-            instagram: {
-                userID: '',
-                entryCount: 5,
-                iconSrc: 'images/instagram-logo.jpg',
-                iconSrcAlt: 'Instagram Photo'
-            },
-            pinterest: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/pinterest-logo.png',
-                iconSrcAlt: 'Pinterest Pin'
-            },
-            shutterfly: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/shutterfly-logo.jpg',
-                iconSrcAlt: 'Shutterfly Items'
-            },
-            tumblr: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/tumblr-logo.png',
-                iconSrcAlt: 'Tumblr Post'
-            },
-            twitter: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/twitter-logo.png',
-                iconSrcAlt: 'Twitter Tweet'
-            },
-            youtube: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/youtube-logo.png',
-                iconSrcAlt: 'Youtube Favorite Video'
-            },
-            other: {
-                url: '',
-                entryCount: 5,
-                iconSrc: 'images/blog-logo.png',
-                iconSrcAlt: 'Post'
-            }
-        };
-
-        this.state = mergeDeep(this.state, props.props);
-
+			targetID: "#social",
+			myPromises: [] ,
+			promiseReady: false,
+			cardCount: 0,
+			myCardData: [] ,
+			mySocialCards: [] ,
+			rss2json: {
+				apiURL: 'https://api.rss2json.com/v1/api.json' ,
+				apiKey: 'c3wsmqh4h1iydxxip3sgkr1jtk3brllbp61jc6yd' ,
+			},
+			sources: {
+				blank: {
+					url: '',
+					entryCount: 5,
+					iconSrc: '',
+					iconSrcAlt: ''
+				},
+				SOOpx: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/500px-logo.png',
+					iconSrcAlt: '500px Post'
+				},
+				blog: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/blog-logo.png',
+					iconSrcAlt: 'Blog Post'
+				},
+				etsy: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/etsy-logo.png',
+					iconSrcAlt: 'Etsy Favorite'
+				},
+				/* facebook: {
+					iconSrc: 'images/facebook-logo.png',
+					iconSrcAlt: 'Facebook Wall Post'
+				}, */
+				flickr: {
+					userID: '',
+					apiKey: '',
+					tags: '',
+					entryCount: 5,
+					iconSrc: 'images/flickr-logo.png',
+					iconSrcAlt: 'Flickr Photo'
+				},
+				/* foursquare: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/foursquare-logo.png',
+					iconSrcAlt: 'FourSquare Checkin'
+				}, */
+				goodreads:{
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/goodreads-logo.png',
+					iconSrcAlt: 'GoodReads Currently Reading'
+				},
+				instagram: {
+					userID: '',
+					entryCount: 5,
+					iconSrc: 'images/instagram-logo.jpg',
+					iconSrcAlt: 'Instagram Photo'
+				},
+				pinterest: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/pinterest-logo.png',
+					iconSrcAlt: 'Pinterest Pin'
+				},
+				shutterfly: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/shutterfly-logo.jpg',
+					iconSrcAlt: 'Shutterfly Items'
+				},
+				tumblr: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/tumblr-logo.png',
+					iconSrcAlt: 'Tumblr Post'
+				},
+				twitter: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/twitter-logo.png',
+					iconSrcAlt: 'Twitter Tweet'
+				},
+				youtube: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/youtube-logo.png',
+					iconSrcAlt: 'Youtube Favorite Video'
+				},
+				other: {
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/blog-logo.png',
+					iconSrcAlt: 'Post'
+				}
+			}
+		};
+		this.state.sources = mergeDeep(this.state.sources, props.sources);
     }
 
     gatherData() {
-        for(var prop in this.state) {
-            var option = this.state[prop] ;
-            if (Object.prototype.hasOwnProperty.call(option,"url")) {
-                if (option.url){
-                    this.getFeedEntries(option.url, option.entryCount);
+        for(var prop in this.state.sources) {
+            var source = this.state.sources[prop] ;
+            if (Object.prototype.hasOwnProperty.call(source,"url")) {
+                if (source.url){
+                    this.getFeedEntries(source.url, source.entryCount);
                 }
             }
         }
@@ -234,20 +232,20 @@ export default class SocialCards extends Component {
             for (var prop in this.state.myCardData){
 				var card = this.state.myCardData[prop];
                 switch (true) {
-                    case (card.link.indexOf("500px.com") > -1): myOptions = this.state.SOOpx; break;
-                    case (card.link.indexOf("blog") > -1): myOptions = this.state.blog; break;
-                    case (card.link.indexOf("etsy.com") > -1): myOptions = this.state.etsy; break;
-                    case (card.link.indexOf("foursquare.com") > -1): myOptions = this.state.foursquare; break;
-                    case (card.link.indexOf("flickr.com") > -1): myOptions = this.state.flickr; break;
-                    case (card.link.indexOf("goodreads.com") > -1): myOptions = this.state.goodreads; break;
-                    case (card.link.indexOf("instagram") > -1): myOptions = this.state.instagram; break;
-                    case (card.link.indexOf("pinterest.com") > -1): myOptions = this.state.pinterest; break;
-                    case (card.link.indexOf("shutterfly.com") > -1): myOptions = this.state.shutterfly; break;
-                    case (card.link.indexOf("tumblr.com") > -1): myOptions = this.state.tumblr; break;
-                    case (card.link.indexOf("twitter") > -1): myOptions = this.state.twitter; break;
-                    case (card.link.indexOf("youtube") > -1): myOptions = this.state.youtube; break;
-                    case (card.link.indexOf("other") > -1): myOptions = this.state.other; break;
-                    default: myOptions = this.state.blank; break;
+                    case (card.link.indexOf("500px.com") > -1): myOptions = this.state.sources.SOOpx; break;
+                    case (card.link.indexOf("blog") > -1): myOptions = this.state.sources.blog; break;
+                    case (card.link.indexOf("etsy.com") > -1): myOptions = this.state.sources.etsy; break;
+                    case (card.link.indexOf("foursquare.com") > -1): myOptions = this.state.sources.foursquare; break;
+                    case (card.link.indexOf("flickr.com") > -1): myOptions = this.state.sources.flickr; break;
+                    case (card.link.indexOf("goodreads.com") > -1): myOptions = this.state.sources.goodreads; break;
+                    case (card.link.indexOf("instagram") > -1): myOptions = this.state.sources.instagram; break;
+                    case (card.link.indexOf("pinterest.com") > -1): myOptions = this.state.sources.pinterest; break;
+                    case (card.link.indexOf("shutterfly.com") > -1): myOptions = this.state.sources.shutterfly; break;
+                    case (card.link.indexOf("tumblr.com") > -1): myOptions = this.state.sources.tumblr; break;
+                    case (card.link.indexOf("twitter") > -1): myOptions = this.state.sources.twitter; break;
+                    case (card.link.indexOf("youtube") > -1): myOptions = this.state.sources.youtube; break;
+                    case (card.link.indexOf("other") > -1): myOptions = this.state.sources.other; break;
+                    default: myOptions = this.state.sources.blank; break;
                 }
 				/* ===== UPDATE STATE ===== */
                 var newSocialCard = <SocialCard key={card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} /> ;
@@ -261,9 +259,7 @@ export default class SocialCards extends Component {
     }
 
     render() {
-
-        return this.state.mySocialCards
-
+        return this.state.mySocialCards ;
     }
 
 }

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { CalloutHeader, CalloutRoundSm } from '../components/pixelated.callout.js';
 import SocialCards from '../components/pixelated.socialcard.js';
 
-let myState = {
+let mySources = {
     blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Views Blog Post' },
     etsy: { url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss' },
     /* foursquare: { url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss' }, */
@@ -62,7 +62,7 @@ export default class SocialMedia extends Component {
                             <div className="callout-body">
                                 <div className="grid12">
                                     <div className="masonry" id="social">
-                                        <SocialCards props={myState}></SocialCards>
+                                        <SocialCards sources={mySources}></SocialCards>
                                     </div>
                                 </div>
                             </div>

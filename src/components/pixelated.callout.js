@@ -106,11 +106,15 @@ export class CalloutRoundSm extends Component {
 }
 
 export class CalloutRoundTiny extends Component {
-    static propTypes = {
+	static defaultProps = {
+		gridSize: "2"
+	}
+	static propTypes = {
         url: PropTypes.string.isRequired,
         img: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-    }
+        title: PropTypes.string.isRequired,
+        gridSize: PropTypes.string
+	}
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -118,7 +122,7 @@ export class CalloutRoundTiny extends Component {
 	}
     render() {
         return (
-            <div className={ this.props.img ? 'grid2fix round-img-container' : 'grid2fix' }>
+            <div className={ this.props.img ? 'grid' + this.props.gridSize + 'fix round-img-container' : 'grid' + this.props.gridSize + 'fix noMobile' }>
                 <a href={this.props.url} target="_blank" rel="noopener noreferrer">
                 <img src={this.props.img} alt={this.props.title}/></a>
             </div>

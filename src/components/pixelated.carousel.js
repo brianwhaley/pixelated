@@ -9,6 +9,9 @@ import '../css/pixelated.carousel.css';
 /* ========== CAROUSEL ========== */
 export default class Carousel extends Component {
 
+	static defaultProps = {
+		size: '' /* Medium */
+	}
 	static propTypes = {
         qsParams: PropTypes.object,
         type: PropTypes.string
@@ -37,6 +40,7 @@ export default class Carousel extends Component {
 			size: '',
 			type: "slider"
 		};
+
 		if(this.props.qsParams){
 			if(this.props.qsParams.tag){
 				this.state.flickr.urlProps.tags = this.props.qsParams.tag;
@@ -47,8 +51,6 @@ export default class Carousel extends Component {
 		}
 		if(this.state.flickr.urlProps.photoSize){
 			this.state.size = this.flickrSize(this.state.flickr.urlProps.photoSize) ;
-		} else {
-			this.state.size = this.flickrSize("Medium") ;
 		}
 	}
 
@@ -104,8 +106,25 @@ export class CarouselSlider extends Component {
 			activeIndex: 0,
 			direction: 'next'
 		};
+		this.touch = {
+			minDistance: 50,
+			touching: false,
+			touchX: null,
+			startX: null
+		}
+		this.drag = {
+			minDistance: 50,
+			dragging: false,
+			dragX: null,
+			startX: null
+		}
 		this.previousImage = this.previousImage.bind(this);
 		this.nextImage = this.nextImage.bind(this);
+
+		this.dragStart = this.dragStart.bind(this);
+		this.dragging = this.dragging.bind(this);
+		this.dragEnd = this.dragEnd.bind(this);
+
 	}
 
 	previousImage() {
@@ -127,6 +146,57 @@ export class CarouselSlider extends Component {
 		}
 	}
 
+	/* https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
+	https://www.kirupa.com/html5/drag.htm */
+
+	dragStart(e){
+		var elem = e.target ;
+		var rect = elem.getBoundingClientRect();
+		var myX = (e.type === "touchstart") ? e.touches[0].clientX : e.clientX ;
+		this.drag.dragging = true ;
+		this.drag.dragX = myX ;
+		this.drag.startX = rect.left;
+		// e.preventDefault();
+
+		var img = new Image();
+		/* http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever */
+		img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=";
+		e.dataTransfer.setDragImage(img, 0, 0);
+	}
+
+	dragging(e){
+		var elem = e.target ;
+		if(this.drag.dragging){
+			var deltaX = Math.abs(this.drag.dragX - e.clientX) ;
+			var newLeft = this.drag.startX - deltaX ;
+			elem.style.left = newLeft + 'px';
+		}
+		e.preventDefault();
+	}
+
+	dragEnd(e){
+		var myX = (e.type === "touchend") ? e.changedTouches[0].clientX : e.clientX ;
+		if (this.drag.dragging) {
+			var distance = Math.abs(myX - this.drag.dragX);
+			var farEnough = distance > this.drag.minDistance ;
+			if(farEnough){
+				if ( this.drag.dragX > myX ){
+					/* Right to Left is Next */
+					this.nextImage();
+				} else {
+					/* Left to Right is Previous */
+					this.previousImage();
+				}
+			}
+		}
+
+		e.target.style.removeProperty("left");
+		this.drag.touching = false;
+		this.drag.dragX = null;
+		this.drag.startX = null;
+		e.preventDefault();
+	}
+
 	render() {
 		if (this.props.props.images.length > 0){
 			var myActiveIndex = this.state.activeIndex;
@@ -135,7 +205,11 @@ export class CarouselSlider extends Component {
 					<div className="carousel-container">
 						<CarouselSliderArrow direction='left' clickFunction={ this.previousImage } glyph='&#9664;' />
 							{ this.props.props.images.map((image, i) => (
-								<CarouselSliderImage key={image.id} direction={this.state.direction} activeIndex={myActiveIndex} index={i} imagesLength={this.props.props.images.length} image={image} size={this.props.props.size} />
+								<CarouselSliderImage
+									key={image.id} direction={this.state.direction} activeIndex={myActiveIndex} index={i}
+									imagesLength={this.props.props.images.length} image={image} size={this.props.props.size}
+									onTouchStart={this.dragStart} onTouchMove={this.dragging} onTouchEnd={this.dragEnd}
+									onDragStart={this.dragStart} onDrag={this.dragging} onDragEnd={this.dragEnd} onDrop={this.dragDropped} />
 							))}
 						<CarouselSliderArrow direction='right' clickFunction={ this.nextImage } glyph='&#9654;' />
 						<CarouselSliderDetails index={this.state.activeIndex + 1} length={this.props.props.images.length} image={this.props.props.images[myActiveIndex]} />
@@ -158,10 +232,20 @@ export class CarouselSliderImage extends Component{
         index: PropTypes.number.isRequired ,
         imagesLength: PropTypes.number.isRequired ,
         image: PropTypes.object.isRequired ,
-        size: PropTypes.string.isRequired
+		size: PropTypes.string.isRequired,
+
+		onTouchStart: PropTypes.func ,
+		onTouchMove: PropTypes.func ,
+		onTouchEnd: PropTypes.func ,
+		onDragStart: PropTypes.func ,
+		onDrag: PropTypes.func ,
+		onDragEnd: PropTypes.func ,
+		onDrop: PropTypes.func
+
 	}
 	constructor(props) {
 		super(props);
+        this.myImage = React.createRef();
 		this.state = {
 		};
 	}
@@ -169,36 +253,42 @@ export class CarouselSliderImage extends Component{
 		var myImg = this.props.image ;
 		var myZindex = this.props.imagesLength - this.props.index ;
 		var styles = {
-			zIndex: myZindex
+			zIndex: myZindex,
+			left: ''
 		}
 
 		if (this.props.direction === "next"){
+			/* Use transition all instead of transform to affect left property */
 			if(this.props.index > this.props.activeIndex){
-				styles.transition = "transform 1.0s ease-in 0.1s";
+				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(100%)";
 			} else if(this.props.index === this.props.activeIndex)  {
-				styles.transition = "transform 1.0s ease-in 0.1s";
+				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(0%)";
 			} else if(this.props.index < this.props.activeIndex) {
-				styles.transition = "transform 1.0s ease-in 0.1s";
+				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(-100%)";
 			}
 		} else if (this.props.direction === "prev"){
 			if(this.props.index > this.props.activeIndex){
-				styles.transition = "transform 1.0s ease-out 0.1s";
+				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(100%)";
 			} else if(this.props.index === this.props.activeIndex){
-				styles.transition = "transform 1.0s ease-out 0.1s";
+				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(0%)";
 			} else if(this.props.index < this.props.activeIndex){
-				styles.transition = "transform 1.0s ease-out 0.1s";
+				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(-100%)";
 			}
 		}
 
 		return (
-			<div className="carousel-slider-container" id={myImg.id} style={styles}>
-			<img className="carousel-slider-image" src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'} alt={myImg.title} title={myImg.title} />
+			<div className="carousel-slider-container" style={styles} draggable="true"
+			onTouchStart={this.props.onTouchStart} onTouchMove={this.props.onTouchMove} onTouchEnd={this.props.onTouchEnd}
+			onDragStart={this.props.onDragStart} onDrag={this.props.onDrag} onDragEnd={this.props.onDragEnd} onDrop={this.props.onDrop} >
+			<img className="carousel-slider-image" draggable="false"
+				src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'}
+				id={myImg.id} alt={myImg.title} title={myImg.title} />
 			</div>
 		);
 	}
