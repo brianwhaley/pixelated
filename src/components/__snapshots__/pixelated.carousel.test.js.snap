@@ -83,11 +83,15 @@ exports[`Carousel Carousel Slider Details snapshot renders 1`] = `
 exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
 <div
   className="carousel-slider-container"
-  id="42079144500"
+  draggable="true"
+  id="c-42079144500"
   style={
     Object {
+      "WebkitTransform": "translateX(100%)",
+      "left": "",
+      "msTransform": "translateX(100%)",
       "transform": "translateX(100%)",
-      "transition": "transform 1.0s ease-in 0.1s",
+      "transition": "all 1.0s ease-in 0.1s",
       "zIndex": 134,
     }
   }
@@ -95,6 +99,8 @@ exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
   <img
     alt="Sunflower Picking at Alstede Farm 2018-07-30"
     className="carousel-slider-image"
+    draggable="false"
+    id="42079144500"
     src="https://farm1.static.flickr.com/852/42079144500_c28146304a_b.jpg"
     title="Sunflower Picking at Alstede Farm 2018-07-30"
   />

@@ -106,12 +106,6 @@ export class CarouselSlider extends Component {
 			activeIndex: 0,
 			direction: 'next'
 		};
-		this.touch = {
-			minDistance: 50,
-			touching: false,
-			touchX: null,
-			startX: null
-		}
 		this.drag = {
 			minDistance: 50,
 			dragging: false,
@@ -158,20 +152,29 @@ export class CarouselSlider extends Component {
 		this.drag.startX = rect.left;
 		// e.preventDefault();
 
-		var img = new Image();
-		/* http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever */
-		img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=";
-		e.dataTransfer.setDragImage(img, 0, 0);
+		if(e.dataTransfer){
+			e.dataTransfer.setData("text/plain", e.target.id);
+			var img = new Image();
+			/* http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever */
+			img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=";
+			e.dataTransfer.setDragImage(img, 0, 0);
+		}
 	}
 
 	dragging(e){
 		var elem = e.target ;
-		if(this.drag.dragging){
+		var myX = (e.type === "touchmove") ? e.changedTouches[0].clientX : e.clientX ;
+		// if(this.drag.dragging){
 			var deltaX = Math.abs(this.drag.dragX - e.clientX) ;
-			var newLeft = this.drag.startX - deltaX ;
+			var newLeft;
+			if ( this.drag.dragX > myX ){
+				newLeft = this.drag.startX - deltaX ;
+			} else {
+				newLeft = this.drag.startX + deltaX ;
+			}
 			elem.style.left = newLeft + 'px';
-		}
-		e.preventDefault();
+		// }
+		// e.preventDefault();
 	}
 
 	dragEnd(e){
@@ -194,8 +197,20 @@ export class CarouselSlider extends Component {
 		this.drag.touching = false;
 		this.drag.dragX = null;
 		this.drag.startX = null;
-		e.preventDefault();
+		// e.preventDefault();
 	}
+
+	componentDidMount() {
+		window.addEventListener('touchstart', this.dragStart, {passive: true});
+		window.addEventListener('touchmove', this.dragging, {passive: true});
+		window.addEventListener('touchend', this.dragEnd, {passive: true});
+		window.addEventListener('dragstart', this.dragStart, {passive: true});
+		window.addEventListener('drag', this.dragging, {passive: true});
+		window.addEventListener('dragend', this.dragEnd, {passive: true});
+	}
+
+	/* componentWillUnmount() {
+	} */
 
 	render() {
 		if (this.props.props.images.length > 0){
@@ -208,8 +223,8 @@ export class CarouselSlider extends Component {
 								<CarouselSliderImage
 									key={image.id} direction={this.state.direction} activeIndex={myActiveIndex} index={i}
 									imagesLength={this.props.props.images.length} image={image} size={this.props.props.size}
-									onTouchStart={this.dragStart} onTouchMove={this.dragging} onTouchEnd={this.dragEnd}
-									onDragStart={this.dragStart} onDrag={this.dragging} onDragEnd={this.dragEnd} onDrop={this.dragDropped} />
+									/* onTouchStart={this.dragStart} onTouchMove={this.dragging} onTouchEnd={this.dragEnd}
+									onDragStart={this.dragStart} onDrag={this.dragging} onDragEnd={this.dragEnd} */ />
 							))}
 						<CarouselSliderArrow direction='right' clickFunction={ this.nextImage } glyph='&#9654;' />
 						<CarouselSliderDetails index={this.state.activeIndex + 1} length={this.props.props.images.length} image={this.props.props.images[myActiveIndex]} />
@@ -233,22 +248,23 @@ export class CarouselSliderImage extends Component{
         imagesLength: PropTypes.number.isRequired ,
         image: PropTypes.object.isRequired ,
 		size: PropTypes.string.isRequired,
-
+		/*
 		onTouchStart: PropTypes.func ,
 		onTouchMove: PropTypes.func ,
 		onTouchEnd: PropTypes.func ,
 		onDragStart: PropTypes.func ,
 		onDrag: PropTypes.func ,
 		onDragEnd: PropTypes.func ,
-		onDrop: PropTypes.func
-
+		*/
 	}
+
 	constructor(props) {
 		super(props);
         this.myImage = React.createRef();
 		this.state = {
 		};
 	}
+
 	render() {
 		var myImg = this.props.image ;
 		var myZindex = this.props.imagesLength - this.props.index ;
@@ -262,30 +278,42 @@ export class CarouselSliderImage extends Component{
 			if(this.props.index > this.props.activeIndex){
 				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(100%)";
+				styles.msTransform = "translateX(100%)";
+				styles.WebkitTransform = "translateX(100%)";
 			} else if(this.props.index === this.props.activeIndex)  {
 				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(0%)";
+				styles.msTransform = "translateX(0%)";
+				styles.WebkitTransform = "translateX(0%)";
 			} else if(this.props.index < this.props.activeIndex) {
 				styles.transition = "all 1.0s ease-in 0.1s";
 				styles.transform = "translateX(-100%)";
+				styles.msTransform = "translateX(-100%)";
+				styles.WebkitTransform = "translateX(-100%)";
 			}
 		} else if (this.props.direction === "prev"){
 			if(this.props.index > this.props.activeIndex){
 				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(100%)";
+				styles.msTransform = "translateX(100%)";
+				styles.WebkitTransform = "translateX(100%)";
 			} else if(this.props.index === this.props.activeIndex){
 				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(0%)";
+				styles.msTransform = "translateX(0%)";
+				styles.WebkitTransform = "translateX(0%)";
 			} else if(this.props.index < this.props.activeIndex){
 				styles.transition = "all 1.0s ease-out 0.1s";
 				styles.transform = "translateX(-100%)";
+				styles.msTransform = "translateX(-100%)";
+				styles.WebkitTransform = "translateX(-100%)";
 			}
 		}
 
 		return (
-			<div className="carousel-slider-container" style={styles} draggable="true"
-			onTouchStart={this.props.onTouchStart} onTouchMove={this.props.onTouchMove} onTouchEnd={this.props.onTouchEnd}
-			onDragStart={this.props.onDragStart} onDrag={this.props.onDrag} onDragEnd={this.props.onDragEnd} onDrop={this.props.onDrop} >
+			<div id={"c-" + myImg.id} className="carousel-slider-container" style={styles} draggable="true"
+			/* onTouchStart={this.props.onTouchStart} onTouchMove={this.props.onTouchMove} onTouchEnd={this.props.onTouchEnd}
+			onDragStart={this.props.onDragStart} onDrag={this.props.onDrag} onDragEnd={this.props.onDragEnd} */ >
 			<img className="carousel-slider-image" draggable="false"
 				src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'}
 				id={myImg.id} alt={myImg.title} title={myImg.title} />

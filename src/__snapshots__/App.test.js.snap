@@ -669,24 +669,10 @@ Array [
           className="row"
         >
           <div
-            className="column grid6"
+            className="column grid4 push2 push2fix"
           >
             <div
-              className="grid2fix"
-            >
-              <a
-                href=""
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt=""
-                  src=""
-                />
-              </a>
-            </div>
-            <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="https://500px.com/brianwhaley"
@@ -700,7 +686,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="http://www.flickr.com/photos/brianwhaley/"
@@ -714,7 +700,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="http://www.shutterstock.com/g/brianwhaley"
@@ -728,7 +714,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="https://secure.istockphoto.com/portfolio/brianwhaley"
@@ -741,40 +727,12 @@ Array [
                 />
               </a>
             </div>
-            <div
-              className="grid2fix"
-            >
-              <a
-                href=""
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt=""
-                  src=""
-                />
-              </a>
-            </div>
           </div>
           <div
-            className="column grid6"
+            className="column grid4 pull2 pull2fix"
           >
             <div
-              className="grid2fix"
-            >
-              <a
-                href=""
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt=""
-                  src=""
-                />
-              </a>
-            </div>
-            <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="https://www.instagram.com/pixelated.views/"
@@ -788,7 +746,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="http://www.blurb.com/user/brianwhaley"
@@ -802,7 +760,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="http://brianwhaley.shutterfly.com"
@@ -816,7 +774,7 @@ Array [
               </a>
             </div>
             <div
-              className="grid2fix round-img-container"
+              className="grid3fix round-img-container"
             >
               <a
                 href="http://twitter.com/pixelatedviews"
@@ -832,16 +790,12 @@ Array [
             <div
               className="grid2fix"
             >
-              <a
-                href=""
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt=""
-                  src=""
-                />
-              </a>
+               
+            </div>
+            <div
+              className="grid2fix noMobile"
+            >
+               
             </div>
           </div>
         </div>

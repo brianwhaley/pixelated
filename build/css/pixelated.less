@@ -112,8 +112,8 @@ pre {
 	@gridVal: (100% / @grids * @index);
 	.grid@{index}, .grid@{index}fix { float: left; width: @gridVal; }
 	/* display: inline; margin-left: @gutter; */
-	.push@{index}{ margin-left: @gridVal; }
-	.pull@{index}{ margin-right: @gridVal; }
+	.push@{index}, .push@{index}fix { margin-left: @gridVal; }
+	.pull@{index}, .pull@{index}fix { margin-right: @gridVal; }
 	@media screen and (max-width: 480px) {
 		.grid@{index}{ width: 100%; }
 		.push@{index}{ margin-left: 0; }
@@ -232,6 +232,12 @@ pre {
   color: inherit;
   font: inherit;
   line-height: inherit;
+}
+
+@media screen and (min-width: 480px) {
+    .mobileOnly {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 480px) {
