@@ -150,8 +150,6 @@ export class CarouselSlider extends Component {
 		this.drag.dragging = true ;
 		this.drag.dragX = myX ;
 		this.drag.startX = rect.left;
-		// e.preventDefault();
-
 		if(e.dataTransfer){
 			e.dataTransfer.setData("text/plain", e.target.id);
 			var img = new Image();
@@ -159,21 +157,24 @@ export class CarouselSlider extends Component {
 			img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=";
 			e.dataTransfer.setDragImage(img, 0, 0);
 		}
+		// e.preventDefault();
 	}
 
 	dragging(e){
 		var elem = e.target ;
 		var myX = (e.type === "touchmove") ? e.changedTouches[0].clientX : e.clientX ;
-		// if(this.drag.dragging){
-			var deltaX = Math.abs(this.drag.dragX - e.clientX) ;
+		if(this.drag.dragging){
+			var deltaX = Math.abs(myX - this.drag.dragX);
 			var newLeft;
 			if ( this.drag.dragX > myX ){
+				/* Right to Left */
 				newLeft = this.drag.startX - deltaX ;
 			} else {
+				/* Left to Right */
 				newLeft = this.drag.startX + deltaX ;
 			}
 			elem.style.left = newLeft + 'px';
-		// }
+		}
 		// e.preventDefault();
 	}
 
@@ -192,7 +193,6 @@ export class CarouselSlider extends Component {
 				}
 			}
 		}
-
 		e.target.style.removeProperty("left");
 		this.drag.touching = false;
 		this.drag.dragX = null;
