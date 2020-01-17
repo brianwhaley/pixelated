@@ -14,6 +14,9 @@ var prodScriptFiles = {
 	},
 	twitter : {
 		src : '//platform.twitter.com/widgets.js'
+	},
+	pixelated : {
+		src : '/js/pixelated.js'
 	}
 };
 

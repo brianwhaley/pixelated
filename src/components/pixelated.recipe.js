@@ -131,6 +131,7 @@ export class Recipe extends Component {
 		/* event.preventDefault(); */
 		return (
 			<article id={this.props.id} className="h-recipe" style={isHidden}>
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 				<h3 className="p-name"><a name={this.props.id} href="#" onClick={()=>{return false}}>{recipe.name}</a></h3>
 				{ recipeImage }
 				<p className="p-summary">{recipe.summary}</p>

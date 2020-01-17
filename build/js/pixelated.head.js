@@ -10,10 +10,10 @@ var prodCssFiles = {
 
 var prodScriptFiles = {
 	addthis : {
-		src : '//s7.addthis.com/js/300/addthis_widget'
+		src : '//s7.addthis.com/js/300/addthis_widget.js'
 	},
 	twitter : {
-		src : '//platform.twitter.com/widgets'
+		src : '//platform.twitter.com/widgets.js'
 	}
 };
 
