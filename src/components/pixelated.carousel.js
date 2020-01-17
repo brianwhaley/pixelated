@@ -107,23 +107,17 @@ export class CarouselSlider extends Component {
 			direction: 'next'
 		};
 		this.drag = {
+			debug: false,
 			minDistance: 50,
 			dragging: false,
+			dragStyles: {},
 			dragX: null,
 			startX: null
 		}
-
-		this.debug = false;
-
-		this.previousImage = this.previousImage.bind(this);
-		this.nextImage = this.nextImage.bind(this);
-		this.dragStart = this.dragStart.bind(this);
-		this.dragging = this.dragging.bind(this);
-		this.dragEnd = this.dragEnd.bind(this);
 	}
 
 
-	previousImage() {
+	previousImage = () => {
 		if(this.state.activeIndex === 0){
 			this.setState({ activeIndex: this.props.props.images.length - 1, direction: 'prev' });
 		} else {
@@ -131,22 +125,19 @@ export class CarouselSlider extends Component {
 		}
 	}
 
-	nextImage() {
+	nextImage = () => {
 		if(this.state.activeIndex === this.props.props.images.length - 1){
 			this.setState({ activeIndex: 0, direction: 'next' });
 		} else {
 			this.setState({ activeIndex: this.state.activeIndex + 1, direction: 'next' });
-			/* this.setState(prevState => ({
-				activeIndex: this.state.activeIndex + 1
-			  })); */
 		}
 	}
 
 	/* https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
 	https://www.kirupa.com/html5/drag.htm */
 
-	dragStart(e){
-		if (this.debug) { console.log("Drag Start - " + e.type) }
+	dragStart = (e) => {
+		if (this.drag.debug) { console.log("Drag Start - " + e.type) }
 		// var elem = e.currentTarget ;
 		if(e.target.className.includes("carousel-slider-container") ||
 			e.target.className.includes("carousel-slider-image")) {
@@ -158,6 +149,11 @@ export class CarouselSlider extends Component {
 			this.drag.dragging = true ;
 			this.drag.dragX = myX ;
 			this.drag.startX = rect.left;
+			/* Add existing drag styles to array - save for later */
+			this.drag.dragStyles.transform = elem.style.transform ;
+			this.drag.dragStyles.msTransform = elem.style.msTransform ;
+			this.drag.dragStyles.WebkitTransform = elem.style.WebkitTransform ;
+			this.drag.dragStyles.transition = elem.style.transition ;
 			/* if(e.dataTransfer){
 				e.dataTransfer.setData("text/plain", e.currentTarget.id);
 				var img = new Image();
@@ -168,7 +164,7 @@ export class CarouselSlider extends Component {
 		}
 	}
 
-	dragging(e){
+	dragging = (e) => {
 		if(this.drag.dragging){
 			e.preventDefault();
 			e.stopPropagation();
@@ -183,8 +179,9 @@ export class CarouselSlider extends Component {
 				/* Left to Right */
 				newLeft = this.drag.startX + deltaX ;
 			}
-			if (this.debug) { console.log("type=" +e.type+ " myX=" +myX+ " dragX=" +this.drag.dragX+ " deltaX=" +deltaX+ " newLeft=" +newLeft ) }
+			if (this.drag.debug) { console.log("type=" +e.type+ " myX=" +myX+ " dragX=" +this.drag.dragX+ " deltaX=" +deltaX+ " newLeft=" +newLeft ) }
 			elem.style.left = newLeft + 'px';
+			/* Remove styles that conflict with dragging */
 			elem.style.transition = '';
 			elem.style.transform = '';
 			elem.style.msTransform = '';
@@ -192,10 +189,15 @@ export class CarouselSlider extends Component {
 		}
 	}
 
-	dragEnd(e){
+	dragEnd = (e) => {
 		if(this.drag.dragging){
-			if(this.debug) { console.log("Drag End - " + e.type) }
+			if(this.drag.debug) { console.log("Drag End - " + e.type) }
 			var elem = e.target.closest('div.carousel-slider-container') ;
+			/* Add styles back */
+			for (var property in this.drag.dragStyles) {
+				elem.style[property] = this.drag.dragStyles[property];
+			}
+			/* Determine drag distance */
 			var myX = (e.type === "touchend") ? e.changedTouches[0].pageX : e.pageX ;
 			var distance = Math.abs(myX - this.drag.dragX);
 			var farEnough = distance > this.drag.minDistance ;
@@ -208,11 +210,18 @@ export class CarouselSlider extends Component {
 					this.previousImage();
 				}
 			}
-			elem.style.left = "0px";
 			this.drag.dragging = false;
 			this.drag.dragX = null;
 			this.drag.startX = null;
 			// e.preventDefault();
+		}
+	}
+
+	transitionEnd = (e) => {
+		if(this.drag.debug) { console.log("Transition End - " + e.type) }
+		var elem = e.target ;
+		if (elem.matches('div.carousel-slider-container')){
+			elem.style.left = "0px";
 		}
 	}
 
@@ -223,6 +232,7 @@ export class CarouselSlider extends Component {
 		document.addEventListener('mousedown', this.dragStart, { passive : false } );
 		document.addEventListener('mousemove', this.dragging, { passive : false } );
 		document.addEventListener('mouseup', this.dragEnd, { passive : true } );
+		document.addEventListener('transitionend', this.transitionEnd, { passive : true } );
 	}
 
 	componentWillUnmount() {
@@ -232,6 +242,7 @@ export class CarouselSlider extends Component {
 		document.removeEventListener('mousedown', this.dragStart, { passive : false } );
 		document.removeEventListener('mousemove', this.dragging, { passive : false } );
 		document.removeEventListener('mouseup', this.dragEnd, { passive : true } );
+		document.removeEventListener('transitionend', this.transitionEnd, { passive : true } );
 	}
 
 	render() {
@@ -270,11 +281,6 @@ export class CarouselSliderImage extends Component{
         imagesLength: PropTypes.number.isRequired ,
         image: PropTypes.object.isRequired ,
 		size: PropTypes.string.isRequired,
-		/*
-		onDragStart: PropTypes.func ,
-		onDrag: PropTypes.func ,
-		onDragEnd: PropTypes.func ,
-		*/
 	}
 
 	constructor(props) {
@@ -288,8 +294,8 @@ export class CarouselSliderImage extends Component{
 		var myImg = this.props.image ;
 		var myZindex = this.props.imagesLength - this.props.index ;
 		var styles = {
-			zIndex: myZindex,
-			left: "0px"
+			zIndex: myZindex /* ,
+			left: "0px" */
 		}
 
 		if (this.props.direction === "next"){
@@ -313,10 +319,7 @@ export class CarouselSliderImage extends Component{
 		}
 
 		return (
-			<div id={"c-" + myImg.id} className="carousel-slider-container" style={styles} draggable="true"
-			/* onTouchStart={this.props.onDragStart} onTouchMove={this.props.onDrag} onTouchEnd={this.props.onDragEnd}
-			onMouseDown={this.props.onDragStart} onMouseMove={this.props.onDrag} onMouseUp={this.props.onDragEnd} */
-			/* onDragStart={this.props.onDragStart} onDrag={this.props.onDrag} onDragEnd={this.props.onDragEnd} */ >
+			<div id={"c-" + myImg.id} className="carousel-slider-container" style={styles} draggable="true">
 			<img className="carousel-slider-image" draggable="false"
 				src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server+ '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'}
 				id={myImg.id} alt={myImg.title} title={myImg.title} />
@@ -482,8 +485,8 @@ export class CarouselHeroDetails extends Component{
 	}
 	render() {
 		return (
-			// <section id="hero-details">
-                // <div className="section-container">
+			//<section id="hero-details">
+                 <div className="section-container">
 					<div className="carousel-hero-details text-outline-halo">
 						<div className="carousel-hero-details-left">
 							<div>{this.props.index} of {this.props.length}</div>
@@ -494,8 +497,8 @@ export class CarouselHeroDetails extends Component{
 							<div>{this.props.image.datetaken}</div>
 						</div>
 					</div>
-				// </div>
-			// </section>
+				</div>
+			//</section>
 		);
 	}
 }

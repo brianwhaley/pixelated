@@ -88,7 +88,7 @@ exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
   style={
     Object {
       "WebkitTransform": "translateX(100%)",
-      "left": "",
+      "left": "0px",
       "msTransform": "translateX(100%)",
       "transform": "translateX(100%)",
       "transition": "all 1.0s ease-in 0.1s",

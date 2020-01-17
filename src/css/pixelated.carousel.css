@@ -90,6 +90,7 @@
 	bottom: 5px;
 	z-index: 1000;
 	width: 100%;
+	max-width: 1024px;
 	font-size: 11px;
 }
 
