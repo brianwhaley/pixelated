@@ -55,7 +55,7 @@ export default class Photography extends Component {
 								<div className="callout-body">
 									<div className="grid12">
 										<div className="masonry" id="photocards">
-											<SocialCards props={myState}></SocialCards>
+											<SocialCards sources={myState}></SocialCards>
 										</div>
 									</div>
 								</div>

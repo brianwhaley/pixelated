@@ -108,7 +108,7 @@ export class CarouselSlider extends Component {
 			direction: 'next'
 		};
 		this.drag = {
-			debug: false,
+			debug: true,
 			minDistance: 50,
 			dragging: false,
 			dragStyles: {},
@@ -148,7 +148,8 @@ export class CarouselSlider extends Component {
 			var myX = Math.round((e.type === 'touchstart') ? e.touches[0].pageX : e.pageX);
 			this.drag.dragging = true;
 			this.drag.dragX = myX;
-			this.drag.startX = rect.lef;
+			this.drag.startX = rect.left;
+			if (this.drag.debug) { console.log('type=' + e.type + ' dragging=' + this.drag.dragging + ' myX=' + myX + ' dragX=' + this.drag.dragX + ' startX=' + this.drag.startX); }
 			/* Add existing drag styles to array - save for later */
 			this.drag.dragStyles.transform = elem.style.transform;
 			this.drag.dragStyles.msTransform = elem.style.msTransform;
