@@ -14,26 +14,24 @@ var less = {
 =====        ADD THIS WIDGET          =====
 ======================================== */
 
+/* eslint-disable-next-line no-unused-vars, camelcase */
 var addthis_pub = 'ra-56c1fbf032086dfc';
 
 /* ========================================
 =====       GOOGLE ANALYTICS          =====
 ======================================== */
 
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-2370059-2']);
-_gaq.push(['_trackPageview']);
-_gaq.push(['_trackPageLoadTime']);
+window.dataLayer = window.dataLayer || [];
+function gtag () { window.dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'UA-2370059-2');
 
-/* eslint-disable-next-line no-unused-vars */
-var ganalytics = (function () {
-	var ga = document.createElement('script');
-	ga.type = 'text/javascript';
-	ga.async = true;
-	ga.src = (document.location.protocol === 'https:' ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(ga, s);
-})();
+var ga = document.createElement('script');
+ga.type = 'text/javascript';
+ga.async = true;
+ga.src = '//www.googletagmanager.com/gtag/js?id=UA-2370059-2';
+var scr = document.getElementsByTagName('script')[0];
+scr.parentNode.insertBefore(ga, scr);
 
 /* ========================================
 =====         GOOGLE SEARCH           =====
