@@ -18,7 +18,7 @@ Array [
         >
           <img
             alt="Mobile Menu"
-            src="images/mobile-menu2.png"
+            src="/images/mobile-menu2.png"
           />
         </div>
         <h1
@@ -81,21 +81,21 @@ Array [
         >
           <li>
             <a
-              href="./index.html"
+              href="/index.html"
             >
               Home
             </a>
           </li>
           <li>
             <a
-              href="./gallery.html?tag=portfolio-all"
+              href="/gallery.html?tag=portfolio-all"
             >
               Work Portfolio
             </a>
           </li>
           <li>
             <a
-              href="./gallery.html?tag=pixelatedviewsgallery"
+              href="/gallery.html?tag=pixelatedviewsgallery"
             >
               Photo Gallery
             </a>
@@ -109,21 +109,21 @@ Array [
           </li>
           <li>
             <a
-              href="./socialmedia.html"
+              href="/socialmedia.html"
             >
               Social Media
             </a>
           </li>
           <li>
             <a
-              href="./photography.html"
+              href="/photography.html"
             >
               Photography
             </a>
           </li>
           <li>
             <a
-              href="./recipes.html"
+              href="/recipes.html"
             >
               Recipes
             </a>

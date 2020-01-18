@@ -1,7 +1,7 @@
 var prodCssFiles = {
 	pixelated: {
 		rel: 'stylesheet/less',
-		href: 'css/pixelated.less'
+		href: '/css/pixelated.less'
 	}
 };
 

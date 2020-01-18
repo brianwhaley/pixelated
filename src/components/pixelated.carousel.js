@@ -4,6 +4,11 @@ import { getXHRData, generateURL } from './pixelated.api.js';
 import { mergeDeep } from './pixelated.functions.js';
 import '../css/pixelated.carousel.css';
 
+const divSelector = 'div.carousel-slider-container';
+const tx100 = 'translateX(100%)';
+const tx0 = 'translateX(0%)';
+const txn100 = 'translateX(-100%)';
+
 /* https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na */
 
 /* ========== CAROUSEL ========== */
@@ -31,7 +36,7 @@ export default class Carousel extends Component {
 					sort: 'date-taken-desc',
 					per_page: 500,
 					format: 'json',
-					photoSize: 'Large',
+					photoSize: 'Medium',
 					nojsoncallback: 'true' /*,
 					startPos: 0 */
 				}
@@ -138,7 +143,7 @@ export class CarouselSlider extends Component {
 			e.target.className.includes('carousel-slider-image')) {
 			e.preventDefault();
 			e.stopPropagation();
-			var elem = e.target.closest('div.carousel-slider-container');
+			var elem = e.target.closest(divSelector);
 			var rect = elem.getBoundingClientRect();
 			var myX = Math.round((e.type === 'touchstart') ? e.touches[0].pageX : e.pageX);
 			this.drag.dragging = true;
@@ -163,7 +168,7 @@ export class CarouselSlider extends Component {
 		if (this.drag.dragging) {
 			e.preventDefault();
 			e.stopPropagation();
-			var elem = e.target.closest('div.carousel-slider-container');
+			var elem = e.target.closest(divSelector);
 			var myX = Math.round((e.type === 'touchmove') ? e.touches[0].pageX : e.pageX);
 			var deltaX = Math.round(Math.abs(myX - this.drag.dragX));
 			var newLeft;
@@ -187,7 +192,7 @@ export class CarouselSlider extends Component {
 	dragEnd = (e) => {
 		if (this.drag.dragging) {
 			if (this.drag.debug) { console.log('Drag End - ' + e.type); }
-			var elem = e.target.closest('div.carousel-slider-container');
+			var elem = e.target.closest(divSelector);
 			/* Add styles back */
 			for (var property in this.drag.dragStyles) {
 				elem.style[property] = this.drag.dragStyles[property];
@@ -215,7 +220,7 @@ export class CarouselSlider extends Component {
 	transitionEnd = (e) => {
 		if (this.drag.debug) { console.log('Transition End - ' + e.type); }
 		var elem = e.target;
-		if (elem.matches('div.carousel-slider-container')) {
+		if (elem.matches(divSelector)) {
 			elem.style.left = '0px';
 		}
 	}
@@ -300,17 +305,17 @@ export class CarouselSliderImage extends Component {
 			styles.transition = 'all 1.0s ease-out 0.1s';
 		}
 		if (this.props.index > this.props.activeIndex) {
-			styles.transform = 'translateX(100%)';
-			styles.msTransform = 'translateX(100%)';
-			styles.WebkitTransform = 'translateX(100%)';
+			styles.transform = tx100;
+			styles.msTransform = tx100;
+			styles.WebkitTransform = tx100;
 		} else if (this.props.index === this.props.activeIndex) {
-			styles.transform = 'translateX(0%)';
-			styles.msTransform = 'translateX(0%)';
-			styles.WebkitTransform = 'translateX(0%)';
+			styles.transform = tx0;
+			styles.msTransform = tx0;
+			styles.WebkitTransform = tx0;
 		} else if (this.props.index < this.props.activeIndex) {
-			styles.transform = 'translateX(-100%)';
-			styles.msTransform = 'translateX(-100%)';
-			styles.WebkitTransform = 'translateX(-100%)';
+			styles.transform = txn100;
+			styles.msTransform = txn100;
+			styles.WebkitTransform = txn100;
 		}
 
 		return (
