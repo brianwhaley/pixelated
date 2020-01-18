@@ -1,5 +1,5 @@
 
-export function html2dom(str) {
+export function html2dom (str) {
 	if (window.DOMParser) {
 		var parser = new DOMParser();
 		var doc = parser.parseFromString(str, 'text/html');
@@ -10,9 +10,9 @@ export function html2dom(str) {
 	return dom;
 }
 
-export function mergeDeep() {
+export function mergeDeep () {
 	var extended = {};
-	for (var i=0; i < arguments.length; i++) {
+	for (var i = 0; i < arguments.length; i++) {
 		var thisObj = arguments[i];
 		for (var prop in thisObj) {
 			if (Object.prototype.hasOwnProperty.call(thisObj, prop)) {
@@ -27,17 +27,17 @@ export function mergeDeep() {
 	return extended;
 }
 
-export function pushNewValueToStateArray(that, oldState, newValue){
-	var myNewArray = that.state[oldState] ;
+export function pushNewValueToStateArray (that, oldState, newValue) {
+	var myNewArray = that.state[oldState];
 	myNewArray.push(newValue);
 	that.setState({ [oldState]: myNewArray });
 }
 
-export function randomBetween(min, max) {
+export function randomBetween (min, max) {
 	/* ===== RANDOM NUM BETWEEN MIN AND MAX ===== */
-    if (min < 0) {
-        return min + Math.random() * (Math.abs(min) + max);
-    } else {
-        return min + Math.random() * (max - min)
-    }
+	if (min < 0) {
+		return min + Math.random() * (Math.abs(min) + max);
+	} else {
+		return min + Math.random() * (max - min);
+	}
 }

@@ -1,8 +1,7 @@
 
 import { getXHRData, generateURL } from './pixelated.api.js';
 
-  test('Flickr data returns properly', () => {
-
+test('Flickr data returns properly', () => {
 	const flickrConfig = {
 		baseURL: 'https://api.flickr.com/services/rest/?',
 		flickrProps: {
@@ -16,21 +15,21 @@ import { getXHRData, generateURL } from './pixelated.api.js';
 			format: 'json',
 			nojsoncallback: 'true'
 		}
-	}
+	};
 
-	getXHRData( generateURL(flickrConfig.baseURL, flickrConfig.flickrProps) , function (error, response, body) {
+	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), function (error, response, body) {
+		expect(error).toBe(null);
 		expect(response.statusCode).toBe(200);
 		expect(body).toMatchSnapshot();
 		expect(body.length).toBeGreaterThan(0);
 		expect(body[0].id).toBeDefined();
 		expect(body.length).toBeGreaterThan(0);
-	})
+	});
 
-	getXHRData( generateURL('https://api.flickr.com/plorf/rest/?', flickrConfig.flickrProps) , function (error, response, body) {
+	getXHRData(generateURL('https://api.flickr.com/plorf/rest/?', flickrConfig.flickrProps), function (error, response, body) {
+		expect(error).toBe(null);
 		expect(response.statusCode).toBe(404);
-	})
-
+	});
 
 	/* errors, blank / null, */
-
-  });
+});

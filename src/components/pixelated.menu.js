@@ -7,7 +7,8 @@ export default class Menu extends Component {
 	static propTypes = {
 		menuItems: PropTypes.object.isRequired
 	}
-	constructor(props) {
+
+	constructor (props) {
 		super(props);
 		this.state = {
 			menuItems: [],
@@ -16,27 +17,27 @@ export default class Menu extends Component {
 		this.moveMenu = this.moveMenu.bind(this);
 	}
 
-	generateMenuItems() {
+	generateMenuItems () {
 		var myItems = [];
-		for ( var itemKey in this.props.menuItems ) {
-			myItems.push( <MenuItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} /> );
+		for (var itemKey in this.props.menuItems) {
+			myItems.push(<MenuItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />);
 		}
 		// this.setState({ menuItems: myItems })
-		return myItems ;
+		return myItems;
 	}
 
-	moveMenu(){
-		if (this.state.left === 0){
-			this.setState({left: -350})
+	moveMenu () {
+		if (this.state.left === 0) {
+			this.setState({ left: -350 });
 		} else {
-			this.setState({left: 0})
+			this.setState({ left: 0 });
 		}
 	}
 
-	render(){
-		var styles = { left: "0px" };
-		styles.transition = "transform 0.7s ease-in 0.0s";
-		styles.transform = "translateX(" + this.state.left + "px)";
+	render () {
+		var styles = { left: '0px' };
+		styles.transition = 'transform 0.7s ease-in 0.0s';
+		styles.transform = 'translateX(' + this.state.left + 'px)';
 		return (
 			<div className="accordion-menu-wrapper" style={styles}>
 				<div className="accordion-menu">
@@ -44,7 +45,7 @@ export default class Menu extends Component {
 						{ this.generateMenuItems() }
 					</ul>
 				</div>
-          </div>
+			</div>
 		);
 	}
 }
@@ -52,38 +53,24 @@ export default class Menu extends Component {
 /* ========== MENU ITEM ========== */
 export class MenuItem extends Component {
 	static propTypes = {
-		name: PropTypes.string.isRequired ,
+		name: PropTypes.string.isRequired,
 		href: PropTypes.string.isRequired
 	}
-	constructor(props) {
-		super(props);
-		this.state = {
-		};
-	}
 
-	render(){
+	render () {
 		return (
 			<li><a href={this.props.href}>{this.props.name}</a></li>
 		);
 	}
 }
 
-
 /* ========== MENU BUTTON ========== */
 export class MenuButton extends Component {
-	static propTypes = {
-	}
-	constructor(props) {
-		super(props);
-		this.state = {
-		};
+	slideMobilePanel () {
+		window.myMenu.moveMenu();
 	}
 
-	slideMobilePanel(){
-			window.myMenu.moveMenu();
-	}
-
-	render(){
+	render () {
 		return (
 			<div className="panel-menu-button pull-left" onClick={this.slideMobilePanel}>
 				<img src="images/mobile-menu2.png" alt="Mobile Menu"/>

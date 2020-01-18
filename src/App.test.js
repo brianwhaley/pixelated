@@ -4,11 +4,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 describe('Recipe', () => {
-
-
 	test('App snapshot renders', () => {
 		const cApp = renderer.create(<App />);
-		let tree = cApp.toJSON();
+		const tree = cApp.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 	it('renders without crashing', () => {
@@ -16,5 +14,4 @@ describe('Recipe', () => {
 		ReactDOM.render(<App />, div);
 		ReactDOM.unmountComponentAtNode(div);
 	});
-
 });
