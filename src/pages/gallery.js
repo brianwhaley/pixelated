@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Carousel from '../components/pixelated.carousel.js';
-import queryString from 'query-string';
+import QueryString from 'query-string';
 
 export default class Gallery extends Component {
 	static propTypes = {
 		location: PropTypes.object
 	}
 
+	constructor (props) {
+		super(props);
+		this.flickrProps = {
+			urlProps: {
+				tags: QueryString.parse(this.props.location.search).tag,
+				photoSize: 'Large'
+			}
+		};
+	}
+
 	render () {
-		const myParams = queryString.parse(this.props.location.search);
 		return (
-			<Carousel qsParams={myParams} type="slider"></Carousel>
+			<Carousel flickr={this.flickrProps} type="slider"></Carousel>
 		);
 	}
 }
