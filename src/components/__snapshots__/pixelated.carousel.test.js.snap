@@ -94,7 +94,7 @@ exports[`Carousel Carousel Slider Image snapshot renders 1`] = `
       "WebkitTransform": "translateX(100%)",
       "msTransform": "translateX(100%)",
       "transform": "translateX(100%)",
-      "transition": "all 1.0s ease-in 0.1s",
+      "transition": "all 1.0s ease 0.1s",
       "zIndex": 134,
     }
   }

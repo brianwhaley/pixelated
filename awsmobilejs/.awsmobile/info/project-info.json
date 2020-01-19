@@ -4,16 +4,16 @@
 	"InitializationTime": "2019-02-17-00-18-11",
 	"LastConfigurationTime": "2019-02-17-00-11-38",
 	"LastNPMInstallTime": "",
-	"FrontendLastBuildTime": "2020-01-17-23-41-16",
-	"LastPublishTime": "2020-01-17-23-41-22",
-	"BackendLastSyncTime": "2020-01-17-23-41-03",
-	"BackendLastBuildTime": "2020-01-17-23-40-58",
-	"BackendLastPushTime": "2020-01-17-23-40-59",
+	"FrontendLastBuildTime": "2020-01-18-21-28-59",
+	"LastPublishTime": "2020-01-18-21-29-04",
+	"BackendLastSyncTime": "2020-01-18-21-28-45",
+	"BackendLastBuildTime": "2020-01-18-21-28-41",
+	"BackendLastPushTime": "2020-01-18-21-28-42",
 	"BackendProjectID": "6af9bfba-5917-46a0-a72b-00a850fd8c8d",
 	"BackendProjectName": "pixelated",
 	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/6af9bfba-5917-46a0-a72b-00a850fd8c8d/build",
 	"BackendProjectCreationTime": "2019-02-17T05:17:18.367Z",
-	"BackendProjectLastUpdatedTime": "2020-01-18T04:40:59.131Z",
+	"BackendProjectLastUpdatedTime": "2020-01-19T02:28:41.843Z",
 	"Framework": "react",
-	"BackendLastSyncToDevTime": "2020-01-17-23-41-03"
+	"BackendLastSyncToDevTime": "2020-01-18-21-28-45"
 }

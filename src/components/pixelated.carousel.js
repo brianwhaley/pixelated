@@ -139,9 +139,9 @@ export class CarouselSlider extends Component {
 	dragStart = (e) => {
 		if (this.drag.debug) { console.log('Drag Start - ' + e.type); }
 		// var elem = e.currentTarget ;
-		if ((typeof e.target.classname === 'string') &&
-		(e.target.classList.values.contains('carousel-slider-container') ||
-		e.target.classList.values.contains('carousel-slider-image'))) {
+		if ((typeof e.target.className === 'string') &&
+		(e.target.className.includes('carousel-slider-container') ||
+		e.target.className.includes('carousel-slider-image'))) {
 			e.preventDefault();
 			e.stopPropagation();
 			var elem = e.target.closest(divSelector);
@@ -159,13 +159,15 @@ export class CarouselSlider extends Component {
 			this.drag.dragStyles.msTransform = elem.style.msTransform;
 			this.drag.dragStyles.WebkitTransform = elem.style.WebkitTransform;
 			this.drag.dragStyles.transition = elem.style.transition;
-			/* if(e.dataTransfer){
+
+			if (e.dataTransfer) {
 				e.dataTransfer.setData('text/plain', e.currentTarget.id);
 				var img = new Image();
 				// http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 				img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=';
 				e.dataTransfer.setDragImage(img, 0, 0);
-			} */
+			}
+
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 		}
 	}
