@@ -36,7 +36,7 @@ export default class Menu extends Component {
 
 	render () {
 		var styles = { left: '0px' };
-		styles.transition = 'transform 0.7s ease-in 0.0s';
+		styles.transition = 'transform 0.5s ease-out 0.0s';
 		styles.transform = 'translateX(' + this.state.left + 'px)';
 		return (
 			<div className="accordion-menu-wrapper" style={styles}>

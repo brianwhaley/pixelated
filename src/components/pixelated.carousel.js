@@ -108,8 +108,9 @@ export class CarouselSlider extends Component {
 			firstX: 0, /* first mouse x */
 			previousX: 0, /* prevous mouse x */
 			currentX: 0, /* current mouse x */
-			momentumX: 0, /* max diff of current and previous */
-			moveX: 0, /* mouse x distance */
+			directionX: 0,
+			momentumX: 0, /* maximum diff of current and previous */
+			moveX: 0, /* total mouse x distance */
 			newX: 0, /* new left of object */
 			minDistance: 50,
 			dragStyles: {},
@@ -133,6 +134,12 @@ export class CarouselSlider extends Component {
 		}
 	}
 
+	animate = (elem) => {
+		requestAnimationFrame(this.animate);
+		elem.style.left = (this.drag.newX + this.drag.momentumX) + 'px';
+		return true;
+	};
+
 	/* https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
 	https://www.kirupa.com/html5/drag.htm */
 
@@ -150,14 +157,9 @@ export class CarouselSlider extends Component {
 			this.drag.firstX = Math.round((this.drag.eType === 'touchstart') ? e.touches[0].pageX : e.pageX);
 			this.drag.previousX = this.drag.firstX;
 			this.drag.currentX = this.drag.firstX;
-			/* this.drag.startX = elem.style.left; */
 			this.drag.startX = elem.offsetLeft;
-			/* var rect = elem.getBoundingClientRect();
-			this.drag.startX = rect.left; */
 			/* Add existing drag styles to array - save for later */
 			this.drag.dragStyles.transform = elem.style.transform;
-			this.drag.dragStyles.msTransform = elem.style.msTransform;
-			this.drag.dragStyles.WebkitTransform = elem.style.WebkitTransform;
 			this.drag.dragStyles.transition = elem.style.transition;
 
 			if (e.dataTransfer) {
@@ -180,24 +182,18 @@ export class CarouselSlider extends Component {
 			this.drag.eType = e.type;
 			this.drag.previousX = this.drag.currentX;
 			this.drag.currentX = Math.round((this.drag.eType === 'touchmove') ? e.touches[0].pageX : e.pageX);
-			if (Math.round(Math.abs(this.drag.previousX - this.drag.currentX)) > this.drag.momentumX) {
-				this.drag.momentumX = Math.round(Math.abs(this.drag.previousX - this.drag.currentX));
-			}
+			/* Set Momentum to max value */
+			var _momentumX = Math.round(Math.abs(this.drag.previousX - this.drag.currentX));
+			this.drag.momentumX = (_momentumX > this.drag.momentumX) ? _momentumX : this.drag.momentumX;
 			this.drag.moveX = Math.round(Math.abs(this.drag.firstX - this.drag.currentX));
-			if (this.drag.firstX > this.drag.currentX) {
-				/* Right to Left */
-				this.drag.newX = this.drag.startX - this.drag.moveX;
-			} else {
-				/* Left to Right */
-				this.drag.newX = this.drag.startX + this.drag.moveX;
-			}
+			/* Right to Left or Left to Right */
+			this.drag.directionX = (this.drag.firstX > this.drag.currentX) ? -1 : 1;
+			this.drag.newX = this.drag.startX + (this.drag.moveX * this.drag.directionX);
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 			elem.style.left = this.drag.newX + 'px';
 			/* Remove styles that conflict with dragging */
 			elem.style.transition = '';
 			elem.style.transform = '';
-			elem.style.msTransform = '';
-			elem.style.WebkitTransform = '';
 		}
 	}
 
@@ -215,15 +211,18 @@ export class CarouselSlider extends Component {
 			this.drag.currentX = Math.round((this.drag.eType === 'touchend') ? e.changedTouches[0].pageX : e.pageX);
 			this.drag.moveX = Math.round(Math.abs(this.drag.firstX - this.drag.currentX));
 			var farEnough = this.drag.moveX > this.drag.minDistance;
-
 			/* Add momentum at the end of the slide */
+			elem.style.transition = 'all 0.5s ease-out 0.0s'; /* ease-in */
+			elem.style.transform = 'translateX(' + ((this.drag.newX + (this.drag.momentumX)) * this.drag.directionX) + ')';
+
+			/* var req;
 			var step = () => {
-				requestAnimationFrame(step);
-				elem.style.left = (this.drag.newX + this.drag.momentumX) + 'px';
-				return true;
+				console.log('Stepping...');
+				elem.style.left = (this.drag.newX + (this.drag.momentumX * 2)) + 'px';
+				req = requestAnimationFrame(step);
 			};
-			var myLastMove = step();
-			cancelAnimationFrame(myLastMove);
+			step();
+			cancelAnimationFrame(req); */
 
 			if (farEnough) {
 				if (this.drag.firstX > this.drag.currentX) {
@@ -234,6 +233,7 @@ export class CarouselSlider extends Component {
 					this.previousImage();
 				}
 			}
+
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 
 			this.drag.dragging = false;
@@ -351,16 +351,16 @@ export class CarouselSliderImage extends Component {
 		// }
 		if (this.props.index > this.props.activeIndex) {
 			styles.transform = tx100;
-			styles.msTransform = tx100;
-			styles.WebkitTransform = tx100;
+			/* styles.msTransform = tx100;
+			styles.WebkitTransform = tx100; */
 		} else if (this.props.index === this.props.activeIndex) {
 			styles.transform = tx0;
-			styles.msTransform = tx0;
-			styles.WebkitTransform = tx0;
+			/* styles.msTransform = tx0;
+			styles.WebkitTransform = tx0; */
 		} else if (this.props.index < this.props.activeIndex) {
 			styles.transform = txn100;
-			styles.msTransform = txn100;
-			styles.WebkitTransform = txn100;
+			/* styles.msTransform = txn100;
+			styles.WebkitTransform = txn100; */
 		}
 
 		return (
