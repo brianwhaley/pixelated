@@ -563,7 +563,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2017-02-01 00:00:00" ],
+						"start": [ "2017-02-01T00:00:00" ],
 						"end": [ "Present" ],
 						"summary": [
 							"The Design Thinking Certificate Program at Rutgers, in connection with the Rutgers Center for Innovation Education and the Rutgers Professional Science Master's Degree, focuses on teaching innovative thinking as a means of designing products and services that manage complexity, serve human needs, and are sustainable to both businesses and the people they serve. Students work in small teams to complete a project from beginning to end, with guidance from professional designers and educators. " ],
