@@ -69,7 +69,7 @@ Array [
         Object {
           "left": "0px",
           "transform": "translateX(-350px)",
-          "transition": "transform 0.7s ease-in 0.0s",
+          "transition": "transform 0.5s ease-out 0.0s",
         }
       }
     >
@@ -84,6 +84,13 @@ Array [
               href="/index.html"
             >
               Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/resume.html"
+            >
+              Resume
             </a>
           </li>
           <li>

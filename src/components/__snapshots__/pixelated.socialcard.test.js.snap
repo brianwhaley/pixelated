@@ -40,4 +40,12 @@ exports[`SocialCards SocialCard snapshot renders 1`] = `
 </div>
 `;
 
-exports[`SocialCards SocialCards snapshot renders 1`] = `null`;
+exports[`SocialCards SocialCards snapshot renders 1`] = `
+<div
+  className="spinner"
+>
+  <div>
+    Loading...
+  </div>
+</div>
+`;

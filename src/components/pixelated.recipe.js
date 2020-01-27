@@ -115,7 +115,7 @@ export class Recipe extends Component {
     		<li key={iKey} className="p-ingredient">{ingredient}</li>
     	);
     	var instructions = recipe.instructions.map((instruction, iKey) =>
-    		<li key={iKey}className="p-instruction">{instruction}</li>
+    		<li key={iKey} className="p-instruction">{instruction}</li>
     	);
     	var recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null);
     	var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: 'none' } : { display: 'initial' });

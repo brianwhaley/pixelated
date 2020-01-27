@@ -8,6 +8,7 @@ import Search from './pages/search';
 import Footer from './pages/footer';
 
 import Home from './pages/home';
+import MyResume from './pages/resume';
 import Gallery from './pages/gallery';
 import SocialMedia from './pages/socialmedia';
 import Photography from './pages/photography';
@@ -43,6 +44,7 @@ export default class App extends Component {
 						<Switch>
 							<Route exact path='/' component={Home}/>
 							<Route path='/index.html' component={Home}/>
+							<Route path='/resume.html' component={MyResume}/>
 							<Route path='/gallery.html' component={Gallery}/>
 							<Route path='/socialmedia.html' component={SocialMedia}/>
 							<Route path='/photography.html' component={Photography}/>

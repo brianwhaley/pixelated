@@ -201,41 +201,31 @@ export class CarouselSlider extends Component {
 		if (this.drag.dragging) {
 			if (this.drag.debug) { console.log('Drag End - ' + e.type); }
 			var elem = e.target.closest(divSelector);
+
 			/* Add styles back */
 			for (var property in this.drag.dragStyles) {
 				elem.style[property] = this.drag.dragStyles[property];
 			}
+
 			/* Determine drag distance */
 			this.drag.eType = e.type;
 			this.drag.previousX = this.drag.currentX;
 			this.drag.currentX = Math.round((this.drag.eType === 'touchend') ? e.changedTouches[0].pageX : e.pageX);
 			this.drag.moveX = Math.round(Math.abs(this.drag.firstX - this.drag.currentX));
 			var farEnough = this.drag.moveX > this.drag.minDistance;
+
 			/* Add momentum at the end of the slide */
 			elem.style.transition = 'all 0.5s ease-out 0.0s'; /* ease-in */
 			elem.style.transform = 'translateX(' + ((this.drag.newX + (this.drag.momentumX)) * this.drag.directionX) + ')';
 
-			/* var req;
-			var step = () => {
-				console.log('Stepping...');
-				elem.style.left = (this.drag.newX + (this.drag.momentumX * 2)) + 'px';
-				req = requestAnimationFrame(step);
-			};
-			step();
-			cancelAnimationFrame(req); */
-
-			if (farEnough) {
-				if (this.drag.firstX > this.drag.currentX) {
-					/* Right to Left is Next */
-					this.nextImage();
-				} else {
-					/* Left to Right is Previous */
-					this.previousImage();
-				}
+			/* roll in the next / previous image */
+			if (farEnough && this.drag.directionX !== 0) {
+				(this.drag.directionX < 0) ? this.nextImage() : this.previousImage();
 			}
 
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 
+			/* Reset drag variables */
 			this.drag.dragging = false;
 			this.drag.eType = null;
 			this.drag.startX = 0;

@@ -5,6 +5,7 @@ export default class Nav extends Component {
 	render () {
 		const menuItems = {
 			Home: '/index.html',
+			Resume: '/resume.html',
 			'Work Portfolio': '/gallery.html?tag=portfolio-all',
 			'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
 			'Pixelated Views Blog': 'https://blog.pixelated.tech',

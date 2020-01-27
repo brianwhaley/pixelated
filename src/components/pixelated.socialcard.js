@@ -7,32 +7,6 @@ import '../css/pixelated.socialcard.css';
 NOTE - FourSquare RSS stopped working March 2019
 ========== */
 
-/* ========== SOCIALCARD ========== */
-export class SocialCard extends Component {
-    static propTypes = {
-    	iconSrc: PropTypes.string.isRequired,
-    	iconSrcAlt: PropTypes.string.isRequired,
-    	card: PropTypes.object.isRequired
-    }
-
-    render () {
-    	return (
-    		<div className="masonry-item" key={this.props.card.guid}>
-    			<div className="card">
-    				<div className="cardTitle">
-    					<a href={this.props.card.link} target="_blank" rel="noopener noreferrer">
-    						<img className="cardIcon" src={this.props.iconSrc} alt={this.props.iconSrcAlt} />
-    						{this.props.card.title}
-    					</a>
-    				</div>
-    				<div className="cardBody" dangerouslySetInnerHTML={{ __html: this.props.card.content }} />
-    				<div className="cardDate">{this.props.card.pubDate}</div>
-    			</div>
-    		</div>
-    	);
-    }
-}
-
 /* ========== SOCIALCARDS ========== */
 export default class SocialCards extends Component {
     static propTypes = {
@@ -43,6 +17,7 @@ export default class SocialCards extends Component {
     	super(props);
     	this.debug = false;
     	this.state = {
+    		loading: true,
     		targetID: '#social',
     		myPromises: [],
     		promiseReady: false,
@@ -252,11 +227,52 @@ export default class SocialCards extends Component {
 
     			this.setState({ cardCount: prop });
     		}
-    		this.setState({ promiseReady: true });
+    		this.setState({ loading: false, promiseReady: true });
     	});
     }
 
     render () {
-    	return this.state.mySocialCards;
+    	if (this.state.loading) {
+    		return (<Spinner />);
+    	} else {
+    		return (this.state.mySocialCards);
+    	}
     }
+}
+
+/* ========== SOCIALCARD ========== */
+export class SocialCard extends Component {
+    static propTypes = {
+    	iconSrc: PropTypes.string.isRequired,
+    	iconSrcAlt: PropTypes.string.isRequired,
+    	card: PropTypes.object.isRequired
+    }
+
+    render () {
+    	return (
+    		<div className="masonry-item" key={this.props.card.guid}>
+    			<div className="card">
+    				<div className="cardTitle">
+    					<a href={this.props.card.link} target="_blank" rel="noopener noreferrer">
+    						<img className="cardIcon" src={this.props.iconSrc} alt={this.props.iconSrcAlt} />
+    						{this.props.card.title}
+    					</a>
+    				</div>
+    				<div className="cardBody" dangerouslySetInnerHTML={{ __html: this.props.card.content }} />
+    				<div className="cardDate">{this.props.card.pubDate}</div>
+    			</div>
+    		</div>
+    	);
+    }
+}
+
+/* ========== SPINNER ========== */
+export class Spinner extends Component {
+	render () {
+		return (
+			<div className="spinner">
+				<div>Loading...</div>
+			</div>
+		);
+	}
 }

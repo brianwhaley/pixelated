@@ -112,3 +112,7 @@
 	width: 100%;
 }
 
+.spinner {
+    column-span: all;
+	text-align: center;
+}
