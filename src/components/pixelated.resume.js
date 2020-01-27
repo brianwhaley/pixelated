@@ -59,6 +59,7 @@ export class ResumeEducation extends Component {
 			var ed = myEducation[iKey];
 			var myEdLocation = ed.properties.location[0].properties;
 			var myElem = <li key={iKey}>
+				<span className="dt-end">{mmYYYY(ed.properties.end)} - </span>
 				<span className="p-name">{ed.properties.name}, </span>
 				<span className="p-org">{myEdLocation.org}, </span>
 				<span className="p-locality">{myEdLocation.locality}, </span>
@@ -172,6 +173,7 @@ export class ResumeCertifications extends Component {
 		for (var iKey in myCerts) {
 			var cert = myCerts[iKey];
 			var myElem = <li key={iKey}>
+				<span className="dt-start">{mmYYYY(cert.properties.start)} - </span>
 				<span className="p-name">{cert.properties.name}, </span>
 				<span className="p-location">{cert.properties.location}</span>
 			</li>;

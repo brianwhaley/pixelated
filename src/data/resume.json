@@ -87,7 +87,7 @@
 						"name": [ "HS Diploma" ],
 						"summary": [ ""],
 						"start": [ "" ],
-						"end": [ "1996-05-16" ],
+						"end": [ "1991-06-09" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
@@ -649,7 +649,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Professional (CSP) #393406" ],
-					  "start": [ "" ],
+					  "start": [ "2014-12-31 00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -659,7 +659,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Developer (CSD) #33409137" ],
-					  "start": [ "" ],
+					  "start": [ "2011-05-18 00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -669,7 +669,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Master (CSM) #143482" ],
-					  "start": [ "" ],
+					  "start": [ "2011-05-13 00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -679,9 +679,69 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Project Management Professional (PMP) #302172" ],
-					  "start": [ "" ],
+					  "start": [ "2005-09-22 00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Project Management Institute, Newton Square PA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "CLP Domino R5 Principal Application Developer (PCLP)" ],
+					  "start": [ "2000-02-07 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "Notes R5 Application Developer, Lotus Development (CLP)" ],
+					  "start": [ "2000-02-01 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "CLP Notes Principal Application Developer R4 (PCLP)" ],
+					  "start": [ "2000-01-25 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "Notes Application Developer R4 (CLP)" ],
+					  "start": [ "1999-12-30 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "Notes R4 System Administration 1 (SA1)" ],
+					  "start": [ "1999-12-30 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
+					  "summary": [ ""]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+					  "name": [ "Notes R4 Application Development 1 (AD1)" ],
+					  "start": [ "1999-12-16 00:00:00" ],
+					  "end": [ "" ],
+					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
 					}
 				}
