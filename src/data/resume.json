@@ -43,7 +43,7 @@
 						"name": [ "Masters of Science - Information Systems (MSIS)" ],
 						"summary": [ ""],
 						"start": [ "" ],
-						"end": [ "2002-05-23" ],
+						"end": [ "2002-05-23T00:00:00" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
@@ -65,7 +65,7 @@
 						"name": [ "Bachelor of Arts (BA) - Double Major: Visual Art and Art History" ],
 						"summary": [ ""],
 						"start": [ "" ],
-						"end": [ "1996-05-16" ],
+						"end": [ "1996-05-16T00:00:00" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
@@ -87,7 +87,7 @@
 						"name": [ "HS Diploma" ],
 						"summary": [ ""],
 						"start": [ "" ],
-						"end": [ "1991-06-09" ],
+						"end": [ "1991-06-09T00:00:00" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
@@ -136,7 +136,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2018-09-24 09:00:00" ],
+						"start": [ "2018-09-24T09:00:00" ],
 						"end": [ "Present" ],
 						"summary": [ "" ],
 						"description": [ "" ],
@@ -161,8 +161,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2018-02-05 09:00:00" ],
-						"end": [ "2018-03-09 17:00:00" ],
+						"start": [ "2018-02-05T09:00:00" ],
+						"end": [ "2018-03-09T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -186,8 +186,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2017-10-16 09:00:00" ],
-						"end": [ "2017-12-18 17:00:00" ],
+						"start": [ "2017-10-16T09:00:00" ],
+						"end": [ "2017-12-18T17:00:00" ],
 						"summary": [ ""],
 						"description": [ "" ],
 						"location": [{
@@ -211,8 +211,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2014-09-29 09:00:00" ],
-						"end": [ "2017-09-29 17:00:00" ],
+						"start": [ "2014-09-29T09:00:00" ],
+						"end": [ "2017-09-29T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -236,8 +236,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2012-08-13 09:00:00" ],
-						"end": [ "2014-09-19 17:00:00" ],
+						"start": [ "2012-08-13T09:00:00" ],
+						"end": [ "2014-09-19T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -261,8 +261,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2010-03-29 09:00:00" ],
-						"end": [ "2012-08-10 17:00:00" ],
+						"start": [ "2010-03-29T09:00:00" ],
+						"end": [ "2012-08-10T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -286,8 +286,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2008-10-01 09:00:00" ],
-						"end": [ "2010-03-26 17:00:00" ],
+						"start": [ "2008-10-01T09:00:00" ],
+						"end": [ "2010-03-26T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -311,8 +311,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2005-09-01 09:00:00" ],
-						"end": [ "2008-10-01 17:00:00" ],
+						"start": [ "2005-09-01T09:00:00" ],
+						"end": [ "2008-10-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -336,8 +336,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2001-06-27 09:00:00" ],
-						"end": [ "2005-09-01 17:00:00" ],
+						"start": [ "2001-06-27T09:00:00" ],
+						"end": [ "2005-09-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -361,8 +361,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2000-04-17 09:00:00" ],
-						"end": [ "2001-06-26 17:00:00" ],
+						"start": [ "2000-04-17T09:00:00" ],
+						"end": [ "2001-06-26T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -386,8 +386,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1999-09-01 09:00:00" ],
-						"end": [ "2000-04-14 17:00:00" ],
+						"start": [ "1999-09-01T09:00:00" ],
+						"end": [ "2000-04-14T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -411,8 +411,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1999-04-01 09:00:00" ],
-						"end": [ "2000-09-14 17:00:00" ],
+						"start": [ "1999-04-01T09:00:00" ],
+						"end": [ "2000-09-14T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -436,8 +436,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1998-10-07 09:00:00" ],
-						"end": [ "1999-04-01 17:00:00" ],
+						"start": [ "1998-10-07T09:00:00" ],
+						"end": [ "1999-04-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -461,8 +461,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1997-11-01 09:00:00" ],
-						"end": [ "1998-10-06 17:00:00" ],
+						"start": [ "1997-11-01T09:00:00" ],
+						"end": [ "1998-10-06T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -486,8 +486,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1996-07-01 09:00:00" ],
-						"end": [ "1997-11-01 17:00:00" ],
+						"start": [ "1996-07-01T09:00:00" ],
+						"end": [ "1997-11-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -511,8 +511,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1995-08-01 09:00:00" ],
-						"end": [ "1996-11-01 17:00:00" ],
+						"start": [ "1995-08-01T09:00:00" ],
+						"end": [ "1996-11-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -536,8 +536,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1992-01-01 09:00:00" ],
-						"end": [ "1996-08-01 17:00:00" ],
+						"start": [ "1992-01-01T09:00:00" ],
+						"end": [ "1996-08-01T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -563,7 +563,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2017-02" ],
+						"start": [ "2017-02-01 00:00:00" ],
 						"end": [ "Present" ],
 						"summary": [
 							"The Design Thinking Certificate Program at Rutgers, in connection with the Rutgers Center for Innovation Education and the Rutgers Professional Science Master's Degree, focuses on teaching innovative thinking as a means of designing products and services that manage complexity, serve human needs, and are sustainable to both businesses and the people they serve. Students work in small teams to complete a project from beginning to end, with guidance from professional designers and educators. " ],
@@ -594,8 +594,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2017-02-01 00:00:00" ],
-						"end": [ "2017-12-01 00:00:00" ],
+						"start": [ "2017-02-01T00:00:00" ],
+						"end": [ "2017-12-01T00:00:00" ],
 						"summary": [ "" ],
 						"description": [ "Designed, built, and deployed bunniesunited.org web site and social media presence",
 						"Used hosted WordPress solution to manage content and design elements",
@@ -622,8 +622,8 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "1994-01-01 00:00:00" ],
-						"end": [ "1994-12-31 00:00:00" ],
+						"start": [ "1994-01-01T00:00:00" ],
+						"end": [ "1994-12-31T00:00:00" ],
 						"summary": [ "Development of b&w/color/ciba printing, studio photography and lighting, aerial photography, copy work, 35mm, medium and large formats." ],
 						"description": [ "" ],
 						"location": [{
@@ -649,7 +649,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Professional (CSP) #393406" ],
-					  "start": [ "2014-12-31 00:00:00" ],
+					  "start": [ "2014-12-31T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -659,7 +659,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Developer (CSD) #33409137" ],
-					  "start": [ "2011-05-18 00:00:00" ],
+					  "start": [ "2011-05-18T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -669,7 +669,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Certified Scrum Master (CSM) #143482" ],
-					  "start": [ "2011-05-13 00:00:00" ],
+					  "start": [ "2011-05-13T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Scrum Alliance, Indianapolis IN" ],
 					  "summary": [ ""]
@@ -679,7 +679,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Project Management Professional (PMP) #302172" ],
-					  "start": [ "2005-09-22 00:00:00" ],
+					  "start": [ "2005-09-22T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Project Management Institute, Newton Square PA" ],
 					  "summary": [ ""]
@@ -689,7 +689,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "CLP Domino R5 Principal Application Developer (PCLP)" ],
-					  "start": [ "2000-02-07 00:00:00" ],
+					  "start": [ "2000-02-07T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
@@ -699,7 +699,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Notes R5 Application Developer, Lotus Development (CLP)" ],
-					  "start": [ "2000-02-01 00:00:00" ],
+					  "start": [ "2000-02-01T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
@@ -709,7 +709,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "CLP Notes Principal Application Developer R4 (PCLP)" ],
-					  "start": [ "2000-01-25 00:00:00" ],
+					  "start": [ "2000-01-25T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
@@ -719,7 +719,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Notes Application Developer R4 (CLP)" ],
-					  "start": [ "1999-12-30 00:00:00" ],
+					  "start": [ "1999-12-30T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
@@ -729,7 +729,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Notes R4 System Administration 1 (SA1)" ],
-					  "start": [ "1999-12-30 00:00:00" ],
+					  "start": [ "1999-12-30T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]
@@ -739,7 +739,7 @@
 					"type": [ "h-event" ],
 					"properties": {
 					  "name": [ "Notes R4 Application Development 1 (AD1)" ],
-					  "start": [ "1999-12-16 00:00:00" ],
+					  "start": [ "1999-12-16T00:00:00" ],
 					  "end": [ "" ],
 					  "location": [ "Lotus Development, Cambridge MA" ],
 					  "summary": [ ""]

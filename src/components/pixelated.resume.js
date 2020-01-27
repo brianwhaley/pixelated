@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 function pad (s) { return (s < 10) ? '0' + s : s; }
 function mmYYYY (dt) {
 	var d = new Date(dt);
-	return isNaN(d.getMonth()) ? dt : [pad(d.getMonth() + 1), d.getFullYear()].join('/');
+	// alert(d);
+	return Number.isNaN(d.getMonth()) ? dt : [pad(d.getMonth() + 1), d.getFullYear()].join('/');
 }
 
 export class ResumeName extends Component {
@@ -197,9 +198,9 @@ export class ResumeSkills extends Component {
 		var myElems = [];
 		var mySkills = this.props.data.items[0].properties.skills[0];
 		for (var skill in mySkills) {
-			var myElem = <h3 key={'c-' + skill} className="p-skill-category">{skill}</h3>;
+			var myElem = <h3 key={'c-' + skill} className="p-skill-category">{skill} : </h3>;
 			myElems.push(myElem);
-			var myElem2 = <span key={'s-' + skill} className="p-skill">{mySkills[skill]}</span>;
+			var myElem2 = <span key={'s-' + skill} className="p-skill">{mySkills[skill]}<br /></span>;
 			myElems.push(myElem2);
 		}
 		return (

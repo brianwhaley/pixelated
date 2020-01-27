@@ -52,7 +52,9 @@
 .p-education {}
 .p-experience {}
 .p-skills {}
-.p-skill-category {}
+.p-skill-category {
+	display: inline !important;
+}
 .p-skill {}
 .p-affiliation {}
 
