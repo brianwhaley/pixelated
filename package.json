@@ -6,12 +6,26 @@
     "node": ">=4"
   },
   "dependencies": {
+    "@aws-amplify/analytics": "^2.2.8",
+    "@aws-amplify/api": "^2.2.1",
+    "@aws-amplify/auth": "^2.1.8",
+    "@aws-amplify/core": "^2.3.0",
+    "@aws-amplify/interactions": "^2.1.8",
+    "@aws-amplify/pubsub": "^3.0.8",
+    "@aws-amplify/storage": "^2.2.3",
+    "@aws-amplify/ui": "^2.0.2",
+    "@aws-amplify/xr": "^1.1.5",
+    "@react-native-community/netinfo": "^5.5.0",
     "aws-amplify": "^3.0.8",
     "aws-amplify-react": "^4.1.7",
+    "core-js": "^3.6.5",
+    "install-peerdeps": "^2.0.2",
     "jquery": "^3.4.1",
+    "npm-install-all": "^1.1.21",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-native": ">=0.59",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "react-test-renderer": "^16.12.0"
@@ -20,7 +34,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "autoprefixer": "^9.7.6",
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.26.7",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
@@ -50,7 +64,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^3.1.6",
     "jest": "^24.8.0",
-    "yargs": "13.2.4"
+    "yargs": "^13.3.2"
   },
   "devDependencies comments": {
     "mocha": "^6.2.2"
