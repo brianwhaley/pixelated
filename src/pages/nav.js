@@ -10,6 +10,7 @@ export default class Nav extends Component {
 			'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
 			'Pixelated Views Blog': 'https://blog.pixelated.tech',
 			'Social Media': '/socialmedia.html',
+			Stkr: '/stkr.html',
 			Photography: '/photography.html',
 			Recipes: '/recipes.html'
 		};
