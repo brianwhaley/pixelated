@@ -1,20 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Nav from './pages/nav';
-import Header from './pages/header';
-import Hero from './pages/hero';
-import Search from './pages/search';
-import Footer from './pages/footer';
+import Nav from "./pages/nav";
+import Header from "./pages/header";
+import Hero from "./pages/hero";
+import Search from "./pages/search";
+import Footer from "./pages/footer";
 
-import Home from './pages/home';
-import MyResume from './pages/resume';
-import Gallery from './pages/gallery';
-import SocialMedia from './pages/socialmedia';
-import Stkr from './pages/stkr';
-import Photography from './pages/photography';
-import Recipes from './pages/recipes';
-import NotFound from './pages/notfound';
+import Home from "./pages/home";
+import MyResume from "./pages/resume";
+import Gallery from "./pages/gallery";
+import SocialMedia from "./pages/socialmedia";
+import Stkr from "./pages/stkr";
+import Photography from "./pages/photography";
+import Recipes from "./pages/recipes";
+import NotFound from "./pages/notfound";
 
 export default class App extends Component {
 	render () {

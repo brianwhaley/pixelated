@@ -1,12 +1,12 @@
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export function getXHRData (apiURL, myCallback) {
 	getXHRData.propTypes = {
 		apiURL: PropTypes.string.isRequired
 	};
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', apiURL, true);
+	xhr.open("GET", apiURL, true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
 			var response = JSON.parse(xhr.responseText);
@@ -24,7 +24,7 @@ export function generateURL (baseURL, props) {
 	var url = baseURL;
 	for (var prop in props) {
 		if (props) {
-			url += '&' + prop + '=' + props[prop];
+			url += "&" + prop + "=" + props[prop];
 		}
 	}
 	return url;

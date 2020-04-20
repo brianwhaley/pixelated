@@ -5,9 +5,9 @@
 
 /* eslint-disable-next-line no-unused-vars */
 var less = {
-	env: 'development', // or "production"
+	env: "development", // or "production"
 	async: false, // load imports async
-	dumpLineNumbers: 'all' // or "mediaQuery" or "all"
+	dumpLineNumbers: "all" // or "mediaQuery" or "all"
 };
 
 /* ========================================
@@ -15,7 +15,7 @@ var less = {
 ======================================== */
 
 /* eslint-disable-next-line no-unused-vars, camelcase */
-var addthis_pub = 'ra-56c1fbf032086dfc';
+var addthis_pub = "ra-56c1fbf032086dfc";
 
 /* ========================================
 =====       GOOGLE ANALYTICS          =====
@@ -23,14 +23,14 @@ var addthis_pub = 'ra-56c1fbf032086dfc';
 
 window.dataLayer = window.dataLayer || [];
 function gtag () { window.dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'UA-2370059-2');
+gtag("js", new Date());
+gtag("config", "UA-2370059-2");
 
-var ga = document.createElement('script');
-ga.type = 'text/javascript';
+var ga = document.createElement("script");
+ga.type = "text/javascript";
 ga.async = true;
-ga.src = '//www.googletagmanager.com/gtag/js?id=UA-2370059-2';
-var scr = document.getElementsByTagName('script')[0];
+ga.src = "//www.googletagmanager.com/gtag/js?id=UA-2370059-2";
+var scr = document.getElementsByTagName("script")[0];
 scr.parentNode.insertBefore(ga, scr);
 
 /* ========================================
@@ -39,12 +39,12 @@ scr.parentNode.insertBefore(ga, scr);
 
 /* eslint-disable-next-line no-unused-vars */
 var gsearch = (function () {
-	var cx = '009500278966481927899:bcssp73qony';
-	var gcse = document.createElement('script');
-	gcse.type = 'text/javascript';
+	var cx = "009500278966481927899:bcssp73qony";
+	var gcse = document.createElement("script");
+	gcse.type = "text/javascript";
 	gcse.async = true;
-	gcse.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
-	var s = document.getElementsByTagName('script')[0];
+	gcse.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//cse.google.com/cse.js?cx=" + cx;
+	var s = document.getElementsByTagName("script")[0];
 	s.parentNode.insertBefore(gcse, s);
 })();
 
@@ -53,7 +53,7 @@ var gsearch = (function () {
 ======================================== */
 
 var url = window.location.pathname;
-var filename = url.substring(url.lastIndexOf('/') + 1);
-var pagename = filename.substring(0, filename.lastIndexOf('.'));
-if (pagename === '') { pagename = 'index'; } // HOME PAGE FIX
-console.log('pagename = ' + pagename);
+var filename = url.substring(url.lastIndexOf("/") + 1);
+var pagename = filename.substring(0, filename.lastIndexOf("."));
+if (pagename === "") { pagename = "index"; } // HOME PAGE FIX
+console.log("pagename = " + pagename);

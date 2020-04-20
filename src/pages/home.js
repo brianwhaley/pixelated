@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import Callout, { CalloutHeader, CalloutRoundTiny } from '../components/pixelated.callout.js';
+import React, { Component, Fragment } from "react";
+import Callout, { CalloutHeader, CalloutRoundTiny } from "../components/pixelated.callout.js";
 
 export default class Home extends Component {
 	render () {

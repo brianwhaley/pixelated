@@ -2,10 +2,10 @@
 export function html2dom (str) {
 	if (window.DOMParser) {
 		var parser = new DOMParser();
-		var doc = parser.parseFromString(str, 'text/html');
+		var doc = parser.parseFromString(str, "text/html");
 		return doc.body.firstChild;
 	}
-	var dom = document.createElement('div');
+	var dom = document.createElement("div");
 	dom.innerHTML = str;
 	return dom;
 }
@@ -16,7 +16,7 @@ export function mergeDeep () {
 		var thisObj = arguments[i];
 		for (var prop in thisObj) {
 			if (Object.prototype.hasOwnProperty.call(thisObj, prop)) {
-				if (Object.prototype.toString.call(thisObj[prop]) === '[object Object]') {
+				if (Object.prototype.toString.call(thisObj[prop]) === "[object Object]") {
 					extended[prop] = mergeDeep(true, extended[prop], thisObj[prop]);
 				} else {
 					extended[prop] = thisObj[prop];

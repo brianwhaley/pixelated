@@ -1,19 +1,19 @@
 
-import { getXHRData, generateURL } from './pixelated.api.js';
+import { getXHRData, generateURL } from "./pixelated.api.js";
 
-test('Flickr data returns properly', () => {
+test("Flickr data returns properly", () => {
 	const flickrConfig = {
-		baseURL: 'https://api.flickr.com/services/rest/?',
+		baseURL: "https://api.flickr.com/services/rest/?",
 		flickrProps: {
-			method: 'flickr.photos.search',
-			api_key: '882cab5548d53c9e6b5fb24d59cc321d',
-			user_id: '15473210@N04',
-			tags: 'pixelatedviewsgallery',
-			extras: 'date_taken,description,owner_name',
-			sort: 'date-taken-desc',
+			method: "flickr.photos.search",
+			api_key: "882cab5548d53c9e6b5fb24d59cc321d",
+			user_id: "15473210@N04",
+			tags: "pixelatedviewsgallery",
+			extras: "date_taken,description,owner_name",
+			sort: "date-taken-desc",
 			per_page: 500,
-			format: 'json',
-			nojsoncallback: 'true'
+			format: "json",
+			nojsoncallback: "true"
 		}
 	};
 
@@ -26,7 +26,7 @@ test('Flickr data returns properly', () => {
 		expect(body.length).toBeGreaterThan(0);
 	});
 
-	getXHRData(generateURL('https://api.flickr.com/plorf/rest/?', flickrConfig.flickrProps), function (error, response, body) {
+	getXHRData(generateURL("https://api.flickr.com/plorf/rest/?", flickrConfig.flickrProps), function (error, response, body) {
 		expect(error).toBe(null);
 		expect(response.statusCode).toBe(404);
 	});

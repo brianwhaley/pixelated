@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Search extends Component {
 	render () {
 		return (
-			<div className="section-container" dangerouslySetInnerHTML={{ __html: '<gcse:search></gcse:search>' }}>
+			<div className="section-container" dangerouslySetInnerHTML={{ __html: "<gcse:search></gcse:search>" }}>
 			</div>
 		);
 	}

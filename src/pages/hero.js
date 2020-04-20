@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Carousel from '../components/pixelated.carousel.js';
+import React, { Component } from "react";
+import Carousel from "../components/pixelated.carousel.js";
 
 export default class Hero extends Component {
 	render () {

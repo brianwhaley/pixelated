@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { CalloutHeader, CalloutRoundSm } from '../components/pixelated.callout.js';
-import SocialCards from '../components/pixelated.socialcard.js';
+import React, { Component, Fragment } from "react";
+import { CalloutHeader, CalloutRoundSm } from "../components/pixelated.callout.js";
+import SocialCards from "../components/pixelated.socialcard.js";
 
 export default class Photography extends Component {
 	render () {
 		const myState = {
-			SOOpx: { url: 'https://500px.com/brianwhaley/rss' },
-			shutterfly: { url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley' },
-			twitter: { url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews' }
+			SOOpx: { url: "https://500px.com/brianwhaley/rss" },
+			shutterfly: { url: "https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley" },
+			twitter: { url: "https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews" }
 		};
 
 		return (

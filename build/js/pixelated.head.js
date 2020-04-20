@@ -1,7 +1,7 @@
 var prodCssFiles = {
 	pixelated: {
-		rel: 'stylesheet/less',
-		href: '/css/pixelated.less'
+		rel: "stylesheet/less",
+		href: "/css/pixelated.less"
 	}
 };
 
@@ -10,13 +10,13 @@ var prodCssFiles = {
 
 var prodScriptFiles = {
 	addthis: {
-		src: '//s7.addthis.com/js/300/addthis_widget.js'
+		src: "//s7.addthis.com/js/300/addthis_widget.js"
 	},
 	twitter: {
-		src: '//platform.twitter.com/widgets.js'
+		src: "//platform.twitter.com/widgets.js"
 	},
 	pixelated: {
-		src: '/js/pixelated.js'
+		src: "/js/pixelated.js"
 	}
 };
 
@@ -24,19 +24,19 @@ var prodScriptFiles = {
 }; */
 
 function loadCss (cssFile) {
-	var link = document.createElement('link');
-	link.type = 'text/css';
+	var link = document.createElement("link");
+	link.type = "text/css";
 	link.rel = cssFile.rel;
 	link.href = cssFile.href;
-	document.getElementsByTagName('head')[0].appendChild(link);
+	document.getElementsByTagName("head")[0].appendChild(link);
 }
 
 function loadScript (scriptFile) {
-	var js = document.createElement('script');
+	var js = document.createElement("script");
 	js.src = scriptFile.src;
-	js.type = 'text/javascript';
-	if (scriptFile.datamain) { js.setAttribute('data-main', scriptFile.datamain); }
-	var first = document.getElementsByTagName('script')[0];
+	js.type = "text/javascript";
+	if (scriptFile.datamain) { js.setAttribute("data-main", scriptFile.datamain); }
+	var first = document.getElementsByTagName("script")[0];
 	first.parentNode.insertBefore(js, first);
 }
 

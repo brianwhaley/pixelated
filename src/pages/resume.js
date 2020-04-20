@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from '../components/pixelated.resume.js';
-import '../css/pixelated.resume.css';
-import ResumeData from '../data/resume.json';
+import React, { Component } from "react";
+import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from "../components/pixelated.resume.js";
+import "../css/pixelated.resume.css";
+import ResumeData from "../data/resume.json";
 
 export default class MyResume extends Component {
 	render () {
