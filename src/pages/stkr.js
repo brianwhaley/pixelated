@@ -32,7 +32,7 @@ export default class Stkr extends Component {
 						<div className = "row">
 							<div className="callout-body grid12">
 
-								<div className="grid4 pad">
+								<div className="grid4 bigpad">
 									<CalloutHeader title="Step 1: Upload" />
                                     Drag and drop a new sticker to the Stkr App direct message (or add Stkr to a channel) 
                                     and you will have an opportunity to upload each JPG or PNG to reuse as a sticker.  
@@ -42,7 +42,7 @@ export default class Stkr extends Component {
 									<img src="/images/stkr/stkr_screenshot_03.png" alt="There is a maximum of 50 per workspace" />
 								</div>
 
-								<div className="grid4 pad">
+								<div className="grid4 bigpad">
 									<CalloutHeader title="Step 2: Share" />
                                     Type /stkr in your channel to share a sticker that you or one of your teammates have uploaded.<br /><br />
 									<img src="/images/stkr/stkr_screenshot_04.png" alt="Stkr slash command" /><br /><br />
@@ -50,7 +50,7 @@ export default class Stkr extends Component {
 									<img src="/images/stkr/stkr_screenshot_06.png" alt="Share the image selected" />
 								</div>
 
-								<div className="grid4 pad">
+								<div className="grid4 bigpad">
 									<CalloutHeader title="Step 3: Delete" />
                                     Type /stkrdelete to remove any stickers if you reach 50 or if something was inadvertently uploaded.<br /><br />
 									<img src="/images/stkr/stkr_screenshot_07.png" alt="Stkrdelete slash command" /><br /><br />
@@ -63,12 +63,24 @@ export default class Stkr extends Component {
 					</div>
 				</section>
 
-				<section className="section-alt" id="social-section">
+				<section className="section-alt" id="cust-support-section">
+					<div className="section-container">
+						<div className="row">
+							<CalloutHeader title="Customer Support" />
+							<div className="callout-body grid12">
+								For Customer Support, please contact <a href="mailto:brian.whaley@gmail.com?subject=Stkr Customer Support">brian.whaley@gmail.com</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Slack Workspace</a>.
+								<br/>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section className="section" id="social-section">
 					<div className="section-container">
 						<div className="row">
 							<CalloutHeader title="Terms of Service" />
 							<div className="callout-body grid12">
-                            Terms of Service Goes Here
+                            	Terms of Service Goes Here
 								<br/>
 							</div>
 						</div>

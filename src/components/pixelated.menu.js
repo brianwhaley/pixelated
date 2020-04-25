@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import '../css/pixelated.menu.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "../css/pixelated.menu.css";
 
 /* ========== MENU ========== */
 export default class Menu extends Component {
@@ -35,9 +35,9 @@ export default class Menu extends Component {
 	}
 
 	render () {
-		var styles = { left: '0px' };
-		styles.transition = 'transform 0.5s ease-out 0.0s';
-		styles.transform = 'translateX(' + this.state.left + 'px)';
+		var styles = { left: "0px" };
+		styles.transition = "transform 0.5s ease-out 0.0s";
+		styles.transform = "translateX(" + this.state.left + "px)";
 		return (
 			<div className="accordion-menu-wrapper" style={styles}>
 				<div className="accordion-menu">

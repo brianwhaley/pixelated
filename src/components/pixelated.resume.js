@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 
 /* function isDate (dt) { return Object.prototype.toString.call(dt) === '[object Date]'; } */
-function pad (s) { return (s < 10) ? '0' + s : s; }
+function pad (s) { return (s < 10) ? "0" + s : s; }
 function mmYYYY (dt) {
 	var d = new Date(dt);
 	// alert(d);
-	return Number.isNaN(d.getMonth()) ? dt : [pad(d.getMonth() + 1), d.getFullYear()].join('/');
+	return Number.isNaN(d.getMonth()) ? dt : [pad(d.getMonth() + 1), d.getFullYear()].join("/");
 }
 
 export class ResumeName extends Component {
@@ -36,10 +36,10 @@ export class ResumeContact extends Component {
 				<h2>Contact Information</h2>
 				<ul>
 					<li><span className="p-email">{myContact.properties.email[0]}</span></li>
-					<li><span className="p-street-address">{myContact.properties.adr[0].properties['street-address']}, </span>
+					<li><span className="p-street-address">{myContact.properties.adr[0].properties["street-address"]}, </span>
 						<span className="p-locality">{myContact.properties.adr[0].properties.locality}, </span>
 						<span className="p-region">{myContact.properties.adr[0].properties.region} </span>
-						<span className="p-postal-code">{myContact.properties.adr[0].properties['postal-code']}</span></li>
+						<span className="p-postal-code">{myContact.properties.adr[0].properties["postal-code"]}</span></li>
 					<li><span className="p-tel">{myContact.properties.tel[0]}</span></li>
 					<li><span className="p-url"><a href={myContact.properties.url[0]}>{myContact.properties.url[0]}</a></span></li>
 				</ul>
@@ -89,10 +89,10 @@ export class ResumeQualifications extends Component {
 			var qual = myQual[iKey];
 			var myElem = <h3 key={iKey}>{iKey}</h3>;
 			var quals = qual.map((qualItem, iKey) =>
-    			<li key={'i' + iKey} className="p-qualification">{qualItem}</li>
+    			<li key={"i" + iKey} className="p-qualification">{qualItem}</li>
     		);
 			myElems.push(myElem);
-			myElems.push(<ul key={'q-' + iKey}>{quals}</ul>);
+			myElems.push(<ul key={"q-" + iKey}>{quals}</ul>);
 		}
 		return (
 			<Fragment>
@@ -117,7 +117,7 @@ export class ResumeWorkHistory extends Component {
 			var myElem = <li key={iKey}>
 				<span className="dt-start">{mmYYYY(work.properties.start)} - </span>
 				<span className="dt-end">{mmYYYY(work.properties.end)} : </span>
-				<span className="p-job-title">{myWorkLocation['job-title']}, </span>
+				<span className="p-job-title">{myWorkLocation["job-title"]}, </span>
 				<span className="p-org">{myWorkLocation.org}, </span>
 				<span className="p-locality">{myWorkLocation.locality}, </span>
 				<span className="p-region">{myWorkLocation.region} </span>
@@ -147,7 +147,7 @@ export class ResumeVolunteer extends Component {
 			var myElem = <li key={iKey}>
 				<span className="dt-start">{mmYYYY(vol.properties.start)} - </span>
 				<span className="dt-end">{mmYYYY(vol.properties.end)} : </span>
-				<span className="p-job-title">{myVolLocation['job-title']}, </span>
+				<span className="p-job-title">{myVolLocation["job-title"]}, </span>
 				<span className="p-org">{myVolLocation.org}, </span>
 				<span className="p-locality">{myVolLocation.locality}, </span>
 				<span className="p-region">{myVolLocation.region} </span>
@@ -198,9 +198,9 @@ export class ResumeSkills extends Component {
 		var myElems = [];
 		var mySkills = this.props.data.items[0].properties.skills[0];
 		for (var skill in mySkills) {
-			var myElem = <h3 key={'c-' + skill} className="p-skill-category">{skill} : </h3>;
+			var myElem = <h3 key={"c-" + skill} className="p-skill-category">{skill} : </h3>;
 			myElems.push(myElem);
-			var myElem2 = <span key={'s-' + skill} className="p-skill">{mySkills[skill]}<br /></span>;
+			var myElem2 = <span key={"s-" + skill} className="p-skill">{mySkills[skill]}<br /></span>;
 			myElems.push(myElem2);
 		}
 		return (

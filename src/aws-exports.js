@@ -2,12 +2,13 @@
 
 const awsmobile = {
 	"aws_project_region": "us-east-2",
+	"aws_content_delivery_bucket": "pixelated-hostingbucket-prod",
+	"aws_content_delivery_bucket_region": "us-east-2",
+	"aws_content_delivery_url": "https://d28orh3fkvya05.cloudfront.net",
 	"aws_app_analytics": "enable",
 	"aws_cognito_identity_pool_id": "us-east-2:679fbb04-e555-465a-b480-84e2a0dabbe7",
 	"aws_cognito_region": "us-east-2",
 	"aws_content_delivery": "enable",
-	"aws_content_delivery_bucket": "pixelated-hosting-mobilehub-1506078167",
-	"aws_content_delivery_bucket_region": "us-east-2",
 	"aws_content_delivery_cloudfront": "enable",
 	"aws_content_delivery_cloudfront_domain": "d3edq0m8zykqdj.cloudfront.net",
 	"aws_mobile_analytics_app_id": "1fa33fced2a74059a711b55881dff0a2",

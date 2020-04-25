@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import '../css/pixelated.callout.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "../css/pixelated.callout.css";
 
 /* ========== CALLOUT ========== */
 
@@ -15,11 +15,11 @@ export default class Callout extends Component {
     }
 
     render () {
-    	var columnGridStyle = this.props.columnCount ? 'grid' + (12 / this.props.columnCount) : 'grid4';
-    	var calloutGridStyle = this.props.direction && this.props.direction === 'horizontal' ? 'grid6' : 'grid12';
-    	var calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'round-img-container callout-image callout-image-horiz' : 'round-img-container callout-image';
+    	var columnGridStyle = this.props.columnCount ? "grid" + (12 / this.props.columnCount) : "grid4";
+    	var calloutGridStyle = this.props.direction && this.props.direction === "horizontal" ? "grid6" : "grid12";
+    	var calloutImageStyle = this.props.direction && this.props.direction === "horizontal" ? "round-img-container callout-image callout-image-horiz" : "round-img-container callout-image";
     	return (
-    		<div className={'column callout ' + columnGridStyle}>
+    		<div className={"column callout " + columnGridStyle}>
     			<div className={calloutGridStyle}>
     				<div className={calloutImageStyle}>
     					{ this.props.url
@@ -94,7 +94,7 @@ export class CalloutRoundSm extends Component {
 
 export class CalloutRoundTiny extends Component {
 	static defaultProps = {
-		gridSize: '2'
+		gridSize: "2"
 	}
 
 	static propTypes = {
@@ -106,7 +106,7 @@ export class CalloutRoundTiny extends Component {
 
 	render () {
 		return (
-			<div className={ this.props.img ? 'grid' + this.props.gridSize + 'fix round-img-container' : 'grid' + this.props.gridSize + 'fix noMobile' }>
+			<div className={ this.props.img ? "grid" + this.props.gridSize + "fix round-img-container" : "grid" + this.props.gridSize + "fix noMobile" }>
 				<a href={this.props.url} target="_blank" rel="noopener noreferrer">
 					<img src={this.props.img} alt={this.props.title}/></a>
 			</div>

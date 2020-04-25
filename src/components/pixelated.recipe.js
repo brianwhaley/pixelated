@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import '../css/pixelated.recipe.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "../css/pixelated.recipe.css";
 
 /* ========== RECIPE BOOK ========== */
 export default class RecipeBook extends Component {
@@ -14,8 +14,8 @@ export default class RecipeBook extends Component {
 		this.state = {
 			recipeElems: this.generateMyElems(),
 			outputElems: [],
-			showOnlyCat: '',
-			showOnlyRecipe: ''
+			showOnlyCat: "",
+			showOnlyRecipe: ""
 		};
 		this.onRecipePickListChange = this.onRecipePickListChange.bind(this);
 	}
@@ -40,12 +40,12 @@ export default class RecipeBook extends Component {
 		var myElems = [];
 		var catKey = 1;
 		for (var category in this.state.recipeElems) {
-			var cID = 'c' + (catKey);
+			var cID = "c" + (catKey);
 			myElems.push(<RecipeCategory key={cID} id={cID} className="h-recipe-category" category={category} showOnly={this.state.showOnlyCat} />);
 			for (var recipeKey in this.state.recipeElems[category]) {
 				var recipe = this.state.recipeElems[category][recipeKey];
 				var cats = recipe.properties.category;
-				var rID = cID + '-r' + (parseInt(recipeKey) + 1);
+				var rID = cID + "-r" + (parseInt(recipeKey) + 1);
 				if (cats.includes(category)) {
 					myElems.push(<Recipe key={rID} id={rID} recipeData={recipe} showOnly={this.state.showOnlyRecipe} />);
 				}
@@ -61,8 +61,8 @@ export default class RecipeBook extends Component {
 
 	onRecipePickListChange (optionVal) {
 		var cID, rID;
-		if (optionVal.includes('-')) {
-			cID = optionVal.substring(0, optionVal.indexOf('-'));
+		if (optionVal.includes("-")) {
+			cID = optionVal.substring(0, optionVal.indexOf("-"));
 			rID = optionVal;
 		} else {
 			cID = optionVal;
@@ -94,7 +94,7 @@ export class RecipeCategory extends Component {
 	}
 
 	render () {
-		var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: 'none' } : { display: 'initial' });
+		var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: "none" } : { display: "initial" });
 		return (
 			<h2 id={this.props.id} className={this.props.className} style={isHidden}>{this.props.category}</h2>
 		);
@@ -118,7 +118,7 @@ export class Recipe extends Component {
     		<li key={iKey} className="p-instruction">{instruction}</li>
     	);
     	var recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null);
-    	var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: 'none' } : { display: 'initial' });
+    	var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: "none" } : { display: "initial" });
     	/* event.preventDefault(); */
     	return (
     		<article id={this.props.id} className="h-recipe" style={isHidden}>
@@ -165,14 +165,14 @@ export class RecipePickList extends Component {
 		myOpts.push(<option key='x0' value=''>Choose a recipe below:</option>);
 		for (var catKey in this.props.recipeCategories) {
 			var category = this.props.recipeCategories[catKey];
-			var cID = 'c' + (parseInt(catKey) + 1);
+			var cID = "c" + (parseInt(catKey) + 1);
 			myOpts.push(<option key={cID} value={cID}>=== {category.toUpperCase()} ===</option>);
 			var rID = 1;
 			for (var recipeKey in this.props.recipeData.items) {
 				var recipe = this.props.recipeData.items[recipeKey];
 				var cats = recipe.properties.category;
 				if (cats.includes(category)) {
-					myOpts.push(<option key={cID + '-r' + rID} value={cID + '-r' + rID}>{recipe.properties.name}</option>);
+					myOpts.push(<option key={cID + "-r" + rID} value={cID + "-r" + rID}>{recipe.properties.name}</option>);
 					rID += 1;
 				}
 			}
@@ -184,7 +184,7 @@ export class RecipePickList extends Component {
 		if (e.target.value.length > 0) {
 			this.props.handleRecipePickListChange(e.target.value);
 		} else {
-			this.props.handleRecipePickListChange('');
+			this.props.handleRecipePickListChange("");
 		}
 	}
 
@@ -212,7 +212,7 @@ export class BackToTop extends Component {
 		window.scroll({
 			top: 0,
 			left: 0,
-			behavior: 'smooth'
+			behavior: "smooth"
 		});
 		return false;
 	}
