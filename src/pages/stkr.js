@@ -16,7 +16,7 @@ export default class Stkr extends Component {
                                 1) Upload images to be shared with your teammates<br/>
                                 2) Use the /stkr command to share those images<br/>
                                 3) use the /stkrdelete command to remove images as necessary<br/><br/>
-									<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=calls:write,chat:write,commands,files:read,im:read,im:write,links:read,links:write,users:read,groups:write,mpim:write">
+									<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write">
 										<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 								</div>
 							</div>
