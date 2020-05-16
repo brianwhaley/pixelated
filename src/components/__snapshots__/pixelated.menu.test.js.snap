@@ -26,6 +26,13 @@ exports[`Menu Menu with props snapshot renders 1`] = `
       </li>
       <li>
         <a
+          href="/resume.html"
+        >
+          Resume
+        </a>
+      </li>
+      <li>
+        <a
           href="./gallery.html?tag=portfolio-all"
         >
           Work Portfolio
@@ -42,7 +49,7 @@ exports[`Menu Menu with props snapshot renders 1`] = `
         <a
           href="https://blog.pixelated.tech"
         >
-          Pixelated Views Blog
+          Pixelated Blog
         </a>
       </li>
       <li>
@@ -50,6 +57,20 @@ exports[`Menu Menu with props snapshot renders 1`] = `
           href="./socialmedia.html"
         >
           Social Media
+        </a>
+      </li>
+      <li>
+        <a
+          href="/stkr.html"
+        >
+          Stkr
+        </a>
+      </li>
+      <li>
+        <a
+          href="/techjokes.html"
+        >
+          TechJokes
         </a>
       </li>
       <li>

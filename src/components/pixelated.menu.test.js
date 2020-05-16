@@ -3,13 +3,16 @@ import renderer from "react-test-renderer";
 import Menu from "./pixelated.menu.js";
 
 const menuItems = {
-	Home: "./index.html",
+	"Home": "./index.html",
+	"Resume": "/resume.html",
 	"Work Portfolio": "./gallery.html?tag=portfolio-all",
 	"Photo Gallery": "./gallery.html?tag=pixelatedviewsgallery",
-	"Pixelated Views Blog": "https://blog.pixelated.tech",
+	"Pixelated Blog": "https://blog.pixelated.tech",
 	"Social Media": "./socialmedia.html",
-	Photography: "./photography.html",
-	Recipes: "./recipes.html"
+	"Stkr": "/stkr.html",
+	"TechJokes": "/techjokes.html",
+	"Photography": "./photography.html",
+	"Recipes": "./recipes.html"
 };
 
 describe("Menu", () => {

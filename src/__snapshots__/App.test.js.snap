@@ -111,7 +111,7 @@ Array [
             <a
               href="https://blog.pixelated.tech"
             >
-              Pixelated Views Blog
+              Pixelated Blog
             </a>
           </li>
           <li>
@@ -126,6 +126,13 @@ Array [
               href="/stkr.html"
             >
               Stkr
+            </a>
+          </li>
+          <li>
+            <a
+              href="/techjokes.html"
+            >
+              TechJokes
             </a>
           </li>
           <li>
