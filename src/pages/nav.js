@@ -11,7 +11,7 @@ export default class Nav extends Component {
 			"Pixelated Blog": "https://blog.pixelated.tech",
 			"Social Media": "/socialmedia.html",
 			"Stkr": "/stkr.html",
-			"TechJokes": "/techjokes.html",
+			"NerdJokes": "/nerdjokes.html",
 			"Photography": "/photography.html",
 			"Recipes": "/recipes.html"
 		};

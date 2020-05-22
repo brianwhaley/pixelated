@@ -12,12 +12,14 @@ export default class Stkr extends Component {
 							<CalloutHeader title="Stkr" />
 							<div className="callout-body grid12">
 								<div className="centered">
+									<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write,users:read">
+										<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+								</div>
+								<div className="centered">
                                 Stkr is a sticker sharing application for Slack. You can:<br/>
                                 1) Upload or Add images to be shared with your teammates<br/>
                                 2) Use the '/stkr' or '/stkr share' command to share those images<br/>
-                                3) use the '/stkr delete' command to remove images as necessary<br/><br/>
-									<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write,users:read">
-										<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+                                3) use the '/stkr delete' command to remove images as necessary<br/>
 								</div>
 							</div>
 						</div>
@@ -137,7 +139,7 @@ export default class Stkr extends Component {
 						<div className="row">
 							<CalloutHeader title="Customer Support" />
 							<div className="callout-body grid12">
-								For Customer Support, please contact <a href="mailto:brian.whaley@gmail.com?subject=Stkr Customer Support">brian.whaley@gmail.com</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Slack Workspace</a>.
+								For Customer Support, please contact <a href="mailto:stkr@pixelated.tech?subject=Stkr Customer Support">stkr@pixelated.tech</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Slack Workspace</a>.
 								<br/>
 							</div>
 						</div>
@@ -155,7 +157,7 @@ export default class Stkr extends Component {
 								<br/>
 								If you sign up for an account on the Services, you are responsible for all activity on your account. Be mindful about protecting your account password and let us know immediately if you think there are any issues.<br/>
 								<br/>
-								You own all content you contribute to the Services, but you’re ok with Stkr using it in connection with its Services. Public Information is public, so don’t include any private or sensitive information in any public part of the Services.<br/>
+								You own all content you contribute to the Services, but you’re ok with Pixelated using it in connection with its Services. Public Information is public, so don’t include any private or sensitive information in any public part of the Services.<br/>
 								<br/>
 								You’re allowed to use the Services only in accordance with this agreement. Generally speaking, you are only allowed to use content that you find on the site in connection with your use of the Services and solely for personal and non-commercial purposes. We can edit, take down, or block any content on the Services at any time.<br/>
 								<br/>
