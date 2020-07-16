@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { CalloutHeader } from "../components/pixelated.callout.js";
+import NerdJoke from "../components/pixelated.nerdjoke.js";
 
 export default class NerdJokes extends Component {
 	render () {
@@ -12,6 +13,9 @@ export default class NerdJokes extends Component {
 							<CalloutHeader title="NerdJokes" />
 							<div className="callout-body grid12">
 								<div className="grid12">
+									<div className="grid12 centered">
+										<NerdJoke></NerdJoke>
+									</div>
 									<div className=" grid12 centered">
 										<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1093097617364&scope=chat:write,chat:write.public,commands,im:write">
 											<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" 

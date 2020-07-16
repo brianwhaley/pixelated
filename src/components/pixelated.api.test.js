@@ -17,7 +17,9 @@ test("Flickr data returns properly", () => {
 		}
 	};
 
-	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), function (error, response, body) {
+	const myMethod = "GET",
+
+	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), myMethod, function (error, response, body) {
 		expect(error).toBe(null);
 		expect(response.statusCode).toBe(200);
 		expect(body).toMatchSnapshot();
@@ -26,7 +28,7 @@ test("Flickr data returns properly", () => {
 		expect(body.length).toBeGreaterThan(0);
 	});
 
-	getXHRData(generateURL("https://api.flickr.com/plorf/rest/?", flickrConfig.flickrProps), function (error, response, body) {
+	getXHRData(generateURL("https://api.flickr.com/plorf/rest/?", flickrConfig.flickrProps), myMethod, function (error, response, body) {
 		expect(error).toBe(null);
 		expect(response.statusCode).toBe(404);
 	});

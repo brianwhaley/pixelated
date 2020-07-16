@@ -1,15 +1,23 @@
 
 import PropTypes from "prop-types";
 
-export function getXHRData (apiURL, myCallback) {
+export function getXHRData (apiURL, apiMethod, myCallback) {
 	getXHRData.propTypes = {
-		apiURL: PropTypes.string.isRequired
+		apiURL: PropTypes.string.isRequired,
+		apiMethod: PropTypes.string.isRequired
 	};
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", apiURL, true);
+	xhr.open(apiMethod, apiURL, true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4) {
-			var response = JSON.parse(xhr.responseText);
+			var response;
+			try {
+				response = JSON.parse(xhr.responseText);
+			} catch (error) {
+				response = xhr.responseText;
+			}
 			myCallback(response);
 		}
 	};

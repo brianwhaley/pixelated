@@ -52,7 +52,8 @@ export default class Carousel extends Component {
 	componentDidMount () {
 		this.setState({ flickrSize: this.flickrSize(this.state.flickr.urlProps.photoSize) });
 		var myURL = generateURL(this.state.flickr.baseURL, this.state.flickr.urlProps);
-		getXHRData(generateURL(myURL, this.state.flickr.urlProps), (flickrPhotos) => {
+		var myMethod = "GET";
+		getXHRData(myURL, myMethod, (flickrPhotos) => {
 			var myFlickrImages = flickrPhotos.photos.photo;
 			this.setState({ images: myFlickrImages });
 		});
