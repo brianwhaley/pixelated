@@ -8,16 +8,13 @@ export function getXHRData (apiURL, apiMethod, myCallback) {
 	};
 	var xhr = new XMLHttpRequest();
 	xhr.open(apiMethod, apiURL, true);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4) {
+	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	// xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+	xhr.onreadystatechange = () => {
+		// if (xhr.readyState === 4) {
+		if (xhr.readyState === 4 && xhr.status === 200) {
 			var response;
-			try {
-				response = JSON.parse(xhr.responseText);
-			} catch (error) {
-				response = xhr.responseText;
-			}
+			response = JSON.parse(xhr.responseText);
 			myCallback(response);
 		}
 	};

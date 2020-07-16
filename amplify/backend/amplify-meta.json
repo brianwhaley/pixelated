@@ -26,7 +26,7 @@
                 "HostingBucketName": "pixelated-hostingbucket-prod",
                 "CloudFrontDomainName": "d28orh3fkvya05.cloudfront.net"
             },
-            "lastPushTimeStamp": "2020-06-03T21:35:50.740Z",
+            "lastPushTimeStamp": "2020-07-16T04:19:11.652Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-pixelated-prod-110433-deployment/amplify-cfn-templates/hosting/template.json",
                 "logicalId": "hostingS3AndCloudFront"

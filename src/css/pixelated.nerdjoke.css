@@ -5,6 +5,10 @@
 ======================================== */
 
 .nerdjoke {
-	padding: 20px;
+	padding-bottom: 20px;
 	font-size:24px;
+}
+
+.slackbutton {
+	padding-bottom: 20px;
 }

@@ -19,7 +19,7 @@ test("Flickr data returns properly", () => {
 
 	const myMethod = "GET",
 
-	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), myMethod, function (error, response, body) {
+	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), myMethod, (error, response, body) => {
 		expect(error).toBe(null);
 		expect(response.statusCode).toBe(200);
 		expect(body).toMatchSnapshot();
