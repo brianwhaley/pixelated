@@ -13,6 +13,7 @@ import Gallery from "./pages/gallery";
 import SocialMedia from "./pages/socialmedia";
 import Stkr from "./pages/stkr";
 import NerdJokes from "./pages/nerdjokes";
+import Joke from "./pages/joke";
 import Photography from "./pages/photography";
 import Recipes from "./pages/recipes";
 import NotFound from "./pages/notfound";
@@ -51,6 +52,7 @@ export default class App extends Component {
 							<Route path='/socialmedia.html' component={SocialMedia}/>
 							<Route path='/stkr.html' component={Stkr}/>
 							<Route path='/nerdjokes.html' component={NerdJokes}/>
+							<Route path='/joke.html' component={Joke}/>
 							<Route path='/photography.html' component={Photography}/>
 							<Route path='/recipes.html' component={Recipes}/>
 							<Route exact path='*' component={NotFound} />

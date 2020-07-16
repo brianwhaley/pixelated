@@ -16,7 +16,7 @@ export default class NerdJoke extends Component {
 	}
 
 	loadJoke = () => {
-		var myURL = "https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/dev/nerdjokes?";
+		var myURL = "https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?";
 		var myURLProps = { command: "%2Fnerdjokes", text: "getjokejson" };
 		var myMethod = "GET";
 		getXHRData(generateURL(myURL, myURLProps), myMethod, (jokeData) => {
@@ -34,11 +34,11 @@ export default class NerdJoke extends Component {
     	return (
     		<div className="nerdjoke grid12">
     			<div>
-					<span>Q: </span>
+					<span className="label">Q: </span>
 					<span> { this.state.joke.question } </span>
 				</div>
     			<div>
-					<span>A: </span>
+					<span className="label">A: </span>
 					<span> { this.state.joke.answer } </span>
 				</div>
     		</div>

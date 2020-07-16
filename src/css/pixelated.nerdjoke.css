@@ -9,6 +9,14 @@
 	font-size:24px;
 }
 
+.nerdjoke div {
+	padding-bottom: 15px;
+}
+
 .slackbutton {
 	padding-bottom: 20px;
+}
+
+.label {
+	font-weight: bold;
 }
