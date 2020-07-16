@@ -8,7 +8,7 @@ export default class Joke extends Component {
 			document.querySelector("footer").style.display = "none";
 			document.querySelector("nav").style.display = "none";
 			document.querySelector("header").style.display = "none";
-			const elems = document. querySelectorAll (".nerdjoke div");
+			const elems = document.querySelectorAll(".nerdjoke .joketext div");
 			for (let elem of elems) { elem.style.fontSize = "2em"; }
 		} catch {
 		}
@@ -41,7 +41,6 @@ export default class Joke extends Component {
 						</div>
 					</div>
 				</section>
-
 			</Fragment>
 		);
 	}
