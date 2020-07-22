@@ -89,8 +89,8 @@ export class ResumeQualifications extends Component {
 			var qual = myQual[iKey];
 			var myElem = <h3 key={iKey}>{iKey}</h3>;
 			var quals = qual.map((qualItem, iKey) =>
-    			<li key={"i" + iKey} className="p-qualification">{qualItem}</li>
-    		);
+				<li key={"i" + iKey} className="p-qualification">{qualItem}</li>
+			);
 			myElems.push(myElem);
 			myElems.push(<ul key={"q-" + iKey}>{quals}</ul>);
 		}

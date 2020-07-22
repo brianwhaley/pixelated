@@ -24,7 +24,7 @@ export default class NerdJoke extends Component {
 	loadJoke = () => {
 		this.timePassed = 0;
 		this.timeLeft = this.TIME_LIMIT;
-		this.timerInterval = null
+		this.timerInterval = null;
 
 		clearInterval(this.jokeInterval);
 		this.jokeInterval = setInterval(this.loadJoke, this.TIME_LIMIT * 1000);
@@ -51,7 +51,7 @@ export default class NerdJoke extends Component {
 		this.timerInterval = setInterval(() => {
 			this.timePassed = this.timePassed += 1;
 			this.timeLeft = this.TIME_LIMIT - this.timePassed + 1;
-			var myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + "%"
+			var myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + "%";
 			document.getElementById("joke-timer-label").innerHTML = this.formatTimeLeft(this.timeLeft);
 			document.getElementById("joke-timer-path-elapsed").style.width = myWidth ;
 		}, 1000);
@@ -63,8 +63,8 @@ export default class NerdJoke extends Component {
 	}
 
 	render () {
-    	return (
-    		<div className="nerdjoke grid12">
+		return (
+			<div className="nerdjoke grid12">
 				<div className="grid12">
 					<JokeButton
 						clickFunction={ this.loadJoke }
@@ -90,9 +90,9 @@ export default class NerdJoke extends Component {
 						<span className="answer"> { this.state.joke.answer } </span>
 					</div>
 				</div>
-    		</div>
-    	);
-    }
+			</div>
+		);
+	}
 }
 
 

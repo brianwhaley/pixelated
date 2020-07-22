@@ -56,7 +56,7 @@ Array [
         className="section-container"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<gcse:search></gcse:search>",
+            "__html": "<gcse:search enablehistory='false'></gcse:search>",
           }
         }
       />

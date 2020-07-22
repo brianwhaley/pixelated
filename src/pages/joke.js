@@ -11,6 +11,7 @@ export default class Joke extends Component {
 			const elems = document.querySelectorAll(".nerdjoke .joketext div");
 			for (let elem of elems) { elem.style.fontSize = "2em"; }
 		} catch {
+			return;
 		}
 	}
 
