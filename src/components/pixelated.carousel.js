@@ -61,16 +61,23 @@ export default class Carousel extends Component {
 
 	flickrSize (size) {
 		switch (size) {
-		case "Square" : return "_s";
-		case "Large Square" : return "_q";
-		case "Thumbnail" : return "_t";
-		case "Small" : return "_m";
-		case "Small 320" : return "_n";
-		case "Medium" : return "";
-		case "Medium 640" : return "_z";
-		case "Medium 800" : return "_c";
-		case "Large" : return "_b";
-		case "Original" : return "_o";
+		case "Square" : return "_s"; // 75
+		case "Large Square" : return "_q"; // 150
+		case "Thumbnail" : return "_t"; // 100
+		case "Small" : return "_m"; // 240
+		case "Small 320" : return "_n"; // 320
+		case "Medium" : return ""; // 500
+		case "Medium 640" : return "_z"; // 640
+		case "Medium 800" : return "_c"; //800
+		case "Large" : return "_b"; // 1024
+		// case "Large2" : return "_h"; // 1600 + secret
+		// case "Large3" : return "_k"; // 2048 + secret
+		// case "XL3K" : return "_3k"; // 3072 + secret
+		// case "XL4K" : return "_4k"; // 4096 + secret
+		// case "XLF" : return "_f"; // 4096 + secret - only 2:1 aspect ratio 
+		// case "XL5K" : return "_5k"; // 5120 + secret
+		// case "XL6K" : return "_6k"; // 6144 + secret
+		// case "Original" : return "_o"; // secret + EXIF data; not rotated, ? ext 
 		default : return "";
 		}
 	}
@@ -103,7 +110,8 @@ export class CarouselSlider extends Component {
 			direction: "next"
 		};
 		this.drag = {
-			dragging: false,
+			draggable: false,
+			dragMoving: false,
 			eType: null,
 			startX: 0, /* start left of object */
 			firstX: 0, /* first mouse x */
@@ -153,7 +161,7 @@ export class CarouselSlider extends Component {
 			e.preventDefault();
 			e.stopPropagation();
 			var elem = e.target.closest(divSelector);
-			this.drag.dragging = true;
+			this.drag.draggable = true;
 			this.drag.eType = e.type;
 			this.drag.firstX = Math.round((this.drag.eType === "touchstart") ? e.touches[0].pageX : e.pageX);
 			this.drag.previousX = this.drag.firstX;
@@ -175,8 +183,9 @@ export class CarouselSlider extends Component {
 		}
 	}
 
-	dragging = (e) => {
-		if (this.drag.dragging) {
+	draggable = (e) => {
+		this.drag.dragMoving = true;
+		if (this.drag.draggable) {
 			e.preventDefault();
 			e.stopPropagation();
 			var elem = e.target.closest(divSelector);
@@ -199,7 +208,13 @@ export class CarouselSlider extends Component {
 	}
 
 	dragEnd = (e) => {
-		if (this.drag.dragging) {
+		if (!this.drag.dragMoving) {
+			var thisImg = this.props.flickrData.images[this.state.activeIndex];
+			var thisImgURL = "https://farm" + thisImg.farm + ".static.flickr.com/" + thisImg.server + "/" + thisImg.id + "_" + thisImg.secret + "_b.jpg" ;
+			// var thisImgURL2 =  "http://flickr.com/photo.gne?id=" + thisImg.id + "_" + thisImg.secret  + ".jpg" ;
+			window.open(thisImgURL, "_blank");
+		}
+		if (this.drag.draggable) {
 			if (this.drag.debug) { console.log("Drag End - " + e.type); }
 			var elem = e.target.closest(divSelector);
 
@@ -227,7 +242,8 @@ export class CarouselSlider extends Component {
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 
 			/* Reset drag variables */
-			this.drag.dragging = false;
+			this.drag.draggable = false;
+			this.drag.dragMoving = false;
 			this.drag.eType = null;
 			this.drag.startX = 0;
 			this.drag.firstX = 0;
@@ -252,20 +268,20 @@ export class CarouselSlider extends Component {
 
 	componentDidMount () {
 		document.addEventListener("touchstart", this.dragStart, { passive: false });
-		document.addEventListener("touchmove", this.dragging, { passive: false });
+		document.addEventListener("touchmove", this.draggable, { passive: false });
 		document.addEventListener("touchend", this.dragEnd, { passive: true });
 		document.addEventListener("mousedown", this.dragStart, { passive: false });
-		document.addEventListener("mousemove", this.dragging, { passive: false });
+		document.addEventListener("mousemove", this.draggable, { passive: false });
 		document.addEventListener("mouseup", this.dragEnd, { passive: true });
 		document.addEventListener("transitionend", this.transitionEnd, { passive: true });
 	}
 
 	componentWillUnmount () {
 		document.removeEventListener("touchstart", this.dragStart, { passive: false });
-		document.removeEventListener("touchmove", this.dragging, { passive: false });
+		document.removeEventListener("touchmove", this.draggable, { passive: false });
 		document.removeEventListener("touchend", this.dragEnd, { passive: true });
 		document.removeEventListener("mousedown", this.dragStart, { passive: false });
-		document.removeEventListener("mousemove", this.dragging, { passive: false });
+		document.removeEventListener("mousemove", this.draggable, { passive: false });
 		document.removeEventListener("mouseup", this.dragEnd, { passive: true });
 		document.removeEventListener("transitionend", this.transitionEnd, { passive: true });
 	}

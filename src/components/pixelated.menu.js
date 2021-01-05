@@ -34,13 +34,28 @@ export default class Menu extends Component {
 		}
 	}
 
+	componentDidMount = () => {
+		var menu = document.getElementById("accordion-menu");
+		var menuBtn = document.getElementById("panel-menu-button");
+		document.addEventListener("click", (event) => {
+			var isClicked = ( menu.contains(event.target) || menuBtn.contains(event.target) );
+			if (!isClicked) {
+				if ( this.state.left === 0 ) this.moveMenu();
+			}
+		}, true );
+	}
+	
+	  componentWillUnmount () {
+		window.removeEventListener("click", this.handleResize);
+	}
+
 	render () {
 		var styles = { left: "0px" };
 		styles.transition = "transform 0.5s ease-out 0.0s";
 		styles.transform = "translateX(" + this.state.left + "px)";
 		return (
 			<div className="accordion-menu-wrapper" style={styles}>
-				<div className="accordion-menu">
+				<div className="accordion-menu" id="accordion-menu">
 					<ul className="grid12 clearfix">
 						{ this.generateMenuItems() }
 					</ul>
@@ -72,7 +87,7 @@ export class MenuButton extends Component {
 
 	render () {
 		return (
-			<div className="panel-menu-button pull-left" onClick={this.slideMobilePanel}>
+			<div className="panel-menu-button pull-left" id="panel-menu-button" onClick={this.slideMobilePanel}>
 				<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
 			</div>
 		);
