@@ -1,21 +1,32 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-pixelated-dev-201709-authRole",
-      "UnauthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-dev-201709-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-dev-201709-authRole",
+      "AuthRoleName": "amplify-pixelated-prod-220214-authRole",
+      "UnauthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-prod-220214-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-prod-220214-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-pixelated-dev-201709-deployment",
-      "UnauthRoleName": "amplify-pixelated-dev-201709-unauthRole",
-      "StackName": "amplify-pixelated-dev-201709",
-      "StackId": "arn:aws:cloudformation:us-east-2:971579260814:stack/amplify-pixelated-dev-201709/e79d1710-4fbc-11eb-b3f0-06d47d127426",
+      "DeploymentBucketName": "amplify-pixelated-prod-220214-deployment",
+      "UnauthRoleName": "amplify-pixelated-prod-220214-unauthRole",
+      "StackName": "amplify-pixelated-prod-220214",
+      "StackId": "arn:aws:cloudformation:us-east-2:971579260814:stack/amplify-pixelated-prod-220214/94f98cf0-4fcb-11eb-b51c-06d182958b16",
       "AmplifyAppId": "d1kazt8wjaphke"
     }
   },
   "hosting": {
     "S3AndCloudFront": {
       "service": "S3AndCloudFront",
-      "providerPlugin": "awscloudformation"
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "S3BucketSecureURL": "https://pixelated-hosting-prod.s3.amazonaws.com",
+        "WebsiteURL": "http://pixelated-hosting-prod.s3-website.us-east-2.amazonaws.com",
+        "Region": "us-east-2",
+        "HostingBucketName": "pixelated-hosting-prod"
+      },
+      "lastPushTimeStamp": "2021-01-07T03:56:57.744Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-pixelated-prod-220214-deployment/amplify-cfn-templates/hosting/template.json",
+        "logicalId": "hostingS3AndCloudFront"
+      }
     }
   }
 }

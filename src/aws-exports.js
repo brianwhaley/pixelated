@@ -3,9 +3,9 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-2",
-    "aws_content_delivery_bucket": "pixelated-hosting-dev",
+    "aws_content_delivery_bucket": "pixelated-hosting-prod",
     "aws_content_delivery_bucket_region": "us-east-2",
-    "aws_content_delivery_url": "http://pixelated-hosting-dev.s3-website.us-east-2.amazonaws.com",
+    "aws_content_delivery_url": "http://pixelated-hosting-prod.s3-website.us-east-2.amazonaws.com",
     "aws_app_analytics": "enable",
     "aws_cognito_identity_pool_id": "us-east-2:679fbb04-e555-465a-b480-84e2a0dabbe7",
     "aws_cognito_region": "us-east-2",
