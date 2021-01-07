@@ -38,23 +38,23 @@ export default class SocialCards extends Component {
     			SOOpx: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/500px-logo.png",
+    				iconSrc: "images/logos/500px-logo.png",
     				iconSrcAlt: "500px Post"
     			},
     			blog: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/blog-logo.png",
+    				iconSrc: "images/logos/blog-logo.png",
     				iconSrcAlt: "Blog Post"
     			},
     			etsy: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/etsy-logo.png",
+    				iconSrc: "images/logos/etsy-logo.png",
     				iconSrcAlt: "Etsy Favorite"
     			},
     			/* facebook: {
-					iconSrc: 'images/facebook-logo.png',
+					iconSrc: 'images/logos/facebook-logo.png',
 					iconSrcAlt: 'Facebook Wall Post'
 				}, */
     			flickr: {
@@ -62,61 +62,61 @@ export default class SocialCards extends Component {
     				apiKey: "",
     				tags: "",
     				entryCount: 5,
-    				iconSrc: "images/flickr-logo.png",
+    				iconSrc: "images/logos/flickr-logo.png",
     				iconSrcAlt: "Flickr Photo"
     			},
     			/* foursquare: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/foursquare-logo.png',
+					iconSrc: 'images/logos/foursquare-logo.png',
 					iconSrcAlt: 'FourSquare Checkin'
 				}, */
     			goodreads: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/goodreads-logo.png",
+    				iconSrc: "images/logos/goodreads-logo.png",
     				iconSrcAlt: "GoodReads Currently Reading"
     			},
     			instagram: {
     				userID: "",
     				entryCount: 5,
-    				iconSrc: "images/instagram-logo.jpg",
+    				iconSrc: "images/logos/instagram-logo.jpg",
     				iconSrcAlt: "Instagram Photo"
     			},
     			pinterest: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/pinterest-logo.png",
+    				iconSrc: "images/logos/pinterest-logo.png",
     				iconSrcAlt: "Pinterest Pin"
     			},
     			shutterfly: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/shutterfly-logo.jpg",
+    				iconSrc: "images/logos/shutterfly-logo.jpg",
     				iconSrcAlt: "Shutterfly Items"
     			},
     			tumblr: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/tumblr-logo.png",
+    				iconSrc: "images/logos/tumblr-logo.png",
     				iconSrcAlt: "Tumblr Post"
     			},
     			twitter: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/twitter-logo.png",
+    				iconSrc: "images/logos/twitter-logo.png",
     				iconSrcAlt: "Twitter Tweet"
     			},
     			youtube: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/youtube-logo.png",
+    				iconSrc: "images/logos/youtube-logo.png",
     				iconSrcAlt: "Youtube Favorite Video"
     			},
     			other: {
     				url: "",
     				entryCount: 5,
-    				iconSrc: "images/blog-logo.png",
+    				iconSrc: "images/logos/blog-logo.png",
     				iconSrcAlt: "Post"
     			}
     		}

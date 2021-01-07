@@ -1,37 +1,21 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-pixelated-prod-110433-authRole",
-            "UnauthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-prod-110433-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-prod-110433-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-pixelated-prod-110433-deployment",
-            "UnauthRoleName": "amplify-pixelated-prod-110433-unauthRole",
-            "StackName": "amplify-pixelated-prod-110433",
-            "StackId": "arn:aws:cloudformation:us-east-2:971579260814:stack/amplify-pixelated-prod-110433/3f541430-8318-11ea-8ccc-0ad7a569cb8c",
-            "AmplifyAppId": "d1ztl9xhxd9yhu"
-        }
-    },
-    "hosting": {
-        "S3AndCloudFront": {
-            "service": "S3AndCloudFront",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "CloudFrontSecureURL": "https://d28orh3fkvya05.cloudfront.net",
-                "S3BucketSecureURL": "https://pixelated-hostingbucket-prod.s3.amazonaws.com",
-                "CloudFrontOriginAccessIdentity": "E2NFW8AGNWCDW1",
-                "WebsiteURL": "http://pixelated-hostingbucket-prod.s3-website.us-east-2.amazonaws.com",
-                "CloudFrontDistributionID": "E3JDKNASY9CFV",
-                "Region": "us-east-2",
-                "HostingBucketName": "pixelated-hostingbucket-prod",
-                "CloudFrontDomainName": "d28orh3fkvya05.cloudfront.net"
-            },
-            "lastPushTimeStamp": "2021-01-05T22:15:16.457Z",
-            "providerMetadata": {
-                "s3TemplateURL": "https://s3.amazonaws.com/amplify-pixelated-prod-110433-deployment/amplify-cfn-templates/hosting/template.json",
-                "logicalId": "hostingS3AndCloudFront"
-            },
-            "lastPushDirHash": "7xdOy9h0YDHqe5Xy6n/nBI9WW4M="
-        }
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pixelated-dev-201709-authRole",
+      "UnauthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-dev-201709-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::971579260814:role/amplify-pixelated-dev-201709-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-pixelated-dev-201709-deployment",
+      "UnauthRoleName": "amplify-pixelated-dev-201709-unauthRole",
+      "StackName": "amplify-pixelated-dev-201709",
+      "StackId": "arn:aws:cloudformation:us-east-2:971579260814:stack/amplify-pixelated-dev-201709/e79d1710-4fbc-11eb-b3f0-06d47d127426",
+      "AmplifyAppId": "d1kazt8wjaphke"
     }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "service": "S3AndCloudFront",
+      "providerPlugin": "awscloudformation"
+    }
+  }
 }
