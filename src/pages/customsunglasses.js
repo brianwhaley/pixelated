@@ -54,7 +54,7 @@ export default class CustomSunglasses extends Component {
 										It can also be small or large, thin or thick, dense or sparse. '/>
 									<Callout
 										// url='https://farm66.static.flickr.com/65535/50652292218_3df2a75475_b.jpg'
-										img='images/customs/blue-splatter-3.jpg'
+										img='images/customs/neon-drip.jpg'
 										title='Drips'
 										columnCount='4'
 										content='This style is customized with color dripped all over the frame.  
