@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Callout, { CalloutHeader, CalloutRoundTiny } from "../components/pixelated.callout.js";
 
-export default class CustomOakleys extends Component {
+export default class CustomSunglasses extends Component {
 	render () {
 		return (
 			<Fragment>
@@ -12,7 +12,7 @@ export default class CustomOakleys extends Component {
 						<div className="row">
 							<div className="grid12">
 								<Callout
-									url='gallery.html?tag=customoakleys'
+									url='gallery.html?tag=customsunglasses'
 									img='images/customs/btw-customs.jpg'
 									title='Custom Oakleys Photo Gallery' 
 									content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
@@ -50,6 +50,13 @@ export default class CustomOakleys extends Component {
 										content='This style is customized with a splash of colors.  
 										Custom splatter paint can be one color, or a combination of complimentary colors.  
 										It can also be small or large, thin or thick, dense or sparse. '/>
+									<Callout
+										// url='https://farm66.static.flickr.com/65535/50652292218_3df2a75475_b.jpg'
+										img='images/customs/blue-splatter-3.jpg'
+										title='Drips'
+										content='This style is customized with color dripped all over the frame.  
+										Dripping paint can be one color, or a combination of complimentary colors.  
+										It can also be done dense or sparse. '/>
 									<Callout
 										// url='https://farm66.static.flickr.com/65535/50652294433_b48c9ef0e4_b.jpg'
 										img='images/customs/repair-nose.jpg'

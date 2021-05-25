@@ -11,7 +11,7 @@ import Home from "./pages/home";
 import MyResume from "./pages/resume";
 import Photography from "./pages/photography";
 import Gallery from "./pages/gallery";
-import CustomOakleys from "./pages/customoakleys";
+import CustomSunglasses from "./pages/customsunglasses";
 import SocialMedia from "./pages/socialmedia";
 import Stkr from "./pages/stkr";
 import NerdJokes from "./pages/nerdjokes";
@@ -51,7 +51,7 @@ export default class App extends Component {
 							<Route path='/resume.html' component={MyResume}/>
 							<Route path='/photography.html' component={Photography}/>
 							<Route path='/gallery.html' component={Gallery}/>
-							<Route path='/customoakleys.html' component={CustomOakleys}/>
+							<Route path='/customsunglasses.html' component={CustomSunglasses}/>
 							<Route path='/socialmedia.html' component={SocialMedia}/>
 							<Route path='/stkr.html' component={Stkr}/>
 							<Route path='/nerdjokes.html' component={NerdJokes}/>
