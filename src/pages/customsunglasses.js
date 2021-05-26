@@ -53,7 +53,7 @@ export default class CustomSunglasses extends Component {
 										Custom splatter paint can be one color, or a combination of complimentary colors.  
 										It can also be small or large, thin or thick, dense or sparse. '/>
 									<Callout
-										// url='https://farm66.static.flickr.com/65535/50652292218_3df2a75475_b.jpg'
+										// url='https://farm66.static.flickr.com/65535/51062706291_097827a69d_b.jpg'
 										img='images/customs/neon-drip.jpg'
 										title='Drips'
 										columnCount='4'
@@ -102,10 +102,23 @@ export default class CustomSunglasses extends Component {
 										</div>
 										<div className="column grid6">
 											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/50755818913_37cdca4924_b.jpg" img="images/customs/neon-marble.jpg" title="Neon Marble" alt="Neon Marble" gridSize="4" />
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/50920141601_54c8c15e8f_b.jpg" img="images/customs/neon-marble-clear.jpg" title="Neon Marble Clear" alt="Neon Marble Clear" gridSize="4" />
 											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/50652294433_b48c9ef0e4_b.jpg'" img="images/customs/repair-nose.jpg" title="Repair Nose" alt="Repair Nose" gridSize="4" />
 										</div>
 									</div>
 
+									<div className="row">
+										<div className="column grid6">
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/51202265371_9830735bb9_b.jpg" img="images/customs/blue-drip.jpg" title="Blue Drip" alt="Blue Drip" gridSize="4" />
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/51152648154_918278d13f_b.jpg" img="images/customs/blue-clear-drip.jpg" title="Blue Clear Drip" alt="Blue Clear Drip" gridSize="4" />
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/50961082721_cb3bc6daf7_b.jpg" img="images/customs/camo-drip-2.jpg" title="Camo Drip" alt="Camo Drip" gridSize="4" />
+										</div>
+										<div className="column grid6">
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/51152648149_1194b3d58d_b.jpg" img="images/customs/green-gold-drip-2.jpg" title="Green Gold Drip" alt="Green Gold Drip" gridSize="4" />
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/51062790717_0e1496d383_b.jpg" img="images/customs/red-drip.jpg" title="Red Drip" alt="Red Drip" gridSize="4" />
+											<CalloutRoundTiny url="https://farm66.static.flickr.com/65535/51203329450_38d7a8bf74_b.jpg" img="images/customs/red-white-blue-drip.jpg" title="Red White Blue Drip" alt="Red White Blue Drip" gridSize="4" />
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
