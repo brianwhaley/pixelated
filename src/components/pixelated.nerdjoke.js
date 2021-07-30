@@ -10,6 +10,7 @@ export default class NerdJoke extends Component {
 		super(props);
 		this.TIME_LIMIT = 15;
 		this.timePassed = 0;
+		this.timePaused = false; 
 		this.timeLeft = this.TIME_LIMIT;
 		this.timerInterval = null;
 		this.jokeInterval = null;
@@ -27,7 +28,11 @@ export default class NerdJoke extends Component {
 		this.timerInterval = null;
 
 		clearInterval(this.jokeInterval);
-		this.jokeInterval = setInterval(this.loadJoke, this.TIME_LIMIT * 1000);
+		this.jokeInterval = setInterval(() => {
+			if( ! this.timePaused ) {
+				this.loadJoke();
+			}
+		}, this.TIME_LIMIT * 1000);
 
 		var myURL = "https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?";
 		var myURLProps = { command: "%2Fnerdjokes", text: "getjokejson" };
@@ -49,12 +54,18 @@ export default class NerdJoke extends Component {
 
 	startTimer = () => {
 		this.timerInterval = setInterval(() => {
-			this.timePassed = this.timePassed += 1;
-			this.timeLeft = this.TIME_LIMIT - this.timePassed + 1;
-			var myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + "%";
-			document.getElementById("joke-timer-label").innerHTML = this.formatTimeLeft(this.timeLeft);
-			document.getElementById("joke-timer-path-elapsed").style.width = myWidth ;
+			if( ! this.timePaused ) {
+				this.timePassed = this.timePassed += 1;
+				this.timeLeft = this.TIME_LIMIT - this.timePassed + 1;
+				var myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + "%";
+				document.getElementById("joke-timer-label").innerHTML = this.formatTimeLeft(this.timeLeft);
+				document.getElementById("joke-timer-path-elapsed").style.width = myWidth ;
+			} 
 		}, 1000);
+	}
+
+	pauseTimer = () => {
+		this.timePaused = ! this.timePaused ;
 	}
 
 	componentDidMount(){
@@ -65,7 +76,14 @@ export default class NerdJoke extends Component {
 	render () {
 		return (
 			<div className="nerdjoke grid12">
-				<div className="grid12">
+
+				<div className="grid6">
+					<JokeButton
+						clickFunction={ this.pauseTimer }
+						buttonText="||  /  >" />
+				</div>
+				<div className="grid6">
+					
 					<JokeButton
 						clickFunction={ this.loadJoke }
 						buttonText="Next Joke ->" />

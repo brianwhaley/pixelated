@@ -101,10 +101,10 @@ export default class Stkr extends Component {
 										<img src="/images/stkr/stkr_screenshot_04.png" alt="Stkr slash command" /><br /><br />
 									</div>
 									<div className="grid4 bigpad">
-										<img src="/images/stkr/stkr_screenshot_05.png" alt="Select an image to display" /><br /><br />
+										<img src="/images/stkr/stkr_screenshot_05.png" alt="Select a stkr to display" /><br /><br />
 									</div>
 									<div className="grid4 bigpad">
-										<img src="/images/stkr/stkr_screenshot_06.png" alt="Share the image selected" />
+										<img src="/images/stkr/stkr_screenshot_06.png" alt="Share the stkr selected" />
 									</div>
 								</div>
 								
@@ -119,10 +119,10 @@ export default class Stkr extends Component {
 										<img src="/images/stkr/stkr_screenshot_07.png" alt="Stkrdelete slash command" /><br /><br />
 									</div>
 									<div className="grid4 bigpad">
-										<img src="/images/stkr/stkr_screenshot_08.png" alt="Choose an image to delete" /><br /><br />
+										<img src="/images/stkr/stkr_screenshot_08.png" alt="Choose a stkr to delete" /><br /><br />
 									</div>
 									<div className="grid4 bigpad">
-										<img src="/images/stkr/stkr_screenshot_09.png" alt="Keep your image count at 50 or less" />
+										<img src="/images/stkr/stkr_screenshot_09.png" alt="Keep your stkr count at 50 or less" />
 									</div>
 								</div>
 								
