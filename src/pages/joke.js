@@ -9,20 +9,20 @@ export default class Joke extends Component {
 			document.querySelector("nav").style.display = "none";
 			document.querySelector("header").style.display = "none";
 			const elems = document.querySelectorAll(".nerdjoke .joketext div");
-			for (let elem of elems) { elem.style.fontSize = "2em"; }
-		} catch {
-			return;
+			for (let elem of elems) { elem.style.fontSize = "2em"; } 
+		} catch(e) {
+			return ;
 		}
 	}
 
 	componentDidMount(){
 		this.hideElems();
-		console.log("did mount");
+		// console.log("did mount");
 	}
 
 	componentDidUpdate(){
 		this.hideElems();
-		console.log("did update");
+		// console.log("did update");
 	}
 
 	render () {
