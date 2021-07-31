@@ -45,7 +45,7 @@ export default class RecipeBook extends Component {
 			for (var recipeKey in this.state.recipeElems[category]) {
 				var recipe = this.state.recipeElems[category][recipeKey];
 				var cats = recipe.properties.category;
-				var rID = cID + "-r" + (parseInt(recipeKey) + 1);
+				var rID = cID + "-r" + (parseInt(recipeKey, 10) + 1);
 				if (cats.includes(category)) {
 					myElems.push(<Recipe key={rID} id={rID} recipeData={recipe} showOnly={this.state.showOnlyRecipe} />);
 				}
@@ -165,7 +165,7 @@ export class RecipePickList extends Component {
 		myOpts.push(<option key='x0' value=''>Choose a recipe below:</option>);
 		for (var catKey in this.props.recipeCategories) {
 			var category = this.props.recipeCategories[catKey];
-			var cID = "c" + (parseInt(catKey) + 1);
+			var cID = "c" + (parseInt(catKey, 10) + 1);
 			myOpts.push(<option key={cID} value={cID}>=== {category.toUpperCase()} ===</option>);
 			var rID = 1;
 			for (var recipeKey in this.props.recipeData.items) {
