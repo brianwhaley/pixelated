@@ -2,10 +2,11 @@ module.exports = function (api) {
 	api.cache(true);
 
 	const presets = [
-		"@babel/preset-env"
-	 ];
+		"@babel/react" , 
+		"@babel/env" 
+	];
 	const plugins = [
-
+		"@babel/plugin-proposal-class-properties"
 	];
 
 	return {
