@@ -22,7 +22,7 @@
         "Region": "us-east-2",
         "HostingBucketName": "pixelated-hosting-prod"
       },
-      "lastPushTimeStamp": "2021-07-31T00:58:41.034Z",
+      "lastPushTimeStamp": "2021-07-31T01:02:50.982Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-pixelated-prod-220214-deployment/amplify-cfn-templates/hosting/template.json",
         "logicalId": "hostingS3AndCloudFront"

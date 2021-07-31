@@ -16,6 +16,9 @@ const isProd = process.env.NODE_ENV === "production";
 const isTest = process.env.NODE_ENV === "test";
 const isDev = !isProd && !isTest;
 
+const jsFiles = "public/js/**/*.js";
+const testFiles = "test/spec/**/*.js" ;
+
 function styles() {
 	return src("public/css/*.css")
 		.pipe($.if(!isProd, $.sourcemaps.init()))
@@ -28,7 +31,7 @@ function styles() {
 }
 
 function scripts() {
-	return src("public/js/**/*.js")
+	return src(jsFiles)
 		.pipe($.plumber())
 		.pipe($.if(!isProd, $.sourcemaps.init()))
 		.pipe($.babel())
@@ -46,11 +49,11 @@ const lintBase = files => {
 		.pipe($.if(!server.active, $.eslint.failAfterError()));
 };
 function lint() {
-	return lintBase("public/js/**/*.js")
+	return lintBase(jsFiles)
 		.pipe(dest("public/js"));
 }
 function lintTest() {
-	return lintBase("test/spec/**/*.js")
+	return lintBase(testFiles)
 		.pipe(dest("test/spec"));
 }
 
@@ -132,7 +135,7 @@ function startAppServer() {
 	]).on("change", server.reload);
 
 	watch("public/css/**/*.css", styles);
-	watch("public/js/**/*.js", scripts);
+	watch(jsFiles, scripts);
 	watch("public/fonts/**/*", fonts);
 }
 
@@ -150,9 +153,9 @@ function startTestServer() {
 		}
 	});
 
-	watch("public/js/**/*.js", scripts);
-	watch(["test/spec/**/*.js", "test/index.html"]).on("change", server.reload);
-	watch("test/spec/**/*.js", lintTest);
+	watch(jsFiles, scripts);
+	watch([testFiles, "test/index.html"]).on("change", server.reload);
+	watch(testFiles, lintTest);
 }
 
 function startDistServer() {
