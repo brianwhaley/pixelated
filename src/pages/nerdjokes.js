@@ -1,12 +1,34 @@
 import React, { Component, Fragment } from "react";
+import { useLocation } from "react-router-dom";
 import { CalloutHeader } from "../components/pixelated.callout.js";
 import NerdJoke from "../components/pixelated.nerdjoke.js";
 
+function UseQuery() {
+	const { search } = useLocation();
+	let isInstalled = new URLSearchParams(search).get("installed");
+	console.log(isInstalled);
+	console.log(typeof(isInstalled));
+	let yes = (
+		<div className="centered">
+			<h2>Congratulations on successfully installing NerdJokes for Slack!</h2><br/><br/>
+		</div>
+	);
+	let no = (
+		<div className="slackbutton centered">
+			<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1093097617364&scope=chat:write,chat:write.public,commands,im:write">
+				<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" 
+					srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+			<br />
+		</div>
+	);
+	return ( isInstalled && isInstalled == "true" ? yes : no );
+}
+
 export default class NerdJokes extends Component {
+	
 	render () {
 		return (
 			<Fragment>
-
 				<section className="section" id="social-section">
 					<div className="section-container">
 						<div className="row">
@@ -17,23 +39,18 @@ export default class NerdJokes extends Component {
 										<NerdJoke></NerdJoke>
 									</div>
 									<div className="grid12">
-										<div className="slackbutton centered">
-											<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1093097617364&scope=chat:write,chat:write.public,commands,im:write">
-												<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" 
-													srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
-											<br />
-										</div>
+										<UseQuery />
 									</div>
 									<div className="grid8 push2">
 										View random science, technology, math, and nerd jokes, or schedule them to be delivered to specific channels in your workspace!<br /><br />
-										<li> Type '/nerdjokes' to get a random joke to immediately share with your teammates.</li>
-										<li> Type '/nerdjokes help' to get information about nerdjokes slash commands.</li>
-										<li> Type '/nerdjokes bug' to get more information about submitting a bug.</li>
-										<li> Type '/nerdjokes support' to get more information on how to reach out for support. </li>
-										<li> Type '/nerdjokes getjoke' to get a random joke sent immediately. </li>
-										<li> Type '/nerdjokes addschedule' to add or edit a schedule for delivering jokes to the current channel. </li>
-										<li> Type '/nerdjokes deleteschedule' to delete a schedule for delivering jokes to the current channel. </li>
-										<li> Type '/nerdjokes addjoke' to recommend a new joke to be added to the collection.</li>
+										<li> Type &#39;/nerdjokes&#39; to get a random joke to immediately share with your teammates.</li>
+										<li> Type &#39;/nerdjokes help&#39; to get information about nerdjokes slash commands.</li>
+										<li> Type &#39;/nerdjokes bug&#39; to get more information about submitting a bug.</li>
+										<li> Type &#39;/nerdjokes support&#39; to get more information on how to reach out for support. </li>
+										<li> Type &#39;/nerdjokes getjoke&#39; to get a random joke sent immediately. </li>
+										<li> Type &#39;/nerdjokes addschedule&#39; to add or edit a schedule for delivering jokes to the current channel. </li>
+										<li> Type &#39;/nerdjokes deleteschedule&#39; to delete a schedule for delivering jokes to the current channel. </li>
+										<li> Type &#39;/nerdjokes addjoke&#39; to recommend a new joke to be added to the collection.</li>
 										<br/>
 									</div>
 								</div>
@@ -54,7 +71,7 @@ export default class NerdJokes extends Component {
 
 								<div className="grid12">
 									<CalloutHeader title="Step 1: Random Joke On Demand" />
-									<li> Type '/nerdjokes' or '/nerdjokes getjoke' to get a random joke to immediately share with your teammates.</li><br /><br />
+									<li> Type &#39;/nerdjokes&#39; or &#39;/nerdjokes getjoke&#39; to get a random joke to immediately share with your teammates.</li><br /><br />
 								</div>
 								<div className="grid6 bigpad">
 									<img src="/images/nerdjokes/nerdjokes_step_01a.png" alt="NerdJokes Joke Question" /><br></br>
@@ -67,8 +84,8 @@ export default class NerdJokes extends Component {
 
 								<div className="grid12">
 									<CalloutHeader title="Step 2: Create or Delete a Schedule" />
-									<li> Type '/nerdjokes addschedule' to add or edit a schedule for delivering jokes to the current channel. </li>
-									<li> Type '/nerdjokes deleteschedule' to delete a schedule for delivering jokes to the current channel. </li>
+									<li> Type &#39;/nerdjokes addschedule&#39; to add or edit a schedule for delivering jokes to the current channel. </li>
+									<li> Type &#39;/nerdjokes deleteschedule&#39; to delete a schedule for delivering jokes to the current channel. </li>
 								</div>
 								<div className="grid6 bigpad">
 									<img src="/images/nerdjokes/nerdjokes_step_02a.png" alt="NerdJokes Add Joke Schedule" /><br /><br />
@@ -81,7 +98,7 @@ export default class NerdJokes extends Component {
 
 								<div className="grid12 bigpad">
 									<CalloutHeader title="Step 3: Add a Joke" />
-									<li> Type '/nerdjokes addjoke' to recommend a new joke to be added to the collection.</li>
+									<li> Type &#39;/nerdjokes addjoke&#39; to recommend a new joke to be added to the collection.</li>
 								</div>
 								<div className="grid6 bigpad">
 									<img src="/images/nerdjokes/nerdjokes_step_03.png" alt="NerdJokes Add Joke" /><br /><br />
@@ -91,9 +108,9 @@ export default class NerdJokes extends Component {
 
 								<div className="grid12 bigpad">
 									<CalloutHeader title="Step 4: Help" />
-									<li> Type '/nerdjokes help' to get information about nerdjokes slash commands.</li>
-									<li> Type '/nerdjokes bug' to get more information about submitting a bug.</li>
-									<li> Type '/nerdjokes support' to get more information on how to reach out for support. </li>
+									<li> Type &#39;/nerdjokes help&#39; to get information about nerdjokes slash commands.</li>
+									<li> Type &#39;/nerdjokes bug&#39; to get more information about submitting a bug.</li>
+									<li> Type &#39;/nerdjokes support&#39; to get more information on how to reach out for support. </li>
 								</div>
 								<div className="grid6 bigpad">
 									<img src="/images/nerdjokes/nerdjokes_step_04a.png" alt="NerdJokes Help" /><br /><br />

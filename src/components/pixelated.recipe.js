@@ -7,7 +7,7 @@ export default class RecipeBook extends Component {
 	static propTypes = {
 		recipeData: PropTypes.object.isRequired,
 		recipeCategories: PropTypes.array.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -91,7 +91,7 @@ export class RecipeCategory extends Component {
 		className: PropTypes.string.isRequired,
 		category: PropTypes.string.isRequired,
 		showOnly: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: "none" } : { display: "initial" });
@@ -103,45 +103,45 @@ export class RecipeCategory extends Component {
 
 /* ========== RECIPE ========== */
 export class Recipe extends Component {
-    static propTypes = {
-    	recipeData: PropTypes.object.isRequired,
-    	id: PropTypes.string.isRequired,
-    	showOnly: PropTypes.string.isRequired
-    }
+	static propTypes = {
+		recipeData: PropTypes.object.isRequired,
+		id: PropTypes.string.isRequired,
+		showOnly: PropTypes.string.isRequired
+	};
 
-    render () {
-    	var recipe = this.props.recipeData.properties;
-    	var ingredients = recipe.ingredients.map((ingredient, iKey) =>
-    		<li key={iKey} className="p-ingredient">{ingredient}</li>
-    	);
-    	var instructions = recipe.instructions.map((instruction, iKey) =>
-    		<li key={iKey} className="p-instruction">{instruction}</li>
-    	);
-    	var recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null);
-    	var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: "none" } : { display: "initial" });
-    	/* event.preventDefault(); */
-    	return (
-    		<article id={this.props.id} className="h-recipe" style={isHidden}>
-    			{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-    			<h3 className="p-name"><a name={this.props.id} href="#" onClick={() => { return false; }}>{recipe.name}</a></h3>
-    			{ recipeImage }
-    			<p className="p-summary">{recipe.summary}</p>
-    			<p>&nbsp;</p>
-    			<p className="p-author">Author: {recipe.author}</p>
-    			<p className="p-published">Published: {recipe.published}</p>
-    			<p className="dt-duration">Duration: {recipe.duration}</p>
-    			<p className="p-yield">Yield: {recipe.yield}</p>
-    			<h4 className="e-ingredients">Ingredients</h4>
-    			<ul>
-    				{ ingredients }
-    			</ul>
-    			<h4 className="e-instructions">Instructions</h4>
-    			<ol>
-    				{ instructions }
-    			</ol>
-    		</article>
-    	);
-    }
+	render () {
+		var recipe = this.props.recipeData.properties;
+		var ingredients = recipe.ingredients.map((ingredient, iKey) =>
+			<li key={iKey} className="p-ingredient">{ingredient}</li>
+		);
+		var instructions = recipe.instructions.map((instruction, iKey) =>
+			<li key={iKey} className="p-instruction">{instruction}</li>
+		);
+		var recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null);
+		var isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: "none" } : { display: "initial" });
+		/* event.preventDefault(); */
+		return (
+			<article id={this.props.id} className="h-recipe" style={isHidden}>
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+				<h3 className="p-name"><a name={this.props.id} href="#" onClick={() => { return false; }}>{recipe.name}</a></h3>
+				{ recipeImage }
+				<p className="p-summary">{recipe.summary}</p>
+				<p>&nbsp;</p>
+				<p className="p-author">Author: {recipe.author}</p>
+				<p className="p-published">Published: {recipe.published}</p>
+				<p className="dt-duration">Duration: {recipe.duration}</p>
+				<p className="p-yield">Yield: {recipe.yield}</p>
+				<h4 className="e-ingredients">Ingredients</h4>
+				<ul>
+					{ ingredients }
+				</ul>
+				<h4 className="e-instructions">Instructions</h4>
+				<ol>
+					{ instructions }
+				</ol>
+			</article>
+		);
+	}
 }
 
 /* ========== RECIPE PICK LIST ========== */
@@ -150,7 +150,7 @@ export class RecipePickList extends Component {
 		recipeData: PropTypes.object.isRequired,
 		recipeCategories: PropTypes.array.isRequired,
 		handleRecipePickListChange: PropTypes.func.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -206,7 +206,7 @@ export class RecipePickList extends Component {
 /* ========== RECIPE BACK TO TOP ========== */
 export class BackToTop extends Component {
 	static propTypes = {
-	}
+	};
 
 	scrollToTop = () => {
 		window.scroll({
@@ -215,7 +215,7 @@ export class BackToTop extends Component {
 			behavior: "smooth"
 		});
 		return false;
-	}
+	};
 
 	render () {
 		return (

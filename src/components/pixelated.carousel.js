@@ -1,3 +1,6 @@
+/* eslint sonarjs/cognitive-complexity: 0 */
+/* eslint sonarjs/no-duplicate-string: 0 */
+
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { getXHRData, generateURL } from "./pixelated.api.js";
@@ -18,7 +21,7 @@ export default class Carousel extends Component {
 	static propTypes = {
 		flickr: PropTypes.object,
 		type: PropTypes.string
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -101,7 +104,7 @@ export default class Carousel extends Component {
 export class CarouselSlider extends Component {
 	static propTypes = {
 		flickrData: PropTypes.object.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -133,7 +136,7 @@ export class CarouselSlider extends Component {
 		} else {
 			this.setState({ activeIndex: this.state.activeIndex - 1, direction: "prev" });
 		}
-	}
+	};
 
 	nextImage = () => {
 		if (this.state.activeIndex === this.props.flickrData.images.length - 1) {
@@ -141,7 +144,7 @@ export class CarouselSlider extends Component {
 		} else {
 			this.setState({ activeIndex: this.state.activeIndex + 1, direction: "next" });
 		}
-	}
+	};
 
 	animate = (elem) => {
 		requestAnimationFrame(this.animate);
@@ -181,7 +184,7 @@ export class CarouselSlider extends Component {
 
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)); }
 		}
-	}
+	};
 
 	draggable = (e) => {
 		this.drag.dragMoving = true;
@@ -205,7 +208,7 @@ export class CarouselSlider extends Component {
 			elem.style.transition = "";
 			elem.style.transform = "";
 		}
-	}
+	};
 
 	dragEnd = (e) => {
 		if (!this.drag.dragMoving) {
@@ -256,7 +259,7 @@ export class CarouselSlider extends Component {
 
 			// e.preventDefault();
 		}
-	}
+	};
 
 	transitionEnd = (e) => {
 		if (this.drag.debug) { console.log("Transition End - " + e.type); }
@@ -264,7 +267,7 @@ export class CarouselSlider extends Component {
 		if (elem.matches(divSelector)) {
 			elem.style.left = "0px";
 		}
-	}
+	};
 
 	componentDidMount () {
 		document.addEventListener("touchstart", this.dragStart, { passive: false });
@@ -333,7 +336,7 @@ export class CarouselSliderImage extends Component {
 		imagesLength: PropTypes.number.isRequired,
 		image: PropTypes.object.isRequired,
 		size: PropTypes.string.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -386,7 +389,7 @@ export class CarouselSliderDetails extends Component {
 		index: PropTypes.number.isRequired,
 		length: PropTypes.number.isRequired,
 		image: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		return (
@@ -404,7 +407,7 @@ export class CarouselSliderArrow extends Component {
 		direction: PropTypes.string.isRequired,
 		clickFunction: PropTypes.func.isRequired,
 		glyph: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		return (
@@ -420,7 +423,7 @@ export class CarouselSliderArrow extends Component {
 export class CarouselHero extends Component {
 	static propTypes = {
 		flickrData: PropTypes.object.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -441,7 +444,7 @@ export class CarouselHero extends Component {
 		} else {
 			this.setState({ activeIndex: this.state.activeIndex + 1, direction: (this.state.direction === "up" ? "down" : "up") });
 		}
-	}
+	};
 
 	render () {
 		if (this.props.flickrData.images.length > 0) {
@@ -488,7 +491,7 @@ export class CarouselHeroImage extends Component {
 		imagesLength: PropTypes.number.isRequired,
 		image: PropTypes.object.isRequired,
 		size: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		var myImg = this.props.image;
@@ -524,7 +527,7 @@ export class CarouselHeroDetails extends Component {
 		index: PropTypes.number.isRequired,
 		length: PropTypes.number.isRequired,
 		image: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		return (

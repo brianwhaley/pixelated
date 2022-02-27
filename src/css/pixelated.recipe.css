@@ -1,6 +1,6 @@
 .h-recipe-category {
 	background-color: #EEE;
-    background-image: url(https://pixelated.tech/images/bg7-dk.gif);
+    background-image: url(/src/images/bg7-dk.gif);
     border: 1px solid #CCC;
     color: #000;
 	font-size: 22px;
@@ -75,7 +75,7 @@
 }
 
 #recipe-list {
-    background-image: url(/images/bg7-dk.gif);
+    background-image: url(/src/images/bg7-dk.gif);
 	border: 1px solid #999;
 	box-shadow: 5px 5px 5px rgba(127, 127, 127, 1.0);
 	font-size: 18px;

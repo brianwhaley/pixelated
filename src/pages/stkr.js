@@ -1,5 +1,27 @@
 import React, { Component, Fragment } from "react";
+import { useLocation } from "react-router-dom";
 import { CalloutHeader } from "../components/pixelated.callout.js";
+
+
+function UseQuery() {
+	const { search } = useLocation();
+	let isInstalled = new URLSearchParams(search).get("installed");
+	console.log(isInstalled);
+	console.log(typeof(isInstalled));
+	let yes = (
+		<div className="centered">
+			<h2>Congratulations on successfully installing STKR for Slack!</h2><br/><br/>
+		</div>
+	);
+	let no = (
+		<div className="centered">
+			<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write,users:read">
+				<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+		</div>
+	);
+	return ( isInstalled && isInstalled == "true" ? yes : no );
+}
+
 
 export default class Stkr extends Component {
 	render () {
@@ -11,15 +33,14 @@ export default class Stkr extends Component {
 						<div className="row">
 							<CalloutHeader title="Stkr" />
 							<div className="callout-body grid12">
-								<div className="centered">
-									<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write,users:read">
-										<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
-								</div>
+
+								<UseQuery />
+
 								<div className="centered">
                                 Stkr is a sticker sharing application for Slack. You can:<br/>
                                 1) Upload or Add images to be shared with your teammates<br/>
-                                2) Use the '/stkr' or '/stkr share' command to share those images<br/>
-                                3) use the '/stkr delete' command to remove images as necessary<br/>
+                                2) Use the &#39;/stkr&#39; or &#39;/stkr share&#39; command to share those images<br/>
+                                3) use the &#39;/stkr delete&#39; command to remove images as necessary<br/>
 								</div>
 							</div>
 						</div>
@@ -90,11 +111,11 @@ export default class Stkr extends Component {
 
 								<div className="grid12 bigpad">
 									<CalloutHeader title="Step 3: Share" />
-									Type '/stkr' or '/stkr share' in your channel to share a a sticker that you or one of your teammates have uploaded.<br /><br />
-									Type '/stkr help' in any channel to get basic help information.<br /><br />
-									Type '/stkr bug' in any channel to get information on reporting bugs to the development team.<br /><br />
-									Type '/stkr support' to get basic support information, including a support email address.  <br /><br />
-									Type '/stkr list' to see a full list of all images that are available to your workspace.  <br /><br />
+									Type &#39;/stkr&#39; or &#39;/stkr share&#39; in your channel to share a a sticker that you or one of your teammates have uploaded.<br /><br />
+									Type &#39;/stkr help&#39; in any channel to get basic help information.<br /><br />
+									Type &#39;/stkr bug&#39; in any channel to get information on reporting bugs to the development team.<br /><br />
+									Type &#39;/stkr support&#39; to get basic support information, including a support email address.  <br /><br />
+									Type &#39;/stkr list&#39; to see a full list of all images that are available to your workspace.  <br /><br />
 								</div>
 								<div className="grid12">
 									<div className="grid4 bigpad">

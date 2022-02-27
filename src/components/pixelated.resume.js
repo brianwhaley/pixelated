@@ -12,7 +12,7 @@ function mmYYYY (dt) {
 export class ResumeName extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myName = this.props.data.items[0].properties.contact[0].properties.name;
@@ -27,7 +27,7 @@ export class ResumeName extends Component {
 export class ResumeContact extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myContact = this.props.data.items[0].properties.contact[0];
@@ -51,7 +51,7 @@ export class ResumeContact extends Component {
 export class ResumeEducation extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -80,7 +80,7 @@ export class ResumeEducation extends Component {
 export class ResumeQualifications extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -106,7 +106,7 @@ export class ResumeQualifications extends Component {
 export class ResumeWorkHistory extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -136,7 +136,7 @@ export class ResumeWorkHistory extends Component {
 export class ResumeVolunteer extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -166,7 +166,7 @@ export class ResumeVolunteer extends Component {
 export class ResumeCertifications extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -192,7 +192,7 @@ export class ResumeCertifications extends Component {
 export class ResumeSkills extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];
@@ -217,7 +217,7 @@ export class ResumeSkills extends Component {
 export class ResumeSummary extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
-	}
+	};
 
 	render () {
 		var myElems = [];

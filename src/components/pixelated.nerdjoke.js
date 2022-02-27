@@ -41,7 +41,7 @@ export default class NerdJoke extends Component {
 			var myJokeData = jokeData;
 			this.setState({ joke: myJokeData });
 		}); 
-	}
+	};
 
 	formatTimeLeft = (time) => {
 		const minutes = Math.floor(time / 60);
@@ -50,7 +50,7 @@ export default class NerdJoke extends Component {
 			seconds = `0${seconds}`;
 		}
 		return `${minutes}:${seconds}`;
-	}
+	};
 
 	startTimer = () => {
 		this.timerInterval = setInterval(() => {
@@ -62,11 +62,11 @@ export default class NerdJoke extends Component {
 				document.getElementById("joke-timer-path-elapsed").style.width = myWidth ;
 			} 
 		}, 1000);
-	}
+	};
 
 	pauseTimer = () => {
 		this.timePaused = ! this.timePaused ;
-	}
+	};
 
 	componentDidMount(){
 		this.loadJoke();
@@ -119,7 +119,7 @@ export class JokeButton extends Component {
 	static propTypes = {
 		clickFunction: PropTypes.func.isRequired,
 		buttonText: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		return (

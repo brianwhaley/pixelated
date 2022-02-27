@@ -1,26 +1,25 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 import Carousel from "../components/pixelated.carousel.js";
-import QueryString from "query-string";
+
+function UseQuery() {
+	const { search } = useLocation();
+	let someTags = new URLSearchParams(search).get("tag");
+	let flickrProps = {
+		urlProps: {
+			tags: someTags,
+			photoSize: "Large"
+		}
+	};
+	return (
+		<Carousel flickr={flickrProps} type="slider"></Carousel>
+	);
+}
 
 export default class Gallery extends Component {
-	static propTypes = {
-		location: PropTypes.object
-	}
-
-	constructor (props) {
-		super(props);
-		this.flickrProps = {
-			urlProps: {
-				tags: QueryString.parse(this.props.location.search).tag,
-				photoSize: "Large"
-			}
-		};
-	}
-
 	render () {
 		return (
-			<Carousel flickr={this.flickrProps} type="slider"></Carousel>
+			<UseQuery />
 		);
 	}
 }

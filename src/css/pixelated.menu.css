@@ -27,7 +27,7 @@
 
 .panel-menu-header {
 	background-color: #336699;
-	background-image: url(/images/bg6.gif);
+	background-image: url(/src/images/bg6.gif);
 	color: #FFFFFF;
 	padding: 15px;
 
@@ -90,7 +90,7 @@
 .accordion-menu > ul > li > a {
 	/* this is the button */
 	background: #CCC;
-	background-image: url(/images/bg6-lt.jpg);
+	background-image: url(/src/images/bg6-lt.jpg);
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
@@ -99,7 +99,7 @@
 
 .accordion-menu > ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/images/bg7-dk.gif);
+	background-image: url(/src/images/bg7-dk.gif);
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }

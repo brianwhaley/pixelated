@@ -1,3 +1,5 @@
+/* eslint sonarjs/no-collapsible-if: 0 */
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "../css/pixelated.menu.css";
@@ -6,7 +8,7 @@ import "../css/pixelated.menu.css";
 export default class Menu extends Component {
 	static propTypes = {
 		menuItems: PropTypes.object.isRequired
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -43,9 +45,9 @@ export default class Menu extends Component {
 				if ( this.state.left === 0 ) this.moveMenu();
 			}
 		}, true );
-	}
+	};
 	
-	  componentWillUnmount () {
+	componentWillUnmount () {
 		window.removeEventListener("click", this.handleResize);
 	}
 
@@ -70,7 +72,7 @@ export class MenuItem extends Component {
 	static propTypes = {
 		name: PropTypes.string.isRequired,
 		href: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		return (

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Nav from "./pages/nav";
 import Header from "./pages/header";
@@ -27,39 +27,41 @@ export default class App extends Component {
 
 				<header className="grid12">
 					<div id="page-header" className="grid12 fixed-header">
-						<Header></Header>
+						<Header />
 					</div>
 					<div id="fixed-header-spacer" className="grid12"></div>
-					<Router>
-						<Route exact path='/' component={Hero}/>
-						<Route exact path='/index.html' component={Hero}/>
-					</Router>
+					<BrowserRouter>
+						<Routes>
+							<Route exact path='/' element={<Hero />}/>
+							<Route exact path='/index.html' element={<Hero />}/>
+						</Routes>
+					</BrowserRouter>
 					<div id="page-search" className="grid12 noMobile">
-						<Search></Search>
+						<Search />
 					</div>
 				</header>
 
 				<nav>
-					<Nav></Nav>
+					<Nav />
 				</nav>
 
 				<main className="grid12">
-					<Router>
-						<Switch>
-							<Route exact path='/' component={Home}/>
-							<Route path='/index.html' component={Home}/>
-							<Route path='/resume.html' component={MyResume}/>
-							<Route path='/photography.html' component={Photography}/>
-							<Route path='/gallery.html' component={Gallery}/>
-							<Route path='/customsunglasses.html' component={CustomSunglasses}/>
-							<Route path='/socialmedia.html' component={SocialMedia}/>
-							<Route path='/stkr.html' component={Stkr}/>
-							<Route path='/nerdjokes.html' component={NerdJokes}/>
-							<Route path='/joke.html' component={Joke}/>
-							<Route path='/recipes.html' component={Recipes}/>
-							<Route exact path='*' component={NotFound} />
-						</Switch>
-					</Router>
+					<BrowserRouter>
+						<Routes>
+							<Route exact path='/' element={<Home />}/>
+							<Route path='/index.html' element={<Home />}/>
+							<Route path='/resume.html' element={<MyResume />}/>
+							<Route path='/photography.html' element={<Photography />}/>
+							<Route path='/gallery.html' element={<Gallery />}/>
+							<Route path='/customsunglasses.html' element={<CustomSunglasses />}/>
+							<Route path='/socialmedia.html' element={<SocialMedia />}/>
+							<Route path='/stkr.html' element={<Stkr />}/>
+							<Route path='/nerdjokes.html' element={<NerdJokes />}/>
+							<Route path='/joke.html' element={<Joke />}/>
+							<Route path='/recipes.html' element={<Recipes />}/>
+							<Route exact path='*' element={<NotFound />} />
+						</Routes>
+					</BrowserRouter>
 				</main>
 
 				<footer className="grid12">
