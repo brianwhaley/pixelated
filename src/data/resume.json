@@ -9,7 +9,7 @@
 				"Diverse range of technologies, in the media, finance, pharmaceutical, and telecommunications industries",
 				"Highly available e-commerce portals, web sites, web applications, and mobile applications",
 				"Project lifecycle, Agile Methodologies (including Scrum and Kanban), benchmarking, best practices implementation, and continuous process improvement",
-				"Sizable departments up to 50 staff, budgets to $10 million, using onshore staff, offshore partners, and hybrid teams"
+				"Sizable departments up to 300 staff, budgets to $50 million, using onshore staff, offshore partners, and hybrid teams"
 			],
 			"contact": [
 				{
@@ -136,8 +136,33 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2018-09-24T09:00:00" ],
+						"start": [ "2022-05-09T09:00:00" ],
 						"end": [ "Present" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Vice President Engineering" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "(800) 528-4800" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "2018-09-24T09:00:00" ],
+						"end": [ "2022-05-06T17:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -564,7 +589,7 @@
 					"properties": {
 						"name": [ "" ],
 						"start": [ "2017-02-01T00:00:00" ],
-						"end": [ "Present" ],
+						"end": [ "2020-12-31T23:59:59" ],
 						"summary": [
 							"The Design Thinking Certificate Program at Rutgers, in connection with the Rutgers Center for Innovation Education and the Rutgers Professional Science Master's Degree, focuses on teaching innovative thinking as a means of designing products and services that manage complexity, serve human needs, and are sustainable to both businesses and the people they serve. Students work in small teams to complete a project from beginning to end, with guidance from professional designers and educators. " ],
 						"description": [
@@ -595,7 +620,7 @@
 					"properties": {
 						"name": [ "" ],
 						"start": [ "2017-02-01T00:00:00" ],
-						"end": [ "2017-12-01T00:00:00" ],
+						"end": [ "2019-12-01T00:00:00" ],
 						"summary": [ "" ],
 						"description": [ "Designed, built, and deployed bunniesunited.org web site and social media presence",
 						"Used hosted WordPress solution to manage content and design elements",
