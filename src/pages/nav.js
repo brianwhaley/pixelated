@@ -9,13 +9,14 @@ export default class Nav extends Component {
 			"Work Portfolio": "/gallery.html?tag=portfolio-all",
 			"Photography": "/photography.html",
 			"Photo Gallery": "/gallery.html?tag=pixelatedviewsgallery",
+			"Custom Sunglasses": "/customsunglasses.html",
 			// "Custom Oakleys": "/customsunglasses.html", 
 			// "Custom Oakely Gallery": "/gallery.html?tag=customsunglasses",
 			"Pixelated Blog": "https://blog.pixelated.tech",
 			"Social Media": "/socialmedia.html",
 			"Stkr": "/stkr.html",
 			"NerdJokes": "/nerdjokes.html",
-			"Recipes": "/recipes.html"
+			"Recipes": "/recipes.html",
 		};
 
 		return (

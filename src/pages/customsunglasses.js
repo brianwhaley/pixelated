@@ -14,7 +14,7 @@ export default class CustomSunglasses extends Component {
 								<Callout
 									url='gallery.html?tag=customsunglasses'
 									img='images/customs/btw-customs.jpg'
-									title='Custom Oakleys Photo Gallery' 
+									title='Custom Sunglasses Photo Gallery' 
 									content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
 									direction='horizontal'
 									columnCount={2}/>
