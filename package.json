@@ -1,6 +1,6 @@
 {
   "name": "pixelated",
-  "version": "0.9.52",
+  "version": "0.9.53",
   "private": true,
   "engines": {
     "node": ">=4"
@@ -57,20 +57,6 @@
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-sonarjs": "^0.12.0",
     "eslint-plugin-standard": "^4.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-cli": "^2.3.0",
-    "gulp-eslint": "^6.0.0",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^8.0.0",
-    "gulp-load-plugins": "^2.0.7",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^9.0.1",
-    "gulp-size": "^4.0.1",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "gulp-useref": "^5.0.0",
     "install-peerdeps": "^3.0.3",
     "jest": "^27.5.1",
     "webpack": "^5.69.1",
@@ -86,13 +72,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js .",
-    "version": "",
-    "gulpserve:test": "cross-env NODE_ENV=test gulp serve",
-    "gulpserve:dist": "cross-env NODE_ENV=production gulp serve",
-    "gulpstart": "gulp serve",
-    "gulpbuild": "cross-env NODE_ENV=production gulp",
-    "gulptest": "npm run serve:test",
-    "gulptasks": "gulp --tasks"
+    "version": ""
   },
   "scripts comments": {
     "test": "jest",
