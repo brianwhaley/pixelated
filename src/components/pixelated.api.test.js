@@ -30,6 +30,7 @@ test("Flickr data returns properly", () => {
 
 	getXHRData(generateURL("https://api.flickr.com/plorf/rest/?", flickrConfig.flickrProps), myMethod, (error, response, body) => {
 		expect(error).toBe(null);
+		expect(body).toBeDefined();
 		expect(response.statusCode).toBe(404);
 	});
 
