@@ -3,8 +3,8 @@
 
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { getXHRData, generateURL } from "./pixelated.api.js";
-import { mergeDeep } from "./pixelated.functions.js";
+import { getXHRData, generateURL } from "./pixelated.api";
+import { mergeDeep } from "./pixelated.functions";
 import "../css/pixelated.carousel.css";
 
 const divSelector = "div.carousel-slider-container";

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { useLocation } from "react-router-dom";
-import { CalloutHeader } from "../components/pixelated.callout.js";
+import { CalloutHeader } from "../components/pixelated.callout";
 
 
 function UseQuery() {

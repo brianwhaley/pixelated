@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Menu from "./pixelated.menu.js";
+import Menu from "./pixelated.menu-accordion";
 
 const menuItems = {
 	"Home": "./index.html",
@@ -8,6 +8,7 @@ const menuItems = {
 	"Work Portfolio": "./gallery.html?tag=portfolio-all",
 	"Photo Gallery": "./gallery.html?tag=pixelatedviewsgallery",
 	"Pixelated Blog": "https://blog.pixelated.tech",
+	"Custom Sunglasses": "./customsunglasses",
 	"Social Media": "./socialmedia.html",
 	"Stkr": "/stkr.html",
 	"TechJokes": "/techjokes.html",

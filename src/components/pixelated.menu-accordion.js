@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "../css/pixelated.menu.css";
+import "../css/pixelated.menu-accordion.css";
 
 /* ========== MENU ========== */
 export default class Menu extends Component {

@@ -1,7 +1,7 @@
 
 import React from "react";
 import renderer from "react-test-renderer";
-import Carousel, { /* CarouselSlider, */ CarouselSliderImage, CarouselSliderArrow, CarouselSliderDetails, /* CarouselHero, */ CarouselHeroImage, CarouselHeroDetails } from "./pixelated.carousel.js";
+import Carousel, { /* CarouselSlider, */ CarouselSliderImage, CarouselSliderArrow, CarouselSliderDetails, /* CarouselHero, */ CarouselHeroImage, CarouselHeroDetails } from "./pixelated.carousel";
 
 const image = {
 	id: "42079144500",

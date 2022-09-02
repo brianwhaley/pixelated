@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Menu from "../components/pixelated.menu.js";
+import Menu from "../components/pixelated.menu-accordion";
 
 export default class Nav extends Component {
 	render () {

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { CalloutHeader, CalloutRoundSm } from "../components/pixelated.callout.js";
-import SocialCards from "../components/pixelated.socialcard.js";
+import { CalloutHeader, CalloutRoundSm } from "../components/pixelated.callout";
+import SocialCards from "../components/pixelated.socialcard";
 
 export default class Photography extends Component {
 	render () {

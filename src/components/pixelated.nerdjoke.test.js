@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import NerdJoke, { JokeButton } from "./pixelated.nerdjoke.js";
+import NerdJoke, { JokeButton } from "./pixelated.nerdjoke";
 
 
 describe("NerdJoke", () => {

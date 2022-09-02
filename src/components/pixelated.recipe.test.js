@@ -1,7 +1,7 @@
 
 import React from "react";
 import renderer from "react-test-renderer";
-import Recipe from "./pixelated.recipe.js";
+import Recipe from "./pixelated.recipe";
 
 const recipeCategories = ["bread", "appetizer", "dinner", "slow cooker", "side dish", "salad", "dessert"];
 

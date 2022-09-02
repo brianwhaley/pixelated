@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from "../components/pixelated.resume.js";
+import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from "../components/pixelated.resume";
 import "../css/pixelated.resume.css";
 import ResumeData from "../data/resume.json";
 
