@@ -31,6 +31,12 @@
 	border-right: 1px solid #ccc;
 }
 
+@media screen and (max-width: 480px) {
+	.divider {
+		border-right: 0;
+	}
+}
+
 .bigpad {
 	padding: 15px;
 }
