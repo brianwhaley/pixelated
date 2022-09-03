@@ -1,11 +1,9 @@
 {
-<<<<<<< HEAD
-=======
   "name": "@brianwhaley/pixelated-components",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/brianwhaley"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Pixelated UI Components",
   "author": "Brian T. Whaley",
   "license": "ISC",
@@ -15,7 +13,6 @@
     "dist"
   ],
   "types": "dist/index.d.js",
->>>>>>> initial push
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@rollup/plugin-babel": "^5.3.1",
@@ -42,16 +39,5 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "rollup": "rollup -c"
-  },
-  "name": "pixelated-components",
-  "version": "1.0.0",
-  "description": "Pixelated UI Components",
-  "author": "Brian T. Whaley",
-  "license": "ISC",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "files": [
-    "dist"
-  ],
-  "types": "dist/index.d.js"
+  }
 }
