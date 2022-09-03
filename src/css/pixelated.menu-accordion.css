@@ -1,0 +1,120 @@
+
+
+/* ========================================
+=====      SLIDING PANEL MENU         =====
+======================================== */
+
+.panel-menu-button {
+	/* background-color: rgba(255,255,255,0.7); */
+	/* display: none; */
+	/* display: inline; */
+	margin: 0px 10px 0px 0px;
+	padding: 5px;
+	text-align: center;
+	width: 35px;
+
+	/* .rounded; */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+	.panel-menu-button {
+		display: inline;
+	}
+}
+
+.panel-menu-header {
+	background-color: #336699;
+	background-image: url(/src/images/bg6.gif);
+	color: #FFFFFF;
+	padding: 15px;
+
+	/* .rounded; */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+/* ========================================
+============  ACCORDION MENU   ============
+======================================== */
+
+.accordion-menu-wrapper {
+	/* background: #FFF; */
+	background: rgba(150, 190, 250, 0.7);
+	border-right: 1px solid #ccc;
+	/* height: auto; */
+	position: fixed;
+	left: 0px;
+	top: 60px;
+	height: 100%;
+	width: 220px;
+	z-index: 1000;
+    padding: 5px;
+}
+
+.accordion-menu,
+.accordion-menu ul {
+	/* ALL LIST LEVELS */
+	display: inline-block;
+	list-style-type: none;
+	padding: 0;
+	width: 200px;
+}
+
+.accordion-menu li {
+	/* ALL LIST ITEM LEVELS */
+	border-bottom: 1px solid #FFF;
+}
+
+.accordion-menu li:first-child {
+	/* ALL LIST ITEM LEVELS */
+	border-top: 1px solid #FFF;
+}
+
+.accordion-menu a {
+	color: #000;
+	display: block;
+	text-decoration: none;
+}
+
+.accordion-menu > ul {
+	margin: 0px 0px 0px 5px;
+	padding: 0;
+	width: 200px;
+}
+
+.accordion-menu > ul > li > a {
+	/* this is the button */
+	background: #CCC;
+	background-image: url(/src/images/bg6-lt.jpg);
+	font-weight: bold;
+	height: 30px;
+	line-height:30px;
+	text-indent: 10px;
+}
+
+.accordion-menu > ul > li > a:hover {
+	background: #EDD;
+	background-image: url(/src/images/bg7-dk.gif);
+	text-indent: 5px;
+	border-left: 5px #000 solid;
+}
+
+.accordion-menu > ul > li > ul > li > a {
+	background: #EEE;
+	height: 25px;
+	line-height: 25px;
+	text-indent: 20px;
+	font-size:0.9em;
+}
+
+.accordion-menu > ul > li > ul > li > a:hover {
+	text-indent: 15px;
+	border-left: 5px #900 solid;
+	background: #FFE;
+}
+

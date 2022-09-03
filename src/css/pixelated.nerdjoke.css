@@ -1,0 +1,73 @@
+
+
+/* ========================================
+===============  NERDJOKE   ===============
+======================================== */
+
+.nerdjoke {
+	padding-bottom: 20px;
+	font-size:24px;
+}
+
+.nerdjoke .joketext div {
+	padding-bottom: 15px;
+}
+
+.slackbutton {
+	padding-bottom: 20px;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.jokebutton {
+	/* background-image: url(../images/bg7-dk.gif); */
+    border: 1px solid #999;
+    display: inline-block;
+    font-size: 14px !important;
+    font-weight: bold;
+	margin: 5px;
+	padding: 5px 20px !important;
+
+	display: block;
+	margin: 5px auto;
+    text-align: center;
+	max-width: 220px;
+	transition: all .2s ease ;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.jokebutton:hover {
+	font-size: 16px ;
+}
+
+
+.joke-timer {
+	font-size: 14px !important;
+	line-height: 14px !important;
+	position: relative;
+	/* height: 25px;
+	width: 100%; */
+}
+
+.joke-timer-svg {
+	width: 100%;
+	height: 10px;
+	fill: rgb(190,190,190);
+	background: rgb(190,190,190);
+	color: rgb(190,190,190);
+}
+
+#joke-timer-path-elapsed {
+	fill:rgb(0,0,255);
+	width: 100%;
+	height: 10px; 
+	transition: 1s linear all;
+}
+
+#joke-timer-label {
+}

@@ -1,0 +1,92 @@
+
+.p-resume h1, .p-resume h2, .p-resume h3 {
+	display: block;
+	font-weight: bold;
+	margin-top:10px;
+	letter-spacing: -1px;
+	text-transform: uppercase;
+}
+
+.p-resume h1	{
+	font-size: 2.5em;
+	/* margin: 0.67em 0; */
+	text-align: center;
+}
+
+.p-resume h2	{
+	font-size: 1.5em;
+	/* margin: 0.83em 0; */
+}
+.p-resume h3	{
+	font-size: 1.17em;
+	/* margin: 1em 0; */
+}
+
+.p-resume ul, .p-resume ol {
+	margin: 0 0 10px 0;
+    padding-left: 20px;
+}
+
+.divider {
+	border-right: 1px solid #ccc;
+}
+
+.bigpad {
+	padding: 15px;
+}
+
+@media print {
+	header { display: none; }
+	nav { display: none; }
+}
+
+.p-resume {
+	word-break: break-word;
+	line-height: 1.4;
+}
+
+/* http://microformats.org/wiki/h-resume */
+.p-name {}
+.p-summary {}
+.p-contact {}
+.p-education {}
+.p-experience {}
+.p-skills {}
+.p-skill-category {
+	display: inline !important;
+}
+.p-skill {}
+.p-affiliation {}
+
+.p-qualifications {}
+.p-qualification {}
+
+/* http://microformats.org/wiki/h-card */
+.p-name {}
+.u-email {}
+.u-photo {}
+.u-url {}
+.p-adr {}
+.p-street-address {}
+.p-locality {}
+.p-region {}
+.p-postal-code {}
+.p-country-name {}
+.p-tel {}
+
+/* http://microformats.org/wiki/h-event */
+.p-name {}
+.p-summary {}
+.dt-start {
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+.dt-end {
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+.dt-duration {}
+.p-description {}
+.u-url {}
+.p-category {}
+.p-location {}

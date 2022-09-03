@@ -1,0 +1,83 @@
+
+
+/* ========================================
+===============  CALLOUTS   ===============
+======================================== */
+
+.callout {
+	padding: 20px;
+}
+
+.callout-header {
+	padding: 8px;
+	clear: both;
+	text-align: center;
+	overflow: hidden;
+}
+
+.callout-title {
+	text-transform: uppercase;
+}
+
+.callout-body {
+	border-top: 0px solid transparent;
+	/* display: inline-block; */
+	padding: 5px;
+}
+
+.callout-body li {
+	margin-bottom: 7px;
+}
+
+.round-img-container {
+    background: #fff;
+    border: 1px solid #AAA;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+    margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.round-img-container:before,
+.round-img-container-before {
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* initial ratio of 1:1*/
+}
+
+.round-img-container img,
+.round-img {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: none;
+    max-width: none;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+}
+
+.callout-image {
+	/* .round-img-container */
+    width: 70%;
+	height: 70%;
+}
+
+.callout-image-horiz {
+	/* .round-img-container */
+	/* .callout-image */
+    float: right;
+}
+
+@media screen and (max-width: 480px) {
+	.callout-image-horiz {
+		/* .round-img-container */
+		/* .callout-image */
+		float: none;
+	}
+}
