@@ -1,12 +1,11 @@
+/* eslint-disable */
+
 import React, { Component, Fragment } from "react";
+import { format } from "date-fns";
 import PropTypes from "prop-types";
 
-/* function isDate (dt) { return Object.prototype.toString.call(dt) === '[object Date]'; } */
-function pad (s) { return (s < 10) ? "0" + s : s; }
-function mmYYYY (dt) {
-	var d = new Date(dt);
-	// alert(d);
-	return Number.isNaN(d.getMonth()) ? dt : [pad(d.getMonth() + 1), d.getFullYear()].join("/");
+function isValidDate(date) {
+	return !Number.isNaN(new Date(date).getTime());
 }
 
 export class ResumeName extends Component {
@@ -50,7 +49,8 @@ export class ResumeContact extends Component {
 
 export class ResumeEducation extends Component {
 	static propTypes = {
-		data: PropTypes.object.isRequired
+		data: PropTypes.object.isRequired,
+		dateFormat: PropTypes.string.isRequired
 	};
 
 	render () {
@@ -59,8 +59,9 @@ export class ResumeEducation extends Component {
 		for (var iKey in myEducation) {
 			var ed = myEducation[iKey];
 			var myEdLocation = ed.properties.location[0].properties;
+			var myEndDate = isValidDate(ed.properties.end[0]) ? format(new Date(ed.properties.end[0]), this.props.dateFormat) : ed.properties.end[0] ;
 			var myElem = <li key={iKey}>
-				<span className="dt-end">{mmYYYY(ed.properties.end)} - </span>
+				<span className="dt-end">{myEndDate} - </span>
 				<span className="p-name">{ed.properties.name}, </span>
 				<span className="p-org">{myEdLocation.org}, </span>
 				<span className="p-locality">{myEdLocation.locality}, </span>
@@ -113,10 +114,12 @@ export class ResumeWorkHistory extends Component {
 		var myWork = this.props.data.items[0].properties.experience;
 		for (var iKey in myWork) {
 			var work = myWork[iKey];
+			var myStartDate = isValidDate(work.properties.start[0]) ? format(new Date(work.properties.start[0]), this.props.dateFormat) : work.properties.start[0] ;
+			var myEndDate = isValidDate(work.properties.end[0]) ? format(new Date(work.properties.end[0]), this.props.dateFormat) : work.properties.end[0] ;
 			var myWorkLocation = work.properties.location[0].properties;
 			var myElem = <li key={iKey}>
-				<span className="dt-start">{mmYYYY(work.properties.start)} - </span>
-				<span className="dt-end">{mmYYYY(work.properties.end)} : </span>
+				<span className="dt-start">{myStartDate} - </span>
+				<span className="dt-end">{myEndDate} : </span>
 				<span className="p-job-title">{myWorkLocation["job-title"]}, </span>
 				<span className="p-org">{myWorkLocation.org}, </span>
 				<span className="p-locality">{myWorkLocation.locality}, </span>
@@ -143,10 +146,12 @@ export class ResumeVolunteer extends Component {
 		var myVolunteer = this.props.data.items[0].properties.volunteer;
 		for (var iKey in myVolunteer) {
 			var vol = myVolunteer[iKey];
+			var myStartDate = isValidDate(vol.properties.start[0]) ? format(new Date(vol.properties.start[0]), this.props.dateFormat) : vol.properties.start[0] ;
+			var myEndDate = isValidDate(vol.properties.end[0]) ? format(new Date(vol.properties.end[0]), this.props.dateFormat) : vol.properties.end[0] ;
 			var myVolLocation = vol.properties.location[0].properties;
 			var myElem = <li key={iKey}>
-				<span className="dt-start">{mmYYYY(vol.properties.start)} - </span>
-				<span className="dt-end">{mmYYYY(vol.properties.end)} : </span>
+				<span className="dt-start">{myStartDate} - </span>
+				<span className="dt-end">{myEndDate} : </span>
 				<span className="p-job-title">{myVolLocation["job-title"]}, </span>
 				<span className="p-org">{myVolLocation.org}, </span>
 				<span className="p-locality">{myVolLocation.locality}, </span>
@@ -173,8 +178,9 @@ export class ResumeCertifications extends Component {
 		var myCerts = this.props.data.items[0].properties.certifications;
 		for (var iKey in myCerts) {
 			var cert = myCerts[iKey];
+			var myStartDate = isValidDate(cert.properties.start[0]) ? format(new Date(cert.properties.start[0]), this.props.dateFormat) : cert.properties.start[0] ;
 			var myElem = <li key={iKey}>
-				<span className="dt-start">{mmYYYY(cert.properties.start)} - </span>
+				<span className="dt-start">{myStartDate} - </span>
 				<span className="p-name">{cert.properties.name}, </span>
 				<span className="p-location">{cert.properties.location}</span>
 			</li>;
