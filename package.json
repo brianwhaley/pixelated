@@ -1,12 +1,20 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/brianwhaley"
-  },
-  "version": "1.0.6",
+  "version": "1.0.12",
   "description": "Pixelated UI Components",
   "author": "Brian T. Whaley",
-  "license": "ISC",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "publishConfig-old": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianwhaley/pixelated-components.git"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -14,7 +22,9 @@
   ],
   "types": "dist/index.d.js",
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -38,6 +48,14 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
