@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Callout, { CalloutHeader, CalloutRoundTiny } from "../components/pixelated.callout";
+import { Callout, CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.callout.css";
 
 export default class Home extends Component {
 	render () {
@@ -38,21 +39,21 @@ export default class Home extends Component {
 					<div className="section-container">
 						<div className="row">
 							<div className="column grid6">
-								<CalloutRoundTiny url="http://www.linkedin.com/in/brianwhaley" img="images/logos/linkedin-logo.png" title="LinkedIn" />
-								<CalloutRoundTiny url="http://twitter.com/brianwhaley" img="images/logos/twitter-logo.png" title="Twitter" />
-								<CalloutRoundTiny url="http://www.pinterest.com/brianwhaley" img="images/logos/pinterest-logo.png" title="Pinterest" />
-								<CalloutRoundTiny url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="images/logos/goodreads-logo.png" title="Goodreads" />
-								<CalloutRoundTiny url="http://www.youtube.com/user/brianwhaley" img="images/logos/youtube-logo.png" title="YouTube" />
-								{/* <CalloutRoundTiny url="http://www.google.com/profiles/brian.whaley" img="images/logos/google-plus-logo.png" title="Google Plus" /> */}
-								<CalloutRoundTiny url="http://pixelatedviews.tumblr.com" img="images/logos/tumblr-logo.png" title="Feed Reader" />
+								<CalloutRoundTiny url="http://www.linkedin.com/in/brianwhaley" img="images/logos/linkedin-logo.png" title="LinkedIn" alt="LinkedIn" />
+								<CalloutRoundTiny url="http://twitter.com/brianwhaley" img="images/logos/twitter-logo.png" title="Twitter" alt="Twitter" />
+								<CalloutRoundTiny url="http://www.pinterest.com/brianwhaley" img="images/logos/pinterest-logo.png" title="Pinterest" alt="Pinterest" />
+								<CalloutRoundTiny url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="images/logos/goodreads-logo.png" title="Goodreads" alt="Goodreads" />
+								<CalloutRoundTiny url="http://www.youtube.com/user/brianwhaley" img="images/logos/youtube-logo.png" title="YouTube" alt="YouTube" />
+								{/* <CalloutRoundTiny url="http://www.google.com/profiles/brian.whaley" img="images/logos/google-plus-logo.png" title="Google Plus" alt="Google Plus" /> */}
+								<CalloutRoundTiny url="http://pixelatedviews.tumblr.com" img="images/logos/tumblr-logo.png" title="Feed Reader" alt="Feed Reader" />
 							</div>
 							<div className="column grid6">
-								<CalloutRoundTiny url="http://blog.pixelated.tech" img="images/logos/google-reader-logo.png" title="Pixelated Blog" />
-								<CalloutRoundTiny url="http://www.amazon.com/gp/pdp/profile/AMIS1GDCT1RZ?ie=UTF8&amp;ref_=ya_T9_56" img="images/logos/amazon-logo.png" title="Amazon" />
-								<CalloutRoundTiny url="https://www.etsy.com/people/bwhaley73" img="images/logos/etsy-logo.png" title="Etsy" />
-								<CalloutRoundTiny url="https://foursquare.com/brianwhaley" img="images/logos/foursquare-logo.png" title="Foursquare" />
-								<CalloutRoundTiny url="http://trees.ancestry.com/tree/7237865" img="images/logos/ancestry-logo.jpg" title="Ancestry" />
-								<CalloutRoundTiny url="http://www.facebook.com/brian.t.whaley" img="images/logos/facebook-logo.png" title="Facebook" />
+								<CalloutRoundTiny url="http://blog.pixelated.tech" img="images/logos/google-reader-logo.png" title="Pixelated Blog" alt="Pixelated Blog" />
+								<CalloutRoundTiny url="http://www.amazon.com/gp/pdp/profile/AMIS1GDCT1RZ?ie=UTF8&amp;ref_=ya_T9_56" img="images/logos/amazon-logo.png" title="Amazon" alt="Amazon" />
+								<CalloutRoundTiny url="https://www.etsy.com/people/bwhaley73" img="images/logos/etsy-logo.png" title="Etsy" alt="Etsy" />
+								<CalloutRoundTiny url="https://foursquare.com/brianwhaley" img="images/logos/foursquare-logo.png" title="Foursquare" alt="Foursquare" />
+								<CalloutRoundTiny url="http://trees.ancestry.com/tree/7237865" img="images/logos/ancestry-logo.jpg" title="Ancestry" alt="Ancestry" />
+								<CalloutRoundTiny url="http://www.facebook.com/brian.t.whaley" img="images/logos/facebook-logo.png" title="Facebook" alt="Facebook" />
 							</div>
 						</div>
 						<div className="row">
@@ -105,16 +106,16 @@ export default class Home extends Component {
 					<div className="section-container">
 						<div className="row">
 							<div className="column grid4 push2 push2fix">
-								<CalloutRoundTiny url="https://500px.com/brianwhaley" img="images/logos/500px-logo.png" title="500px" gridSize="3" />
-								<CalloutRoundTiny url="http://www.flickr.com/photos/brianwhaley/" img="images/logos/flickr-logo.png" title="Flickr" gridSize="3" />
-								<CalloutRoundTiny url="http://www.shutterstock.com/g/brianwhaley" img="images/logos/shutterstock-logo.png" title="Shutter Stock" gridSize="3" />
-								<CalloutRoundTiny url="https://secure.istockphoto.com/portfolio/brianwhaley" img="images/logos/istock-logo.jpg" title="iStock Photo" gridSize="3" />
+								<CalloutRoundTiny url="https://500px.com/brianwhaley" img="images/logos/500px-logo.png" title="500px" alt="500px" gridSize="3" />
+								<CalloutRoundTiny url="http://www.flickr.com/photos/brianwhaley/" img="images/logos/flickr-logo.png" title="Flickr" alt="Flickr" gridSize="3" />
+								<CalloutRoundTiny url="http://www.shutterstock.com/g/brianwhaley" img="images/logos/shutterstock-logo.png" title="Shutter Stock" alt="Shutter Stock" gridSize="3" />
+								<CalloutRoundTiny url="https://secure.istockphoto.com/portfolio/brianwhaley" img="images/logos/istock-logo.jpg" title="iStock Photo" alt="iStock Photo" gridSize="3" />
 							</div>
 							<div className="column grid4 pull2 pull2fix">
-								<CalloutRoundTiny url="https://www.instagram.com/pixelated.views/" img="images/logos/instagram-logo.jpg" title="Instagram" gridSize="3" />
-								<CalloutRoundTiny url="http://www.blurb.com/user/brianwhaley" img="images/logos/blurb-logo.png" title="Blurb" gridSize="3" />
-								<CalloutRoundTiny url="http://brianwhaley.shutterfly.com" img="images/logos/shutterfly-logo.jpg" title="Shutterfly" gridSize="3" />
-								<CalloutRoundTiny url="http://twitter.com/pixelatedviews" img="images/logos/twitter-logo.png" title="Twitter" gridSize="3" />
+								<CalloutRoundTiny url="https://www.instagram.com/pixelated.views/" img="images/logos/instagram-logo.jpg" title="Instagram" alt="Instagram" gridSize="3" />
+								<CalloutRoundTiny url="http://www.blurb.com/user/brianwhaley" img="images/logos/blurb-logo.png" title="Blurb" alt="Blurb" gridSize="3" />
+								<CalloutRoundTiny url="http://brianwhaley.shutterfly.com" img="images/logos/shutterfly-logo.jpg" title="Shutterfly" alt="Shutterfly" gridSize="3" />
+								<CalloutRoundTiny url="http://twitter.com/pixelatedviews" img="images/logos/twitter-logo.png" title="Twitter" alt="Twitter" gridSize="3" />
 								<div className="grid2fix">&nbsp;</div>
 								<div className="grid2fix noMobile">&nbsp;</div>
 							</div>

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { MenuButton } from "../components/pixelated.menu-accordion";
+import { MenuAccordionButton } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.menu-accordion.css";
 
 export default class Header extends Component {
 	render () {
 		return (
 			<div className="section-container">
-				<MenuButton />
+				<MenuAccordionButton />
 				<h1 className="pull-left">Pixelated </h1>
 				<h2 className="pull-left pad"> - by Brian Whaley</h2>
 				<div className="addthis_sharing_toolbox push-right noMobile"></div>

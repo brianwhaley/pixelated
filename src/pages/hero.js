@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Carousel from "../components/pixelated.carousel";
+import { Carousel } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.carousel.css";
 
 export default class Hero extends Component {
 	render () {

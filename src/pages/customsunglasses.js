@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Callout, { CalloutHeader, CalloutRoundTiny } from "../components/pixelated.callout";
+import { Callout, CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.callout.css";
 
 export default class CustomSunglasses extends Component {
 	render () {
@@ -41,14 +42,14 @@ export default class CustomSunglasses extends Component {
 										// url='https://farm66.static.flickr.com/65535/50653126162_1479ff31f5_b.jpg'
 										img='images/customs/camo-marble.jpg'
 										title='Marbles'
-										columnCount='4'
+										columnCount={4}
 										content='Customized glasses with mottled streaks of color.  
 										Custom marbled paint can be done with a number of complimentary colors, or one single color.'/>
 									<Callout
 										// url='https://farm66.static.flickr.com/65535/50652292218_3df2a75475_b.jpg'
 										img='images/customs/blue-splatter-3.jpg'
 										title='Splatters'
-										columnCount='4'
+										columnCount={4}
 										content='This style is customized with a splash of colors.  
 										Custom splatter paint can be one color, or a combination of complimentary colors.  
 										It can also be small or large, thin or thick, dense or sparse. '/>
@@ -56,7 +57,7 @@ export default class CustomSunglasses extends Component {
 										// url='https://farm66.static.flickr.com/65535/51062706291_097827a69d_b.jpg'
 										img='images/customs/neon-drip.jpg'
 										title='Drips'
-										columnCount='4'
+										columnCount={4}
 										content='This style is customized with color dripped all over the frame.  
 										Dripping paint can be one color, or a combination of complimentary colors.  
 										It can also be done dense or sparse. '/>
@@ -64,7 +65,7 @@ export default class CustomSunglasses extends Component {
 										// url='https://farm66.static.flickr.com/65535/50652294433_b48c9ef0e4_b.jpg'
 										img='images/customs/repair-nose.jpg'
 										title='Repairs'
-										columnCount='4'
+										columnCount={4}
 										content='Reinforced with metal strips and glued back together.  
 										A new paint job is recommended after a repair to ensure color match.  '/>
 								</div>

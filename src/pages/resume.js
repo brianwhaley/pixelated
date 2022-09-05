@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from "../components/pixelated.resume";
-import "../css/pixelated.resume.css";
+import { ResumeName, ResumeContact, ResumeEducation, ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, ResumeCertifications, ResumeSkills, ResumeSummary } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.resume.css";
 import ResumeData from "../data/resume.json";
 
 export default class MyResume extends Component {
@@ -18,7 +18,7 @@ export default class MyResume extends Component {
 							<ResumeContact data={ResumeData} />
 						</div>
 						<div className="p-education">
-							<ResumeEducation data={ResumeData} />
+							<ResumeEducation data={ResumeData} dateFormat="MM/yyyy" />
 						</div>
 						<div className="p-skills">
 							<ResumeSkills data={ResumeData} />
@@ -28,9 +28,9 @@ export default class MyResume extends Component {
 					<div className="grid9 bigpad">
 						<ResumeSummary data={ResumeData} />
 						<ResumeQualifications data={ResumeData} />
-						<ResumeWorkHistory data={ResumeData} />
-						<ResumeVolunteer data={ResumeData} />
-						<ResumeCertifications data={ResumeData} />
+						<ResumeWorkHistory data={ResumeData} dateFormat="MM/yyyy" />
+						<ResumeVolunteer data={ResumeData} dateFormat="MM/yyyy" />
+						<ResumeCertifications data={ResumeData} dateFormat="MM/yyyy" />
 					</div>
 				</div>
 			</section>

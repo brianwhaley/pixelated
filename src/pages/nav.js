@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Menu from "../components/pixelated.menu-accordion";
+import { MenuAccordion } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.menu-accordion.css";
 
 export default class Nav extends Component {
 	render () {
@@ -20,7 +21,7 @@ export default class Nav extends Component {
 		};
 
 		return (
-			<Menu menuItems={menuItems} ref={(myMenu) => { window.myMenu = myMenu; }}/>
+			<MenuAccordion menuItems={menuItems} ref={(myMenu) => { window.myMenu = myMenu; }}/>
 		);
 	}
 }
