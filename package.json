@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Pixelated UI Components",
   "author": "Brian T. Whaley",
   "license": "MIT",
@@ -52,7 +52,8 @@
     "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1"
+    "@babel/polyfill": "^7.12.1",
+    "core-js": "^3.25.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
