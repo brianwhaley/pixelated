@@ -85,11 +85,11 @@
 .p-summary {}
 .dt-start {
 	font-weight: bold;
-	letter-spacing: -1px;
+	/* letter-spacing: -1px; */
 }
 .dt-end {
 	font-weight: bold;
-	letter-spacing: -1px;
+	/* letter-spacing: -1px; */
 }
 .dt-duration {}
 .p-description {}
