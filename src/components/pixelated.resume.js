@@ -50,7 +50,8 @@ export class ResumeContact extends Component {
 export class ResumeEducation extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired,
-		dateFormat: PropTypes.string.isRequired
+		dateFormat: PropTypes.string.isRequired,
+		showDate: PropTypes.string.isRequired
 	};
 
 	render () {
@@ -61,7 +62,9 @@ export class ResumeEducation extends Component {
 			var myEdLocation = ed.properties.location[0].properties;
 			var myEndDate = isValidDate(ed.properties.end[0]) ? format(new Date(ed.properties.end[0]), this.props.dateFormat) : ed.properties.end[0] ;
 			var myElem = <li key={iKey}>
-				<span className="dt-end">{myEndDate} - </span>
+				{showDate = true ? ( 
+				<span className="dt-end">{myEndDate} - </span> 
+				) : ( '' )}
 				<span className="p-name">{ed.properties.name}, </span>
 				<span className="p-org">{myEdLocation.org}, </span>
 				<span className="p-locality">{myEdLocation.locality}, </span>
@@ -106,7 +109,9 @@ export class ResumeQualifications extends Component {
 
 export class ResumeWorkHistory extends Component {
 	static propTypes = {
-		data: PropTypes.object.isRequired
+		data: PropTypes.object.isRequired,
+		dateFormat: PropTypes.string.isRequired,
+		showDate: PropTypes.string.isRequired
 	};
 
 	render () {
@@ -118,8 +123,10 @@ export class ResumeWorkHistory extends Component {
 			var myEndDate = isValidDate(work.properties.end[0]) ? format(new Date(work.properties.end[0]), this.props.dateFormat) : work.properties.end[0] ;
 			var myWorkLocation = work.properties.location[0].properties;
 			var myElem = <li key={iKey}>
-				<span className="dt-start">{myStartDate} - </span>
-				<span className="dt-end">{myEndDate} : </span>
+				{showDate = true ? ( 
+				<span><span className="dt-start">{myStartDate} - </span>
+				<span className="dt-end">{myEndDate} : </span></span>
+				) : ( '' )}
 				<span className="p-job-title">{myWorkLocation["job-title"]}, </span>
 				<span className="p-org">{myWorkLocation.org}, </span>
 				<span className="p-locality">{myWorkLocation.locality}, </span>
@@ -138,7 +145,9 @@ export class ResumeWorkHistory extends Component {
 
 export class ResumeVolunteer extends Component {
 	static propTypes = {
-		data: PropTypes.object.isRequired
+		data: PropTypes.object.isRequired,
+		dateFormat: PropTypes.string.isRequired,
+		showDate: PropTypes.string.isRequired
 	};
 
 	render () {
@@ -150,8 +159,10 @@ export class ResumeVolunteer extends Component {
 			var myEndDate = isValidDate(vol.properties.end[0]) ? format(new Date(vol.properties.end[0]), this.props.dateFormat) : vol.properties.end[0] ;
 			var myVolLocation = vol.properties.location[0].properties;
 			var myElem = <li key={iKey}>
-				<span className="dt-start">{myStartDate} - </span>
-				<span className="dt-end">{myEndDate} : </span>
+				{showDate = true ? ( 
+				<span><span className="dt-start">{myStartDate} - </span>
+				<span className="dt-end">{myEndDate} : </span></span>
+				) : ( '' )}
 				<span className="p-job-title">{myVolLocation["job-title"]}, </span>
 				<span className="p-org">{myVolLocation.org}, </span>
 				<span className="p-locality">{myVolLocation.locality}, </span>
@@ -170,7 +181,9 @@ export class ResumeVolunteer extends Component {
 
 export class ResumeCertifications extends Component {
 	static propTypes = {
-		data: PropTypes.object.isRequired
+		data: PropTypes.object.isRequired,
+		dateFormat: PropTypes.string.isRequired,
+		showDate: PropTypes.string.isRequired
 	};
 
 	render () {
@@ -180,7 +193,9 @@ export class ResumeCertifications extends Component {
 			var cert = myCerts[iKey];
 			var myStartDate = isValidDate(cert.properties.start[0]) ? format(new Date(cert.properties.start[0]), this.props.dateFormat) : cert.properties.start[0] ;
 			var myElem = <li key={iKey}>
+				{showDate = true ? ( 
 				<span className="dt-start">{myStartDate} - </span>
+				) : ( '' )}
 				<span className="p-name">{cert.properties.name}, </span>
 				<span className="p-location">{cert.properties.location}</span>
 			</li>;
