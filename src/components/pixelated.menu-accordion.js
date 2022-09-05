@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "../css/pixelated.menu-accordion.css";
 
 /* ========== MENU ========== */
-export class Menu extends Component {
+export class MenuAccordion extends Component {
 	static propTypes = {
 		menuItems: PropTypes.object.isRequired
 	};
@@ -22,7 +22,7 @@ export class Menu extends Component {
 	generateMenuItems () {
 		var myItems = [];
 		for (var itemKey in this.props.menuItems) {
-			myItems.push(<MenuItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />);
+			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />);
 		}
 		// this.setState({ menuItems: myItems })
 		return myItems;
@@ -68,7 +68,7 @@ export class Menu extends Component {
 }
 
 /* ========== MENU ITEM ========== */
-export class MenuItem extends Component {
+export class MenuAccordionItem extends Component {
 	static propTypes = {
 		name: PropTypes.string.isRequired,
 		href: PropTypes.string.isRequired
@@ -82,7 +82,7 @@ export class MenuItem extends Component {
 }
 
 /* ========== MENU BUTTON ========== */
-export class MenuButton extends Component {
+export class MenuAccordionButton extends Component {
 	slideMobilePanel () {
 		window.myMenu.moveMenu();
 	}

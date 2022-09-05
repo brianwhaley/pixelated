@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import '../css/pixelated.menu-simple.css';
 
 /* ========== MENU ========== */
-export class Menu extends Component {
+export class MenuSimple extends Component {
   static propTypes = {
     menuItems: PropTypes.object.isRequired,
   };
@@ -21,7 +21,7 @@ export class Menu extends Component {
   generateMenuItems() {
     const myItems = [];
     for (const itemKey in this.props.menuItems) {
-      myItems.push(<MenuItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />);
+      myItems.push(<MenuSimpleItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />);
     }
     // this.setState({ menuItems: myItems })
     return myItems;
@@ -47,7 +47,7 @@ export class Menu extends Component {
 }
 
 /* ========== MENU ITEM ========== */
-export class MenuItem extends Component {
+export class MenuSimpleItem extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
