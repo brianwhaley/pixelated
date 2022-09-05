@@ -7,4 +7,4 @@ export * from './components/pixelated.menu-simple';
 export * from './components/pixelated.nerdjoke';
 export * from './components/pixelated.recipe';
 export * from './components/pixelated.resume';
-// export * from './components/pixelated.socialcard';
+export * from './components/pixelated.socialcard';
