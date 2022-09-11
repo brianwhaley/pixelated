@@ -18,6 +18,7 @@ export default class Nav extends Component {
 			"Stkr": "/stkr.html",
 			"NerdJokes": "/nerdjokes.html",
 			"Recipes": "/recipes.html",
+			"Ebay": "/ebay.html.html",
 		};
 
 		return (

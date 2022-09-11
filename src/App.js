@@ -17,6 +17,7 @@ import Stkr from "./pages/stkr";
 import NerdJokes from "./pages/nerdjokes";
 import Joke from "./pages/joke";
 import Recipes from "./pages/recipes";
+import Ebay from "./pages/ebay";
 import NotFound from "./pages/notfound";
 
 export default class App extends Component {
@@ -59,6 +60,7 @@ export default class App extends Component {
 							<Route path='/nerdjokes.html' element={<NerdJokes />}/>
 							<Route path='/joke.html' element={<Joke />}/>
 							<Route path='/recipes.html' element={<Recipes />}/>
+							<Route path='/ebay.html' element={<Ebay />}/>
 							<Route exact path='*' element={<NotFound />} />
 						</Routes>
 					</BrowserRouter>
