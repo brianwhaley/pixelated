@@ -1,13 +1,13 @@
 {
   "name": "pixelated",
-  "version": "0.9.57",
+  "version": "0.9.59",
   "private": true,
   "engines": {
     "node": ">=4"
   },
   "homepage": ".",
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^1.0.19",
+    "@brianwhaley/pixelated-components": "^1.0.24",
     "core-js": "^3.21.1",
     "date-fns": "^2.29.2",
     "enzyme": "^3.11.0",

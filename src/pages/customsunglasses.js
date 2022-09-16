@@ -20,7 +20,8 @@ export default class CustomSunglasses extends Component {
 									direction='horizontal'
 									columnCount={2}/>
 								<Callout
-									url="https://www.ebay.com/sch/i.html?sid=btw73" 
+									// url="https://www.ebay.com/sch/i.html?sid=btw73" 
+									url="ebay.html" 
 									img='images/logos/ebay-logo.png'
 									title='Customs, BTW on eBay' 
 									content='View some cutomized Oakley sunglasses available for purchase on eBay.'

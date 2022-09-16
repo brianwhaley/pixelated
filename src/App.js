@@ -7,18 +7,18 @@ import Hero from "./pages/hero";
 import Search from "./pages/search";
 import Footer from "./pages/footer";
 
-import Home from "./pages/home";
-import MyResume from "./pages/resume";
-import Photography from "./pages/photography";
-import Gallery from "./pages/gallery";
 import CustomSunglasses from "./pages/customsunglasses";
+import Ebay from "./pages/ebay";
+import Gallery from "./pages/gallery";
+import Home from "./pages/home";
+import Joke from "./pages/joke";
+import MyResume from "./pages/resume";
+import NerdJokes from "./pages/nerdjokes";
+import NotFound from "./pages/notfound";
+import Photography from "./pages/photography";
+import Recipes from "./pages/recipes";
 import SocialMedia from "./pages/socialmedia";
 import Stkr from "./pages/stkr";
-import NerdJokes from "./pages/nerdjokes";
-import Joke from "./pages/joke";
-import Recipes from "./pages/recipes";
-import Ebay from "./pages/ebay";
-import NotFound from "./pages/notfound";
 
 export default class App extends Component {
 	render () {
@@ -50,17 +50,17 @@ export default class App extends Component {
 					<BrowserRouter>
 						<Routes>
 							<Route exact path='/' element={<Home />}/>
-							<Route path='/index.html' element={<Home />}/>
-							<Route path='/resume.html' element={<MyResume />}/>
-							<Route path='/photography.html' element={<Photography />}/>
-							<Route path='/gallery.html' element={<Gallery />}/>
 							<Route path='/customsunglasses.html' element={<CustomSunglasses />}/>
+							<Route path='/ebay.html' element={<Ebay />}/>
+							<Route path='/gallery.html' element={<Gallery />}/>
+							<Route path='/index.html' element={<Home />}/>
+							<Route path='/joke.html' element={<Joke />}/>
+							<Route path='/nerdjokes.html' element={<NerdJokes />}/>
+							<Route path='/photography.html' element={<Photography />}/>
+							<Route path='/recipes.html' element={<Recipes />}/>
+							<Route path='/resume.html' element={<MyResume />}/>
 							<Route path='/socialmedia.html' element={<SocialMedia />}/>
 							<Route path='/stkr.html' element={<Stkr />}/>
-							<Route path='/nerdjokes.html' element={<NerdJokes />}/>
-							<Route path='/joke.html' element={<Joke />}/>
-							<Route path='/recipes.html' element={<Recipes />}/>
-							<Route path='/ebay.html' element={<Ebay />}/>
 							<Route exact path='*' element={<NotFound />} />
 						</Routes>
 					</BrowserRouter>
