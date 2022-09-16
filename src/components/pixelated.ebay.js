@@ -88,7 +88,7 @@ export class EbayItems extends Component {
 			newItem.title = item.title[0];
 			// newItem.image = item.galleryURL[0];
 			newItem.image = item.pictureURLSuperSize[0];
-			newItem.price = ( item.sellingStatus[0].currentPrice[0].__value__ * 1).toFixed(2);
+			newItem.price = (item.sellingStatus[0].currentPrice[0].__value__ * 1).toFixed(2);
 			newItem.url = item.viewItemURL[0];
 			newItem.location = item.location[0];
 			newItem.endTime = item.listingInfo[0].endTime[0];
@@ -113,6 +113,7 @@ export class EbayItems extends Component {
 	gotoPage(pageNum) {
 		window.scrollTo({top: 0})
 		// window.scroll({ top: 0, behavior: 'smooth' })let state = { ...this.state };
+		let state = { ...this.state };
 		state.urlProps["paginationInput.pageNumber"] = pageNum ;
  		this.setState(state);
 		this.componentDidMount();
