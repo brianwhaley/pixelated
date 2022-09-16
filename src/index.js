@@ -1,6 +1,7 @@
 export * from './components/pixelated.api';
 export * from './components/pixelated.callout';
 export * from './components/pixelated.carousel';
+export * from './components/pixelated.ebay';
 export * from './components/pixelated.functions';
 export * from './components/pixelated.menu-accordion';
 export * from './components/pixelated.menu-simple';

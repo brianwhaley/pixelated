@@ -1,4 +1,3 @@
-
 import PropTypes from "prop-types";
 
 export function getXHRData (apiURL, apiMethod, myCallback) {
@@ -9,6 +8,7 @@ export function getXHRData (apiURL, apiMethod, myCallback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open(apiMethod, apiURL, true);
 	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	// xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	// xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 	xhr.onreadystatechange = () => {
 		// if (xhr.readyState === 4) {
@@ -27,10 +27,12 @@ export function generateURL (baseURL, props) {
 		props: PropTypes.object
 	};
 	var url = baseURL;
+	var allProps = "";
 	for (var prop in props) {
 		if (props) {
-			url += "&" + prop + "=" + props[prop];
+			(allProps.length == 0) ? allProps = prop + "=" + props[prop] : allProps += "&" + prop + "=" + props[prop];
 		}
 	}
+	url += allProps; 
 	return url;
 }
