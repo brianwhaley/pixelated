@@ -111,7 +111,8 @@ export class EbayItems extends Component {
 	}
 
 	gotoPage(pageNum) {
-		let state = { ...this.state };
+		window.scrollTo({top: 0})
+		// window.scroll({ top: 0, behavior: 'smooth' })let state = { ...this.state };
 		state.urlProps["paginationInput.pageNumber"] = pageNum ;
  		this.setState(state);
 		this.componentDidMount();
