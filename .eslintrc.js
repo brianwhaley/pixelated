@@ -8,19 +8,23 @@ module.exports = {
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:sonarjs/recommended"
+		"plugin:sonarjs/recommended",
 	],
 	"globals": {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly"
 	},
-	"parser": "@babel/eslint-parser",
+	"parser": "babel-eslint",
 	"parserOptions": {
+		"babelOptions": {
+			"presets": ["@babel/preset-react"]
+		},
 		"ecmaFeatures": {
 			"jsx": true
 		},
 		"ecmaVersion": 2018,
-		"sourceType": "module"
+		"sourceType": "module",
+		"requireConfigFile": false,
 	},
 	"plugins": [
 		"react",
@@ -43,7 +47,8 @@ module.exports = {
 		"semi": [
 			"error",
 			"always"
-		]
+		],
+		"@typescript-eslint/no-unused-vars": "off"
 	},
 	"settings": {
 		"react": {
