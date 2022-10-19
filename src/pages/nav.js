@@ -7,14 +7,15 @@ export default class Nav extends Component {
 		const menuItems = {
 			"Home": "/index.html",
 			"Resume": "/resume.html",
+			"Readme": "/readme.html",
 			"Work Portfolio": "/gallery.html?tag=portfolio-all",
+			"Pixelated Blog": "https://blog.pixelated.tech",
+			"Stkr": "/stkr.html",
+			"NerdJokes": "/nerdjokes.html",
+			"Social Media": "/socialmedia.html",
 			"Photography": "/photography.html",
 			"Photo Gallery": "/gallery.html?tag=pixelatedviewsgallery",
 			"Custom Sunglasses": "/customsunglasses.html",
-			"Pixelated Blog": "https://blog.pixelated.tech",
-			"Social Media": "/socialmedia.html",
-			"Stkr": "/stkr.html",
-			"NerdJokes": "/nerdjokes.html",
 			"Recipes": "/recipes.html",
 		};
 

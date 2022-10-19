@@ -16,6 +16,7 @@ import MyResume from "./pages/resume";
 import NerdJokes from "./pages/nerdjokes";
 import NotFound from "./pages/notfound";
 import Photography from "./pages/photography";
+import Readme from "./pages/readme";
 import Recipes from "./pages/recipes";
 import SocialMedia from "./pages/socialmedia";
 import Stkr from "./pages/stkr";
@@ -58,6 +59,7 @@ export default class App extends Component {
 							<Route path='/nerdjokes.html' element={<NerdJokes />}/>
 							<Route path='/photography.html' element={<Photography />}/>
 							<Route path='/recipes.html' element={<Recipes />}/>
+							<Route path='/readme.html' element={<Readme />}/>
 							<Route path='/resume.html' element={<MyResume />}/>
 							<Route path='/socialmedia.html' element={<SocialMedia />}/>
 							<Route path='/stkr.html' element={<Stkr />}/>
