@@ -7,6 +7,8 @@ import { mergeDeep } from "./pixelated.functions";
 import "../css/pixelated.ebay.css";
 
 export class EbayItems extends Component {
+
+	// https://developer.ebay.com/devzone/finding/HowTo/GettingStarted_JS_NV_JSON/GettingStarted_JS_NV_JSON.html
     
 	static propTypes = {
 		ebayProps: PropTypes.object.isRequired,
