@@ -14,7 +14,7 @@ module.exports = {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly"
 	},
-	"parser": "babel-eslint",
+	"parser": "@babel/eslint-parser",
 	"parserOptions": {
 		"babelOptions": {
 			"presets": ["@babel/preset-react"]

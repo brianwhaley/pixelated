@@ -4,6 +4,8 @@
 /build
 /coverage
 /node_modules
+/*.md 
+*.md
 
 .config.js
 .DS_Store
