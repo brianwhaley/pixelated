@@ -11,14 +11,20 @@ export function markdownParser(text) {
 		.replace(/^#{2}\s(.*$)/gim, '<h2>$1</h2>') // h2 tag
 		.replace(/^#{1}\s(.*$)/gim, '<h1>$1</h1>') // h1 tag
 		.replace(/(\=|\-|\*){3}/gim, '<hr />') // horizontal rule
+		.replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />") // images
         .replace(/\[([^\[]+)\]\((.*)\)/gim, '<a href="$2">$1</a>') // links
-		.replace(/^\*{1}\s+(.*$)/gim, '<li>$1</li>') // unordered list
-		.replace(/^\d+\.\s+(.*$)/gim, '<li>$1</li>') // ordered list
+		.replace(/^\*{1}\s+(.*$)/gim, '<ul><li>$1</li></ul>') // unordered list
+		.replace(/<\/ul>\s?<ul>/g, '') // duplicate unordered list
+		.replace(/^\d+\.\s+(.*$)/gim, '<ol><li>$1</li></ol>') // ordered list
+		.replace(/<\/ol>\s?<ol>/g, '') // duplicate ordered list
 		.replace(/\:\"(.*?)\"\:/gim, '<q>$1</q>') // quote
+		.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>') // blockquote
 		.replace(/`(.*?)`/gim, '<code>$1</code>') // inline code
-		.replace(/\*\*(.*?)\*\*/gim, '<b>$1</b>') // bold text
-		.replace(/\*(.*?)\*/gim, '<i>$1</i>') // italic text
+		.replace(/\*{2}(.*?)\*{2}/gim, '<b>$1</b>') // bold text
+		.replace(/\*{1}(.*?)\*{1}/gim, '<i>$1</i>') // italic text
+		.replace(/\~{2}(.*?)\~{2}/gim, '<b>$1</b>') // strikethrough
 		.replace(/(^[A-z].+)/gim, '<p>$1</p>') // paragraphs
+		//.replace(/\n$/gim, '<br />') // newline
 		//.replace(//gim, '')
 		;
 	return toHTML.trim(); // using trim method to remove whitespace
