@@ -9,6 +9,8 @@ import Footer from "./pages/footer";
 
 import CustomSunglasses from "./pages/customsunglasses";
 import Ebay from "./pages/ebay";
+import Extract from "./pages/extract";
+import Form from "./pages/form";
 import Gallery from "./pages/gallery";
 import Home from "./pages/home";
 import Joke from "./pages/joke";
@@ -53,6 +55,8 @@ export default class App extends Component {
 							<Route exact path='/' element={<Home />}/>
 							<Route path='/customsunglasses.html' element={<CustomSunglasses />}/>
 							<Route path='/ebay.html' element={<Ebay />}/>
+							<Route path='/extract.html' element={<Extract />}/>
+							<Route path='/form.html' element={<Form />}/>
 							<Route path='/gallery.html' element={<Gallery />}/>
 							<Route path='/index.html' element={<Home />}/>
 							<Route path='/joke.html' element={<Joke />}/>

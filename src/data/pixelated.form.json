@@ -1,0 +1,369 @@
+[
+    {
+        "label" : {
+            "for" : "title",
+            "text": "Title"
+        },
+        "select" : {
+            "id" : "title",
+            "name" : "title",
+            "size" : 2,
+            "multiple" : false,
+            "options" : [
+                {
+                    "value" : "mr",
+                    "text" : "Mr.",
+                    "selected" : false
+                },
+                {
+                    "value" : "mrs",
+                    "text" : "Mrs.",
+                    "selected" : false
+                }
+            ]
+        }
+    },
+    {
+        "label" : {
+            "for" : "firstname",
+            "text": "First Name : "
+        },
+        "input" : {
+            "type" : "text",
+            "id" : "firstname",
+            "name" : "firstname",
+            "value" : ""
+        }
+    },
+    {
+        "label" : {
+            "for" : "lastname",
+            "text": "Last Name : "
+        },
+        "input" : {
+            "type" : "text",
+            "id" : "lastname",
+            "name" : "lastname",
+            "value" : ""
+        }
+    },
+    {
+        "label" : {
+            "for" : "address",
+            "text": "Street Address : "
+        },
+        "input" : {
+            "type" : "text",
+            "id" : "address",
+            "name" : "address",
+            "value" : ""
+        }
+    }, 
+    {
+        "label" : {
+            "for" : "city",
+            "text": "City : "
+        },
+        "input" : {
+            "type" : "text",
+            "id" : "city",
+            "name" : "city",
+            "value" : ""
+        }
+    },
+    {
+        "label" : {
+            "for" : "state",
+            "text": "State : "
+        },
+        "select" : {
+            "id" : "state",
+            "name" : "state",
+            "size" : 2,
+            "multiple" : false,
+            "options" : [
+                {
+                    "value" : "AL",
+                    "text" : "Alabama",
+                    "selected" : false
+                },
+                {
+                    "value" : "AK",
+                    "text" : "Alaska",
+                    "selected" : false
+                },
+                {
+                    "value" : "AZ",
+                    "text" : "Arizona",
+                    "selected" : false
+                },
+                {
+                    "value" : "AR",
+                    "text" : "Arkansas",
+                    "selected" : false
+                },
+                {
+                    "value" : "CA",
+                    "text" : "California",
+                    "selected" : false
+                },
+                {
+                    "value" : "CO",
+                    "text" : "Colorado",
+                    "selected" : false
+                },
+                {
+                    "value" : "CT",
+                    "text" : "Connecticut",
+                    "selected" : false
+                },
+                {
+                    "value" : "DE",
+                    "text" : "Delaware",
+                    "selected" : false
+                },
+                {
+                    "value" : "FL",
+                    "text" : "Florida",
+                    "selected" : false
+                },
+                {
+                    "value" : "GA",
+                    "text" : "Georgia",
+                    "selected" : false
+                },
+                {
+                    "value" : "HI",
+                    "text" : "Hawaii",
+                    "selected" : false
+                },
+                {
+                    "value" : "ID",
+                    "text" : "Idaho",
+                    "selected" : false
+                },
+                {
+                    "value" : "IL",
+                    "text" : "Illinois",
+                    "selected" : false
+                },
+                {
+                    "value" : "IN",
+                    "text" : "Indiana",
+                    "selected" : false
+                },
+                {
+                    "value" : "IA",
+                    "text" : "Iowa",
+                    "selected" : false
+                },
+                {
+                    "value" : "KS",
+                    "text" : "Kansas",
+                    "selected" : false
+                },
+                {
+                    "value" : "KY",
+                    "text" : "Kentucky",
+                    "selected" : false
+                },
+                {
+                    "value" : "LA",
+                    "text" : "Louisiana",
+                    "selected" : false
+                },
+                {
+                    "value" : "ME",
+                    "text" : "Maine",
+                    "selected" : false
+                },
+                {
+                    "value" : "MD",
+                    "text" : "Maryland",
+                    "selected" : false
+                },
+                {
+                    "value" : "MA",
+                    "text" : "Massachusetts",
+                    "selected" : false
+                },
+                {
+                    "value" : "MI",
+                    "text" : "Michigan",
+                    "selected" : false
+                },
+                {
+                    "value" : "MN",
+                    "text" : "Minnesota",
+                    "selected" : false
+                },
+                {
+                    "value" : "MS",
+                    "text" : "Mississippi",
+                    "selected" : false
+                },
+                {
+                    "value" : "MO",
+                    "text" : "Missouri",
+                    "selected" : false
+                },
+                {
+                    "value" : "MT",
+                    "text" : "Montana",
+                    "selected" : false
+                },
+                {
+                    "value" : "NB",
+                    "text" : "Nebraska",
+                    "selected" : false
+                },
+                {
+                    "value" : "NV",
+                    "text" : "Nevada",
+                    "selected" : false
+                },
+                {
+                    "value" : "NH",
+                    "text" : "New Hampshire",
+                    "selected" : false
+                },
+                {
+                    "value" : "NJ",
+                    "text" : "New Jersey",
+                    "selected" : false
+                },
+                {
+                    "value" : "NM",
+                    "text" : "New Mexico",
+                    "selected" : false
+                },
+                {
+                    "value" : "NY",
+                    "text" : "New York",
+                    "selected" : false
+                },
+                {
+                    "value" : "NC",
+                    "text" : "North Carolina",
+                    "selected" : false
+                },
+                {
+                    "value" : "ND",
+                    "text" : "North Dakota",
+                    "selected" : false
+                },
+                {
+                    "value" : "OH",
+                    "text" : "Ohio",
+                    "selected" : false
+                },
+                {
+                    "value" : "OK",
+                    "text" : "Oklahoma",
+                    "selected" : false
+                },
+                {
+                    "value" : "OR",
+                    "text" : "Oregon",
+                    "selected" : false
+                },
+                {
+                    "value" : "PA",
+                    "text" : "Pennsylvania",
+                    "selected" : false
+                },
+                {
+                    "value" : "RI",
+                    "text" : "Rhode Island",
+                    "selected" : false
+                },
+                {
+                    "value" : "SC",
+                    "text" : "South Carolina",
+                    "selected" : false
+                },
+                {
+                    "value" : "SD",
+                    "text" : "South Dakota",
+                    "selected" : false
+                },
+                {
+                    "value" : "TN",
+                    "text" : "Tennessee",
+                    "selected" : false
+                },
+                {
+                    "value" : "TX",
+                    "text" : "Texas",
+                    "selected" : false
+                },
+                {
+                    "value" : "UT",
+                    "text" : "Utah",
+                    "selected" : false
+                },
+                {
+                    "value" : "VT",
+                    "text" : "Vermont",
+                    "selected" : false
+                },
+                {
+                    "value" : "VA",
+                    "text" : "Virginia",
+                    "selected" : false
+                },
+                {
+                    "value" : "WA",
+                    "text" : "Washington",
+                    "selected" : false
+                },
+                {
+                    "value" : "",
+                    "text" : "West Virginia",
+                    "selected" : false
+                },
+                {
+                    "value" : "",
+                    "text" : "Wisconsin",
+                    "selected" : false
+                },
+                {
+                    "value" : "",
+                    "text" : "Wyoming",
+                    "selected" : false
+                }
+            ]
+        }
+    },
+    {
+        "label" : {
+            "for" : "zipcode",
+            "text": "Zip Code : "
+        },
+        "input" : {
+            "type" : "text",
+            "id" : "zipcode",
+            "name" : "zipcode",
+            "value" : ""
+        }
+    },
+    {
+        "label" : {
+            "for" : "comments",
+            "text": "Comments : "
+        },
+        "textarea" : {
+            "name" : "comments",
+            "rows" : 5,
+            "cols" : 40,
+            "text" : "" 
+        }
+    },
+    {
+        "button" : {
+            "type" : "button",
+            "onclick" : null,
+            "text" : "Submit"
+        }
+    }
+]

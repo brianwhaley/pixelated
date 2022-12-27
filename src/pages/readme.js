@@ -1,8 +1,10 @@
 /* eslint-disable */
 
 import React, { Component } from "react";
-import { markdownParser } from "./pixelated.markdown";
-import "./pixelated.markdown.css";
+
+import { markdownParser } from "@brianwhaley/pixelated-components/dist/index";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.markdown.css";
+
 import ReadmeData from "../data/readme.md";
 
 export default class Readme extends Component {

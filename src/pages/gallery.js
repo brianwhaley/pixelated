@@ -18,7 +18,7 @@ function UseQuery() {
 }
 
 export default class Gallery extends Component {
-	render () {
+	render () {	
 		return (
 			<UseQuery />
 		);

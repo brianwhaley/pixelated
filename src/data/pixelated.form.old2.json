@@ -1,0 +1,328 @@
+[
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "isCnLocale"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "isMobileVerificationRequired",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "modalsQueryParam",
+            "value": "?template=V2"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "id": "countryCodeSelected",
+            "value": "US"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "activationSourceCode",
+            "value": "MRIS"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "enrollmentSourceCode",
+            "value": "USEF"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "promotionCode"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "promotional",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "inLangTabSelected",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "socialUID"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "socialUIDTimestamp"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "socialUIDSignature"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "isDacFlow",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "returnToUrl"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "addressLine1"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "addressLine2"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "city"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "ocjEnableOTAReservation",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "state"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "isRfpFlow",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "isIrfpFlow",
+            "value": "false"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "rand"
+        }
+    },
+    {
+        "label": {
+            "for": "field-first-name",
+            "class": "t-capitalize",
+            "text": " First Name "
+        },
+        "INPUT": {
+            "type": "text",
+            "name": "firstName",
+            "id": "field-first-name",
+            "class": "js-first-name-eng ",
+            "maxlength": "20",
+            "aria-label": "Required Field First Name",
+            "autocomplete": "off"
+        }
+    },
+    {
+        "label": {
+            "for": "field-last-name",
+            "class": "t-capitalize",
+            "text": " Last Name "
+        },
+        "INPUT": {
+            "type": "text",
+            "name": "lastName",
+            "id": "field-last-name",
+            "class": " ",
+            "maxlength": "25",
+            "aria-label": "Required Field Last Name",
+            "autocomplete": "off"
+        }
+    },
+    {
+        "label": {
+            "for": "field-postal",
+            "class": "t-capitalize",
+            "text": " Zip/Postal code "
+        },
+        "INPUT": {
+            "type": "text",
+            "name": "postalCode",
+            "id": "field-postal",
+            "class": " postal-code",
+            "maxlength": "10",
+            "aria-label": "Required Field Zip/Postal code",
+            "autocomplete": "off"
+        }
+    },
+    {
+        "label": {
+            "for": "field-country",
+            "class": "t-capitalize",
+            "text": " Country/Region "
+        },
+        "SELECT": {
+            "name": "country",
+            "autocomplete": "nope",
+            "data-domain-value": "US",
+            "id": "field-country",
+            "class": "mi-select js-countries-list ",
+            "data-mapping": "{\"postalRequired\":\"US,CA\",\"phoneRequired\": \"CN\",\"countryPrefixCodeRequired\": \"CN\" }",
+            "data-component-endpoint": "/aries-rewards/v1/enrollmentForm"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "name": "countryPrefixCode",
+            "id": "mobilePhoneDropdownList",
+            "value": "CN"
+        }
+    },
+    {
+        "label": {
+            "for": "field-telephone-number",
+            "class": "l-display-inline t-capitalize",
+            "text": "Mobile Phone"
+        },
+        "INPUT": {
+            "type": "text",
+            "name": "phoneNumber",
+            "id": "field-telephone-number",
+            "class": "js-field-number ",
+            "maxlength": "16",
+            "placeholder": "(Optional)",
+            "autocomplete": "off"
+        }
+    },
+    {
+        "label": {
+            "for": "field-email",
+            "class": "t-font-16 l-display-inline t-capitalize",
+            "text": " Email "
+        },
+        "INPUT": {
+            "type": "text",
+            "name": "email",
+            "id": "field-email",
+            "class": "js-field-email ",
+            "maxlength": "80",
+            "aria-label": "Required Field Email"
+        }
+    },
+    {
+        "label": {
+            "for": "field-password",
+            "class": "t-capitalize",
+            "text": " Password "
+        },
+        "INPUT": {
+            "type": "password",
+            "name": "password",
+            "id": "field-password",
+            "class": " js-field-password ",
+            "maxlength": "20",
+            "aria-label": "Required Field Password"
+        }
+    },
+    {
+        "label": {
+            "for": "field-password-confirmation",
+            "class": "t-font-16 js-confirmicon-presubmit t-capitalize",
+            "text": " Confirm password "
+        },
+        "INPUT": {
+            "type": "password",
+            "name": "confirmPassword",
+            "id": "field-password-confirmation",
+            "class": " js-field-password-confirmation ",
+            "maxlength": "20",
+            "aria-label": "Required Field Confirm password"
+        }
+    },
+    {
+        "label": {
+            "for": "field-remember-me",
+            "class": "t-capitalize",
+            "text": " Remember me "
+        },
+        "INPUT": {
+            "type": "checkbox",
+            "name": "rememberMe",
+            "id": "field-remember-me"
+        }
+    },
+    {
+        "INPUT": {
+            "type": "hidden",
+            "class": "js-communication-preference-kr is-hidden"
+        }
+    },
+    {
+        "label": {
+            "for": "field-email-promotional-opt-in",
+            "text": "I would like to receive personalized communications, including offers, details about promotions, and travel-related products from the Marriott Group via email."
+        },
+        "INPUT": {
+            "type": "checkbox",
+            "name": "marriotEmailOptIn",
+            "id": "field-email-promotional-opt-in",
+            "class": "js-email-opt-in "
+        }
+    },
+    {
+        "label": {
+            "for": "field-email-third-party-opt-in",
+            "text": "I would like for the Marriott Group to share my personal data with Authorized Licensees, as defined in the Global Privacy Statement so I may receive offers and marketing via email."
+        },
+        "INPUT": {
+            "type": "checkbox",
+            "name": "thirdPartyEmailOptIn",
+            "id": "field-email-third-party-opt-in",
+            "class": "js-third-party-email-opt-in "
+        }
+    },
+    {
+        "BUTTON": {
+            "type": "submit",
+            "style": "display:none;",
+            "id": "enroll-form-join",
+            "aria-label": "submit button"
+        }
+    }
+]
