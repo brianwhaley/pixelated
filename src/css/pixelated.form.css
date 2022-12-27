@@ -1,0 +1,41 @@
+    
+label, 
+input,
+textarea,
+select,
+form button {
+	font-size: 1.1em;
+	padding: 2px 5px;
+	margin: 1px 5px !important;
+    vertical-align: top;
+
+    outline: none;
+	border: 1px solid #CCC;
+
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+label {
+	border: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+form button:hover {
+    outline: none;
+	border: 1px solid #0C0;
+	-webkit-box-shadow: 0 0 5px 2px #CCC;
+	-moz-box-shadow: 0 0 5px 2px #CCC;
+    box-shadow: 0 0 5px 2px #CCC;
+}
+
+form button {
+	padding: 5px 20px;
+
+	-webkit-box-shadow: 0 0 5px 2px #CCC;
+	-moz-box-shadow: 0 0 5px 2px #CCC;
+    box-shadow: 0 0 5px 2px #CCC;
+}

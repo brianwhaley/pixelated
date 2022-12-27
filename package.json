@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "Pixelated UI Components",
   "author": "Brian T. Whaley",
   "license": "MIT",
@@ -37,10 +37,15 @@
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.5",
+    "eslint": "^8.30.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^2.79.0",
-    "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-uglify": "^6.0.4"
@@ -53,6 +58,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@rollup/plugin-image": "^3.0.1",
+    "@rollup/plugin-json": "^6.0.0",
     "core-js": "^3.25.0"
   },
   "peerDependencies": {

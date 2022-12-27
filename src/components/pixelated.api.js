@@ -1,38 +1,40 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 export function getXHRData (apiURL, apiMethod, myCallback) {
-	getXHRData.propTypes = {
-		apiURL: PropTypes.string.isRequired,
-		apiMethod: PropTypes.string.isRequired
-	};
-	var xhr = new XMLHttpRequest();
-	xhr.open(apiMethod, apiURL, true);
-	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	// xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-	// xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-	xhr.onreadystatechange = () => {
-		// if (xhr.readyState === 4) {
-		if (xhr.readyState === 4 && xhr.status === 200) {
-			var response;
-			response = JSON.parse(xhr.responseText);
-			myCallback(response);
-		}
-	};
-	xhr.send();
+  getXHRData.propTypes = {
+    apiURL: PropTypes.string.isRequired,
+    apiMethod: PropTypes.string.isRequired
+  }
+  // eslint-disable-next-line no-undef
+  const xhr = new XMLHttpRequest()
+  xhr.open(apiMethod, apiURL, true)
+  // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.onreadystatechange = () => {
+    // if (xhr.readyState === 4) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let response
+      // eslint-disable-next-line prefer-const
+      response = JSON.parse(xhr.responseText)
+      myCallback(response)
+    }
+  }
+  xhr.send()
 }
 
 export function generateURL (baseURL, props) {
-	generateURL.propTypes = {
-		baseURL: PropTypes.string.isRequired,
-		props: PropTypes.object
-	};
-	var url = baseURL;
-	var allProps = "";
-	for (var prop in props) {
-		if (props) {
-			(allProps.length == 0) ? allProps = prop + "=" + props[prop] : allProps += "&" + prop + "=" + props[prop];
-		}
-	}
-	url += allProps; 
-	return url;
+  generateURL.propTypes = {
+    baseURL: PropTypes.string.isRequired,
+    props: PropTypes.object
+  }
+  let url = baseURL
+  let allProps = ''
+  for (const prop in props) {
+    if (props) {
+      (allProps.length === 0) ? allProps = prop + '=' + props[prop] : allProps += '&' + prop + '=' + props[prop]
+    }
+  }
+  url += allProps
+  return url
 }

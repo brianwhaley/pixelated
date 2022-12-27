@@ -3,6 +3,9 @@
 import React, { Component, Fragment } from "react";
 import { format } from "date-fns";
 import PropTypes from "prop-types";
+import "../css/pixelated.resume.css";
+import data from "../data/pixelated.resume.json";
+
 
 function isValidDate(date) {
 	return !Number.isNaN(new Date(date).getTime());
