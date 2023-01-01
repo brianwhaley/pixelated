@@ -1,19 +1,14 @@
 
-import bg6lt from './images/bg6-lt.jpg'
-import bg6 from './images/bg6.gif'
-import bg7dk from './images/bg7-dk.gif'
-import bg7 from './images/bg7.gif'
-
-console.log(bg6lt)
-console.log(bg6)
-console.log(bg7dk)
-console.log(bg7)
-
 export * from './components/pixelated.api'
 export * from './components/pixelated.callout'
 export * from './components/pixelated.carousel'
 export * from './components/pixelated.ebay'
-export * from './components/pixelated.form'
+// eslint-disable-next-line import/export
+export * from './components/pixelated.form.v1'
+// eslint-disable-next-line import/export
+export * from './components/pixelated.form.v2'
+export * from './components/pixelated.formcomponents'
+export * from './components/pixelated.formvalidations'
 export * from './components/pixelated.functions'
 export * from './components/pixelated.markdown'
 export * from './components/pixelated.menu-accordion'

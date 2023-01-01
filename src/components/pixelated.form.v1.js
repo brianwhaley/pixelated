@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "../css/pixelated.form.css";
-import data from "../data/pixelated.form.json";
+import data from "../data/pixelated.form.v1.json";
 
 
 
