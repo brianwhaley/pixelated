@@ -7,7 +7,7 @@ import data from "../data/pixelated.form.v1.json";
 
 
 
-export class FormEngine extends Component {
+export class FormEngine_v1 extends Component {
 
 	static propTypes = {
 		formdata: PropTypes.array
@@ -82,7 +82,7 @@ export class FormEngine extends Component {
 
 
 
-export class FormExtractUI extends Component {
+export class FormExtractUI_v1 extends Component {
 
 	constructor(props) {
 		super(props);
@@ -115,7 +115,7 @@ export class FormExtractUI extends Component {
 
 
 
-export class FormExtract extends Component {
+export class FormExtract_v1 extends Component {
 
 	static propTypes = {
 		url: PropTypes.string

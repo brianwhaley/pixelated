@@ -3,10 +3,8 @@ export * from './components/pixelated.api'
 export * from './components/pixelated.callout'
 export * from './components/pixelated.carousel'
 export * from './components/pixelated.ebay'
-// eslint-disable-next-line import/export
 export * from './components/pixelated.form.v1'
-// eslint-disable-next-line import/export
-export * from './components/pixelated.form.v2'
+export * from './components/pixelated.form' // current version
 export * from './components/pixelated.formcomponents'
 export * from './components/pixelated.formvalidations'
 export * from './components/pixelated.functions'
