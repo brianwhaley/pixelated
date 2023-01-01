@@ -8,7 +8,7 @@ module.exports = {
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:sonarjs/recommended",
+		// "plugin:sonarjs/recommended",
 	],
 	"globals": {
 		"Atomics": "readonly",
@@ -28,7 +28,7 @@ module.exports = {
 	},
 	"plugins": [
 		"react",
-		"sonarjs",
+		// "sonarjs",
 		"jsx-a11y",
 	],
 	"rules": {
@@ -48,7 +48,8 @@ module.exports = {
 			"error",
 			"always"
 		],
-		"@typescript-eslint/no-unused-vars": "off"
+		"@typescript-eslint/no-unused-vars": "off",
+		// "sonarjs/no-identical-functions": ["error", 100]
 	},
 	"settings": {
 		"react": {

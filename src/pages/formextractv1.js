@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FormExtract, FormExtractUI } from "@brianwhaley/pixelated-components/dist/index";
+import { FormExtract_v1, FormExtractUI_v1 } from "@brianwhaley/pixelated-components/dist/index";
 import "@brianwhaley/pixelated-components/dist/css/pixelated.form.css";
 
 // https://www.marriott.com/loyalty/createAccount/createAccountPage1.mi
@@ -13,7 +13,7 @@ import "@brianwhaley/pixelated-components/dist/css/pixelated.form.css";
 // https://www.kroger.com/account/create/
 // https://www.delta.com/join-skymiles/
 
-export default class Extract extends Component {
+export default class FormExtractv1 extends Component {
 
 	static propTypes = {
 		url: PropTypes.string
@@ -37,9 +37,9 @@ export default class Extract extends Component {
 	render() {
 		return (
 			<div className="section-container">
-				<FormExtractUI callback={this.setURL} />
+				<FormExtractUI_v1 callback={this.setURL} />
 				<br /><hr /><br />
-				<FormExtract url={this.state.url} ref={this.FormExtractElement} />
+				<FormExtract_v1 url={this.state.url} ref={this.FormExtractElement} />
 			</div>
 		);
 	}

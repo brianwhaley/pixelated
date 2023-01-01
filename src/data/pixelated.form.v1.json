@@ -2,7 +2,7 @@
     {
         "label" : {
             "for" : "title",
-            "text": "Title"
+            "text": "Title : "
         },
         "select" : {
             "id" : "title",
@@ -318,17 +318,17 @@
                     "selected" : false
                 },
                 {
-                    "value" : "",
+                    "value" : "WV",
                     "text" : "West Virginia",
                     "selected" : false
                 },
                 {
-                    "value" : "",
+                    "value" : "WI",
                     "text" : "Wisconsin",
                     "selected" : false
                 },
                 {
-                    "value" : "",
+                    "value" : "WY",
                     "text" : "Wyoming",
                     "selected" : false
                 }
