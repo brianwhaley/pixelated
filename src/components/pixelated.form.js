@@ -83,8 +83,75 @@ export class FormExtract extends Component {
 			url :  "",
 			formjson : null
 		};
+		this.extractOptions = this.extractOptions.bind(this);
+		this.extractSelectedOptions = this.extractSelectedOptions.bind(this);
+		this.extractAttribs = this.extractAttribs.bind(this);
+		this.extractLabel = this.extractLabel.bind(this);
+		this.formToJSON = this.formToJSON.bind(this);
+		this.getHTML = this.getHTML.bind(this);
 	}
-	formToJSON(html) {
+	extractOptions (thisElement) {
+		if (thisElement.tagName.toLowerCase() == "select" && thisElement.options && thisElement.options.length) {
+			var options = []
+			for (let option = 0; option < thisElement.options.length; option++) {
+				var thisOption = thisElement.options[option];
+				var attribs = {};
+				for (var attrib = 0; attrib < thisOption.attributes.length; attrib++) {
+					var thisAttrib = thisOption.attributes[attrib];
+					attribs[attributeMap(thisAttrib.name)] = thisAttrib.value;
+				}
+				if (thisOption.innerText) attribs["text"] = thisOption.innerText;
+				if (Object.keys(attribs).length > 0) options.push(attribs); // not empty then add
+			}
+			if(options.length > 0) return options;
+		}
+		return false;
+	}
+	extractSelectedOptions (thisOptions) {
+		if (thisOptions && thisOptions.length) {
+			var selected = []
+			for (let option = 0; option < thisOptions.length; option++) {
+				var thisOption = thisOptions[option];
+				if (thisOption.hasOwnProperty("selected")) {
+					selected.push(thisOption.value);
+					delete thisOptions[option]["selected"];
+				}
+			}
+			// MULTIPLE - Return array
+			if(selected.length > 1) return selected;
+			// Not Multiple = return string
+			if(selected.length == 1) return selected.toString() ;
+		}
+		return false;
+	}
+	extractAttribs (thisElement) {
+		if (thisElement && thisElement.attributes && thisElement.attributes.length) {
+			var props = {};
+			for (var attrib = 0; attrib < thisElement.attributes.length; attrib++) {
+				var thisAttrib = thisElement.attributes[attrib];
+				if(thisAttrib.name == "style") {
+					// Do not gather styles
+				} else if( ["disabled","multiple","readonly","required","selected"].indexOf(thisAttrib.name.toLowerCase()) > -1 ) {
+					// Flag type Attributes
+					props[attributeMap(thisAttrib.name)] = attributeMap(thisAttrib.name);
+				} else if(thisAttrib && thisAttrib.name && thisAttrib.value){
+					// use attributeMap to map html props to React props
+					props[attributeMap(thisAttrib.name)] = thisAttrib.value;
+				}
+			}
+			if(Object.keys(props).length > 0) return props;
+		}
+		return false;
+	}
+	extractLabel (html, thisElement) {
+		if (thisElement.attributes["id"] && thisElement.attributes["id"].value) {
+			var thisID = thisElement.attributes["id"].value;
+			var thisLabel = html.querySelector("label[for='" + thisID + "']");
+			if (thisLabel) return thisLabel;
+		}
+		return false;
+	}
+	formToJSON (html) {
 		var json = {};
 		json.fields = [];
 		var forms = html.getElementsByTagName("form");
@@ -101,45 +168,24 @@ export class FormExtract extends Component {
 						elem["component"] = "Form" + capitalize(thisElement.tagName);
 						var props = {};
 						// ----- ELEMENT ATTRIBUTES
-						for (var attrib = 0; attrib < thisElement.attributes.length; attrib++) {
-							var thisAttrib = thisElement.attributes[attrib];
-							if(thisAttrib.name == "style") {
-								// Do not gather styles
-							} else if( ["disabled","multiple","readonly","required","selected"].indexOf(thisAttrib.name.toLowerCase()) > -1 ) {
-								// Flag type Attributes
-								props[attributeMap(thisAttrib.name)] = attributeMap(thisAttrib.name);
-							} else if(thisAttrib && thisAttrib.name && thisAttrib.value){
-								// use attributeMap to map html props to React props
-								props[attributeMap(thisAttrib.name)] = thisAttrib.value;
-							}
-						}
+						var thisProps = this.extractAttribs(thisElement);
+						if(thisProps) props = thisProps;
 						// ----- ELEMENT OPTIONS
-						if (thisElement.tagName.toLowerCase() == "select" && thisElement.options && thisElement.options.length) {
-							var options = []
-							for (let option = 0; option < thisElement.options.length; option++) {
-								var thisOption = thisElement.options[option];
-								var attribs = {};
-								for (var attrib = 0; attrib < thisOption.attributes.length; attrib++) {
-									var thisAttrib = thisOption.attributes[attrib];
-									attribs[attributeMap(thisAttrib.name)] = thisAttrib.value;
-								}
-								if (thisOption.innerText) attribs["text"] = thisOption.innerText;
-								if (Object.keys(attribs).length > 0) options.push(attribs); // not empty then add
-							}
-							props["options"] = options;
+						var thisOptions = this.extractOptions(thisElement);
+						if (thisOptions) {
+							// only true for SELECT elements
+							var thisSelected = this.extractSelectedOptions(thisOptions);
+							if(thisSelected) props["defaultValue"] = thisSelected;
+							props["options"] = thisOptions;
 						} else {
 							// get innerText on all but SELECT elements
 							if (thisElement.innerText) props["text"] = thisElement.innerText; 
 						}
-						// bug here for select - gets all options
 						elem["props"] = props;
 						// ----- LABEL
-						if (thisElement.attributes["id"] && thisElement.attributes["id"].value) {
-							var thisID = thisElement.attributes["id"].value;
-							var thisLabel = html.querySelector("label[for='" + thisID + "']");
-							if (thisLabel){
-								elem["props"]["label"] = (thisLabel.innerText || thisLabel.textContent);
-							}
+						var thisLabel = this.extractLabel(html, thisElement);
+						if (thisLabel){
+							elem["props"]["label"] = (thisLabel.innerText || thisLabel.textContent);
 						}
 					}
 					if ( Object.keys( elem ).length > 0 ) json.fields.push(elem);

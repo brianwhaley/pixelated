@@ -126,15 +126,15 @@ export class FormSelect extends Component {
   			PropTypes.string,
   			PropTypes.array
 		]),
-		options : PropTypes.array,
 		// flag attributes
 		autoFocus: PropTypes.string,
 		disabled: PropTypes.string,
 		multiple: PropTypes.string,
 		readOnly: PropTypes.string,
 		required: PropTypes.string,
-		selected: PropTypes.string,
+		// selected: PropTypes.string, // not used
 		// ----- for calculations
+		options : PropTypes.array,
 		display: PropTypes.string,
 		label: PropTypes.string,
 		validate: PropTypes.string,
@@ -160,7 +160,7 @@ export class FormSelect extends Component {
 		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
 		// ----- Input Props
 		let inputProps = JSON.parse(JSON.stringify(this.props));
-		["display", "label", "validate"].forEach(e => delete inputProps[e]);
+		["options", "display", "label", "validate"].forEach(e => delete inputProps[e]);
 		inputProps["onChange"] = (e) => onChange(this, e) ;
 		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
 		return (
@@ -191,9 +191,9 @@ export class FormSelectOption extends Component {
 	}
 	render () {
 		let inputProps = JSON.parse(JSON.stringify(this.props));
+		["selected"].forEach(e => delete inputProps[e]);
 		return (
 			<option {...inputProps} >{this.props.text}</option>
-			// selected={this.props.selected ? "selected" : ""} 
 		);
 	}
 }
