@@ -5,92 +5,92 @@ import '../css/pixelated.menu-accordion.css'
 
 /* ========== MENU ========== */
 export class MenuAccordion extends Component {
-  static propTypes = {
-    menuItems: PropTypes.object.isRequired
-  }
+	static propTypes = {
+		menuItems: PropTypes.object.isRequired
+	}
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      menuItems: [],
-      left: -350
-    }
-    this.moveMenu = this.moveMenu.bind(this)
-  }
+	constructor (props) {
+		super(props)
+		this.state = {
+			menuItems: [],
+			left: -350
+		}
+		this.moveMenu = this.moveMenu.bind(this)
+	}
 
-  generateMenuItems () {
-    const myItems = []
-    for (const itemKey in this.props.menuItems) {
-      myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />)
-    }
-    // this.setState({ menuItems: myItems })
-    return myItems
-  }
+	generateMenuItems () {
+		const myItems = []
+		for (const itemKey in this.props.menuItems) {
+			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />)
+		}
+		// this.setState({ menuItems: myItems })
+		return myItems
+	}
 
-  moveMenu () {
-    if (this.state.left === 0) {
-      this.setState({ left: -350 })
-    } else {
-      this.setState({ left: 0 })
-    }
-  }
+	moveMenu () {
+		if (this.state.left === 0) {
+			this.setState({ left: -350 })
+		} else {
+			this.setState({ left: 0 })
+		}
+	}
 
-  componentDidMount = () => {
-    const menu = document.getElementById('accordion-menu')
-    const menuBtn = document.getElementById('panel-menu-button')
-    document.addEventListener('click', (event) => {
-      const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target))
-      if (!isClicked) {
-        if (this.state.left === 0) this.moveMenu()
-      }
-    }, true)
-  }
+	componentDidMount = () => {
+		const menu = document.getElementById('accordion-menu')
+		const menuBtn = document.getElementById('panel-menu-button')
+		document.addEventListener('click', (event) => {
+			const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target))
+			if (!isClicked) {
+				if (this.state.left === 0) this.moveMenu()
+			}
+		}, true)
+	}
 
-  componentWillUnmount () {
-    window.removeEventListener('click', this.handleResize)
-  }
+	componentWillUnmount () {
+		window.removeEventListener('click', this.handleResize)
+	}
 
-  render () {
-    const styles = { left: '0px' }
-    styles.transition = 'transform 0.5s ease-out 0.0s'
-    styles.transform = 'translateX(' + this.state.left + 'px)'
-    return (
-      <div className="accordion-menu-wrapper" style={styles}>
-        <div className="accordion-menu" id="accordion-menu">
-          <ul className="grid12 clearfix">
-            { this.generateMenuItems() }
-          </ul>
-        </div>
-      </div>
-    )
-  }
+	render () {
+		const styles = { left: '0px' }
+		styles.transition = 'transform 0.5s ease-out 0.0s'
+		styles.transform = 'translateX(' + this.state.left + 'px)'
+		return (
+			<div className="accordion-menu-wrapper" style={styles}>
+				<div className="accordion-menu" id="accordion-menu">
+					<ul className="grid12 clearfix">
+						{ this.generateMenuItems() }
+					</ul>
+				</div>
+			</div>
+		)
+	}
 }
 
 /* ========== MENU ITEM ========== */
 export class MenuAccordionItem extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
-  }
+	static propTypes = {
+		name: PropTypes.string.isRequired,
+		href: PropTypes.string.isRequired
+	}
 
-  render () {
-    return (
-      <li><a href={this.props.href}>{this.props.name}</a></li>
-    )
-  }
+	render () {
+		return (
+			<li><a href={this.props.href}>{this.props.name}</a></li>
+		)
+	}
 }
 
 /* ========== MENU BUTTON ========== */
 export class MenuAccordionButton extends Component {
-  slideMobilePanel () {
-    window.myMenu.moveMenu()
-  }
+	slideMobilePanel () {
+		window.myMenu.moveMenu()
+	}
 
-  render () {
-    return (
-      <div className="panel-menu-button pull-left" id="panel-menu-button" onClick={this.slideMobilePanel}>
-        <img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
-      </div>
-    )
-  }
+	render () {
+		return (
+			<div className="panel-menu-button pull-left" id="panel-menu-button" onClick={this.slideMobilePanel}>
+				<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
+			</div>
+		)
+	}
 }

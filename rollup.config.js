@@ -10,32 +10,32 @@ import resolve from '@rollup/plugin-node-resolve'
 // const packageJson = require('./package.json')
 
 export default [
-  {
-    input: 'src/index.js',
-    output: [
-      {
-        dir: 'dist',
-        format: 'cjs',
-        exports: 'named',
-        preserveModules: true // Keep directory structure and files
-        // sourcemap: false,
-      }
-    ],
-    preserveModules: true,
-    plugins: [
-      babel(),
-      commonjs(),
-      image(),
-      json(),
-      peerDepsExternal(),
-      postcss({
-        extensions: ['.css']
-        // extract: "./src/css/",
-        // minimize: true,
-        // modules: true,
-      }),
-      resolve()
-      // uglify(),
-    ]
-  }
+	{
+		input: 'src/index.js',
+		output: [
+			{
+				dir: 'dist',
+				format: 'cjs',
+				exports: 'named',
+				preserveModules: true // Keep directory structure and files
+				// sourcemap: false,
+			}
+		],
+		preserveModules: true,
+		plugins: [
+			babel(),
+			commonjs(),
+			image(),
+			json(),
+			peerDepsExternal(),
+			postcss({
+				extensions: ['.css']
+				// extract: "./src/css/",
+				// minimize: true,
+				// modules: true,
+			}),
+			resolve()
+			// uglify(),
+		]
+	}
 ]
