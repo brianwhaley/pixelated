@@ -18,11 +18,12 @@ export default class FormExtractv2 extends Component {
 			url : "",
 			formdata : {}
 		};
-		this.setURL = this.setURL.bind(this);
+		this.setParentState = this.setParentState.bind(this);
 		this.setFormData = this.setFormData.bind(this);
 	}
-	setURL = (sentURL) => {
-		this.setState({url: sentURL});
+	setParentState = (parentState) => {
+		this.setState({url: parentState.url});
+		this.setState({html_paste: parentState.html_paste});
 	};
 	setFormData = (json) => {
 		this.setState({formdata: json});
@@ -31,8 +32,8 @@ export default class FormExtractv2 extends Component {
 		return (
 			<div>
 				<div className="section-container">
-					<FormExtractUI setURL={this.setURL} />
-					<ul>
+					<FormExtractUI setParentState={this.setParentState} />
+					<ul>Sample URLs : 
 						<li>https://www.marriott.com/loyalty/createAccount/createAccountPage1.mi</li>
 						<li>https://stackoverflow.com/users/signup</li>
 						<li>https://www.google.com</li>
@@ -49,7 +50,7 @@ export default class FormExtractv2 extends Component {
 				</div>
 
 				<div className="section-container">
-					<FormExtract url={this.state.url} setFormData={this.setFormData} />
+					<FormExtract url={this.state.url} html_paste={this.state.html_paste} setFormData={this.setFormData} />
 				</div>
 
 				<div className="section-container">

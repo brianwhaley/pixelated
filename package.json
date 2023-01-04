@@ -7,7 +7,7 @@
   },
   "homepage": ".",
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^1.0.30",
+    "@brianwhaley/pixelated-components": "^1.0.31",
     "core-js": "^3.21.1",
     "date-fns": "^2.29.2",
     "eslint": "^8.10.0",
