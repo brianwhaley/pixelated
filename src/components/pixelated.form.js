@@ -1,10 +1,72 @@
 
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import * as FC from './pixelated.formcomponents'
 import { generateKey, capitalize, attributeMap } from './pixelated.functions'
 import '../css/pixelated.form.css'
 // import data from '../data/pixelated.form.v2.json'
+
+const formurls = [
+	'https://www.marriott.com/loyalty/createAccount/createAccountPage1.mi',
+	'https://stackoverflow.com/users/signup',
+	'https://www.google.com',
+	'https://www.hilton.com/en/hilton-honors/join/',
+	'https://www.oakleyforum.com/register/?accountType=1',
+	'https://www.microfocus.com/selfreg/jsp/createAccount.jsp',
+	'https://www.michaels.com/on/demandware.store/Sites-MichaelsUS-Site/default/Account-NewRegistration',
+	'https://reg.usps.com/register'
+]
+
+export class FormExtractor extends Component {
+	static propTypes = {
+		url: PropTypes.string
+	}
+
+	constructor (props) {
+		super(props)
+		this.state = {
+			url: '',
+			formdata: {}
+		}
+		this.setParentState = this.setParentState.bind(this)
+		this.setFormData = this.setFormData.bind(this)
+	}
+
+	setParentState = (parentState) => {
+		this.setState({ url: parentState.url })
+		this.setState({ html_paste: parentState.html_paste })
+	}
+
+	setFormData = (json) => {
+		this.setState({ formdata: json })
+	}
+
+	render () {
+		return (
+			<div>
+				<div className="section-container">
+					<FormExtractUI setParentState={this.setParentState} />
+				</div>
+
+				<div className="section-container">
+					<br /><br /><hr /><br /><br />
+				</div>
+
+				<div className="section-container">
+					<FormExtractEngine url={this.state.url} html_paste={this.state.html_paste} setFormData={this.setFormData} />
+				</div>
+
+				<div className="section-container">
+					<br /><br /><hr /><br /><br />
+				</div>
+
+				<div className="section-container">
+					<FormEngine formdata={this.state.formdata} />
+				</div>
+			</div>
+		)
+	}
+}
 
 export class FormEngine extends Component {
 	static propTypes = {
@@ -47,6 +109,7 @@ export class FormExtractUI extends Component {
 		}
 		this.onChange = this.onChange.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
+		this.generateDatalist = this.generateDatalist.bind(this)
 	}
 
 	onChange (event) {
@@ -57,26 +120,35 @@ export class FormExtractUI extends Component {
 		this.props.setParentState(this.state)
 	}
 
+	generateDatalist (datalistID) {
+		const options = []
+		for (const url in formurls) {
+			const thisURL = formurls[url]
+			const newOption = <option key={datalistID + '-' + thisURL} value={thisURL} />
+			options.push(newOption)
+		}
+		return (<datalist id={datalistID}>{options}</datalist>)
+	}
+
 	render () {
 		return (
-			<Fragment>
-				<form action="javascript:void(0)" method="post" name="extract">
-					<label htmlFor="url">URL : </label>
-					<input type="text" id="url" name="url" size="100" onChange={this.onChange} />
-					<div style={{ width: '100%', textAlign: 'center' }}>OR</div>
-					<label htmlFor="html_paste">HTML : </label>
-					<textarea id="html_paste" name="html_paste" rows="10" cols="80" onChange={this.onChange} /><br />
-					<div style={{ width: '100%', textAlign: 'center' }}>
-						<button type="button" onClick={this.onSubmit}>Extract</button>
-						<input type="reset" />
-					</div>
-				</form>
-			</Fragment>
+			<form onSubmit={ e => { e.preventDefault() } } method="post" name="extract">
+				<label htmlFor="url">URL : </label>
+				<input type="text" list="form_urls" id="url" name="url" size="100" onChange={this.onChange} />
+				{this.generateDatalist('form_urls')}
+				<div style={{ width: '100%', textAlign: 'center' }}>OR</div>
+				<label htmlFor="html_paste">HTML : </label>
+				<textarea id="html_paste" name="html_paste" rows="10" cols="80" onChange={this.onChange} /><br />
+				<div style={{ width: '100%', textAlign: 'center' }}>
+					<button type="button" onClick={this.onSubmit}>Extract</button>
+					<input type="reset" />
+				</div>
+			</form>
 		)
 	}
 }
 
-export class FormExtract extends Component {
+export class FormExtractEngine extends Component {
 	static propTypes = {
 		url: PropTypes.string,
 		html_paste: PropTypes.string,
@@ -261,7 +333,9 @@ export class FormExtract extends Component {
 
 	render () {
 		return (
-			<div>{ JSON.stringify(this.state.formjson, null, 2) }</div>
+			<div>
+				<pre id='formjson'>{ JSON.stringify(this.state.formjson, null, 2) }</pre>
+			</div>
 		)
 	}
 }
