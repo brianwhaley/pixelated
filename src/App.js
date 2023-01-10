@@ -9,6 +9,7 @@ import Footer from "./pages/footer";
 
 import CustomSunglasses from "./pages/customsunglasses";
 import Ebay from "./pages/ebay";
+import FormBuildv1 from "./pages/formbuild";
 import FormExtractv1 from "./pages/formextractv1";
 import FormExtract from "./pages/formextract";
 import Formv1 from "./pages/formv1";
@@ -57,6 +58,7 @@ export default class App extends Component {
 							<Route exact path='/' element={<Home />}/>
 							<Route path='/customsunglasses.html' element={<CustomSunglasses />}/>
 							<Route path='/ebay.html' element={<Ebay />}/>
+							<Route path='/formbuild.html' element={<FormBuildv1 />}/>
 							<Route path='/formextractv1.html' element={<FormExtractv1 />}/>
 							<Route path='/formextract.html' element={<FormExtract />}/>
 							<Route path='/formv1.html' element={<Formv1 />}/>
