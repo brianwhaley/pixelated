@@ -6,8 +6,6 @@ import * as FV from "./pixelated.formvalidations";
 import "@brianwhaley/pixelated-components/dist/css/pixelated.form.css";
 
 
-// what about datalist ?
-
 
 const onChange = (me, event) => {
 	let myValidate = me.props.validate ? FV[me.props.validate](event.target) : true ;
@@ -23,11 +21,15 @@ const onChange = (me, event) => {
 
 
 
-export class FormLabel extends Component {
+class FormLabel extends Component {
 	static propTypes = {
 		id: PropTypes.string,
 		label: PropTypes.string,
 	};
+	static defaultProps = {
+		id: "",
+		label: "",
+	}
 	render () {
 		return (
 			<Fragment >
@@ -41,7 +43,7 @@ export class FormLabel extends Component {
 
 
 
-export class FormValidate extends Component {
+class FormValidate extends Component {
 	static propTypes = {
 		id: PropTypes.string,
 		valid: PropTypes.bool,
@@ -67,6 +69,7 @@ export class FormInput extends Component {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		defaultValue: PropTypes.string,
+		list: PropTypes.string,
 		size: PropTypes.string,
 		maxLength: PropTypes.string,
 		placeholder: PropTypes.string,
@@ -108,6 +111,7 @@ export class FormInput extends Component {
 				<FormLabel key={"label-" + this.props.id} id={this.props.id} label={this.props.label} />
 				{ this.props.display == "vertical" ? formValidate : "" }
 				{ this.props.type != "checkbox" ? <input {...inputProps} /> : "" }
+				{ this.props.list ? <FormDataList id={this.props.list} items={FV[this.props.list]} /> : "" }
 				{ this.props.display != "vertical" ? formValidate : "" }
 			</div>
 		);
@@ -178,7 +182,7 @@ export class FormSelect extends Component {
 
 
 
-export class FormSelectOption extends Component {
+class FormSelectOption extends Component {
 	static propTypes = {
 		text: PropTypes.string,
 		value: PropTypes.string,
@@ -299,7 +303,7 @@ export class FormRadio extends Component {
 
 
 
-export class FormRadioOption extends Component {
+class FormRadioOption extends Component {
 	static propTypes = {
 		text: PropTypes.string,
 		value: PropTypes.string,
@@ -380,7 +384,7 @@ export class FormCheckbox extends Component {
 
 
 
-export class FormCheckboxOption extends Component {
+class FormCheckboxOption extends Component {
 	static propTypes = {
 		text: PropTypes.string,
 		value: PropTypes.string,
@@ -429,6 +433,29 @@ export class FormButton extends Component {
 					id={this.props.id} 
 					onClick={this.props.onClick}>{this.props.text}</button>
 			</div>
+		);
+	}
+}
+
+
+
+export class FormDataList extends Component {
+	static propTypes = {
+		id: PropTypes.string,
+		items: PropTypes.array,
+	};
+	constructor (props) {
+		super(props);
+	}
+	render () {
+		const options = []
+		for (const item in this.props.items) {
+			const thisItem = this.props.items[item]
+			const newOption = <option key={this.props.id + '-' + thisItem} value={thisItem} />
+			options.push(newOption)
+		}
+		return (
+			<datalist id={this.props.id}>{options}</datalist>
 		);
 	}
 }

@@ -1,21 +1,69 @@
 
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import * as FC from './pixelated.formcomponents'
+import * as FV from './pixelated.formvalidations'
 import { generateKey, capitalize, attributeMap } from './pixelated.functions'
 import '../css/pixelated.form.css'
 // import data from '../data/pixelated.form.v2.json'
 
-const formurls = [
-	'https://www.marriott.com/loyalty/createAccount/createAccountPage1.mi',
-	'https://stackoverflow.com/users/signup',
-	'https://www.google.com',
-	'https://www.hilton.com/en/hilton-honors/join/',
-	'https://www.oakleyforum.com/register/?accountType=1',
-	'https://www.microfocus.com/selfreg/jsp/createAccount.jsp',
-	'https://www.michaels.com/on/demandware.store/Sites-MichaelsUS-Site/default/Account-NewRegistration',
-	'https://reg.usps.com/register'
-]
+export class FormBuilder extends Component {
+	constructor (props) {
+		super(props)
+		this.state = {
+			url: '',
+			html_paste: '',
+			formdata: {},
+			fieldformdata: {}
+		}
+		this.appendFormData = this.appendFormData.bind(this)
+		this.setFieldFormData = this.setFieldFormData.bind(this)
+	}
+
+	setFieldFormData = (json) => {
+		// UPDATE STATE WITH JSON USED TO CREATE FIELD PROPERTIES - EXPOSED EXTERNAL
+		this.setState({ fieldformdata: json })
+	}
+
+	appendFormData (event) {
+		// APPEND JSON FOR NEW FIELD TO EXISTING JSON CONFIG OBJECT - EXPOSED EXTERNAL
+		const field = {}
+		field.component = 'FormInput' // TO DO ; HARD CODED - FIX THIS
+		const props = {}
+		for (const prop in event.target) {
+			const thisProp = event.target[prop]
+			if (thisProp && thisProp.value) { props[thisProp.name] = thisProp.value }
+		}
+		field.props = props
+		let fields = []
+		if (Object.keys(this.state.formdata).length > 0) { fields = JSON.parse(JSON.stringify(this.state.formdata.fields)) }
+		fields[fields.length] = field
+		this.setState({ formdata: { fields } })
+		return (field)
+	}
+
+	render () {
+		return (
+			<div className="section-container">
+				<div style={{ display: 'inline-block', verticalAlign: 'top' }}>
+					<FormBuild setFormData={this.setFieldFormData} />
+				</div>
+				<div style={{ display: 'inline-block', verticalAlign: 'top' }}>
+					<FormEngine name="field_props" id="field_props"
+						onSubmitHandler={this.appendFormData}
+						formdata={this.state.fieldformdata} />
+				</div>
+				<div style={{ display: 'inline-block', verticalAlign: 'top' }} >
+					<pre style={{ width: '100%' }} >{ JSON.stringify(this.state.formdata, null, 2) }</pre>
+				</div>
+				<div><br /><br /><hr /><br /><br /></div>
+				<div style={{ display: 'block', verticalAlign: 'top' }}>
+					<FormEngine formdata={this.state.formdata} />
+				</div>
+			</div>
+		)
+	}
+}
 
 export class FormExtractor extends Component {
 	static propTypes = {
@@ -33,11 +81,13 @@ export class FormExtractor extends Component {
 	}
 
 	setParentState = (parentState) => {
+		// SET STATE FROM PARENT VALUES - EXPOSED EXTERNAL
 		this.setState({ url: parentState.url })
 		this.setState({ html_paste: parentState.html_paste })
 	}
 
 	setFormData = (json) => {
+		// SET STATE WITH JSON TO RENDER THE FORM - EXPOSED EXTERNAL
 		this.setState({ formdata: json })
 	}
 
@@ -70,28 +120,126 @@ export class FormExtractor extends Component {
 
 export class FormEngine extends Component {
 	static propTypes = {
+		name: PropTypes.string,
+		id: PropTypes.string,
+		method: PropTypes.string,
+		onSubmitHandler: PropTypes.func,
 		formdata: PropTypes.object.isRequired
 	}
 
 	constructor (props) {
 		super(props)
 		this.state = {}
+		this.generateFormProps = this.generateFormProps.bind(this)
+		this.generateNewFields = this.generateNewFields.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
-	render () {
+	generateFormProps = () => {
+		// GENERATE PROPS TO RENDER THE FORM CONTAINER, INTERNAL FUNCTION
+		const formProps = JSON.parse(JSON.stringify(this.props));
+		['formdata', 'onSubmitHandler'].forEach(e => delete formProps[e])
+		return formProps
+	}
+
+	generateNewFields () {
+		// CORE OF THE FORM ENGINE - CONVERT JSON TO COMPONENTS - INTERNAL
 		const newFields = []
-		if (this.props.formdata.fields) {
-			const fields = this.props.formdata.fields
-			for (let field = 0; field < fields.length; field++) {
-				const thisField = fields[field]
-				const thisProps = thisField.props
-				thisProps.key = generateKey()
-				const newElement = React.createElement(FC[thisField.component], thisProps)
+		if (this.props.formdata && this.props.formdata.fields) {
+			const thisFields = this.props.formdata.fields
+			for (let field = 0; field < thisFields.length; field++) {
+				const thisField = thisFields[field]
+				const newProps = JSON.parse(JSON.stringify(thisField.props))
+				newProps.key = generateKey()
+				const newElement = React.createElement(FC[thisField.component], newProps)
 				newFields.push(newElement)
 			}
 		}
+		return newFields
+	}
+
+	handleSubmit = (e) => {
+		// HANDLES THE FORM ACTION / FORM SUBMIT - EXPOSED EXTERNAL
+		e.preventDefault()
+		if (this.props.onSubmitHandler) this.props.onSubmitHandler(e)
+		return true
+	}
+
+	render () {
 		return (
-			<form>{newFields}</form>
+			<form {...this.generateFormProps()} onSubmit={(e) => { this.handleSubmit(e) }} >{this.generateNewFields()}</form>
+		)
+	}
+}
+
+export class FormBuild extends Component {
+	static propTypes = {
+		setFormData: PropTypes.func
+	}
+
+	constructor (props) {
+		super(props)
+		this.state = {
+		}
+		this.addComponent = this.addComponent.bind(this)
+	}
+
+	generateFieldJSON (component) {
+		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - INTERNAL
+		const form = { fields: [] }
+		let i = 0
+		for (const prop in FC[component].propTypes) {
+			const field = {}
+			field.component = 'FormInput'
+			const props = {}
+			props.label = prop
+			props.name = prop
+			props.id = prop
+			props.type = 'text'
+			if (prop === 'type') props.list = 'inputTypes'
+			field.props = props
+			form.fields[i] = field
+			i++
+		}
+		const addButton = {
+			component: 'FormButton',
+			props: {
+				label: 'Add ' + component,
+				type: 'submit',
+				id: 'Add ' + component,
+				text: 'Add ' + component
+			}
+		}
+		form.fields[i] = addButton
+		console.log(form)
+		return (form)
+	}
+
+	addComponent (component) {
+		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - EXTERNAL
+		const fieldJSON = this.generateFieldJSON(component)
+		this.props.setFormData(fieldJSON)
+		return true
+	}
+
+	generateComponentButtons () {
+		// GENERATES THE COMPENENT BUTTONS FORM TO ADD NEW FIELDS - INTERNAL
+		const components = []
+		for (const component in Object.keys(FC)) {
+			const thisComponent = Object.keys(FC)[component]
+			const newComponent = <button key={thisComponent} style={{ display: 'block', width: 200 }} onClick={ () => this.addComponent(thisComponent)}>{thisComponent}</button>
+			components.push(newComponent)
+		}
+		return components
+	}
+
+	render () {
+		return (
+			<Fragment>
+				<form onSubmit={ e => { e.preventDefault() } } method="post" name="build" id="build">
+					{ this.generateComponentButtons() }
+				</form>
+			</Fragment>
 		)
 	}
 }
@@ -109,25 +257,16 @@ export class FormExtractUI extends Component {
 		}
 		this.onChange = this.onChange.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
-		this.generateDatalist = this.generateDatalist.bind(this)
 	}
 
 	onChange (event) {
+		// UPDATE URL OR HTML_PASTE ON CHANGE - EXTERNAL
 		this.setState({ [event.target.name]: event.target.value })
 	}
 
 	onSubmit = () => {
+		// SET PARENT STATE WITH URL OR HTML PASTE - EXTERNAL
 		this.props.setParentState(this.state)
-	}
-
-	generateDatalist (datalistID) {
-		const options = []
-		for (const url in formurls) {
-			const thisURL = formurls[url]
-			const newOption = <option key={datalistID + '-' + thisURL} value={thisURL} />
-			options.push(newOption)
-		}
-		return (<datalist id={datalistID}>{options}</datalist>)
 	}
 
 	render () {
@@ -135,7 +274,7 @@ export class FormExtractUI extends Component {
 			<form onSubmit={ e => { e.preventDefault() } } method="post" name="extract">
 				<label htmlFor="url">URL : </label>
 				<input type="text" list="form_urls" id="url" name="url" size="100" onChange={this.onChange} />
-				{this.generateDatalist('form_urls')}
+				<FC.FormDataList id='form_urls' items={FV.formURLs} />
 				<div style={{ width: '100%', textAlign: 'center' }}>OR</div>
 				<label htmlFor="html_paste">HTML : </label>
 				<textarea id="html_paste" name="html_paste" rows="10" cols="80" onChange={this.onChange} /><br />
@@ -174,6 +313,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	extractOptions (thisElement) {
+		// GENERATE OPTIONS FOR SELECT FIELD - INTERNAL
 		if (thisElement.tagName.toLowerCase() === 'select' && thisElement.options && thisElement.options.length) {
 			const options = []
 			for (let option = 0; option < thisElement.options.length; option++) {
@@ -192,6 +332,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	extractSelectedOptions (thisOptions) {
+		// GENERATE LIST OF SELECTED OPTIONS FOR SELECT FIELD - INTERNAL
 		if (thisOptions && thisOptions.length) {
 			const selected = []
 			for (let option = 0; option < thisOptions.length; option++) {
@@ -211,6 +352,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	extractAttribs (thisElement) {
+		// EXTRACT ALL ATTRIBUTES FOR A FORM ELEMENT - INTERNAL
 		if (thisElement && thisElement.attributes && thisElement.attributes.length) {
 			const props = {}
 			for (let attrib = 0; attrib < thisElement.attributes.length; attrib++) {
@@ -231,6 +373,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	extractLabel (html, thisElement) {
+		// IDENTIFY AND EXTRACT LABEL PROPERTIES FOR A SPECIFIC FIELD - INTERNAL
 		if (thisElement.attributes.id && thisElement.attributes.id.value) {
 			const thisID = thisElement.attributes.id.value
 			const thisLabel = html.querySelector("label[for='" + thisID + "']")
@@ -240,6 +383,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	formToJSON (html) {
+		// CONVERT HTML TO CONFIG JSON - INTERNAL
 		const json = {}
 		json.fields = []
 		const forms = html.getElementsByTagName('form')
@@ -285,6 +429,7 @@ export class FormExtractEngine extends Component {
 	}
 
 	getHTML (url, callback) {
+		// GET SERVER SIDE HTML THROUGH XMLHTTPREQUEST - INTERNAL
 		// eslint-disable-next-line no-undef
 		const xhr = new XMLHttpRequest()
 		xhr.onreadystatechange = (e) => {

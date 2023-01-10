@@ -1,4 +1,23 @@
 
+export const inputTypes = [
+	'button', 'checkbox', 'color', 'date', 'datetime-local', 'email',
+	'file', 'hidden', 'image', 'month', 'number', 'password', 'radio',
+	'range', 'reset', 'search', 'submit', 'tel', 'text', 'time', 'url', 'week'
+]
+
+export const booleans = ['true', 'false']
+
+export const formURLs = [
+	'https://www.marriott.com/loyalty/createAccount/createAccountPage1.mi',
+	'https://stackoverflow.com/users/signup',
+	'https://www.google.com',
+	'https://www.hilton.com/en/hilton-honors/join/',
+	'https://www.oakleyforum.com/register/?accountType=1',
+	'https://www.microfocus.com/selfreg/jsp/createAccount.jsp',
+	'https://www.michaels.com/on/demandware.store/Sites-MichaelsUS-Site/default/Account-NewRegistration',
+	'https://reg.usps.com/register'
+]
+
 export function getAllInvalidFields () {
 	const invalids = []
 	for (const field of document.querySelectorAll('[required]')) {
