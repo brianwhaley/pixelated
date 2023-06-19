@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Callout, CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components/dist/index";
-import "@brianwhaley/pixelated-components/dist/css/pixelated.callout.css";
 
 export default class CustomSunglasses extends Component {
 	render () {

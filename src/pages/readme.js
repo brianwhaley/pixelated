@@ -1,30 +1,14 @@
-/* eslint-disable */
-
 import React, { Component } from "react";
-
-import { markdownParser } from "@brianwhaley/pixelated-components/dist/index";
-import "@brianwhaley/pixelated-components/dist/css/pixelated.markdown.css";
-
-import ReadmeData from "../data/readme.md";
+import { Markdown } from "@brianwhaley/pixelated-components/dist/index";
+import data from "../data/readme.md";
 
 export default class Readme extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = { markdown: '' };
-	}
-
-	UNSAFE_componentWillMount() {  
-		fetch(ReadmeData)
-			.then(response => { return response.text(); })
-			.then(text => { this.setState({ markdown: text }); })
-			.catch(err => console.log(err));
-	}
-
 	render () {
+		console.log(data);
 		return (
 			<div className="section-container">
-				<div className = "markdown" dangerouslySetInnerHTML={{__html: markdownParser(this.state.markdown) }} />
+				<Markdown markdowndata={data} />
 			</div>
 		);
 	}

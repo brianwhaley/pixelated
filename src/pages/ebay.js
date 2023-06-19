@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { EbayItems } from "@brianwhaley/pixelated-components/dist/index";
-import "@brianwhaley/pixelated-components/dist/css/pixelated.ebay.css";
-
 
 export default class Ebay extends Component {
 	render() {
 		let ebayProps = {
-			proxyURL: "https://api.codetabs.com/v1/proxy/?quest=",
+			// proxyURL: 'https://api.codetabs.com/v1/proxy/?quest=',
+			// proxyURL: 'https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=',
+			proxyURL: "https://corsproxy.io/?",
 			baseURL: "https://svcs.ebay.com/services/search/FindingService/v1?",
 			urlProps: {
 				"OPERATION-NAME": "findItemsByKeywords",

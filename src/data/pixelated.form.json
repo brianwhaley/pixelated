@@ -30,7 +30,8 @@
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
-				"label" : "First Name : "
+				"label" : "First Name : ",
+				"tooltip" : "Please type in your First Name"
             }
         },
 		{
@@ -83,6 +84,7 @@
 				"required" : "required",
 				"display" : "horizontal",
 				"label" : "State : ",
+				"tooltip" : "Please select your State",
 				"options" : [
 					{ "value" : "", "text" : "" , "disabled" : "disabled"},
 					{ "value" : "AL", "text" : "Alabama" },
@@ -250,6 +252,7 @@
 				"display" : "horizontal",
 				"required" : "required",
 				"validate" : "isOneRadioSelected",
+				"tooltip" : "Please select your gender",
 				"options" : [
 					{ "value" : "male", "text" : "Male", "checked" : "" },
 					{ "value" : "female", "text" : "Female", "checked" : "" }
@@ -263,6 +266,7 @@
 				"name" : "children",
 				"label" : "Children : ",
 				"display" : "horizontal",
+				"tooltip" : "Please select if you have children",
 				"validate" : "isOneChecked",
 				"options" : [
 					{ "value" : "y", "text" : "Yes", "selected" : "" },
@@ -337,7 +341,8 @@
                 "defaultValue" : null,
 				"display" : "horizontal",
 				"required" : "required",
-				"label" : "Comments : "
+				"label" : "Comments : ",
+				"tooltip": "Please enter your comments"
             }
         },
 		{
