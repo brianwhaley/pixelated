@@ -17,12 +17,10 @@ export default class Joke extends Component {
 
 	componentDidMount(){
 		this.hideElems();
-		// console.log("did mount");
 	}
 
 	componentDidUpdate(){
 		this.hideElems();
-		// console.log("did update");
 	}
 
 	render () {

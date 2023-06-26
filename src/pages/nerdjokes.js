@@ -6,8 +6,6 @@ import { NerdJoke } from "@brianwhaley/pixelated-components";
 function UseQuery() {
 	const { search } = useLocation();
 	let isInstalled = new URLSearchParams(search).get("installed");
-	console.log(isInstalled);
-	console.log(typeof(isInstalled));
 	let yes = (
 		<div className="centered">
 			<h2>Congratulations on successfully installing NerdJokes for Slack!</h2><br/><br/>
