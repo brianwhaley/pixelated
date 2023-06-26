@@ -15,8 +15,8 @@ import Recipes from '../recipes'
 import Readme from '../readme'
 import MyResume from '../resume'
 import SocialMedia from '../socialmedia'
-import Stkr from '../ebay'
-import NotFound from '../ebay'
+import Stkr from '../stkr'
+import NotFound from '../notfound'
 
 export default class MyRoutes extends Component {
 	
