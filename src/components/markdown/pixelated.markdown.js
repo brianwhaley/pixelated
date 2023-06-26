@@ -5,11 +5,11 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types'
 import "./pixelated.markdown.css";
-import markdowndata from "./readme.md";
+// import markdowndata from "./readme.md";
 
 export class Markdown extends Component {
 	static propTypes = {
-		markdowndata: PropTypes.object.isRequired,
+		markdowndata: PropTypes.string.isRequired,
 	}
 	constructor(props) {
 		super(props);

@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import * as FC from './pixelated.formcomponents'
 import * as FV from './pixelated.formvalidations'
-import { generateKey, capitalize, attributeMap } from '../functions/pixelated.functions'
+import { generateKey, capitalize, attributeMap } from '../utilities/pixelated.functions'
 import './pixelated.form.css'
-import data from './pixelated.form.json'
+// import data from './pixelated.form.json'
 
 export class FormBuilder extends Component {
 	constructor (props) {

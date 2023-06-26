@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { getXHRData, generateURL } from '../api/pixelated.api'
+import { getXHRData, generateURL } from '../utilities/pixelated.api'
 import './pixelated.nerdjoke.css'
 
 export class NerdJoke extends Component {

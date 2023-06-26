@@ -1,0 +1,21 @@
+{
+	"routes" : [
+		{ "path" : "/", "componentName" : "Home" },
+		{ "path" : "/customsunglasses.html", "componentName" : "CustomSunglasses" },
+		{ "path" : "/ebay.html", "componentName" : "Ebay" },
+		{ "path" : "/formbuild.html", "componentName" : "FormBuild" },
+		{ "path" : "/formextract.html", "componentName" : "FormExtract" },
+		{ "path" : "/form.html", "componentName" : "Form" },
+		{ "path" : "/gallery.html", "componentName" : "Gallery" },
+		{ "path" : "/index.html", "componentName" : "Home" },
+		{ "path" : "/joke.html", "componentName" : "Joke" },
+		{ "path" : "/nerdjokes.html", "componentName" : "NerdJokes" },
+		{ "path" : "/photography.html", "componentName" : "Photography" },
+		{ "path" : "/recipes.html", "componentName" : "Recipes" },
+		{ "path" : "/readme.html", "componentName" : "Readme" },
+		{ "path" : "/resume.html", "componentName" : "MyResume" },
+		{ "path" : "/socialmedia.html", "componentName" : "SocialMedia" },
+		{ "path" : "/stkr.html", "componentName" : "Stkr" },
+		{ "path" : "*", "componentName" : "NotFound" }
+	]
+}

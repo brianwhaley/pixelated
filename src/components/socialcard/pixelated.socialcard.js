@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { html2dom, mergeDeep, pushNewValueToStateArray } from '../functions/pixelated.functions'
+import { html2dom, mergeDeep, pushNewValueToStateArray } from '../utilities/pixelated.functions'
 import './pixelated.socialcard.css'
 
 /* ==========

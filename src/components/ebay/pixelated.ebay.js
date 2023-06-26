@@ -2,8 +2,8 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { getXHRData, generateURL } from "../api/pixelated.api";
-import { mergeDeep } from "../functions/pixelated.functions";
+import { getXHRData, generateURL } from "../utilities/pixelated.api";
+import { mergeDeep } from "../utilities/pixelated.functions";
 import "./pixelated.ebay.css";
 
 export class EbayItems extends Component {

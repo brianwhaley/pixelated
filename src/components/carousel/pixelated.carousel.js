@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { getXHRData, generateURL } from '../api/pixelated.api'
-import { mergeDeep } from '../functions/pixelated.functions'
+import { getXHRData, generateURL } from '../utilities/pixelated.api'
+import { mergeDeep } from '../utilities/pixelated.functions'
 import './pixelated.carousel.css'
 
 const divSelector = 'div.carousel-slider-container'
