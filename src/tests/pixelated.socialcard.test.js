@@ -49,7 +49,6 @@ describe('SocialCards', () => {
 
 	test('SocialCards gatherData function is called properly', () => {
 		const cSocialCards = mount(<SocialCards sources={myState} />)
-		// console.log("myCardData", cSocialCards.state('myCardData'));
 		const instance = cSocialCards.instance()
 		jest.spyOn(instance, 'gatherData')
 		instance.componentDidMount()

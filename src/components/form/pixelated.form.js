@@ -210,7 +210,6 @@ export class FormBuild extends Component {
 			}
 		}
 		form.fields[i] = addButton
-		console.log(form)
 		return (form)
 	}
 
@@ -423,7 +422,6 @@ export class FormExtractEngine extends Component {
 				}
 			}
 		}
-		console.log(json)
 		return json
 	}
 
@@ -434,7 +432,6 @@ export class FormExtractEngine extends Component {
 		xhr.onreadystatechange = (e) => {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				const json = callback(xhr.responseXML)
-				console.log(xhr.responseXML)
 				this.setState({ formjson: json })
 				this.props.setFormData(json)
 			}
@@ -462,13 +459,11 @@ export class FormExtractEngine extends Component {
 				this.setState({ html_paste: this.props.html_paste })
 				const thisHTML = new DOMParser().parseFromString(this.props.html_paste, 'text/html')
 				json = this.formToJSON(thisHTML)
-				console.log(json)
 				this.setState({ formjson: json })
 				this.props.setFormData(json)
 			} else if (this.state.html_paste && !this.state.formjson) {
 				const thisHTML = new DOMParser().parseFromString(this.state.html_paste, 'text/html')
 				json = this.formToJSON(thisHTML)
-				console.log(json)
 				this.setState({ formjson: json })
 				this.props.setFormData(json)
 			}

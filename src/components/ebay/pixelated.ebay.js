@@ -126,8 +126,6 @@ export class EbayItems extends Component {
 
 	componentDidMount() {
 		const myURL = generateURL(this.state.proxyURL + this.state.baseURL, this.state.urlProps);
-		console.log(myURL);
-        // console.log(myURL);
 		var myMethod = "GET";
 		getXHRData(myURL, myMethod, (btw73) => {
 			this.loadItems(btw73);
@@ -285,7 +283,6 @@ export class EbayPagination extends Component {
 
 	render () {
 		var pageLinks = [];
-		console.log()
 		for (let i = 1; i <= this.props.totalPages; i++) {
 			var key = "page" + i ;
 			// var pageLink = <div className="EbayPage" key={key} onClick={() => { this.props.gotoPage(i);} }>{i}</div> ;
