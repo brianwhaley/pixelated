@@ -86,6 +86,13 @@ Develop a technology roadmap, laying out the right architecure, andvancements, a
 * [ENFP](https://www.16personalities.com/enfp-personality)
 * [Personality Types](https://www.16personalities.com/personality-types)
 
+### DELOITTE BUSINESS CHEMISTRY RESULTS
+
+* ENFP - Extrovert - Intuition - Feeling - Perceiving
+* [Pioneer](https://www2.deloitte.com/us/en/blog/business-chemistry/2019/pioneers-value-possibilities-and-spark-energy-and-imagination.html)
+* [Integrator](https://www2.deloitte.com/us/en/blog/business-chemistry/2019/integrators-value-connection-and-they-draw-teams-together.html)
+* [Business Chemistry Types](https://www2.deloitte.com/us/en/blog/business-chemistry/2019/the-4-types.html)
+
 *** 
 
 ## RESOURCES

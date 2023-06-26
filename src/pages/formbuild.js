@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormBuilder } from "@brianwhaley/pixelated-components/dist/index";
+import { FormBuilder } from "@brianwhaley/pixelated-components";
 
 export default class FormBuild extends Component {
 	constructor (props) {

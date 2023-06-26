@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { CalloutHeader, CalloutRoundSm } from "@brianwhaley/pixelated-components/dist/index";
-import { SocialCards } from "@brianwhaley/pixelated-components/dist/index";
+import { CalloutHeader, CalloutRoundSm } from "@brianwhaley/pixelated-components";
+import { SocialCards } from "@brianwhaley/pixelated-components";
 
 const mySources = {
 	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Views Blog Post" },

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Callout, CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components/dist/index";
+import { Callout, CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components";
 
-export default class Home extends Component {
+export default class Home2 extends Component {
 	render () {
 		return (
 			<Fragment>

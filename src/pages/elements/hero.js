@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Carousel } from "@brianwhaley/pixelated-components/dist/index";
+import { Carousel } from "@brianwhaley/pixelated-components";
 
 export default class Hero extends Component {
 	render () {

@@ -40,14 +40,14 @@ module.exports = {
 			"error",
 			"unix"
 		],
-		"quotes": [
+		/* "quotes": [
 			"error",
 			"double"
 		],
 		"semi": [
 			"error",
 			"always"
-		],
+		], */
 		"@typescript-eslint/no-unused-vars": "off",
 		// "sonarjs/no-identical-functions": ["error", 100]
 	},

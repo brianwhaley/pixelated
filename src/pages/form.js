@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormEngine } from "@brianwhaley/pixelated-components/dist/index";
+import { FormEngine } from "@brianwhaley/pixelated-components";
 
 import data from "../data/pixelated.form.json";
 

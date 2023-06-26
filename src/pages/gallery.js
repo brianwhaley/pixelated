@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
-import { Carousel } from "@brianwhaley/pixelated-components/dist/index";
+import { Carousel } from "@brianwhaley/pixelated-components";
 
 function UseQuery() {
 	const { search } = useLocation();

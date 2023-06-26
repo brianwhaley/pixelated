@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { NerdJoke } from "@brianwhaley/pixelated-components/dist/index";
+import { NerdJoke } from "@brianwhaley/pixelated-components";
 
 export default class Joke extends Component {
 

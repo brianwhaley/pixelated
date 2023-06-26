@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { useLocation } from "react-router-dom";
-import { CalloutHeader } from "@brianwhaley/pixelated-components/dist/index";
-import { NerdJoke } from "@brianwhaley/pixelated-components/dist/index";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { NerdJoke } from "@brianwhaley/pixelated-components";
 
 function UseQuery() {
 	const { search } = useLocation();

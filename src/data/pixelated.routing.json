@@ -1,0 +1,20 @@
+[
+	{ "path" : "/", "element" : "Home" },
+	{ "path" : "/customsunglasses.html", "element" : "CustomSunglasses" },
+	{ "path" : "/ebay.html", "element" : "Ebay" },
+	{ "path" : "/formbuild.html", "element" : "FormBuild" },
+	{ "path" : "/formextract.html", "element" : "FormExtract" },
+	{ "path" : "/form.html", "element" : "Form" },
+	{ "path" : "/gallery.html", "element" : "Gallery" },
+	{ "path" : "/index.html", "element" : "Home" },
+	{ "path" : "/joke.html", "element" : "Joke" },
+	{ "path" : "/nerdjokes.html", "element" : "NerdJokes" },
+	{ "path" : "/photography.html", "element" : "Photography" },
+	{ "path" : "/readme.html", "element" : "Readme" },
+	{ "path" : "/recipes.html", "element" : "Recipes" },
+	{ "path" : "/readme.html", "element" : "Readme" },
+	{ "path" : "/resume.html", "element" : "MyResume" },
+	{ "path" : "/socialmedia.html", "element" : "SocialMedia" },
+	{ "path" : "/stkr.html", "element" : "Stkr" },
+	{ "path" : "*", "element" : "NotFound" }
+]

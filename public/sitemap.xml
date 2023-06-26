@@ -5,7 +5,7 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://pixelated.tech/</loc>
+		<loc>https://www.pixelated.tech/</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
@@ -17,115 +17,115 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/customsunglasses.html</loc>
+		<loc>https://www.pixelated.tech/customsunglasses.html</loc>
 		<lastmod>2021-01-04T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/ebay.html</loc>
+		<loc>https://www.pixelated.tech/ebay.html</loc>
 		<lastmod>2022-09-11T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=customsunglasses</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=customsunglasses</loc>
 		<lastmod>2020-01-04T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=pixelatedviewsgallery</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=pixelatedviewsgallery</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=portfolio-all</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=portfolio-all</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<!--url>
-		<loc>https://pixelated.tech/gallery.html?tag=portfolio-adp-2014</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=portfolio-adp-2014</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=portfolio-ap-2012</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=portfolio-ap-2012</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=portfolio-bms-2005</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=portfolio-bms-2005</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/gallery.html?tag=portfolio-bms-1998</loc>
+		<loc>https://www.pixelated.tech/gallery.html?tag=portfolio-bms-1998</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url-->
 	<url>
-		<loc>https://pixelated.tech/index.html</loc>
+		<loc>https://www.pixelated.tech/index.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/joke.html</loc>
+		<loc>https://www.pixelated.tech/joke.html</loc>
 		<lastmod>2020-07-15T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/nerdjokes.html</loc>
+		<loc>https://www.pixelated.tech/nerdjokes.html</loc>
 		<lastmod>2020-04-01T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/photography.html</loc>
+		<loc>https://www.pixelated.tech/photography.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/readme.html</loc>
+		<loc>https://www.pixelated.tech/readme.html</loc>
 		<lastmod>2020-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/recipes.html</loc>
+		<loc>https://www.pixelated.tech/recipes.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/resume.html</loc>
+		<loc>https://www.pixelated.tech/resume.html</loc>
 		<lastmod>2020-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/socialmedia.html</loc>
+		<loc>https://www.pixelated.tech/socialmedia.html</loc>
 		<lastmod>2018-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/stkr.html</loc>
+		<loc>https://www.pixelated.tech/stkr.html</loc>
 		<lastmod>2020-03-01T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://pixelated.tech/notfound.html</loc>
+		<loc>https://www.pixelated.tech/notfound.html</loc>
 		<lastmod>2020-01-22T12:58:00+00:00</lastmod>
 		<changefreq>hourly</changefreq>
 		<priority>1.0</priority>

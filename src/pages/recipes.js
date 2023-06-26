@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { RecipeBook } from "@brianwhaley/pixelated-components/dist/index";
+import { RecipeBook } from "@brianwhaley/pixelated-components";
 import RecipeData from "../data/recipes.json";
 
 export default class Recipes extends Component {

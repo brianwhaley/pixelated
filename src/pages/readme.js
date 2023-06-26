@@ -1,15 +1,24 @@
 import React, { Component } from "react";
-import { Markdown } from "@brianwhaley/pixelated-components/dist/index";
-import data from "../data/readme.md";
+import { Markdown } from "@brianwhaley/pixelated-components";
 
 export default class Readme extends Component {
-
-	render () {
-		console.log(data);
+	constructor(props) {
+		super(props)
+		this.state = { 
+			readmeText: '' 
+		}
+	}
+	componentDidMount() {
+		const filePath = '/data/readme.md'
+		fetch(filePath).then((response) => response.text()).then((text) => {
+			this.setState({ readmeText: text })
+		})
+	}
+	render() {
 		return (
 			<div className="section-container">
-				<Markdown markdowndata={data} />
+				<Markdown markdowndata={this.state.readmeText} />
 			</div>
-		);
+		)
 	}
 }

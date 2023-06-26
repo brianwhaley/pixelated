@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MenuAccordionButton } from "@brianwhaley/pixelated-components/dist/index";
+import { MenuAccordionButton } from "@brianwhaley/pixelated-components";
 
 export default class Header extends Component {
 	render () {
