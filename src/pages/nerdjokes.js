@@ -19,7 +19,7 @@ function UseQuery() {
 			<br />
 		</div>
 	);
-	return ( isInstalled && isInstalled == "true" ? yes : no );
+	return ( isInstalled && isInstalled === "true" ? yes : no );
 }
 
 export default class NerdJokes extends Component {
