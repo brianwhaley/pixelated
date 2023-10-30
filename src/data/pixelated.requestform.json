@@ -1,0 +1,80 @@
+{
+    "fields" : [
+        {
+            "component" : "FormInput",
+            "props" : {
+                "type" : "text",
+                "id" : "name",
+                "name" : "name",
+                "defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Name : ",
+				"tooltip" : "Please type in your Full Name"
+            }
+        },
+		{
+            "component" : "FormInput",
+            "props" : {
+                "type" : "text",
+                "id" : "address",
+                "name" : "address",
+                "defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Full Address : ",
+				"tooltip" : "Please type in your Full Mailing Address"
+            }
+        },
+		{
+            "component" : "FormInput",
+            "props" : {
+                "type" : "email",
+                "id" : "email",
+                "name" : "email",
+                "defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Email Address : ",
+				"validate" : "isValidEmailAddress",
+				"tooltip" : "Please type in your Email Address"
+            }
+        },
+		{
+            "component" : "FormSelect",
+            "props" : {
+                "id" : "source",
+                "name" : "source",
+				"defaultValue" : "",
+				"multiple" : null,
+				"required" : "required",
+				"display" : "horizontal",
+				"label" : "Source : ",
+				"options" : [
+					{ "value" : "", "text" : "" },
+					{ "value" : "eBay", "text" : "eBay" },
+					{ "value" : "OakleyForum", "text" : "OakelyForum" },
+					{ "value" : "Other", "text" : "Other" }
+				],
+				"tooltip" : "Choose the best options that describes where you heard about us"
+            }
+		},
+		{
+            "component" : "FormTextarea",
+            "props" : {
+                "id" : "request",
+                "name" : "request",
+                "rows" : "5",
+                "cols" : "40",
+                "defaultValue" : null,
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Request : ",
+				"tooltip": "Please enter the details of your request"
+            }
+        }
+    ]
+}

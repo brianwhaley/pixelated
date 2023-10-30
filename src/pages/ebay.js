@@ -6,7 +6,8 @@ export default class Ebay extends Component {
 		let ebayProps = {
 			// proxyURL: 'https://api.codetabs.com/v1/proxy/?quest=',
 			// proxyURL: 'https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=',
-			proxyURL: "https://corsproxy.io/?",
+			// proxyURL: "https://corsproxy.io/?",
+			proxyURL : "https://thingproxy.freeboard.io/fetch/",
 			baseURL: "https://svcs.ebay.com/services/search/FindingService/v1?",
 			urlProps: {
 				"OPERATION-NAME": "findItemsByKeywords",

@@ -12,20 +12,35 @@ export default class CustomSunglasses extends Component {
 						<div className="row">
 							<div className="grid12">
 								<Callout
-									url='gallery.html?tag=customsunglasses'
+									url='/gallery/customsunglasses'
 									img='images/customs/btw-customs.jpg'
-									title='Custom Sunglasses Photo Gallery' 
+									title='Custom Sunglasses Gallery' 
 									content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
-									direction='horizontal'
-									columnCount={2}/>
+									direction='vertical'
+									columnCount={4}/>
 								<Callout
 									// url="https://www.ebay.com/sch/i.html?sid=btw73" 
-									url="ebay.html" 
+									url="/ebay" 
 									img='images/logos/ebay-logo.png'
 									title='Customs, BTW on eBay' 
 									content='View some cutomized Oakley sunglasses available for purchase on eBay.'
-									direction='horizontal'
-									columnCount={2}/>
+									direction='vertical'
+									columnCount={4}/>
+								<Callout
+									// url="https://www.ebay.com/sch/i.html?sid=btw73" 
+									url="./requests" 
+									img='images/customs/btw-signature.jpg'
+									title='Customs Request List' 
+									content='Sharing my backlog of requests for upcoming customized sunglasses'
+									direction='vertical'
+									columnCount={4}/>
+								<Callout
+									url='/gallery/btw-customsunglasses'
+									img='images/customs/btw-collection.jpg'
+									title='My Personal Collection' 
+									content='This is a gallery of my own personal collection - customs from other OakleyForum members, my own customs for me, and some special additions (Elite pairs and original Mumbos).'
+									direction='vertical'
+									columnCount={4}/>
 							</div>
 						</div>
 					</div>

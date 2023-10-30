@@ -1,6 +1,7 @@
 import React from "react";
+import { createRoot } from 'react-dom/client';
 import renderer from "react-test-renderer";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import App from "./App";
 
 describe("Recipe", () => {
@@ -10,8 +11,16 @@ describe("Recipe", () => {
 		expect(tree).toMatchSnapshot();
 	});
 	it("renders without crashing", () => {
-		const div = document.createElement("div");
-		ReactDOM.render(<App />, div);
-		ReactDOM.unmountComponentAtNode(div);
+		// const div = document.createElement("div");
+		// ReactDOM.render(<App />, div);
+		const root = createRoot(document.createElement("div"));
+		root.render( <App /> );
+		// ReactDOM.unmountComponentAtNode(root);
+		root.unmount();
 	}); 
 });
+
+
+
+
+

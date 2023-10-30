@@ -3,8 +3,7 @@ import React, { Component } from "react";
 import LayoutAlfa from './pages/layouts/pixelated.layout.alfa'
 import LayoutBravo from './pages/layouts/pixelated.layout.bravo'
 import LayoutCharlie from './pages/layouts/pixelated.layout.charlie'
-// import routes from "./data/pixelated.routing.json"
-import routes from './data/pixelated.routing.json'
+import {routes} from './pages/elements/pixelated.routing'
 
 
 export default class App extends Component {
