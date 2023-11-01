@@ -25,7 +25,7 @@ export class Resume extends Component {
 							<ResumeContact data={this.props.data} />
 						</div>
 						<div className="p-education">
-							<ResumeEducation data={this.props.data} dateFormat="MM/yyyy" />
+							<ResumeEducation data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
 						</div>
 						<div className="p-skills">
 							<ResumeSkills data={this.props.data} />
@@ -35,9 +35,9 @@ export class Resume extends Component {
 					<div className="grid9 bigpad">
 						<ResumeSummary data={this.props.data} />
 						<ResumeQualifications data={this.props.data} />
-						<ResumeWorkHistory data={this.props.data} dateFormat="MM/yyyy" />
-						<ResumeVolunteer data={this.props.data} dateFormat="MM/yyyy" />
-						<ResumeCertifications data={this.props.data} dateFormat="MM/yyyy" />
+						<ResumeWorkHistory data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeVolunteer data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeCertifications data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
 					</div>
 				</div>
 			</section>
