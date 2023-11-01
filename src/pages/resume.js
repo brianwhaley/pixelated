@@ -17,7 +17,7 @@ export default class MyResume extends Component {
 							<ResumeContact data={ResumeData} />
 						</div>
 						<div className="p-education">
-							<ResumeEducation data={ResumeData} dateFormat="MM/yyyy" />
+							<ResumeEducation data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
 						</div>
 						<div className="p-skills">
 							<ResumeSkills data={ResumeData} />
@@ -27,9 +27,9 @@ export default class MyResume extends Component {
 					<div className="grid9 bigpad">
 						<ResumeSummary data={ResumeData} />
 						<ResumeQualifications data={ResumeData} />
-						<ResumeWorkHistory data={ResumeData} dateFormat="MM/yyyy" />
-						<ResumeVolunteer data={ResumeData} dateFormat="MM/yyyy" />
-						<ResumeCertifications data={ResumeData} dateFormat="MM/yyyy" />
+						<ResumeWorkHistory data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeVolunteer data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeCertifications data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
 					</div>
 				</div>
 			</section>

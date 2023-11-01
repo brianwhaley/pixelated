@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-
-import { CalloutHeader } from "@brianwhaley/pixelated-components";
-
-import { Table } from "./pixelated.tables"
-import requestData from "../data/pixelated.requests.json"
-
-import { FormEngine } from "@brianwhaley/pixelated-components";
-import formData from "../data/pixelated.requestform.json"
-
+import { CalloutHeader, FormEngine, Table } from "@brianwhaley/pixelated-components";
+import requestData from "../data/requests.json"
+import formData from "../data/requestform.json"
 
 export default class Requests extends Component {
 	constructor (props) {
@@ -24,21 +18,6 @@ export default class Requests extends Component {
 	showDialog() {
 		const mydialog = document.getElementById("newRequestDialog");
 		mydialog.showModal();
-	}
-	saveRowDialog(e) {
-		const mydialog = document.getElementById("newRequestDialog");
-		const myform = document.getElementById("newRequestForm");
-		e.preventDefault();
-		let myFormData = [];
-		const formData = new FormData(myform);
-		for (let [key, value] of formData.entries()) {
-			myFormData[key] = value ;
-		}
-		myFormData["Date"] = new Date().toLocaleDateString() ;
-		myFormData["Status"] = "Submitted" ;
-		console.log(myFormData);
-		this.addRow(myFormData);
-		mydialog.close();
 	}
 	async saveDialog(e){
 		const sendmail_api = "https://nlbqdrixmj.execute-api.us-east-2.amazonaws.com/default/sendmail";
@@ -68,7 +47,6 @@ export default class Requests extends Component {
 				if (response.status !== 200) {
 					throw new Error(response.statusText);
 				}
-				console.log(response);
 				return response.json();
 			}) 
 
@@ -78,6 +56,20 @@ export default class Requests extends Component {
 	}
 	closeDialog(id) {
 		const mydialog = document.getElementById(id);
+		mydialog.close();
+	}
+	saveRowDialog(e) {
+		const mydialog = document.getElementById("newRequestDialog");
+		const myform = document.getElementById("newRequestForm");
+		e.preventDefault();
+		let myFormData = [];
+		const formData = new FormData(myform);
+		for (let [key, value] of formData.entries()) {
+			myFormData[key] = value ;
+		}
+		myFormData["Date"] = new Date().toLocaleDateString() ;
+		myFormData["Status"] = "Submitted" ;
+		this.addRow(myFormData);
 		mydialog.close();
 	}
 	addRow(newRow) {

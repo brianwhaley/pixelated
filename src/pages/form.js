@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 
-import data from "../data/pixelated.form.json";
+import data from "../data/form.json";
 
 export default class Formv2 extends Component {
 	render() {
