@@ -48,7 +48,6 @@ export const routes = [
 	{ "path" : "/formextract", "element" : <FormExtract /> },
 	{ "path" : "/form", "element" : <Form /> },
 	{ "path" : "/gallery/:tag", "element" : <Gallery /> },
-	{ 	"path" : "/gallery.html", "element" : <Gallery /> },
 	{ "path" : "/joke", "element" : <Joke /> },
 	{ 	"path" : "/joke.html", "element" : <Joke /> },
 	{ "path" : "*", "element" : <NotFound /> }
