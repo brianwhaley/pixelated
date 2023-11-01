@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { Carousel } from "@brianwhaley/pixelated-components";
 
 function GalleryWrapper(vals) {
+	console.log("GalleryWrapper");
 	const location = useLocation();
 	console.log(location);
 	const params = useParams();
@@ -22,6 +23,7 @@ function GalleryWrapper(vals) {
 
 export default class Gallery extends Component {
 	render () {	
+		console.log("Gallery");
 		console.log(this.props);
 		return (
 			<GalleryWrapper props={this.props}/>

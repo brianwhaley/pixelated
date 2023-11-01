@@ -33,6 +33,7 @@ ga.src = "//www.googletagmanager.com/gtag/js?id=UA-2370059-2";
 var scr = document.getElementsByTagName("script")[0];
 scr.parentNode.insertBefore(ga, scr);
 
+
 /* ========================================
 =====         GOOGLE SEARCH           =====
 ======================================== */
