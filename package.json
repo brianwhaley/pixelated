@@ -1,6 +1,6 @@
 {
   "name": "pixelated",
-  "version": "1.9.84",
+  "version": "1.9.85",
   "private": true,
   "engines": {
     "node": ">=4"

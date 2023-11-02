@@ -12,15 +12,15 @@ export default class CustomSunglasses extends Component {
 						<div className="row">
 							<div className="grid12">
 								<Callout
-									url='/gallery/customsunglasses'
+									url='/customsunglassgallery.html'
 									img='images/customs/btw-customs.jpg'
-									title='Custom Sunglasses Gallery' 
+									title='Custom Sunglass Gallery' 
 									content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
 									direction='vertical'
 									columnCount={4}/>
 								<Callout
 									// url="https://www.ebay.com/sch/i.html?sid=btw73" 
-									url="/ebay" 
+									url="/ebay.html" 
 									img='images/logos/ebay-logo.png'
 									title='Customs, BTW on eBay' 
 									content='View some cutomized Oakley sunglasses available for purchase on eBay.'
@@ -28,14 +28,14 @@ export default class CustomSunglasses extends Component {
 									columnCount={4}/>
 								<Callout
 									// url="https://www.ebay.com/sch/i.html?sid=btw73" 
-									url="./requests" 
+									url="./requests.html" 
 									img='images/customs/btw-signature.jpg'
 									title='Customs Request List' 
 									content='Sharing my backlog of requests for upcoming customized sunglasses'
 									direction='vertical'
 									columnCount={4}/>
 								<Callout
-									url='/gallery/btw-customsunglasses'
+									url='/mycustomsunglasses.html'
 									img='images/customs/btw-collection.jpg'
 									title='My Personal Collection' 
 									content='This is a gallery of my own personal collection - customs from other OakleyForum members, my own customs for me, and some special additions (Elite pairs and original Mumbos).'
