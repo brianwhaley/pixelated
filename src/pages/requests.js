@@ -20,7 +20,8 @@ export default class Requests extends Component {
 		mydialog.showModal();
 	}
 	async saveDialog(e){
-		const sendmail_api = "https://nlbqdrixmj.execute-api.us-east-2.amazonaws.com/default/sendmail";
+		// const sendmail_api = "https://nlbqdrixmj.execute-api.us-east-2.amazonaws.com/default/sendmail";
+		const sendmail_api = "https://sendmail.pixelated.tech/default/sendmail";
 
 		const mydialog = document.getElementById("newRequestDialog");
 		const tyDialog = document.getElementById("thankYouDialog");

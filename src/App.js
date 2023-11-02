@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import LayoutAlfa from './pages/layouts/pixelated.layout.alfa'
 import LayoutBravo from './pages/layouts/pixelated.layout.bravo'
 import LayoutCharlie from './pages/layouts/pixelated.layout.charlie'
-import {routes} from './pages/elements/pixelated.routing'
+import { routes } from './pages/elements/pixelated.routing'
 
 
 export default class App extends Component {
@@ -26,17 +26,6 @@ export default class App extends Component {
 	}
 	
 	render () {
-		// const LazyComponent = lazy(() => import(`${__dirname}${this.props.variantPath}`))
-		/* console.log(this.props.variantName)
-		console.log(this.variants)
-		console.log(this.variants[this.props.variantName])
-		const LazyComponent = lazy(() => import('' + (this.variants[this.props.variantName])))
-		console.log(LazyComponent)
-		return (
-			<Suspense fallback="Loading...">
-				<LazyComponent routes={this.props.routes} />
-			</Suspense>
-		) */
 		const variantComponent = this.variants[this.state.variantName]
 		return variantComponent
 	}

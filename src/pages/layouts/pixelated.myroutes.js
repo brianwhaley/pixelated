@@ -4,6 +4,8 @@ import { routes } from '../elements/pixelated.routing.js'
 
 const RouterWrapper = () => {
 	let element = useRoutes(routes);
+	console.log(element);
+	console.log(element.props.match.route);
 	return element;
 };
 
