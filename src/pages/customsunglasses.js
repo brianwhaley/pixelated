@@ -12,7 +12,7 @@ export default class CustomSunglasses extends Component {
 						<div className="row">
 							<div className="grid12">
 								<Callout
-									url='/customsunglassgallery.html'
+									url='/customsgallery.html'
 									img='images/customs/btw-customs.jpg'
 									title='Custom Sunglass Gallery' 
 									content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
@@ -35,7 +35,7 @@ export default class CustomSunglasses extends Component {
 									direction='vertical'
 									columnCount={4}/>
 								<Callout
-									url='/mycustomsunglasses.html'
+									url='/mycustoms.html'
 									img='images/customs/btw-collection.jpg'
 									title='My Personal Collection' 
 									content='This is a gallery of my own personal collection - customs from other OakleyForum members, my own customs for me, and some special additions (Elite pairs and original Mumbos).'
