@@ -118,18 +118,32 @@ export class EbayItems extends Component {
 	gotoPage(pageNum) {
 		window.scrollTo({top: 0})
 		// window.scroll({ top: 0, behavior: 'smooth' })let state = { ...this.state };
-		let state = { ...this.state };
-		state.urlProps["paginationInput.pageNumber"] = pageNum ;
- 		this.setState(state);
+		let newState = { ...this.state };
+		newState.urlProps["paginationInput.pageNumber"] = pageNum ;
+ 		this.setState(newState);
 		this.componentDidMount();
 	}
 
 	componentDidMount() {
-		const myURL = generateURL(this.state.proxyURL + this.state.baseURL, this.state.urlProps);
+		const myURL = this.state.proxyURL + ( encodeURIComponent(generateURL(this.state.baseURL, this.state.urlProps)));
 		var myMethod = "GET";
 		getXHRData(myURL, myMethod, (btw73) => {
-			this.loadItems(btw73);
+			if (this.isJson(btw73)) {
+				this.loadItems(JSON.parse(btw73)) ;
+			} else {
+				this.loadItems(btw73) ;
+			}
 		});
+	}
+
+	isJson = (str) => {
+		try {
+			JSON.parse(str);
+		} catch (e) {
+			//Error - JSON is not okay
+			return false;
+		}
+		return true;
 	}
 
 	render() {
