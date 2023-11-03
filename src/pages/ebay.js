@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import { EbayItems } from "@brianwhaley/pixelated-components";
-import { EbayItems } from "./pixelated.ebay";
+import { EbayItems } from "@brianwhaley/pixelated-components";
 
 export default class Ebay extends Component {
 	render() {
