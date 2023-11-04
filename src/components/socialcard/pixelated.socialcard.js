@@ -66,11 +66,11 @@ export class SocialCards extends Component {
 					iconSrcAlt: 'Flickr Photo'
 				},
 				/* foursquare: {
-          url: '',
-          entryCount: 5,
-          iconSrc: 'images/logos/foursquare-logo.png',
-          iconSrcAlt: 'FourSquare Checkin'
-        }, */
+					url: '',
+					entryCount: 5,
+					iconSrc: 'images/logos/foursquare-logo.png',
+					iconSrcAlt: 'FourSquare Checkin'
+					}, */
 				goodreads: {
 					url: '',
 					entryCount: 5,
@@ -140,7 +140,7 @@ export class SocialCards extends Component {
 	getFeedEntries (myURL, entryCount) {
 		if (this.debug) { console.log('Getting Feed Entries...') }
 		const apiKey = this.state.rss2json.apiKey
-		const result = fetch(this.state.rss2json.apiURL + '?rss_url=' + myURL + '&api_key=' + apiKey + '&count=' + entryCount, { method: 'GET', credentials: 'same-origin' })
+		const result = fetch(this.state.rss2json.apiURL + '?rss_url=' + encodeURIComponent(myURL) + '&api_key=' + apiKey + '&count=' + entryCount, { method: 'GET', credentials: 'same-origin' })
 			.then(res => res.json())
 			.then(
 				(result) => {
