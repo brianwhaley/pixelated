@@ -222,7 +222,7 @@ export class SocialCards extends Component {
 				default: myOptions = this.state.sources.blank; break
 				}
 				/* ===== UPDATE STATE ===== */
-				const newSocialCard = <SocialCard key={card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} />
+				const newSocialCard = <SocialCard key={prop + '' + card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} />
 				pushNewValueToStateArray(this, 'mySocialCards', newSocialCard)
 
 				this.setState({ cardCount: prop })
