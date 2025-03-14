@@ -136,14 +136,38 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2022-05-09T09:00:00" ],
+						"start": [ "2023-12-05-09T09:00:00" ],
 						"end": [ "Present" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
 							"type": [ "h-card" ],
 							"properties": {
-								"job-title": [ "Vice President Engineering" ],
+								"job-title": [ "Vice President Engineering, @Work Corporate Onboarding" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "(800) 528-4800" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "2022-05-09T09:00:00" ],
+						"end": [ "2023-12-05-09T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Vice President Engineering, Digital Acquisitions Technology" ],
 								"org": [ "American Express" ],
 								"url": [ "" ],
 								"email": [ "" ],
