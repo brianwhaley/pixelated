@@ -66,14 +66,14 @@ RouterElement.propTypes = {
 	routes: PropTypes.array.isRequired
 }
 
-// eslint-disable-next-line camelcase
+ 
 export function RouterElement_v3 (props) {
 	// <RouterElement routes={this.props.routes} />
 	const newroutes = useRoutes(props.routes)
 	return newroutes
 }
 
-// eslint-disable-next-line camelcase
+ 
 export class RouterElement_v2 extends Component {
 	// <RouterElement routes={this.props.routes} />
 	static propTypes = {
@@ -92,7 +92,7 @@ export class RouterElement_v2 extends Component {
 	}
 }
 
-// eslint-disable-next-line camelcase
+ 
 export class RouterElement_v1 extends Component {
 	// <RouterElement routes={this.props.routes} />
 	static propTypes = {

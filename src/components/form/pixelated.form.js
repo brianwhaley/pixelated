@@ -335,7 +335,7 @@ export class FormExtractEngine extends Component {
 			const selected = []
 			for (let option = 0; option < thisOptions.length; option++) {
 				const thisOption = thisOptions[option]
-				// eslint-disable-next-line no-prototype-builtins
+				 
 				if (thisOption.hasOwnProperty('selected')) {
 					selected.push(thisOption.value)
 					delete thisOptions[option].selected
@@ -427,10 +427,11 @@ export class FormExtractEngine extends Component {
 
 	getHTML (url, callback) {
 		// GET SERVER SIDE HTML THROUGH XMLHTTPREQUEST - INTERNAL
-		// eslint-disable-next-line no-undef
+		 
 		const xhr = new XMLHttpRequest()
-		xhr.onreadystatechange = (e) => {
-			if (xhr.readyState === 4 && xhr.status === 200) {
+		// xhr.onreadystatechange = (e) => {
+		xhr.onreadystatechange = () => {
+				if (xhr.readyState === 4 && xhr.status === 200) {
 				const json = callback(xhr.responseXML)
 				this.setState({ formjson: json })
 				this.props.setFormData(json)

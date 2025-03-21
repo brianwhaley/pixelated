@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './pixelated.callout.css'
+import px from './pixelated.callout.css'
 
 /* ========== CALLOUT ========== */
 
@@ -17,10 +17,10 @@ export class Callout extends Component {
 	render () {
 		const columnGridStyle = this.props.columnCount ? 'grid' + (12 / this.props.columnCount) : 'grid4'
 		const calloutGridStyle = this.props.direction && this.props.direction === 'horizontal' ? 'grid6' : 'grid12'
-		const calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'round-img-container callout-image callout-image-horiz' : 'round-img-container callout-image'
+		const calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'roundImgContainer calloutImage calloutImageHoriz' : 'roundImgContainer calloutImage'
 		const calloutTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
 		return (
-			<div className={'column callout ' + columnGridStyle}>
+			<div className={`${px.callout} column ` + columnGridStyle}>
 				<div className={calloutGridStyle}>
 					<div className={calloutImageStyle}>
 						{ this.props.url
@@ -34,7 +34,7 @@ export class Callout extends Component {
 						? <CalloutHeader url={this.props.url} title={this.props.title} />
 						: <CalloutHeader title={this.props.title} />
 					}
-					<div className="callout-body grid12">
+					<div className={`${px.calloutBody} grid12`}>
 						{this.props.content}
 						<br/><br/>
 						{ this.props.url
@@ -59,10 +59,10 @@ export class CalloutHeader extends Component {
 	render () {
 		const calloutTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
 		return (
-			<div className="callout-header grid12">
+			<div className={`${px.calloutHeader} grid12`}>
 				{this.props.url
-					? <a href={this.props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="callout-title">{this.props.title}</h2></a>
-					: <h2 className="callout-title">{this.props.title}</h2>
+					? <a href={this.props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className={`${px.calloutTitle}`}>{this.props.title}</h2></a>
+					: <h2 className={`${px.calloutTitle}`}>{this.props.title}</h2>
 				}
 			</div>
 		)
@@ -79,14 +79,14 @@ export class CalloutRoundSm extends Component {
 	render () {
 		return (
 			<div className="grid4fix pad">
-				<div className="grid12 round-img-container">
+				<div className={`${px.roundImgContainer} grid12`}>
 					<a href={this.props.url} target="_blank"rel="noopener noreferrer">
 						<img src={this.props.img} alt={this.props.title}/>
 					</a>
 				</div>
-				<div className="grid12 callout-header">
+				<div className={`${px.calloutHeader} grid12`}>
 					<a href={this.props.url} target="_blank" rel="noopener noreferrer">
-						<h3 className="callout-title">{this.props.title}</h3>
+						<h3 className={`${px.calloutTitle}`}>{this.props.title}</h3>
 					</a>
 				</div>
 			</div>
@@ -109,7 +109,7 @@ export class CalloutRoundTiny extends Component {
 
 	render () {
 		return (
-			<div className={ this.props.img ? 'grid' + this.props.gridSize + 'fix round-img-container' : 'grid' + this.props.gridSize + 'fix noMobile' }>
+			<div className={`${px.roundImgContainer}` + this.props.img ? 'grid' + this.props.gridSize + 'fix' : 'grid' + this.props.gridSize + 'fix noMobile' }>
 				<a href={this.props.url} target="_blank" rel="noopener noreferrer">
 					<img src={this.props.img} alt={this.props.alt}/></a>
 			</div>

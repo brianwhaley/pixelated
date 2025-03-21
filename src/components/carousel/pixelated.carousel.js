@@ -148,7 +148,7 @@ export class CarouselSlider extends Component {
 	}
 
 	animate = (elem) => {
-		// eslint-disable-next-line no-undef
+		 
 		requestAnimationFrame(this.animate)
 		elem.style.left = (this.drag.newX + this.drag.momentumX) + 'px'
 		return true
@@ -178,7 +178,7 @@ export class CarouselSlider extends Component {
 
 			if (e.dataTransfer) {
 				e.dataTransfer.setData('text/plain', e.currentTarget.id)
-				// eslint-disable-next-line no-undef
+				 
 				const img = new Image()
 				// http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 				img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='

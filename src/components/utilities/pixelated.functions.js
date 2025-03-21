@@ -1,6 +1,6 @@
 export function html2dom (str) {
 	if (window.DOMParser) {
-		// eslint-disable-next-line no-undef
+		 
 		const parser = new DOMParser()
 		const doc = parser.parseFromString(str, 'text/html')
 		return doc.body.firstChild
@@ -52,7 +52,7 @@ export function generateKey () {
 	).toString(36)
 	vals[2] = Math.floor(Math.random() * new Date().getTime()).toString(36)
 	vals[3] = Number(
-		// eslint-disable-next-line no-undef
+		 
 		crypto.getRandomValues(new Uint16Array(4)).join('')
 	).toString(36)
 	return (
@@ -63,7 +63,7 @@ export function generateKey () {
 export function generateUUID () {
 	// https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
 	// var d8 = crypto.randomUUID();
-	// eslint-disable-next-line no-undef
+	 
 	return window.URL.createObjectURL(new Blob([])).substr(-36)
 }
 

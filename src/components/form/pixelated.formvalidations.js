@@ -75,6 +75,7 @@ export function isValidUrl (field) {
 	try {
 		return Boolean(new URL(field.value))
 	} catch (e) {
+		console.log(e);
 		return false
 	}
 }

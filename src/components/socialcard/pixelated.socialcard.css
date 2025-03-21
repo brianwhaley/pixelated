@@ -39,7 +39,7 @@
 }
 
 
-.masonry-item { /* Masonry bricks or child elements */
+.masonryItem { /* Masonry bricks or child elements */
     display: inline-block;
     padding: 5px;
     width: 100%;
