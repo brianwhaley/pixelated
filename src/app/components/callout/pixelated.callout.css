@@ -1,0 +1,81 @@
+/* ========================================
+===============  CALLOUTS   ===============
+======================================== */
+
+.callout {
+	padding: 20px;
+}
+
+.calloutHeader {
+	padding: 8px;
+	clear: both;
+	text-align: center;
+	overflow: hidden;
+}
+
+.calloutTitle {
+	text-transform: uppercase;
+}
+
+.calloutBody {
+	border-top: 0px solid transparent;
+	/* display: inline-block; */
+	padding: 5px;
+}
+
+.calloutBody li {
+	margin-bottom: 7px;
+}
+
+.roundImgContainer {
+    background: #fff;
+    border: 1px solid #AAA;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+    margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.roundImgContainer:before,
+.roundImgContainerBefore {
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* initial ratio of 1:1*/
+}
+
+.roundImgContainer img,
+.roundImg {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: none;
+    max-width: none;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+}
+
+.calloutImage {
+	/* .round-img-container */
+    width: 70%;
+	height: 70%;
+}
+
+.calloutImageHoriz {
+	/* .round-img-container */
+	/* .callout-image */
+    float: right;
+}
+
+@media screen and (max-width: 480px) {
+	.calloutImageHoriz {
+		/* .round-img-container */
+		/* .callout-image */
+		float: none;
+	}
+}

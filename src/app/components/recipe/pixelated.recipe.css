@@ -1,0 +1,121 @@
+
+/* ========================================
+===============  RECIPES    ===============
+======================================== */
+
+.h_recipe_category {
+	background-color: #EEE;
+    background-image: url(/images/bg7-dk.gif);
+    border: 1px solid #CCC;
+    color: #000;
+	font-size: 22px;
+	text-transform: uppercase;
+    margin: 30px 0px;
+    padding: 14px;
+    float: left;
+    width: 100%;
+}
+
+.h_recipe {
+	font-size: 12px;
+}
+
+.h_recipe p {
+	margin: 0px !important;
+}
+
+.h_recipe.p_name {
+    background-color: #F9F9F9;
+    border: 1px solid #CCC;
+    color: #000;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 10px;
+    float: left;
+    width: 100%;
+}
+
+.e_ingredients, .e_instructions {
+	color: #454545;
+    font-family: Lucida Sans Unicode, Lucida, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.p_ingredient { --do-nothing: true }
+
+.p_yield { --do-nothing: true }
+
+.e_instructions {
+	list-style-type: decimal-leading-zero;
+}
+
+.p_instruction { --do-nothing: true }
+
+.dt_duration { --do-nothing: true }
+
+.u_photo {
+	float: right;
+	margin: 15px;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.u_photo:after{
+	content: "";
+  	display: table;
+  	clear: both;
+}
+
+@media screen and (max-width: 480px) {
+	.u_photo {
+		float: none;
+		margin: 10px auto;
+		display: block;
+	}
+}
+
+#recipe_list {
+    background-image: url(/images/bg7-dk.gif);
+	border: 1px solid #999;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 1.0);
+	font-size: 18px;
+	height: 2em;
+    margin-bottom: 15px;
+}
+
+.p_summary { --do-nothing: true }
+
+.p_author { --do-nothing: true }
+
+.dt_published { --do-nothing: true }
+
+.p_nutrition { --do-nothing: true }
+
+.p_category { --do-nothing: true }
+
+
+/* ========================================
+==========    BACK TO TOP    ==============
+======================================== */
+
+.backToTop {
+	background: #FFF;
+	border: 1px solid #CCC;
+	color: #000;
+	font-size: 10px;
+	padding: 5px;
+	position: fixed;
+	right: 10px;
+	text-align: center;
+	text-decoration: none;
+	top: 70px;
+	width: 50px;
+	z-index: 400;
+
+	/* .rounded; */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}

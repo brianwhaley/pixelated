@@ -1,0 +1,45 @@
+
+/* ========================================
+============  SIMPLE MENU   ============
+======================================== */
+
+.menuWrapper {
+	height: 100%;
+}
+
+.menu, .menu ul {
+	/* ALL LIST LEVELS */
+	display: inline-block;
+	list-style-type: none;
+	margin: 0px;
+    padding: 0px;
+}
+
+.menu a {
+	color: #000;
+	display: block;
+	text-decoration: none;
+}
+
+.menuItem {
+	/* ALL LIST ITEM LEVELS */
+	border: 1px solid #FFF;
+    width: 150px;
+    display: inline-block;
+}
+
+.menuItem a {
+	/* this is the button */
+	background: #DDD;
+    font-size: smaller;
+	font-weight: bold;
+	height: 30px;
+	line-height:30px;
+	text-indent: 10px;
+}
+
+.menuItem a:hover {
+	background: #EEE;
+	text-indent: 5px;
+	border-left: 5px #000 solid;
+}

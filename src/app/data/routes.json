@@ -1,0 +1,22 @@
+{
+	"routes": [
+		{ "name": "Home", "path": "/", "description": "" },
+		{ "name": "Resume", "path": "/resume", "description": "" },
+		{ "name": "ReadMe", "path": "/readme", "description": "" },
+		{ "name": "Work Portfolio", "path": "/workportfolio", "description": "" },
+		{ "name": "Photo Gallery", "path": "/photogallery", "description": "" },
+		{ "name": "Social Media", "path": "/socialmedia", "description": "" },
+		{ "name": "Recipes", "path": "/recipes", "description": "" },
+		{ "name": "Custom Sunglasses", "path": "/customsunglasses", "description": "" },
+		{ "name": "Customs Gallery", "path": "/customsgallery", "description": "" },
+		{ "name": "Customs on eBay", "path": "/ebay", "description": "" },
+		{ "name": "Customs Request", "path": "/requests", "description": "" },
+		{ "name": "My Customs", "path": "/mycustoms", "description": "" },
+		{ "name": "NerdJokes", "path": "/nerdjokes", "description": "" },
+		{ "name": "Joke", "path": "/joke", "description": "" },
+		{ "name": "Stkr", "path": "/stkr", "description": "" },
+		{ "name": "Form", "path": "/form", "description": "" },
+		{ "name": "Form Build", "path": "/form/build", "description": "" },
+		{ "name": "Form Extract", "path": "/form/extract", "description": "" }
+	]
+}
