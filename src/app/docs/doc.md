@@ -46,11 +46,22 @@ git fetch
 
 eslint --fix --ext .jsx --ext .js .
 npm --no-git-tag-version version patch
+-- OR -- npm version patch
 git add * -v
-git commit -m "fix for social media sources"
-git push pixelated dev
+git commit -m "upgrade siteh to nextjs 15"
+git push pixelated dev --tags
 git push pixelated dev:main
 
 # ===== Hydration Error =====
 https://www.reddit.com/r/nextjs/comments/1gabiqn/hydration_error_when_installing_nextjs_15/?rdt=34262
 https://nextjs.org/docs/messages/react-hydration-error
+
+# ===== AWS AMPLIFY CHANGES =====
+
+https://github.com/aws-amplify/amplify-hosting/issues/3398
+
+aws amplify update-app --app-id d1bwvapspanbnf --platform WEB_DYNAMIC --region us-east-2
+
+aws amplify update-branch --app-id d1bwvapspanbnf --branch-name dev --framework 'Next.js - SSR' --region us-east-2
+
+
