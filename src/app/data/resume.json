@@ -25,7 +25,7 @@
 							{
 								"type": [ "h-adr" ],
 								"properties": {
-									"street-address": [ "10 Jade Circlee" ],
+									"street-address": [ "10 Jade Circle" ],
 									"locality": [ "Denville" ],
 									"region": [ "NJ" ],
 									"postal-code": [ "07834" ],
@@ -753,15 +753,15 @@
 						"location": [{
 							"type": [ "h-card" ],
 							"properties": {
-								"job-title": [ "Certified Scrum Professional (CSP) #393406" ],
+								"job-title": [ "Certified Scrum Master (CSM) #143482" ],
 								"org": [ "Scrum Alliance" ],
-								"url": [ "" ],
-								"email": [ "" ],
+								"url": [ "www.scrumalliance.org" ],
+								"email": [ "support@scrumalliance.org" ],
 								"tel": [ "" ],
-								"street-address": [ "" ],
-								"locality": [ "Indianapolis" ],
-								"region": [ "IN" ],
-								"postal-code": [ "" ],
+								"street-address": [ "7237 Church Ranch Blvd Unit 410" ],
+								"locality": [ "Broomfield" ],
+								"region": [ "CO" ],
+								"postal-code": [ "80021" ],
 								"country-name": [ "USA" ]
 							}
 						}]
@@ -778,16 +778,16 @@
 					  "location": [{
 						  "type": [ "h-card" ],
 						  "properties": {
-							  "job-title": [ "Certified Scrum Developer (CSD) #33409137" ],
-							  "org": [ "Scrum Alliance" ],
-							  "url": [ "" ],
-							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
-							  "locality": [ "Indianapolis" ],
-							  "region": [ "IN" ],
-							  "postal-code": [ "" ],
-							  "country-name": [ "USA" ]
+							"job-title": [ "Certified Scrum Master (CSM) #143482" ],
+							"org": [ "Scrum Alliance" ],
+							"url": [ "www.scrumalliance.org" ],
+							"email": [ "support@scrumalliance.org" ],
+							"tel": [ "" ],
+							"street-address": [ "7237 Church Ranch Blvd Unit 410" ],
+							"locality": [ "Broomfield" ],
+							"region": [ "CO" ],
+							"postal-code": [ "80021" ],
+							"country-name": [ "USA" ]
 						  }
 					  }]
 					}
@@ -805,13 +805,13 @@
 						  "properties": {
 							  "job-title": [ "Certified Scrum Master (CSM) #143482" ],
 							  "org": [ "Scrum Alliance" ],
-							  "url": [ "" ],
-							  "email": [ "" ],
+							  "url": [ "www.scrumalliance.org" ],
+							  "email": [ "support@scrumalliance.org" ],
 							  "tel": [ "" ],
-							  "street-address": [ "" ],
-							  "locality": [ "Indianapolis" ],
-							  "region": [ "IN" ],
-							  "postal-code": [ "" ],
+							  "street-address": [ "7237 Church Ranch Blvd Unit 410" ],
+							  "locality": [ "Broomfield" ],
+							  "region": [ "CO" ],
+							  "postal-code": [ "80021" ],
 							  "country-name": [ "USA" ]
 						  }
 					  }]
@@ -829,14 +829,14 @@
 						  "type": [ "h-card" ],
 						  "properties": {
 							  "job-title": [ "Project Management Professional (PMP) #302172" ],
-							  "org": [ "" ],
-							  "url": [ "" ],
-							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
-							  "locality": [ "" ],
-							  "region": [ "" ],
-							  "postal-code": [ "" ],
+							  "org": [ "Project Management Institute" ],
+							  "url": [ "www.pmi.org" ],
+							  "email": [ "customercare@pmi.org" ],
+							  "tel": [ "(610) 356-4600" ],
+							  "street-address": [ "14 Campus Boulevard" ],
+							  "locality": [ "Newton Square" ],
+							  "region": [ "PA" ],
+							  "postal-code": [ "19073" ],
 							  "country-name": [ "USA" ]
 						  }
 					  }]
@@ -855,10 +855,10 @@
 						  "properties": {
 							  "job-title": [ "CLP Domino R5 Principal Application Developer (PCLP)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],
@@ -880,10 +880,10 @@
 						  "properties": {
 							  "job-title": [ "Notes R5 Application Developer, Lotus Development (CLP)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],
@@ -905,10 +905,10 @@
 						  "properties": {
 							  "job-title": [ "CLP Notes Principal Application Developer R4 (PCLP)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],
@@ -930,10 +930,10 @@
 						  "properties": {
 							  "job-title": [ "Notes Application Developer R4 (CLP)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],
@@ -955,10 +955,10 @@
 						  "properties": {
 							  "job-title": [ "Notes R4 System Administration 1 (SA1)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],
@@ -980,10 +980,10 @@
 						  "properties": {
 							  "job-title": [ "Notes R4 Application Development 1 (AD1)" ],
 							  "org": [ "Lotus Development" ],
-							  "url": [ "" ],
+							  "url": [ "http://www.lotus.com" ],
 							  "email": [ "" ],
-							  "tel": [ "" ],
-							  "street-address": [ "" ],
+							  "tel": [ "(617) 577-8500" ],
+							  "street-address": [ "55 Cambridge Parkway" ],
 							  "locality": [ "Cambridge" ],
 							  "region": [ "MA" ],
 							  "postal-code": [ "" ],

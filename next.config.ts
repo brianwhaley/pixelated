@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  trailingSlash: true,
-  output:'export'
+  trailingSlash: true
 };
 
 export default nextConfig;

@@ -65,10 +65,10 @@ export function ResumeContact(props: simpleResumeProps) {
 			<h2>Contact Information</h2>
 			<ul>
 				<li><span className="p_email">{myContact.properties.email[0]}</span></li>
-				<li><span className="p_street_address">{myContact.properties.adr[0].properties["street_address"]}, </span>
+				<li><span className="p_street_address">{myContact.properties.adr[0].properties["street-address"]}, </span>
 					<span className="p_locality">{myContact.properties.adr[0].properties.locality}, </span>
 					<span className="p_region">{myContact.properties.adr[0].properties.region} </span>
-					<span className="p_postal_code">{myContact.properties.adr[0].properties["postal_code"]}</span></li>
+					<span className="p_postal_code">{myContact.properties.adr[0].properties["postal-code"]}</span></li>
 				<li><span className="p_tel">{myContact.properties.tel[0]}</span></li>
 				<li><span className="p_url"><a href={myContact.properties.url[0]}>{myContact.properties.url[0]}</a></span></li>
 			</ul>
