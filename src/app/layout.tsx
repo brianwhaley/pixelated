@@ -1,6 +1,6 @@
 "use client" 
-import { usePathname } from 'next/navigation';
 
+import { usePathname } from 'next/navigation';
 import React from "react"
 // import type { Metadata } from "next";
 // import { getMetadata } from "@/app/elements/metadata";

@@ -25,10 +25,10 @@
 							{
 								"type": [ "h-adr" ],
 								"properties": {
-									"street-address": [ "20 Homewood Drive" ],
-									"locality": [ "Morristown" ],
+									"street-address": [ "10 Jade Circlee" ],
+									"locality": [ "Denville" ],
 									"region": [ "NJ" ],
-									"postal-code": [ "07960" ],
+									"postal-code": [ "07834" ],
 									"country-name": [ "USA" ]
 								}
 							}
@@ -104,6 +104,52 @@
 					}
 				}
 			],
+			"training": [
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "BetterUp" ],
+						"summary": [ "" ],
+						"start": [ "2024-07-01T00:00:00" ],
+						"end": [ "2024-12-031T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "BetterUp" ],
+								"url": [ "" ],
+								"tel": [ "(844) 303-9595" ],
+								"street-address": [ "3100 E 5th Street, Suite 350"],
+								"locality": [ "Austin" ],
+								"region": [ "TX" ],
+								"postal-code": [ "78702" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "AWS Summit" ],
+						"summary": [ "" ],
+						"start": [ "2023-07-26T00:00:00" ],
+						"end": [ "2023-07-26T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "AWS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "Jacob Javitz Center"],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				}
+			],
 			"qualifications":{
 				"Digital Marketing": [
 					"Designed, architected and implemented an integrated Digital Marketing Technology strategy across web, mobile, blog, email, and social media channels.  Achieved an average of $2M in software, hardware, and licensing costs.",
@@ -136,14 +182,14 @@
 					"type": [ "h-event" ],
 					"properties": {
 						"name": [ "" ],
-						"start": [ "2023-12-05-09T09:00:00" ],
+						"start": [ "2023-12-05T09:00:00" ],
 						"end": [ "Present" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
 							"type": [ "h-card" ],
 							"properties": {
-								"job-title": [ "Vice President Engineering, @Work Corporate Onboarding" ],
+								"job-title": [ "Vice President Engineering, @Work Corporate Client Enablement" ],
 								"org": [ "American Express" ],
 								"url": [ "" ],
 								"email": [ "" ],
@@ -161,7 +207,7 @@
 					"properties": {
 						"name": [ "" ],
 						"start": [ "2022-05-09T09:00:00" ],
-						"end": [ "2023-12-05-09T09:00:00" ],
+						"end": [ "2023-12-05T09:00:00" ],
 						"summary": [ "" ],
 						"description": [ "" ],
 						"location": [{
@@ -693,105 +739,257 @@
 					}
 				}
 			],
+			"awards": [],
+			"publications": [],
 			"certifications": [
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Certified Scrum Professional (CSP) #393406" ],
-					  "start": [ "2014-12-31T00:00:00" ],
-					  "end": [ "" ],
-					  "location": [ "Scrum Alliance, Indianapolis IN" ],
-					  "summary": [ ""]
+						"name": [ "" ],
+						"start": [ "2014-12-31T00:00:00" ],
+						"end": [ "" ],
+						"summary": [ ""],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Certified Scrum Professional (CSP) #393406" ],
+								"org": [ "Scrum Alliance" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "" ],
+								"locality": [ "Indianapolis" ],
+								"region": [ "IN" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						}]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Certified Scrum Developer (CSD) #33409137" ],
+					  "name": [ "" ],
 					  "start": [ "2011-05-18T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Scrum Alliance, Indianapolis IN" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Certified Scrum Developer (CSD) #33409137" ],
+							  "org": [ "Scrum Alliance" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Indianapolis" ],
+							  "region": [ "IN" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Certified Scrum Master (CSM) #143482" ],
+					  "name": [ "" ],
 					  "start": [ "2011-05-13T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Scrum Alliance, Indianapolis IN" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Certified Scrum Master (CSM) #143482" ],
+							  "org": [ "Scrum Alliance" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Indianapolis" ],
+							  "region": [ "IN" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Project Management Professional (PMP) #302172" ],
+					  "name": [ "" ],
 					  "start": [ "2005-09-22T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Project Management Institute, Newton Square PA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Project Management Professional (PMP) #302172" ],
+							  "org": [ "" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "" ],
+							  "region": [ "" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "CLP Domino R5 Principal Application Developer (PCLP)" ],
+					  "name": [ "" ],
 					  "start": [ "2000-02-07T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "CLP Domino R5 Principal Application Developer (PCLP)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Notes R5 Application Developer, Lotus Development (CLP)" ],
+					  "name": [ "" ],
 					  "start": [ "2000-02-01T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Notes R5 Application Developer, Lotus Development (CLP)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "CLP Notes Principal Application Developer R4 (PCLP)" ],
+					  "name": [ "" ],
 					  "start": [ "2000-01-25T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "CLP Notes Principal Application Developer R4 (PCLP)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Notes Application Developer R4 (CLP)" ],
+					  "name": [ "" ],
 					  "start": [ "1999-12-30T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Notes Application Developer R4 (CLP)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Notes R4 System Administration 1 (SA1)" ],
+					  "name": [ "" ],
 					  "start": [ "1999-12-30T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Notes R4 System Administration 1 (SA1)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				},
 				{
 					"type": [ "h-event" ],
 					"properties": {
-					  "name": [ "Notes R4 Application Development 1 (AD1)" ],
+					  "name": [ "" ],
 					  "start": [ "1999-12-16T00:00:00" ],
 					  "end": [ "" ],
-					  "location": [ "Lotus Development, Cambridge MA" ],
-					  "summary": [ ""]
+					  "summary": [ ""],
+					  "description": [ "" ],
+					  "location": [{
+						  "type": [ "h-card" ],
+						  "properties": {
+							  "job-title": [ "Notes R4 Application Development 1 (AD1)" ],
+							  "org": [ "Lotus Development" ],
+							  "url": [ "" ],
+							  "email": [ "" ],
+							  "tel": [ "" ],
+							  "street-address": [ "" ],
+							  "locality": [ "Cambridge" ],
+							  "region": [ "MA" ],
+							  "postal-code": [ "" ],
+							  "country-name": [ "USA" ]
+						  }
+					  }]
 					}
 				}
 			],
@@ -811,6 +1009,7 @@
 				"Analytics": "Omniture, Adobe Analytics, Google Analytics, WebTrends, Adobe Test & Target",
 				"Design": "Adobe Photoshop, Illustrator, Flash, InDesign, Sketch"
 			}],
+			"languages": [],
 			"affiliation": [
 				"Llama husbandry"
 			]

@@ -65,7 +65,7 @@
 
 .p_skills { --do-nothing: true }
 
-.p_skill-category {
+.p_skill_category {
 	display: inline !important;
 }
 
@@ -89,15 +89,15 @@
 
 .p_adr { --do-nothing: true }
 
-.p_street-address { --do-nothing: true }
+.p_street_address { --do-nothing: true }
 
 .p_locality { --do-nothing: true }
 
 .p_region { --do-nothing: true }
 
-.p_postal-code { --do-nothing: true }
+.p_postal_code { --do-nothing: true }
 
-.p_country-name { --do-nothing: true }
+.p_country_name { --do-nothing: true }
 
 .p_tel { --do-nothing: true }
 

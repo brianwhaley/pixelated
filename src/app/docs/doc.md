@@ -46,9 +46,9 @@ git fetch
 
 eslint --fix --ext .jsx --ext .js .
 npm --no-git-tag-version version patch
--- OR -- npm version patch
+-- OR -- npm version patch or major or minor
 git add * -v
-git commit -m "upgrade siteh to nextjs 15"
+git commit -m "fix layouts, add not-found"
 git push pixelated dev --tags
 git push pixelated dev:main
 

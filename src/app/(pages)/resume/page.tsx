@@ -2,9 +2,8 @@
 
 import React from "react"
 
-import { ResumeName, ResumeContact, ResumeEducation, 
-	ResumeQualifications, ResumeWorkHistory, ResumeVolunteer, 
-	ResumeCertifications, ResumeSkills, ResumeSummary } from "@/app/components/resume/pixelated.resume";
+import { ResumeName, ResumeContact, ResumeQualifications, 
+	ResumeSkills, ResumeSummary, ResumeEvents } from "@/app/components/resume/pixelated.resume";
 import ResumeData from "@/app/data/resume.json";
 
 export default function Resume() {
@@ -20,7 +19,7 @@ export default function Resume() {
 							<ResumeContact data={ResumeData} />
 						</div>
 						<div className="p_education">
-							<ResumeEducation data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
+							<ResumeEvents title="Education" data={ResumeData.items[0].properties.education} dateFormat="MM/yyyy" showDate={true} />
 						</div>
 						<div className="p_skills">
 							<ResumeSkills data={ResumeData} />
@@ -29,9 +28,9 @@ export default function Resume() {
 					<div className="grid9 bigpad">
 						<ResumeSummary data={ResumeData} />
 						<ResumeQualifications data={ResumeData} />
-						<ResumeWorkHistory data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeVolunteer data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeCertifications data={ResumeData} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeEvents title="Work History" data={ResumeData.items[0].properties.experience} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeEvents title="Volunteer Work" data={ResumeData.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} />
+						<ResumeEvents title="Certifications" data={ResumeData.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} />
 					</div>
 				</div>
 			</div>

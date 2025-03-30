@@ -4,7 +4,7 @@
 
 ##  WHO AM I
 
-I am currently the Vice President of Engineering responsible for the Digital Acquisitions team at American Express.  The Digital Acquisitions team enable prospective and existing customers to apply for card and non-card products (loans, banking), get an instant decision on their application, and enable customer onboarding capabilities such as digital wallet integration.
+I am currently the Vice President of Engineering responsible for the Corporate Client Enablement team at American Express.  The Corporate Client Enablement team enables Corporate Charge Card customers to manage their product using the @Work platform.  @Work provides features to manage Authentication, Authorization, Access Management, Apply For Card, Card Management, Loyalty, Payments, Reporting, Statements, Analytics and Insights, Alerting and Notifications, Search, and Developer API Integration.
 <!--
 * Key partners include Product, GO2, Risk, OneAmEx, Chroeo, and TRAM teams
 * Our biggest win in 2022 is
@@ -15,7 +15,7 @@ Prior to American Express, I led global digital web development departments for 
 
 I hold an MSIS degree from Stevens Institute of Technology, a Bachelor's degree in Art and Art History from Rutgers University, and held Certified Project Management Professional and Certified Scrum Master certifications.  I served on the Advisory Board of the Design Thinking Certificate Program at Rutgers University.  I currently mentor upper-class students as my high school alma mater, Rutgers Preparators School.  
 
-I live in Morristown, NJ with my wife of 22 years, Mary Ann.  My hobbies include photography ( I have owned a camera since the age of 6), scuba diving (I have over 50 dives in my dive log, and have been down to 130 feet), and eading Sci Fi and Fantasy novels (one of my favorite authors is J. R. R. Tolkien).  
+I live in Denville, NJ with my wife of 25 years, Mary Ann.  My hobbies include photography ( I have owned a camera since the age of 6), scuba diving (I have over 50 dives in my dive log, and have been down to 130 feet), travel (I have been to 6 of the 7 continents), and reading Sci Fi and Fantasy novels (one of my favorite authors is J. R. R. Tolkien).  
 
 ***
 
