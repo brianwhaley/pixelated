@@ -67,4 +67,11 @@ aws amplify update-app --app-id d1bwvapspanbnf --platform WEB_DYNAMIC --region u
 
 aws amplify update-branch --app-id d1bwvapspanbnf --branch-name dev --framework 'Next.js - SSR' --region us-east-2
 
+# ===== REMOVE REDIRECTS AND REWRITES FOR REACT APP =====
+Source Address: </^[^c.]+$|\.(?!(css|gif|ico|jpg|jpeg|json|js|less|map|md|png|svg|txt|ttf|woff)$)([^.]+$)/>
+Target Address: /index.html
+Type: 200 Rewrite
 
+Source Address: /<*>
+Target Address: /
+Type: 404 Rewrite

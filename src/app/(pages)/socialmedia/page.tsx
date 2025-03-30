@@ -52,48 +52,48 @@ export default function SocialMedia() {
 					</div>
 					<div className="row grid8 push2">
 						<div className="grid6">
-							<CalloutRoundSm url="http://www.linkedin.com/in/brianwhaley" img="images/logos/linkedin-logo.png" title="LinkedIn" />
-							<CalloutRoundSm url="http://twitter.com/brianwhaley" img="images/logos/twitter-logo.png" title="Twitter" />
-							<CalloutRoundSm url="http://reddit.com/user/btw-73/saved" img="images/logos/reddit-logo.png" title="Reddit" />
+							<CalloutRoundSm url="http://www.linkedin.com/in/brianwhaley" img="/images/logos/linkedin-logo.png" title="LinkedIn" />
+							<CalloutRoundSm url="http://twitter.com/brianwhaley" img="/images/logos/twitter-logo.png" title="Twitter" />
+							<CalloutRoundSm url="http://reddit.com/user/btw-73/saved" img="/images/logos/reddit-logo.png" title="Reddit" />
 						</div>
 						<div className="grid6">
-							<CalloutRoundSm url="http://www.pinterest.com/brianwhaley" img="images/logos/pinterest-logo.png" title="Pinterest" />
-							<CalloutRoundSm url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="images/logos/goodreads-logo.png" title="Goodreads" />
-							<CalloutRoundSm url="http://www.youtube.com/user/brianwhaley" img="images/logos/youtube-logo.png" title="Youtube" />
+							<CalloutRoundSm url="http://www.pinterest.com/brianwhaley" img="/images/logos/pinterest-logo.png" title="Pinterest" />
+							<CalloutRoundSm url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="/images/logos/goodreads-logo.png" title="Goodreads" />
+							<CalloutRoundSm url="http://www.youtube.com/user/brianwhaley" img="/images/logos/youtube-logo.png" title="Youtube" />
 						</div>
 					</div>
 					<div className="row grid8 push2">
 						<div className="grid6">
-							<CalloutRoundSm url="http://pixelatedviews.tumblr.com" img="images/logos/tumblr-logo.png" title="Tumblr" />
-							<CalloutRoundSm url="https://www.etsy.com/people/bwhaley73" img="images/logos/etsy-logo.png" title="Etsy" />
-							<CalloutRoundSm url="https://www.ebay.com/usr/btw73/" img="images/logos/ebay-logo.png" title="ebay" />
+							<CalloutRoundSm url="http://pixelatedviews.tumblr.com" img="/images/logos/tumblr-logo.png" title="Tumblr" />
+							<CalloutRoundSm url="https://www.etsy.com/people/bwhaley73" img="/images/logos/etsy-logo.png" title="Etsy" />
+							<CalloutRoundSm url="https://www.ebay.com/usr/btw73/" img="/images/logos/ebay-logo.png" title="ebay" />
 						</div>
 						<div className="grid6">
-							{/* <CalloutRoundSm url="https://foursquare.com/brianwhaley" img="images/logos/foursquare-logo.png" title="Foursquare" / > */}
-							<CalloutRoundSm url="http://trees.ancestry.com/tree/7237865" img="images/logos/ancestry-logo.jpg" title="Ancestry" />
-							<CalloutRoundSm url="http://www.facebook.com/brian.t.whaley" img="images/logos/facebook-logo.png" title="Facebook" />
-							<CalloutRoundSm url="http://blog.pixelated.tech" img="images/logos/wordpress-logo.png" title="Pixelated Blog" />
+							{/* <CalloutRoundSm url="https://foursquare.com/brianwhaley" img="/images/logos/foursquare-logo.png" title="Foursquare" / > */}
+							<CalloutRoundSm url="http://trees.ancestry.com/tree/7237865" img="/images/logos/ancestry-logo.jpg" title="Ancestry" />
+							<CalloutRoundSm url="http://www.facebook.com/brian.t.whaley" img="/images/logos/facebook-logo.png" title="Facebook" />
+							<CalloutRoundSm url="http://blog.pixelated.tech" img="/images/logos/wordpress-logo.png" title="Pixelated Blog" />
 						</div>
 					</div>
 
 					<div className="row grid8 push2">
 						<div className="grid6">
-							<CalloutRoundSm url="https://github.com/brianwhaley" img="images/logos/github-logo.png" title="Github" />
-							<CalloutRoundSm url="https://500px.com/brianwhaley" img="images/logos/500px-logo.png" title="500px" />
-							<CalloutRoundSm url="http://www.flickr.com/photos/brianwhaley/" img="images/logos/flickr-logo.png" title="Flickr" />
+							<CalloutRoundSm url="https://github.com/brianwhaley" img="/images/logos/github-logo.png" title="Github" />
+							<CalloutRoundSm url="https://500px.com/brianwhaley" img="/images/logos/500px-logo.png" title="500px" />
+							<CalloutRoundSm url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" title="Flickr" />
 						</div>
 						<div className="grid6">
-							<CalloutRoundSm url="https://secure.istockphoto.com/portfolio/brianwhaley" img="images/logos/istock-logo.jpg" title="iStock Photo" />
-							<CalloutRoundSm url="http://www.shutterstock.com/g/brianwhaley" img="images/logos/shutterstock-logo.png" title="Shutter Stock" />
-							<CalloutRoundSm url="https://www.instagram.com/pixelated.views/" img="images/logos/instagram-logo.jpg" title="Instagram" />
+							<CalloutRoundSm url="https://secure.istockphoto.com/portfolio/brianwhaley" img="/images/logos/istock-logo.jpg" title="iStock Photo" />
+							<CalloutRoundSm url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" title="Shutter Stock" />
+							<CalloutRoundSm url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" title="Instagram" />
 						</div>
 					</div>
 					
 					<div className="row grid8 push2">
 						<div className="grid6">
-							<CalloutRoundSm url="http://www.blurb.com/user/brianwhaley" img="images/logos/blurb-logo.png" title="Blurb" />
-							<CalloutRoundSm url="http://brianwhaley.shutterfly.com" img="images/logos/shutterfly-logo.jpg" title="Shutterfly" />
-							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="images/logos/twitter-logo.png" title="Twitter" />
+							<CalloutRoundSm url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" title="Blurb" />
+							<CalloutRoundSm url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" title="Shutterfly" />
+							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" />
 						</div>
 						<div className="grid6">
 							<CalloutRoundSm url="" img="" title="" />

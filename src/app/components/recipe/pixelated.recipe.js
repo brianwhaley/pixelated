@@ -220,7 +220,7 @@ export class BackToTop extends Component {
 		return (
 			<div className="backToTop">
 				<a href="#top" onClick={this.scrollToTop}>
-					<div><img src="images/up.jpg" alt="Back To Top" /></div>
+					<div><img src="/images/up.jpg" alt="Back To Top" /></div>
 					<div>Back To Top</div>
 				</a>
 			</div>
