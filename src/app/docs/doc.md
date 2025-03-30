@@ -47,11 +47,11 @@ git fetch
 eslint --fix --ext .jsx --ext .js .
 npm --no-git-tag-version version patch
 -- OR -- 
-npm version patch
-npm version minor
 npm version major
+npm version minor
+npm version patch
 git add * -v
-git commit -m "fix data files, updated resume components to tsx"
+git commit -m "fix configs and image references"
 git push pixelated dev --tags
 git push pixelated dev:main
 
