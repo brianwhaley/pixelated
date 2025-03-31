@@ -51,7 +51,7 @@ npm version major
 npm version minor
 npm version patch
 git add * -v
-git commit -m "fix configs and image references"
+git commit -m "resume honors and awards, improvement on resume expand collapse"
 git push pixelated dev --tags
 git push pixelated dev:main
 

@@ -29,9 +29,10 @@ export default function Resume() {
 						<ResumeSummary data={ResumeData} />
 						<ResumeQualifications data={ResumeData} />
 						<ResumeEvents title="Work History" data={ResumeData.items[0].properties.experience} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeEvents title="Volunteer Work" data={ResumeData.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeEvents title="Certifications" data={ResumeData.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeEvents title="Training & Conferences" data={ResumeData.items[0].properties.training} dateFormat="MM/dd/yyyy" showDate={true} />
+						<ResumeEvents title="Volunteer Work" data={ResumeData.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
+						<ResumeEvents title="Certifications" data={ResumeData.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
+						<ResumeEvents title="Training & Conferences" data={ResumeData.items[0].properties.training} dateFormat="MM/dd/yyyy" showDate={true} collapsible={true} />
+						<ResumeEvents title="Honors & Awards" data={ResumeData.items[0].properties.awards} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
 					</div>
 				</div>
 			</div>

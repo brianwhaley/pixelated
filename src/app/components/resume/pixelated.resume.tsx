@@ -17,6 +17,7 @@ type resumeProps = {
 	data: any
 	dateFormat: string
 	showDate: boolean
+	collapsible?: boolean
 }
 
 type simpleResumeProps = {
@@ -45,9 +46,10 @@ export function Resume (props: simpleResumeProps) {
 					<ResumeSummary data={props.data} />
 					<ResumeQualifications data={props.data} />
 					<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" showDate={true} />
-					<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} />
-					<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} />
-					<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" showDate={true} />
+					<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
+					<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
+					<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" showDate={true} collapsible={true} />
+					<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" showDate={true} collapsible={true} />
 				</div>
 			</div>
 		</section>
@@ -108,7 +110,7 @@ export function ResumeEvents(props: resumeProps) {
 		// ADD TO THE ARRAY
 		myElems.push(myElem);
 	}
-	if(["Volunteer Work", "Certifications", "Training & Conferences"].includes(props.title)) {
+	if(props.collapsible && props.collapsible == true) {
 		return (
 			<Fragment>
 				<details>
@@ -184,4 +186,5 @@ export function ResumeSummary (props: simpleResumeProps) {
 
 /* 
 Resume Microformat - https://microformats.org/wiki/h-resume
+Details Summary Expand Collapse - https://www.w3schools.com/tags/tag_details.asp
 */

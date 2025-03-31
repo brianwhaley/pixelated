@@ -1531,7 +1531,133 @@
 					}
 				}
 			],
-			"awards": [],
+			"awards": [
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2017-06-30T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "Media com-tech company Cision rang the opening bell at the New York Stock Exchange on June 30, 2017, announcing its merger with SPAC company Capitol Acquisition Corp III." ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Cision IPO" ],
+								"org": [ "Cision (formerly PR Newswire)" ],
+								"url": [ "https://www.cmswire.com/digital-experience/pr-software-provider-cision-kicks-off-24b-ipo/" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "602 Plaza Three, Harborside Financial Center" ],
+								"locality": [ "Jersey City" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "07311" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2017-05-01T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "Chosen as a delegate of my division, and tasked with integrating Cision's go-forward vision into an updated set of values. Helped to determine and illustrate what success looks like for each value. Served as advocates as the updated values are rolled out across the organization, an important mechanism to integrating those values into the culture." ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Cision Cultural Ambassador Program" ],
+								"org": [ "Cision (formerly PR Newswire)" ],
+								"url": [ "https://vimeo.com/multivu/review/234561346/97de0350d3" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "602 Plaza Three, Harborside Financial Center" ],
+								"locality": [ "Jersey City" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "07311" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2012-09-01T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "Associated Press ranked #64 in the 2012 InformationWeek 500 Top 250 Innovators" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "InformationWeek Top 500 - Associated Press # 64" ],
+								"org": [ "The Associated Press" ],
+								"url": [ "http://twimgs.com/informationweek/1343/2012top250.pdf" ],
+								"email": [ "" ],
+								"tel": [ "(609) 655-4744" ],
+								"street-address": [ "19 Commerce Drive" ],
+								"locality": [ "Cranbury" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "08512" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2011-09-01T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "Associated Press ranked #6 in the InformationWeek Top 500 Most Innovative Users of Business Technology " ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "InformationWeek Top 500 - Associated Press # 6" ],
+								"org": [ "The Associated Press" ],
+								"url": [ "http://www.prnewswire.com/news-releases/results-of-23rd-annual-informationweek-500-honoring-nations-most-innovative-users-of-business-technology-announced-129790528.html" ],
+								"email": [ "" ],
+								"tel": [ "(609) 655-4744" ],
+								"street-address": [ "19 Commerce Drive" ],
+								"locality": [ "Cranbury" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "08512" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2007-09-01T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "Given for unique web analytics solution scalable across all BMS Internet Marketing web sites - Shawn Ramer, VP R&D Informatics, Bristol Myers-Squibb" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "Innovation Award" ],
+								"org": [ "Bristol Myers Squibb" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "(609) 419-5000" ],
+								"street-address": [ "100 Nassau Park Boulevard" ],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "08540" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				}
+			],
 			"publications": [],
 			"certifications": [
 				{
