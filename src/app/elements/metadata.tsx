@@ -1,8 +1,9 @@
-import * as myroutes from '../data/routes.json'
+import myroutes from '../data/routes.json'
 
 export const getMetadata = ({ key, value }: { key: string; value: string }) => {
     function findObject( key: string = "name", value: string = "Home" ) {
-        return myroutes.routes.find(obj => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key] === value);
+        const myRoutes = myroutes.routes;
+        return myRoutes.find(obj => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
     }
     const foundObject = findObject(key, value);
     if (foundObject) {

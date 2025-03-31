@@ -24,12 +24,14 @@ var addthis_pub = "ra-56c1fbf032086dfc";
 window.dataLayer = window.dataLayer || [];
 function gtag () { window.dataLayer.push(arguments); }
 gtag("js", new Date());
-gtag("config", "UA-2370059-2");
+// gtag("config", "UA-2370059-2");
+gtag("config", 'G-1J1W90VBE1');
 
 var ga = document.createElement("script");
 ga.type = "text/javascript";
 ga.async = true;
-ga.src = "//www.googletagmanager.com/gtag/js?id=UA-2370059-2";
+// ga.src = "//www.googletagmanager.com/gtag/js?id=UA-2370059-2";
+ga.src = "//www.googletagmanager.com/gtag/js?id=G-1J1W90VBE1";
 var scr = document.getElementsByTagName("script")[0];
 scr.parentNode.insertBefore(ga, scr);
 

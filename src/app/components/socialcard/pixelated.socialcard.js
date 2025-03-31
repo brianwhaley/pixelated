@@ -50,29 +50,29 @@ export class SocialCards extends Component {
 				SOOpx: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/500px-logo.png',
+					iconSrc: '/images/logos/500px-logo.png',
 					iconSrcAlt: '500px Post'
 				},
 				blog: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/blog-logo.png',
+					iconSrc: '/images/logos/blog-logo.png',
 					iconSrcAlt: 'Blog Post'
 				},
 				ebay: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/ebay-logo.png',
+					iconSrc: '/images/logos/ebay-logo.png',
 					iconSrcAlt: 'eBay Items For Sale'
 				},
 				etsy: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/etsy-logo.png',
+					iconSrc: '/images/logos/etsy-logo.png',
 					iconSrcAlt: 'Etsy Favorite'
 				},
 				/* facebook: {
-          			iconSrc: 'images/logos/facebook-logo.png',
+          			iconSrc: '/images/logos/facebook-logo.png',
           			iconSrcAlt: 'Facebook Wall Post'
         		}, */
 				flickr: {
@@ -80,7 +80,7 @@ export class SocialCards extends Component {
 					apiKey: '',
 					tags: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/flickr-logo.png',
+					iconSrc: '/images/logos/flickr-logo.png',
 					iconSrcAlt: 'Flickr Photo'
 				},
 				/* ==========
@@ -89,73 +89,73 @@ export class SocialCards extends Component {
 				/* foursquare: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/foursquare-logo.png',
+					iconSrc: '/images/logos/foursquare-logo.png',
 					iconSrcAlt: 'FourSquare Checkin'
 					}, */
 				github: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/github-logo.png',
+					iconSrc: '/images/logos/github-logo.png',
 					iconSrcAlt: 'Github Activity'
 				},
 				goodreads: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/goodreads-logo.png',
+					iconSrc: '/images/logos/goodreads-logo.png',
 					iconSrcAlt: 'GoodReads Currently Reading'
 				},
 				instagram: {
 					userID: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/instagram-logo.jpg',
+					iconSrc: '/images/logos/instagram-logo.jpg',
 					iconSrcAlt: 'Instagram Photo'
 				},
 				pinterest: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/pinterest-logo.png',
+					iconSrc: '/images/logos/pinterest-logo.png',
 					iconSrcAlt: 'Pinterest Pin'
 				},
 				reddit: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/reddit-logo.png',
+					iconSrc: '/images/logos/reddit-logo.png',
 					iconSrcAlt: 'Reddit Saves'
 				},
 				shutterfly: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/shutterfly-logo.jpg',
+					iconSrc: '/images/logos/shutterfly-logo.jpg',
 					iconSrcAlt: 'Shutterfly Items'
 				},
 				tumblr: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/tumblr-logo.png',
+					iconSrc: '/images/logos/tumblr-logo.png',
 					iconSrcAlt: 'Tumblr Post'
 				},
 				twitter: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/twitter-logo.png',
+					iconSrc: '/images/logos/twitter-logo.png',
 					iconSrcAlt: 'Twitter Tweet'
 				},
 				x: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/x-logo.png',
+					iconSrc: '/images/logos/x-logo.png',
 					iconSrcAlt: 'X Post'
 				},
 				youtube: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/youtube-logo.png',
+					iconSrc: '/images/logos/youtube-logo.png',
 					iconSrcAlt: 'Youtube Favorite Video'
 				},
 				other: {
 					url: '',
 					entryCount: 5,
-					iconSrc: 'images/logos/blog-logo.png',
+					iconSrc: '/images/logos/blog-logo.png',
 					iconSrcAlt: 'Post'
 				}
 			}

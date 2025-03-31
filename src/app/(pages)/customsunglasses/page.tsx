@@ -23,7 +23,7 @@ export default function CustomSunglasses() {
 						<div className="grid12">
 							<Callout
 								url='/customsgallery'
-								img='images/customs/btw-customs.jpg'
+								img='/images/customs/btw-customs.jpg'
 								title='Custom Sunglass Gallery' 
 								content='Flip through some examples of my work customizing Oakley sunglasses and eyeglasses.'
 								direction='vertical'
@@ -31,22 +31,22 @@ export default function CustomSunglasses() {
 							<Callout
 								// url="https://www.ebay.com/sch/i.html?sid=btw73" 
 								url="/ebay" 
-								img='images/logos/ebay-logo.png'
+								img='/images/logos/ebay-logo.png'
 								title='Customs, BTW on eBay' 
 								content='View some cutomized Oakley sunglasses available for purchase on eBay.'
 								direction='vertical'
 								columnCount={4}/>
 							<Callout
 								// url="https://www.ebay.com/sch/i.html?sid=btw73" 
-								url="./requests" 
-								img='images/customs/btw-signature.jpg'
+								url="/requests" 
+								img='/images/customs/btw-signature.jpg'
 								title='Customs Request List' 
 								content='Sharing my backlog of requests for upcoming customized sunglasses'
 								direction='vertical'
 								columnCount={4}/>
 							<Callout
 								url='/mycustoms'
-								img='images/customs/btw-collection.jpg'
+								img='/images/customs/btw-collection.jpg'
 								title='My Personal Collection' 
 								content='This is a gallery of my own personal collection - customs from other OakleyForum members, my own customs for me, and some special additions (Elite pairs and original Mumbos).'
 								direction='vertical'
@@ -64,14 +64,14 @@ export default function CustomSunglasses() {
 								<CalloutHeader title="Color Styles" />
 								<Callout
 									// url='https://farm66.static.flickr.com/65535/50653126162_1479ff31f5_b.jpg'
-									img='images/customs/camo-marble.jpg'
+									img='/images/customs/camo-marble.jpg'
 									title='Marbles'
 									columnCount={4}
 									content='Customized glasses with mottled streaks of color.  
 									Custom marbled paint can be done with a number of complimentary colors, or one single color.'/>
 								<Callout
 									// url='https://farm66.static.flickr.com/65535/50652292218_3df2a75475_b.jpg'
-									img='images/customs/blue-splatter-3.jpg'
+									img='/images/customs/blue-splatter-3.jpg'
 									title='Splatters'
 									columnCount={4}
 									content='This style is customized with a splash of colors.  
@@ -79,7 +79,7 @@ export default function CustomSunglasses() {
 									It can also be small or large, thin or thick, dense or sparse. '/>
 								<Callout
 									// url='https://farm66.static.flickr.com/65535/51062706291_097827a69d_b.jpg'
-									img='images/customs/neon-drip.jpg'
+									img='/images/customs/neon-drip.jpg'
 									title='Drips'
 									columnCount={4}
 									content='This style is customized with color dripped all over the frame.  
@@ -87,7 +87,7 @@ export default function CustomSunglasses() {
 									It can also be done dense or sparse. '/>
 								<Callout
 									// url='https://farm66.static.flickr.com/65535/50652294433_b48c9ef0e4_b.jpg'
-									img='images/customs/repair-nose.jpg'
+									img='/images/customs/repair-nose.jpg'
 									title='Repairs'
 									columnCount={4}
 									content='Reinforced with metal strips and glued back together.  
