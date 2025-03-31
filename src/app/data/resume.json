@@ -108,10 +108,10 @@
 				{
 					"type": [ "h-event" ],
 					"properties": {
-						"name": [ "BetterUp" ],
+						"name": [ "" ],
 						"summary": [ "" ],
 						"start": [ "2024-07-01T00:00:00" ],
-						"end": [ "2024-12-031T00:00:00" ],
+						"end": [ "2024-12-31T00:00:00" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
@@ -130,19 +130,811 @@
 				{
 					"type": [ "h-event" ],
 					"properties": {
-						"name": [ "AWS Summit" ],
+						"name": [ "" ],
 						"summary": [ "" ],
-						"start": [ "2023-07-26T00:00:00" ],
+						"start": [ "" ],
 						"end": [ "2023-07-26T00:00:00" ],
 						"location": [ {
 							"type": [ "h-card" ],
 							"properties": {
-								"org": [ "AWS" ],
+								"org": [ "AWS Summit" ],
 								"url": [ "" ],
 								"tel": [ "" ],
 								"street-address": [ "Jacob Javitz Center"],
 								"locality": [ "New York" ],
 								"region": [ "NY" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2022-04-01T00:00:00" ],
+						"end": [ "2022-04-30T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Duke AYG Leadership Program" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Durham" ],
+								"region": [ "NC" ],
+								"postal-code": [ "27708" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2021-04-01T00:00:00" ],
+						"end": [ "2022-04-30T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "BetterUp" ],
+								"url": [ "" ],
+								"tel": [ "(844) 303-9595" ],
+								"street-address": [ "3100 E 5th Street, Suite 350"],
+								"locality": [ "Austin" ],
+								"region": [ "TX" ],
+								"postal-code": [ "78702" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2018-10-01T00:00:00" ],
+						"end": [ "2018-10-31T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Harvard New People Leader Program" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Cambridge" ],
+								"region": [ "MA" ],
+								"postal-code": [ "02138" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2021-11-11T00:00:00" ],
+						"end": [ "2021-11-12T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Grokking the Advanced System Design Interview - Educative" ],
+								"url": [ "https://www.educative.io/courses/grokking-the-principles-and-practices-of-advanced-system-design" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2021-11-08T00:00:00" ],
+						"end": [ "2021-11-10T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Grokking the System Design Interview - Educative" ],
+								"url": [ "https://www.educative.io/courses/grokking-the-system-design-interview" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2018-07-17T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "AWS Summit" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "Jacob Javitz Center"],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2017-08-14T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "AWS Summit" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "Jacob Javitz Center"],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2016-06-21T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Cognizant QualitE Convention" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Newark" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2016-06-03T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "BuzzJS Conference" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2013-07-25T00:00:00" ],
+						"end": [ "2013-07-26T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Lean UX with Jeff Gothelf and ADP" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Roseland" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2013-04-15T00:00:00" ],
+						"end": [ "2013-04-17T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "ADP Scrum Training" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Florham Park" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2012-07-23T00:00:00" ],
+						"end": [ "2012-07-24T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Negotiating with Max Bazerman" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2011-05-11T00:00:00" ],
+						"end": [ "2011-05-13T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Certified Scrum Developer" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Pittsburgh" ],
+								"region": [ "PA" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2010-11-16T00:00:00" ],
+						"end": [ "2010-11-18T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Management Training at Associated Press" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Cranbury" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2010-10-20T00:00:00" ],
+						"end": [ "2010-10-22T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Effective Scrum Developer Using .NET With Visual Studio, RippleRock" ],
+								"url": [ "http://bit.ly/2JAKqpd" ],
+								"tel": [ "" ],
+								"street-address": [ "The University Club"],
+								"locality": [ "Pittsburgh" ],
+								"region": [ "PA" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2010-10-18T00:00:00" ],
+						"end": [ "2010-10-19T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Scrum Implementation Workshop, RippleRock" ],
+								"url": [ "http://bit.ly/2NZA3Pj" ],
+								"tel": [ "" ],
+								"street-address": [ "The University Club"],
+								"locality": [ "Pittsburgh" ],
+								"region": [ "PA" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2009-04-05T00:00:00" ],
+						"end": [ "2009-04-10T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Usability Week 2009, Neilsen Norman Group" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Washington" ],
+								"region": [ "D.C." ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2009-03-26T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Presentation Skills, Communispond, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2008-11-25T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Effective Time Management & Meeting Management, The Projex Group LLC" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2008-06-04T00:00:00" ],
+						"end": [ "2008-06-06T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Requirements Elicitation, Dave Wirick PMP CMA, Babbage Simmell" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2008-03-05T00:00:00" ],
+						"end": [ "2008-03-07T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Microsoft Mix 08" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Las Vegas" ],
+								"region": [ "NV" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2007-04-30T00:00:00" ],
+						"end": [ "2007-05-07T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Microsoft Mix 07" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Las Vegas" ],
+								"region": [ "NV" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2006-11-06T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Visual Studio Connections" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-10-01T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Plumtree 5 EDK" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2004-09-01T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "The View - Domino Web Coding Bootcamp" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2004-07-26T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Plumtree Enterprise Web 5.0 Foundations, Vashanth Manikumar" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2004-04-14T00:00:00" ],
+						"end": [ "2004-04-15T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Business Across Borders, Vanessa Hicks-Voorham, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-08-05T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "The Successful Negotiator, Asherman Associates, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-08-04T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Crystal Reports 8.5 Advanced - ElementK, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-08-04T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Crystal Reports 8.5 Basic Skills - ElementK, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2003-08-01T00:00:00" ],
+						"end": [ "2003-08-05T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Developing Microsoft ASP.Net Web Applications Using Visual Studio.Net, Darrel Wire" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "" ],
+								"region": [ "" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-07-31T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "ROPES Employee Selection, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-07-31T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Situational Service, Dave Specker, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2003-07-31T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Situational Leadership, Dave Specker, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "2002-07-05T00:00:00" ],
+						"end": [ "2002-07-06T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Crystal Reports Introduction, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
+								"postal-code": [ "" ],
+								"country-name": [ "USA" ]
+							}
+						} ]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"summary": [ "" ],
+						"start": [ "" ],
+						"end": [ "2002-01-01T00:00:00" ],
+						"location": [ {
+							"type": [ "h-card" ],
+							"properties": {
+								"org": [ "Preparing for PMI’s PMP Certification Exam - PMI 2 Day Super-Intensive Course, Boston University Education Affiliate, Bill Ruggles, BMS" ],
+								"url": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ ""],
+								"locality": [ "Princeton" ],
+								"region": [ "NJ" ],
 								"postal-code": [ "" ],
 								"country-name": [ "USA" ]
 							}
@@ -1013,7 +1805,6 @@
 			"affiliation": [
 				"Llama husbandry"
 			]
-
 		}
 	  }
 	]

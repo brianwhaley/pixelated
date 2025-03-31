@@ -7,6 +7,11 @@ function isValidDate(date: string) {
 	return !Number.isNaN(new Date(date).getTime());
 }
 
+function isStr(str: String) {
+	const myStr = String(str).trim()
+	return myStr != null && myStr !== "" && myStr.length > 0 && typeof myStr !== 'undefined';
+  }
+
 type resumeProps = {
 	title: string
 	data: any
@@ -42,7 +47,7 @@ export function Resume (props: simpleResumeProps) {
 					<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" showDate={true} />
 					<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" showDate={true} />
 					<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" showDate={true} />
-
+					<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" showDate={true} />
 				</div>
 			</div>
 		</section>
@@ -81,29 +86,45 @@ export function ResumeEvents(props: resumeProps) {
 	var myElems = [];
 	var myEvents = props.data;
 	for (var iKey in myEvents) {
+		// PRE-LOAD SOME VALUES
 		var myEvent = myEvents[iKey];
 		var myStartDate = isValidDate(myEvent.properties.start[0]) ? format(new Date(myEvent.properties.start[0]), props.dateFormat) : myEvent.properties.start[0] ;
 		var myEndDate = isValidDate(myEvent.properties.end[0]) ? format(new Date(myEvent.properties.end[0]), props.dateFormat) : myEvent.properties.end[0] ;
 		var myLocation = myEvent.properties.location[0].properties;
 		var myElemDt = <span>
-			{ (myStartDate) ? <span className="dt_start">{myStartDate} - </span> : null }
-			{ (myEndDate) ? <span className="dt_end">{myEndDate} : </span> : null }
+			{ (myStartDate) ? <span className="dt_start">{myStartDate}</span> : null }
+			{ (myStartDate && myEndDate) ? <span className="dt_start"> - </span> : null }
+			{ (myEndDate) ? <span className="dt_end">{myEndDate}</span> : null }
+			<span> : </span>
 		</span>;
+		// CREATE THE NEW ELEMENT
 		var myElem = <li key={iKey}>
 			{ (props.showDate == true) ? myElemDt : null }
 			{ (myLocation && myLocation["job-title"]) ? (<span className="p_job_title">{myLocation["job-title"]}, </span> ) : null }
-			<span className="p_org">{myLocation.org}, </span>	
-			<span className="p_locality">{myLocation.locality}, </span>
-			<span className="p_region">{myLocation.region} </span>
+			<span className="p_org">{myLocation.org}</span>	
+			{ (isStr(myLocation.locality)) ? <span className="p_locality">, {myLocation.locality}</span> : null }
+			{ (isStr(myLocation.region)) ? <span className="p_region">, {myLocation.region} </span> : null }
 		</li>;
+		// ADD TO THE ARRAY
 		myElems.push(myElem);
 	}
-	return (
-		<Fragment>
-			<h2>{ props.title }</h2>
-			<ul>{ myElems }</ul>
-		</Fragment>
-	);
+	if(["Volunteer Work", "Certifications", "Training & Conferences"].includes(props.title)) {
+		return (
+			<Fragment>
+				<details>
+					<summary><h2>{ props.title }</h2></summary>
+					<ul>{ myElems }</ul>
+				</details>
+			</Fragment>
+		)
+	} else {
+		return (
+			<Fragment>
+				<h2>{ props.title }</h2>
+				<ul>{ myElems }</ul>
+			</Fragment>
+		)
+	}
 }
 
 export function ResumeQualifications(props: simpleResumeProps) {
