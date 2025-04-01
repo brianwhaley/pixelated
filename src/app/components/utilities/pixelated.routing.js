@@ -18,7 +18,8 @@ export function LazyLoadRoute (element) {
 
 export function LazyLoadElements (props) {
 	const elements = props.routes.map((thisRoute) => {
-		const lazyPath = `.${__dirname}pages/${thisRoute.element}.js`
+		// const lazyPath = `.${__dirname}pages/${thisRoute.element}.js`
+		const lazyPath = new URL(`../../pages/${thisRoute.element}.js`, import.meta.url).pathname
 		const LazyElement = lazy(() => import(lazyPath.toLowerCase()))
 		const newElement = (
 			<Suspense fallback="Loading...">

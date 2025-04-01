@@ -5,7 +5,7 @@ import { Carousel } from "@/app/components/carousel/pixelated.carousel";
 
 const tags = {tag: "customsunglasses"}
 
-function GalleryWrapper( props: { props: { tag: any; }; } ) {
+function GalleryWrapper( props: { props: { tag: string; }; } ) {
 	const myTag = props.props.tag;
 	const flickrProps = { urlProps: { tags: myTag, photoSize: "Large" } };
 	return (

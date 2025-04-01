@@ -32,7 +32,7 @@ export function generateURL (baseURL, props) {
 	let allProps = ''
 	for (const prop in props) {
 		if (props) {
-			(allProps.length === 0) ? allProps = prop + '=' + props[prop] : allProps += '&' + prop + '=' + props[prop]
+			allProps += (allProps.length === 0) ? prop + '=' + props[prop] : '&' + prop + '=' + props[prop]
 		}
 	}
 	url += allProps

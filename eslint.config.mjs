@@ -2,18 +2,40 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 // import pluginJs from "@eslint/js";
 // import pluginReact from "eslint-plugin-react";
+import eslint from "@eslint/js";
 import pluginNext from "@next/eslint-plugin-next";
-// import tseslint from "typescript-eslint";
+import tseslint from "typescript-eslint";
+
+import parser from '@typescript-eslint/parser';
 
 export default defineConfig([
   { 
     files: ["src/**/*.{js,jsx,mjs,cjs,ts,tsx}"], 
-    languageOptions: { globals: globals.browser }, 
+    languageOptions: { 
+      /* parser, 
+      parserOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            ecmaFeatures: {
+              jsx: true,
+            },
+          }, */
+      globals: globals.browser 
+    }, 
     plugins: {
-			pluginJs, pluginReact, pluginNext, tseslint
+			// pluginJs, pluginReact, pluginNext, tseslint
+      // '@next/next': pluginNext,
 		},
     extends: [
+      eslint.configs.recommended,
+      tseslint.configs.recommended,
+      // ...tseslint.configs.strictTypeChecked,
+      // ...tseslint.configs.stylisticTypeChecked,
     ],
+    rules: {
+      // ...pluginNext.configs.recommended.rules,
+      // ...pluginNext.configs['core-web-vitals'].rules,
+    },
     /* rules: {
       ...globals.browser.recommended,
       ...pluginJs.configs.recommended.rules,

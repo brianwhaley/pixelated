@@ -348,7 +348,7 @@ export class FormExtractEngine extends Component {
 			for (let option = 0; option < thisOptions.length; option++) {
 				const thisOption = thisOptions[option]
 				 
-				if (thisOption.hasOwnProperty('selected')) {
+				if (Object.prototype.hasOwnProperty.call(thisOption, 'selected')) {
 					selected.push(thisOption.value)
 					delete thisOptions[option].selected
 				}

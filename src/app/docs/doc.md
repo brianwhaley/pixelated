@@ -1,10 +1,12 @@
-# ===== CREATE APP =====
+# ===== PIXELATED APP NOTES =====
+
+## ===== CREATE APP =====
 
 ## install nvm
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
-## get bash profile working 
+### get bash profile working 
 
 export NVM_DIR="$HOME/.nvm"                
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -22,11 +24,9 @@ npm run dev
 
 https://localhost:3000
 
-# ===== COMMPN NPM COMMANDS =====
+## ===== COMMPN NPM COMMANDS =====
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
-
-npm install @brianwhaley/pixelated-components@latest --force --save
 
 npm install @brianwhaley/pixelated-components@latest --force --save
 npm install @brianwhaley/pixelated-components@1.1.10 --force --save
@@ -42,24 +42,25 @@ git config --global remote.informationfocus.url https://github.com/brianwhaley/i
 git config --global core.editor "code --wait"
 git fetch
 
-# ===== BUILD PIXELATED APP =====
+## ===== BUILD PIXELATED APP =====
 
 eslint --fix --ext .jsx --ext .js .
-npm --no-git-tag-version version patch
--- OR -- 
+eslint --ext .js,.jsx,.ts,.tsx src/ 
+[//]: # npm --no-git-tag-version version patch
 npm version major
 npm version minor
 npm version patch
 git add * -v
-git commit -m "resume honors and awards, improvement on resume expand collapse"
+git commit -m "fixed a bunch of types, built out resume references"
 git push pixelated dev --tags
 git push pixelated dev:main
 
-# ===== Hydration Error =====
+## ===== Hydration Error =====
 https://www.reddit.com/r/nextjs/comments/1gabiqn/hydration_error_when_installing_nextjs_15/?rdt=34262
 https://nextjs.org/docs/messages/react-hydration-error
 
-# ===== AWS AMPLIFY CHANGES =====
+
+## ===== AWS AMPLIFY CHANGES =====
 
 https://github.com/aws-amplify/amplify-hosting/issues/3398
 
@@ -67,7 +68,7 @@ aws amplify update-app --app-id d1bwvapspanbnf --platform WEB_DYNAMIC --region u
 
 aws amplify update-branch --app-id d1bwvapspanbnf --branch-name dev --framework 'Next.js - SSR' --region us-east-2
 
-# ===== REMOVE REDIRECTS AND REWRITES FOR REACT APP =====
+## ===== REMOVE REDIRECTS AND REWRITES FOR REACT APP =====
 Source Address: </^[^c.]+$|\.(?!(css|gif|ico|jpg|jpeg|json|js|less|map|md|png|svg|txt|ttf|woff)$)([^.]+$)/>
 Target Address: /index.html
 Type: 200 Rewrite
@@ -75,3 +76,12 @@ Type: 200 Rewrite
 Source Address: /<*>
 Target Address: /
 Type: 404 Rewrite
+
+## === RESUME MICRO FORMATS =====
+http://microformats.org/wiki/h-resume
+http://microformats.org/wiki/h-card
+http://microformats.org/wiki/h-event
+
+
+## === RECIPE MICRO FORMATS =====
+https://microformats.org/wiki/h-recipe

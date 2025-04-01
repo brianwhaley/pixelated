@@ -81,6 +81,10 @@
 
 .p_name { --do-nothing: true }
 
+.p_job_title { --do-nothing: true }
+
+.p_org { --do-nothing: true }
+
 .u_email { --do-nothing: true }
 
 .u_photo { --do-nothing: true }
@@ -126,3 +130,22 @@
 .p_category { --do-nothing: true }
 
 .p_location { --do-nothing: true }
+
+
+/* STYLES FOR DETAILS / SUMMARY EXPAND / COLLAPSE */
+details {
+	border: 1px solid #ccc;
+	margin-bottom: 10px; 
+}
+details[open] {
+	border: none;
+}
+summary {
+	background-color: #eee;
+	padding: 10px;
+	cursor: pointer;
+	list-style-position: outside;
+}
+summary > h2 {
+	margin: 0 !important;
+}

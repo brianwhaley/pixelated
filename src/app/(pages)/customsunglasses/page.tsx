@@ -11,7 +11,7 @@ export default function CustomSunglasses() {
     	// setSelectedImageSrc(event.target.src)
     	setSelectedImageSrc(url)
 		const myModal = document.getElementById("myModal");
-		(myModal) ? myModal.style.display = 'block' : null ;
+		if (myModal) { myModal.style.display = 'block' } ;
   	};
 	
 	return (

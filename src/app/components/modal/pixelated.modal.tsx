@@ -10,22 +10,22 @@ export default function Modal({ src } : { src: string }) {
     const handleModalClose = (event: MouseEvent) => {
       event.preventDefault();
       const myModal: HTMLElement | null = document.getElementById("myModal");
-      (myModal) ? myModal.style.display = 'none' : null ;
+      if (myModal) { myModal.style.display = 'none'; }
     };
     const myModalClose = document.getElementById("myModalClose");
-    (myModalClose) ? myModalClose.addEventListener('click', handleModalClose) : null ;
+    if (myModalClose) { myModalClose.addEventListener('click', handleModalClose) } ;
 
     const handleWindowOnClick = (event: MouseEvent) => {
       const myModal = document.getElementById("myModal");
       if (event.target == myModal) {
-        (myModal) ? myModal.style.display = "none" : null;
+        if (myModal) { myModal.style.display = "none" } ;
       }
     }
     window.addEventListener('click', handleWindowOnClick);
 
     return () => {
       window.removeEventListener('click', handleWindowOnClick);
-      (myModalClose) ? myModalClose.removeEventListener('click', handleModalClose) : null ;
+      if (myModalClose) { myModalClose.removeEventListener('click', handleModalClose) } ;
     };
 
   }, []);

@@ -244,7 +244,11 @@ export class CarouselSlider extends Component {
 
 			/* roll in the next / previous image */
 			if (farEnough && this.drag.directionX !== 0) {
-				(this.drag.directionX < 0) ? this.nextImage() : this.previousImage()
+				if ( (this.drag.directionX < 0) ) { 
+					this.nextImage() 
+				} else { 
+					this.previousImage() 
+				} ;
 			}
 
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)) }
@@ -435,7 +439,7 @@ export function CarouselHero(props) {
 	const [flickrImages, setFlickrImages] = useState({});
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [direction, setDirection] = useState('up');
-	const [timeout, setMyTimeout] = useState(5000);
+	const timeout = 5000;
 
 	const nextImage = () => {
 		if(debug) { console.log('nextImage - ' + activeIndex); }
@@ -444,13 +448,13 @@ export function CarouselHero(props) {
 		} else {
 			setActiveIndex(activeIndex + 1);
 		}
-		(direction === 'up' ? setDirection('down') : null);
+		if (direction === 'up' ) { setDirection('down') } ;
 	}
 
 	useEffect(() => {
 		if(debug) { console.log('Loading Hero Carousel...'); }
-		(props.flickrData) ? setFlickrData(props.flickrData) : null ;
-		(props.flickrData.images) ? setFlickrImages(props.flickrData.images) : null ;
+		if (props.flickrData) { setFlickrData(props.flickrData) } ;
+		if (props.flickrData.images) { setFlickrImages(props.flickrData.images) } ;
 		if (timeout > 0) {
 			setTimeout(
 				function () { nextImage() }

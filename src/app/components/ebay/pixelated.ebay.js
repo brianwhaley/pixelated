@@ -59,22 +59,22 @@ export class EbayItems extends Component {
 
 	// Generates an indexed URL snippet from the array of item filters
 	buildURLArray(filterarray) {
-		var urlfilter = "";
+		let urlfilter = "";
 		// Iterate through each filter in the array
-		for(var i=0; i<filterarray.length; i++) {
+		for(let i=0; i<filterarray.length; i++) {
 			//Index each item filter in filterarray
-			var itemfilter = filterarray[i];
+			const itemfilter = filterarray[i];
 			// Iterate through each parameter in each item filter
-			for(var index in itemfilter) {
+			for(const index in itemfilter) {
 				// Check to see if the paramter has a value (some don't)
 				if (itemfilter[index] !== "") {
 					if (itemfilter[index] instanceof Array) {
-						for(var r=0; r<itemfilter[index].length; r++) {
-							var value = itemfilter[index][r];
-							urlfilter += "&itemFilter\(" + i + "\)." + index + "\(" + r + "\)=" + value ;
+						for(let r=0; r<itemfilter[index].length; r++) {
+							let value = itemfilter[index][r];
+							urlfilter += "&itemFilter(" + i + ")." + index + "(" + r + ")=" + value ;
 						}
 					} else {
-						urlfilter += "&itemFilter\(" + i + "\)." + index + "=" + itemfilter[index];
+						urlfilter += "&itemFilter(" + i + ")." + index + "=" + itemfilter[index];
 					}
 				}
 			}
@@ -83,13 +83,13 @@ export class EbayItems extends Component {
 	}
 
 	loadItems(root){
-		var items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
-		var pages = root.findItemsByKeywordsResponse[0].paginationOutput[0].totalPages;
+		const items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
+		const pages = root.findItemsByKeywordsResponse[0].paginationOutput[0].totalPages;
 		this.setState({totalPages: pages});
-		var newItems = [];
-		for (var i = 0; i < items.length; ++i) {
-			var newItem = {};
-			var item = items[i];
+		let newItems = [];
+		for (let i = 0; i < items.length; ++i) {
+			let newItem = {};
+			const item = items[i];
 			newItem.title = item.title[0];
 			// newItem.image = item.galleryURL[0];
 			newItem.image = item.pictureURLSuperSize[0];
@@ -106,10 +106,10 @@ export class EbayItems extends Component {
 	}
 
 	paintItems(items){
-		var newItems = [];
+		let newItems = [];
 		for (let i in items) {
-			var item = items[i];
-			var newItem = <EbayItemH url={item.url} image={item.image} title={item.title} price={item.price} id={item.id} key={item.id} location={item.location} endTime={item.endTime} watchCount={item.watchCount} />
+			const item = items[i];
+			const newItem = <EbayItemH url={item.url} image={item.image} title={item.title} price={item.price} id={item.id} key={item.id} location={item.location} endTime={item.endTime} watchCount={item.watchCount} />
 			newItems.push(newItem);
 		}
 		return newItems;
@@ -126,7 +126,7 @@ export class EbayItems extends Component {
 
 	componentDidMount() {
 		const myURL = this.state.proxyURL + ( encodeURIComponent(generateURL(this.state.baseURL, this.state.urlProps)));
-		var myMethod = "GET";
+		const myMethod = "GET";
 		console.log(myURL)
 		getXHRData(myURL, myMethod, (btw73) => {
 			if (this.isJson(btw73)) {
@@ -140,8 +140,8 @@ export class EbayItems extends Component {
 	isJson = (str) => {
 		try {
 			JSON.parse(str);
-		} catch (e) {
-			//Error - JSON is not okay
+		} catch {
+			// } catch (e) {
 			return false;
 		}
 		return true;
@@ -186,7 +186,7 @@ export class EbayItem extends Component {
 	};
 
 	render () {
-		var EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
+		const EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
 		return (
 			<div className="ebayItem column grid4">
                 <div className="ebayItemHeader">
@@ -209,7 +209,7 @@ export class EbayItem extends Component {
 				<div className="ebayItemPrice">
 					{ this.props.url
 						? <a href={this.props.url} target={EbayItemTarget}>${this.props.price}</a>
-						: $this.props.price
+						: this.props.price
 					}
 				</div>
 			</div>
@@ -232,7 +232,7 @@ export class EbayItemH extends Component {
 	};
 
 	render () {
-		var EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
+		const EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
 		return (
 			<div className="ebayItemH column grid6">
 
@@ -257,7 +257,7 @@ export class EbayItemH extends Component {
 					<div className="ebayItemPrice">
 						{ this.props.url
 							? <a href={this.props.url} target={EbayItemTarget}>${this.props.price}</a>
-							: $this.props.price
+							: this.props.price
 						}
 					</div>
 				</div>
@@ -275,7 +275,7 @@ export class EbayItemHeader extends Component {
 	};
 
 	render () {
-		var EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
+		const EbayItemTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === "http" ? "_blank" : "_self" ;
 		return (
 			<span>
 				{ this.props.url
@@ -297,11 +297,11 @@ export class EbayPagination extends Component {
 	};
 
 	render () {
-		var pageLinks = [];
+		let pageLinks = [];
 		for (let i = 1; i <= this.props.totalPages; i++) {
-			var key = "page" + i ;
+			const key = "page" + i ;
 			// var pageLink = <div className="ebayPage" key={key} onClick={() => { this.props.gotoPage(i);} }>{i}</div> ;
-			var pageLink = (i == this.props.currentPage ) 
+			const pageLink = (i == this.props.currentPage ) 
 				? <div className="ebayPageCurrent" key={key}>{i}</div>
 				: <a href="#" className="ebayPage" key={key} onClick={(e) => { e.preventDefault(); this.props.gotoPage(i);}}>{i}</a> ;
 			pageLinks.push(pageLink);

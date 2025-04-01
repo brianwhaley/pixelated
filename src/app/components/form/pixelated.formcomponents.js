@@ -157,7 +157,7 @@ export class FormInput extends Component {
 		["display", "label", "validate"].forEach(e => delete inputProps[e]);
 		inputProps["onChange"] = (e) => onChange(this, e) ;
 		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
-		["submit","button"].indexOf(this.props.type) > -1 ? inputProps["value"] = this.props.value : "" ;
+		if ( ["submit","button"].indexOf(this.props.type) > -1 ) { inputProps["value"] = this.props.value } ;
 		return (
 			<div>
 				{ this.props.type == "checkbox" ? <input {...inputProps} /> : "" }

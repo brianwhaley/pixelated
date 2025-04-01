@@ -3,7 +3,7 @@
 	  {
 		"type": [ "h-resume" ],
 		"properties": {
-			"name": [ "Brian T. Whaley resume" ],
+			"name": [ "Brian T. Whaley" ],
 			"summary": [
 				"Information Technology leader accomplished in building and managing global high-performance teams, launching and managing digital products, and developing and executing unified product and technology strategies.  Managed:",
 				"Diverse range of technologies, in the media, finance, pharmaceutical, and telecommunications industries",
@@ -947,7 +947,7 @@
 					"Designed, architected and implemented an integrated Digital Marketing Technology strategy across web, mobile, blog, email, and social media channels.  Achieved an average of $2M in software, hardware, and licensing costs.",
 					"Designed, built, and launched new Digital products from concept to deployment.  Monitored user activity using ROI metrics, KPI results, analytics tools, and implemented improvements based on results.",
 					"Managed full software product lifecycle for the Content Management, Marketing Automation, Content Delivery Network, and Software Development solutions.  This includes RFP, evaluation, pilot, architecture, build, deploy, migration, sunset, and retirement of COTS and custom solutions.  Consolidated disparate products onto new platforms, generating between $1M and $2M of savings annually.",
-					"Established company’s first Mobile Development department.  Developed and maintained mobile applications on iOS, Android, Blackberry, Windows Phone, Nokia, and HTML5, reaching millions of mobile phone users daily.",
+					"Established company's first Mobile Development department.  Developed and maintained mobile applications on iOS, Android, Blackberry, Windows Phone, Nokia, and HTML5, reaching millions of mobile phone users daily.",
 					"Researched and implemented Panda 4.0 SEO recovery efforts, which improved monthly visits from -60% to +20%."
 				],
 				"User Interface / User Experience": [
@@ -1537,6 +1537,181 @@
 					"properties": {
 						"name": [ "" ],
 						"start": [ "" ],
+						"end": [ "2023-08-17T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2023-08-17T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Small Business Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2022-08-18T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2022-08-18T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Small Business Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2021-08-19T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2021-08-19T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Small Business Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
+						"end": [ "2020-08-20T09:00:00" ],
+						"summary": [ "" ],
+						"description": [ "" ],
+						"location": [{
+							"type": [ "h-card" ],
+							"properties": {
+								"job-title": [ "American Express #1 JD Power US Credit Card Satisfaction Study" ],
+								"org": [ "American Express" ],
+								"url": [ "" ],
+								"email": [ "" ],
+								"tel": [ "" ],
+								"street-address": [ "200 Vesey Street" ],
+								"locality": [ "New York" ],
+								"region": [ "NY" ],
+								"postal-code": [ "10281" ],
+								"country-name": [ "USA" ]
+							}
+						}]
+					}
+				},
+				{
+					"type": [ "h-event" ],
+					"properties": {
+						"name": [ "" ],
+						"start": [ "" ],
 						"end": [ "2017-06-30T09:00:00" ],
 						"summary": [ "" ],
 						"description": [ "Media com-tech company Cision rang the opening bell at the New York Stock Exchange on June 30, 2017, announcing its merger with SPAC company Capitol Acquisition Corp III." ],
@@ -1930,6 +2105,26 @@
 			"languages": [],
 			"affiliation": [
 				"Llama husbandry"
+			],
+			"interests": [
+				"Photography, hiking, travel, reading, cooking, gardening, and spending time with my family and pets."
+			],
+			"references": [
+				{
+				  "type": [ "h-card" ],
+				  "properties": {
+					"name": [ "Available upon request" ],
+					"org": [ "" ],
+					"url": [ "" ],
+					"email": [ "" ],
+					"tel": [ "" ],
+					"street-address": [ "" ],
+					"locality": [ "" ],
+					"region": [ "" ],
+					"postal-code": [ "" ],
+					"country-name": [ "" ]
+				  }
+				}
 			]
 		}
 	  }
