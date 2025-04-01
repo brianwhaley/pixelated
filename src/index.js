@@ -14,6 +14,6 @@ export * from './components/socialcard/pixelated.socialcard'
 export * from './components/table/pixelated.table'
 export * from './components/utilities/pixelated.api'
 export * from './components/utilities/pixelated.functions'
-export * from './components/utilities/pixelated.routing'
+/* export * from './components/utilities/pixelated.routing' */
 
 // https://www.learnwithjason.dev/blog/learn-rollup-js
