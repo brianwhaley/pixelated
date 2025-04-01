@@ -7,7 +7,7 @@ eslint --fix --ext .jsx --ext .js --ext .tsx --ext .ts .
 npm run build
 npm version patch
 git add * -v
-git commit -m "fix for socialcards, fix for callout css module"
+git commit -m "package.json type module fix"
 git push pixelated-components dev
 npm publish
 git push pixelated-components dev:main -f
