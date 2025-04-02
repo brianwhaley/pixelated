@@ -39,7 +39,7 @@
 }
 
 
-.masonry-item { /* Masonry bricks or child elements */
+.masonryItem { /* Masonry bricks or child elements */
     display: inline-block;
     padding: 5px;
     width: 100%;
@@ -79,7 +79,7 @@
 
 .cardTitle {
 	background-color: #EEE;
-	background-image: url(/src/images/bg7.gif);
+	background-image: url(/images/bg7.gif);
 	border-bottom: 1px solid #999;
 	font-size: 1.3em;
 	padding: 5px;

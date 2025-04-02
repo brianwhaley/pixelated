@@ -35,8 +35,8 @@ export class MenuAccordion extends Component {
 	}
 
 	componentDidMount = () => {
-		const menu = document.getElementById('accordion-menu')
-		const menuBtn = document.getElementById('panel-menu-button')
+		const menu = document.getElementById('accordionMenu')
+		const menuBtn = document.getElementById('panelMenuButton')
 		document.addEventListener('click', (event) => {
 			const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target))
 			if (!isClicked) {
@@ -54,8 +54,8 @@ export class MenuAccordion extends Component {
 		styles.transition = 'transform 0.5s ease-out 0.0s'
 		styles.transform = 'translateX(' + this.state.left + 'px)'
 		return (
-			<div className="accordion-menu-wrapper" style={styles}>
-				<div className="accordion-menu" id="accordion-menu">
+			<div className="accordionMenuWrapper" style={styles}>
+				<div className="accordionMenu" id="accordionMenu">
 					<ul className="grid12 clearfix">
 						{ this.generateMenuItems() }
 					</ul>
@@ -87,7 +87,7 @@ export class MenuAccordionButton extends Component {
 
 	render () {
 		return (
-			<div className="panel-menu-button pull-left" id="panel-menu-button" onClick={this.slideMobilePanel}>
+			<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={this.slideMobilePanel}>
 				<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
 			</div>
 		)

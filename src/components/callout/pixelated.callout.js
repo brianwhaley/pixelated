@@ -1,118 +1,116 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import './pixelated.callout.css'
 
 /* ========== CALLOUT ========== */
 
-export class Callout extends Component {
-	static propTypes = {
-		url: PropTypes.string,
-		img: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired,
-		content: PropTypes.string.isRequired,
-		direction: PropTypes.string,
-		columnCount: PropTypes.number
-	}
+Callout.propTypes = {
+	url: PropTypes.string,
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	direction: PropTypes.string,
+	columnCount: PropTypes.number
+}
+export function Callout(props){
+// export function Callout(props) {
+	const columnGridStyle = props.columnCount ? 'grid' + (12 / props.columnCount) : 'grid4'
+	const calloutGridStyle = props.direction && props.direction === 'horizontal' ? 'grid6' : 'grid12'
+	const calloutImageStyle = props.direction && props.direction === 'horizontal' ? "roundImgContainer calloutImage calloutImageHoriz" : "roundImgContainer calloutImage"
+	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
 
-	render () {
-		const columnGridStyle = this.props.columnCount ? 'grid' + (12 / this.props.columnCount) : 'grid4'
-		const calloutGridStyle = this.props.direction && this.props.direction === 'horizontal' ? 'grid6' : 'grid12'
-		const calloutImageStyle = this.props.direction && this.props.direction === 'horizontal' ? 'round-img-container callout-image callout-image-horiz' : 'round-img-container callout-image'
-		const calloutTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
-		return (
-			<div className={'column callout ' + columnGridStyle}>
-				<div className={calloutGridStyle}>
-					<div className={calloutImageStyle}>
-						{ this.props.url
-							? <a href={this.props.url} target={calloutTarget} rel="noopener noreferrer"><img src={this.props.img} alt={this.props.title} /></a>
-							: <img src={this.props.img} alt={this.props.title} />
-						}
-					</div>
-				</div>
-				<div className={calloutGridStyle}>
-					{ this.props.url
-						? <CalloutHeader url={this.props.url} title={this.props.title} />
-						: <CalloutHeader title={this.props.title} />
+	return (
+		<div className={"callout column " + columnGridStyle}>
+			<div className={calloutGridStyle}>
+				<div className={calloutImageStyle}>
+					{ props.url
+						? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
+						: <img src={props.img} alt={props.title} />
 					}
-					<div className="callout-body grid12">
-						{this.props.content}
-						<br/><br/>
-						{ this.props.url
-							? <div className="centeredbutton"><a href={this.props.url} target={calloutTarget} rel="noopener noreferrer">{this.props.title}</a></div>
-							: null
-						}
-					</div>
 				</div>
 			</div>
-		)
-	}
+			<div className={calloutGridStyle}>
+				{ props.url
+					? <CalloutHeader url={props.url} title={props.title} />
+					: <CalloutHeader title={props.title} />
+				}
+				<div className="calloutBody grid12">
+					{props.content}
+					<br/><br/>
+					{ props.url
+						? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
+						: null
+					}
+				</div>
+			</div>
+		</div>
+	)
 }
+
 
 /* ========== CALLOUT HEADER ========== */
 
-export class CalloutHeader extends Component {
-	static propTypes = {
-		title: PropTypes.string.isRequired,
-		url: PropTypes.string
-	}
-
-	render () {
-		const calloutTarget = this.props.url && this.props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
-		return (
-			<div className="callout-header grid12">
-				{this.props.url
-					? <a href={this.props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="callout-title">{this.props.title}</h2></a>
-					: <h2 className="callout-title">{this.props.title}</h2>
-				}
-			</div>
-		)
-	}
+CalloutHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string
+}
+export function CalloutHeader(props) {
+	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
+	return (
+		<div className="calloutHeader grid12">
+			{props.url
+				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="calloutTitle">{props.title}</h2></a>
+				: <h2 className="calloutTitle">{props.title}</h2>
+			}
+		</div>
+	)
 }
 
-export class CalloutRoundSm extends Component {
-	static propTypes = {
-		url: PropTypes.string.isRequired,
-		img: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired
-	}
 
-	render () {
-		return (
-			<div className="grid4fix pad">
-				<div className="grid12 round-img-container">
-					<a href={this.props.url} target="_blank"rel="noopener noreferrer">
-						<img src={this.props.img} alt={this.props.title}/>
-					</a>
-				</div>
-				<div className="grid12 callout-header">
-					<a href={this.props.url} target="_blank" rel="noopener noreferrer">
-						<h3 className="callout-title">{this.props.title}</h3>
-					</a>
-				</div>
+CalloutRoundSm.propTypes = {
+	url: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
+}
+export function CalloutRoundSm(props) {
+	return (
+		<div className="grid4fix pad">
+			<div className="roundImgContainer grid12">
+				<a href={props.url} target="_blank"rel="noopener noreferrer">
+					<img src={props.img} alt={props.title}/>
+				</a>
 			</div>
-		)
-	}
+			<div className="calloutHeader grid12">
+				<a href={props.url} target="_blank" rel="noopener noreferrer">
+					<h3 className="calloutTitle">{props.title}</h3>
+				</a>
+			</div>
+		</div>
+	)
 }
 
-export class CalloutRoundTiny extends Component {
-	static defaultProps = {
-		gridSize: '2'
-	}
 
-	static propTypes = {
+
+export const CalloutRoundTiny = (props) => {
+	CalloutRoundTiny.defaultProps = {
+		gridSize: "2"
+	}
+	CalloutRoundTiny.propTypes = {
 		url: PropTypes.string.isRequired,
+		imgclick: PropTypes.func.isRequired,
 		img: PropTypes.string.isRequired,
 		title: PropTypes.string,
 		alt: PropTypes.string.isRequired,
-		gridSize: PropTypes.string
+		gridSize: PropTypes.string.isRequired
 	}
+	/* 
+				<a href={props.url} target="_blank" onClick={props.onclick} rel="noopener noreferrer">
+				<a href="#" onClick={props.onclick} rel="noopener noreferrer"></a>
 
-	render () {
-		return (
-			<div className={ this.props.img ? 'grid' + this.props.gridSize + 'fix round-img-container' : 'grid' + this.props.gridSize + 'fix noMobile' }>
-				<a href={this.props.url} target="_blank" rel="noopener noreferrer">
-					<img src={this.props.img} alt={this.props.alt}/></a>
-			</div>
-		)
-	}
+	*/
+	return (
+		<div className={"roundImgContainer " + (props.img ? 'grid' + props.gridSize + 'fix' : 'grid' + props.gridSize + 'fix noMobile')} >
+			<img src={props.img} alt={props.alt} onClick={(event) => props.imgclick(event, props.url)} />
+		</div>
+	)
 }

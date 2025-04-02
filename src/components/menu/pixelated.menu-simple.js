@@ -33,7 +33,7 @@ export class MenuSimple extends Component {
 
   render() {
     return (
-      <div className="menu-wrapper">
+      <div className="menuWrapper">
         <hr />
         <div className="menu" id="menu">
           <ul>
@@ -55,7 +55,7 @@ export class MenuSimpleItem extends Component {
 
   render() {
     return (
-      <li className='menu-item'><a href={this.props.href}>{this.props.name}</a></li>
+      <li className='menuItem'><a href={this.props.href}>{this.props.name}</a></li>
     );
   }
 }

@@ -1,14 +1,18 @@
-.EbayItems {
+/* ========================================
+===============    EBAY     ===============
+======================================== */
+
+.ebayItems {
     text-align: center;
 }
 
 @media screen and (max-width: 480px) {
-	.EbayItems {
+	.ebayItems {
 		padding: 20px;
 	}
 }
 
-.EbayItem {
+.ebayItem {
     border: 1px solid #DDD;
     text-align: center;
     height: 435px;
@@ -17,40 +21,40 @@
 }
 
 @media screen and (max-width: 480px) {
-	.EbayItem {
+	.ebayItem {
         height: auto;
 	}
 }
 
-.EbayItemH {
+.ebayItemH {
     border: 1px solid #DDD;
     text-align: center;
     padding: 20px 40px;
     padding-bottom: 50px;
 }
 
-.EbayItemHeader {
+.ebayItemHeader {
     margin: 0 auto;
 }
 
-.EbayItemHeader h2 {
+.ebayItemHeader h2 {
     font-size: 1.25em;
     font-weight: bold;
 }
 
-.EbayItemPhoto img {
+.ebayItemPhoto img {
     padding: 10px 0;
 }
 
-.EbayItemDetails {
+.ebayItemDetails {
     padding-bottom: 10px;
 }
 
-.EbayItemPrice{
+.ebayItemPrice{
     font-size: 1.5em;
     font-weight: bold;
 
-    background-image: url(../../images/bg7-dk.gif);
+    background-image: url(/images/bg7-dk.gif);
     border: 1px solid #999;
     display: inline-block;
 	margin: 0 auto;
@@ -61,12 +65,12 @@
 	border-radius: 5px;
 }
 
-.EbayPagination {
+.ebayPagination {
     text-align: center;
     padding-top: 20px;
 }
 
-.EbayPage {
+.ebayPage {
     display: inline-block;
     font-size: larger;
     font-weight: bold;
@@ -74,7 +78,7 @@
     cursor: pointer;
 }
 
-.EbayPageCurrent {
+.ebayPageCurrent {
     display: inline-block;
     padding: 10px;
     color: #999;

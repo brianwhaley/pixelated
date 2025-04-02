@@ -1,5 +1,3 @@
-
-
 /* ========================================
 ===============  CALLOUTS   ===============
 ======================================== */
@@ -8,28 +6,28 @@
 	padding: 20px;
 }
 
-.callout-header {
+.calloutHeader {
 	padding: 8px;
 	clear: both;
 	text-align: center;
 	overflow: hidden;
 }
 
-.callout-title {
+.calloutTitle {
 	text-transform: uppercase;
 }
 
-.callout-body {
+.calloutBody {
 	border-top: 0px solid transparent;
 	/* display: inline-block; */
 	padding: 5px;
 }
 
-.callout-body li {
+.calloutBody li {
 	margin-bottom: 7px;
 }
 
-.round-img-container {
+.roundImgContainer {
     background: #fff;
     border: 1px solid #AAA;
 	-moz-border-radius: 50%;
@@ -40,15 +38,15 @@
 	position: relative;
 }
 
-.round-img-container:before,
-.round-img-container-before {
+.roundImgContainer:before,
+.roundImgContainerBefore {
 	content: "";
 	display: block;
 	padding-top: 100%; 	/* initial ratio of 1:1*/
 }
 
-.round-img-container img,
-.round-img {
+.roundImgContainer img,
+.roundImg {
     min-width: 100%;
     min-height: 100%;
     max-height: none;
@@ -62,20 +60,20 @@
     left: -100%;
 }
 
-.callout-image {
+.calloutImage {
 	/* .round-img-container */
     width: 70%;
 	height: 70%;
 }
 
-.callout-image-horiz {
+.calloutImageHoriz {
 	/* .round-img-container */
 	/* .callout-image */
     float: right;
 }
 
 @media screen and (max-width: 480px) {
-	.callout-image-horiz {
+	.calloutImageHoriz {
 		/* .round-img-container */
 		/* .callout-image */
 		float: none;

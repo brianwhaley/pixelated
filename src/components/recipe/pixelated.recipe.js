@@ -41,7 +41,7 @@ export class RecipeBook extends Component {
 		let catKey = 1
 		for (const category in this.state.recipeElems) {
 			const cID = 'c' + (catKey)
-			myElems.push(<RecipeCategory key={cID} id={cID} className="h-recipe-category" category={category} showOnly={this.state.showOnlyCat} />)
+			myElems.push(<RecipeCategory key={cID} id={cID} className='h_recipe_category' category={category} showOnly={this.state.showOnlyCat} />)
 			for (const recipeKey in this.state.recipeElems[category]) {
 				const recipe = this.state.recipeElems[category][recipeKey]
 				const cats = recipe.properties.category
@@ -112,29 +112,29 @@ export class Recipe extends Component {
 	render () {
 		const recipe = this.props.recipeData.properties
 		const ingredients = recipe.ingredients.map((ingredient, iKey) =>
-			<li key={iKey} className="p-ingredient">{ingredient}</li>
+			<li key={iKey} className="p_ingredient">{ingredient}</li>
 		)
 		const instructions = recipe.instructions.map((instruction, iKey) =>
-			<li key={iKey} className="p-instruction">{instruction}</li>
+			<li key={iKey} className="p_instruction">{instruction}</li>
 		)
-		const recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null)
+		const recipeImage = (recipe.photo.length > 0 ? <img className='u_photo' src={recipe.photo} alt={recipe.name} /> : null)
 		const isHidden = ((this.props.showOnly.length > 0) && (!(this.props.id.includes(this.props.showOnly))) ? { display: 'none' } : { display: 'initial' })
 		/* event.preventDefault(); */
 		return (
-			<article id={this.props.id} className="h-recipe" style={isHidden}>
-				<h3 className="p-name"><a name={this.props.id} href="#" onClick={() => { return false }}>{recipe.name}</a></h3>
+			<article id={this.props.id} className="h_recipe" style={isHidden}>
+				<h3 className="p_name"><a name={this.props.id} href="#" onClick={() => { return false }}>{recipe.name}</a></h3>
 				{ recipeImage }
-				<p className="p-summary">{recipe.summary}</p>
+				<p className="p_summary">{recipe.summary}</p>
 				<p>&nbsp;</p>
-				<p className="p-author">Author: {recipe.author}</p>
-				<p className="p-published">Published: {recipe.published}</p>
-				<p className="dt-duration">Duration: {recipe.duration}</p>
-				<p className="p-yield">Yield: {recipe.yield}</p>
-				<h4 className="e-ingredients">Ingredients</h4>
+				<p className="p_author">Author: {recipe.author}</p>
+				<p className="p_published">Published: {recipe.published}</p>
+				<p className="dt_duration">Duration: {recipe.duration}</p>
+				<p className="p_yield">Yield: {recipe.yield}</p>
+				<h4 className="e_ingredients">Ingredients</h4>
 				<ul>
 					{ ingredients }
 				</ul>
-				<h4 className="e-instructions">Instructions</h4>
+				<h4 className="e_instructions">Instructions</h4>
 				<ol>
 					{ instructions }
 				</ol>
@@ -194,7 +194,7 @@ export class RecipePickList extends Component {
 	render () {
 		return (
 			<form>
-				<select id="recipe-list" name="recipe-list" onChange={this.recipeListChanged}>
+				<select id="recipe_list" name="recipe_list" onChange={this.recipeListChanged}>
 					{this.state.recipeOptions}
 				</select>
 			</form>
@@ -220,7 +220,7 @@ export class BackToTop extends Component {
 		return (
 			<div className="backToTop">
 				<a href="#top" onClick={this.scrollToTop}>
-					<div><img src="images/up.jpg" alt="Back To Top" /></div>
+					<div><img src="/images/up.jpg" alt="Back To Top" /></div>
 					<div>Back To Top</div>
 				</a>
 			</div>

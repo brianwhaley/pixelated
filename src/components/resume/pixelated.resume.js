@@ -1,295 +1,242 @@
-/* eslint-disable */
-
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { format } from "date-fns";
-import PropTypes from "prop-types";
 import "./pixelated.resume.css";
-import data from "./pixelated.resume.json";
 
-function isValidDate(date) {
-	return !Number.isNaN(new Date(date).getTime());
+/* function isValidDate(date: string) {
+	// return !Number.isNaN(new Date(date).getTime());
+	// const date = new Date(dateString);
+  	return !isNaN(new Date(date)) && new Date(date).toString() !== 'Invalid Date';
+} */
+
+function isValidDate(dateString) {
+	let date = new Date(dateString);
+	return !isNaN(date.getTime());
 }
 
-export class Resume extends Component {
-	render () {
-		return (
-			<section className="p-resume" id="resume-section">
-				<div className="section-container">
+function isStr(str) {
+	const myStr = String(str).trim()
+	return myStr != null && myStr !== "" && myStr.length > 0 && typeof myStr !== 'undefined';
+}
 
-					<div className="p-name grid12">
-						<ResumeName data={this.props.data} />
+// type IObj = { [key: string]: any }
+
+const defaultDateFormat = 'MM/yyyy';
+/* type resumeProps = {
+	title: string
+	data: any
+	dateFormat?: string
+	collapsible?: boolean
+}
+
+type simpleResumeProps = {
+	data: any
+} */
+
+
+export function Resume (props) {
+	return (
+		<section className="p_resume" id="resume-section">
+			<div className="section-container">
+				<div className="p_name grid12">
+					<ResumeName data={props.data.items[0].properties.name} />
+				</div>
+				<div className="grid3 bigpad divider">
+					<div className="p_contact">
+						<ResumeContact title="Contact Information" data={props.data.items[0].properties.contact} />
 					</div>
-
-					<div className="grid3 bigpad divider">
-						<div className="p-contact">
-							<ResumeContact data={this.props.data} />
-						</div>
-						<div className="p-education">
-							<ResumeEducation data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
-						</div>
-						<div className="p-skills">
-							<ResumeSkills data={this.props.data} />
-						</div>
+					<div className="p_education">
+						<ResumeEvents title="Education" data={props.data.items[0].properties.education} dateFormat="MM/yyyy" collapsible={false} />
 					</div>
-
-					<div className="grid9 bigpad">
-						<ResumeSummary data={this.props.data} />
-						<ResumeQualifications data={this.props.data} />
-						<ResumeWorkHistory data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeVolunteer data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
-						<ResumeCertifications data={this.props.data} dateFormat="MM/yyyy" showDate={true} />
+					<div className="p_skills">
+						<ResumeSkills title="Skills" data={props.data.items[0].properties.skills} />
 					</div>
 				</div>
-			</section>
-
-		);
-	}
+				<div className="grid9 bigpad">
+					<ResumeSummary title="Professional Summary" data={props.data.items[0].properties.summary} />
+					<ResumeQualifications title="Professional Qualifications" data={props.data.items[0].properties.qualifications} />
+					<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" collapsible={false} />
+					<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" collapsible={true} />
+					<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" collapsible={true} />
+					<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" collapsible={true} />
+					<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" collapsible={true} />
+					<ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} />
+				</div>
+			</div>
+		</section>
+	);
 }
 
-export class ResumeName extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired
-	};
+export function ResumeName(props) {
+	const myName = props.data[0];
+	return (
+		<Fragment>
+			<h1 className="p_name">{myName}</h1>
+		</Fragment>
+	);
+}
 
-	render () {
-		var myName = this.props.data.items[0].properties.contact[0].properties.name;
+export function ResumeContact(props) {
+	const myContact = props.data[0];
+	return (
+		<Fragment>
+			<h2>{ props.title }</h2>
+			<ul>
+				<li><span className="p_email">{myContact?.properties.email[0]}</span></li>
+				<li><span className="p_street_address">{myContact?.properties.adr[0].properties["street-address"]}, </span>
+					<span className="p_locality">{myContact?.properties.adr[0].properties.locality}, </span>
+					<span className="p_region">{myContact?.properties.adr[0].properties.region} </span>
+					<span className="p_postal_code">{myContact?.properties.adr[0].properties["postal-code"]}</span></li>
+				<li><span className="p_tel">{myContact?.properties.tel[0]}</span></li>
+				<li><span className="p_url"><a href={myContact?.properties.url[0]}>{myContact?.properties.url[0]}</a></span></li>
+			</ul>
+		</Fragment>
+	);
+}
+
+
+export function ResumeEvents(props) {
+	const myElems = [];
+	const myEvents = props.data;
+	for (const iKey in myEvents) {
+		// PRE-LOAD SOME VALUES
+		const myEvent = myEvents[iKey];
+		const myStartDate = isValidDate(myEvent.properties.start[0]) ? format(new Date(myEvent.properties.start[0]), props.dateFormat || defaultDateFormat) : myEvent.properties.start[0] ;
+		const myEndDate = isValidDate(myEvent.properties.end[0]) ? format(new Date(myEvent.properties.end[0]), props.dateFormat || defaultDateFormat) : myEvent.properties.end[0] ;
+		const myLocation = myEvent.properties.location[0].properties;
+		const myElemDt = <span>
+			{ (myStartDate) ? <span className="dt_start">{myStartDate}</span> : null }
+			{ (myStartDate && myEndDate) ? <span className="dt_start"> - </span> : null }
+			{ (myEndDate) ? <span className="dt_end">{myEndDate}</span> : null }
+			<span> : </span>
+		</span>;
+		// CREATE THE NEW ELEMENT
+		const myElem = <li key={iKey}>
+			{ (props.dateFormat) ? myElemDt : null }
+			{ (myLocation && myLocation["job-title"]) ? (<span className="p_job_title">{myLocation["job-title"]}, </span> ) : null }
+			<span className="p_org">{myLocation.org}</span>	
+			{ (isStr(myLocation.locality)) ? <span className="p_locality">, {myLocation.locality}</span> : null }
+			{ (isStr(myLocation.region)) ? <span className="p_region">, {myLocation.region} </span> : null }
+		</li>;
+		// ADD TO THE ARRAY
+		myElems.push(myElem);
+	}
+	if(props.collapsible && props.collapsible == true) {
 		return (
 			<Fragment>
-				<h1 className="p-name">{myName}</h1>
+				<details>
+					<summary><h2>{ props.title }</h2></summary>
+					<ul>{ myElems }</ul>
+				</details>
 			</Fragment>
-		);
-	}
-}
-
-export class ResumeContact extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired
-	};
-
-	render () {
-		var myContact = this.props.data.items[0].properties.contact[0];
+		)
+	} else {
 		return (
 			<Fragment>
-				<h2>Contact Information</h2>
-				<ul>
-					<li><span className="p-email">{myContact.properties.email[0]}</span></li>
-					<li><span className="p-street-address">{myContact.properties.adr[0].properties["street-address"]}, </span>
-						<span className="p-locality">{myContact.properties.adr[0].properties.locality}, </span>
-						<span className="p-region">{myContact.properties.adr[0].properties.region} </span>
-						<span className="p-postal-code">{myContact.properties.adr[0].properties["postal-code"]}</span></li>
-					<li><span className="p-tel">{myContact.properties.tel[0]}</span></li>
-					<li><span className="p-url"><a href={myContact.properties.url[0]}>{myContact.properties.url[0]}</a></span></li>
-				</ul>
-			</Fragment>
-		);
-	}
-}
-
-export class ResumeEducation extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		dateFormat: PropTypes.string.isRequired,
-		showDate: PropTypes.bool.isRequired
-	};
-
-	render () {
-		var myElems = [];
-		var myEducation = this.props.data.items[0].properties.education;
-		for (var iKey in myEducation) {
-			var ed = myEducation[iKey];
-			var myEdLocation = ed.properties.location[0].properties;
-			var myEndDate = isValidDate(ed.properties.end[0]) ? format(new Date(ed.properties.end[0]), this.props.dateFormat) : ed.properties.end[0] ;
-			var myElem = <li key={iKey}>
-				{this.props.showDate == true ? ( 
-				<span className="dt-end">{myEndDate} - </span> 
-				) : ( '' )}
-				<span className="p-name">{ed.properties.name}, </span>
-				<span className="p-org">{myEdLocation.org}, </span>
-				<span className="p-locality">{myEdLocation.locality}, </span>
-				<span className="p-region">{myEdLocation.region} </span>
-			</li>;
-			myElems.push(myElem);
-		}
-		return (
-			<Fragment>
-				<h2>Education</h2>
+				<h2>{ props.title }</h2>
 				<ul>{ myElems }</ul>
 			</Fragment>
-		);
+		)
 	}
 }
 
-export class ResumeQualifications extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired
-	};
+export function ResumeQualifications(props) {
+	const myElems = [];
+	const myQual = props.data;
+	for (const iKey in myQual) {
+		const qual = myQual[iKey];
+		const myElem = <h3 key={iKey}>{iKey}</h3>;
+		const quals = qual.map((qualItem, iKey) =>
+			<li key={"i" + iKey} className="p_qualification">{qualItem}</li>
+		);
+		myElems.push(myElem);
+		myElems.push(<ul key={"q-" + iKey}>{quals}</ul>);
+	}
+	return (
+		<Fragment>
+			<h2>{ props.title }</h2>
+			{myElems}
+		</Fragment>
+	);
+}
 
-	render () {
-		var myElems = [];
-		var myQual = this.props.data.items[0].properties.qualifications;
-		for (var iKey in myQual) {
-			var qual = myQual[iKey];
-			var myElem = <h3 key={iKey}>{iKey}</h3>;
-			var quals = qual.map((qualItem, iKey) =>
-				<li key={"i" + iKey} className="p-qualification">{qualItem}</li>
-			);
-			myElems.push(myElem);
-			myElems.push(<ul key={"q-" + iKey}>{quals}</ul>);
-		}
-		return (
-			<Fragment>
-				<h2>Professional Qualifications</h2>
+export function ResumeSkills (props) {
+	const myElems = [];
+	const mySkills = props.data[0];
+	for (const skill in mySkills) {
+		const myElem = <h3 key={"c-" + skill} className="p_skill_category">{skill} : </h3>;
+		myElems.push(myElem);
+		const myElem2 = <span key={"s-" + skill} className="p_skill">{mySkills[skill]}<br /></span>;
+		myElems.push(myElem2);
+	}
+	return (
+		<Fragment>
+			<h2>Skills</h2>
+			<div className="p_skills">
 				{ myElems }
-			</Fragment>
-		);
-	}
+			</div>
+		</Fragment>
+	);
 }
 
-export class ResumeWorkHistory extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		dateFormat: PropTypes.string.isRequired,
-		showDate: PropTypes.bool.isRequired
-	};
+export function ResumeSummary (props) {
+	const myElems = [];
+	const mySummary = props.data;
+	for (const iKey in mySummary) {
+		const summary = mySummary[iKey];
+		const myElem = <li key={iKey}>{summary}</li>;
+		myElems.push(myElem);
+	}
+	return (
+		<Fragment>
+			<h2>Professional Summary</h2>
+			<ul className="p_summary">{myElems}</ul>
+		</Fragment>
+	);
+}
 
-	render () {
-		var myElems = [];
-		var myWork = this.props.data.items[0].properties.experience;
-		for (var iKey in myWork) {
-			var work = myWork[iKey];
-			var myStartDate = isValidDate(work.properties.start[0]) ? format(new Date(work.properties.start[0]), this.props.dateFormat) : work.properties.start[0] ;
-			var myEndDate = isValidDate(work.properties.end[0]) ? format(new Date(work.properties.end[0]), this.props.dateFormat) : work.properties.end[0] ;
-			var myWorkLocation = work.properties.location[0].properties;
-			var myElem = <li key={iKey}>
-				{this.props.showDate == true ? ( 
-				<span><span className="dt-start">{myStartDate} - </span>
-				<span className="dt-end">{myEndDate} : </span></span>
-				) : ( '' )}
-				<span className="p-job-title">{myWorkLocation["job-title"]}, </span>
-				<span className="p-org">{myWorkLocation.org}, </span>
-				<span className="p-locality">{myWorkLocation.locality}, </span>
-				<span className="p-region">{myWorkLocation.region} </span>
-			</li>;
-			myElems.push(myElem);
-		}
+export function ResumeReferences (props) {
+	const myElems = [];
+	const myReferences = props.data;
+	for (const iKey in myReferences) {
+		const myReference = myReferences[iKey];
+		// const myElem = <li key={iKey}>{myReference[iKey]}</li>;
+		const myElem = <ResumeReference data={myReference} key={iKey} />;
+		myElems.push(myElem);
+	}
+	if(props.collapsible && props.collapsible == true) {
 		return (
 			<Fragment>
-				<h2>Work History</h2>
-				<ul>{ myElems }</ul>
+				<details>
+					<summary><h2>{ props.title }</h2></summary>
+					<div>{ myElems }</div>
+				</details>
 			</Fragment>
-		);
-	}
-}
-
-export class ResumeVolunteer extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		dateFormat: PropTypes.string.isRequired,
-		showDate: PropTypes.bool.isRequired
-	};
-
-	render () {
-		var myElems = [];
-		var myVolunteer = this.props.data.items[0].properties.volunteer;
-		for (var iKey in myVolunteer) {
-			var vol = myVolunteer[iKey];
-			var myStartDate = isValidDate(vol.properties.start[0]) ? format(new Date(vol.properties.start[0]), this.props.dateFormat) : vol.properties.start[0] ;
-			var myEndDate = isValidDate(vol.properties.end[0]) ? format(new Date(vol.properties.end[0]), this.props.dateFormat) : vol.properties.end[0] ;
-			var myVolLocation = vol.properties.location[0].properties;
-			var myElem = <li key={iKey}>
-				{this.props.showDate == true ? ( 
-				<span><span className="dt-start">{myStartDate} - </span>
-				<span className="dt-end">{myEndDate} : </span></span>
-				) : ( '' )}
-				<span className="p-job-title">{myVolLocation["job-title"]}, </span>
-				<span className="p-org">{myVolLocation.org}, </span>
-				<span className="p-locality">{myVolLocation.locality}, </span>
-				<span className="p-region">{myVolLocation.region} </span>
-			</li>;
-			myElems.push(myElem);
-		}
+		)
+	} else {
 		return (
 			<Fragment>
-				<h2>Volunteer Work</h2>
-				<ul>{ myElems }</ul>
+				<h2>{ props.title }</h2>
+				<div>{ myElems }</div>
 			</Fragment>
-		);
+		)
 	}
 }
 
-export class ResumeCertifications extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		dateFormat: PropTypes.string.isRequired,
-		showDate: PropTypes.bool.isRequired
-	};
-
-	render () {
-		var myElems = [];
-		var myCerts = this.props.data.items[0].properties.certifications;
-		for (var iKey in myCerts) {
-			var cert = myCerts[iKey];
-			var myStartDate = isValidDate(cert.properties.start[0]) ? format(new Date(cert.properties.start[0]), this.props.dateFormat) : cert.properties.start[0] ;
-			var myElem = <li key={iKey}>
-				{this.props.showDate == true ? ( 
-				<span className="dt-start">{myStartDate} - </span>
-				) : ( '' )}
-				<span className="p-name">{cert.properties.name}, </span>
-				<span className="p-location">{cert.properties.location}</span>
-			</li>;
-			myElems.push(myElem);
-		}
-		return (
-			<Fragment>
-				<h2>Certifications</h2>
-				<ul>{ myElems }</ul>
-			</Fragment>
-		);
-	}
+export function ResumeReference (props) {
+	const myReference = props.data;
+	return (
+		<Fragment>
+			<div>{myReference.properties.name[0]}, {myReference.properties.locality[0]}, {myReference.properties.region[0]}</div>
+			<div>{myReference.properties["job-title"][0]}, {myReference.properties.org[0]}</div>
+			<div><a href={`mailto:${myReference.properties.email[0]}`}>{myReference.properties.email[0]}</a></div>
+			<div><a href={`tel:${myReference.properties.tel[0]}`}>{myReference.properties.tel[0]}</a></div>
+			<hr />
+		</Fragment>
+	);
 }
 
-export class ResumeSkills extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired
-	};
 
-	render () {
-		var myElems = [];
-		var mySkills = this.props.data.items[0].properties.skills[0];
-		for (var skill in mySkills) {
-			var myElem = <h3 key={"c-" + skill} className="p-skill-category">{skill} : </h3>;
-			myElems.push(myElem);
-			var myElem2 = <span key={"s-" + skill} className="p-skill">{mySkills[skill]}<br /></span>;
-			myElems.push(myElem2);
-		}
-		return (
-			<Fragment>
-				<h2>Skills</h2>
-				<div className="p-skills">
-					{ myElems }
-				</div>
-			</Fragment>
-		);
-	}
-}
-
-export class ResumeSummary extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired
-	};
-
-	render () {
-		var myElems = [];
-		var mySummary = this.props.data.items[0].properties.summary;
-		for (var summary in mySummary) {
-			var myElem = <li key={summary}>{mySummary[summary]}</li>;
-			myElems.push(myElem);
-		}
-		return (
-			<Fragment>
-				<h2>Professional Summary</h2>
-				<ul className="p-summary">{ myElems }</ul>
-			</Fragment>
-		);
-	}
-}
+/* 
+Resume Microformat - https://microformats.org/wiki/h-resume
+Details Summary Expand Collapse - https://www.w3schools.com/tags/tag_details.asp
+*/

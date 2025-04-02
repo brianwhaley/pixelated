@@ -3,7 +3,7 @@
 ============  SIMPLE MENU   ============
 ======================================== */
 
-.menu-wrapper {
+.menuWrapper {
 	height: 100%;
 }
 
@@ -21,14 +21,14 @@
 	text-decoration: none;
 }
 
-.menu-item {
+.menuItem {
 	/* ALL LIST ITEM LEVELS */
 	border: 1px solid #FFF;
     width: 150px;
     display: inline-block;
 }
 
-.menu-item a {
+.menuItem a {
 	/* this is the button */
 	background: #DDD;
     font-size: smaller;
@@ -38,7 +38,7 @@
 	text-indent: 10px;
 }
 
-.menu-item a:hover {
+.menuItem a:hover {
 	background: #EEE;
 	text-indent: 5px;
 	border-left: 5px #000 solid;

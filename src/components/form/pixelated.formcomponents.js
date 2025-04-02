@@ -1,11 +1,8 @@
-/* eslint-disable */
 
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
-
-
 
 const onChange = (me, event) => {
 	let myValidate = me.props.validate ? FV[me.props.validate](event.target) : true ;
@@ -45,7 +42,7 @@ class FormLabel extends Component {
 					? <FormTooltip
 						id={this.props.id}
 						text={this.props.tooltip}
-						/>
+					/>
 					: "" }
 			</Fragment>
 		);
@@ -85,8 +82,8 @@ class FormTooltip extends Component {
 				{ this.props.text && this.props.id 
 					? <Fragment>
 						<div id={thisID} className="tooltip">
-							<a href="#" className="tooltip-icon" onClick={this.toggleTooltip}>{'\u2139'}</a>
-							<div className="tooltip-text">{this.props.text}</div>
+							<a href="#" className="tooltipIcon" onClick={this.toggleTooltip}>{'\u2139'}</a>
+							<div className="tooltipText">{this.props.text}</div>
 						</div>
 					</Fragment>
 					: "" }
@@ -109,7 +106,7 @@ class FormValidate extends Component {
 		return ( 
 			<Fragment>
 				{ !this.props.valid ? 
-				<span id={this.props.id}>{ this.props.valid  ? "\u2705" : "\u274C" }</span> : "" }
+					<span id={this.props.id}>{ this.props.valid  ? "\u2705" : "\u274C" }</span> : "" }
 			</Fragment>
 		);
 	}
@@ -123,6 +120,7 @@ export class FormInput extends Component {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		defaultValue: PropTypes.string,
+		value: PropTypes.string,
 		list: PropTypes.string,
 		size: PropTypes.string,
 		maxLength: PropTypes.string,
@@ -159,7 +157,7 @@ export class FormInput extends Component {
 		["display", "label", "validate"].forEach(e => delete inputProps[e]);
 		inputProps["onChange"] = (e) => onChange(this, e) ;
 		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
-		["submit","button"].indexOf(this.props.type) > -1 ? inputProps["value"] = this.props.value : "" ;
+		if ( ["submit","button"].indexOf(this.props.type) > -1 ) { inputProps["value"] = this.props.value } ;
 		return (
 			<div>
 				{ this.props.type == "checkbox" ? <input {...inputProps} /> : "" }
@@ -228,7 +226,7 @@ export class FormSelect extends Component {
 				<FormLabel key={"label-" + this.props.id} id={this.props.id} label = {this.props.label} />
 				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
 				{ this.props.display == "vertical" ? formValidate : "" }
-				<select {...inputProps} >
+				<select {...inputProps} suppressHydrationWarning >
 					{this.generateOptions()}
 				</select>
 				{ this.props.display != "vertical" ? formValidate : "" }
@@ -366,6 +364,7 @@ export class FormRadio extends Component {
 
 class FormRadioOption extends Component {
 	static propTypes = {
+		name: PropTypes.string,
 		text: PropTypes.string,
 		value: PropTypes.string,
 		// flag attributes
@@ -397,6 +396,7 @@ class FormRadioOption extends Component {
 
 export class FormCheckbox extends Component {
 	static propTypes = {
+		id: PropTypes.string,
 		name: PropTypes.string,
 		options : PropTypes.array,
 		// flag attributes

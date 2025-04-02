@@ -6,34 +6,26 @@ import { useRoutes, BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 export function LazyLoadRoute (element) {
 	// const LazyElement = lazy(() => import(`/src/pages/${element}.js`))
-	console.log(element)
 	const lazyPath = `../../pages/${element}.js`
-	console.log(lazyPath)
 	const LazyElement = lazy(() => import(lazyPath.toLowerCase()))
-	console.log(LazyElement)
 	const newElement = (
 		<Suspense fallback="Loading...">
 			<LazyElement />
 		</Suspense>
 	)
-	console.log(newElement)
 	return newElement
 }
 
 export function LazyLoadElements (props) {
-	console.log('LazyLoadElements')
 	const elements = props.routes.map((thisRoute) => {
-		console.log(thisRoute.element)
-		const lazyPath = `.${__dirname}pages/${thisRoute.element}.js`
-		console.log(lazyPath)
+		// const lazyPath = `.${__dirname}pages/${thisRoute.element}.js`
+		const lazyPath = new URL(`../../pages/${thisRoute.element}.js`, import.meta.url).pathname
 		const LazyElement = lazy(() => import(lazyPath.toLowerCase()))
-		console.log(LazyElement)
 		const newElement = (
 			<Suspense fallback="Loading...">
 				<LazyElement />
 			</Suspense>
 		)
-		console.log(newElement)
 		return newElement
 	})
 	return elements
@@ -48,7 +40,6 @@ export function LazyRouterElement (props) {
 }
 
 export function RouterElement (props) {
-	console.log(props.routes)
 	const newroutes = props.routes.map((thisRoute) => {
 		// const NewElement = thisRoute.element;
 		// console.log(NewElement)
@@ -56,30 +47,27 @@ export function RouterElement (props) {
 			path: thisRoute.path,
 			element: LazyLoadRoute(thisRoute.element) // <NewElement />
 		}
-		console.log(newLazyElement)
 		return newLazyElement
 	})
-	console.log(newroutes)
 	return useRoutes(newroutes)
 }
 RouterElement.propTypes = {
 	routes: PropTypes.array.isRequired
 }
 
-// eslint-disable-next-line camelcase
+ 
 export function RouterElement_v3 (props) {
 	// <RouterElement routes={this.props.routes} />
 	const newroutes = useRoutes(props.routes)
 	return newroutes
 }
 
-// eslint-disable-next-line camelcase
+ 
 export class RouterElement_v2 extends Component {
 	// <RouterElement routes={this.props.routes} />
 	static propTypes = {
 		routes: PropTypes.array.isRequired
 	}
-
 	render () {
 		const newroutes = useRoutes(this.props.routes)
 		return (
@@ -92,13 +80,12 @@ export class RouterElement_v2 extends Component {
 	}
 }
 
-// eslint-disable-next-line camelcase
+ 
 export class RouterElement_v1 extends Component {
 	// <RouterElement routes={this.props.routes} />
 	static propTypes = {
 		routes: PropTypes.array.isRequired
 	}
-
 	render () {
 		const newroutes = this.props.routes.map((thisRoute, i) => {
 			const ThisElement = thisRoute.element

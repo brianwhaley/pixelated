@@ -56,8 +56,8 @@ export class NerdJoke extends Component {
 				this.timePassed = this.timePassed += 1
 				this.timeLeft = this.TIME_LIMIT - this.timePassed + 1
 				const myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + '%'
-				document.getElementById('joke-timer-label').innerHTML = this.formatTimeLeft(this.timeLeft)
-				document.getElementById('joke-timer-path-elapsed').style.width = myWidth
+				document.getElementById('jokeTimerLabel').innerHTML = this.formatTimeLeft(this.timeLeft)
+				document.getElementById('jokeTimerPathElapsed').style.width = myWidth
 			}
 		}, 1000)
 	}
@@ -73,7 +73,7 @@ export class NerdJoke extends Component {
 
 	render () {
 		return (
-			<div className="nerdjoke grid12">
+			<div className="nerdJoke grid12">
 
 				<div className="grid6">
 					<JokeButton
@@ -86,17 +86,17 @@ export class NerdJoke extends Component {
 						clickFunction={ this.loadJoke }
 						buttonText="Next Joke ->" />
 				</div>
-				<div className="joke-timer grid12">
+				<div className="jokeTimer grid12">
 					<div className="grid10">
-						<svg className="joke-timer-svg" xmlns="http://www.w3.org/2000/svg">
-							<rect id="joke-timer-path-elapsed"/>
+						<svg className="jokeTimerSvg" xmlns="http://www.w3.org/2000/svg">
+							<rect id="jokeTimerPathElapsed"/>
 						</svg>
 					</div>
-					<div className="grid2" id="joke-timer-label">
+					<div className="grid2" id="jokeTimerLabel">
 						{this.formatTimeLeft(this.timeLeft)}
 					</div>
 				</div>
-				<div className="joketext grid12">
+				<div className="jokeText grid12">
 					<div>
 						<span className="label">Q: </span>
 						<span className="question"> { this.state.joke.question } </span>
@@ -120,7 +120,7 @@ export class JokeButton extends Component {
 
 	render () {
 		return (
-			<div className={'jokebutton' }
+			<div className={'jokeButton' }
 				onClick={ this.props.clickFunction }>
 				{ this.props.buttonText }
 			</div>

@@ -1,52 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './pixelated.table.css'
 
-export class Table extends Component {
-	static propTypes = {
+export function Table(props) {
+	Table.propTypes = {
 		data: PropTypes.array
 	}
 
-	constructor (props) {
-		super(props)
-		this.state = {
-			tableData: []
-		}
-		this.state.tableData = this.props.data
-	}
-
-	getHeadings (data) {
+	function getHeadings (data) {
 		const headings = Object.keys(data[0]).map((key, i) => {
 			return <th key={i}>{key}</th>
 		})
 		return <tr>{headings}</tr>
 	}
 
-	getRows (data) {
+	function getRows (data) {
 		return data.map((obj, i) => {
-			return <tr key={i}>{this.getCells(obj)}</tr>
+			return <tr key={i}>{getCells(obj)}</tr>
 		})
 	}
 
-	getColumnCount (data) {
-		return Object.keys(data[0]).length
-	}
-
-	getCells (obj) {
+	function getCells (obj) {
 		return Object.values(obj).map((value, i) => {
 			return <td key={i}>{value}</td>
 		})
 	}
 
-	render () {
-		return (
-			<div>
-				<table className="pixTable">
-					<thead>{this.getHeadings(this.state.tableData)}</thead>
-					<tbody>{this.getRows(this.state.tableData)}</tbody>
-				</table>
-			</div>
-		)
-	}
+	return (
+		<div>
+			<table className="pixTable">
+				<thead>{getHeadings(props.data)}</thead>
+				<tbody>{getRows(props.data)}</tbody>
+			</table>
+		</div>
+	)
+
 }

@@ -1,4 +1,8 @@
-.carousel-container{
+/* ========================================
+===============  CAROUSEL   ===============
+======================================== */
+
+.carouselContainer{
 	height: 600px;
 	position: relative;
     overflow: hidden;
@@ -6,7 +10,7 @@
     border: 1px solid #CCC;
 }
 
-.carousel-slider-container {
+.carouselSliderContainer {
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -19,7 +23,7 @@
 	overflow: hidden;
 }
 
-.carousel-slider-image {
+.carouselSliderImage {
 	padding: 10px;
 	display: block;
 	position: absolute;
@@ -34,7 +38,7 @@
 	object-fit: contain;
 }
 
-.carousel-arrow {
+.carouselArrow {
 	position: absolute;
     font-size: 24px;
 	top: 50%;
@@ -43,7 +47,7 @@
     padding: 5px;
 }
 
-.carousel-slider-details {
+.carouselSliderDetails {
 	position: absolute;
 	bottom: 20px;
 	z-index: 1000;
@@ -52,7 +56,7 @@
 	text-align: center;
 }
 
-.carousel-hero-image {
+.carouselHeroImage {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -62,25 +66,25 @@
 	display: block;
 }
 
-.carousel-hero-visible {
+.carouselHeroVisible {
 	display: block;
 	visibility: visible;
 	opacity: 1;
 	transition: opacity 1.0s linear;
 }
 
-.carousel-hero-hide {
+.carouselHeroHide {
 	display: block;
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 0s 1.0s, opacity 1.0s linear;
 }
 
-.carousel-hero-hidden {
+.carouselHeroHidden {
 	display: none;
 }
 
-.carousel-hero-details {
+.carouselHeroDetails {
 	position: absolute;
 	bottom: 5px;
 	z-index: 1000;
@@ -89,37 +93,16 @@
 	font-size: 11px;
 }
 
-.carousel-hero-details-left {
+.carouselHeroDetailsLeft {
 	float: left;
     width: 50%;
     text-align: left;
     padding-left: 10px;
 }
 
-.carousel-hero-details-right {
+.carouselHeroDetailsRight {
 	float: right;
     width: 50%;
     text-align: right;
     padding-right: 20px;
-}
-
-.left{
-	left: 0;
-}
-
-.right{
-	right: 0;
-}
-
-.text-outline-halo {
-	color: white;
-	text-shadow:
-		-1px 1px 1px black,
-		1px 1px 1px black,
-		1px -1px 1px black,
-		-1px -1px 1px black,
-		-1px 1px 5px black,
-		1px 1px 5px black,
-		1px -1px 5px black,
-		-1px -1px 5px black
 }

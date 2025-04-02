@@ -1,5 +1,9 @@
 
-.p-resume h1, .p-resume h2, .p-resume h3 {
+/* ========================================
+==========      RESUME       ==============
+======================================== */
+
+.p_resume h1, .p_resume h2, .p_resume h3 {
 	display: block;
 	font-weight: bold;
 	margin-top:10px;
@@ -7,22 +11,22 @@
 	text-transform: uppercase;
 }
 
-.p-resume h1	{
+.p_resume h1	{
 	font-size: 2.5em;
 	/* margin: 0.67em 0; */
 	text-align: center;
 }
 
-.p-resume h2	{
+.p_resume h2	{
 	font-size: 1.5em;
 	/* margin: 0.83em 0; */
 }
-.p-resume h3	{
+.p_resume h3	{
 	font-size: 1.17em;
 	/* margin: 1em 0; */
 }
 
-.p-resume ul, .p-resume ol {
+.p_resume ul, .p_resume ol {
 	margin: 0 0 10px 0;
     padding-left: 20px;
 }
@@ -37,62 +41,111 @@
 	}
 }
 
-.bigpad {
-	padding: 15px;
-}
-
 @media print {
 	header { display: none; }
 	nav { display: none; }
 }
 
-.p-resume {
+.p_resume {
 	word-break: break-word;
 	line-height: 1.4;
 }
 
 /* http://microformats.org/wiki/h-resume */
-.p-name {}
-.p-summary {}
-.p-contact {}
-.p-education {}
-.p-experience {}
-.p-skills {}
-.p-skill-category {
+
+.p_name { --do-nothing: true }
+
+.p_summary { --do-nothing: true }
+
+.p_contact { --do-nothing: true }
+
+.p_education { --do-nothing: true }
+
+.p_experience { --do-nothing: true }
+
+.p_skills { --do-nothing: true }
+
+.p_skill_category {
 	display: inline !important;
 }
-.p-skill {}
-.p-affiliation {}
 
-.p-qualifications {}
-.p-qualification {}
+.p_skill { --do-nothing: true }
+
+.p_affiliation { --do-nothing: true }
+
+.p_qualifications { --do-nothing: true }
+
+.p_qualification { --do-nothing: true }
 
 /* http://microformats.org/wiki/h-card */
-.p-name {}
-.u-email {}
-.u-photo {}
-.u-url {}
-.p-adr {}
-.p-street-address {}
-.p-locality {}
-.p-region {}
-.p-postal-code {}
-.p-country-name {}
-.p-tel {}
+
+.p_name { --do-nothing: true }
+
+.p_job_title { --do-nothing: true }
+
+.p_org { --do-nothing: true }
+
+.u_email { --do-nothing: true }
+
+.u_photo { --do-nothing: true }
+
+.u_url { --do-nothing: true }
+
+.p_adr { --do-nothing: true }
+
+.p_street_address { --do-nothing: true }
+
+.p_locality { --do-nothing: true }
+
+.p_region { --do-nothing: true }
+
+.p_postal_code { --do-nothing: true }
+
+.p_country_name { --do-nothing: true }
+
+.p_tel { --do-nothing: true }
 
 /* http://microformats.org/wiki/h-event */
-.p-name {}
-.p-summary {}
-.dt-start {
+
+.p_name { --do-nothing: true }
+
+.p_summary { --do-nothing: true }
+
+.dt_start {
 	font-weight: bold;
 	/* letter-spacing: -1px; */
 }
-.dt-end {
+
+.dt_end {
 	font-weight: bold;
 	/* letter-spacing: -1px; */
 }
-.dt-duration {}
-.p-description {}
-.u-url {}
-.p-category {}
-.p-location {}
+
+.dt_duration { --do-nothing: true }
+
+.p_description { --do-nothing: true }
+
+.u_url { --do-nothing: true }
+
+.p_category { --do-nothing: true }
+
+.p_location { --do-nothing: true }
+
+
+/* STYLES FOR DETAILS / SUMMARY EXPAND / COLLAPSE */
+details {
+	border: 1px solid #ccc;
+	margin-bottom: 10px; 
+}
+details[open] {
+	border: none;
+}
+summary {
+	background-color: #eee;
+	padding: 10px;
+	cursor: pointer;
+	list-style-position: outside;
+}
+summary > h2 {
+	margin: 0 !important;
+}

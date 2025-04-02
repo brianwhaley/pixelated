@@ -4,7 +4,6 @@ import * as FC from './pixelated.formcomponents'
 import * as FV from './pixelated.formvalidations'
 import { generateKey, capitalize, attributeMap } from '../utilities/pixelated.functions'
 import './pixelated.form.css'
-// import data from './pixelated.form.json'
 
 export class FormBuilder extends Component {
 	constructor (props) {
@@ -19,21 +18,34 @@ export class FormBuilder extends Component {
 		this.setFieldFormData = this.setFieldFormData.bind(this)
 	}
 
+
 	setFieldFormData = (json) => {
 		// UPDATE STATE WITH JSON USED TO CREATE FIELD PROPERTIES - EXPOSED EXTERNAL
 		this.setState({ fieldformdata: json })
 	}
 
+	mapTypeToComponent(myType){
+		let myComponent = 
+		(["button"].includes(myType)) ? 'FormButton' : 
+			(["checkbox"].includes(myType)) ? 'FormCheckbox' : 
+				(["datalist"].includes(myType)) ? 'FormDataList' : 
+					(["radio"].includes(myType)) ? 'FormRadio' : 
+						(["select"].includes(myType)) ? 'FormSelect' : 
+							(["textarea"].includes(myType)) ? 'FormTextarea' : 
+								"FormImput";
+		return myComponent;
+	}
+
 	appendFormData (event) {
 		// APPEND JSON FOR NEW FIELD TO EXISTING JSON CONFIG OBJECT - EXPOSED EXTERNAL
-		const field = {}
-		field.component = 'FormInput' // TO DO ; HARD CODED - FIX THIS
 		const props = {}
 		for (const prop in event.target) {
 			const thisProp = event.target[prop]
 			if (thisProp && thisProp.value) { props[thisProp.name] = thisProp.value }
 		}
+		const field = {}
 		field.props = props
+		field.component = this.mapTypeToComponent(field.props.type)
 		let fields = []
 		if (Object.keys(this.state.formdata).length > 0) { fields = JSON.parse(JSON.stringify(this.state.formdata.fields)) }
 		fields[fields.length] = field
@@ -166,7 +178,7 @@ export class FormEngine extends Component {
 
 	render () {
 		return (
-			<form {...this.generateFormProps()} onSubmit={(e) => { this.handleSubmit(e) }} >{this.generateNewFields()}</form>
+			<form {...this.generateFormProps()} onSubmit={(e) => { this.handleSubmit(e) }} suppressHydrationWarning >{this.generateNewFields()}</form>
 		)
 	}
 }
@@ -335,8 +347,8 @@ export class FormExtractEngine extends Component {
 			const selected = []
 			for (let option = 0; option < thisOptions.length; option++) {
 				const thisOption = thisOptions[option]
-				// eslint-disable-next-line no-prototype-builtins
-				if (thisOption.hasOwnProperty('selected')) {
+				 
+				if (Object.prototype.hasOwnProperty.call(thisOption, 'selected')) {
 					selected.push(thisOption.value)
 					delete thisOptions[option].selected
 				}
@@ -427,9 +439,10 @@ export class FormExtractEngine extends Component {
 
 	getHTML (url, callback) {
 		// GET SERVER SIDE HTML THROUGH XMLHTTPREQUEST - INTERNAL
-		// eslint-disable-next-line no-undef
+		 
 		const xhr = new XMLHttpRequest()
-		xhr.onreadystatechange = (e) => {
+		// xhr.onreadystatechange = (e) => {
+		xhr.onreadystatechange = () => {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				const json = callback(xhr.responseXML)
 				this.setState({ formjson: json })

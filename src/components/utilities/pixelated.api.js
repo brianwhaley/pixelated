@@ -5,7 +5,7 @@ export function getXHRData (apiURL, apiMethod, myCallback) {
 		apiURL: PropTypes.string.isRequired,
 		apiMethod: PropTypes.string.isRequired
 	}
-	// eslint-disable-next-line no-undef
+	 
 	const xhr = new XMLHttpRequest()
 	xhr.open(apiMethod, apiURL, true)
 	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -15,7 +15,7 @@ export function getXHRData (apiURL, apiMethod, myCallback) {
 		// if (xhr.readyState === 4) {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			let response
-			// eslint-disable-next-line prefer-const
+			 
 			response = JSON.parse(xhr.responseText)
 			myCallback(response)
 		}
@@ -32,7 +32,7 @@ export function generateURL (baseURL, props) {
 	let allProps = ''
 	for (const prop in props) {
 		if (props) {
-			(allProps.length === 0) ? allProps = prop + '=' + props[prop] : allProps += '&' + prop + '=' + props[prop]
+			allProps += (allProps.length === 0) ? prop + '=' + props[prop] : '&' + prop + '=' + props[prop]
 		}
 	}
 	url += allProps

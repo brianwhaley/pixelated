@@ -1,19 +1,18 @@
 
-
 /* ========================================
 ===============  NERDJOKE   ===============
 ======================================== */
 
-.nerdjoke {
+.nerdJoke {
 	padding-bottom: 20px;
 	font-size:24px;
 }
 
-.nerdjoke .joketext div {
+.nerdJoke .jokeText div {
 	padding-bottom: 15px;
 }
 
-.slackbutton {
+.slackButton {
 	padding-bottom: 20px;
 }
 
@@ -21,8 +20,8 @@
 	font-weight: bold;
 }
 
-.jokebutton {
-	/* background-image: url(../images/bg7-dk.gif); */
+.jokeButton {
+	/* background-image: url(/images/bg7-dk.gif); */
     border: 1px solid #999;
     display: inline-block;
     font-size: 14px !important;
@@ -41,12 +40,12 @@
 	border-radius: 5px;
 }
 
-.jokebutton:hover {
+.jokeButton:hover {
 	font-size: 16px ;
 }
 
 
-.joke-timer {
+.jokeTimer {
 	font-size: 14px !important;
 	line-height: 14px !important;
 	position: relative;
@@ -54,7 +53,7 @@
 	width: 100%; */
 }
 
-.joke-timer-svg {
+.jokeTimerSvg {
 	width: 100%;
 	height: 10px;
 	fill: rgb(190,190,190);
@@ -62,12 +61,12 @@
 	color: rgb(190,190,190);
 }
 
-#joke-timer-path-elapsed {
+#jokeTimerPathElapsed {
 	fill:rgb(0,0,255);
 	width: 100%;
 	height: 10px; 
 	transition: 1s linear all;
 }
 
-#joke-timer-label {
+#jokeTimerLabel {
 }

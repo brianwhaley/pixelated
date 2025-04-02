@@ -1,10 +1,9 @@
 
-
 /* ========================================
 =====      SLIDING PANEL MENU         =====
 ======================================== */
 
-.panel-menu-button {
+.panelMenuButton {
 	/* background-color: rgba(255,255,255,0.7); */
 	/* display: none; */
 	/* display: inline; */
@@ -20,14 +19,14 @@
 }
 
 @media screen and (max-width: 480px) {
-	.panel-menu-button {
+	.panelMenuButton {
 		display: inline;
 	}
 }
 
-.panel-menu-header {
+.panelMenuMeader {
 	background-color: #336699;
-	background-image: url(/src/images/bg6.gif);
+	background-image: url(/images/bg6.gif);
 	color: #FFFFFF;
 	padding: 15px;
 
@@ -42,7 +41,7 @@
 ============  ACCORDION MENU   ============
 ======================================== */
 
-.accordion-menu-wrapper {
+.accordionMenuWrapper {
 	/* background: #FFF; */
 	background: rgba(150, 190, 250, 0.7);
 	border-right: 1px solid #ccc;
@@ -56,8 +55,8 @@
     padding: 5px;
 }
 
-.accordion-menu,
-.accordion-menu ul {
+.accordionMenu,
+.accordionMenu ul {
 	/* ALL LIST LEVELS */
 	display: inline-block;
 	list-style-type: none;
@@ -65,46 +64,47 @@
 	width: 200px;
 }
 
-.accordion-menu li {
+.accordionMenu li {
 	/* ALL LIST ITEM LEVELS */
 	border-bottom: 1px solid #FFF;
 }
 
-.accordion-menu li:first-child {
+.accordionMenu li:first-child {
 	/* ALL LIST ITEM LEVELS */
 	border-top: 1px solid #FFF;
 }
 
-.accordion-menu a {
+.accordionMenu a {
 	color: #000;
 	display: block;
 	text-decoration: none;
 }
 
-.accordion-menu > ul {
+.accordionMenu > ul {
 	margin: 0px 0px 0px 5px;
 	padding: 0;
 	width: 200px;
 }
 
-.accordion-menu > ul > li > a {
+.accordionMenu > ul > li > a {
 	/* this is the button */
+	color: black;
 	background: #CCC;
-	background-image: url(/src/images/bg6-lt.jpg);
+	background-image: url(/images/bg6-lt.jpg);
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
 	text-indent: 10px;
 }
 
-.accordion-menu > ul > li > a:hover {
+.accordionMenu > ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/src/images/bg7-dk.gif);
+	background-image: url(/images/bg7-dk.gif);
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }
 
-.accordion-menu > ul > li > ul > li > a {
+.accordionMenu > ul > li > ul > li > a {
 	background: #EEE;
 	height: 25px;
 	line-height: 25px;
@@ -112,7 +112,7 @@
 	font-size:0.9em;
 }
 
-.accordion-menu > ul > li > ul > li > a:hover {
+.accordionMenu > ul > li > ul > li > a:hover {
 	text-indent: 15px;
 	border-left: 5px #900 solid;
 	background: #FFE;

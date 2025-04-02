@@ -1,20 +1,22 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { getXHRData, generateURL } from '../utilities/pixelated.api'
 import { mergeDeep } from '../utilities/pixelated.functions'
 import './pixelated.carousel.css'
 
-const divSelector = 'div.carousel-slider-container'
+const divSelector = 'div.carouselSliderContainer'
 const tx100 = 'translateX(100%)'
 const tx0 = 'translateX(0%)'
 const txn100 = 'translateX(-100%)'
 
-/* https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na */
+/* 	
+https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na
+Not using defaultProps as they are merged shallow, not deep
+https://stackoverflow.com/questions/40428847/react-component-defaultprops-objects-are-overridden-not-merged 
+*/
 
 /* ========== CAROUSEL ========== */
 export class Carousel extends Component {
-	/* Not using defaultProps as they are merged shallow, not deep
-  https://stackoverflow.com/questions/40428847/react-component-defaultprops-objects-are-overridden-not-merged */
 	static propTypes = {
 		flickr: PropTypes.object,
 		type: PropTypes.string
@@ -148,21 +150,21 @@ export class CarouselSlider extends Component {
 	}
 
 	animate = (elem) => {
-		// eslint-disable-next-line no-undef
+		 
 		requestAnimationFrame(this.animate)
 		elem.style.left = (this.drag.newX + this.drag.momentumX) + 'px'
 		return true
 	}
 
-	/* https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
-  https://www.kirupa.com/html5/drag.htm */
+	/* 	https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
+  		https://www.kirupa.com/html5/drag.htm */
 
 	dragStart = (e) => {
 		if (this.drag.debug) { console.log('Drag Start - ' + e.type) }
 		// var elem = e.currentTarget ;
 		if ((typeof e.target.className === 'string') &&
-    (e.target.className.includes('carousel-slider-container') ||
-    e.target.className.includes('carousel-slider-image'))) {
+    (e.target.className.includes('carouselSliderContainer') ||
+    e.target.className.includes('carouselSliderImage'))) {
 			e.preventDefault()
 			e.stopPropagation()
 			const elem = e.target.closest(divSelector)
@@ -178,7 +180,7 @@ export class CarouselSlider extends Component {
 
 			if (e.dataTransfer) {
 				e.dataTransfer.setData('text/plain', e.currentTarget.id)
-				// eslint-disable-next-line no-undef
+				 
 				const img = new Image()
 				// http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 				img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='
@@ -242,7 +244,11 @@ export class CarouselSlider extends Component {
 
 			/* roll in the next / previous image */
 			if (farEnough && this.drag.directionX !== 0) {
-				(this.drag.directionX < 0) ? this.nextImage() : this.previousImage()
+				if ( (this.drag.directionX < 0) ) { 
+					this.nextImage() 
+				} else { 
+					this.previousImage() 
+				} ;
 			}
 
 			if (this.drag.debug) { console.log(JSON.stringify(this.drag)) }
@@ -297,7 +303,7 @@ export class CarouselSlider extends Component {
 			const myActiveIndex = this.state.activeIndex
 			return (
 				<div className='section-container'>
-					<div className='carousel-container'>
+					<div className="carouselContainer">
 						<CarouselSliderArrow
 							direction='left'
 							clickFunction={ this.previousImage }
@@ -377,8 +383,8 @@ export class CarouselSliderImage extends Component {
 		}
 
 		return (
-			<div id={'c-' + myImg.id} className='carousel-slider-container' style={styles} draggable='true'>
-				<img className='carousel-slider-image' draggable='false'
+			<div id={'c-' + myImg.id} className="carouselSliderContainer" style={styles} draggable='true'>
+				<img className="carouselSliderImage" draggable='false'
 					src={'https://farm' + myImg.farm + '.static.flickr.com/' + myImg.server + '/' + myImg.id + '_' + myImg.secret + this.props.size + '.jpg'}
 					id={myImg.id} alt={myImg.title} title={myImg.title} />
 			</div>
@@ -396,9 +402,9 @@ export class CarouselSliderDetails extends Component {
 
 	render () {
 		return (
-			<div className='carousel-slider-details text-outline-halo'>
+			<div className="carouselSliderDetails textOutlineHalo">
 				{this.props.index} of {this.props.length} - {this.props.image.title} <br/>
-        by {this.props.image.ownername} on {this.props.image.datetaken}
+        		by {this.props.image.ownername} on {this.props.image.datetaken}
 			</div>
 		)
 	}
@@ -414,7 +420,7 @@ export class CarouselSliderArrow extends Component {
 
 	render () {
 		return (
-			<div className={'carousel-arrow text-outline-halo ' + this.props.direction}
+			<div className={"carouselArrow textOutlineHalo " + this.props.direction}
 				onClick={ this.props.clickFunction }>
 				{ this.props.glyph }
 			</div>
@@ -423,66 +429,61 @@ export class CarouselSliderArrow extends Component {
 }
 
 /* ========== CAROUSEL HERO ========== */
-export class CarouselHero extends Component {
-	static propTypes = {
+export function CarouselHero(props) {
+	CarouselHero.propTypes = {
 		flickrData: PropTypes.object.isRequired
 	}
 
-	constructor (props) {
-		super(props)
-		this.debug = false
-		this.state = {
-			activeIndex: 0,
-			direction: 'up',
-			timeout: 5000
-		}
-		if (this.props.flickrData) {
-			this.state = mergeDeep(this.state, this.props.flickrData)
-		}
-	}
+	let debug = false;
+	const [flickrData, setFlickrData] = useState({});
+	const [flickrImages, setFlickrImages] = useState({});
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [direction, setDirection] = useState('up');
+	const timeout = 5000;
 
-	nextImage = () => {
-		if (this.state.activeIndex === this.props.flickrData.images.length - 1) {
-			this.setState({ activeIndex: 0, direction: (this.state.direction === 'up' ? 'down' : 'up') })
+	const nextImage = () => {
+		if(debug) { console.log('nextImage - ' + activeIndex); }
+		if (activeIndex === flickrImages.length - 1) {
+			setActiveIndex(0);
 		} else {
-			this.setState({ activeIndex: this.state.activeIndex + 1, direction: (this.state.direction === 'up' ? 'down' : 'up') })
+			setActiveIndex(activeIndex + 1);
 		}
+		if (direction === 'up' ) { setDirection('down') } ;
 	}
 
-	render () {
-		if (this.props.flickrData.images.length > 0) {
-			if (this.state.timeout > 0) {
-				setTimeout(function () {
-					this.nextImage()
-				}
+	useEffect(() => {
+		if(debug) { console.log('Loading Hero Carousel...'); }
+		if (props.flickrData) { setFlickrData(props.flickrData) } ;
+		if (props.flickrData.images) { setFlickrImages(props.flickrData.images) } ;
+		if (timeout > 0) {
+			setTimeout(
+				function () { nextImage() }
 					.bind(this),
-				this.state.timeout)
-			}
-
-			return (
-				<Fragment >
-					{ this.props.flickrData.images.map((image, i) => (
-						<CarouselHeroImage
-							key={image.id}
-							direction={this.state.direction}
-							activeIndex={this.state.activeIndex}
-							index={i}
-							imagesLength={this.props.flickrData.images.length}
-							image={image}
-							size={this.props.flickrData.flickrSize} />
-					))}
-					<CarouselHeroDetails
-						index={this.state.activeIndex + 1}
-						length={this.props.flickrData.images.length}
-						image={this.props.flickrData.images[this.state.activeIndex]} />
-				</Fragment>
-			)
-		} else {
-			return (
-				<div className='carousel'></div>
+				timeout
 			)
 		}
-	}
+	}, [props, activeIndex]);
+
+	return (
+		<Fragment >
+			{ flickrImages.length > 0 && flickrImages.map((image, i) => (
+				<CarouselHeroImage
+					key={image.id}
+					direction={direction}
+					activeIndex={activeIndex}
+					index={i}
+					imagesLength={flickrImages.length}
+					image={image}
+					size={flickrData.flickrSize} />
+			))}
+			{(flickrImages && flickrImages.length > 0) ? 
+				<CarouselHeroDetails
+					index={activeIndex + 1}
+					length={flickrImages.length}
+					image={flickrImages[activeIndex]} />
+				: null} 
+		</Fragment>
+	)
 }
 
 /* ========== CAROUSEL HERO IMAGE ========== */
@@ -501,17 +502,16 @@ export class CarouselHeroImage extends Component {
 		const myZindex = this.props.imagesLength - this.props.index
 		const styles = {
 			zIndex: myZindex
-		}
-		let classes = 'carousel-hero-image'
-
+		}		
+		let classes = "carouselHeroImage"
 		if (this.props.index > this.props.activeIndex) {
-			classes += ' carousel-hero-hidden'
+			classes += " carouselHeroHidden"
 		} else if (this.props.index === this.props.activeIndex - 1) {
-			classes += ' carousel-hero-hide'
+			classes += " carouselHeroHide"
 		} else if (this.props.index === this.props.activeIndex) {
-			classes += ' carousel-hero-visible'
+			classes += " carouselHeroVisible"
 		} else if (this.props.index < this.props.activeIndex) {
-			classes += ' carousel-hero-hidden'
+			classes += " carouselHeroHidden"
 		}
 
 		return (
@@ -535,12 +535,12 @@ export class CarouselHeroDetails extends Component {
 	render () {
 		return (
 			<div className='section-container'>
-				<div className='carousel-hero-details text-outline-halo'>
-					<div className='carousel-hero-details-left'>
+				<div className="carouselHeroDetails textOutlineHalo">
+					<div className="carouselHeroDetailsLeft">
 						<div>{this.props.index} of {this.props.length}</div>
 						<div>{this.props.image.title}</div>
 					</div>
-					<div className='carousel-hero-details-right'>
+					<div className="carouselHeroDetailsRight">
 						<div>by {this.props.image.ownername}</div>
 						<div>{this.props.image.datetaken}</div>
 					</div>

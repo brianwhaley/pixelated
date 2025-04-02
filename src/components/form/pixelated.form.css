@@ -1,4 +1,7 @@
-    
+/* ========================================
+===============    FORMS    ===============
+======================================== */
+   
 label, 
 input,
 textarea,
@@ -28,7 +31,7 @@ span.displayVertical {
 label {
 	border: none;
 }
-
+ 
 input:focus,
 textarea:focus,
 select:focus,
@@ -60,7 +63,7 @@ form span {
 	position: relative;
 }
 
-.tooltip-icon {
+.tooltipIcon {
   	display: inline;
 	color: white !important;
     background-color: #369;
@@ -69,7 +72,7 @@ form span {
     vertical-align: middle;
 }
 
-.tooltip-text {
+.tooltipText {
   	display: none;
 	position: absolute;
 	top: -25px;

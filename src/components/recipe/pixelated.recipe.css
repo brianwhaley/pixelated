@@ -1,6 +1,11 @@
-.h-recipe-category {
+
+/* ========================================
+===============  RECIPES    ===============
+======================================== */
+
+.h_recipe_category {
 	background-color: #EEE;
-    background-image: url(/src/images/bg7-dk.gif);
+    background-image: url(/images/bg7-dk.gif);
     border: 1px solid #CCC;
     color: #000;
 	font-size: 22px;
@@ -11,15 +16,15 @@
     width: 100%;
 }
 
-.h-recipe {
+.h_recipe {
 	font-size: 12px;
 }
 
-.h-recipe p {
+.h_recipe p {
 	margin: 0px !important;
 }
 
-.h-recipe.p-name {
+.h_recipe.p_name {
     background-color: #F9F9F9;
     border: 1px solid #CCC;
     color: #000;
@@ -30,7 +35,7 @@
     width: 100%;
 }
 
-.e-ingredients, .e-instructions {
+.e_ingredients, .e_instructions {
 	color: #454545;
     font-family: Lucida Sans Unicode, Lucida, Helvetica, sans-serif;
     font-size: 16px;
@@ -38,44 +43,41 @@
     margin-top: 20px;
 }
 
-/*
-.p-ingredient {}
+.p_ingredient { --do-nothing: true }
 
-.p-yield {}
-*/
+.p_yield { --do-nothing: true }
 
-.e-instructions {
+.e_instructions {
 	list-style-type: decimal-leading-zero;
 }
 
-/*
-.p-instruction {}
+.p_instruction { --do-nothing: true }
 
-.dt-duration {}
-*/
-.u-photo {
+.dt_duration { --do-nothing: true }
+
+.u_photo {
 	float: right;
 	margin: 15px;
     max-width: 400px;
     max-height: 400px;
 }
 
-.u-photo:after{
+.u_photo:after{
 	content: "";
   	display: table;
   	clear: both;
 }
 
 @media screen and (max-width: 480px) {
-	.u-photo {
+	.u_photo {
 		float: none;
 		margin: 10px auto;
 		display: block;
 	}
 }
 
-#recipe-list {
-    background-image: url(/src/images/bg7-dk.gif);
+#recipe_list {
+    background-image: url(/images/bg7-dk.gif);
 	border: 1px solid #999;
 	box-shadow: 5px 5px 5px rgba(127, 127, 127, 1.0);
 	font-size: 18px;
@@ -83,17 +85,15 @@
     margin-bottom: 15px;
 }
 
-/*
-.p-summary {}
+.p_summary { --do-nothing: true }
 
-.p-author {}
+.p_author { --do-nothing: true }
 
-.dt-published {}
+.dt_published { --do-nothing: true }
 
-.p-nutrition {}
+.p_nutrition { --do-nothing: true }
 
-.p-category {}
-*/
+.p_category { --do-nothing: true }
 
 
 /* ========================================
