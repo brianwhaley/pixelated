@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "description": "Pixelated UI Components",
   "author": "Brian T. Whaley",
   "license": "MIT",
@@ -55,6 +55,7 @@
     "@brianwhaley/pixelated-components": "^1.1.13",
     "core-js": "^3.41.0",
     "date-fns": "^4.1.0",
+    "globals": "^16.0.0",
     "react-router-dom": "^7.4.1"
   },
   "peerDependencies": {
