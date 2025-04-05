@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Markdown } from "@/app/components/markdown/pixelated.markdown";
+import { Markdown } from "@brianwhaley/pixelated-components";
 const filePath = '/data/readme.md'
 
 export default function Readme() {

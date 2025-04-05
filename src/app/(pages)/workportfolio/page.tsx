@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Carousel } from "@/app/components/carousel/pixelated.carousel";
+import { Carousel } from "@brianwhaley/pixelated-components";
 const props = {tag: "portfolio-all"}
 
-function GalleryWrapper( vals ) {
+function GalleryWrapper( vals: { props: { tag: string; }; } ) {
 	const myTag = vals.props.tag;
 	const flickrProps = { urlProps: { tags: myTag, photoSize: "Large" } };
 	return (

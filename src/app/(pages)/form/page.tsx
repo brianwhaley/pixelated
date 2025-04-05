@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FormEngine } from "@/app/components/form/pixelated.form";
+import { FormEngine } from "@brianwhaley/pixelated-components";
 import data from "@/app/data/form.json";
 
 export default function Formv2() {

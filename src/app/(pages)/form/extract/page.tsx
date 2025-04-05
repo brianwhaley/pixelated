@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FormExtractor } from "@/app/components/form/pixelated.form";
+import { FormExtractor } from "@brianwhaley/pixelated-components";
 
 export default function FormExtract() {
 	return (

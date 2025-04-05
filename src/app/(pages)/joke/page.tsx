@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Component, Fragment } from "react";
-import { NerdJoke } from "@/app/components/nerdjoke/pixelated.nerdjoke";
+import { NerdJoke } from "@brianwhaley/pixelated-components";
 import "./joke.css";
 
 export default class Joke extends Component {

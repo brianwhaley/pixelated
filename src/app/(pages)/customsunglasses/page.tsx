@@ -1,15 +1,16 @@
 "use client";
 
 import React, { Fragment, useState } from "react";
-import { Callout, CalloutHeader, CalloutRoundTiny } from "@/app/components/callout/pixelated.callout";
-import Modal from "@/app/components/modal/pixelated.modal";
+import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
+import { CalloutRoundTiny } from "@/app/components/callout/pixelated.callout"
+import { Modal } from "@brianwhaley/pixelated-components"
 
 export default function CustomSunglasses() {
-  	const [selectedImageSrc, setSelectedImageSrc] = useState<string>('');
+	const [modalContent, setModalContent] = useState<React.ReactNode>();
 	const handleImageClick = (event: MouseEvent, url: string) => {
 		event.preventDefault();
-    	// setSelectedImageSrc(event.target.src)
-    	setSelectedImageSrc(url)
+		const myContent = <img src={url} alt="Modal Image" />
+		setModalContent(myContent)
 		const myModal = document.getElementById("myModal");
 		if (myModal) { myModal.style.display = 'block' } ;
   	};
@@ -149,7 +150,7 @@ export default function CustomSunglasses() {
 				</div>
 			</section>
 
-			{ <Modal src={selectedImageSrc} /> }
+			<Modal modalContent={modalContent} />
 
 		</Fragment>
 	);

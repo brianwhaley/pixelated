@@ -2,7 +2,7 @@
 
 import React, { Fragment, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { CalloutHeader } from "@/app/components/callout/pixelated.callout";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
 
 
 function UseQuery() {

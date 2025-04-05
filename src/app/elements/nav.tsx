@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react"
-import { MenuAccordion } from "../components/menu/pixelated.menu-accordion";
+import { MenuAccordion } from "@brianwhaley/pixelated-components";
 import myroutes from '../data/routes.json'
 const allRoutes = myroutes.routes
 

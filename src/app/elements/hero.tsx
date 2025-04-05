@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react"
-import { Carousel } from "../components/carousel/pixelated.carousel";
+import { Carousel } from "@brianwhaley/pixelated-components";
 
 export default function Hero() {
 	return (

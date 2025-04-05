@@ -1,8 +1,8 @@
 "use client";
 
 import React, { Fragment } from "react";
-import { CalloutHeader, CalloutRoundSm } from "@/app/components/callout/pixelated.callout";
-import { SocialCards } from "@/app/components/socialcard/pixelated.socialcard";
+import { CalloutHeader, CalloutRoundSm } from "@brianwhaley/pixelated-components";
+import { SocialCards } from "@brianwhaley/pixelated-components";
 
 /* ========== NOTES ==========
 ERRORS: 500px, shutterfly - malformed XML RSS
@@ -96,9 +96,9 @@ export default function SocialMedia() {
 							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" />
 						</div>
 						<div className="grid6">
-							<CalloutRoundSm url="" img="" title="" />
-							<CalloutRoundSm url="" img="" title="" />
-							<CalloutRoundSm url="" img="" title="" />
+							<CalloutRoundSm url={null} img={null} title={null} />
+							<CalloutRoundSm url={null} img={null} title={null} />
+							<CalloutRoundSm url={null} img={null} title={null} />
 						</div>
 					</div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { EbayItems } from "@/app/components/ebay/pixelated.ebay";
+import { EbayItems } from "@brianwhaley/pixelated-components";
 
 export default function Ebay() {
 	const ebayProps = {

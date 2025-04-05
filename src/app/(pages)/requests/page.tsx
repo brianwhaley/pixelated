@@ -1,38 +1,32 @@
 "use client";
 
-import React, { Component } from "react";
-import { CalloutHeader } from "@/app/components/callout/pixelated.callout";
-import { FormEngine } from "@/app/components/form/pixelated.form";
-import { Table } from "@/app/components/table/pixelated.table";
+import React from "react";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { FormEngine } from "@brianwhaley/pixelated-components";
+import { Table } from "@brianwhaley/pixelated-components";
 import requestData from "@/app/data/requests.json"
 import formData from "@/app/data/requestform.json"
 
-export default class Requests extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			tableData: []
-		}
-		this.state.tableData = requestData;
-		this.showDialog = this.showDialog.bind(this);
-		this.saveDialog = this.saveDialog.bind(this);
-		this.closeDialog = this.closeDialog.bind(this);
-		this.addRow = this.addRow.bind(this);
-	}
-	showDialog() {
-		const mydialog = document.getElementById("newRequestDialog");
+export default function Requests() {
+
+	function showDialog() {
+		const mydialog = document.getElementById("newRequestDialog") as HTMLDialogElement;
 		mydialog.showModal();
 	}
-	async saveDialog(e){
+
+	async function saveDialog(e: React.MouseEvent<HTMLButtonElement>){
 		// const sendmail_api = "https://nlbqdrixmj.execute-api.us-east-2.amazonaws.com/default/sendmail";
 		const sendmail_api = "https://sendmail.pixelated.tech/default/sendmail";
 
-		const mydialog = document.getElementById("newRequestDialog");
-		const tyDialog = document.getElementById("thankYouDialog");
+		const mydialog = document.getElementById("newRequestDialog") as HTMLDialogElement;
+		const tyDialog = document.getElementById("thankYouDialog") as HTMLDialogElement;
 		const myform = document.getElementById("newRequestForm");
 		e.preventDefault();
-		const myFormData = {};
-		const formData = new FormData(myform);
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const myFormData: { [key: string]: any } = {};
+		
+		const formData = new FormData(myform as HTMLFormElement);
 		for (const [key, value] of formData.entries()) {
 			myFormData[key] = value ;
 		}
@@ -54,59 +48,40 @@ export default class Requests extends Component {
 				}
 				return response.json();
 			}) 
-
 		mydialog.close();
 		tyDialog.showModal();
+	}
+	function closeDialog(id: string) {
+		const mydialog = document.getElementById(id) as HTMLDialogElement;
+		mydialog.close();
+	}
 
-	}
-	closeDialog(id) {
-		const mydialog = document.getElementById(id);
-		mydialog.close();
-	}
-	saveRowDialog(e) {
-		const mydialog = document.getElementById("newRequestDialog");
-		const myform = document.getElementById("newRequestForm");
-		e.preventDefault();
-		const myFormData = [];
-		const formData = new FormData(myform);
-		for (const [key, value] of formData.entries()) {
-			myFormData[key] = value ;
-		}
-		myFormData["Date"] = new Date().toLocaleDateString() ;
-		myFormData["Status"] = "Submitted" ;
-		this.addRow(myFormData);
-		mydialog.close();
-	}
-	addRow(newRow) {
-		const rows = this.state.tableData;
-		rows.push(newRow);
-		this.setState({tableData: rows});
-	}
-	render () {
-		return (
-			<div className="section-container">
-				<CalloutHeader title="Custom Sunglass Requests" />
-				<button type="button" id="showDialog" onClick={this.showDialog}>Request a Custom</button>
-				<br /><br />
-				<dialog id="newRequestDialog">
-					<FormEngine name="newrequest" id="newRequestForm" formdata={formData} />
+	return (
+		<div className="section-container">
+			<CalloutHeader title="Custom Sunglass Requests" />
+			<button type="button" id="showDialog" onClick={showDialog}>Request a Custom</button>
+			<br /><br />
+
+
+
+			<dialog id="newRequestDialog">
+				<FormEngine name="newrequest" id="newRequestForm" formdata={formData} />
+				<br />
+				<center>
 					<br />
-					<center>
-						<br />
-						<button type="button" id="saveDialog" onClick={this.saveDialog}>Send</button>
-						<button type="button" id="closeDialog" onClick={() => this.closeDialog('newRequestDialog')}>Close</button>
-					</center>
-				</dialog>
-				<Table data={requestData} />
-				<dialog id="thankYouDialog">
-					<CalloutHeader title="Thank you!" />
-					<center>Thank you for your your request.  Your request data has been sent for review.</center>
-					<br />
-					<center>
-						<br /><button type="button" id="closeDialog" onClick={() => this.closeDialog('thankYouDialog')}>Close</button>
-					</center>
-				</dialog>
-			</div>
-		);
-	}
+					<button type="button" id="saveDialog" onClick={saveDialog}>Send</button>
+					<button type="button" id="closeDialog" onClick={() => closeDialog('newRequestDialog')}>Close</button>
+				</center>
+			</dialog>
+			<Table data={requestData} />
+			<dialog id="thankYouDialog">
+				<CalloutHeader title="Thank you!" />
+				<center>Thank you for your your request.  Your request data has been sent for review.</center>
+				<br />
+				<center>
+					<br /><button type="button" id="closeDialog" onClick={() => closeDialog('thankYouDialog')}>Close</button>
+				</center>
+			</dialog>
+		</div>
+	);
 }

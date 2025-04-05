@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { CalloutHeader } from "@/app/components/callout/pixelated.callout";
-import { RecipeBook } from "@/app/components//recipe/pixelated.recipe";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { RecipeBook } from "@brianwhaley/pixelated-components";
 import RecipeData from "@/app/data/recipes.json";
 
 export default function Recipes() {

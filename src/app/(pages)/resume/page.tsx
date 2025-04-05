@@ -3,7 +3,7 @@
 import React from "react"
 
 import { ResumeName, ResumeContact, ResumeQualifications, 
-	ResumeSkills, ResumeSummary, ResumeEvents } from "@/app/components/resume/pixelated.resume";
+	ResumeSkills, ResumeSummary, ResumeEvents } from "@brianwhaley/pixelated-components";
 import ResumeData from "@/app/data/resume.json";
 
 /* 

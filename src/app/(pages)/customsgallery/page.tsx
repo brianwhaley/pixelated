@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Carousel } from "@/app/components/carousel/pixelated.carousel";
+import { Carousel } from "@brianwhaley/pixelated-components";
 
 const tags = {tag: "customsunglasses"}
 

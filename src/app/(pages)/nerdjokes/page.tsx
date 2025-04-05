@@ -2,8 +2,8 @@
 
 import React, { Fragment, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { CalloutHeader } from "@/app/components/callout/pixelated.callout";
-import { NerdJoke } from "@/app/components/nerdjoke/pixelated.nerdjoke";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { NerdJoke } from "@brianwhaley/pixelated-components";
 
 function UseQuery() {
 	const searchParams = useSearchParams();

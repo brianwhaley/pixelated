@@ -45,13 +45,13 @@ git fetch
 ## ===== BUILD PIXELATED APP =====
 
 eslint --fix --ext .jsx --ext .js .
-eslint --ext .js,.jsx,.ts,.tsx src/ 
+eslint --ext .js,.jsx,.ts,.tsx .
 [//]: # npm --no-git-tag-version version patch
 npm version major
 npm version minor
 npm version patch
 git add * -v
-git commit -m "fixed a bunch of types, built out resume references"
+git commit -m "homepage change, component upgrade"
 git push pixelated dev --tags
 git push pixelated dev:main
 
