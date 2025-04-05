@@ -9,7 +9,7 @@ eslint --fix --ext .js,.jsx .
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fixes for storybook"
+git commit -m "fixes for storybook, callout tiny"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f
