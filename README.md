@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/brianwhaley/pixelated-components">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/bg6.gif" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Pixelated Components</h3>
