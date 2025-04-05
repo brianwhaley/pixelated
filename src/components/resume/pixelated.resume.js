@@ -2,12 +2,6 @@ import React, { Fragment } from "react";
 import { format } from "date-fns";
 import "./pixelated.resume.css";
 
-/* function isValidDate(date: string) {
-	// return !Number.isNaN(new Date(date).getTime());
-	// const date = new Date(dateString);
-  	return !isNaN(new Date(date)) && new Date(date).toString() !== 'Invalid Date';
-} */
-
 function isValidDate(dateString) {
 	let date = new Date(dateString);
 	return !isNaN(date.getTime());
@@ -32,6 +26,8 @@ type simpleResumeProps = {
 	data: any
 } */
 
+/* 
+*/
 
 export function Resume (props) {
 	return (
@@ -59,7 +55,7 @@ export function Resume (props) {
 					<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" collapsible={true} />
 					<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" collapsible={true} />
 					<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" collapsible={true} />
-					<ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} />
+					{/* <ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} /> */}
 				</div>
 			</div>
 		</section>
@@ -97,6 +93,12 @@ export function ResumeContact(props) {
 export function ResumeEvents(props) {
 	const myElems = [];
 	const myEvents = props.data;
+	// DORT EVENTS DESCENDING BY END DATE
+	myEvents.sort((a, b) => {
+		if (a.properties.end[0] < b.properties.end[0]) { return 1; }
+		if (a.properties.end[0] > b.properties.end[0]) { return -1; }
+		return 0;
+	});
 	for (const iKey in myEvents) {
 		// PRE-LOAD SOME VALUES
 		const myEvent = myEvents[iKey];

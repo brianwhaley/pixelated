@@ -1,14 +1,16 @@
 import { Resume } from '../components/resume/pixelated.resume'
-import ResumeData from '../components/resume/pixelated.resume.json'
+import ResumeData from '../data/resume.json'
 import '../components/resume/pixelated.resume.css'
+import '../css/pixelated.less';
 
 export default {
 	title: 'Resume',
 	component: Resume
 }
 
-export const Primary = {
+export const BTW_Resume = {
 	args: {
-		data: ResumeData
+		data: { items: ResumeData.items }
 	}
 }
+

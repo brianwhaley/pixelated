@@ -1,6 +1,7 @@
 import { RecipeBook } from '../components/recipe/pixelated.recipe'
 import '../components/recipe/pixelated.recipe.css'
-import RecipeData from '../components/recipe/recipes.json'
+import RecipeData from '../data/recipes.json'
+import '../css/pixelated.less';
 
 const categories = ['bread', 'appetizer', 'dinner', 'slow cooker', 'side dish', 'salad', 'dessert']
 
@@ -9,7 +10,7 @@ export default {
 	component: RecipeBook
 }
 
-export const Primary = {
+export const BTW_Resume = {
 	args: {
 		recipeData: RecipeData,
 		recipeCategories: categories

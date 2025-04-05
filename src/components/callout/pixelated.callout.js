@@ -15,12 +15,13 @@ Callout.propTypes = {
 export function Callout(props){
 // export function Callout(props) {
 	const columnGridStyle = props.columnCount ? 'grid' + (12 / props.columnCount) : 'grid4'
+	const calloutColumnGridStyle = "callout column " + columnGridStyle
 	const calloutGridStyle = props.direction && props.direction === 'horizontal' ? 'grid6' : 'grid12'
 	const calloutImageStyle = props.direction && props.direction === 'horizontal' ? "roundImgContainer calloutImage calloutImageHoriz" : "roundImgContainer calloutImage"
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self'
 
 	return (
-		<div className={"callout column " + columnGridStyle}>
+		<div className={calloutColumnGridStyle}>
 			<div className={calloutGridStyle}>
 				<div className={calloutImageStyle}>
 					{ props.url
@@ -97,7 +98,7 @@ export const CalloutRoundTiny = (props) => {
 	}
 	CalloutRoundTiny.propTypes = {
 		url: PropTypes.string.isRequired,
-		imgclick: PropTypes.func.isRequired,
+		imgclick: PropTypes.func,
 		img: PropTypes.string.isRequired,
 		title: PropTypes.string,
 		alt: PropTypes.string.isRequired,
@@ -110,7 +111,9 @@ export const CalloutRoundTiny = (props) => {
 	*/
 	return (
 		<div className={"roundImgContainer " + (props.img ? 'grid' + props.gridSize + 'fix' : 'grid' + props.gridSize + 'fix noMobile')} >
-			<img src={props.img} alt={props.alt} onClick={(event) => props.imgclick(event, props.url)} />
+			<img src={props.img} alt={props.alt} 
+				onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
+			/>
 		</div>
 	)
 }

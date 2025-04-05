@@ -1,0 +1,140 @@
+{
+	"items": [
+		{
+			"type": [ "h-resume" ],
+			"properties": {
+				"references": [
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Philip Lundrigan" ],
+							"org": [ "American Express" ],
+							"job-title": [ "Vice President Technology III, AR Systems" ],
+							"url": [ "" ],
+							"email": [ "phil.lundrigan@icloud.com" ],
+							"tel": [ "(425) 753-6453" ],
+							"street-address": [ "" ],
+							"locality": [ "Scottsdale" ],
+							"region": [ "AZ" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Stephanie Redford" ],
+							"org": [ "American Express" ],
+							"job-title": [ "Vice President IV, SRE" ],
+							"url": [ "" ],
+							"email": [ "(480) 241-7483" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "Denver" ],
+							"region": [ "CO" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					}
+					,
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Michelle Swartz" ],
+							"org": [ "American Express" ],
+							"job-title": [ "Vice President IV, Developer Experience" ],
+							"url": [ "" ],
+							"email": [ "" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "Phoenix" ],
+							"region": [ "AZ" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Sarvenaz Myslycki" ],
+							"org": [ "American Express" ],
+							"job-title": [ "Vice President III, SRE" ],
+							"url": [ "" ],
+							"email": [ "" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "New York" ],
+							"region": [ "NY" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Miguel Murray" ],
+							"job-title": [ "Vice President" ],
+							"org": [ "American Express" ],
+							"url": [ "" ],
+							"email": [ "" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "" ],
+							"region": [ "CT" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Stefanie Todd" ],
+							"job-title": [ "Vice President" ],
+							"org": [ "American Express" ],
+							"url": [ "" ],
+							"email": [ "" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "" ],
+							"region": [ "" ],
+							"postal-code": [ "" ],
+							"country-name": [ "CA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "Saumil Shah" ],
+							"job-title": [ "Chief Technology Officer" ],
+							"org": [ "PR Newswire" ],
+							"url": [ "" ],
+							"email": [ "" ],
+							"tel": [ "" ],
+							"street-address": [ "" ],
+							"locality": [ "" ],
+							"region": [ "" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					},
+					{
+						"type": [ "h-card" ],
+						"properties": {
+							"name": [ "James Sharp" ],
+							"job-title": [ "" ],
+							"org": [ "" ],
+							"url": [ "" ],
+							"email": [ "jimmyshock@hotmail.com" ],
+							"tel": [ "(609) 284-4827" ],
+							"street-address": [ "" ],
+							"locality": [ "Burlington" ],
+							"region": [ "NJ" ],
+							"postal-code": [ "" ],
+							"country-name": [ "USA" ]
+						}
+					}
+				]
+			}
+		}
+	]
+  }

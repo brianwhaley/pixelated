@@ -1,5 +1,6 @@
 import { SocialCards } from '../components/socialcard/pixelated.socialcard'
 import '../components/socialcard/pixelated.socialcard.css'
+import '../css/pixelated.less';
 
 const mySources = {
 	blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Views Blog Post' },

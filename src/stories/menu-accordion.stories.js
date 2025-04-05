@@ -1,5 +1,7 @@
-import { MenuAccordion } from '../components/menu/pixelated.menu-accordion'
+import React from 'react'
+import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion'
 import '../components/menu/pixelated.menu-accordion.css'
+import '../css/pixelated.less';
 
 const menuItems = {
 	Home: '/index.html',
@@ -21,8 +23,26 @@ export default {
 	component: MenuAccordion
 }
 
-export const Primary = {
+/* export const Primary = {
 	args: {
 		menuItems
 	}
-}
+} */
+
+
+// Parent Component
+const ParentAccordionMenu = () => {
+	return (
+	  	<>
+			<div style={{ position: 'absolute', left: '10px', top:'10px' }} >
+				<MenuAccordionButton />
+			</div>
+			<div style={{ position: 'fixed', left: '10px', top:'100px' }}>
+				<MenuAccordion />
+			</div>
+		</>
+	);
+};
+
+export const Primary = () => <ParentAccordionMenu />;
+Primary.args = { menuItems: menuItems};

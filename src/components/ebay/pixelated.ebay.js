@@ -18,42 +18,18 @@ export class EbayItems extends Component {
 		super(props);
 		this.gotoPage = this.gotoPage.bind(this);
 		this.state = {
-			/* 
-			// proxyURL: "https://api.codetabs.com/v1/proxy/?quest=",
-			// proxyURL: 'https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=',
-			proxyURL: 'https://corsproxy.io/?',
-			baseURL: "https://svcs.ebay.com/services/search/FindingService/v1?",
-			urlProps: {
-				"OPERATION-NAME": "findItemsByKeywords",
-				"SERVICE-VERSION": "1.0.0",
-				"SECURITY-APPNAME": "BrianWha-Pixelate-PRD-1fb4458de-1a8431fe",
-				"GLOBAL-ID": "EBAY-US",
-				"RESPONSE-DATA-FORMAT": "JSON",
-				"REST-PAYLOAD": "",
-				"keywords": "sunglasses",
-				"outputSelector": "PictureURLSuperSize",
-				"paginationInput.entriesPerPage": 10,
-				"paginationInput.pageNumber": 1,
-				"sortOrder": "StartTimeNewest",
-				"itemFilter(0).name": "Seller",
-				"itemFilter(0).value": "btw73"
-				// url += "&callback=_cb_findItemsByKeywords";
-			},
-			filterarray: [{
-				"name":"Seller",
-				"value":"btw73",
-				"paramName":"",
-				"paramValue":""
-			}], */
+			
 			proxyURL: "",
 			baseURL: "",
 			urlProps: {},
+			headers: {},
 			filterarray: [{}],
 			totalPages: 1,
 			items: [],
 		};
 		if (this.props.ebayProps.proxyURL) { this.state.proxyURL = this.props.ebayProps.proxyURL; }
 		if (this.props.ebayProps.baseURL) { this.state.baseURL = this.props.ebayProps.baseURL; }
+		if (this.props.ebayProps.headers) { this.state.headers = this.props.ebayProps.headers; }
 		this.state.urlProps = mergeDeep(this.state.urlProps, this.props.ebayProps.urlProps);
 	}
 
@@ -125,16 +101,44 @@ export class EbayItems extends Component {
 	}
 
 	componentDidMount() {
-		const myURL = this.state.proxyURL + ( encodeURIComponent(generateURL(this.state.baseURL, this.state.urlProps)));
+		// const myURL = this.state.proxyURL + ( encodeURIComponent(generateURL(this.state.baseURL, this.state.urlProps)));
+		const myURL = this.state.proxyURL + encodeURIComponent(this.state.baseURL);
+		// const myURL = this.state.baseURL;
 		const myMethod = "GET";
-		console.log(myURL)
+
+		const fetchData = async () => {
+			try {
+				const btw73 = await fetch(
+					myURL , {
+						method: myMethod ,
+						headers: this.state.headers,
+					}
+				);
+				if (!btw73.ok) {
+					throw new Error(`HTTP error! status: ${btw73.status}`);
+				}
+				// const data = await btw73.json();
+				if (this.isJson(btw73)) {
+					this.loadItems(JSON.parse(btw73)) ;
+				} else {
+					this.loadItems(btw73) ;
+				}
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		};
+		fetchData();
+
+		/* 
 		getXHRData(myURL, myMethod, (btw73) => {
+			console.log(myURL);
 			if (this.isJson(btw73)) {
 				this.loadItems(JSON.parse(btw73)) ;
 			} else {
 				this.loadItems(btw73) ;
 			}
 		});
+		*/
 	}
 
 	isJson = (str) => {
@@ -310,3 +314,46 @@ export class EbayPagination extends Component {
 	}
  
 }
+
+
+
+/* ===== EBAY BROWSE API DOCUMENTATION =====
+https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search
+https://developer.ebay.com/api-docs/buy/static/ref-buy-browse-filters.html
+https://developer.ebay.com/api-docs/static/oauth-ui-tokens.html
+https://developer.ebay.com/my/keys
+https://developer.ebay.com/my/auth?env=production&index=0
+*/
+
+
+
+/* == OLD FINDING SERVICE API DOCUMENTATION ==
+// https://developer.ebay.com/develop/get-started/api-deprecation-status
+// proxyURL: "https://api.codetabs.com/v1/proxy/?quest=",
+// proxyURL: 'https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=',
+// proxyURL: 'https://corsproxy.io/?',
+proxyURL: 'https://proxy.pixelated.tech/prod/proxy?url=',
+baseURL: "https://svcs.ebay.com/services/search/FindingService/v1?",
+urlProps: {
+	"OPERATION-NAME": "findItemsByKeywords",
+	"SERVICE-VERSION": "1.0.0",
+	"SECURITY-APPNAME": "BrianWha-Pixelate-PRD-1fb4458de-1a8431fe",
+	"GLOBAL-ID": "EBAY-US",
+	"RESPONSE-DATA-FORMAT": "JSON",
+	"REST-PAYLOAD": "",
+	"keywords": "sunglasses",
+	"outputSelector": "PictureURLSuperSize",
+	"paginationInput.entriesPerPage": 10,
+	"paginationInput.pageNumber": 1,
+	"sortOrder": "StartTimeNewest",
+	"itemFilter(0).name": "Seller",
+	"itemFilter(0).value": "btw73"
+	// url += "&callback=_cb_findItemsByKeywords";
+},
+filterarray: [{
+	"name":"Seller",
+	"value":"btw73",
+	"paramName":"",
+	"paramValue":""
+}], 
+*/

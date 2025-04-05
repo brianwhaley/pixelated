@@ -5,12 +5,12 @@ npm login --scope=@brianwhaley --registry=https://registry.npmjs.org
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 
-eslint --fix --ext .jsx --ext .js --ext .tsx --ext .ts . 
+eslint --fix --ext .js,.jsx .
 npm run build
-npm version patch
+npm version patch --force
 git add * -v
-git commit -m "module type fix"
-git push pixelated-components dev
+git commit -m "fixes for storybook"
+git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f
 https://www.npmjs.com/package/@brianwhaley/pixelated-components

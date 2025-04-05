@@ -1,13 +1,14 @@
 import { FormEngine } from '../components/form/pixelated.form'
 import '../components/form/pixelated.form.css'
-import data from '../components/form/pixelated.form.json'
+import '../css/pixelated.less';
+import data from '../data/form.json'
 
 export default {
-	title: 'Form Engine',
+	title: 'Form',
 	component: FormEngine
 }
 
-export const Primary = {
+export const Form_Engine = {
 	args: {
 		formdata: data
 	}

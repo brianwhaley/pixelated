@@ -1,12 +1,13 @@
 import { FormExtractor } from '../components/form/pixelated.form'
 import '../components/form/pixelated.form.css'
+import '../css/pixelated.less';
 
 export default {
-	title: 'Form Extractor',
+	title: 'Form',
 	component: FormExtractor
 }
 
-export const Primary = {
+export const Form_Extractor = {
 	args: {
 	}
 }
