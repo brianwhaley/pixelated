@@ -55,6 +55,18 @@
     padding: 5px;
 }
 
+.accordionIn {
+	left: 0px;
+	transition: transform 0.5s ease-out 0.0s;
+	transform: translateX(0px);
+}
+
+.accordionOut {
+	left: 0px;
+	transition: transform 0.5s ease-out 0.0s;
+	transform: translateX(-250px);
+}
+
 .accordionMenu,
 .accordionMenu ul {
 	/* ALL LIST LEVELS */

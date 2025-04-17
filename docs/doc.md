@@ -9,7 +9,7 @@ eslint --fix --ext .js,.jsx .
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add readme file"
+git commit -m "converted most to function components, linted"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

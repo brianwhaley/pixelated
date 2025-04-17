@@ -85,14 +85,14 @@ export class EbayItems extends Component {
 		let newItems = [];
 		for (let i in items) {
 			const item = items[i];
-			const newItem = <EbayItemH url={item.url} image={item.image} title={item.title} price={item.price} id={item.id} key={item.id} location={item.location} endTime={item.endTime} watchCount={item.watchCount} />
+			const newItem = <EbayItemH url={item.url} image={item.image} title={item.title} price={item.price} id={item.id} key={item.id} location={item.location} endTime={item.endTime} watchCount={item.watchCount} />;
 			newItems.push(newItem);
 		}
 		return newItems;
 	}
 
 	gotoPage(pageNum) {
-		window.scrollTo({top: 0})
+		window.scrollTo({top: 0});
 		// window.scroll({ top: 0, behavior: 'smooth' })let state = { ...this.state };
 		let newState = { ...this.state };
 		newState.urlProps["paginationInput.pageNumber"] = pageNum ;
@@ -149,7 +149,7 @@ export class EbayItems extends Component {
 			return false;
 		}
 		return true;
-	}
+	};
 
 	render() {
 		return (

@@ -3,7 +3,16 @@
 ===============  RECIPES    ===============
 ======================================== */
 
-.h_recipe_category {
+#recipe-list {
+    background-image: url(/images/bg7-dk.gif);
+	border: 1px solid #999;
+	box-shadow: 5px 5px 5px rgba(127, 127, 127, 1.0);
+	font-size: 18px;
+	height: 2em;
+    margin-bottom: 15px;
+}
+
+.h-recipe-category {
 	background-color: #EEE;
     background-image: url(/images/bg7-dk.gif);
     border: 1px solid #CCC;
@@ -16,15 +25,11 @@
     width: 100%;
 }
 
-.h_recipe {
-	font-size: 12px;
-}
+/* https://microformats.org/wiki/h-recipe */
 
-.h_recipe p {
-	margin: 0px !important;
-}
-
-.h_recipe.p_name {
+.h-recipe { font-size: 12px; }
+.h-recipe p { margin: 0px !important; }
+.h-recipe.p-name {
     background-color: #F9F9F9;
     border: 1px solid #CCC;
     color: #000;
@@ -34,67 +39,48 @@
     float: left;
     width: 100%;
 }
-
-.e_ingredients, .e_instructions {
+.e-ingredients, .e-instructions {
 	color: #454545;
     font-family: Lucida Sans Unicode, Lucida, Helvetica, sans-serif;
     font-size: 16px;
     font-style: italic;
     margin-top: 20px;
 }
-
-.p_ingredient { --do-nothing: true }
-
-.p_yield { --do-nothing: true }
-
-.e_instructions {
+.h-recipe .p-ingredient { --do-nothing: true }
+.h-recipe .p-yield { --do-nothing: true }
+.h-recipe .e-instructions {
 	list-style-type: decimal-leading-zero;
 }
-
-.p_instruction { --do-nothing: true }
-
-.dt_duration { --do-nothing: true }
-
-.u_photo {
+.h-recipe .p-instruction { --do-nothing: true }
+.h-recipe .dt-duration { --do-nothing: true }
+.h-recipe .u-photo {
 	float: right;
 	margin: 15px;
     max-width: 400px;
     max-height: 400px;
 }
-
-.u_photo:after{
+.h-recipe .u-photo:after{
 	content: "";
   	display: table;
   	clear: both;
 }
-
 @media screen and (max-width: 480px) {
-	.u_photo {
+	.h-recipe .u-photo {
 		float: none;
 		margin: 10px auto;
 		display: block;
 	}
 }
 
-#recipe_list {
-    background-image: url(/images/bg7-dk.gif);
-	border: 1px solid #999;
-	box-shadow: 5px 5px 5px rgba(127, 127, 127, 1.0);
-	font-size: 18px;
-	height: 2em;
-    margin-bottom: 15px;
-}
+/* EXPERIMENTAL PROPERTIES WITH WIDE ADOPTION */
+.h-recipe .p-summary { --do-nothing: true }
+.h-recipe .p-author { --do-nothing: true }
+.h-recipe .dt-published { --do-nothing: true }
+.h-recipe .p-nutrition { --do-nothing: true }
+.h-recipe .p-category { --do-nothing: true }
 
-.p_summary { --do-nothing: true }
-
-.p_author { --do-nothing: true }
-
-.dt_published { --do-nothing: true }
-
-.p_nutrition { --do-nothing: true }
-
-.p_category { --do-nothing: true }
-
+/* PROPOSED PROPERTIES */
+.h-recipe .u-remix-of { --do-nothing: true }
 
 /* ========================================
 ==========    BACK TO TOP    ==============

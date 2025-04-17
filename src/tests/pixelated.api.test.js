@@ -1,4 +1,4 @@
-import { getXHRData, generateURL } from '../components/utilities/pixelated.api'
+import { getXHRData, generateURL } from '../components/utilities/pixelated.api';
 
 test('Flickr data returns properly', () => {
 	const flickrConfig = {
@@ -14,24 +14,24 @@ test('Flickr data returns properly', () => {
 			format: 'json',
 			nojsoncallback: 'true'
 		}
-	}
+	};
 
-	const myMethod = 'GET'
+	const myMethod = 'GET';
 
 	getXHRData(generateURL(flickrConfig.baseURL, flickrConfig.flickrProps), myMethod, (error, response, body) => {
-		expect(error).toBe(null)
-		expect(response.statusCode).toBe(200)
-		expect(body).toMatchSnapshot()
-		expect(body.length).toBeGreaterThan(0)
-		expect(body[0].id).toBeDefined()
-		expect(body.length).toBeGreaterThan(0)
-	})
+		expect(error).toBe(null);
+		expect(response.statusCode).toBe(200);
+		expect(body).toMatchSnapshot();
+		expect(body.length).toBeGreaterThan(0);
+		expect(body[0].id).toBeDefined();
+		expect(body.length).toBeGreaterThan(0);
+	});
 
 	getXHRData(generateURL('https://api.flickr.com/plorf/rest/?', flickrConfig.flickrProps), myMethod, (error, response, body) => {
-		expect(error).toBe(null)
-		expect(body).toBeDefined()
-		expect(response.statusCode).toBe(404)
-	})
+		expect(error).toBe(null);
+		expect(body).toBeDefined();
+		expect(response.statusCode).toBe(404);
+	});
 
 	/* errors, blank / null, */
-})
+});

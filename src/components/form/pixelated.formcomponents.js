@@ -1,5 +1,5 @@
 
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
@@ -10,112 +10,96 @@ const onChange = (me, event) => {
 	let myRequired = me.props.required ? event.target.checkValidity() : true ;
 	let myRequiredNotEmpty = (me.props.required && (!event.target.value)) ? false : true ;
 	let myValid = (myValidate && myParentValidate && myRequired && myRequiredNotEmpty ) ? true : false ;
-	me.setState({ isValid : myValid });
+	// me.setState({ isValid : myValid });
 	if (me.props.setIsValid) me.props.setIsValid(myValid);
-	// if (me.props.parent && me.props.parent.setIsValid) me.props.parent.setIsValid(myValid);
+	if (me.props.parent && me.props.parent.setIsValid) me.props.parent.setIsValid(myValid);
 	return true;
 };
 
 
 
-class FormLabel extends Component {
-	static propTypes = {
+function FormLabel(props) {
+	FormLabel.propTypes = {
 		id: PropTypes.string,
 		label: PropTypes.string,
 		tooltip: PropTypes.string,
 	};
-	static defaultProps = {
+	FormLabel.defaultProps = {
 		id: "",
 		label: "",
 		tooltip: "",
-	}
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return (
-			<Fragment >
-				{ this.props.label && this.props.id 
-					? <label id={this.props.id} htmlFor={this.props.id}>{this.props.label}</label> 
-					: "" }
-				{ this.props.tooltip 
-					? <FormTooltip
-						id={this.props.id}
-						text={this.props.tooltip}
-					/>
-					: "" }
-			</Fragment>
-		);
-	}
+	};
+	return (
+		<Fragment >
+			{ props.label && props.id 
+				? <label id={props.id} htmlFor={props.id}>{props.label}</label> 
+				: "" }
+			{ props.tooltip 
+				? <FormTooltip
+					id={props.id}
+					text={props.tooltip}
+				/>
+				: "" }
+		</Fragment>
+	);
 }
 
 
-class FormTooltip extends Component {
-	static propTypes = {
+function FormTooltip(props) {
+	FormTooltip.propTypes = {
 		id: PropTypes.string,
 		text: PropTypes.string,
 	};
-	static defaultProps = {
+	FormTooltip.defaultProps = {
 		id: "",
 		text: "",
-	}
-	constructor (props) {
-		super(props);
-		this.toggleTooltip = this.toggleTooltip.bind(this);
-	}
-	toggleTooltip = (e) => {
+	};
+	function toggleTooltip(e) {
 		e.preventDefault();
 		if (e.target.nextSibling.style.display == "block") {
-			e.target.nextSibling.style.display = "none"
+			e.target.nextSibling.style.display = "none";
 		} else {
-			e.target.nextSibling.style.display = "block"
+			e.target.nextSibling.style.display = "block";
 		}
 		return false;
 	}
 	// ℹ	8505	2139	 	INFORMATION SOURCE
 	// ⚠	9888	26A0	 	WARNING SIGN
 	// 				24BE		I IN CIRCLE
-	render () {
-		let thisID = "tooltip-" + this.props.id;
-		return (
-			<Fragment >
-				{ this.props.text && this.props.id 
-					? <Fragment>
-						<div id={thisID} className="tooltip">
-							<a href="#" className="tooltipIcon" onClick={this.toggleTooltip}>{'\u2139'}</a>
-							<div className="tooltipText">{this.props.text}</div>
-						</div>
-					</Fragment>
-					: "" }
-			</Fragment>
-		);
-	}
+	let thisID = "tooltip-" + props.id;
+	return (
+		<Fragment >
+			{ props.text && props.id 
+				? <Fragment>
+					<div id={thisID} className="tooltip">
+						<a href="#" className="tooltipIcon" onClick={toggleTooltip}>{'\u2139'}</a>
+						<div className="tooltipText">{props.text}</div>
+					</div>
+				</Fragment>
+				: "" }
+		</Fragment>
+	);
 }
 
 
 
-class FormValidate extends Component {
-	static propTypes = {
+function FormValidate(props) {
+	FormValidate.propTypes = {
 		id: PropTypes.string,
 		valid: PropTypes.bool,
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return ( 
-			<Fragment>
-				{ !this.props.valid ? 
-					<span id={this.props.id}>{ this.props.valid  ? "\u2705" : "\u274C" }</span> : "" }
-			</Fragment>
-		);
-	}
+	return ( 
+		<Fragment>
+			{ !props.valid ? 
+				<span id={props.id}>{ props.valid  ? "\u2705" : "\u274C" }</span> : "" }
+		</Fragment>
+	);
 }
 
 
 
-export class FormInput extends Component {
-	static propTypes = {
+export function FormInput(props) {
+	FormInput.propTypes = {
 		type: PropTypes.string,
 		id: PropTypes.string,
 		name: PropTypes.string,
@@ -144,38 +128,33 @@ export class FormInput extends Component {
 		tooltip: PropTypes.string,
 		validate: PropTypes.string,
 	};
-	constructor (props) {
-		super(props);
-		this.state = { 
-			isValid: true 
-		};
-	}
-	render () {
-		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
-		// ----- Input Props
-		let inputProps = JSON.parse(JSON.stringify(this.props));
-		["display", "label", "validate"].forEach(e => delete inputProps[e]);
-		inputProps["onChange"] = (e) => onChange(this, e) ;
-		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
-		if ( ["submit","button"].indexOf(this.props.type) > -1 ) { inputProps["value"] = this.props.value } ;
-		return (
-			<div>
-				{ this.props.type == "checkbox" ? <input {...inputProps} /> : "" }
-				<FormLabel key={"label-" + this.props.id} id={this.props.id} label={this.props.label} />
-				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
-				{ this.props.display == "vertical" ? formValidate : "" }
-				{ this.props.type != "checkbox" ? <input {...inputProps} /> : "" }
-				{ this.props.list ? <FormDataList id={this.props.list} items={FV[this.props.list]} /> : "" }
-				{ this.props.display != "vertical" ? formValidate : "" }
-			</div>
-		);
-	}
+
+	const [isValid, setIsValid] = useState(true);
+	
+	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
+	// ----- Input Props
+	let inputProps = JSON.parse(JSON.stringify(props));
+	["display", "label", "validate"].forEach(e => delete inputProps[e]);
+	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
+	if ( ["submit","button"].indexOf(props.type) > -1 ) { inputProps["value"] = props.value; } ;
+	return (
+		<div>
+			{ props.type == "checkbox" ? <input {...inputProps} /> : "" }
+			<FormLabel key={"label-" + props.id} id={props.id} label={props.label} />
+			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
+			{ props.display == "vertical" ? formValidate : "" }
+			{ props.type != "checkbox" ? <input {...inputProps} /> : "" }
+			{ props.list ? <FormDataList id={props.list} items={FV[props.list]} /> : "" }
+			{ props.display != "vertical" ? formValidate : "" }
+		</div>
+	);
 }
 
 
 
-export class FormSelect extends Component {
-	static propTypes = {
+export function FormSelect(props) {
+	FormSelect.propTypes = {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		size: PropTypes.string,
@@ -198,69 +177,61 @@ export class FormSelect extends Component {
 		tooltip: PropTypes.string,
 		validate: PropTypes.string,
 	};
-	constructor (props) {
-		super(props);
-		this.state = {
-			isValid: true
-		};
-	}
-	generateOptions(){
+
+	const [isValid, setIsValid] = useState(true);
+
+	function generateOptions(){
 		let options = [];
-		for (var option in this.props.options) {
-			let thisOption = this.props.options[option];
-			let thisKey = "select-" + this.props.id + "-" + thisOption.value ;
-			let newOption = <FormSelectOption key={thisKey} {...thisOption} />
+		for (var option in props.options) {
+			let thisOption = props.options[option];
+			let thisKey = "select-" + props.id + "-" + thisOption.value ;
+			let newOption = <FormSelectOption key={thisKey} {...thisOption} parent={{ isValid: isValid, setisValid: setIsValid }} />;
 			options.push(newOption);
 		}
 		return options ;
 	}
-	render () {
-		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
-		// ----- Input Props
-		let inputProps = JSON.parse(JSON.stringify(this.props));
-		["options", "display", "label", "validate"].forEach(e => delete inputProps[e]);
-		inputProps["onChange"] = (e) => onChange(this, e) ;
-		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
-		return (
-			<div>
-				<FormLabel key={"label-" + this.props.id} id={this.props.id} label = {this.props.label} />
-				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
-				{ this.props.display == "vertical" ? formValidate : "" }
-				<select {...inputProps} suppressHydrationWarning >
-					{this.generateOptions()}
-				</select>
-				{ this.props.display != "vertical" ? formValidate : "" }
-			</div>
-		);
-	}
+
+	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
+	// ----- Input Props
+	let inputProps = JSON.parse(JSON.stringify(props));
+	["options", "display", "label", "validate"].forEach(e => delete inputProps[e]);
+	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
+	return (
+		<div>
+			<FormLabel key={"label-" + props.id} id={props.id} label = {props.label} />
+			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
+			{ props.display == "vertical" ? formValidate : "" }
+			<select {...inputProps} suppressHydrationWarning >
+				{generateOptions()}
+			</select>
+			{ props.display != "vertical" ? formValidate : "" }
+		</div>
+	);
 }
 
 
 
-class FormSelectOption extends Component {
-	static propTypes = {
+function FormSelectOption(props) {
+	FormSelectOption.propTypes = {
 		text: PropTypes.string,
 		value: PropTypes.string,
 		// flag attributes
 		disabled: PropTypes.string,
 		// selected : PropTypes.string
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		let inputProps = JSON.parse(JSON.stringify(this.props));
-		["selected"].forEach(e => delete inputProps[e]);
-		return (
-			<option {...inputProps} >{this.props.text}</option>
-		);
-	}
+
+	let inputProps = JSON.parse(JSON.stringify(props));
+	["selected"].forEach(e => delete inputProps[e]);
+	return (
+		<option {...inputProps} >{props.text}</option>
+	);
 }
 
 
 
-export class FormTextarea extends Component {
-	static propTypes = {
+export function FormTextarea(props) {
+	FormTextarea.propTypes = {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		rows: PropTypes.string,
@@ -280,35 +251,30 @@ export class FormTextarea extends Component {
 		tooltip: PropTypes.string,
 		validate: PropTypes.string,
 	};
-	constructor (props) {
-		super(props);
-		this.state = {
-			isValid: true
-		};
-	}
-	render () {
-		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
-		// ----- Input Props
-		let inputProps = JSON.parse(JSON.stringify(this.props));
-		["display", "label", "validate"].forEach(e => delete inputProps[e]);
-		inputProps["onChange"] = (e) => onChange(this, e) ;
-		inputProps["className"] = (this.props.display == "vertical") ? "displayVertical" : "" ;
-		return (
-			<div>
-				<FormLabel key={"label-" + this.props.id} id={this.props.id} label = {this.props.label} />
-				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
-				{ this.props.display == "vertical" ? formValidate : "" }
-				<textarea {...inputProps} />
-				{ this.props.display != "vertical" ? formValidate : "" }
-			</div>
-		);
-	}
+
+	const [isValid, setIsValid] = useState(true);
+
+	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
+	// ----- Input Props
+	let inputProps = JSON.parse(JSON.stringify(props));
+	["display", "label", "validate"].forEach(e => delete inputProps[e]);
+	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
+	return (
+		<div>
+			<FormLabel key={"label-" + props.id} id={props.id} label = {props.label} />
+			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
+			{ props.display == "vertical" ? formValidate : "" }
+			<textarea {...inputProps} />
+			{ props.display != "vertical" ? formValidate : "" }
+		</div>
+	);
 }
 
 
 
-export class FormRadio extends Component {
-	static propTypes = {
+export function FormRadio(props) {
+	FormRadio.propTypes = {
 		id: PropTypes.string, // not using?
 		name: PropTypes.string,
 		options : PropTypes.array,
@@ -324,46 +290,39 @@ export class FormRadio extends Component {
 		tooltip: PropTypes.string,
 		validate: PropTypes.string,
 	};
-	constructor (props) {
-		super(props);
-		this.state = {
-			isValid: true
-		};
-		this.setIsValid = this.setIsValid.bind(this);
-	}
-	setIsValid(validValue){
-		this.setState({ isValid : validValue })
-	}
-	generateOptions(){
+
+	const [isValid, setIsValid] = useState(true);
+	
+	function generateOptions(){
 		let options = [];
-		for (var option in this.props.options) {
-			let thisOption = this.props.options[option];
-			thisOption.parent = this.props;
-			thisOption.setIsValid = this.setIsValid;
-			let thisKey = "radio-" + this.props.id + "-" + thisOption.value ;
-			let newOption = <FormRadioOption key={thisKey} {...thisOption} />
+		for (var option in props.options) {
+			let thisOption = props.options[option];
+			thisOption.setIsValid = setIsValid;
+			thisOption.parent = { ...props };
+			thisOption.parent.isValid = isValid;
+			thisOption.parent.setIsValid = setIsValid;
+			let thisKey = "radio-" + props.id + "-" + thisOption.value ;
+			let newOption = <FormRadioOption key={thisKey} {...thisOption} />;
 			options.push(newOption);
 		}
 		return options;
 	}
-	render () {
-		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
-		return (
-			<div>
-				<FormLabel key={"label-" + this.props.id} id={this.props.name} label={this.props.label} />
-				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
-				{ this.props.display == "vertical" ? formValidate : "" }
-				{this.generateOptions()}
-				{ this.props.display != "vertical" ? formValidate : "" }
-			</div>
-		);
-	}
+	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
+	return (
+		<div>
+			<FormLabel key={"label-" + props.id} id={props.name} label={props.label} />
+			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
+			{ props.display == "vertical" ? formValidate : "" }
+			{generateOptions()}
+			{ props.display != "vertical" ? formValidate : "" }
+		</div>
+	);
 }
 
 
 
-class FormRadioOption extends Component {
-	static propTypes = {
+function FormRadioOption(props) {
+	FormRadioOption.propTypes = {
 		name: PropTypes.string,
 		text: PropTypes.string,
 		value: PropTypes.string,
@@ -373,29 +332,24 @@ class FormRadioOption extends Component {
 		parent : PropTypes.object,
 		setIsValid : PropTypes.func,
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return (
-			<span className={ this.props.parent.display == "vertical" ? "displayVertical" : ""}>
-				<input type="radio" 
-					id={`${this.props.name}-${this.props.value}`} 
-					name={this.props.parent.name} 
-					value={this.props.value} 
-					defaultChecked={this.props.checked ? "checked" : ""} 
-					required={this.props.parent.required ? "required" : ""} 
-					onChange={ (e) => onChange(this, e) } />
-				<label htmlFor={this.props.text}>{this.props.text}</label>
-			</span>
-		);
-	}
+	return (
+		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
+			<input type="radio" 
+				id={`${props.name}-${props.value}`} 
+				name={props.parent.name} 
+				value={props.value} 
+				defaultChecked={props.checked ? "checked" : ""} 
+				required={props.parent.required ? "required" : ""} 
+				onChange={ (e) => onChange({props}, e) } />
+			<label htmlFor={props.text}>{props.text}</label>
+		</span>
+	);
 }
 
 
 
-export class FormCheckbox extends Component {
-	static propTypes = {
+export function FormCheckbox(props) {
+	FormCheckbox.propTypes = {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		options : PropTypes.array,
@@ -409,46 +363,40 @@ export class FormCheckbox extends Component {
 		tooltip: PropTypes.string,
 		validate: PropTypes.string,
 	};
-	constructor (props) {
-		super(props);
-		this.state = {
-			isValid: true
-		};
-		this.setIsValid = this.setIsValid.bind(this);
-	}
-	setIsValid(validValue){
-		this.setState({ isValid : validValue })
-	}
-	generateOptions(){
+
+	const [ isValid, setIsValid ] = useState(true);
+	
+	function generateOptions(){
 		let options = [];
-		for (var option in this.props.options) {
-			let thisOption = this.props.options[option];
-			thisOption.parent = this.props;
-			thisOption.setIsValid = this.setIsValid;
-			let thisKey = "checkbox-" + this.props.name + "-" + thisOption.value ;
-			let newOption = <FormCheckboxOption key={thisKey} {...thisOption} />
+		for (var option in props.options) {
+			let thisOption = props.options[option];
+			thisOption.setIsValid = setIsValid;
+			thisOption.parent = { ...props };
+			thisOption.parent.isValid = isValid;
+			thisOption.parent.setIsValid = setIsValid;
+			let thisKey = "checkbox-" + props.name + "-" + thisOption.value ;
+			let newOption = <FormCheckboxOption key={thisKey} {...thisOption} />;
 			options.push(newOption);
 		}
 		return options;
 	}
-	render () {
-		let formValidate = <FormValidate id={`${this.props.id}-validate`} valid={this.state.isValid} /> ;
-		return (
-			<div>
-				<FormLabel key={"label-" + this.props.id} id={this.props.name} label = {this.props.label} />
-				{ this.props.tooltip ? <FormTooltip id={this.props.id} text={this.props.tooltip} /> : "" }
-				{ this.props.display == "vertical" ? formValidate : "" }
-				{this.generateOptions()}
-				{ this.props.display != "vertical" ? formValidate : "" }
-			</div>
-		);
-	}
+
+	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
+	return (
+		<div>
+			<FormLabel key={"label-" + props.id} id={props.name} label = {props.label} />
+			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
+			{ props.display == "vertical" ? formValidate : "" }
+			{ generateOptions() }
+			{ props.display != "vertical" ? formValidate : "" }
+		</div>
+	);
 }
 
 
 
-class FormCheckboxOption extends Component {
-	static propTypes = {
+function FormCheckboxOption(props) {
+	FormCheckboxOption.propTypes = {
 		text: PropTypes.string,
 		value: PropTypes.string,
 		// flag attributes
@@ -458,82 +406,62 @@ class FormCheckboxOption extends Component {
 		setIsValid: PropTypes.func,
 		
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return (
-			<span className={ this.props.parent.display == "vertical" ? "displayVertical" : ""}>
-				<input type="checkbox" 
-					id={this.props.parent.name + "_" + this.props.text} 
-					name={this.props.text} value={this.props.value} 
-					onChange={ (e) => onChange(this, e) } 
-				/>
-				<label htmlFor={this.props.text}>{this.props.text}</label>
-			</span>
-		);
-	}
+	return (
+		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
+			<input type="checkbox" 
+				id={props.parent.name + "_" + props.text} 
+				name={props.text} value={props.value} 
+				onChange={ (e) => onChange({props}, e) } 
+			/>
+			<label htmlFor={props.text}>{props.text}</label>
+		</span>
+	);
 }
 
 
 
-export class FormButton extends Component {
-	static propTypes = {
+export function FormButton(props) {
+	FormButton.propTypes = {
 		type: PropTypes.string,
 		id: PropTypes.string,
 		text: PropTypes.string,
 		// ----- for calculations
 		onClick: PropTypes.func
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return (
-			<div>
-				<button 
-					type={this.props.type} 
-					id={this.props.id} 
-					onClick={this.props.onClick}>{this.props.text}</button>
-			</div>
-		);
-	}
+	return (
+		<div>
+			<button 
+				type={props.type} 
+				id={props.id} 
+				onClick={props.onClick}>{props.text}</button>
+		</div>
+	);
 }
 
 
 
-export class FormDataList extends Component {
-	static propTypes = {
+export function FormDataList(props) {
+	FormDataList.propTypes = {
 		id: PropTypes.string,
 		items: PropTypes.array,
 	};
-	constructor (props) {
-		super(props);
+	const options = [];
+	for (const item in props.items) {
+		const thisItem = props.items[item];
+		const newOption = <option key={props.id + '-' + thisItem} value={thisItem} />;
+		options.push(newOption);
 	}
-	render () {
-		const options = []
-		for (const item in this.props.items) {
-			const thisItem = this.props.items[item]
-			const newOption = <option key={this.props.id + '-' + thisItem} value={thisItem} />
-			options.push(newOption)
-		}
-		return (
-			<datalist id={this.props.id}>{options}</datalist>
-		);
-	}
+	return (
+		<datalist id={props.id}>{options}</datalist>
+	);
 }
 
 
 
-export class FormFieldset extends Component {
-	static propTypes = {
+export function FormFieldset(props) {
+	FormFieldset.propTypes = {
 	};
-	constructor (props) {
-		super(props);
-	}
-	render () {
-		return (
-			<Fragment />
-		);
-	}
+	return (
+		<Fragment />
+	);
 }

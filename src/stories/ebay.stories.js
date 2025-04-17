@@ -1,11 +1,11 @@
-import { EbayItems } from '../components/ebay/pixelated.ebay'
-import '../components/ebay/pixelated.ebay.css'
+import { EbayItems } from '../components/ebay/pixelated.ebay';
+import '../components/ebay/pixelated.ebay.css';
 import '../css/pixelated.less';
 
 export default {
 	title: 'Ebay Items',
 	component: EbayItems
-}
+};
 
 export const Primary = {
 	args: {
@@ -26,4 +26,4 @@ export const Primary = {
 			}
 		}
 	}
-}
+};

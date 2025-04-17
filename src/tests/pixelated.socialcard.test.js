@@ -1,8 +1,8 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
+import React from 'react';
+import renderer from 'react-test-renderer';
 /* import { shallow, mount, render } from 'enzyme'; */
-import { mount } from 'enzyme'
-import SocialCards, { SocialCard } from '../components/socialcard/pixelated.socialcard'
+import { mount } from 'enzyme';
+import SocialCards, { SocialCard } from '../components/socialcard/pixelated.socialcard';
 
 const card = {
 	title: 'Vintage 1960’s AMERICAN EXPRESS Credit Cards Sign by MoonshineMantiques',
@@ -13,7 +13,7 @@ const card = {
 	thumbnail: 'https://i.etsystatic.com/14377257/r/il/4b3d2f/1928553244/il_570xN.1928553244_je4r.jpg',
 	description: '↵<p class="image"><img src="https://i.etsystatic.com/14377257/r/il/4b3d2f/1928553244/il_570xN.1928553244_je4r.jpg" border="0" width="570" height="429"></p>↵<p class="price">145.00 USD</p>↵<p class="description">AMERICAN EXPRESS SIGN<br>- Double Sided.<br>- Painted Metal<br>- Circa 1960’s<br>- 16" x 21"<br>- See pictures for best description.<br><br>Moonshine Mantiques - Mooresville, NC<br>Alan Cagle 980-521-1874<br><br>Specializing in Petroliana, Gas Pumps, and Advertising Signs<br>You can find us on Facebook, Instagram, EBay, and Etsy.</p>↵',
 	content: '<img src="https://i.etsystatic.com/14377257/r/il/4b3d2f/1928553244/il_570xN.1928553244_je4r.jpg" border="0" width="570" height="429">'
-}
+};
 
 const myState = {
 	blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Views Blog Post' },
@@ -29,37 +29,37 @@ const myState = {
 	SOOpx: { url: 'https://500px.com/brianwhaley/rss' },
 	shutterfly: { url: 'https://cmd.shutterfly.com/commands/format/rss?site=brianwhaley&page=brianwhaley' }
 	/* twitter: { url: 'https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews' } */
-}
+};
 
 describe('SocialCards', () => {
 	test('SocialCards snapshot renders', () => {
-		const cSocialCards = renderer.create(<SocialCards sources={myState} />)
-		const tree = cSocialCards.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const cSocialCards = renderer.create(<SocialCards sources={myState} />);
+		const tree = cSocialCards.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('SocialCard snapshot renders', () => {
-		const iconSrc = 'images/etsy-logo.png'
-		const iconSrcAlt = 'Etsy Favorite'
+		const iconSrc = 'images/etsy-logo.png';
+		const iconSrcAlt = 'Etsy Favorite';
 
-		const cSocialCard = renderer.create(<SocialCard iconSrc={iconSrc} iconSrcAlt={iconSrcAlt} card={card} />)
-		const tree = cSocialCard.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const cSocialCard = renderer.create(<SocialCard iconSrc={iconSrc} iconSrcAlt={iconSrcAlt} card={card} />);
+		const tree = cSocialCard.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('SocialCards gatherData function is called properly', () => {
-		const cSocialCards = mount(<SocialCards sources={myState} />)
-		const instance = cSocialCards.instance()
-		jest.spyOn(instance, 'gatherData')
-		instance.componentDidMount()
-		expect(instance.gatherData).toHaveBeenCalledTimes(1)
-	})
+		const cSocialCards = mount(<SocialCards sources={myState} />);
+		const instance = cSocialCards.instance();
+		jest.spyOn(instance, 'gatherData');
+		instance.componentDidMount();
+		expect(instance.gatherData).toHaveBeenCalledTimes(1);
+	});
 
 	test('SocialCards getFeedEntries function is called properly', () => {
-		const cSocialCards = mount(<SocialCards sources={myState} />)
-		const instance = cSocialCards.instance()
-		jest.spyOn(instance, 'getFeedEntries')
-		instance.componentDidMount()
-		expect(instance.getFeedEntries).toHaveBeenCalledTimes(Object.keys(myState).length)
-	})
-})
+		const cSocialCards = mount(<SocialCards sources={myState} />);
+		const instance = cSocialCards.instance();
+		jest.spyOn(instance, 'getFeedEntries');
+		instance.componentDidMount();
+		expect(instance.getFeedEntries).toHaveBeenCalledTimes(Object.keys(myState).length);
+	});
+});

@@ -1,6 +1,6 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
-import Menu from '../components/menu/pixelated.menu-accordion'
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Menu from '../components/menu/pixelated.menu-accordion';
 
 const menuItems = {
 	Home: './index.html',
@@ -14,12 +14,12 @@ const menuItems = {
 	TechJokes: '/techjokes.html',
 	Photography: './photography.html',
 	Recipes: './recipes.html'
-}
+};
 
 describe('Menu', () => {
 	test('Menu with props snapshot renders', () => {
-		const cMenu = renderer.create(<Menu menuItems={menuItems} />)
-		const tree = cMenu.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
-})
+		const cMenu = renderer.create(<Menu menuItems={menuItems} />);
+		const tree = cMenu.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
+});

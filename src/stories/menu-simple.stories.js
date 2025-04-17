@@ -1,5 +1,5 @@
-import { MenuSimple } from '../components/menu/pixelated.menu-simple'
-import '../components/menu/pixelated.menu-accordion.css'
+import { MenuSimple } from '../components/menu/pixelated.menu-simple';
+import '../components/menu/pixelated.menu-accordion.css';
 import '../css/pixelated.less';
 
 const menuItems = {
@@ -15,15 +15,15 @@ const menuItems = {
 	'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
 	'Custom Sunglasses': '/customsunglasses.html',
 	Recipes: '/recipes.html'
-}
+};
 
 export default {
 	title: 'Menu - Simple',
 	component: MenuSimple
-}
+};
 
 export const Primary = {
 	args: {
 		menuItems
 	}
-}
+};

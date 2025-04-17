@@ -1,6 +1,6 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
-import Carousel, { /* CarouselSlider, */ CarouselSliderImage, CarouselSliderArrow, CarouselSliderDetails, /* CarouselHero, */ CarouselHeroImage, CarouselHeroDetails } from '../components/carousel/pixelated.carousel'
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Carousel, { /* CarouselSlider, */ CarouselSliderImage, CarouselSliderArrow, CarouselSliderDetails, /* CarouselHero, */ CarouselHeroImage, CarouselHeroDetails } from '../components/carousel/pixelated.carousel';
 
 const image = {
 	id: '42079144500',
@@ -17,14 +17,14 @@ const image = {
 	datetakengranularity: '0',
 	datetakenunknown: '0',
 	ownername: 'brianwhaley'
-}
+};
 
 describe('Carousel', () => {
 	test('Carousel snapshot renders', () => {
-		const cCarousel = renderer.create(<Carousel />)
-		const tree = cCarousel.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const cCarousel = renderer.create(<Carousel />);
+		const tree = cCarousel.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	/*
 	test('Carousel Slider snapshot renders', () => {
@@ -35,60 +35,60 @@ describe('Carousel', () => {
 	*/
 
 	test('Carousel Slider Image snapshot renders', () => {
-		const direction = 'next'
-		const activeIndex = 0
-		const index = 1
-		const imagesLength = 135
-		const size = '_b'
-		const cCarouselImage = renderer.create(<CarouselSliderImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>)
-		const tree = cCarouselImage.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const direction = 'next';
+		const activeIndex = 0;
+		const index = 1;
+		const imagesLength = 135;
+		const size = '_b';
+		const cCarouselImage = renderer.create(<CarouselSliderImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>);
+		const tree = cCarouselImage.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('Carousel Slider Arrow Next snapshot renders', () => {
-		const direction = 'next'
-		const glyph = '&#9654;'
-		const cCarousel = renderer.create(<Carousel />)
-		cCarousel.nextImage = jest.fn()
-		const cCarouselArrow = renderer.create(<CarouselSliderArrow direction={direction} clickFunction={cCarousel.nextImage} glyph={glyph} />)
-		const tree = cCarouselArrow.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const direction = 'next';
+		const glyph = '&#9654;';
+		const cCarousel = renderer.create(<Carousel />);
+		cCarousel.nextImage = jest.fn();
+		const cCarouselArrow = renderer.create(<CarouselSliderArrow direction={direction} clickFunction={cCarousel.nextImage} glyph={glyph} />);
+		const tree = cCarouselArrow.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('Carousel Slider Arrow Prev snapshot renders', () => {
-		const direction = 'prev'
-		const glyph = '&#9664;'
-		const cCarousel = renderer.create(<Carousel />)
-		cCarousel.nextImage = jest.fn()
-		const cCarouselArrow = renderer.create(<CarouselSliderArrow direction={direction} clickFunction={cCarousel.nextImage} glyph={glyph} />)
-		const tree = cCarouselArrow.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const direction = 'prev';
+		const glyph = '&#9664;';
+		const cCarousel = renderer.create(<Carousel />);
+		cCarousel.nextImage = jest.fn();
+		const cCarouselArrow = renderer.create(<CarouselSliderArrow direction={direction} clickFunction={cCarousel.nextImage} glyph={glyph} />);
+		const tree = cCarouselArrow.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('Carousel Slider Details snapshot renders', () => {
-		const index = 1
-		const length = 135
-		const cCarouselDetails = renderer.create(<CarouselSliderDetails index={index} length={length} image={image}/>)
-		const tree = cCarouselDetails.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const index = 1;
+		const length = 135;
+		const cCarouselDetails = renderer.create(<CarouselSliderDetails index={index} length={length} image={image}/>);
+		const tree = cCarouselDetails.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('Carousel Hero Image snapshot renders', () => {
-		const direction = 'next'
-		const activeIndex = 0
-		const index = 1
-		const imagesLength = 135
-		const size = '_b'
-		const cCarouselImage = renderer.create(<CarouselHeroImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>)
-		const tree = cCarouselImage.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
+		const direction = 'next';
+		const activeIndex = 0;
+		const index = 1;
+		const imagesLength = 135;
+		const size = '_b';
+		const cCarouselImage = renderer.create(<CarouselHeroImage direction={direction} activeIndex={activeIndex} index={index} imagesLength={imagesLength} image={image} size={size}/>);
+		const tree = cCarouselImage.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 
 	test('Carousel Hero Details snapshot renders', () => {
-		const index = 1
-		const length = 135
-		const cCarouselDetails = renderer.create(<CarouselHeroDetails index={index} length={length} image={image}/>)
-		const tree = cCarouselDetails.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
-})
+		const index = 1;
+		const length = 135;
+		const cCarouselDetails = renderer.create(<CarouselHeroDetails index={index} length={length} image={image}/>);
+		const tree = cCarouselDetails.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
+});

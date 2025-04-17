@@ -1,11 +1,11 @@
-import { Callout } from '../components/callout/pixelated.callout'
-import '../components/callout/pixelated.callout.css'
+import { Callout } from '../components/callout/pixelated.callout';
+import '../components/callout/pixelated.callout.css';
 import '../css/pixelated.less';
 
 export default {
 	title: 'Callout',
 	component: Callout
-}
+};
 
 export const CalloutHorizontal = {
 	title: 'Callout Horizontal',

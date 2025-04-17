@@ -1,74 +1,74 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { getXHRData, generateURL } from '../utilities/pixelated.api'
-import './pixelated.nerdjoke.css'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { getXHRData, generateURL } from '../utilities/pixelated.api';
+import './pixelated.nerdjoke.css';
 
 export class NerdJoke extends Component {
 	constructor (props) {
-		super(props)
-		this.TIME_LIMIT = 15
-		this.timePassed = 0
-		this.timePaused = false
-		this.timeLeft = this.TIME_LIMIT
-		this.timerInterval = null
-		this.jokeInterval = null
+		super(props);
+		this.TIME_LIMIT = 15;
+		this.timePassed = 0;
+		this.timePaused = false;
+		this.timeLeft = this.TIME_LIMIT;
+		this.timerInterval = null;
+		this.jokeInterval = null;
 		this.state = {
 			joke: {
 				question: '',
 				answer: ''
 			}
-		}
+		};
 	}
 
 	loadJoke = () => {
-		this.timePassed = 0
-		this.timeLeft = this.TIME_LIMIT
-		this.timerInterval = null
+		this.timePassed = 0;
+		this.timeLeft = this.TIME_LIMIT;
+		this.timerInterval = null;
 
-		clearInterval(this.jokeInterval)
+		clearInterval(this.jokeInterval);
 		this.jokeInterval = setInterval(() => {
 			if (!this.timePaused) {
-				this.loadJoke()
+				this.loadJoke();
 			}
-		}, this.TIME_LIMIT * 1000)
+		}, this.TIME_LIMIT * 1000);
 
-		const myURL = 'https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?'
-		const myURLProps = { command: '%2Fnerdjokes', text: 'getjokejson' }
-		const myMethod = 'GET'
+		const myURL = 'https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?';
+		const myURLProps = { command: '%2Fnerdjokes', text: 'getjokejson' };
+		const myMethod = 'GET';
 		getXHRData(generateURL(myURL, myURLProps), myMethod, (jokeData) => {
-			const myJokeData = jokeData
-			this.setState({ joke: myJokeData })
-		})
-	}
+			const myJokeData = jokeData;
+			this.setState({ joke: myJokeData });
+		});
+	};
 
 	formatTimeLeft = (time) => {
-		const minutes = Math.floor(time / 60)
-		let seconds = time % 60
+		const minutes = Math.floor(time / 60);
+		let seconds = time % 60;
 		if (seconds < 10) {
-			seconds = `0${seconds}`
+			seconds = `0${seconds}`;
 		}
-		return `${minutes}:${seconds}`
-	}
+		return `${minutes}:${seconds}`;
+	};
 
 	startTimer = () => {
 		this.timerInterval = setInterval(() => {
 			if (!this.timePaused) {
-				this.timePassed = this.timePassed += 1
-				this.timeLeft = this.TIME_LIMIT - this.timePassed + 1
-				const myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + '%'
-				document.getElementById('jokeTimerLabel').innerHTML = this.formatTimeLeft(this.timeLeft)
-				document.getElementById('jokeTimerPathElapsed').style.width = myWidth
+				this.timePassed = this.timePassed += 1;
+				this.timeLeft = this.TIME_LIMIT - this.timePassed + 1;
+				const myWidth = (((1 / this.TIME_LIMIT) * this.timeLeft) * 100) + '%';
+				document.getElementById('jokeTimerLabel').innerHTML = this.formatTimeLeft(this.timeLeft);
+				document.getElementById('jokeTimerPathElapsed').style.width = myWidth;
 			}
-		}, 1000)
-	}
+		}, 1000);
+	};
 
 	pauseTimer = () => {
-		this.timePaused = !this.timePaused
-	}
+		this.timePaused = !this.timePaused;
+	};
 
 	componentDidMount () {
-		this.loadJoke()
-		this.startTimer()
+		this.loadJoke();
+		this.startTimer();
 	}
 
 	render () {
@@ -107,7 +107,7 @@ export class NerdJoke extends Component {
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
@@ -116,7 +116,7 @@ export class JokeButton extends Component {
 	static propTypes = {
 		clickFunction: PropTypes.func.isRequired,
 		buttonText: PropTypes.string.isRequired
-	}
+	};
 
 	render () {
 		return (
@@ -124,6 +124,6 @@ export class JokeButton extends Component {
 				onClick={ this.props.clickFunction }>
 				{ this.props.buttonText }
 			</div>
-		)
+		);
 	}
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion'
-import '../components/menu/pixelated.menu-accordion.css'
+import React, { useRef, useState } from 'react';
+import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion';
+import '../components/menu/pixelated.menu-accordion.css';
 import '../css/pixelated.less';
 
 const menuItems = {
@@ -16,19 +16,12 @@ const menuItems = {
 	'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
 	'Custom Sunglasses': '/customsunglasses.html',
 	Recipes: '/recipes.html'
-}
+};
 
 export default {
 	title: 'Menu - Accordion',
 	component: MenuAccordion
-}
-
-/* export const Primary = {
-	args: {
-		menuItems
-	}
-} */
-
+};
 
 // Parent Component
 const ParentAccordionMenu = () => {
@@ -38,7 +31,7 @@ const ParentAccordionMenu = () => {
 				<MenuAccordionButton />
 			</div>
 			<div style={{ position: 'fixed', left: '10px', top:'100px' }}>
-				<MenuAccordion />
+				<MenuAccordion menuItems={menuItems} />
 			</div>
 		</>
 	);

@@ -1,95 +1,104 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import './pixelated.menu-accordion.css'
+'use client';
+
+import React, { Component, useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import './pixelated.menu-accordion.css';
 
 /* ========== MENU ========== */
-export class MenuAccordion extends Component {
-	static propTypes = {
+export function MenuAccordion(props) {
+	MenuAccordion.propTypes = {
 		menuItems: PropTypes.object.isRequired
-	}
+	};
 
-	constructor (props) {
-		super(props)
-		this.state = {
-			menuItems: [],
-			left: -350
+	const debug = false;
+	const left = useRef(-250);
+	function setLeft(leftVal) { left.current = leftVal; };
+	const documentRef = useRef(null);
+
+	function generateMenuItems() {
+		const myItems = [];
+		for (const itemKey in props.menuItems) {
+			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={props.menuItems[itemKey]} />);
 		}
-		this.moveMenu = this.moveMenu.bind(this)
+		return myItems;
 	}
 
-	generateMenuItems () {
-		const myItems = []
-		for (const itemKey in this.props.menuItems) {
-			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={this.props.menuItems[itemKey]} />)
+	function moveMenu() {
+		if (debug) console.log("Moving Menu... Left: ", left);
+		const menu = documentRef.current.getElementById('accordionMenu');
+		const menuParent = menu.parentElement;
+		if (left.current === 0) { 
+			if (debug) console.log("Moving Menu Out");
+			menuParent.classList.remove('accordionIn');
+			menuParent.classList.add('accordionOut');
+			setLeft( -250 ); 
+		} else { 
+			if (debug) console.log("Moving Menu In");
+			menuParent.classList.remove('accordionOut');
+			menuParent.classList.add('accordionIn');
+			setLeft( 0 ); 
 		}
-		// this.setState({ menuItems: myItems })
-		return myItems
-	}
-
-	moveMenu () {
-		if (this.state.left === 0) {
-			this.setState({ left: -350 })
-		} else {
-			this.setState({ left: 0 })
-		}
-	}
-
-	componentDidMount = () => {
-		const menu = document.getElementById('accordionMenu')
-		const menuBtn = document.getElementById('panelMenuButton')
-		document.addEventListener('click', (event) => {
-			const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target))
-			if (!isClicked) {
-				if (this.state.left === 0) this.moveMenu()
+	};
+	
+	useEffect(() => {
+		window.moveMenu = moveMenu; // attach moveMenu function to the window object for use in MenuAccordionButton
+		documentRef.current = document; // for moveMenu
+		const menu = document.getElementById('accordionMenu');
+		const menuBtn = document.getElementById('panelMenuButton');
+		function handleMenuClick(event) {
+			if (debug) console.log("event : ", event, "target : ", event.target);
+			const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target));
+			if (debug) console.log("isClicked : ", isClicked);
+			if (isClicked) {
+				// event.preventDefault();
+				event.stopPropagation();
+				moveMenu();
+			} else if (!isClicked && left.current === 0 ) {
+				moveMenu();
 			}
-		}, true)
-	}
+		};
+		document.addEventListener('click', handleMenuClick, true);
+		return () => {
+			document.removeEventListener('click', handleMenuClick);
+		};
+	}, [] );
 
-	componentWillUnmount () {
-		window.removeEventListener('click', this.handleResize)
-	}
-
-	render () {
-		const styles = { left: '0px' }
-		styles.transition = 'transform 0.5s ease-out 0.0s'
-		styles.transform = 'translateX(' + this.state.left + 'px)'
-		return (
-			<div className="accordionMenuWrapper" style={styles}>
-				<div className="accordionMenu" id="accordionMenu">
-					<ul className="grid12 clearfix">
-						{ this.generateMenuItems() }
-					</ul>
-				</div>
+	return (
+		<div className="accordionMenuWrapper accordionOut">
+			<div className="accordionMenu" id="accordionMenu">
+				<ul className="grid12 clearfix">
+					{ generateMenuItems() }
+				</ul>
 			</div>
-		)
-	}
+		</div>
+	);
 }
 
 /* ========== MENU ITEM ========== */
-export class MenuAccordionItem extends Component {
-	static propTypes = {
+export function MenuAccordionItem(props) {
+	MenuAccordionItem.propTypes = {
 		name: PropTypes.string.isRequired,
 		href: PropTypes.string.isRequired
-	}
+	};
 
-	render () {
-		return (
-			<li><a href={this.props.href}>{this.props.name}</a></li>
-		)
-	}
+	return (
+		<li><a href={props.href}>{props.name}</a></li>
+	);
 }
 
 /* ========== MENU BUTTON ========== */
-export class MenuAccordionButton extends Component {
-	slideMobilePanel () {
-		window.myMenu.moveMenu()
-	}
+export function MenuAccordionButton(props) {
+	MenuAccordionButton.propTypes = {
+	};
+	
+	function slideMobilePanel() {
+		window.moveMenu();
+	} 
 
-	render () {
-		return (
-			<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={this.slideMobilePanel}>
-				<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
-			</div>
-		)
-	}
+	return (
+		<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={slideMobilePanel}>
+			<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
+		</div>
+	);
+
 }

@@ -1,8 +1,8 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
-import Recipe from '../components/recipe/pixelated.recipe'
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Recipe from '../components/recipe/pixelated.recipe';
 
-const recipeCategories = ['bread', 'appetizer', 'dinner', 'slow cooker', 'side dish', 'salad', 'dessert']
+const recipeCategories = ['bread', 'appetizer', 'dinner', 'slow cooker', 'side dish', 'salad', 'dessert'];
 
 const recipe = {
 	type: ['h-recipe'],
@@ -20,12 +20,12 @@ const recipe = {
 		category: ['dinner'],
 		license: ['http://creativecommons.org/licenses/by/2.0/']
 	}
-}
+};
 
 describe('Recipe', () => {
 	test('Recipe with props snapshot renders', () => {
-		const cRecipe = renderer.create(<Recipe recipeData={recipe} recipeCategories={recipeCategories}/>)
-		const tree = cRecipe.toJSON()
-		expect(tree).toMatchSnapshot()
-	})
-})
+		const cRecipe = renderer.create(<Recipe recipeData={recipe} recipeCategories={recipeCategories}/>);
+		const tree = cRecipe.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
+});

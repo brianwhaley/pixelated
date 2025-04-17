@@ -2,14 +2,14 @@
 /* https://randyperkins2k.medium.com/writing-a-simple-markdown-parser-using-javascript-1f2e9449a558 */
 
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import "./pixelated.markdown.css";
 // import markdowndata from "./readme.md";
 
 export function Markdown(props) {
 	Markdown.propTypes = {
 		markdowndata: PropTypes.string.isRequired,
-	}
+	};
 	
 	function markdownParser (text) {
 		const toHTML = text

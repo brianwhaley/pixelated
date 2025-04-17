@@ -19,7 +19,8 @@ export default [
     },
     rules: {
       'indent': ['error', 'tab'],
-      'no-tabs': 'off' // Optional: If you strictly want to allow only tabs
+      'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
+      "semi": ["error", "always"]
     },
   },
 ];
