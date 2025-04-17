@@ -4,8 +4,8 @@ import React from "react";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { Table } from "@brianwhaley/pixelated-components";
-import requestData from "@/app/data/requests.json"
-import formData from "@/app/data/requestform.json"
+import requestData from "@/app/data/requests.json";
+import formData from "@/app/data/requestform.json";
 
 export default function Requests() {
 
@@ -47,7 +47,7 @@ export default function Requests() {
 					throw new Error(response.statusText);
 				}
 				return response.json();
-			}) 
+			}); 
 		mydialog.close();
 		tyDialog.showModal();
 	}
@@ -65,7 +65,7 @@ export default function Requests() {
 
 
 			<dialog id="newRequestDialog">
-				<FormEngine name="newrequest" id="newRequestForm" formdata={formData} />
+				<FormEngine name="newrequest" id="newRequestForm" formData={formData} />
 				<br />
 				<center>
 					<br />

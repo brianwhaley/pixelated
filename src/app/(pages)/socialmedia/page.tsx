@@ -5,6 +5,7 @@ import { CalloutHeader, CalloutRoundSm } from "@brianwhaley/pixelated-components
 import { SocialCards } from "@brianwhaley/pixelated-components";
 
 /* ========== NOTES ==========
+TO DO : Google News Saved Articles
 ERRORS: 500px, shutterfly - malformed XML RSS
 */
 
@@ -79,24 +80,24 @@ export default function SocialMedia() {
 					<div className="row grid8 push2">
 						<div className="grid6">
 							<CalloutRoundSm url="https://github.com/brianwhaley" img="/images/logos/github-logo.png" title="Github" />
+							<CalloutRoundSm url="https://maps.app.goo.gl/j5Tpcxxr9roydxd2A" img="/images/logos/googlemaps-logo.png" title="Google Maps Travelogue" />
 							<CalloutRoundSm url="https://500px.com/brianwhaley" img="/images/logos/500px-logo.png" title="500px" />
-							<CalloutRoundSm url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" title="Flickr" />
 						</div>
 						<div className="grid6">
+							<CalloutRoundSm url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" title="Flickr" />
 							<CalloutRoundSm url="https://secure.istockphoto.com/portfolio/brianwhaley" img="/images/logos/istock-logo.jpg" title="iStock Photo" />
 							<CalloutRoundSm url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" title="Shutter Stock" />
-							<CalloutRoundSm url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" title="Instagram" />
 						</div>
 					</div>
 					
 					<div className="row grid8 push2">
 						<div className="grid6">
+							<CalloutRoundSm url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" title="Instagram" />
 							<CalloutRoundSm url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" title="Blurb" />
 							<CalloutRoundSm url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" title="Shutterfly" />
-							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" />
 						</div>
 						<div className="grid6">
-							<CalloutRoundSm url={null} img={null} title={null} />
+							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" />
 							<CalloutRoundSm url={null} img={null} title={null} />
 							<CalloutRoundSm url={null} img={null} title={null} />
 						</div>

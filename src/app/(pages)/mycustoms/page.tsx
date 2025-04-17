@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Carousel } from "@brianwhaley/pixelated-components";
-const props = {tag: "btw-customsunglasses"}
+const props = {tag: "btw-customsunglasses"};
 
 function GalleryWrapper( vals: { props: { tag: string; }; } ) {
 	const myTag = vals.props.tag;

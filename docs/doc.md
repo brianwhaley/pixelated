@@ -49,9 +49,9 @@ eslint --ext .js,.jsx,.ts,.tsx .
 [//]: # npm --no-git-tag-version version patch
 npm version major
 npm version minor
-npm version patch
+npm version patch --force
 git add * -v
-git commit -m "homepage change, component upgrade"
+git commit -m "new version of pixelated components, ebay fix, google maps link"
 git push pixelated dev --tags
 git push pixelated dev:main
 

@@ -35,6 +35,9 @@ export default defineConfig([
     rules: {
       // ...pluginNext.configs.recommended.rules,
       // ...pluginNext.configs['core-web-vitals'].rules,
+      'indent': ['error', 'tab'],
+      'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
+      "semi": ["error", "always"]
     },
     /* rules: {
       ...globals.browser.recommended,

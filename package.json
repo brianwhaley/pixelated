@@ -13,7 +13,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^1.1.18",
+    "@brianwhaley/pixelated-components": "^1.2.0",
     "@eslint/js": "^9.24.0",
     "date-fns": "^4.1.0",
     "eslint-plugin-react": "^7.37.5",
