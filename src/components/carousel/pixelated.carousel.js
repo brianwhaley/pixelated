@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { getXHRData, generateURL } from '../utilities/pixelated.api';
 import { mergeDeep } from '../utilities/pixelated.functions';
@@ -125,6 +125,7 @@ export function CarouselSlider(props) {
 	};
 
 	function previousImage() {
+		if (debug) console.log("Going to Previous image : ", activeIndex, " => ", activeIndex - 1);
 		if (activeIndex === 0) {
 			setActiveIndex(props.flickrData.images.length - 1);
 			setDirection( 'prev' );
@@ -135,6 +136,7 @@ export function CarouselSlider(props) {
 	};
 
 	function nextImage() {
+		if (debug) console.log("Going to Next image : ", activeIndex, " => ", activeIndex + 1);
 		if (activeIndex === props.flickrData.images.length - 1) {
 			setActiveIndex(0);
 			setDirection( 'next' );
@@ -178,7 +180,7 @@ export function CarouselSlider(props) {
 				img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=';
 				e.dataTransfer.setDragImage(img, 0, 0);
 			}
-			if (debug) { console.log(JSON.stringify(drag)); }
+			// if (debug) { console.log(JSON.stringify(drag)); }
 		}
 	};
 
@@ -198,7 +200,7 @@ export function CarouselSlider(props) {
 			/* Right to Left or Left to Right */
 			drag.directionX = (drag.firstX > drag.currentX) ? -1 : 1;
 			drag.newX = drag.startX + (drag.moveX * drag.directionX);
-			if (debug) { console.log(JSON.stringify(drag)); }
+			// if (debug) { console.log(JSON.stringify(drag)); }
 			elem.style.left = drag.newX + 'px';
 			/* Remove styles that conflict with dragging */
 			elem.style.transition = '';
@@ -236,13 +238,17 @@ export function CarouselSlider(props) {
 			/* roll in the next / previous image */
 			if (farEnough && drag.directionX !== 0) {
 				if ( (drag.directionX < 0) ) { 
+					if (debug) console.log("Dragged Far Enough - Go Next");
 					nextImage(); 
 				} else { 
+					if (debug) console.log("Dragged Far Enough - Go Previous");
 					previousImage(); 
 				} ;
+			} else {
+				if (debug) console.log("Not Dragged Far Enough!");
 			}
 
-			if (debug) { console.log(JSON.stringify(drag)); }
+			// if (debug) { console.log(JSON.stringify(drag)); }
 
 			/* Reset drag variables */
 			drag.draggable = false;
@@ -286,7 +292,7 @@ export function CarouselSlider(props) {
 			document.removeEventListener('mouseup', dragEnd, { passive: true });
 			document.removeEventListener('transitionend', transitionEnd, { passive: true });
 		};
-	  }, []);
+	  }, [activeIndex]);
 
 	if (props.flickrData.images.length > 0) {
 		const myActiveIndex = activeIndex;
