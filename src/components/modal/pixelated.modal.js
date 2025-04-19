@@ -40,6 +40,13 @@ export function Modal(props) {
 	);
 }
 
+export const handleModalOpen = (event) => {
+	event.preventDefault();
+	const myModal = document.getElementById("myModal");
+	if (myModal) { myModal.style.display = 'block'; } ;
+};
+
+
 /* 
 https://www.w3schools.com/howto/howto_css_modals.asp
 */
