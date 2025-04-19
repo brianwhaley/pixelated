@@ -17,16 +17,19 @@ export function FormEngine(props) {
 		onSubmitHandler: PropTypes.func,
 		formData: PropTypes.object.isRequired
 	};
+	const debug = false ;
 
-	function generateFormProps() {
+	function generateFormProps(props) {
 		// GENERATE PROPS TO RENDER THE FORM CONTAINER, INTERNAL FUNCTION
+		if (debug) console.log("Generating Form Props");
 		const formProps = JSON.parse(JSON.stringify(props));
 		['formData', 'onSubmitHandler'].forEach(e => delete formProps[e]);
 		return formProps;
 	}
 
-	function generateNewFields() {
+	function generateNewFields(props) {
 		// CORE OF THE FORM ENGINE - CONVERT JSON TO COMPONENTS - INTERNAL
+		if (debug) console.log("Generating Form Fields");
 		const newFields = [];
 		if (props.formData && props.formData.fields) {
 			const thisFields = props.formData.fields;
@@ -49,7 +52,7 @@ export function FormEngine(props) {
 	}
 
 	return (
-		<form {...generateFormProps()} onSubmit={(e) => { handleSubmit(e); }} suppressHydrationWarning >{generateNewFields()}</form>
+		<form {...generateFormProps(props)} onSubmit={(e) => { handleSubmit(e); }} suppressHydrationWarning >{generateNewFields(props)}</form>
 	);
 }
 
@@ -58,31 +61,36 @@ export function FormEngine(props) {
 Display all the components for a Form Builder - 
 Element Buttons, Element Details, and the Form */
 
-export function FormBuilder(props) {
+function mapTypeToComponent(myType){
+	const debug = false ;
+	if (debug) console.log("Mapping Type Field to Component");
+	let myComponent = 
+	(["button"].includes(myType)) ? 'FormButton' : 
+		(["checkbox"].includes(myType)) ? 'FormCheckbox' : 
+			(["datalist"].includes(myType)) ? 'FormDataList' : 
+				(["radio"].includes(myType)) ? 'FormRadio' : 
+					(["select"].includes(myType)) ? 'FormSelect' : 
+						(["textarea"].includes(myType)) ? 'FormTextarea' : 
+							"FormInput";
+	return myComponent;
+}
 
+export function FormBuilder(props) {
+	const debug = false ;
 	const [ url, setURL ] = useState('');
 	const [ htmlPaste, setHtmlPaste ] = useState('');
 	const [ formData, setFormData ] = useState({});
 	const [ fieldFormData, setFieldFormData ] = useState({});
 
-	function mapTypeToComponent(myType){
-		let myComponent = 
-		(["button"].includes(myType)) ? 'FormButton' : 
-			(["checkbox"].includes(myType)) ? 'FormCheckbox' : 
-				(["datalist"].includes(myType)) ? 'FormDataList' : 
-					(["radio"].includes(myType)) ? 'FormRadio' : 
-						(["select"].includes(myType)) ? 'FormSelect' : 
-							(["textarea"].includes(myType)) ? 'FormTextarea' : 
-								"FormImput";
-		return myComponent;
-	}
-
 	function appendFormData(event) {
 		// APPEND JSON FOR NEW FIELD TO EXISTING JSON CONFIG OBJECT - EXPOSED EXTERNAL
+		if (debug) console.log("Appending form Data...");
 		const props = {};
 		for (const prop in event.target) {
 			const thisProp = event.target[prop];
-			if (thisProp && thisProp.value) { props[thisProp.name] = thisProp.value; }
+			if (thisProp && thisProp.value && ( thisProp.value !== Object(thisProp.value) ) ) { 
+				props[thisProp.name] = thisProp.value; 
+			}
 		}
 		const field = {};
 		field.props = props;
@@ -90,16 +98,29 @@ export function FormBuilder(props) {
 		let fields = [];
 		if (Object.keys(formData).length > 0) { fields = JSON.parse(JSON.stringify(formData.fields)); }
 		fields[fields.length] = field;
-		setFormData( fields );
+		setFormData( { fields: fields } );
+		setFieldFormData({});
 		return (field);
+	}
+
+	function getCircularReplacer() {
+		const seen = new WeakSet();
+		return (key, value) => {
+		  	if (typeof value === 'object' && value !== null) {
+				if (seen.has(value)) {
+			  		return ; // return undefined ;
+				}
+				seen.add(value);
+		  	}
+		  	return value;
+		};
 	}
 
 	return (
 		<div className="section-container">
 			<div style={{ display: 'inline-block', verticalAlign: 'top' }}>
 				<FormBuild setFormData={setFieldFormData} />
-			</div>
-			<div style={{ display: 'inline-block', verticalAlign: 'top' }}>
+				<div></div>
 				<FormEngine name="field_props" id="field_props"
 					onSubmitHandler={appendFormData}
 					formData={fieldFormData} />
@@ -127,9 +148,11 @@ export function FormBuild(props) {
 	FormBuild.propTypes = {
 		setFormData: PropTypes.func
 	};
+	const debug = false ;
 
-	function generateFieldJSON (component) {
+	function generateFieldJSON (component, type) {
 		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - INTERNAL
+		if (debug) console.log("Generating Form JSON for ", component , " Type : ", type);
 		const form = { fields: [] };
 		let i = 0;
 		for (const prop in FC[component].propTypes) {
@@ -140,7 +163,11 @@ export function FormBuild(props) {
 			props.name = prop;
 			props.id = prop;
 			props.type = 'text';
-			if (prop === 'type') props.list = 'inputTypes';
+			if (prop === 'type') {
+				props.disabled = true; 
+				props.value = type;
+				props.list = 'inputTypes';
+			}
 			field.props = props;
 			form.fields[i] = field;
 			i++;
@@ -158,29 +185,50 @@ export function FormBuild(props) {
 		return (form);
 	}
 
-	function addComponent (component) {
+	function handlePhaseOneSubmit(event){
 		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - EXTERNAL
-		const fieldJSON = generateFieldJSON(component);
+		const myType = event.target.type.value;
+		const myComponent = mapTypeToComponent(myType);
+		const fieldJSON = generateFieldJSON(myComponent, myType);
 		props.setFormData(fieldJSON);
 		return true;
 	}
 
-	function generateComponentButtons () {
-		// GENERATES THE COMPENENT BUTTONS FORM TO ADD NEW FIELDS - INTERNAL
-		const components = [];
-		for (const component in Object.keys(FC)) {
-			const thisComponent = Object.keys(FC)[component];
-			const newComponent = <button key={thisComponent} style={{ display: 'block', width: 200 }} onClick={ () => addComponent(thisComponent)}>{thisComponent}</button>;
-			components.push(newComponent);
-		}
-		return components;
+	function generateTypeField() {
+		const form = { fields: [] };
+
+		const typeField = {
+			component: 'FormInput',
+			props: {
+				label: 'Type : ',
+				name: 'type',
+				id: 'type',
+				type: 'text',
+				list: 'inputTypes'
+			}
+		};
+		form.fields[0] = typeField;
+		const addButton = {
+			component: 'FormButton',
+			props: {
+				label: 'Build',
+				type: 'submit',
+				id: 'build',
+				text: '===  Build  ==='
+			}
+		};
+		form.fields[1] = addButton;
+		return (form) ;
 	}
 
 	return (
 		<Fragment>
-			<form onSubmit={ e => { e.preventDefault(); } } method="post" name="build" id="build">
-				{ generateComponentButtons() }
-			</form>
+			<FormEngine 
+				formData={generateTypeField()}
+				onSubmitHandler={ event => { handlePhaseOneSubmit(event); } } 
+				name="build" 
+				id="build" 
+				method="post" />
 		</Fragment>
 	);
 }

@@ -9,7 +9,7 @@ eslint --fix --ext .js,.jsx .
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix for carousel slider for dragging"
+git commit -m "fix for cform builder"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

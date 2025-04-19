@@ -19,16 +19,6 @@ const onChange = (me, event) => {
 
 
 function FormLabel(props) {
-	FormLabel.propTypes = {
-		id: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-	};
-	FormLabel.defaultProps = {
-		id: "",
-		label: "",
-		tooltip: "",
-	};
 	return (
 		<Fragment >
 			{ props.label && props.id 
@@ -43,17 +33,20 @@ function FormLabel(props) {
 		</Fragment>
 	);
 }
+FormLabel.propTypes = {
+	id: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+};
+FormLabel.defaultProps = {
+	id: "",
+	label: "",
+	tooltip: "",
+};
 
 
 function FormTooltip(props) {
-	FormTooltip.propTypes = {
-		id: PropTypes.string,
-		text: PropTypes.string,
-	};
-	FormTooltip.defaultProps = {
-		id: "",
-		text: "",
-	};
+	
 	function toggleTooltip(e) {
 		e.preventDefault();
 		if (e.target.nextSibling.style.display == "block") {
@@ -80,14 +73,19 @@ function FormTooltip(props) {
 		</Fragment>
 	);
 }
+FormTooltip.propTypes = {
+	id: PropTypes.string,
+	text: PropTypes.string,
+};
+FormTooltip.defaultProps = {
+	id: "",
+	text: "",
+};
 
 
 
 function FormValidate(props) {
-	FormValidate.propTypes = {
-		id: PropTypes.string,
-		valid: PropTypes.bool,
-	};
+	
 	return ( 
 		<Fragment>
 			{ !props.valid ? 
@@ -95,39 +93,14 @@ function FormValidate(props) {
 		</Fragment>
 	);
 }
+FormValidate.propTypes = {
+	id: PropTypes.string,
+	valid: PropTypes.bool,
+};
 
 
 
 export function FormInput(props) {
-	FormInput.propTypes = {
-		type: PropTypes.string,
-		id: PropTypes.string,
-		name: PropTypes.string,
-		defaultValue: PropTypes.string,
-		value: PropTypes.string,
-		list: PropTypes.string,
-		size: PropTypes.string,
-		maxLength: PropTypes.string,
-		placeholder: PropTypes.string,
-		autoComplete: PropTypes.string,
-		"aria-label": PropTypes.string,
-		min: PropTypes.string,
-		max: PropTypes.string,
-		step: PropTypes.string,
-		// flag attributes
-		autoFocus: PropTypes.string,
-		disabled: PropTypes.string,
-		readOnly: PropTypes.string,
-		required: PropTypes.string,
-		// className, 
-		// data-mapping, data-component-endpoint, data-testid
-		// aria-invalid, aria-describedby, 
-		// ----- for calculations
-		display: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-		validate: PropTypes.string,
-	};
 
 	const [isValid, setIsValid] = useState(true);
 	
@@ -150,34 +123,40 @@ export function FormInput(props) {
 		</div>
 	);
 }
+FormInput.propTypes = {
+	type: PropTypes.string,
+	id: PropTypes.string,
+	name: PropTypes.string,
+	defaultValue: PropTypes.string,
+	value: PropTypes.string,
+	list: PropTypes.string,
+	size: PropTypes.string,
+	maxLength: PropTypes.string,
+	placeholder: PropTypes.string,
+	autoComplete: PropTypes.string,
+	"aria-label": PropTypes.string,
+	min: PropTypes.string,
+	max: PropTypes.string,
+	step: PropTypes.string,
+	// flag attributes
+	autoFocus: PropTypes.string,
+	disabled: PropTypes.string,
+	readOnly: PropTypes.string,
+	required: PropTypes.string,
+	// className, 
+	// data-mapping, data-component-endpoint, data-testid
+	// aria-invalid, aria-describedby, 
+	// ----- for calculations
+	display: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+	validate: PropTypes.string,
+};
 
 
 
 export function FormSelect(props) {
-	FormSelect.propTypes = {
-		id: PropTypes.string,
-		name: PropTypes.string,
-		size: PropTypes.string,
-		autoComplete: PropTypes.string,
-		defaultValue: PropTypes.oneOfType([
-  			PropTypes.string,
-  			PropTypes.array
-		]),
-		// flag attributes
-		autoFocus: PropTypes.string,
-		disabled: PropTypes.string,
-		multiple: PropTypes.string,
-		readOnly: PropTypes.string,
-		required: PropTypes.string,
-		// selected: PropTypes.string, // not used
-		// ----- for calculations
-		options : PropTypes.array,
-		display: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-		validate: PropTypes.string,
-	};
-
+	
 	const [isValid, setIsValid] = useState(true);
 
 	function generateOptions(){
@@ -209,49 +188,51 @@ export function FormSelect(props) {
 		</div>
 	);
 }
+FormSelect.propTypes = {
+	id: PropTypes.string,
+	name: PropTypes.string,
+	size: PropTypes.string,
+	autoComplete: PropTypes.string,
+	defaultValue: PropTypes.oneOfType([
+		  PropTypes.string,
+		  PropTypes.array
+	]),
+	// flag attributes
+	autoFocus: PropTypes.string,
+	disabled: PropTypes.string,
+	multiple: PropTypes.string,
+	readOnly: PropTypes.string,
+	required: PropTypes.string,
+	// selected: PropTypes.string, // not used
+	// ----- for calculations
+	options : PropTypes.array,
+	display: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+	validate: PropTypes.string,
+};
 
 
 
 function FormSelectOption(props) {
-	FormSelectOption.propTypes = {
-		text: PropTypes.string,
-		value: PropTypes.string,
-		// flag attributes
-		disabled: PropTypes.string,
-		// selected : PropTypes.string
-	};
-
 	let inputProps = JSON.parse(JSON.stringify(props));
 	["selected"].forEach(e => delete inputProps[e]);
 	return (
 		<option {...inputProps} >{props.text}</option>
 	);
 }
+FormSelectOption.propTypes = {
+	text: PropTypes.string,
+	value: PropTypes.string,
+	// flag attributes
+	disabled: PropTypes.string,
+	// selected : PropTypes.string
+};
 
 
 
 export function FormTextarea(props) {
-	FormTextarea.propTypes = {
-		id: PropTypes.string,
-		name: PropTypes.string,
-		rows: PropTypes.string,
-		cols: PropTypes.string,
-		defaultValue: PropTypes.string,
-		maxLength: PropTypes.number,
-		placeholder: PropTypes.string,
-		autoComplete: PropTypes.string,
-		// flag attributes
-		autoFocus: PropTypes.string,
-		disabled: PropTypes.string,
-		readOnly: PropTypes.string,
-		required: PropTypes.string,
-		// ----- for calculations
-		display: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-		validate: PropTypes.string,
-	};
-
+	
 	const [isValid, setIsValid] = useState(true);
 
 	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
@@ -270,27 +251,31 @@ export function FormTextarea(props) {
 		</div>
 	);
 }
+FormTextarea.propTypes = {
+	id: PropTypes.string,
+	name: PropTypes.string,
+	rows: PropTypes.string,
+	cols: PropTypes.string,
+	defaultValue: PropTypes.string,
+	maxLength: PropTypes.number,
+	placeholder: PropTypes.string,
+	autoComplete: PropTypes.string,
+	// flag attributes
+	autoFocus: PropTypes.string,
+	disabled: PropTypes.string,
+	readOnly: PropTypes.string,
+	required: PropTypes.string,
+	// ----- for calculations
+	display: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+	validate: PropTypes.string,
+};
 
 
 
 export function FormRadio(props) {
-	FormRadio.propTypes = {
-		id: PropTypes.string, // not using?
-		name: PropTypes.string,
-		options : PropTypes.array,
-		// flag attributes
-		autoFocus: PropTypes.string,
-		disabled: PropTypes.string,
-		readOnly: PropTypes.string,
-		required: PropTypes.string,
-		// ? selected: PropTypes.string,
-		// ----- for calculations
-		display: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-		validate: PropTypes.string,
-	};
-
+	
 	const [isValid, setIsValid] = useState(true);
 	
 	function generateOptions(){
@@ -318,20 +303,26 @@ export function FormRadio(props) {
 		</div>
 	);
 }
+FormRadio.propTypes = {
+	id: PropTypes.string, // not using?
+	name: PropTypes.string,
+	options : PropTypes.array,
+	// flag attributes
+	autoFocus: PropTypes.string,
+	disabled: PropTypes.string,
+	readOnly: PropTypes.string,
+	required: PropTypes.string,
+	// ? selected: PropTypes.string,
+	// ----- for calculations
+	display: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+	validate: PropTypes.string,
+};
 
 
 
 function FormRadioOption(props) {
-	FormRadioOption.propTypes = {
-		name: PropTypes.string,
-		text: PropTypes.string,
-		value: PropTypes.string,
-		// flag attributes
-		checked : PropTypes.string,
-		// ----- for calculations
-		parent : PropTypes.object,
-		setIsValid : PropTypes.func,
-	};
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="radio" 
@@ -345,25 +336,21 @@ function FormRadioOption(props) {
 		</span>
 	);
 }
+FormRadioOption.propTypes = {
+	name: PropTypes.string,
+	text: PropTypes.string,
+	value: PropTypes.string,
+	// flag attributes
+	checked : PropTypes.string,
+	// ----- for calculations
+	parent : PropTypes.object,
+	setIsValid : PropTypes.func,
+};
 
 
 
 export function FormCheckbox(props) {
-	FormCheckbox.propTypes = {
-		id: PropTypes.string,
-		name: PropTypes.string,
-		options : PropTypes.array,
-		// flag attributes
-		autoFocus: PropTypes.string,
-		disabled: PropTypes.string,
-		readOnly: PropTypes.string,
-		// ----- for calculations
-		display: PropTypes.string,
-		label: PropTypes.string,
-		tooltip: PropTypes.string,
-		validate: PropTypes.string,
-	};
-
+	
 	const [ isValid, setIsValid ] = useState(true);
 	
 	function generateOptions(){
@@ -392,20 +379,24 @@ export function FormCheckbox(props) {
 		</div>
 	);
 }
+FormCheckbox.propTypes = {
+	id: PropTypes.string,
+	name: PropTypes.string,
+	options : PropTypes.array,
+	// flag attributes
+	autoFocus: PropTypes.string,
+	disabled: PropTypes.string,
+	readOnly: PropTypes.string,
+	// ----- for calculations
+	display: PropTypes.string,
+	label: PropTypes.string,
+	tooltip: PropTypes.string,
+	validate: PropTypes.string,
+};
 
 
 
 function FormCheckboxOption(props) {
-	FormCheckboxOption.propTypes = {
-		text: PropTypes.string,
-		value: PropTypes.string,
-		// flag attributes
-		selected : PropTypes.string,
-		// ----- for calculations
-		parent : PropTypes.object,
-		setIsValid: PropTypes.func,
-		
-	};
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="checkbox" 
@@ -417,17 +408,20 @@ function FormCheckboxOption(props) {
 		</span>
 	);
 }
+FormCheckboxOption.propTypes = {
+	text: PropTypes.string,
+	value: PropTypes.string,
+	// flag attributes
+	selected : PropTypes.string,
+	// ----- for calculations
+	parent : PropTypes.object,
+	setIsValid: PropTypes.func,
+	
+};
 
 
 
 export function FormButton(props) {
-	FormButton.propTypes = {
-		type: PropTypes.string,
-		id: PropTypes.string,
-		text: PropTypes.string,
-		// ----- for calculations
-		onClick: PropTypes.func
-	};
 	return (
 		<div>
 			<button 
@@ -437,14 +431,18 @@ export function FormButton(props) {
 		</div>
 	);
 }
+FormButton.propTypes = {
+	type: PropTypes.string,
+	id: PropTypes.string,
+	text: PropTypes.string,
+	// ----- for calculations
+	onClick: PropTypes.func
+};
+
 
 
 
 export function FormDataList(props) {
-	FormDataList.propTypes = {
-		id: PropTypes.string,
-		items: PropTypes.array,
-	};
 	const options = [];
 	for (const item in props.items) {
 		const thisItem = props.items[item];
@@ -455,13 +453,17 @@ export function FormDataList(props) {
 		<datalist id={props.id}>{options}</datalist>
 	);
 }
+FormDataList.propTypes = {
+	id: PropTypes.string,
+	items: PropTypes.array,
+};
 
 
 
 export function FormFieldset(props) {
-	FormFieldset.propTypes = {
-	};
 	return (
 		<Fragment />
 	);
 }
+FormFieldset.propTypes = {
+};
