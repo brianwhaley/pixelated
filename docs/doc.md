@@ -45,13 +45,14 @@ git fetch
 ## ===== BUILD PIXELATED APP =====
 
 eslint --fix --ext .jsx --ext .js .
-eslint --ext .js,.jsx,.ts,.tsx .
 [//]: # npm --no-git-tag-version version patch
 npm version major
 npm version minor
+
+eslint --ext
 npm version patch --force
 git add * -v
-git commit -m "new version of pixelated components, ebay fix, google maps link"
+git commit -m "fix form builder, modal for resume images"
 git push pixelated dev --tags
 git push pixelated dev:main
 
@@ -77,11 +78,17 @@ Source Address: /<*>
 Target Address: /
 Type: 404 Rewrite
 
-## === RESUME MICRO FORMATS =====
+## ===== RESUME MICRO FORMATS =====
 http://microformats.org/wiki/h-resume
 http://microformats.org/wiki/h-card
 http://microformats.org/wiki/h-event
 
 
-## === RECIPE MICRO FORMATS =====
+## ===== RECIPE MICRO FORMATS =====
 https://microformats.org/wiki/h-recipe
+
+
+
+## ===== EMAIL FORWARDING =====
+https://app.improvmx.com/
+*@pixelated.tech => brian.whaley@gmail.com

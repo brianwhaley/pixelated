@@ -3,16 +3,16 @@
 import React, { Fragment, useState } from "react";
 import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
 import { CalloutRoundTiny } from "@/app/components/callout/pixelated.callout";
-import { Modal } from "@brianwhaley/pixelated-components";
+import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
 
 export default function CustomSunglasses() {
+	
 	const [modalContent, setModalContent] = useState<React.ReactNode>();
+
 	const handleImageClick = (event: MouseEvent, url: string) => {
-		event.preventDefault();
 		const myContent = <img src={url} alt="Modal Image" />;
 		setModalContent(myContent);
-		const myModal = document.getElementById("myModal");
-		if (myModal) { myModal.style.display = 'block'; } ;
+		handleModalOpen(event);
   	};
 	
 	return (
