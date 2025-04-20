@@ -6,10 +6,11 @@ npm login --scope=@brianwhaley --registry=https://registry.npmjs.org
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 
 eslint --fix --ext .js,.jsx .
+eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix for cform builder"
+git commit -m "addition of horizontal2 callout layout"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

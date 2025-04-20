@@ -14,7 +14,19 @@ export const CalloutHorizontal = {
 		img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
 		title: 'LinkedIn Profile',
 		content: 'My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.',
-		direction: 'horizontal',
+		layout: 'horizontal',
+		columnCount: 2,
+	}
+};
+
+export const CalloutHorizontal2 = {
+	title: 'Callout Horizontal 2',
+	args: {
+		url: 'https://www.linkedin.com/in/brianwhaley',
+		img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
+		title: 'LinkedIn Profile',
+		content: 'My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.',
+		layout: 'horizontal2',
 		columnCount: 2,
 	}
 };
@@ -23,6 +35,6 @@ export const CalloutVertical = {
 	title: 'Callout Vertical',
 	args: {
 		...CalloutHorizontal.args, 
-		direction: 'vertical',
+		layout: 'vertical',
 	}
 };
