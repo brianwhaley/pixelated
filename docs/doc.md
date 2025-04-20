@@ -52,7 +52,7 @@ npm version minor
 eslint --ext
 npm version patch --force
 git add * -v
-git commit -m "fix form builder, modal for resume images"
+git commit -m "addition of horizontal2 callout layout"
 git push pixelated dev --tags
 git push pixelated dev:main
 

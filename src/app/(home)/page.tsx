@@ -14,21 +14,25 @@ export default function Home() {
 								img='images/brianwhaley-headshot.jpg'
 								title='Brian T. Whaley'
 								content='Technologist,
-                Digital Transformation Professional,
-                User Experience Champion,
-                Landscape and Macro Photographer,
-                Avid World Traveler,
-                Advanced Open Water Scuba Diver,
-                Enthusiast of Home-Cooked Food'
-								direction='horizontal'
-								columnCount={2}/>
+									Digital Transformation Professional, User Experience Champion,
+									Landscape and Macro Photographer, Avid World Traveler,
+									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food'
+								layout='horizontal2'
+								columnCount={3}/>
 							<Callout
 								url='https://www.linkedin.com/in/brianwhaley'
+								img='images/logos/ebay-logo.png'
+								title='Sunglasses on eBay'
+								content='View some cutomized Oakley sunglasses available for purchase on eBay.'
+								layout='horizontal2'
+								columnCount={3}/>
+							<Callout
+								url='https://www.ebay.com/usr/btw73/'
 								img='images/logos/linkedin-logo.png'
 								title='LinkedIn Profile'
 								content='My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.'
-								direction='horizontal'
-								columnCount={2}/>
+								layout='horizontal2'
+								columnCount={3}/>
 						</div>
 					</div>
 				</div>
@@ -96,26 +100,32 @@ export default function Home() {
 							url='workportfolio'
 							img='images/circuitboard.jpg'
 							title='Work Portfolio'
+							layout='vertical'
+							columnCount={3}
 							content='A carousel of screenshots from my work at BMS, AP, ADP, and PR Newswire.
-            The carousel was built with a native React compnent that I built myself.
-            You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
+								The carousel was built with a native React compnent that I built myself.
+								You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
 						<Callout
 							url='https://github.com/brianwhaley'
 							img='images/logos/github-logo.png'
 							title='GitHub Portfolio'
+							layout='vertical'
+							columnCount={3}
 							content='This is a link to my GitHub account.  I have only uploaded a few pieces of code.
-            Pieces include a library of LotusScripts and agents;
-            pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android;
-            a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr,
-            and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
+								Pieces include a library of LotusScripts and agents;
+								pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android;
+								a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr,
+								and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
 						<Callout
 							url='photogallery'
 							img='https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg'
 							title='Photo Gallery'
+							layout='vertical'
+							columnCount={3}
 							content='A carousel of some of my best photographs throughout my life.
-            They are primarily landscape photographs, macro photographs, and travel photographs.
-            The carousel was built using the Galleria jQuery plugin.
-            You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
+								They are primarily landscape photographs, macro photographs, and travel photographs.
+								The carousel was built using the Galleria jQuery plugin.
+								You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
 					</div>
 				</div>
 			</section>
@@ -128,18 +138,22 @@ export default function Home() {
 								url='http://www.blurb.com/user/brianwhaley'
 								img='images/logos/blurb-logo.png'
 								title='My Blurb Books'
+								layout='vertical'
+								columnCount={3}
 								content='A storefront for my custom made books.  This includes books for our trip to Italy,
-              a memorial for our rabbit Sunshine, a Whaley / Pace family album, A wedding album for Matt and Alex,
-              a memorial book for my mom, and a collection of recipes from the Pace family. More to come!'/>
+									a memorial for our rabbit Sunshine, a Whaley / Pace family album, A wedding album for Matt and Alex,
+									a memorial book for my mom, and a collection of recipes from the Pace family. More to come!'/>
 							<Callout
 								url='recipes'
 								img='images/pizza-gaine.jpg'
 								title='My Recipe Book'
+								layout='vertical'
+								columnCount={3}
 								content="This is <a href='recipes'>my recipe book</a>.
-              It is a collection of recipes from 3 generations of my family, from my friends, and
-              my life as an Italian-American and as a Bariatric Patient.
-              I have cooked most of the recipes myself.
-              I have tasted them all, however, and they are fantastic!  Please enjoy! "/>
+									It is a collection of recipes from 3 generations of my family, from my friends, and
+									my life as an Italian-American and as a Bariatric Patient.
+									I have cooked most of the recipes myself.
+									I have tasted them all, however, and they are fantastic!  Please enjoy! "/>
 						</div>
 					</div>
 				</div>
