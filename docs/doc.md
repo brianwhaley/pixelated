@@ -52,7 +52,7 @@ npm version minor
 eslint --ext
 npm version patch --force
 git add * -v
-git commit -m "addition of horizontal2 callout layout"
+git commit -m "updated grid system to be based on CSS Grid Layout Module"
 git push pixelated dev --tags
 git push pixelated dev:main
 

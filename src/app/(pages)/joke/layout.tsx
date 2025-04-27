@@ -23,12 +23,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<link rel="manifest" href="/manifest.json" />
 			</head>
 			<body>
-				<header className="grid12"></header>
+				<header></header>
 				<nav></nav>
-				<main className="grid12">
+				<main>
 					{children} 
 				</main>
-				<footer className="grid12"></footer>
+				<footer></footer>
 			</body>
 		</html>
 	);

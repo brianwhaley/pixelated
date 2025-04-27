@@ -10,7 +10,7 @@ export default function Recipes() {
 	return (
 		<div className="section-container">
 			<CalloutHeader title="Pace, Barbano, and Whaley Family Recipes" />
-			<div className="grid12">&nbsp;</div>
+			<div>&nbsp;</div>
 			<RecipeBook recipeData={RecipeData} recipeCategories={recipeCategories} />
 		</div>
 	);

@@ -11,13 +11,9 @@ export default class Joke extends Component {
 			<Fragment>
 				<section className="section" id="nerdjoke-section">
 					<div className="section-container">
-						<div className="row">
-							<div className="callout-body grid12">
-								<div className="grid12">
-									<div className="grid12 centered">
-										<NerdJoke></NerdJoke>
-									</div>
-								</div>
+						<div className="callout-body">
+							<div className="centered">
+								<NerdJoke></NerdJoke>
 							</div>
 						</div>
 					</div>

@@ -19,13 +19,11 @@ export default function Ebay() {
 			<section id="social-cards-section">
 				<div className="section-container">
 					<CalloutHeader title="Ebay Items For Sale" />
-					<div className="row">
-						<div id="ebayCards" className="column callout grid12">
+					<div className="row-1col">
+						<div id="ebayCards" className="callout">
 							<div className="callout-body">
-								<div className="grid12">
-									<div className="masonry" id="ebay">
-										<SocialCards sources={myRSSFeeds}></SocialCards>
-									</div>
+								<div className="masonry" id="ebay">
+									<SocialCards sources={myRSSFeeds}></SocialCards>
 								</div>
 							</div>
 						</div>

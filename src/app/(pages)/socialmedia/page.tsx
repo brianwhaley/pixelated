@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment } from "react";
-import { CalloutHeader, CalloutRoundSm } from "@brianwhaley/pixelated-components";
+import { CalloutHeader, CalloutRoundTiny } from "@brianwhaley/pixelated-components";
 import { SocialCards } from "@brianwhaley/pixelated-components";
 
 /* ========== NOTES ==========
@@ -46,61 +46,40 @@ export default function SocialMedia() {
 		<Fragment>
 			<section id="social-links-section">
 				<div className="section-container callout">
-					<div className="row">
-						<div className="column grid12">
+					<div className="row-12col">
+						<div className="grid-s1-e12">
 							<CalloutHeader title="Social Media Links" />
 						</div>
 					</div>
-					<div className="row grid8 push2">
-						<div className="grid6">
-							<CalloutRoundSm url="http://www.linkedin.com/in/brianwhaley" img="/images/logos/linkedin-logo.png" title="LinkedIn" />
-							<CalloutRoundSm url="http://twitter.com/brianwhaley" img="/images/logos/twitter-logo.png" title="Twitter" />
-							<CalloutRoundSm url="http://reddit.com/user/btw-73/saved" img="/images/logos/reddit-logo.png" title="Reddit" />
-						</div>
-						<div className="grid6">
-							<CalloutRoundSm url="http://www.pinterest.com/brianwhaley" img="/images/logos/pinterest-logo.png" title="Pinterest" />
-							<CalloutRoundSm url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="/images/logos/goodreads-logo.png" title="Goodreads" />
-							<CalloutRoundSm url="http://www.youtube.com/user/brianwhaley" img="/images/logos/youtube-logo.png" title="Youtube" />
-						</div>
-					</div>
-					<div className="row grid8 push2">
-						<div className="grid6">
-							<CalloutRoundSm url="http://pixelatedviews.tumblr.com" img="/images/logos/tumblr-logo.png" title="Tumblr" />
-							<CalloutRoundSm url="https://www.etsy.com/people/bwhaley73" img="/images/logos/etsy-logo.png" title="Etsy" />
-							<CalloutRoundSm url="https://www.ebay.com/usr/btw73/" img="/images/logos/ebay-logo.png" title="ebay" />
-						</div>
-						<div className="grid6">
-							{/* <CalloutRoundSm url="https://foursquare.com/brianwhaley" img="/images/logos/foursquare-logo.png" title="Foursquare" / > */}
-							<CalloutRoundSm url="http://trees.ancestry.com/tree/7237865" img="/images/logos/ancestry-logo.jpg" title="Ancestry" />
-							<CalloutRoundSm url="http://www.facebook.com/brian.t.whaley" img="/images/logos/facebook-logo.png" title="Facebook" />
-							<CalloutRoundSm url="http://blog.pixelated.tech" img="/images/logos/wordpress-logo.png" title="Pixelated Blog" />
-						</div>
+					<div className="row-12col">
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.linkedin.com/in/brianwhaley" img="/images/logos/linkedin-logo.png" title="LinkedIn" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://twitter.com/brianwhaley" img="/images/logos/twitter-logo.png" title="Twitter" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://reddit.com/user/btw-73/saved" img="/images/logos/reddit-logo.png" title="Reddit" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.pinterest.com/brianwhaley" img="/images/logos/pinterest-logo.png" title="Pinterest" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="/images/logos/goodreads-logo.png" title="Goodreads" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.youtube.com/user/brianwhaley" img="/images/logos/youtube-logo.png" title="Youtube" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://pixelatedviews.tumblr.com" img="/images/logos/tumblr-logo.png" title="Tumblr" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://www.etsy.com/people/bwhaley73" img="/images/logos/etsy-logo.png" title="Etsy" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://www.ebay.com/usr/btw73/" img="/images/logos/ebay-logo.png" title="ebay" /></div>
+						{/* <CalloutRoundTiny shape="squircle" url="https://foursquare.com/brianwhaley" img="/images/logos/foursquare-logo.png" title="Foursquare" / > */}
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://trees.ancestry.com/tree/7237865" img="/images/logos/ancestry-logo.jpg" title="Ancestry" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.facebook.com/brian.t.whaley" img="/images/logos/facebook-logo.png" title="Facebook" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://blog.pixelated.tech" img="/images/logos/wordpress-logo.png" title="Pixelated Blog" /></div>
 					</div>
 
-					<div className="row grid8 push2">
-						<div className="grid6">
-							<CalloutRoundSm url="https://github.com/brianwhaley" img="/images/logos/github-logo.png" title="Github" />
-							<CalloutRoundSm url="https://maps.app.goo.gl/j5Tpcxxr9roydxd2A" img="/images/logos/googlemaps-logo.png" title="Google Maps Travelogue" />
-							<CalloutRoundSm url="https://500px.com/brianwhaley" img="/images/logos/500px-logo.png" title="500px" />
-						</div>
-						<div className="grid6">
-							<CalloutRoundSm url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" title="Flickr" />
-							<CalloutRoundSm url="https://secure.istockphoto.com/portfolio/brianwhaley" img="/images/logos/istock-logo.jpg" title="iStock Photo" />
-							<CalloutRoundSm url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" title="Shutter Stock" />
-						</div>
-					</div>
-					
-					<div className="row grid8 push2">
-						<div className="grid6">
-							<CalloutRoundSm url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" title="Instagram" />
-							<CalloutRoundSm url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" title="Blurb" />
-							<CalloutRoundSm url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" title="Shutterfly" />
-						</div>
-						<div className="grid6">
-							<CalloutRoundSm url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" />
-							<CalloutRoundSm url={null} img={null} title={null} />
-							<CalloutRoundSm url={null} img={null} title={null} />
-						</div>
+					<div className="row-12col">
+						<div className="gridItem"></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://github.com/brianwhaley" img="/images/logos/github-logo.png" title="Github" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://maps.app.goo.gl/j5Tpcxxr9roydxd2A" img="/images/logos/googlemaps-logo.png" title="Google Maps Travelogue" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://500px.com/brianwhaley" img="/images/logos/500px-logo.png" title="500px" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" title="Flickr" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://secure.istockphoto.com/portfolio/brianwhaley" img="/images/logos/istock-logo.jpg" title="iStock Photo" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" title="Shutter Stock" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" title="Instagram" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" title="Blurb" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" title="Shutterfly" /></div>
+						<div className="gridItem"><CalloutRoundTiny shape="squircle" url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" title="Twitter" /></div>
+						<div className="gridItem"></div>
 					</div>
 
 				</div>
@@ -109,10 +88,10 @@ export default function SocialMedia() {
 			<section id="social-cards-section">
 				<div className="section-container">
 					<CalloutHeader title="Social Posts" />
-					<div className="row">
-						<div id="socialCards" className="column callout grid12">
+					<div className="row-12col">
+						<div id="socialCards" className="callout grid-s1-e12">
 							<div className="callout-body">
-								<div className="grid12">
+								<div className="grid-s1-e12">
 									<div className="masonry" id="social">
 										<SocialCards sources={myRSSFeeds}></SocialCards>
 									</div>
