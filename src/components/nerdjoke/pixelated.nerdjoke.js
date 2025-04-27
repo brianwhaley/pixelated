@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getXHRData, generateURL } from '../utilities/pixelated.api';
 import './pixelated.nerdjoke.css';
+import '../../css/pixelated.grid.scss';
+
+const debug = true;
 
 export class NerdJoke extends Component {
 	constructor (props) {
@@ -21,6 +24,7 @@ export class NerdJoke extends Component {
 	}
 
 	loadJoke = () => {
+		if (debug) console.log("Loading Joke");
 		this.timePassed = 0;
 		this.timeLeft = this.TIME_LIMIT;
 		this.timerInterval = null;
@@ -41,7 +45,8 @@ export class NerdJoke extends Component {
 		});
 	};
 
-	formatTimeLeft = (time) => {
+	formatTimeLeft(time) {
+		if (debug) console.log("Formatting Time Left");
 		const minutes = Math.floor(time / 60);
 		let seconds = time % 60;
 		if (seconds < 10) {
@@ -50,7 +55,8 @@ export class NerdJoke extends Component {
 		return `${minutes}:${seconds}`;
 	};
 
-	startTimer = () => {
+	startTimer() {
+		if (debug) console.log("Starting Timer");
 		this.timerInterval = setInterval(() => {
 			if (!this.timePaused) {
 				this.timePassed = this.timePassed += 1;
@@ -62,48 +68,56 @@ export class NerdJoke extends Component {
 		}, 1000);
 	};
 
-	pauseTimer = () => {
+	pauseTimer() {
+		if (debug) console.log("Pausing Timer");
 		this.timePaused = !this.timePaused;
 	};
 
 	componentDidMount () {
+		if (debug) console.log("Component is Mounted");
 		this.loadJoke();
 		this.startTimer();
 	}
 
 	render () {
 		return (
-			<div className="nerdJoke grid12">
-
-				<div className="grid6">
-					<JokeButton
-						clickFunction={ this.pauseTimer }
-						buttonText="||  /  >" />
-				</div>
-				<div className="grid6">
-
-					<JokeButton
-						clickFunction={ this.loadJoke }
-						buttonText="Next Joke ->" />
-				</div>
-				<div className="jokeTimer grid12">
-					<div className="grid10">
-						<svg className="jokeTimerSvg" xmlns="http://www.w3.org/2000/svg">
-							<rect id="jokeTimerPathElapsed"/>
-						</svg>
+			<div className="nerdJoke">
+				<div className="row-12col">
+					<div className="grid-s1-e4">
+						<div className="left">
+							<JokeButton
+								clickFunction={ this.pauseTimer }
+								buttonText="Pause ||  / Play >" />
+						</div>
 					</div>
-					<div className="grid2" id="jokeTimerLabel">
-						{this.formatTimeLeft(this.timeLeft)}
+					<div className="grid-s9-e4">
+						<div className="right">
+							<JokeButton
+								clickFunction={ this.loadJoke }
+								buttonText="Next Joke ->" />
+						</div>
 					</div>
-				</div>
-				<div className="jokeText grid12">
-					<div>
-						<span className="label">Q: </span>
-						<span className="question"> { this.state.joke.question } </span>
+					<div className="jokeTimer grid-s1-e12">
+						<div className="row-12col">
+							<div className="grid-s1-e10">
+								<svg className="jokeTimerSvg" xmlns="http://www.w3.org/2000/svg">
+									<rect id="jokeTimerPathElapsed"/>
+								</svg>
+							</div>
+							<div className="grid-s11-e2 center" id="jokeTimerLabel">
+								{this.formatTimeLeft(this.timeLeft)}
+							</div>
+						</div>
 					</div>
-					<div>
-						<span className="label">A: </span>
-						<span className="answer"> { this.state.joke.answer } </span>
+					<div className="jokeText grid-s1-e12">
+						<div>
+							<span className="label">Q: </span>
+							<span className="question"> { this.state.joke.question } </span>
+						</div>
+						<div>
+							<span className="label">A: </span>
+							<span className="answer"> { this.state.joke.answer } </span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,19 +125,16 @@ export class NerdJoke extends Component {
 	}
 }
 
-/* ========== CAROUSEL SLIDER ARROW ========== */
-export class JokeButton extends Component {
-	static propTypes = {
-		clickFunction: PropTypes.func.isRequired,
-		buttonText: PropTypes.string.isRequired
-	};
-
-	render () {
-		return (
-			<div className={'jokeButton' }
-				onClick={ this.props.clickFunction }>
-				{ this.props.buttonText }
-			</div>
-		);
-	}
+/* ========== JOKE BUTTON ========== */
+function JokeButton(props) {
+	return (
+		<div className={'jokeButton' }
+			onClick={ props.clickFunction }>
+			{ props.buttonText }
+		</div> 
+	);
 }
+JokeButton.propTypes = {
+	clickFunction: PropTypes.func.isRequired,
+	buttonText: PropTypes.string.isRequired
+};

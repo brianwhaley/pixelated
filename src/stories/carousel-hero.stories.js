@@ -1,7 +1,7 @@
 import React, {  } from 'react';
 import { Carousel } from '../components/carousel/pixelated.carousel';
 import '../components/carousel/pixelated.carousel.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 export default {
 	title: 'Carousel',

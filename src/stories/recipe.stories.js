@@ -1,7 +1,7 @@
 import { RecipeBook } from '../components/recipe/pixelated.recipe';
 import '../components/recipe/pixelated.recipe.css';
 import RecipeData from '../data/recipes.json';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 const categories = ['bread', 'appetizer', 'dinner', 'slow cooker', 'side dish', 'salad', 'dessert'];
 

@@ -66,7 +66,7 @@ export function MenuAccordion(props) {
 	return (
 		<div className="accordionMenuWrapper accordionOut">
 			<div className="accordionMenu" id="accordionMenu">
-				<ul className="grid12 clearfix">
+				<ul>
 					{ generateMenuItems() }
 				</ul>
 			</div>

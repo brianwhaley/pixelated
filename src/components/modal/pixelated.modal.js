@@ -33,7 +33,7 @@ export function Modal(props) {
 	return (
 		<div id="myModal" className="modal" style={{display: 'none'}}>
 			<div className="modalContent">
-				<span id="myModalClose" className="rounded modalClose" aria-hidden="true">&times;</span>
+				<span id="myModalClose" className="modalClose" aria-hidden="true">&times;</span>
 				{ props.modalContent }
 			</div>
 		</div>

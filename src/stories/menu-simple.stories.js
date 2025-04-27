@@ -1,6 +1,6 @@
 import { MenuSimple } from '../components/menu/pixelated.menu-simple';
 import '../components/menu/pixelated.menu-accordion.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 const menuItems = {
 	Home: '/index.html',

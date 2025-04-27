@@ -8,7 +8,6 @@ const calloutProps = {
 	title: 'Photo Gallery',
 	content: 'A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. The carousel was built using the Galleria jQuery plugin. You can click on the left or right arrows to navigate, or swipe on a touch enabled device.',
 	direction: 'vertical',
-	columnCount: '3'
 };
 
 describe('Callout', () => {

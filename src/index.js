@@ -1,6 +1,7 @@
 export * from './components/callout/pixelated.callout';
 export * from './components/carousel/pixelated.carousel';
 export * from './components/ebay/pixelated.ebay';
+/* export * from './components/linkedin/pixelated.ecommerce' */
 export * from './components/form/pixelated.form';
 export * from './components/form/pixelated.formcomponents';
 export * from './components/form/pixelated.formvalidations';
@@ -12,6 +13,7 @@ export * from './components/nerdjoke/pixelated.nerdjoke';
 export * from './components/modal/pixelated.modal';
 export * from './components/recipe/pixelated.recipe';
 export * from './components/resume/pixelated.resume';
+/* export * from './components/sitemap/pixelated.sitemap'; */
 export * from './components/socialcard/pixelated.socialcard';
 export * from './components/table/pixelated.table';
 export * from './components/utilities/pixelated.api';

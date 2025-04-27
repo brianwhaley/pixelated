@@ -15,6 +15,11 @@ Not using defaultProps as they are merged shallow, not deep
 https://stackoverflow.com/questions/40428847/react-component-defaultprops-objects-are-overridden-not-merged 
 */
 
+
+function capitalize(s) {
+	return s && String(s[0]).toUpperCase() + String(s).slice(1);
+}
+
 /* ========== CAROUSEL ========== */
 export function Carousel(props) {
 	Carousel.propTypes = {
@@ -325,7 +330,11 @@ export function CarouselSlider(props) {
 		);
 	} else {
 		return (
-			<div className='carousel'></div>
+			<div className='section-container'>
+				<div className="carouselContainer">
+					<CarouselLoading />
+				</div>
+			</div>
 		);
 	}
 }
@@ -388,7 +397,7 @@ export function CarouselSliderDetails(props) {
 	};
 
 	return (
-		<div className="carouselSliderDetails textOutlineHalo">
+		<div className="carouselSliderDetails textOutline">
 			{props.index} of {props.length} - {props.image.title} <br/>
 			by {props.image.ownername} on {props.image.datetaken}
 		</div>
@@ -404,7 +413,7 @@ export function CarouselSliderArrow(props) {
 	};
 
 	return (
-		<div className={"carouselArrow textOutlineHalo " + props.direction}
+		<div className={`carouselArrow${capitalize(props.direction)} textOutline`}
 			onClick={ props.clickFunction }>
 			{ props.glyph }
 		</div>
@@ -447,6 +456,30 @@ export function CarouselHero(props) {
 		}
 	}, [props, activeIndex]);
 
+	if (flickrImages && flickrImages.length > 0) {
+		return (
+			<Fragment>
+				{flickrImages.map((image, i) => (
+					<CarouselHeroImage
+						key={image.id}
+						direction={direction}
+						activeIndex={activeIndex}
+						index={i}
+						imagesLength={flickrImages.length}
+						image={image}
+						size={flickrData.flickrSize} />
+				))}
+				<CarouselHeroDetails
+					index={activeIndex + 1}
+					length={flickrImages.length}
+					image={flickrImages[activeIndex]} />
+			</Fragment>
+		);
+	} else {
+		return (<CarouselLoading />);
+	}
+
+	/* 
 	return (
 		<Fragment >
 			{ flickrImages.length > 0 && flickrImages.map((image, i) => (
@@ -467,6 +500,7 @@ export function CarouselHero(props) {
 				: null} 
 		</Fragment>
 	);
+	*/
 }
 
 /* ========== CAROUSEL HERO IMAGE ========== */
@@ -515,7 +549,7 @@ export function CarouselHeroDetails(props) {
 
 	return (
 		<div className='section-container'>
-			<div className="carouselHeroDetails textOutlineHalo">
+			<div className="carouselHeroDetails textOutline">
 				<div className="carouselHeroDetailsLeft">
 					<div>{props.index} of {props.length}</div>
 					<div>{props.image.title}</div>
@@ -528,3 +562,12 @@ export function CarouselHeroDetails(props) {
 		</div>
 	);
 }
+
+export function CarouselLoading() {
+	return (
+		<div className="carouselLoading centered">
+			<div>Loading...</div>
+		</div>
+	);
+}
+

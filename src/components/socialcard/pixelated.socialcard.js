@@ -231,7 +231,7 @@ export function SocialCards(props) {
 	}, []);
 
 	if (state.loading) {
-		return (<Spinner />);
+		return (<SocialCardsLoading />);
 	} else {
 		return (state.mySocialCards);
 	}
@@ -263,9 +263,9 @@ export function SocialCard(props) {
 }
 
 /* ========== SPINNER ========== */
-export function Spinner() {
+export function SocialCardsLoading() {
 	return (
-		<div className="spinner">
+		<div className="cardsLoading">
 			<div>Loading...</div>
 		</div>
 	);

@@ -1,6 +1,6 @@
 import { FormBuilder } from '../components/form/pixelated.form';
 import '../components/form/pixelated.form.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 export default {
 	title: 'Form',

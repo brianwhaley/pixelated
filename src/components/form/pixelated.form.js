@@ -247,9 +247,9 @@ export function FormExtractor(props) {
 	};
 
 	const debug = false;
-	const [ url, setURL ] = useState('');
-	const [ htmlPaste, setHtmlPaste ] = useState('');
-	const [ formData, setFormData ] = useState ({});
+	const [ url, setURL ] = useState();
+	const [ htmlPaste, setHtmlPaste ] = useState();
+	const [ formData, setFormData ] = useState ();
 
 	function setParentState(childState) {
 		// SET STATE FROM PARENT VALUES - EXPOSED EXTERNAL
@@ -290,8 +290,8 @@ export function FormExtractUI(props) {
 	};
 
 	const debug = false;
-	const [url, setURL] = useState('');
-	const [htmlPaste, setHtmlPaste] = useState('');
+	const [url, setURL] = useState();
+	const [htmlPaste, setHtmlPaste] = useState();
 
 	function onChange (event) {
 		// UPDATE URL OR HTML_PASTE ON CHANGE - EXTERNAL
@@ -336,9 +336,9 @@ export function FormExtractEngine(props) {
 	const proxy = 'https://proxy.pixelated.tech/prod/proxy?url=';
 	// const proxy = "https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=";
 	// const proxy = "https://thingproxy.freeboard.io/fetch/";
-	const [ url, setURL ] = useState('');
-	const [ htmlPaste, setHtmlPaste ] = useState('');
-	const [ formJson, setFormJson ] = useState(null);
+	const [ url, setURL ] = useState();
+	const [ htmlPaste, setHtmlPaste ] = useState();
+	const [ formJson, setFormJson ] = useState();
 
 	function extractOptions (thisElement) {
 		// GENERATE OPTIONS FOR SELECT FIELD - INTERNAL

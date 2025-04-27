@@ -1,6 +1,6 @@
 import { Callout, CalloutRoundSm, CalloutRoundTiny } from '../components/callout/pixelated.callout';
 import '../components/callout/pixelated.callout.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 export default {
 	title: 'Callout',

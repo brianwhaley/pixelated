@@ -41,7 +41,11 @@ export function LinkedIn(props) {
 		console.log("Fetching LinkedIn oAuth Token");
 		try {
 			console.log("OAuth URL : ", fullOAuthURL);
-			const oAuthPromise = await fetch(fullOAuthURL, { method: 'GET' });
+			// const oAuthPromise = await fetch(fullOAuthURL, { method: 'GET' });
+			// const oAuthPromise = await fetch(LinkedInApi.oAuthUrl + "?" + oAuthParams.toString(), { method: 'GET' });
+
+			window.location.href = fullOAuthURL;
+
 			console.log(await oAuthPromise);
 			const response = await oAuthPromise.response;
 			console.log(await response);

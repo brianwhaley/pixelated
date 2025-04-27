@@ -27,50 +27,53 @@
 	margin-bottom: 7px;
 }
 
-.roundImgContainer {
+.roundImgContainer, 
+.squircleImgContainer {
     background: #fff;
     border: 1px solid #AAA;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-    margin: auto;
 	overflow: hidden;
-	position: relative;
+	margin: 0px auto;
 }
 
-.roundImgContainer:before,
-.roundImgContainerBefore {
-	content: "";
-	display: block;
-	padding-top: 100%; 	/* initial ratio of 1:1*/
+.roundImgContainer {
+	/* -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%; */
+	/* clip-path: circle(); */
+	clip-path: rect(1% 98% 98% 1% round 50%);
+}
+
+.squircleImgContainer {
+	/* -moz-border-radius: 25%;
+	-webkit-border-radius: 25%;
+	border-radius: 25%; */
+	clip-path: rect(1% 98% 98% 1% round 25%);
 }
 
 .roundImgContainer img,
-.roundImg {
-    min-width: 100%;
-    min-height: 100%;
-    max-height: none;
-    max-width: none;
+.roundImg,
+.squircleImgContainer img {
+    width: 100%;
     height: 100%;
-    margin: auto;
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-    left: -100%;
+    object-fit: cover; /* This ensures the image covers the entire container */
+	aspect-ratio: 1;
+	vertical-align: middle;
+	/* place-items: center; */
+    /* min-width: 100%; */
+    /* min-height: 100%; */
 }
 
 .calloutImageVert {
 	/* .round-img-container */
     width: 70%;
-	height: 70%;
+	height: auto;
 }
 
 .calloutImageHoriz {
 	/* .round-img-container */
 	/* .callout-image */
     width: 90%;
-	height: 90%;
+	height: auto;
     float: right;
 }
 

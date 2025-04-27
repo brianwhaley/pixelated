@@ -1,6 +1,6 @@
 import { SocialCards } from '../components/socialcard/pixelated.socialcard';
 import '../components/socialcard/pixelated.socialcard.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 const mySources = {
 	SOOpx: { url: "https://500px.com/brianwhaley/rss" },

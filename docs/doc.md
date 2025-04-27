@@ -10,7 +10,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "addition of horizontal2 callout layout"
+git commit -m "new grid system based on CSS Grid Layout Module"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

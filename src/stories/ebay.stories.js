@@ -1,6 +1,6 @@
 import { EbayItems } from '../components/ebay/pixelated.ebay';
 import '../components/ebay/pixelated.ebay.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 export default {
 	title: 'Ebay Items',

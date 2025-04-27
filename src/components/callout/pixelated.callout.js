@@ -1,39 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.callout.css';
+import "../../css/pixelated.grid.scss";
+
+function validateShape(thisShape){
+	if(thisShape && ["round", "squircle"].includes(thisShape)) {
+		return thisShape;
+	} else {
+		return "round";
+	}
+}
 
 /* ========== CALLOUT ========== */
 
-Callout.propTypes = {
-	url: PropTypes.string,
-	img: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
-	content: PropTypes.string.isRequired,
-	layout: PropTypes.string,
-	columnCount: PropTypes.number
-};
 export function Callout(props){
-	const columnGridStyle = props.columnCount ? 'grid' + (12 / props.columnCount) : 'grid4';
+	const myShape = validateShape(props.shape); 
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
 	switch (props.layout) {
 	case 'horizontal':
 		return (
-			<div className={`callout column ${columnGridStyle}`}>
-				<div className="grid6">
-					<div className="roundImgContainer calloutImageHoriz">
+			<div className={"callout row-2col"}>
+				<div className="gridItem">
+					<div className={`${myShape}ImgContainer calloutImageHoriz`}>
 						{ props.url
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-							: <img src={props.img} alt={props.title} />
+							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
 						}
 					</div>
 				</div>
-				<div className="grid6">
+				<div className="gridItem">
 					{ props.url
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
-					<div className="calloutBody grid12">
+					<div className="calloutBody">
 						{props.content}
 						<br/><br/>
 						{ props.url
@@ -47,23 +48,23 @@ export function Callout(props){
 
 	case 'horizontal2':
 		return (
-			<div className={`callout column ${columnGridStyle}`}>
-				<div className="grid12">
+			<div className={`callout row-1col`}>
+				<div className="gridItem center">
 					{ props.url
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
 				</div>
-				<div className="grid12">
-					<div className="grid6">
-						<div className="roundImgContainer calloutImageHoriz">
+				<div className="row-2col">
+					<div className="gridItem">
+						<div className={`${myShape}ImgContainer calloutImageHoriz`}>
 							{ props.url
 								? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-								: <img src={props.img} alt={props.title} />
+								: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
 							}
 						</div>
 					</div>
-					<div className="grid6">
+					<div className="gridItem">
 						<div className="calloutBody grid12">
 							{props.content}
 							<br/><br/>
@@ -79,46 +80,52 @@ export function Callout(props){
 
 	case 'vertical':
 		return (
-			<div className={`callout column ${columnGridStyle}`}>
-				<div className="grid12">
-					<div className="roundImgContainer calloutImageVert">
+			<div className={`callout row-1col `}>
+				<div className="gridItem center">
+					<div className={`${myShape}ImgContainer calloutImageVert center`}>
 						{ props.url
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-							: <img src={props.img} alt={props.title} />
+							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
 						}
 					</div>
 				</div>
-				<div className="grid12">
+				<div className="gridItem center">
 					{ props.url
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
-					<div className="calloutBody grid12">
-						{props.content}
-						<br/><br/>
-						{ props.url
-							? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-							: null
-						}
-					</div>
+				</div>
+				<div className="calloutBody gridItem center">
+					{props.content}
+					<br/><br/>
+					{ props.url
+						? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
+						: null
+					}
 				</div>
 			</div>
 		) ;
 
 	}
 }
+Callout.propTypes = {
+	url: PropTypes.string,
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	layout: PropTypes.string,
+	shape: PropTypes.string,
+	alt: PropTypes.string,
+};
 
 
 /* ========== CALLOUT HEADER ========== */
 
-CalloutHeader.propTypes = {
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string
-};
+
 export function CalloutHeader(props) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
-		<div className="calloutHeader grid12">
+		<div className="calloutHeader">
 			{props.url
 				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="calloutTitle">{props.title}</h2></a>
 				: <h2 className="calloutTitle">{props.title}</h2>
@@ -126,22 +133,23 @@ export function CalloutHeader(props) {
 		</div>
 	);
 }
-
-
-CalloutRoundSm.propTypes = {
-	url: PropTypes.string.isRequired,
-	img: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired
+CalloutHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string
 };
+
+
+
 export function CalloutRoundSm(props) {
+	const myShape = validateShape(props.shape); 
 	return (
-		<div className="grid4fix pad">
-			<div className="roundImgContainer grid12">
+		<div className="row-1col pad">
+			<div className={`${myShape}ImgContainer gridItem center`}>
 				<a href={props.url} target="_blank"rel="noopener noreferrer">
-					<img src={props.img} alt={props.title}/>
+					<img src={props.img} alt={(props.alt) ? props.alt : props.title}/>
 				</a>
 			</div>
-			<div className="calloutHeader grid12">
+			<div className="calloutHeader gridItem center">
 				<a href={props.url} target="_blank" rel="noopener noreferrer">
 					<h3 className="calloutTitle">{props.title}</h3>
 				</a>
@@ -149,31 +157,35 @@ export function CalloutRoundSm(props) {
 		</div>
 	);
 }
+CalloutRoundSm.propTypes = {
+	url: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	shape: PropTypes.string,
+	alt: PropTypes.string,
+};
+
+
 
 
 
 export const CalloutRoundTiny = (props) => {
-	CalloutRoundTiny.defaultProps = {
-		gridSize: "2"
-	};
-	CalloutRoundTiny.propTypes = {
-		url: PropTypes.string.isRequired,
-		imgclick: PropTypes.func,
-		img: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		alt: PropTypes.string.isRequired,
-		gridSize: PropTypes.string.isRequired
-	};
-	/* 
-				<a href={props.url} target="_blank" onClick={props.onclick} rel="noopener noreferrer">
-				<a href="#" onClick={props.onclick} rel="noopener noreferrer"></a>
-
-	*/
+	const myShape = validateShape(props.shape); 
 	return (
-		<div className={"roundImgContainer " + (props.img ? 'grid' + props.gridSize + 'fix' : 'grid' + props.gridSize + 'fix noMobile')} >
-			<img src={props.img} alt={props.alt} 
-				onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
-			/>
+		<div>
+			<div className={`${myShape}ImgContainer ` + (props.img ? 'gridItem' : 'gridItem noMobile')} >
+				<img src={props.img} alt={props.alt} 
+					onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
+				/>
+			</div>
 		</div>
 	);
+};
+CalloutRoundTiny.propTypes = {
+	url: PropTypes.string.isRequired,
+	imgclick: PropTypes.func,
+	img: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	shape: PropTypes.string,
+	alt: PropTypes.string.isRequired,
 };

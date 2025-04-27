@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { format } from "date-fns";
 import "./pixelated.resume.css";
+import "../../css/pixelated.grid.scss";
 
 function isValidDate(dateString) {
 	let date = new Date(dateString);
@@ -30,53 +31,55 @@ export function Resume (props) {
 	return (
 		<section className="p-resume" id="resume-section">
 			<div className="section-container">
-				<div className="p-name grid12">
-					<ResumeName data={props.data.items[0].properties.name} />
-				</div>
-				<div className="grid3 bigpad divider">
-					<div className="p-contact">
-						<ResumeContact title="Contact Information" data={props.data.items[0].properties.contact} />
+				<div className="row-12col">
+					<div className="p-name grid-s1-e12">
+						<ResumeName data={props.data.items[0].properties.name} />
 					</div>
-					<div className="p-education">
-						<ResumeEvents title="Education" data={props.data.items[0].properties.education} dateFormat="MM/yyyy" collapsible={false} />
+					<div className="bigpad divider grid-s1-e3">
+						<div className="p-contact">
+							<ResumeContact title="Contact Information" data={props.data.items[0].properties.contact} />
+						</div>
+						<div className="p-education">
+							<ResumeEvents title="Education" data={props.data.items[0].properties.education} dateFormat="MM/yyyy" collapsible={false} />
+						</div>
+						<div className="p-skills">
+							<ResumeSkills title="Skills" data={props.data.items[0].properties.skills} />
+						</div>
 					</div>
-					<div className="p-skills">
-						<ResumeSkills title="Skills" data={props.data.items[0].properties.skills} />
-					</div>
-				</div>
-				<div className="grid9 bigpad">
-					<div className="p-summary">
-						<ResumeSummary title="Professional Summary" data={props.data.items[0].properties.summary} />
-					</div>
-					<div className="p-qualifications">
-						<ResumeQualifications title="Professional Qualifications" data={props.data.items[0].properties.qualifications} />
-					</div>
-					<div className="p-experience">
-						<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" collapsible={false} />
-					</div>
-					<div className="p-projects">
-						<ResumeProjects title="Projects" data={props.data.items[0].properties.experience} collapsible={true} />
-					</div>
+					<div className="bigpad grid-s4-e9">
+						<div className="p-summary">
+							<ResumeSummary title="Professional Summary" data={props.data.items[0].properties.summary} />
+						</div>
+						<div className="p-qualifications">
+							<ResumeQualifications title="Professional Qualifications" data={props.data.items[0].properties.qualifications} />
+						</div>
+						<div className="p-experience">
+							<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" collapsible={false} />
+						</div>
+						<div className="p-projects">
+							<ResumeProjects title="Projects" data={props.data.items[0].properties.experience} collapsible={true} />
+						</div>
 
-					<div className="p-volunteer">
-						<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" collapsible={true} />
-					</div>
+						<div className="p-volunteer">
+							<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" collapsible={true} />
+						</div>
 
-					<div className="p-certifications">
-						<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" collapsible={true} />
-					</div>
-					<div className="p-awards">
-						<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" collapsible={true} />
-					</div>
+						<div className="p-certifications">
+							<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" collapsible={true} />
+						</div>
+						<div className="p-awards">
+							<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" collapsible={true} />
+						</div>
 
-					<div className="p-training">
-						<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" collapsible={true} />
-					</div>
+						<div className="p-training">
+							<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" collapsible={true} />
+						</div>
 
-					<div className="p-references">
-						<ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} />
-					</div>
+						<div className="p-references">
+							<ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} />
+						</div>
 
+					</div>
 				</div>
 			</div>
 		</section>

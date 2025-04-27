@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion';
 import '../components/menu/pixelated.menu-accordion.css';
-import '../css/pixelated.less';
+import '../css/pixelated.global.css';
 
 const menuItems = {
 	Home: '/index.html',

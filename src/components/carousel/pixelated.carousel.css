@@ -7,7 +7,7 @@
 	position: relative;
     overflow: hidden;
     background: #FFF;
-    border: 1px solid #CCC;
+    border: 1px solid #AAA;
 }
 
 .carouselSliderContainer {
@@ -38,13 +38,23 @@
 	object-fit: contain;
 }
 
-.carouselArrow {
+.carouselArrow,
+.carouselArrowLeft, 
+.carouselArrowRight {
 	position: absolute;
     font-size: 24px;
 	top: 50%;
     opacity: .5;
 	z-index: 1000;
     padding: 5px;
+}
+
+.carouselArrowLeft {
+	left: 0; 
+}
+
+.carouselArrowRight {
+	right: 0;
 }
 
 .carouselSliderDetails {
@@ -105,4 +115,9 @@
     width: 50%;
     text-align: right;
     padding-right: 20px;
+}
+
+.carouselLoading {
+    column-span: all;
+	text-align: center;
 }
