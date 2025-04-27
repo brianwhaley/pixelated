@@ -49,7 +49,7 @@ eslint --fix --ext .jsx --ext .js .
 npm version major
 npm version minor
 
-eslint --ext
+eslint --fix
 npm version patch --force
 git add * -v
 git commit -m "updated grid system to be based on CSS Grid Layout Module"

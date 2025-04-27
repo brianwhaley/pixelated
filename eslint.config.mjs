@@ -37,7 +37,10 @@ export default defineConfig([
       // ...pluginNext.configs['core-web-vitals'].rules,
       'indent': ['error', 'tab'],
       'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
-      "semi": ["error", "always"]
+      "semi": ["error", "always"],
+      "@next/next/no-img-element": "off",
+      "@next/next/no-html-link-for-pages": "off"
+
     },
     /* rules: {
       ...globals.browser.recommended,

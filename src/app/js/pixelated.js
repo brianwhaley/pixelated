@@ -25,6 +25,7 @@ if(typeof window !== 'undefined'){
 ======================================== */
 
 if(typeof document !== 'undefined'){
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	var gsearch = (function () {
 		var cx = "009500278966481927899:bcssp73qony";
 		var gcse = document.createElement("script");
