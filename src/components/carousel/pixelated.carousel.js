@@ -549,7 +549,7 @@ export function CarouselHeroDetails(props) {
 
 	return (
 		<div className='section-container'>
-			<div className="carouselHeroDetails textOutline">
+			<div className="carouselHeroDetails textOutline horizontal-centered">
 				<div className="carouselHeroDetailsLeft">
 					<div>{props.index} of {props.length}</div>
 					<div>{props.image.title}</div>

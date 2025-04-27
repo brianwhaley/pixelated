@@ -1,4 +1,4 @@
-import { LinkedIn } from '../components/linkedin/pixelated.linkedin';
+import { LinkedIn } from '../components/linkedin/pixelated.linkedin1';
 import '../css/pixelated.global.css';
 
 export default {
