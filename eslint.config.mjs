@@ -24,7 +24,7 @@ export default defineConfig([
     }, 
     plugins: {
 			// pluginJs, pluginReact, pluginNext, tseslint
-      // '@next/next': pluginNext,
+      '@next/next': pluginNext,
 		},
     extends: [
       eslint.configs.recommended,
@@ -33,7 +33,7 @@ export default defineConfig([
       // ...tseslint.configs.stylisticTypeChecked,
     ],
     rules: {
-      // ...pluginNext.configs.recommended.rules,
+      ...pluginNext.configs.recommended.rules,
       // ...pluginNext.configs['core-web-vitals'].rules,
       'indent': ['error', 'tab'],
       'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
