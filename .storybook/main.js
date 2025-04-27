@@ -7,6 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config = {
+  addons: [
+    '@storybook/addon-controls',
+    '@storybook/preset-scss',
+],
   core: {
     builder: {
       name: "@storybook/builder-webpack5",
