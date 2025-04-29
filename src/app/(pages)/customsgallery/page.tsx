@@ -9,7 +9,9 @@ function GalleryWrapper( props: { props: { tag: string; }; } ) {
 	const myTag = props.props.tag;
 	const flickrProps = { urlProps: { tags: myTag, photoSize: "Large" } };
 	return (
-		<Carousel flickr={flickrProps} type="slider"></Carousel>
+		<div className="section-container">
+			<Carousel flickr={flickrProps} type="slider" />
+		</div>
 	);
 }
 

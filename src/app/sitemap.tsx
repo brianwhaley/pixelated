@@ -6,7 +6,9 @@ import myRoutes from "@/app/data/routes.json";
 
 export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 
-	const blogPostsURL = "https://public-api.wordpress.com/rest/v1/sites/pixelatedviews.wordpress.com/posts?number=100";
+	const blogPostSite = "pixelatedviews.wordpress.com";
+	const blogPostPath = "/posts?number=100";
+	const blogPostsURL = "https://public-api.wordpress.com/rest/v1/sites/" + blogPostSite + blogPostPath ; 
 
 	async function getOrigin(): Promise<string> {
 		const headerList = await headers();
@@ -16,16 +18,25 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 	}
 
 	async function getBlogItems(){
-		try {
-			const response = await fetch(blogPostsURL);
-			if (!response.ok) {
-			  throw new Error(`HTTP error! status: ${response.status}`);
+		const posts = [];
+  		let page = 1;
+  		let totalPages = 1;  // Initialize to 1 for the first request
+  		while (page <= totalPages) {
+    		try {
+      			const response = await fetch(`${blogPostsURL}&page=${page}`);				
+				const data = await response.json();
+				// Check for total pages on the first page
+				if (page === 1) {
+					totalPages = Math.ceil(data.found / 100); // Assuming 100 posts per page
+				}
+				posts.push(...data.posts);
+				page++; // Increment gets next page or breaks the while loop
+			} catch (error) {
+				console.error("Error fetching posts:", error);
+				return;
 			}
-			const data = await response.json();
-			return data;
-		} catch (error) {
-			console.error("Could not fetch the posts:", error);
 		}
+		return posts; // Return the complete list of posts
 	}
 
 	const sitemap = [];
@@ -39,7 +50,7 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		});			
 	}
  	const blogPosts = await getBlogItems();
- 	for await (const post of blogPosts.posts) {
+	for await (const post of blogPosts ?? []) {
   	sitemap.push({
 			url: post.URL ,
 			lastModified: post.modified,
