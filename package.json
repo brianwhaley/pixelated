@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "private": false,
   "description": "Pixelated UI Components",
   "homepage": "https://github.com/brianwhaley/pixelated-components#readme",
@@ -24,8 +24,9 @@
   ],
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "storybook": "rm -rf node_modules/cache && storybook dev -p 6006 --debug-webpack",
-    "build-storybook": "rm -rf node_modules/cache && storybook build"
+    "storybook": "rm -rf node_modules/cache && storybook dev -p 6006",
+    "build-storybook": "rm -rf node_modules/cache && storybook build",
+    "test": "react-scripts test"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -33,7 +34,7 @@
     "core-js": "^3.41.0",
     "date-fns": "^4.1.0",
     "globals": "^16.0.0",
-    "react-router-dom": "^7.5.0"
+    "react-router-dom": "^7.5.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.0",
@@ -47,7 +48,7 @@
     "@storybook/testing-library": "^0.2.1",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.1",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^17.17.0",
