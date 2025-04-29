@@ -23,7 +23,7 @@ export const CalloutStory = {
 			control: { type: 'select' },
 		},
 		shape: {
-			options: ['round', 'squircle'],
+			options: ['round', 'squircle', 'square'],
 			control: { type: 'select' },
 		},
 	}

@@ -16,6 +16,6 @@ export const PixelatedGallery = {
 				photoSize: 'Large'
 			}
 		},
-		type: 'slider'
+		type: "slider"
 	}
 };

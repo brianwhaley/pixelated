@@ -15,6 +15,16 @@ Not using defaultProps as they are merged shallow, not deep
 https://stackoverflow.com/questions/40428847/react-component-defaultprops-objects-are-overridden-not-merged 
 */
 
+/* BUG :
+Link clicking is deactivated in the dragend function
+as it is causing issues with the prev / next buttons.
+Fix is to either : 
+1. disable the carousel image links
+2. target drag and drop event listeners to a local div
+( which i couldnt get working) or
+3. mess with the dragstart and dragend functions to calculate targets
+*/
+
 
 function capitalize(s) {
 	return s && String(s[0]).toUpperCase() + String(s).slice(1);
@@ -110,6 +120,14 @@ export function CarouselSlider(props) {
 		flickrData: PropTypes.object.isRequired
 	};
 
+	/* const isMounted = useRef(false);
+	useEffect(() => {
+		isMounted.current = true;
+		return () => {
+			isMounted.current = false;
+		};
+	}, []); */
+	
 	const debug = false;
 	const [ activeIndex, setActiveIndex ] = useState(0);
 	const [ direction, setDirection ] = useState('next');
@@ -164,8 +182,8 @@ export function CarouselSlider(props) {
 		if (debug) { console.log('Drag Start - ' + e.type); }
 		// var elem = e.currentTarget ;
 		if ((typeof e.target.className === 'string') &&
-    	(e.target.className.includes('carouselSliderContainer') ||
-    	e.target.className.includes('carouselSliderImage'))) {
+    	( e.target.className.includes('carouselSliderContainer') || 
+    	e.target.className.includes('carouselSliderImage') )) {
 			e.preventDefault();
 			e.stopPropagation();
 			const elem = e.target.closest(divSelector);
@@ -214,12 +232,12 @@ export function CarouselSlider(props) {
 	};
 
 	function dragEnd(e) {
-		if (!drag.dragMoving) {
+		/* if (!drag.dragMoving) {
 			const thisImg = props.flickrData.images[activeIndex];
 			const thisImgURL = 'https://farm' + thisImg.farm + '.static.flickr.com/' + thisImg.server + '/' + thisImg.id + '_' + thisImg.secret + '_b.jpg';
 			// var thisImgURL2 =  "http://flickr.com/photo.gne?id=" + thisImg.id + "_" + thisImg.secret  + ".jpg" ;
 			window.open(thisImgURL, '_blank');
-		}
+		} */
 		if (drag.draggable) {
 			if (debug) { console.log('Drag End - ' + e.type); }
 			const elem = e.target.closest(divSelector);
@@ -281,51 +299,51 @@ export function CarouselSlider(props) {
 	};
 
 	useEffect(() => {
-		document.addEventListener('touchstart', dragStart, { passive: false });
-		document.addEventListener('touchmove', draggable, { passive: false });
-		document.addEventListener('touchend', dragEnd, { passive: true });
-		document.addEventListener('mousedown', dragStart, { passive: false });
-		document.addEventListener('mousemove', draggable, { passive: false });
-		document.addEventListener('mouseup', dragEnd, { passive: true });
-		document.addEventListener('transitionend', transitionEnd, { passive: true });
+		const container = document.getElementById('carouselImageContainer');
+		document.addEventListener('touchstart', dragStart, { capture: true, passive: false });
+		document.addEventListener('touchmove', draggable, { capture: true, passive: false });
+		document.addEventListener('touchend', dragEnd, { capture: true, passive: true });
+		document.addEventListener('mousedown', dragStart, { capture: true, passive: false });
+		document.addEventListener('mousemove', draggable, { capture: true, passive: false });
+		document.addEventListener('mouseup', dragEnd, { capture: true, passive: true });
+		document.addEventListener('transitionend', transitionEnd, { capture: true, passive: true });
 		return () => {
-			document.removeEventListener('touchstart', dragStart, { passive: false });
-			document.removeEventListener('touchmove', draggable, { passive: false });
-			document.removeEventListener('touchend', dragEnd, { passive: true });
-			document.removeEventListener('mousedown', dragStart, { passive: false });
-			document.removeEventListener('mousemove', draggable, { passive: false });
-			document.removeEventListener('mouseup', dragEnd, { passive: true });
-			document.removeEventListener('transitionend', transitionEnd, { passive: true });
+			document.removeEventListener('touchstart', dragStart, { capture: true, passive: false });
+			document.removeEventListener('touchmove', draggable, { capture: true, passive: false });
+			document.removeEventListener('touchend', dragEnd, { capture: true, passive: true });
+			document.removeEventListener('mousedown', dragStart, { capture: true, passive: false });
+			document.removeEventListener('mousemove', draggable, { capture: true, passive: false });
+			document.removeEventListener('mouseup', dragEnd, { capture: true, passive: true });
+			document.removeEventListener('transitionend', transitionEnd, { capture: true, passive: true });
 		};
-	  }, [activeIndex]);
+	}, [activeIndex]);
 
 	if (props.flickrData.images.length > 0) {
-		const myActiveIndex = activeIndex;
 		return (
-			<div className='section-container'>
-				<div className="carouselContainer">
-					<CarouselSliderArrow
-						direction='left'
-						clickFunction={ previousImage }
-						glyph='&#9664;' />
-					{ props.flickrData.images.map((image, i) => (
-						<CarouselSliderImage
-							key={image.id}
-							direction={direction}
-							activeIndex={myActiveIndex} index={i}
-							imagesLength={props.flickrData.images.length}
-							image={image}
-							size={props.flickrData.flickrSize} />
-					))}
-					<CarouselSliderArrow
-						direction='right'
-						clickFunction={ nextImage }
-						glyph='&#9654;' />
-					<CarouselSliderDetails
-						index={activeIndex + 1}
-						length={props.flickrData.images.length}
-						image={props.flickrData.images[myActiveIndex]} />
-				</div>
+			<div className="carouselContainer">
+				<CarouselSliderArrow
+					direction='left'
+					clickFunction={ previousImage }
+					glyph='&#9664;' />
+				{ /* <div id="carouselImageContainer" draggable="false"> */ }
+				{ props.flickrData.images.map((image, i) => (
+					<CarouselSliderImage
+						key={image.id}
+						direction={direction}
+						activeIndex={activeIndex} index={i}
+						imagesLength={props.flickrData.images.length}
+						image={image}
+						size={props.flickrData.flickrSize} />
+				))}
+				{ /* </div> */ }
+				<CarouselSliderArrow
+					direction='right'
+					clickFunction={ nextImage }
+					glyph='&#9654;' />
+				<CarouselSliderDetails
+					index={activeIndex + 1}
+					length={props.flickrData.images.length}
+					image={props.flickrData.images[activeIndex]} />
 			</div>
 		);
 	} else {
@@ -350,7 +368,7 @@ export function CarouselSliderImage(props) {
 		size: PropTypes.string.isRequired
 	};
 
-	let myImage = React.createRef();
+	// let myImage = React.createRef();
 
 	const myImg = props.image;
 	const myZindex = props.imagesLength - props.index;
@@ -565,7 +583,7 @@ export function CarouselHeroDetails(props) {
 
 export function CarouselLoading() {
 	return (
-		<div className="carouselLoading centered">
+		<div className="carouselLoading horizontal-centered vertical-centered centered">
 			<div>Loading...</div>
 		</div>
 	);

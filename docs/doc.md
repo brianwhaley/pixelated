@@ -10,7 +10,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "new grid system based on CSS Grid Layout Module"
+git commit -m "remove calloutroundtiny, rename calloutroundsm to calloutsmall, fix for carousel events"
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

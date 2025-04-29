@@ -4,7 +4,7 @@ import './pixelated.callout.css';
 import "../../css/pixelated.grid.scss";
 
 function validateShape(thisShape){
-	if(thisShape && ["round", "squircle"].includes(thisShape)) {
+	if(thisShape && ["round", "squircle", "square"].includes(thisShape)) {
 		return thisShape;
 	} else {
 		return "round";
@@ -139,53 +139,56 @@ CalloutHeader.propTypes = {
 };
 
 
-
-export function CalloutRoundSm(props) {
-	const myShape = validateShape(props.shape); 
-	return (
-		<div className="row-1col pad">
-			<div className={`${myShape}ImgContainer gridItem center`}>
-				<a href={props.url} target="_blank"rel="noopener noreferrer">
-					<img src={props.img} alt={(props.alt) ? props.alt : props.title}/>
-				</a>
-			</div>
-			<div className="calloutHeader gridItem center">
-				<a href={props.url} target="_blank" rel="noopener noreferrer">
-					<h3 className="calloutTitle">{props.title}</h3>
-				</a>
-			</div>
-		</div>
-	);
-}
-CalloutRoundSm.propTypes = {
-	url: PropTypes.string.isRequired,
-	img: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
-	shape: PropTypes.string,
-	alt: PropTypes.string,
-};
+/* ========== CALLOUT SMALL ========== */
 
 
-
-
-
-export const CalloutRoundTiny = (props) => {
+export function CalloutSmall(props) {
 	const myShape = validateShape(props.shape); 
 	return (
 		<div>
-			<div className={`${myShape}ImgContainer ` + (props.img ? 'gridItem' : 'gridItem noMobile')} >
-				<img src={props.img} alt={props.alt} 
-					onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
-				/>
+			<div className={`${myShape}ImgContainer gridItem center`}>
+				<a href={props.url} target="_blank"rel="noopener noreferrer">
+					<img src={props.img} alt={(props.alt) ? props.alt : props.title} 
+						onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
+					/>
+				</a>
 			</div>
+			{ (props.title) ? <div className="calloutHeader gridItem center">
+				{ props.url
+					? <CalloutHeaderSmall url={props.url} title={props.title} />
+					: <CalloutHeaderSmall title={props.title} />
+				}
+			</div> : null }
 		</div>
 	);
-};
-CalloutRoundTiny.propTypes = {
+}
+CalloutSmall.propTypes = {
 	url: PropTypes.string.isRequired,
 	imgclick: PropTypes.func,
 	img: PropTypes.string.isRequired,
 	title: PropTypes.string,
 	shape: PropTypes.string,
-	alt: PropTypes.string.isRequired,
+	alt: PropTypes.string,
 };
+
+
+/* ========== CALLOUT HEADER ========== */
+
+
+export function CalloutHeaderSmall(props) {
+	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
+	return (
+		<div className="calloutHeader">
+			{props.url
+				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h3 className="calloutTitle">{props.title}</h3></a>
+				: <h3 className="calloutTitle">{props.title}</h3>
+			}
+		</div>
+	);
+}
+CalloutHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string
+};
+
+

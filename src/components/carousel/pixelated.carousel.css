@@ -23,6 +23,10 @@
 	overflow: hidden;
 }
 
+#carouselImageContainer {
+	--do-nothing: true;
+}
+
 .carouselSliderImage {
 	padding: 10px;
 	display: block;

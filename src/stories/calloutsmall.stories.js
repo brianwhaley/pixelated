@@ -1,17 +1,19 @@
-import { CalloutRoundSm } from '../components/callout/pixelated.callout';
+import { CalloutSmall } from '../components/callout/pixelated.callout';
 import '../components/callout/pixelated.callout.css';
 import '../css/pixelated.grid.scss';
 
 export default {
 	title: 'Callout',
-	component: CalloutRoundSm
+	component: CalloutSmall
 };
 
-export const CalloutRoundSmall = {
-	title: 'Callout Round Small',
+export const Callout_Small = {
+	title: 'Callout Small',
 	args: {
 		url: 'https://www.linkedin.com/in/brianwhaley',
 		img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
-		title: 'LinkedIn Profile'
+		title: 'LinkedIn Profile',
+		shape: 'squircle',
+		alt: 'Hooray for LinkedIn!',
 	}
 };
