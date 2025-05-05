@@ -1,40 +1,113 @@
 {
 	"routes": [
-		{ "name": "Home", "path": "/", 
-			"description": "" },
-		{ "name": "Resume", "path": "/resume", 
-			"description": "View the resume of Brian Whaley" },
-		{ "name": "ReadMe", "path": "/readme", 
-			"description": "Every good piece of software needs a readme.  So do people." },
-		{ "name": "Work Portfolio", "path": "/workportfolio", 
-			"description": "Snapshots of some of the web properties I have worked on." },
-		{ "name": "Photo Gallery", "path": "/photogallery", 
-			"description": "The best of the best of my phtography portfolio." },
-		{ "name": "Social Media", "path": "/socialmedia", 
-			"description": "Links to all my digital footprints" },
-		{ "name": "Recipes", "path": "/recipes", 
-			"description": "Pace / Barbano / Whaley Recipes through the ages" },
-		{ "name": "Custom Sunglasses", "path": "/customsunglasses", 
-			"description": "A sampling of the custom sunglasses I paint in my spare time" },
-		{ "name": "Customs Gallery", "path": "/customsgallery", 
-			"description": "A carousel gallery of some of the paint styles I do on sunglasses" },
-		{ "name": "Customs on eBay", "path": "/ebay", 
-			"description": "Check out my store on ebay where I sell my custom sunglasses" },
-		{ "name": "Customs Request", "path": "/requests", 
-			"description": "Request some custom sunglass work for yourself." },
-		{ "name": "My Customs", "path": "/mycustoms", 
-			"description": "These are pictures of the custom sunglasses in my personal collection." },
-		{ "name": "NerdJokes", "path": "/nerdjokes", 
-			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy" },
-		{ "name": "Joke", "path": "/joke", 
-			"description": "Joke Sampler" },
-		{ "name": "Stkr", "path": "/stkr", 
-			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy" },
-		{ "name": "Form", "path": "/form", 
-			"description": "Test my Form Builder, Form Components, and Form Validations" },
-		{ "name": "Form Build", "path": "/form/build", 
-			"description": "Build your own form with my Form Builder" },
-		{ "name": "Form Extract", "path": "/form/extract", 
-			"description": "Extract the JSON needed from a live site to use my Form Builder" }
+		{ 
+			"name": "Home", 
+			"path": "/", 
+			"title": "Pixelated - Brian Whaley - Home",
+			"description": "",
+			"keywords": ""  
+		} , { 
+			"name": "Resume", 
+			"path": "/resume", 
+			"title": "Pixelated - Brian Whaley - Resume",
+			"description": "View the resume of Brian Whaley",
+			"keywords": "" 
+		} , { 
+			"name": "ReadMe", 
+			"path": "/readme", 
+			"title": "Pixelated - Brian Whaley - ReadMe",
+			"description": "Every good piece of software needs a readme.  So do people.",
+			"keywords": ""  
+		} , { 
+			"name": "Work Portfolio", 
+			"path": "/workportfolio", 
+			"title": "Pixelated - Brian Whaley - Work Portfolio",
+			"description": "Snapshots of some of the web properties I have worked on." ,
+			"keywords": "" 
+		} , { 
+			"name": "Photo Gallery", 
+			"path": "/photogallery", 
+			"title": "Pixelated - Brian Whaley - Photo Gallery",
+			"description": "The best of the best of my phtography portfolio.",
+			"keywords": "" 
+		} , { 
+			"name": "Social Media", 
+			"path": "/socialmedia", 
+			"title": "Pixelated - Brian Whaley - Social Media",
+			"description": "Links to all my digital footprints",
+			"keywords": "" 
+		} , { 
+			"name": "Recipes", 
+			"path": "/recipes", 
+			"title": "Pixelated - Brian Whaley - Recipes",
+			"description": "Pace / Barbano / Whaley Recipes through the ages",
+			"keywords": "" 
+		} , { 
+			"name": "Custom Sunglasses", 
+			"path": "/customsunglasses", 
+			"title": "Pixelated - Brian Whaley - Custom Sunglasses",
+			"description": "A sampling of the custom sunglasses I paint in my spare time",
+			"keywords": "" 
+		} , { 
+			"name": "Customs Gallery", 
+			"path": "/customsgallery", 
+			"title": "Pixelated - Brian Whaley - Customs Gallery",
+			"description": "A carousel gallery of some of the paint styles I do on sunglasses",
+			"keywords": "" 
+		} , { 
+			"name": "Customs on eBay", 
+			"path": "/ebay", 
+			"title": "Pixelated - Brian Whaley - Customs on eBay",
+			"description": "Check out my store on ebay where I sell my custom sunglasses",
+			"keywords": "" 
+		} , { 
+			"name": "Customs Request", 
+			"path": "/requests", 
+			"title": "Pixelated - Brian Whaley - Customs Request",
+			"description": "Request some custom sunglass work for yourself.",
+			"keywords": "" 
+		} , { 
+			"name": "My Customs", 
+			"path": "/mycustoms", 
+			"title": "Pixelated - Brian Whaley - My Customs",
+			"description": "These are pictures of the custom sunglasses in my personal collection.",
+			"keywords": "" 
+		} , { 
+			"name": "NerdJokes", 
+			"path": "/nerdjokes", 
+			"title": "Pixelated - Brian Whaley - NerdJokes",
+			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+			"keywords": "" 
+		} , { 
+			"name": "Joke", 
+			"path": "/joke", 
+			"title": "Pixelated - Brian Whaley - Joke",
+			"description": "Joke Sampler",
+			"keywords": "" 
+		} , { 
+			"name": "Stkr", 
+			"path": "/stkr", 
+			"title": "Pixelated - Brian Whaley - Stkr",
+			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+			"keywords": "" 
+		} , { 
+			"name": "Form", 
+			"path": "/form", 
+			"title": "Pixelated - Brian Whaley - Form",
+			"description": "Test my Form Builder, Form Components, and Form Validations",
+			"keywords": "" 
+		} , { 
+			"name": "Form Build", 
+			"path": "/form/build", 
+			"title": "Pixelated - Brian Whaley - Form Builder",
+			"description": "Build your own form with my Form Builder",
+			"keywords": ""  
+		} , { 
+			"name": "Form Extract", 
+			"path": "/form/extract", 
+			"title": "Pixelated - Brian Whaley - Form Extract",
+			"description": "Extract the JSON needed from a live site to use my Form Builder",
+			"keywords": ""  
+		}
 	]
 }

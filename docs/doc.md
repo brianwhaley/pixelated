@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "remove calloutroundtiny, rename calloutroundsm to calloutsmall, fix for carousel events"
+git commit -m "bug fixes, buzzword bingo, menu-accordion animation"
 git push pixelated dev --tags
 git push pixelated dev:main
 
