@@ -10,7 +10,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "remove calloutroundtiny, rename calloutroundsm to calloutsmall, fix for carousel events"
+git commit -m "add buzzword bingo, carousl bug fix, typescript rollout start "
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

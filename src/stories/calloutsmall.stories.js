@@ -15,5 +15,11 @@ export const Callout_Small = {
 		title: 'LinkedIn Profile',
 		shape: 'squircle',
 		alt: 'Hooray for LinkedIn!',
+	},
+	argTypes: {
+		shape: {
+			options: ['round', 'squircle', 'square'],
+			control: { type: 'select' },
+		},
 	}
 };

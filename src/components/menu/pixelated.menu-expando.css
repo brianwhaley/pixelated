@@ -3,7 +3,7 @@
 =====      SLIDING PANEL MENU         =====
 ======================================== */
 
-.panelMenuButton {
+.menuExpandoButton {
 	/* background-color: rgba(255,255,255,0.7); */
 	/* display: none; */
 	/* display: inline; */
@@ -19,12 +19,12 @@
 }
 
 @media screen and (max-width: 480px) {
-	.panelMenuButton {
+	.menuExpandoButton {
 		display: inline;
 	}
 }
 
-.panelMenuHeader {
+.menuExpandoButtonHeader {
 	background-color: #336699;
 	background-image: url(/images/bg6.gif);
 	color: #FFFFFF;
@@ -41,88 +41,85 @@
 ============  ACCORDION MENU   ============
 ======================================== */
 
-.accordionMenuWrapper {
+details.menuExpandoWrapper {
 	/* background: #FFF; */
 	background: rgba(150, 190, 250, 0.7);
 	border-right: 1px solid #ccc;
-	height: auto;
-	/* height: 100%; */
+	/* height: auto; */
 	position: fixed;
 	left: 0px;
 	top: 60px;
+	/* height: 100%; */
 	width: 220px;
 	z-index: 1000;
-    padding: 5px;
+    /* padding: 5px; */
 }
 
-.accordionIn {
-	left: 0px;
-	transition: transform 0.5s ease-out 0.0s;
-	transform: translateX(0px);
+details.menuExpandoWrapper > summary {
+    /* display: none; */
+    list-style: none;
+    height: 0px;
+    width: 0px;
 }
 
-.accordionOut {
-	left: 0px;
-	transition: transform 0.5s ease-out 0.0s;
-	transform: translateX(-250px);
+details.menuExpandoWrapper[open] > summary {
+    --do-nothing: true;
 }
 
-.accordionDown {
-	top: 60px;
-	transition: transform 0.5s ease-out 0.0s;
-	transform: translateY(0px);
+details.menuExpandoWrapper:not([open]) { 
+    --do-nothing: true;
 }
 
-.accordionUp {
-	/* bottom: 0px; */
-	top: 60px;
-	transition: transform 0.55s ease-out 0.0s;
-	transform: translateY(-120%);
+details.menuExpandoWrapper > *,
+details.menuExpandoWrapper[open] > *,
+details.menuExpandoWrapper:not([open]) > * {
+    animation: sweep 1s ease-out;
 }
 
-.accordionMenu,
-.accordionMenu ul {
+@keyframes sweep {
+    0% { opacity: 0; margin-left: -220px }
+    100% { opacity: 1; margin-left: 0px }
+}
+
+details.menuExpandoWrapper > summary::marker, 
+details.menuExpandoWrapper > summary::-webkit-details-marker {
+    display:none;
+}
+
+.menuExpando,
+.menuExpando ul {
 	/* ALL LIST LEVELS */
 	display: inline-block;
 	list-style-type: none;
 	padding: 0;
 	width: 200px;
+    margin: 10px;
 }
 
-.accordionMenu li {
+.menuExpando ul > li {
 	/* ALL LIST ITEM LEVELS */
 	border-bottom: 1px solid #FFF;
 }
 
-.accordionMenu li:first-child {
+.menuExpando ul > li:first-child {
 	/* ALL LIST ITEM LEVELS */
 	border-top: 1px solid #FFF;
 }
 
-.accordionMenu a {
-	color: #000;
-	display: block;
-	text-decoration: none;
-}
-
-.accordionMenu > ul {
-	margin: 0px 0px 0px 5px;
-	padding: 0;
-	width: 200px;
-}
-
-.accordionMenu > ul > li > a {
+.menuExpando ul > li > a {
 	/* this is the button */
 	color: black;
 	background: #CCC;
 	background-image: url(/images/bg6-lt.jpg);
+	display: block;
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
+    text-decoration: none;
 	text-indent: 10px;
 }
 
-.accordionMenu > ul > li > a:hover {
+.menuExpando ul > li > a:hover {
 	background: #EDD;
 	background-image: url(/images/bg7-dk.gif);
 	text-indent: 5px;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './pixelated.callout.css';
 import "../../css/pixelated.grid.scss";
 
-function validateShape(thisShape){
+function validateShape(thisShape: string | undefined) {
 	if(thisShape && ["round", "squircle", "square"].includes(thisShape)) {
 		return thisShape;
 	} else {
@@ -11,9 +11,24 @@ function validateShape(thisShape){
 	}
 }
 
+interface GenericCallout {
+	url?: string,
+	img: string,
+	imgclick?: Function,
+	title: string,
+	content: string,
+	layout?: string,
+	shape?: string,
+	alt?: string,
+}
+interface GenericCalloutHeader {
+	title: string,
+	url?: string
+}
+
 /* ========== CALLOUT ========== */
 
-export function Callout(props){
+export function Callout(props: GenericCallout) {
 	const myShape = validateShape(props.shape); 
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -122,7 +137,7 @@ Callout.propTypes = {
 /* ========== CALLOUT HEADER ========== */
 
 
-export function CalloutHeader(props) {
+export function CalloutHeader(props: GenericCalloutHeader) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<div className="calloutHeader">
@@ -142,14 +157,14 @@ CalloutHeader.propTypes = {
 /* ========== CALLOUT SMALL ========== */
 
 
-export function CalloutSmall(props) {
+export function CalloutSmall(props: GenericCallout) {
 	const myShape = validateShape(props.shape); 
 	return (
 		<div>
 			<div className={`${myShape}ImgContainer gridItem center`}>
 				<a href={props.url} target="_blank"rel="noopener noreferrer">
 					<img src={props.img} alt={(props.alt) ? props.alt : props.title} 
-						onClick={(props.imgclick) ? event => props.imgclick(event, props.url) : () => window.open(props.url, '_blank') } 
+						onClick={(props.imgclick) ? event => props.imgclick?.(event, props.url) : () => window.open(props.url, '_blank') } 
 					/>
 				</a>
 			</div>
@@ -163,7 +178,7 @@ export function CalloutSmall(props) {
 	);
 }
 CalloutSmall.propTypes = {
-	url: PropTypes.string.isRequired,
+	url: PropTypes.string,
 	imgclick: PropTypes.func,
 	img: PropTypes.string.isRequired,
 	title: PropTypes.string,
@@ -175,7 +190,7 @@ CalloutSmall.propTypes = {
 /* ========== CALLOUT HEADER ========== */
 
 
-export function CalloutHeaderSmall(props) {
+export function CalloutHeaderSmall(props: GenericCalloutHeader) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<div className="calloutHeader">
@@ -186,7 +201,7 @@ export function CalloutHeaderSmall(props) {
 		</div>
 	);
 }
-CalloutHeader.propTypes = {
+CalloutHeaderSmall.propTypes = {
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string
 };

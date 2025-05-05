@@ -6,10 +6,7 @@ import './pixelated.menu-accordion.css';
 
 /* ========== MENU ========== */
 export function MenuAccordion(props) {
-	MenuAccordion.propTypes = {
-		menuItems: PropTypes.object.isRequired
-	};
-
+	
 	const debug = false;
 	const left = useRef(-250);
 	function setLeft(leftVal) { left.current = leftVal; };
@@ -29,13 +26,13 @@ export function MenuAccordion(props) {
 		const menuParent = menu.parentElement;
 		if (left.current === 0) { 
 			if (debug) console.log("Moving Menu Out");
-			menuParent.classList.remove('accordionIn');
-			menuParent.classList.add('accordionOut');
+			menuParent.classList.remove('accordionDown'); /* accordionIn */
+			menuParent.classList.add('accordionUp'); /* accordionOut */
 			setLeft( -250 ); 
 		} else { 
 			if (debug) console.log("Moving Menu In");
-			menuParent.classList.remove('accordionOut');
-			menuParent.classList.add('accordionIn');
+			menuParent.classList.remove('accordionUp'); /* accordionOut */
+			menuParent.classList.add('accordionDown'); /* accordionIn */
 			setLeft( 0 ); 
 		}
 	};
@@ -64,7 +61,7 @@ export function MenuAccordion(props) {
 	}, [] );
 
 	return (
-		<div className="accordionMenuWrapper accordionOut">
+		<div className="accordionMenuWrapper accordionUp">
 			<div className="accordionMenu" id="accordionMenu">
 				<ul>
 					{ generateMenuItems() }
@@ -73,32 +70,32 @@ export function MenuAccordion(props) {
 		</div>
 	);
 }
+MenuAccordion.propTypes = {
+	menuItems: PropTypes.object.isRequired
+};
+
 
 /* ========== MENU ITEM ========== */
 export function MenuAccordionItem(props) {
-	MenuAccordionItem.propTypes = {
-		name: PropTypes.string.isRequired,
-		href: PropTypes.string.isRequired
-	};
-
 	return (
 		<li><a href={props.href}>{props.name}</a></li>
 	);
 }
+MenuAccordionItem.propTypes = {
+	name: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired
+};
 
 /* ========== MENU BUTTON ========== */
 export function MenuAccordionButton(props) {
-	MenuAccordionButton.propTypes = {
-	};
-	
 	function slideMobilePanel() {
 		window.moveMenu();
 	} 
-
 	return (
 		<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={slideMobilePanel}>
 			<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
 		</div>
 	);
-
 }
+MenuAccordionButton.propTypes = {
+};

@@ -3,11 +3,11 @@
 import React, { useEffect } from 'react';
 import './pixelated.modal.css';
 
-export function Modal(props) {
+export function Modal(props: { modalContent: React.ReactNode }) {
 
 	useEffect(() => {
 
-		const handleModalClose = (event) => {
+		const handleModalClose = (event: MouseEvent) => {
 			event.preventDefault();
 			const myModal = document.getElementById("myModal");
 			if (myModal) { myModal.style.display = 'none'; }
@@ -15,7 +15,7 @@ export function Modal(props) {
 		const myModalClose = document.getElementById("myModalClose");
 		if (myModalClose) { myModalClose.addEventListener('click', handleModalClose); } ;
 
-		const handleWindowOnClick = (event) => {
+		const handleWindowOnClick = (event: MouseEvent) => {
 			const myModal = document.getElementById("myModal");
 			if (event.target == myModal) {
 				if (myModal) { myModal.style.display = "none"; } ;
@@ -40,12 +40,11 @@ export function Modal(props) {
 	);
 }
 
-export const handleModalOpen = (event) => {
+export const handleModalOpen = (event: MouseEvent) => {
 	event.preventDefault();
 	const myModal = document.getElementById("myModal");
 	if (myModal) { myModal.style.display = 'block'; } ;
 };
-
 
 /* 
 https://www.w3schools.com/howto/howto_css_modals.asp

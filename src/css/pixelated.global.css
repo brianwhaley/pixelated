@@ -54,6 +54,21 @@ ol, ul {
 	padding-left: 40px;
 }
 
+blockquote {
+	margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 15px;
+    border-left: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    background-color: #FFF;
+}
+
+blockquote p {
+	margin-bottom: 0px !important;
+}
+
 pre {
 	/* USED FOR SYNTAX HIGHLIGHTING */
 	white-space: pre-wrap;
@@ -117,6 +132,7 @@ section.section-alt {
 	color: #FFF;
 	height: 60px;
 	padding: 15px;
+	z-index: 2000;
 }
 
 #page-hero {

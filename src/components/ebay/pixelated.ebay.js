@@ -315,6 +315,17 @@ export class EbayPagination extends Component {
  
 }
 
+export class ebayItemDetails extends Component  {
+
+	static propTypes = {
+	};
+
+	render () {
+		return(null);
+	}
+ 
+}
+
 
 
 /* ===== EBAY BROWSE API DOCUMENTATION =====

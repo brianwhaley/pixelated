@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion';
-import '../components/menu/pixelated.menu-accordion.css';
+import { MenuExpandoButton, MenuExpando } from '../components/menu/pixelated.menu-expando';
+import '../components/menu/pixelated.menu-expando.css';
 import '../css/pixelated.global.css';
 
 const menuItems = {
@@ -15,27 +15,27 @@ const menuItems = {
 	Photography: '/photography.html',
 	'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
 	'Custom Sunglasses': '/customsunglasses.html',
-	Recipes: '/recipes.html',
+	Recipes: '/recipes.html'
 };
 
 export default {
-	title: 'Menu - Accordion',
-	component: MenuAccordion
+	title: 'Menu - Expando',
+	component: MenuExpando
 };
 
 // Parent Component
-const ParentAccordionMenu = () => {
+const ParentExpandoMenu = () => {
 	return (
 	  	<>
 			<div style={{ position: 'absolute', left: '10px', top:'10px' }} >
-				<MenuAccordionButton />
+				<MenuExpandoButton />
 			</div>
 			<div style={{ position: 'fixed', left: '10px', top:'100px' }}>
-				<MenuAccordion menuItems={menuItems} />
+				<MenuExpando menuItems={menuItems} />
 			</div>
 		</>
 	);
 };
 
-export const Primary = () => <ParentAccordionMenu />;
+export const Primary = () => <ParentExpandoMenu />;
 Primary.args = { menuItems: menuItems};

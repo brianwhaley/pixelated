@@ -1,5 +1,7 @@
+// @ts-nocheck
+
 import React, { Fragment, useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import { getXHRData, generateURL } from '../utilities/pixelated.api';
 import { mergeDeep } from '../utilities/pixelated.functions';
 import './pixelated.carousel.css';
@@ -8,6 +10,8 @@ const divSelector = 'div.carouselSliderContainer';
 const tx100 = 'translateX(100%)';
 const tx0 = 'translateX(0%)';
 const txn100 = 'translateX(-100%)';
+
+// type Json = | string | number | boolean | null | { [property: string]: Json } | Json[];
 
 /* 	
 https://dev.to/willamesoares/how-to-build-an-image-carousel-with-react--24na
@@ -26,17 +30,13 @@ Fix is to either :
 */
 
 
-function capitalize(s) {
-	return s && String(s[0]).toUpperCase() + String(s).slice(1);
+function capitalize(str) {
+	return str && String(str[0]).toUpperCase() + String(str).slice(1);
 }
 
 /* ========== CAROUSEL ========== */
 export function Carousel(props) {
-	Carousel.propTypes = {
-		flickr: PropTypes.object,
-		type: PropTypes.string
-	};
-
+	
 	const defaultFlickr = { 
 		flickr : {
 			baseURL: 'https://api.flickr.com/services/rest/?',
@@ -55,14 +55,14 @@ export function Carousel(props) {
 			}
 		} 
 	};
-
+	
 	const [ flickr, setFlickr ] = useState(mergeDeep(defaultFlickr.flickr, props.flickr));
-	const [ images, setImages ] = useState({});
-	const [ flickrSize, setFlickrSize ] = useState('');
+	const [ images, setImages ] = useState();
+	const [ flickrSize, setFlickrSize ] = useState();
 	const [ type, setType ] = (props.type) ? useState(props.type) : useState('slider') ;
 
 	useEffect(() => {
-		setFlickrSize( getFlickrSize(flickr.urlProps.photoSize) );
+		setFlickrSize(getFlickrSize(flickr.urlProps.photoSize));
 		const myURL = generateURL(flickr.baseURL, flickr.urlProps);
 		const myMethod = 'GET';
 		getXHRData(myURL, myMethod, (flickrPhotos) => {
@@ -113,12 +113,14 @@ export function Carousel(props) {
 		return null;
 	}
 }
+Carousel.propTypes = {
+	flickr: PropTypes.object,
+	type: PropTypes.string
+};
+
 
 /* ========== CAROUSEL SLIDER ========== */
 export function CarouselSlider(props) {
-	CarouselSlider.propTypes = {
-		flickrData: PropTypes.object.isRequired
-	};
 
 	/* const isMounted = useRef(false);
 	useEffect(() => {
@@ -160,7 +162,7 @@ export function CarouselSlider(props) {
 
 	function nextImage() {
 		if (debug) console.log("Going to Next image : ", activeIndex, " => ", activeIndex + 1);
-		if (activeIndex === props.flickrData.images.length - 1) {
+		if (activeIndex === props?.flickrData?.images?.length - 1) {
 			setActiveIndex(0);
 			setDirection( 'next' );
 		} else {
@@ -169,53 +171,53 @@ export function CarouselSlider(props) {
 		}
 	};
 
-	function animate(elem) {
+	/* function animate(elem) {
 		requestAnimationFrame(animate);
 		elem.style.left = (drag.newX + drag.momentumX) + 'px';
 		return true;
-	};
+	}; */
 
 	/* 	https://gist.github.com/hartzis/b34a4beeb5ceb4bf1ed8659e477c4191
   		https://www.kirupa.com/html5/drag.htm */
 
-	function dragStart(e) {
-		if (debug) { console.log('Drag Start - ' + e.type); }
-		// var elem = e.currentTarget ;
-		if ((typeof e.target.className === 'string') &&
-    	( e.target.className.includes('carouselSliderContainer') || 
-    	e.target.className.includes('carouselSliderImage') )) {
-			e.preventDefault();
-			e.stopPropagation();
-			const elem = e.target.closest(divSelector);
+	function dragStart(event) {
+		if (debug) { console.log('Drag Start - ' + event.type); }
+		// var elem = event.currentTarget ;
+		if ((typeof event?.target.className === 'string') &&
+    	( event.target.className.includes('carouselSliderContainer') || 
+    	event.target.className.includes('carouselSliderImage') )) {
+			event.preventDefault();
+			event.stopPropagation();
+			const elem = event.target.closest(divSelector);
 			drag.draggable = true;
-			drag.eType = e.type;
-			drag.firstX = Math.round((drag.eType === 'touchstart') ? e.touches[0].pageX : e.pageX);
+			drag.eType = event.type;
+			drag.firstX = Math.round((drag.eType === 'touchstart') ? event.touches[0].pageX : event.pageX);
 			drag.previousX = drag.firstX;
 			drag.currentX = drag.firstX;
 			drag.startX = elem.offsetLeft;
 			/* Add existing drag styles to array - save for later */
 			drag.dragStyles.transform = elem.style.transform;
 			drag.dragStyles.transition = elem.style.transition;
-			if (e.dataTransfer) {
-				e.dataTransfer.setData('text/plain', e.currentTarget.id);
+			if (event.dataTransfer) {
+				event.dataTransfer.setData('text/plain', event.currentTarget.id);
 				const img = new Image();
 				// http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 				img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=';
-				e.dataTransfer.setDragImage(img, 0, 0);
+				event.dataTransfer.setDragImage(img, 0, 0);
 			}
 			// if (debug) { console.log(JSON.stringify(drag)); }
 		}
 	};
 
-	function draggable(e) {
+	function draggable(event) {
 		drag.dragMoving = true;
 		if (drag.draggable) {
-			e.preventDefault();
-			e.stopPropagation();
-			const elem = e.target.closest(divSelector);
-			drag.eType = e.type;
+			event.preventDefault();
+			event.stopPropagation();
+			const elem = event.target.closest(divSelector);
+			drag.eType = event.type;
 			drag.previousX = drag.currentX;
-			drag.currentX = Math.round((drag.eType === 'touchmove') ? e.touches[0].pageX : e.pageX);
+			drag.currentX = Math.round((drag.eType === 'touchmove') ? event.touches[0].pageX : event.pageX);
 			/* Set Momentum to max value */
 			const _momentumX = Math.round(Math.abs(drag.previousX - drag.currentX));
 			drag.momentumX = (_momentumX > drag.momentumX) ? _momentumX : drag.momentumX;
@@ -231,7 +233,7 @@ export function CarouselSlider(props) {
 		}
 	};
 
-	function dragEnd(e) {
+	function dragEnd(event) {
 		/* if (!drag.dragMoving) {
 			const thisImg = props.flickrData.images[activeIndex];
 			const thisImgURL = 'https://farm' + thisImg.farm + '.static.flickr.com/' + thisImg.server + '/' + thisImg.id + '_' + thisImg.secret + '_b.jpg';
@@ -239,8 +241,8 @@ export function CarouselSlider(props) {
 			window.open(thisImgURL, '_blank');
 		} */
 		if (drag.draggable) {
-			if (debug) { console.log('Drag End - ' + e.type); }
-			const elem = e.target.closest(divSelector);
+			if (debug) { console.log('Drag End - ' + event.type); }
+			const elem = event.target.closest(divSelector);
 
 			/* Add styles back */
 			for (const property in drag.dragStyles) {
@@ -248,9 +250,9 @@ export function CarouselSlider(props) {
 			}
 
 			/* Determine drag distance */
-			drag.eType = e.type;
+			drag.eType = event.type;
 			drag.previousX = drag.currentX;
-			drag.currentX = Math.round((drag.eType === 'touchend') ? e.changedTouches[0].pageX : e.pageX);
+			drag.currentX = Math.round((drag.eType === 'touchend') ? event.changedTouches[0].pageX : event.pageX);
 			drag.moveX = Math.round(Math.abs(drag.firstX - drag.currentX));
 			const farEnough = drag.moveX > drag.minDistance;
 
@@ -286,13 +288,13 @@ export function CarouselSlider(props) {
 			drag.newX = 0;
 			drag.dragStyles = {};
 
-			// e.preventDefault();
+			// event.preventDefault();
 		}
 	};
 
-	function transitionEnd(e) {
-		if (debug) { console.log('Transition End - ' + e.type); }
-		const elem = e.target;
+	function transitionEnd(event) {
+		if (debug) { console.log('Transition End - ' + event.type); }
+		const elem = event.target;
 		if (elem.matches(divSelector)) {
 			elem.style.left = '0px';
 		}
@@ -318,7 +320,7 @@ export function CarouselSlider(props) {
 		};
 	}, [activeIndex]);
 
-	if (props.flickrData.images.length > 0) {
+	if (props?.flickrData?.images?.length > 0) {
 		return (
 			<div className="carouselContainer">
 				<CarouselSliderArrow
@@ -356,18 +358,13 @@ export function CarouselSlider(props) {
 		);
 	}
 }
+CarouselSlider.propTypes = {
+	flickrData: PropTypes.object.isRequired
+};
 
 /* ========== CAROUSEL SLIDER IMAGE ========== */
 export function CarouselSliderImage(props) {
-	CarouselSliderImage.propTypes = {
-		direction: PropTypes.string.isRequired,
-		activeIndex: PropTypes.number.isRequired,
-		index: PropTypes.number.isRequired,
-		imagesLength: PropTypes.number.isRequired,
-		image: PropTypes.object.isRequired,
-		size: PropTypes.string.isRequired
-	};
-
+	
 	// let myImage = React.createRef();
 
 	const myImg = props.image;
@@ -405,14 +402,18 @@ export function CarouselSliderImage(props) {
 		</div>
 	);
 }
+CarouselSliderImage.propTypes = {
+	direction: PropTypes.string.isRequired,
+	activeIndex: PropTypes.number.isRequired,
+	index: PropTypes.number.isRequired,
+	imagesLength: PropTypes.number.isRequired,
+	image: PropTypes.object.isRequired,
+	size: PropTypes.string.isRequired
+};
+
 
 /* ========== CAROUSEL SLIDER DETAILS ========== */
 export function CarouselSliderDetails(props) {
-	CarouselSliderDetails.propTypes = {
-		index: PropTypes.number.isRequired,
-		length: PropTypes.number.isRequired,
-		image: PropTypes.object.isRequired
-	};
 
 	return (
 		<div className="carouselSliderDetails textOutline">
@@ -421,15 +422,14 @@ export function CarouselSliderDetails(props) {
 		</div>
 	);
 }
+CarouselSliderDetails.propTypes = {
+	index: PropTypes.number.isRequired,
+	length: PropTypes.number.isRequired,
+	image: PropTypes.object.isRequired
+};
 
 /* ========== CAROUSEL SLIDER ARROW ========== */
 export function CarouselSliderArrow(props) {
-	CarouselSliderArrow.propTypes = {
-		direction: PropTypes.string.isRequired,
-		clickFunction: PropTypes.func.isRequired,
-		glyph: PropTypes.string.isRequired
-	};
-
 	return (
 		<div className={`carouselArrow${capitalize(props.direction)} textOutline`}
 			onClick={ props.clickFunction }>
@@ -437,13 +437,16 @@ export function CarouselSliderArrow(props) {
 		</div>
 	);
 }
+CarouselSliderArrow.propTypes = {
+	direction: PropTypes.string.isRequired,
+	clickFunction: PropTypes.func.isRequired,
+	glyph: PropTypes.string.isRequired
+};
+
 
 /* ========== CAROUSEL HERO ========== */
 export function CarouselHero(props) {
-	CarouselHero.propTypes = {
-		flickrData: PropTypes.object.isRequired
-	};
-
+	
 	let debug = false;
 	const [flickrData, setFlickrData] = useState({});
 	const [flickrImages, setFlickrImages] = useState({});
@@ -556,6 +559,10 @@ export function CarouselHeroImage(props) {
 			title={myImg.title} />
 	);
 }
+CarouselHero.propTypes = {
+	flickrData: PropTypes.object.isRequired
+};
+
 
 /* ========== CAROUSEL HERO DETAILS ========== */
 export function CarouselHeroDetails(props) {
