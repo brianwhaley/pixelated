@@ -6,11 +6,12 @@ npm login --scope=@brianwhaley --registry=https://registry.npmjs.org
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 
 eslint --fix --ext .js,.jsx .
+
 eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add buzzword bingo, carousl bug fix, typescript rollout start "
+git commit -m "add TODO items integrated with github "
 git push pixelated-components dev --force
 npm publish
 git push pixelated-components dev:main -f

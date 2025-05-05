@@ -6,9 +6,12 @@
     return myRoutes.find(obj => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
 } */
 
-// export const getMetadata = ({ key, value }: { key: string; value: string }) => {
+/*
+TODO #7 Finish setClientMetadata Function in MEtadata component
+TODO #8 Finish setServerMetadata Function in MEtadata component
+*/
+
 export const getMetadata = (routes: any, key: string = "name", value: string = "Home" ) => {
-    // const foundObject = findObject(myRoutes, key, value);
     const foundObject = routes.routes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
     if (foundObject) {
         return {
@@ -24,6 +27,7 @@ export const getMetadata = (routes: any, key: string = "name", value: string = "
         } ;
     }
 };
+
 
 export const setClientMetadata = ({title, description, keywords}: {title: string, description: string, keywords: string}) => {
 

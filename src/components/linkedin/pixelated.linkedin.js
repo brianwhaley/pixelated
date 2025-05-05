@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+/* 
+TODO #6 Finish LinkedIn Integration to show recommendations
+*/
+
 export function LinkedIn() {
 
 	const debug = true ;

@@ -2,6 +2,10 @@ import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.recipe.css';
 
+/* 
+TODO #9 Recipe Component: Change URL so you can deep link to a specific recipe
+*/
+
 /* ========== RECIPE BOOK ========== */
 export function RecipeBook(props) {
 	RecipeBook.propTypes = {

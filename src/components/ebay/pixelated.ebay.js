@@ -6,6 +6,12 @@ import { getXHRData, generateURL } from "../utilities/pixelated.api";
 import { mergeDeep } from "../utilities/pixelated.functions";
 import "./pixelated.ebay.css";
 
+/* 
+TODO #2 Fix Ebay Items Api Call
+TODO #3 Convert eBay Component to Typescript
+TODO #4 Add eBay Item Details Component
+*/
+
 export class EbayItems extends Component {
 
 	// https://developer.ebay.com/devzone/finding/HowTo/GettingStarted_JS_NV_JSON/GettingStarted_JS_NV_JSON.html

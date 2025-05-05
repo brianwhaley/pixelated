@@ -19,7 +19,7 @@ Not using defaultProps as they are merged shallow, not deep
 https://stackoverflow.com/questions/40428847/react-component-defaultprops-objects-are-overridden-not-merged 
 */
 
-/* BUG :
+/* TODO #1 BUG :
 Link clicking is deactivated in the dragend function
 as it is causing issues with the prev / next buttons.
 Fix is to either : 

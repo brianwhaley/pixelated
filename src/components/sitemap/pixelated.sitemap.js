@@ -1,5 +1,9 @@
 import React from 'react';
 import myRoutes from "../../data/routes.json";
+
+/* 
+TODO #10 Sitemap Component : Build out v1 of this component
+*/
  
 export async function Sitemap(){
 
