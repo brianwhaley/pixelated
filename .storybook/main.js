@@ -28,7 +28,7 @@ const config = {
 
     // WEBPACK FOR JS FILES
     config.module.rules.push({
-      test: /\.(js|jsx)$/,
+      test: /\.(js|jsx|ts|tsx)$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
@@ -40,7 +40,7 @@ const config = {
         },
       },
     });
-    config.resolve.extensions.push('.js', '.jsx');
+    config.resolve.extensions.push('.js', '.jsx', '.ts', '.tsx');
 
     // WEBPACK FOR CSS FILES
     /* config.module.rules.push({
