@@ -1,6 +1,6 @@
 {
   "name": "pixelated",
-  "version": "3.0.18",
+  "version": "3.0.19",
   "private": true,
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev --experimental-https",
@@ -13,7 +13,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^1.2.9",
+    "@brianwhaley/pixelated-components": "^1.2.11",
     "@eslint/js": "^9.25.1",
     "date-fns": "^4.1.0",
     "eslint-plugin-react": "^7.37.5",
