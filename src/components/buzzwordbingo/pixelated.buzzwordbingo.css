@@ -19,6 +19,8 @@
 .bingoBox {
 	border: 1px solid #AAA;
 	aspect-ratio : 1 / 1;
+    width: 100%;
+    height: 100%;
 }
 
 .bingoBoxText, 

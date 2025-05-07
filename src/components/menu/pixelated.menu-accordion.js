@@ -6,7 +6,7 @@ import './pixelated.menu-accordion.css';
 import { set } from 'date-fns';
 
 /* 
-TODO #16 Menu Accordion Component: Convert to TypeScript
+TODO #18 Menu Accordion Component : Add SubMenu Indicator
 */
 
 
@@ -17,7 +17,7 @@ function generateMenuItems(menuData, hidden) {
 		if ( typeof myItem === 'object' && myItem !== null ){
 			// MENU GROUP
 			myItems.push(
-				<MenuAccordionItem key={itemKey + "-i"} name={itemKey} />,
+				<MenuAccordionItem key={itemKey + "-i"} name={"▶ " + itemKey} />,
 				<MenuAccordionGroup key={itemKey + "-g"} menuItems={myItem} hidden={true} />
 			);
 		} else {
@@ -134,6 +134,7 @@ MenuAccordionGroup.propTypes = {
 };
 
 
+
 /* ========== MENU ITEM ========== */
 export function MenuAccordionItem(props) {
 	return (
@@ -144,6 +145,9 @@ MenuAccordionItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired
 };
+
+
+
 
 /* ========== MENU BUTTON ========== */
 export function MenuAccordionButton(props) {

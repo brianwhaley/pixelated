@@ -69,6 +69,7 @@ export function RecipeBook(props) {
 		setShowOnlyCat(cID);
 		setShowOnlyRecipe(rID);
 		setOutputElems(outputMyElems());
+		window.location.hash = rID;
 	}
 
 	return (
@@ -120,7 +121,7 @@ export function Recipe (props) {
 	
 	return (
 		<article id={props.id} className="h-recipe" style={isHidden}>
-			<h3 className="p-name"><a name={props.id} href="#" onClick={() => { return false; }}>{recipe.name}</a></h3>
+			<h3 className="p-name"><a name={props.id} href={`#${props.id}`} onClick={() => { return false; }}>{recipe.name}</a></h3>
 			{ recipeImage }
 			<p className="p-summary">{recipe.summary}</p>
 			<p>&nbsp;</p>

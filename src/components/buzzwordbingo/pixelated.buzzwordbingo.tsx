@@ -3,6 +3,10 @@ import './pixelated.buzzwordbingo.css';
 import "../../css/pixelated.grid.scss";
 import { buzzwords } from "../../data/buzzwords.js";
 
+/* 
+TODO #19 Buzzword Bingo COmponent : Fix css grid to remain 5 columns
+*/
+
 function getBingoWords(arr: Array<string>, x: number){
     var myBingoWords =[...arr].sort(() => Math.random() - 0.5); // Shuffle the array
     myBingoWords = myBingoWords.slice(0, x); // Return the first x elements
@@ -17,7 +21,7 @@ export function BuzzwordBingo(){
         setBingoWords(getBingoWords(buzzwords, 24));
     }, []);
     return (
-        <div className="bingoCard row-5col">
+        <div className="bingoCard rowfix-5col">
             { myBingoHeaders.map((word) => (
                 <BingoHeader word={word} key={word} />
             ))}
