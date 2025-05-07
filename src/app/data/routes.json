@@ -42,12 +42,6 @@
 			"title": "Pixelated - Brian Whaley - Recipes",
 			"description": "Pace / Barbano / Whaley Recipes through the ages",
 			"keywords": "" 
-		} , { 
-			"name": "Buzzword Bingo", 
-			"path": "/buzzwordbingo", 
-			"title": "Pixelated - Brian Whaley - Buzzword Bingo",
-			"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
-			"keywords": "" 
 		} , 
 			{ 
 			"name" : "Custom Sunglasses",
@@ -85,16 +79,16 @@
 				} 
 			]
 		} , { 
+			"name": "Buzzword Bingo", 
+			"path": "/buzzwordbingo", 
+			"title": "Pixelated - Brian Whaley - Buzzword Bingo",
+			"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
+			"keywords": "" 
+		} , { 
 			"name": "NerdJokes", 
 			"path": "/nerdjokes", 
 			"title": "Pixelated - Brian Whaley - NerdJokes",
 			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
-		} , { 
-			"name": "Joke", 
-			"path": "/joke", 
-			"title": "Pixelated - Brian Whaley - Joke",
-			"description": "Joke Sampler",
 			"keywords": "" 
 		} , { 
 			"name": "Stkr", 
@@ -122,6 +116,23 @@
 					"path": "/form/extract", 
 					"title": "Pixelated - Brian Whaley - Form Extract",
 					"description": "Extract the JSON needed from a live site to use my Form Builder",
+					"keywords": ""  
+				}
+			]
+		}, {
+			"name": "Legal",
+			"routes": [
+				{
+					"name": "Terms of Service", 
+					"path": "/terms", 
+					"title": "Pixelated - Brian Whaley - Terms of Service",
+					"description": "Pixelated Terms of Service",
+					"keywords": ""  
+				} , { 
+					"name": "Privacy Policy", 
+					"path": "/privacy", 
+					"title": "Pixelated - Brian Whaley - Privacy Policy",
+					"description": "Pixelated Terms of Service",
 					"keywords": ""  
 				}
 			]

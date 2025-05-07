@@ -3,6 +3,8 @@
 import React, { Fragment, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import Terms from "@/app/elements/terms";
+import Privacy from "@/app/elements/privacy";
 
 
 function UseQuery() {
@@ -158,58 +160,15 @@ export default function Stkr() {
 				</div>
 			</section>
 
-			<section className="section" id="social-section">
+			<section className="section" id="terms-section">
 				<div className="section-container">
-					<CalloutHeader title="Terms of Service" />
-					<div className="callout-body">
-						By using anything offered by Pixelated, you automatically agree to this legal agreement. You also accept any updated version of this agreement by continuing to use the Services.<br/>
-						<br/>
-						You MUST be at least 13 years old to use the Services (or at least 16 years old if you are a resident of certain European countries as described above). Do not use the Services if it would mean breaking the law.<br/>
-						<br/>
-						If you sign up for an account on the Services, you are responsible for all activity on your account. Be mindful about protecting your account password and let us know immediately if you think there are any issues.<br/>
-						<br/>
-						You own all content you contribute to the Services, but you're ok with Pixelated using it in connection with its Services. Public Information is public, so don't include any private or sensitive information in any public part of the Services.<br/>
-						<br/>
-						You're allowed to use the Services only in accordance with this agreement. Generally speaking, you are only allowed to use content that you find on the site in connection with your use of the Services and solely for personal and non-commercial purposes. We can edit, take down, or block any content on the Services at any time.<br/>
-						<br/>
-						You must comply with the law and this agreement, and you promise not to take any action or submit any content that is prohibited or harmful, including violating or attempting to violate the security of the Services.<br/>
-						<br/>
-						We don't control any third party sites or services and won't be liable for any issues that may result from your use. Please review the terms of service and privacy policy of any third party site or service.<br/>
-						<br/>
-						We can choose to terminate or suspend your use of the Services at any time. You can also choose to delete your account or stop use of the Services at any time, but note that parts of this agreement still apply to you even after you stop using the Services.<br/>
-						<br/>
-						The Services are provided “as is.” You are solely responsible for how you choose to use the Services or what actions you take as a result of your use of the Services.<br/>
-						<br/>
-						You agree to reimburse us for any loss we suffer that is tied to your use or misuse of the Services, violation of this agreement, or infringement of any third party's right.<br/>
-						<br/>
-						Our legal liability to you is limited. Please understand that we cannot run our business without it.<br/>
-						<br/>
-						NJ and US laws apply to this agreement. Any legal claim relating to your use of the Services must be filed within one year after such claim arose.<br/>
-						<br/>
-						We hope that we can resolve any problems with our users informally, and we imagine that most people feel the same way. If it unfortunately gets to the point where we need to engage in legal proceedings, you agree to these provisions.<br/>
-						<br/>
-						We may use open source software in connection with our applications, and such software is subject to the terms of their applicable open source licenses.<br/>
-						<br/>
-						Effective Date of Terms of Service: April 1, 2020
-					</div>
+					<Terms />
 				</div>
 			</section>
 
 			<section className="section-alt" id="privacy-policy-section">
 				<div className="section-container">
-					<CalloutHeader title="Privacy Policy" />
-					<div className="callout-body">
-						Stkr is a privacy respecting app. We go out of our way to keep as little information about users as possible.<br/>
-						<br/>
-						As part of the processing of adding our app to your Slack workspace we receive and store the user_id of the user doing the installing, the team_id and a bot token to use when serving slash command requests. We store this this information so long as you are using the app and we delete it within 30 days of you uninstalling the app.<br/>
-						<br/>
-						The team_id and token are needed by the bot to be able to communicate with you.  We also keep a log of server traffic which makes note of the IP address of the requestor, what's being requested and a user_id and team_id if they are available. We record this information purely for troubleshooting and security analysis.  We keep the above log information for a maximum of 30 days and then delete it.<br/>
-						<br/>
-						Stkr is a serverless application that runs in a data center hosted by AWS in Ohio. We do not explicitly share anything with Amazon but they could have access to our systems if they chose to. We have no reason nor intention to transfer data outside the US.<br/>
-						<br/>
-						If you'd like to know more about anything we do with regards to your data, please email us at brian.whaley@gmail.com.
-						<br/>
-					</div>
+					<Privacy />
 				</div>
 			</section>
 
