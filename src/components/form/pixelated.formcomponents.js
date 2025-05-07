@@ -4,6 +4,10 @@ import PropTypes from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
 
+/*
+TODO #12 Form Component: Convert to TypeScript
+*/
+
 const onChange = (me, event) => {
 	let myValidate = me.props.validate ? FV[me.props.validate](event.target) : true ;
 	let myParentValidate = me.props.parent && me.props.parent.validate ? FV[me.props.parent.validate](event.target) : true ;

@@ -4,6 +4,10 @@ import React, { Component, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.menu-accordion.css';
 
+/* 
+TODO #16 Menu Accordion Component: Convert to TypeScript
+*/
+
 /* ========== MENU ========== */
 export function MenuAccordion(props) {
 	

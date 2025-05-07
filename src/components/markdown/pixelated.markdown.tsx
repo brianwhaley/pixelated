@@ -6,8 +6,17 @@ import PropTypes from 'prop-types';
 import "./pixelated.markdown.css";
 // import markdowndata from "./readme.md";
 
-export function Markdown(props:{ markdowndata: string }) {	
-	function markdownParser (text: string) {
+/* 
+TODO #15 markdown Component: Convert to TypeScript 
+*/
+
+/* ========== MARKDOWN ========== */
+export function Markdown(props: { markdowndata: any; }) {
+	Markdown.propTypes = {
+		markdowndata: PropTypes.string.isRequired,
+	}
+	
+	function markdownParser (text: any) {
 		const toHTML = text
 			.replace(/^#{6}\s(.*$)/gim, '<h6>$1</h6>') // h6 tag
 			.replace(/^#{5}\s(.*$)/gim, '<h5>$1</h5>') // h5 tag
