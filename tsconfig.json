@@ -31,9 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/layout.tsx",
-    "src/app/(pages)/buzzwordbingo/page.tsx"
-, "src/app/manifest.ts.old"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

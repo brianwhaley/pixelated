@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "scss bug fix for resume for mobile"
+git commit -m "accordion submenus, use new ga and gsearch components, clean up"
 git push pixelated dev --tags
 git push pixelated dev:main
 
