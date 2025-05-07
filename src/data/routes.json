@@ -43,35 +43,47 @@
 			"description": "Pace / Barbano / Whaley Recipes through the ages",
 			"keywords": "" 
 		} , { 
-			"name": "Custom Sunglasses", 
-			"path": "/customsunglasses", 
-			"title": "Pixelated - Brian Whaley - Custom Sunglasses",
-			"description": "A sampling of the custom sunglasses I paint in my spare time",
+			"name": "Buzzword Bingo", 
+			"path": "/buzzwordbingo", 
+			"title": "Pixelated - Brian Whaley - Buzzword Bingo",
+			"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
 			"keywords": "" 
-		} , { 
-			"name": "Customs Gallery", 
-			"path": "/customsgallery", 
-			"title": "Pixelated - Brian Whaley - Customs Gallery",
-			"description": "A carousel gallery of some of the paint styles I do on sunglasses",
-			"keywords": "" 
-		} , { 
-			"name": "Customs on eBay", 
-			"path": "/ebay", 
-			"title": "Pixelated - Brian Whaley - Customs on eBay",
-			"description": "Check out my store on ebay where I sell my custom sunglasses",
-			"keywords": "" 
-		} , { 
-			"name": "Customs Request", 
-			"path": "/requests", 
-			"title": "Pixelated - Brian Whaley - Customs Request",
-			"description": "Request some custom sunglass work for yourself.",
-			"keywords": "" 
-		} , { 
-			"name": "My Customs", 
-			"path": "/mycustoms", 
-			"title": "Pixelated - Brian Whaley - My Customs",
-			"description": "These are pictures of the custom sunglasses in my personal collection.",
-			"keywords": "" 
+		} , 
+			{ 
+			"name" : "Custom Sunglasses",
+			"routes" : [
+				{ 
+					"name": "Customs Overview", 
+					"path": "/customsunglasses", 
+					"title": "Pixelated - Brian Whaley - Custom Sunglasses",
+					"description": "A sampling of the custom sunglasses I paint in my spare time",
+					"keywords": "" 
+				} , { 
+					"name": "Customs Gallery", 
+					"path": "/customsgallery", 
+					"title": "Pixelated - Brian Whaley - Customs Gallery",
+					"description": "A carousel gallery of some of the paint styles I do on sunglasses",
+					"keywords": "" 
+				} , { 
+					"name": "Customs on eBay", 
+					"path": "/ebay", 
+					"title": "Pixelated - Brian Whaley - Customs on eBay",
+					"description": "Check out my store on ebay where I sell my custom sunglasses",
+					"keywords": "" 
+				} , { 
+					"name": "Customs Request", 
+					"path": "/requests", 
+					"title": "Pixelated - Brian Whaley - Customs Request",
+					"description": "Request some custom sunglass work for yourself.",
+					"keywords": "" 
+				} , { 
+					"name": "My Customs", 
+					"path": "/mycustoms", 
+					"title": "Pixelated - Brian Whaley - My Customs",
+					"description": "These are pictures of the custom sunglasses in my personal collection.",
+					"keywords": "" 
+				} 
+			]
 		} , { 
 			"name": "NerdJokes", 
 			"path": "/nerdjokes", 
@@ -91,23 +103,28 @@
 			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
 			"keywords": "" 
 		} , { 
-			"name": "Form", 
-			"path": "/form", 
-			"title": "Pixelated - Brian Whaley - Form",
-			"description": "Test my Form Builder, Form Components, and Form Validations",
-			"keywords": "" 
-		} , { 
-			"name": "Form Build", 
-			"path": "/form/build", 
-			"title": "Pixelated - Brian Whaley - Form Builder",
-			"description": "Build your own form with my Form Builder",
-			"keywords": ""  
-		} , { 
-			"name": "Form Extract", 
-			"path": "/form/extract", 
-			"title": "Pixelated - Brian Whaley - Form Extract",
-			"description": "Extract the JSON needed from a live site to use my Form Builder",
-			"keywords": ""  
+			"name": "Sandbox",
+			"routes": [
+				{
+					"name": "Form", 
+					"path": "/form", 
+					"title": "Pixelated - Brian Whaley - Form",
+					"description": "Test my Form Builder, Form Components, and Form Validations",
+					"keywords": "" 
+				} , { 
+					"name": "Form Build", 
+					"path": "/form/build", 
+					"title": "Pixelated - Brian Whaley - Form Builder",
+					"description": "Build your own form with my Form Builder",
+					"keywords": ""  
+				} , { 
+					"name": "Form Extract", 
+					"path": "/form/extract", 
+					"title": "Pixelated - Brian Whaley - Form Extract",
+					"description": "Extract the JSON needed from a live site to use my Form Builder",
+					"keywords": ""  
+				}
+			]
 		}
 	]
 }

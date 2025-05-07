@@ -1,10 +1,6 @@
 
+import { getAllRoutes } from "../utilities/pixelated.routing"; 
 // import myroutes from '@/data/routes.json';
-
-/* function findObject( myRoutes: any, key: string = "name", value: string = "Home" ) {
-    const myRoutes = myroutes.routes;
-    return myRoutes.find(obj => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
-} */
 
 /*
 TODO #7 Finish setClientMetadata Function in MEtadata component
@@ -12,7 +8,9 @@ TODO #8 Finish setServerMetadata Function in MEtadata component
 */
 
 export const getMetadata = (routes: any, key: string = "name", value: string = "Home" ) => {
-    const foundObject = routes.routes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
+    const allRoutes = getAllRoutes(routes, "routes");
+    // const foundObject = routes.routes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
+    const foundObject = allRoutes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
     if (foundObject) {
         return {
             title: foundObject.title,

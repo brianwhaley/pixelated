@@ -105,6 +105,8 @@
 	text-decoration: none;
 }
 
+/* ===== LEVEL 1 ===== */
+
 .accordionMenu > ul {
 	margin: 0px 0px 0px 5px;
 	padding: 0;
@@ -123,6 +125,57 @@
 }
 
 .accordionMenu > ul > li > a:hover {
+	background: #EDD;
+	background-image: url(/images/bg7-dk.gif);
+	text-indent: 5px;
+	border-left: 5px #000 solid;
+}
+
+/* ===== LEVEL 2 ===== */
+
+.accordionMenu > ul > ul {
+	margin: 0px 0px 0px 20px;
+	padding: 0;
+	width: 180px;
+}
+
+.menuHide { 
+	animation: hide 0.25s linear;
+   	animation-fill-mode: forwards;
+}
+.menuShow { 
+	animation: show 0.25s linear;
+   	animation-fill-mode: forwards;
+}
+@keyframes hide {
+	0% { opacity: 1; display: inline-block; }
+	99% { display: inline-block; }
+	100% { opacity: 0;  display: none;}
+}
+@keyframes show {
+	0% { opacity: 0; display: none; }
+	1% { display: inline-block; }
+	100% { opacity: 1;  display: inline-block;}
+}
+
+
+.accordionMenu ul > ul > li:first-child {
+	/* ALL LIST ITEM LEVELS */
+	border-top: 0px;
+}
+
+.accordionMenu > ul > ul > li > a {
+	/* this is the button */
+	color: black;
+	background: #CCC;
+	background-image: url(/images/bg6-lt.jpg);
+	font-weight: bold;
+	height: 30px;
+	line-height:30px;
+	text-indent: 10px;
+}
+
+.accordionMenu > ul > ul > li > a:hover {
 	background: #EDD;
 	background-image: url(/images/bg7-dk.gif);
 	text-indent: 5px;

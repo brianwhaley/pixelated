@@ -6,6 +6,8 @@ export * from './components/ebay/pixelated.ebay';
 export * from './components/form/pixelated.form';
 export * from './components/form/pixelated.formcomponents';
 export * from './components/form/pixelated.formvalidations';
+export * from './components/google/pixelated.googleanalytics';
+export * from './components/google/pixelated.googlesearch';
 /* export * from './components/linkedin/pixelated.linkedin' */
 export * from './components/markdown/pixelated.markdown';
 export * from './components/menu/pixelated.menu-accordion';

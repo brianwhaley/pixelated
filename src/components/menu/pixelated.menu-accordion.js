@@ -3,10 +3,30 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.menu-accordion.css';
+import { set } from 'date-fns';
 
 /* 
 TODO #16 Menu Accordion Component: Convert to TypeScript
 */
+
+
+function generateMenuItems(menuData, hidden) {
+	let myItems = [];
+	for (const itemKey in menuData) {
+		const myItem = menuData[itemKey];
+		if ( typeof myItem === 'object' && myItem !== null ){
+			// MENU GROUP
+			myItems.push(
+				<MenuAccordionItem key={itemKey + "-i"} name={itemKey} />,
+				<MenuAccordionGroup key={itemKey + "-g"} menuItems={myItem} hidden={true} />
+			);
+		} else {
+			// INDIVIDUAL MENU ITEM
+			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={myItem} />);
+		};
+	}
+	return myItems;
+}
 
 /* ========== MENU ========== */
 export function MenuAccordion(props) {
@@ -15,14 +35,7 @@ export function MenuAccordion(props) {
 	const left = useRef(-250);
 	function setLeft(leftVal) { left.current = leftVal; };
 	const documentRef = useRef(null);
-
-	function generateMenuItems() {
-		const myItems = [];
-		for (const itemKey in props.menuItems) {
-			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={props.menuItems[itemKey]} />);
-		}
-		return myItems;
-	}
+	const [ menuItems, setMenuItems ] = useState();
 
 	function moveMenu() {
 		if (debug) console.log("Moving Menu... Left: ", left);
@@ -40,6 +53,21 @@ export function MenuAccordion(props) {
 			setLeft( 0 ); 
 		}
 	};
+
+	function expandMenuItem(clickedItem) {
+		if (debug) console.log("Expanding Menu Item...");
+		const subMenu = clickedItem.parentElement.nextElementSibling;
+		if (subMenu.classList.contains('menuHide')) { 
+			if (debug) console.log("Opening Submenu");
+			subMenu.classList.add('menuShow'); 
+			subMenu.classList.remove('menuHide'); 
+		} else { 
+			if (debug) console.log("Closing Submenu");
+			subMenu.classList.add('menuHide'); 
+			subMenu.classList.remove('menuShow'); 
+		}
+		
+	}
 	
 	useEffect(() => {
 		window.moveMenu = moveMenu; // attach moveMenu function to the window object for use in MenuAccordionButton
@@ -48,13 +76,26 @@ export function MenuAccordion(props) {
 		const menuBtn = document.getElementById('panelMenuButton');
 		function handleMenuClick(event) {
 			if (debug) console.log("event : ", event, "target : ", event.target);
-			const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target));
-			if (debug) console.log("isClicked : ", isClicked);
-			if (isClicked) {
+			// const isClicked = (menu.contains(event.target) || menuBtn.contains(event.target));
+			const isMenuClicked = menu.contains(event.target);
+			const isMenuBtnClicked = menuBtn.contains(event.target);
+			if (debug) console.log("isMenuBtnClicked : ", isMenuBtnClicked);
+			if (isMenuClicked) {
+				// MENU ITEM CLICKED
+				if(!event.target.href) {
+					// NO HREF - EXPAND / COLLAPSE SUB MENU
+					event.stopPropagation();
+					expandMenuItem(event.target);
+				} else {
+					// HREF - NAVIGATE
+				}
+			} else if (isMenuBtnClicked) {
+				// MENU BUTTON CLICKED
 				// event.preventDefault();
 				event.stopPropagation();
 				moveMenu();
-			} else if (!isClicked && left.current === 0 ) {
+			} else if (!isMenuBtnClicked && left.current === 0 ) {
+				// NON-MENU AREA CLICKED
 				moveMenu();
 			}
 		};
@@ -67,15 +108,29 @@ export function MenuAccordion(props) {
 	return (
 		<div className="accordionMenuWrapper accordionUp">
 			<div className="accordionMenu" id="accordionMenu">
-				<ul>
-					{ generateMenuItems() }
-				</ul>
+				<MenuAccordionGroup key="accordionRoot" menuItems={props.menuItems} />
 			</div>
 		</div>
 	);
 }
 MenuAccordion.propTypes = {
 	menuItems: PropTypes.object.isRequired
+};
+
+
+
+
+/* ========== MENU GROUP ========== */
+export function MenuAccordionGroup(props) {
+	return (
+		<ul className={(props.hidden ? "menuHide" : "menuShow")} >
+			{ generateMenuItems( props.menuItems ) }
+		</ul>
+	);
+}
+MenuAccordionGroup.propTypes = {
+	menuItems: PropTypes.string.isRequired,
+	hidden: PropTypes.bool,
 };
 
 

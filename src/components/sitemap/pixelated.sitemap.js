@@ -1,28 +1,31 @@
+"use server"; 
+
 import React from 'react';
+import { getAllRoutes } from "../utilities/pixelated.routing";
 import myRoutes from "../../data/routes.json";
 
 /* 
 TODO #10 Sitemap Component : Build out v1 of this component
 */
  
-export async function Sitemap(){
+export function Sitemap(){
 
 	const blogPostsURL = "https://public-api.wordpress.com/rest/v1/sites/pixelatedviews.wordpress.com/posts?number=100";
 
-	async function getOrigin() {
-		const headerList = await headers();
+	function getOrigin() {
+		const headerList = headers();
 		const protocol = headerList.get('x-forwarded-proto') || 'http';
 		const host = headerList.get('host') || 'localhost:3000';
 		return `${protocol}://${host}`;
 	}
 
-	async function getBlogItems(){
+	function getBlogItems(){
 		try {
-			const response = await fetch(blogPostsURL);
+			const response = fetch(blogPostsURL);
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
-			const data = await response.json();
+			const data = response.json();
 			return data;
 		} catch (error) {
 			console.error("Could not fetch the posts:", error);
@@ -30,19 +33,22 @@ export async function Sitemap(){
 	}
 
 	const sitemap = [];
-	const origin = await getOrigin();
-	for ( const route of myRoutes.routes ){
-		sitemap.push(
-			<url>
-				<loc>${origin}${route.path}</loc>
-				<lastmod>${new Date()}</lastmod>
-				<changefreq>hourly</changefreq>
-				<priority>1.0</priority>
-			</url>
-		);			
+	const origin = "https://www.pixelated.tech"; // getOrigin();
+	const allRoutes = getAllRoutes(myRoutes, "routes");
+	for ( const route of allRoutes ){
+		if(route.path){
+			sitemap.push(
+				`<url>
+					<loc>${origin}${route.path}</loc>
+					<lastmod>${new Date()}</lastmod>
+					<changefreq>hourly</changefreq>
+					<priority>1.0</priority>
+				</url>`
+			);	
+		}		
 	}
-	const blogPosts = await getBlogItems();
-	for await (const post of blogPosts.posts) {
+	/* const blogPosts = getBlogItems();
+	for (const post of blogPosts.posts) {
 		sitemap.push(
 			<url>
 				<loc>${post.URL}</loc>
@@ -51,7 +57,7 @@ export async function Sitemap(){
 				<priority>1.0</priority>
 			</url>
 		);
-	}
+	} */
 	// return sitemap;
 	return (`
 		<?xml version="1.0" encoding="UTF-8"?>

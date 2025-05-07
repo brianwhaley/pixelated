@@ -11,8 +11,8 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add TODO items integrated with github "
-git push pixelated-components dev --force
+git commit -m "submenus for accordion menu, new ganalytics and gsearch components"
+git push pixelated-components dev --tags --force
 npm publish
 git push pixelated-components dev:main -f
 https://www.npmjs.com/package/@brianwhaley/pixelated-components
