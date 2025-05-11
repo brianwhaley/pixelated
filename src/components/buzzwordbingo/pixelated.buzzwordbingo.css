@@ -27,7 +27,7 @@
 .bingoBoxFreeSpace {
 	text-align:center;
 	margin: auto 0;
-	word-spacing: 1000px; /* force wrap after each word */
+	/* word-spacing: 1000px; */ /* force wrap after each word */
 }
 
 .bingoBoxFreeSpace {

@@ -4,7 +4,7 @@ import "../../css/pixelated.grid.scss";
 import { buzzwords } from "../../data/buzzwords.js";
 
 /* 
-TODO #19 Buzzword Bingo COmponent : Fix css grid to remain 5 columns
+TODO #19 Buzzword Bingo Component : Fix css grid to remain 5 columns
 */
 
 function getBingoWords(arr: Array<string>, x: number){

@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "css fix for buzzwordbingo, deep linking for recipes, arrow indicator for accordion submenus"
+git commit -m "icons folder, add of carouselsimple component"
 git push pixelated-components dev --tags --force
 npm publish
 git push pixelated-components dev:main -f

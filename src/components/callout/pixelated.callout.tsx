@@ -37,7 +37,7 @@ export function Callout(props: GenericCallout) {
 		return (
 			<div className={"callout row-2col"}>
 				<div className="gridItem">
-					<div className={`${myShape}ImgContainer calloutImageHoriz`}>
+					<div className={`imgContainer ${myShape} calloutImageHoriz`}>
 						{ props.url
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
 							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
@@ -72,7 +72,7 @@ export function Callout(props: GenericCallout) {
 				</div>
 				<div className="row-2col">
 					<div className="gridItem">
-						<div className={`${myShape}ImgContainer calloutImageHoriz`}>
+						<div className={`imgContainer ${myShape} calloutImageHoriz`}>
 							{ props.url
 								? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
 								: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
@@ -97,7 +97,7 @@ export function Callout(props: GenericCallout) {
 		return (
 			<div className={`callout row-1col `}>
 				<div className="gridItem center">
-					<div className={`${myShape}ImgContainer calloutImageVert center`}>
+					<div className={`imgContainer ${myShape} calloutImageVert center`}>
 						{ props.url
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
 							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
@@ -161,7 +161,7 @@ export function CalloutSmall(props: GenericCallout) {
 	const myShape = validateShape(props.shape); 
 	return (
 		<div>
-			<div className={`${myShape}ImgContainer gridItem center`}>
+			<div className={`imgContainer ${myShape} gridItem center`}>
 				<a href={props.url} target="_blank"rel="noopener noreferrer">
 					<img src={props.img} alt={(props.alt) ? props.alt : props.title} 
 						onClick={(props.imgclick) ? event => props.imgclick?.(event, props.url) : () => window.open(props.url, '_blank') } 

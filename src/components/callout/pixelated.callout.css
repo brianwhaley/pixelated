@@ -27,16 +27,14 @@
 	margin-bottom: 7px;
 }
 
-.roundImgContainer, 
-.squircleImgContainer, 
-.squareImgContainer {
+.imgContainer {
     background: #fff;
     border: 1px solid #AAA;
 	overflow: hidden;
 	margin: 0px auto;
 }
 
-.roundImgContainer {
+.imgContainer.round {
 	/* -moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%; */
@@ -44,24 +42,21 @@
 	clip-path: rect(1% 98% 98% 1% round 50%);
 }
 
-.squircleImgContainer {
+.imgContainer.squircle {
 	/* -moz-border-radius: 25%;
 	-webkit-border-radius: 25%;
 	border-radius: 25%; */
 	clip-path: rect(1% 98% 98% 1% round 25%);
 }
 
-.squareImgContainer {
+.imgContainer.square {
 	/* -moz-border-radius: 25%;
 	-webkit-border-radius: 25%;
 	border-radius: 25%; */
 	clip-path: rect(1% 98% 98% 1% round 5%);
 }
 
-.roundImgContainer img,
-.roundImg,
-.squircleImgContainer img, 
-.squareImgContainer img {
+.imgContainer img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* This ensures the image covers the entire container */

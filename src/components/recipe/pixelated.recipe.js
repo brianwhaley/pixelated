@@ -205,7 +205,7 @@ export function BackToTop() {
 	return (
 		<div className="backToTop">
 			<a href="#top" onClick={scrollToTop}>
-				<div><img src="/images/up.jpg" alt="Back To Top" /></div>
+				<div><img src="/images/icons/up.jpg" alt="Back To Top" /></div>
 				<div>Back To Top</div>
 			</a>
 		</div>

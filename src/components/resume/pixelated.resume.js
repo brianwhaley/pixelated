@@ -142,7 +142,7 @@ export function ResumeEvents(props) {
 			<span className="p-org">{myLocation.org}</span>	
 			{ (myLocation.locality[0]) ? <span className="p-locality">, {myLocation.locality[0]}</span> : null }
 			{ (myLocation.region[0]) ? <span className="p-region">, {myLocation.region[0]} </span> : null }
-			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank"><img src="/images/link.png" className='u-url-icon' /></a> : null }
+			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank"><img src="/images/icons/link.png" className='u-url-icon' /></a> : null }
 		</li>;
 		// ADD TO THE ARRAY
 		myElems.push(myElem);
@@ -281,7 +281,7 @@ export function ResumeProjects(props) {
 		const projects = myProjects?.map((project, iKey) =>
 			<li key={"i" + iKey} className="p-project">
 				{ (project.properties.url[0]) ? <a href={project.properties.url[0]} target="_blank" className="u-url"><span className="p-name">{project.properties.name[0]}</span> </a> : <span className="p-name">{project.properties.name[0]}</span> }
-				{' '} { (project.properties.photo[0]) ? <a href={project.properties.photo[0]} target="_blank" className="u-photo"><img src='/images/img.png' className='u-photo-icon' /></a> : null}
+				{' '} { (project.properties.photo[0]) ? <a href={project.properties.photo[0]} target="_blank" className="u-photo"><img src='/images/icons/img.png' className='u-photo-icon' /></a> : null}
 				{ (project.properties.note[0]) ? <div className="p=note">{project.properties.note[0]}</div> : null}
 			</li>
 		);

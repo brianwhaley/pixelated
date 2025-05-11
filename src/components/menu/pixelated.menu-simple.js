@@ -20,7 +20,7 @@ export function MenuSimple(props) {
 		return myItems;
 	}
 
-	const menu = document.getElementById('menu');
+  	if (typeof document !== 'undefined') { const menu = document.getElementById('menu'); };
 	return (
 		<div className="menuWrapper">
 			<hr />

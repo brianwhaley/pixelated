@@ -156,7 +156,7 @@ export function MenuAccordionButton(props) {
 	} 
 	return (
 		<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={slideMobilePanel}>
-			<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
+			<img src="/images/icons/mobile-menu2.png" alt="Mobile Menu"/>
 		</div>
 	);
 }

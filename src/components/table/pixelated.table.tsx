@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './pixelated.table.css';
 
-export function Table(props:{ data: Array<{ [key: string]: any }> }) {
+export function Table (props:{ data: Array<{ [key: string]: any }> }) {
 
 	function getHeadings (data: Array<{ [key: string]: any }>) {
 		const headings = Object.keys(data[0]).map((key, i) => {
@@ -33,7 +33,7 @@ export function Table(props:{ data: Array<{ [key: string]: any }> }) {
 		</div>
 	);
 
-}
+};
 Table.propTypes = {
 	data: PropTypes.array
 };

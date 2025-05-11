@@ -67,7 +67,7 @@ export function MenuExpandoButton(props) {
 
 	return (
 		<div className="menuExpandoButton" id="menuExpandoButton" onClick={handleMenuExpandoButtonClick}>
-			<img src="/images/mobile-menu2.png" alt="Mobile Menu"/>
+			<img src="/images/icons/mobile-menu2.png" alt="Mobile Menu"/>
 		</div>
 	);
 }

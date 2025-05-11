@@ -1,6 +1,7 @@
 export * from './components/buzzwordbingo/pixelated.buzzwordbingo';
 export * from './components/callout/pixelated.callout';
 export * from './components/carousel/pixelated.carousel';
+export * from './components/carouselsimple/pixelated.carouselsimple';
 export * from './components/ebay/pixelated.ebay';
 /* export * from './components/linkedin/pixelated.ecommerce' */
 export * from './components/form/pixelated.form';
@@ -24,5 +25,7 @@ export * from './components/table/pixelated.table';
 export * from './components/utilities/pixelated.api';
 export * from './components/utilities/pixelated.functions';
 /* export * from './components/utilities/pixelated.routing' */
+/* export * from './components/yelp/pixelated.yelp'; */
+
 
 // https://www.learnwithjason.dev/blog/learn-rollup-js
