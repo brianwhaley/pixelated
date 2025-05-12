@@ -45,14 +45,13 @@ export function Callout(props: GenericCallout) {
 					</div>
 				</div>
 				<div className="gridItem">
-					{ props.url
+					{ (props.url)
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
 					<div className="calloutBody">
-						{props.content}
-						<br/><br/>
-						{ props.url
+						{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+						{ (props.url) 
 							? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 							: null
 						}
@@ -65,7 +64,7 @@ export function Callout(props: GenericCallout) {
 		return (
 			<div className={`callout row-1col`}>
 				<div className="gridItem center">
-					{ props.url
+					{ (props.url)
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
@@ -73,7 +72,7 @@ export function Callout(props: GenericCallout) {
 				<div className="row-2col">
 					<div className="gridItem">
 						<div className={`imgContainer ${myShape} calloutImageHoriz`}>
-							{ props.url
+							{ (props.url)
 								? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
 								: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
 							}
@@ -81,9 +80,8 @@ export function Callout(props: GenericCallout) {
 					</div>
 					<div className="gridItem">
 						<div className="calloutBody grid12">
-							{props.content}
-							<br/><br/>
-							{ props.url
+							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+							{ (props.url)
 								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 								: null
 							}
@@ -98,22 +96,21 @@ export function Callout(props: GenericCallout) {
 			<div className={`callout row-1col `}>
 				<div className="gridItem center">
 					<div className={`imgContainer ${myShape} calloutImageVert center`}>
-						{ props.url
+						{ (props.url)
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
 							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
 						}
 					</div>
 				</div>
 				<div className="gridItem center">
-					{ props.url
+					{ (props.url)
 						? <CalloutHeader url={props.url} title={props.title} />
 						: <CalloutHeader title={props.title} />
 					}
 				</div>
 				<div className="calloutBody gridItem center">
-					{props.content}
-					<br/><br/>
-					{ props.url
+					{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+					{ (props.url)
 						? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 						: null
 					}

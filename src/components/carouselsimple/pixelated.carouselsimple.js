@@ -98,7 +98,7 @@ CarouselSimple.propTypes = {
 
 
 /* ========== CAROUSEL CARD ========== */
-export function CarouselCard(props) {
+function CarouselCard(props) {
 	const myZindex = props.cardLength - props.index;
 	const styles = {
 		zIndex: myZindex
@@ -139,7 +139,7 @@ CarouselCard.propTypes = {
 
 
 /* ========== CAROUSEL  ARROW ========== */
-export function CarouselButton(props) {
+function CarouselButton(props) {
 	return (
 		<div className={`carouselButton textOutline`}
 			onClick={ props.clickFunction }>
@@ -152,7 +152,7 @@ CarouselButton.propTypes = {
 	glyph: PropTypes.string.isRequired
 };
 
-export function CarouselArrow(props) {
+function CarouselArrow(props) {
 	return (
 		<div className={`carouselButton${capitalize(props.direction)} textOutline`}
 			onClick={ props.clickFunction }>
@@ -168,7 +168,7 @@ CarouselArrow.propTypes = {
 
 
 /* ========== CAROUSEL LOADING ========== */
-export function CarouselLoading() {
+function CarouselLoading() {
 	return (
 		<div className="carouselLoading horizontal-centered vertical-centered centered">
 			<div>Loading...</div>

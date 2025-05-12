@@ -120,7 +120,7 @@ Carousel.propTypes = {
 
 
 /* ========== CAROUSEL SLIDER ========== */
-export function CarouselSlider(props) {
+function CarouselSlider(props) {
 
 	/* const isMounted = useRef(false);
 	useEffect(() => {
@@ -363,7 +363,7 @@ CarouselSlider.propTypes = {
 };
 
 /* ========== CAROUSEL SLIDER IMAGE ========== */
-export function CarouselSliderImage(props) {
+function CarouselSliderImage(props) {
 	
 	// let myImage = React.createRef();
 
@@ -413,7 +413,7 @@ CarouselSliderImage.propTypes = {
 
 
 /* ========== CAROUSEL SLIDER DETAILS ========== */
-export function CarouselSliderDetails(props) {
+function CarouselSliderDetails(props) {
 
 	return (
 		<div className="carouselSliderDetails textOutline">
@@ -429,7 +429,7 @@ CarouselSliderDetails.propTypes = {
 };
 
 /* ========== CAROUSEL SLIDER ARROW ========== */
-export function CarouselSliderArrow(props) {
+function CarouselSliderArrow(props) {
 	return (
 		<div className={`carouselArrow${capitalize(props.direction)} textOutline`}
 			onClick={ props.clickFunction }>
@@ -445,7 +445,7 @@ CarouselSliderArrow.propTypes = {
 
 
 /* ========== CAROUSEL HERO ========== */
-export function CarouselHero(props) {
+function CarouselHero(props) {
 	
 	let debug = false;
 	const [flickrData, setFlickrData] = useState({});
@@ -523,17 +523,13 @@ export function CarouselHero(props) {
 	);
 	*/
 }
+CarouselHero.propTypes = {
+	flickrData: PropTypes.object.isRequired
+};
+
 
 /* ========== CAROUSEL HERO IMAGE ========== */
-export function CarouselHeroImage(props) {
-	CarouselHeroImage.propTypes = {
-		direction: PropTypes.string.isRequired,
-		activeIndex: PropTypes.number.isRequired,
-		index: PropTypes.number.isRequired,
-		imagesLength: PropTypes.number.isRequired,
-		image: PropTypes.object.isRequired,
-		size: PropTypes.string.isRequired
-	};
+function CarouselHeroImage(props) {
 
 	const myImg = props.image;
 	const myZindex = props.imagesLength - props.index;
@@ -559,19 +555,20 @@ export function CarouselHeroImage(props) {
 			title={myImg.title} />
 	);
 }
-CarouselHero.propTypes = {
-	flickrData: PropTypes.object.isRequired
+CarouselHeroImage.propTypes = {
+	direction: PropTypes.string.isRequired,
+	activeIndex: PropTypes.number.isRequired,
+	index: PropTypes.number.isRequired,
+	imagesLength: PropTypes.number.isRequired,
+	image: PropTypes.object.isRequired,
+	size: PropTypes.string.isRequired
 };
 
 
-/* ========== CAROUSEL HERO DETAILS ========== */
-export function CarouselHeroDetails(props) {
-	CarouselHeroDetails.propTypes = {
-		index: PropTypes.number.isRequired,
-		length: PropTypes.number.isRequired,
-		image: PropTypes.object.isRequired
-	};
 
+/* ========== CAROUSEL HERO DETAILS ========== */
+function CarouselHeroDetails(props) {
+	
 	return (
 		<div className='section-container'>
 			<div className="carouselHeroDetails textOutline horizontal-centered">
@@ -587,8 +584,14 @@ export function CarouselHeroDetails(props) {
 		</div>
 	);
 }
+CarouselHeroDetails.propTypes = {
+	index: PropTypes.number.isRequired,
+	length: PropTypes.number.isRequired,
+	image: PropTypes.object.isRequired
+};
 
-export function CarouselLoading() {
+
+function CarouselLoading() {
 	return (
 		<div className="carouselLoading horizontal-centered vertical-centered centered">
 			<div>Loading...</div>
