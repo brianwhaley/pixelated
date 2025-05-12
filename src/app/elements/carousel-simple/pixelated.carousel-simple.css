@@ -1,0 +1,124 @@
+/* ========================================
+===============  CAROUSEL   ===============
+======================================== */
+
+.carouselContainer {
+	height: 600px;
+    background: #FFF;
+    border: 1px solid #AAA;
+}
+.carouselCardsContainer {
+	height: 550px;
+	position: relative;
+    overflow: hidden;
+}
+
+#carouselCardsContainer {
+	--do-nothing: true;
+}
+.carouselCardWrapper {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.carouselCard {
+	width: 100%;
+	margin: 0 auto;
+	
+}
+
+/* .carouselCard {
+	width: 100%;
+	height: 100%;
+    margin: 0 auto;
+} */
+
+.carouselCardHeader {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	margin: 5px auto;
+	width: 100%;
+}
+
+.carouselCardBody {
+	margin: 5px auto;
+	width: 90%;
+	font-size: 14px;
+}
+
+.carouselCardImage {
+	margin: 0 auto;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: 400px;
+	position: relative;
+	object-fit: cover;
+	overflow: clip;
+}
+
+.carouselCardImage img {
+	max-height: auto; 
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%)
+}
+
+.carouselButtons {
+	width: 100%;
+	height: 50px;
+	text-align: center;
+}
+
+.carouselButton {
+    font-size: 24px;
+	z-index: 900;
+    padding: 5px;
+	display: inline-block;
+}
+
+.carouselArrow,
+.carouselArrowLeft, 
+.carouselArrowRight {
+	position: absolute;
+    font-size: 24px;
+	top: 50%;
+    opacity: .5;
+	z-index: 900;
+    padding: 5px;
+}
+
+.carouselArrowLeft {
+	left: 0; 
+}
+
+.carouselArrowRight {
+	right: 0;
+} 
+
+.carouselDetails {
+	position: absolute;
+	bottom: 20px;
+	z-index: 1000;
+    width: 100%;
+	font-size: 11px;
+	text-align: center;
+}
+
+.carouselLoading {
+    column-span: all;
+	text-align: center;
+}

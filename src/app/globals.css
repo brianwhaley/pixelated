@@ -1,26 +1,145 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===== HEADER STYLES ===== */
+
+.headerLogo img {
+    clip-path: rect(1% 98% 98% 1% round 15%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@media screen and (max-width: 480px) {
+    .headerLogo {
+        max-width: 70%;
+        margin: auto 15%;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.headerRight {
+    margin: auto 0;
+}
+
+
+/* ===== CAROUSEL STYLES ===== */
+
+.carouselContainer {
+    background: none !important;
+    /* border: none !important; */
+}
+
+
+/* ===== SECTION STYLES ===== */
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-variant-caps: small-caps;
+    margin-bottom: 30px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;  */
+}
+
+main .section-container {
+   /* margin-top: 50px;
+    margin-bottom: 50px; */
+    --do-nothing: true;
+}
+
+.bigText {
+    margin: auto 10%;
+    text-align: center;
+    font-size: 1.75em;
+}
+
+.tightGrid,
+.section-container .row-1col {
+    gap: 0px;
+}
+
+.menuWrapper {
+    text-align: center;
+}
+
+.contactCTA {
+    font-size: 1.75em;
+    color: white;
+    height: 200px;
+    display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center (optional) */
+    text-align: center;
+    background-image: linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.25)), url('https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/486e45ef-9e02-4859-a771-6e78b2e55e02/BluChips.jpg?format=2500w');
+    background-position: center;
+    margin: 30px 0;
+}
+
+.contactCTA button {
+    border: 1px solid #999;
+	/* .rounded; */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.contactCTA button:hover {
+    cursor: pointer; 
+    text-decoration: underline;
+    color: #369;
+    /* background-color: #DDD; */
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
+}
+
+
+/* ===== SIMPLE MENU STYLES ===== */
+
+.menuWrapper {
+    width: 100%;
+}
+
+.menu, 
+.menu ul {
+    width: 100%;
+}
+
+.menuItem {
+    border: 0px;
+    width: 20%; /* 5 MENU ITEMS */
+    text-indent: 0px;
+    font-size: small;
+}
+
+.menuItem a {
+    background: none;
+    text-align: center;
+    text-indent: 0px;
+    font-size: small;
+}
+
+.menuItem a:hover {
+	/* background: #FFF; */
+    font-size: medium;
+	border-left: none;
+    text-indent: 0px;
+    /* background-image: url('/images/splatter.jpg'); */
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: cover; /* Resize the background image to cover the entire container */
+
+}
+
+/* ===== FORM STYLES ===== */
+.displayVertical {
+    display: block;
+    margin: 5px 5px 20px 5px !important;
+    padding: 5px;
 }

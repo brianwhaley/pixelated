@@ -1,0 +1,35 @@
+{
+	"routes": [
+		{ 
+			"name": "Home", 
+			"path": "/", 
+			"title": "Palmetto Epoxy - Home",
+			"description": "",
+			"keywords": ""  
+		} , { 
+			"name": "Services", 
+			"path": "/services", 
+			"title": "Palmetto Epoxy - Services",
+			"description": "View the resume of Brian Whaley",
+			"keywords": "" 
+		} , { 
+			"name": "Projects", 
+			"path": "/projects", 
+			"title": "Palmetto Epoxy - Projects",
+			"description": "Every good piece of software needs a readme.  So do people.",
+			"keywords": ""  
+		} , { 
+			"name": "About", 
+			"path": "/about", 
+			"title": "Palmetto Epoxy - About",
+			"description": "" ,
+			"keywords": "" 
+		} , { 
+			"name": "Contact", 
+			"path": "/contact", 
+			"title": "Palmetto Epoxy - Contact",
+			"description": "",
+			"keywords": "" 
+		} 
+	]
+}
