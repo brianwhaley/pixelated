@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^1.2.13",
+    "@brianwhaley/pixelated-components": "^1.2.14",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
