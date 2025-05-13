@@ -1,7 +1,7 @@
 "use client"; 
 
-import { usePathname } from 'next/navigation';
 import React from "react";
+import { usePathname } from 'next/navigation';
 import { getMetadata } from "@brianwhaley/pixelated-components";
 import HomeLayout from "@/app/layouts/home-layout";
 import PageLayout from "@/app/layouts/page-layout";

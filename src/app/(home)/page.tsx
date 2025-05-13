@@ -65,7 +65,7 @@ export default function Home() {
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" alt="Shutter Stock" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" alt="Instagram" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" alt="Blurb" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" alt="Shutterfly" /></div>
+						<div className="gridItem"><CalloutSmall shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.png" alt="Shutterfly" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" alt="Twitter" /></div>
 						<div className="gridItem"></div>
 					</div>

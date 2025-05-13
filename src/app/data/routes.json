@@ -7,43 +7,75 @@
 			"description": "",
 			"keywords": ""  
 		} , { 
-			"name": "Resume", 
-			"path": "/resume", 
-			"title": "Pixelated - Brian Whaley - Resume",
-			"description": "View the resume of Brian Whaley",
+			"name": "Services", 
+			"path": "/services", 
+			"title": "Pixelated - Brian Whaley - Services",
+			"description": "Overview of the Products and Services offered by Pixelated",
 			"keywords": "" 
+		} , {
+			"name": "About Me",
+			"routes": [
+				{ 
+					"name": "Resume", 
+					"path": "/resume", 
+					"title": "Pixelated - Brian Whaley - Resume",
+					"description": "View the resume of Brian Whaley",
+					"keywords": "" 
+				} , { 
+					"name": "ReadMe", 
+					"path": "/readme", 
+					"title": "Pixelated - Brian Whaley - ReadMe",
+					"description": "Every good piece of software needs a readme.  So do people.",
+					"keywords": ""  
+				} , { 
+					"name": "Family Recipes", 
+					"path": "/recipes", 
+					"title": "Pixelated - Brian Whaley - Recipes",
+					"description": "Pace / Barbano / Whaley Recipes through the ages",
+					"keywords": "" 
+				} 
+			]
+		} , {
+			"name": "Web Development",
+			"routes": [
+				{ 
+					"name": "Work Overview", 
+					"path": "/workoverview", 
+					"title": "Pixelated - Brian Whaley - Work Overview",
+					"description": "Snapshots of some of the web properties I have worked on." ,
+					"keywords": "" 
+				} , { 
+					"name": "Work Portfolio", 
+					"path": "/workportfolio", 
+					"title": "Pixelated - Brian Whaley - Work Portfolio",
+					"description": "Snapshots of some of the web properties I have worked on." ,
+					"keywords": "" 
+				} 
+			]
+		} , {
+			"name": "Photography",
+			"routes": [
+				{ 
+					"name": "Photo Overview", 
+					"path": "/photography", 
+					"title": "Pixelated - Brian Whaley - Photography",
+					"description": "An overview of the Pixelated phtography portfolio.",
+					"keywords": "" 
+				} , { 
+					"name": "Photo Gallery", 
+					"path": "/photogallery", 
+					"title": "Pixelated - Brian Whaley - Photo Gallery",
+					"description": "The best of the best of my phtography portfolio.",
+					"keywords": "" 
+				} , { 
+					"name": "Social Media", 
+					"path": "/socialmedia", 
+					"title": "Pixelated - Brian Whaley - Social Media",
+					"description": "Links to all my digital footprints",
+					"keywords": "" 
+				}
+			]
 		} , { 
-			"name": "ReadMe", 
-			"path": "/readme", 
-			"title": "Pixelated - Brian Whaley - ReadMe",
-			"description": "Every good piece of software needs a readme.  So do people.",
-			"keywords": ""  
-		} , { 
-			"name": "Work Portfolio", 
-			"path": "/workportfolio", 
-			"title": "Pixelated - Brian Whaley - Work Portfolio",
-			"description": "Snapshots of some of the web properties I have worked on." ,
-			"keywords": "" 
-		} , { 
-			"name": "Photo Gallery", 
-			"path": "/photogallery", 
-			"title": "Pixelated - Brian Whaley - Photo Gallery",
-			"description": "The best of the best of my phtography portfolio.",
-			"keywords": "" 
-		} , { 
-			"name": "Social Media", 
-			"path": "/socialmedia", 
-			"title": "Pixelated - Brian Whaley - Social Media",
-			"description": "Links to all my digital footprints",
-			"keywords": "" 
-		} , { 
-			"name": "Recipes", 
-			"path": "/recipes", 
-			"title": "Pixelated - Brian Whaley - Recipes",
-			"description": "Pace / Barbano / Whaley Recipes through the ages",
-			"keywords": "" 
-		} , 
-			{ 
 			"name" : "Custom Sunglasses",
 			"routes" : [
 				{ 
@@ -79,27 +111,44 @@
 				} 
 			]
 		} , { 
-			"name": "Buzzword Bingo", 
-			"path": "/buzzwordbingo", 
-			"title": "Pixelated - Brian Whaley - Buzzword Bingo",
-			"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
-			"keywords": "" 
-		} , { 
-			"name": "NerdJokes", 
-			"path": "/nerdjokes", 
-			"title": "Pixelated - Brian Whaley - NerdJokes",
-			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
-		} , { 
-			"name": "Stkr", 
-			"path": "/stkr", 
-			"title": "Pixelated - Brian Whaley - Stkr",
-			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
+			"name": "Home Design",
+			"routes": [
+				{ 
+					"name": "Design Overview", 
+					"path": "/homedesign", 
+					"title": "Pixelated - Brian Whaley - Home Design",
+					"description": "",
+					"keywords": "" 
+				} , { 
+					"name": "Design Gallery", 
+					"path": "/designgallery", 
+					"title": "Pixelated - Brian Whaley - Design Gallery",
+					"description": "",
+					"keywords": "" 
+				}
+			]
 		} , { 
 			"name": "Sandbox",
 			"routes": [
-				{
+				{ 
+					"name": "Buzzword Bingo", 
+					"path": "/buzzwordbingo", 
+					"title": "Pixelated - Brian Whaley - Buzzword Bingo",
+					"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
+					"keywords": "" 
+				} , { 
+					"name": "NerdJokes", 
+					"path": "/nerdjokes", 
+					"title": "Pixelated - Brian Whaley - NerdJokes",
+					"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , { 
+					"name": "Stkr", 
+					"path": "/stkr", 
+					"title": "Pixelated - Brian Whaley - Stkr",
+					"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , {
 					"name": "Form", 
 					"path": "/form", 
 					"title": "Pixelated - Brian Whaley - Form",
