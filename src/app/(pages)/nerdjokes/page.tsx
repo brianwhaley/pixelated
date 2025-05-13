@@ -2,6 +2,7 @@
 
 import React, { Fragment, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { NerdJoke } from "@brianwhaley/pixelated-components";
 import Terms from "@/app/elements/terms";
@@ -31,7 +32,7 @@ export default function NerdJokes() {
 		<Fragment>
 			<section className="section" id="nerdjoke-section">
 				<div className="section-container">
-					<CalloutHeader title="NerdJokes" />
+					<PageHeader title="NerdJokes" />
 					<div className="callout-body">
 						<div className="centered">
 							<NerdJoke />

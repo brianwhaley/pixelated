@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { BuzzwordBingo } from "@brianwhaley/pixelated-components";
 
@@ -8,7 +9,7 @@ export default function BuzzWordBingo () {
 	return (
 		<section id="customs-section">
 			<div className="section-container">
-				<CalloutHeader title="Buzzword Bingo" />
+				<PageHeader title="Buzzword Bingo" />
 				<BuzzwordBingo />
 				<br /><br />
 				<CalloutHeader title="Instructions : " />

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment } from "react";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components";
 import { SocialCards } from "@brianwhaley/pixelated-components";
 
@@ -48,7 +49,7 @@ export default function SocialMedia() {
 				<div className="section-container callout">
 					<div className="row-12col">
 						<div className="grid-s1-e12">
-							<CalloutHeader title="Social Media Links" />
+							<PageHeader title="Social Media Links" />
 						</div>
 					</div>
 					<div className="row-12col">

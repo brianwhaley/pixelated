@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { Carousel } from "@brianwhaley/pixelated-components";
 
 const tags = {tag: "customsunglasses"};
@@ -17,6 +18,9 @@ function GalleryWrapper( props: { props: { tag: string; }; } ) {
 
 export default function Gallery () {
 	return (
-		<GalleryWrapper props={tags}/>
+		<>
+			<PageHeader title="Custom Sunglasses Gallery" />
+			<GalleryWrapper props={tags}/>
+		</>
 	);
 }

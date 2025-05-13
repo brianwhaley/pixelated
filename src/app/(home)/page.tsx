@@ -1,38 +1,57 @@
 "use client";
 
 import React, { Fragment } from "react";
-import { Callout, CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components"; 
+import { PageHeader } from "@/app/components/general/pixelated.general";
+import { Callout, CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
 	return (
 		<Fragment>
-			<section id="intro-section">
+
+			<section id="products-section">
 				<div className="section-container">
-					<div className="row-3col">
-						<div className="gridItem">
-							<Callout
-								img='images/brianwhaley-headshot.jpg'
-								title='Brian T. Whaley'
-								content='Technologist,
-									Digital Transformation Professional, User Experience Champion,
-									Landscape and Macro Photographer, Avid World Traveler,
-									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food'
-								layout='vertical' />
-						</div><div className="gridItem">
-							<Callout
-								url='https://www.linkedin.com/in/brianwhaley'
-								img='images/logos/linkedin-logo.png'
-								title='LinkedIn Profile'
-								content='My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.'
-								layout='vertical' />
-						</div><div className="gridItem">
-							<Callout
-								url='https://www.ebay.com/usr/btw73/'
-								img='images/logos/ebay-logo.png'
-								title='Sunglasses on eBay'
-								content='View some cutomized Oakley sunglasses available for purchase on eBay.'
-								layout='vertical' />
+					<br />
+					<PageHeader title="Pixelated Products & Services" />
+					<div className="row-12col">
+						<div className="grid-s3-e8">
+							Pixelated offers a wide varity of products and services, including custom web development for small businesses, 
+							stock photography, touchup services, home design and remodeling, and more.  Explore our detailed offereings below.  
 						</div>
+					</div>
+					<div className="row-4col">
+						<Callout
+							url="/workoverview" 
+							img='images/circuitboard.jpg'
+							title='Web Development'
+							content='Passionate Web Technologist,
+								Digital Transformation Professional, User Experience Champion.
+								I get excited watching companies and products grow and thrive.'
+							layout='vertical' />
+						<Callout
+							url='/photography' 
+							img='https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg'
+							title='Stock Photography'
+							content='I have converted my passion of Landscape, Macro, and Travel Photography 
+								into a budding Stock Photography Portfolio.  Check out my work on 
+								iStockPhoto or ShutterStock, or see my books on Blurb or Shutterfly. '
+							layout='vertical' />
+						<Callout
+							url='/customsunglasses' 
+							img='/images/customs/blue-splatter-3.jpg'
+							title='Custom Sunglasses'
+							content='I refurbish, repair, and customize Oakley sunglasses. 
+								I enjoy providing custom paint jobs with a splash of colors - 
+								marbled, splattered, and dripped. Custom paint can be one color, 
+								or a combination of complimentary colors. Patterns can also be small or large, 
+								thin or thick, dense or sparse.  As the customer, you choose!'
+							layout='vertical' />
+						<Callout
+							url='/homedesign' 
+							img='https://farm66.static.flickr.com/65535/54513221006_5d2117cdf3_b.jpg'
+							title='Home Design & Remodeling'
+							content='We design a holistic plan for interior and exterior design of homes,
+								including kitchens, bathrooms, bedrooms, color schemes, artwork, garages, patios, decks, and more.'
+							layout='vertical' />
 					</div>
 				</div>
 			</section>
@@ -40,7 +59,6 @@ export default function Home() {
 			<section className="section-alt" id="social-section">
 				<div className="section-container">
 					<div className="row-12col">
-						
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.linkedin.com/in/brianwhaley" img="/images/logos/linkedin-logo.png" alt="LinkedIn" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/brianwhaley" img="/images/logos/twitter-logo.png" alt="Twitter" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://reddit.com/user/btw-73/saved" img="/images/logos/reddit-logo.png" alt="Reddit" /></div>
@@ -88,71 +106,51 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section id="portfolio-section">
+			<section id="spotlight-section">
 				<div className="section-container">
-					<div className="row-3col">
+					<CalloutHeader title="Pixelated - Featured Spotlights" />
+					<div className="row-4col">
 						<div className="gridItem">
 							<Callout
-								url='workportfolio'
-								img='images/circuitboard.jpg'
-								title='Work Portfolio'
-								layout='vertical'
-								content='A carousel of screenshots from my work at BMS, AP, ADP, PR Newswire, AmEx, and more.
-									The carousel runs on a custom component that I built myself, using React and the Flickr API.
-									You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
-						</div><div className="gridItem">
-							<Callout
-								url='https://github.com/brianwhaley'
-								img='images/logos/github-logo.png'
-								title='GitHub Portfolio'
-								layout='vertical'
-								content='This is a link to my GitHub account.  I have only uploaded a few pieces of code.
-									Pieces include a library of LotusScripts and agents;
-									pilot applications written in Angular2, NodeJS, Spring iOS, and Java Android;
-									a jQuery library of functions for use when integrating with Flickr, a photo gallery component that integrates with Flickr,
-									and a component (jQuery or React) that integrates with social media providers and generates Masonary cards of the last number of items from each account.'/>
+								img='images/brianwhaley-headshot.jpg'
+								title='Brian T. Whaley'
+								content='Technologist,
+									Digital Transformation Professional, User Experience Champion,
+									Landscape and Macro Photographer, Avid World Traveler,
+									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food'
+								layout='vertical' />
 						</div><div className="gridItem">
 							<Callout
 								url='photogallery'
-								img='https://farm6.staticflickr.com/5682/21652998256_7c5d0ce495_b.jpg'
+								img='https://farm1.static.flickr.com/736/32093760946_27cb5b34fa_b.jpg'
 								title='Photo Gallery'
 								layout='vertical'
 								content='A carousel of some of my best photographs throughout my life.
 									They are primarily landscape photographs, macro photographs, and travel photographs.
 									The carousel was custom built using React and the Flickr API.
 									You can click on the left or right arrows to navigate, or swipe on a touch enabled device.'/>
+						</div><div className="gridItem">
+							<Callout
+								url='https://www.ebay.com/usr/btw73/'
+								img='images/logos/ebay-logo.png'
+								title='Sunglasses on eBay'
+								content='View some cutomized Oakley sunglasses available for purchase on eBay.'
+								layout='vertical' />
+						</div><div className="gridItem">
+							<Callout
+								url='https://www.goodreads.com/review/list/49377228-brian-whaley?shelf=books-for-work' 
+								img='/images/logos/goodreads-logo.png'
+								title='Goodreads'
+								layout='vertical' 
+								shape='round' 
+								content='This Goodreads Shelf is a collection of books that i have found to be 
+									invaluable to build, strengthen, and manage my career and leadership skills over my career, 
+									i hope these are useful to you too. '/>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section className="section-alt" id="portfolio-section-2">
-				<div className="section-container">
-					<div className="row-3col">
-						<div className="gridItem">
-							<Callout
-								url='http://www.blurb.com/user/brianwhaley'
-								img='images/logos/blurb-logo.png'
-								title='My Blurb Books'
-								layout='vertical'
-								content='A storefront for my custom made books.  This includes books for our trip to Italy,
-									a memorial for our rabbit Sunshine, a Whaley / Pace family album, A wedding album for Matt and Alex,
-									a memorial book for my mom, and a collection of recipes from the Pace family. More to come!'/>
-						</div><div className="gridItem">
-							<Callout
-								url='recipes'
-								img='images/pizza-gaine.jpg'
-								title='My Recipe Book'
-								layout='vertical'
-								content="This is <a href='recipes'>my recipe book</a>.
-									It is a collection of recipes from 3 generations of my family, from my friends, and
-									my life as an Italian-American and as a Bariatric Patient.
-									I have cooked most of the recipes myself.
-									I have tasted them all, however, and they are fantastic!  Please enjoy! "/>
-						</div>
-					</div>
-				</div>
-			</section>
 		</Fragment>
 	);
 }

@@ -8,8 +8,7 @@ export default function Header() {
 	return (
 		<div className="section-container">
 			<MenuAccordionButton />
-			<h1 className="pull-left">Pixelated </h1>
-			<h2 className="pull-left pad"> - by Brian Whaley</h2>
+			<h2 className="pull-left pad">Pixelated  - by Brian Whaley</h2>
 		</div>
 	);
 }

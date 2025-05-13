@@ -1,72 +1,93 @@
 "use client";
 
-import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@/app/components/general/pixelated.general";
+import { Callout } from "@brianwhaley/pixelated-components";
 
 export default function Work() {
     
 	return (
 		<div className="section-container">
-			<CalloutHeader title="Work Overview" />
+			<PageHeader title="Work Overview" />
 			<div className="row-12col">
-				<div className="grid-s3-e6">
+				<div className="grid-s3-e8">
 					<Callout
 						url="/workportfolio"
 						img='images/circuitboard.jpg'
 						title='Work Portfolio'
-						content='Passionate Web Technologist,
-							Digital Transformation Professional, User Experience Champion.
-							I get excited watching companies and products grow and thrive.'
+						content='I am an Information Technology leader accomplished in building and managing global high-performance teams, 
+							launching and managing digital products, and developing and executing unified product and technology strategies. 
+							I have managed Highly available e-commerce portals, web sites, web applications, and mobile applications, 
+							in the media, finance, pharmaceutical, and telecommunications industries, 
+							sizable departments up to 300 staff, budgets to $50 million, using onshore staff, offshore partners, and hybrid teams'
 						layout='horizontal' />
 				</div>
 			</div>
-			<div className="row-3col">
+			<div className="row-4col">
 				<Callout
-					url="/resume" 
-					img='/images/logos/resume-icon.png'
+					url='/resume' 
+					img='/images/icons/resume-icon.png'
 					title='Resume'
-					content='I have converted my passion of Landscape, Macro, and Travel Photography 
-						into a budding Stock Photography Portfolio.  Check out my work on 
-						iStockPhoto or ShutterStock, or see my books on Blurb or Shutterfly. '
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle'
+					content='A digital version of my curriculum vitae, with a 
+						professional summary, contact information, education, skills,
+						qualifications, work history, projects, voluteer work, certifications, 
+						honors and awards, training and conferences, and rererences.' />
 				<Callout
 					url='/readme' 
-					img='/images/logos/readme-icon.png'
+					img='/images/icons/readme-icon.png'
 					title='Readme'
-					content='I refurbish, repair, and customize Oakley sunglasses. I enjoy providing custom paint jobs with a splash of colors - marbled, splattered, and dripped. Custom paint can be one color, or a combination of complimentary colors. Patterns can also be small or large, thin or thick, dense or sparse.  As the customer, you choose!'
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle'
+					content='The objective of my README is to share who I am, set some expectations, 
+						and share management styles. What I don&#39;t want this document to do is dictate how to work with me. 
+						I believe that good leaders adjust to the personality styles of the people working with them.' />
 				<Callout
 					url='https://www.linkedin.com/in/brianwhaley' 
 					img='/images/logos/linkedin-logo.png'
 					title='LinkedIn'
-					content='I refurbish, repair, and customize Oakley sunglasses. I enjoy providing custom paint jobs with a splash of colors - marbled, splattered, and dripped. Custom paint can be one color, or a combination of complimentary colors. Patterns can also be small or large, thin or thick, dense or sparse.  As the customer, you choose!'
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle' 
+					content='Check out my LinkedIn profile, including my experience, education, licenses and certifications, 
+						projects, volunteering, skills, courses, honors and awards, social media activity, 
+						and recommendations from peers and teammates.' />
 				<Callout
 					url='http://twitter.com/brianwhaley' 
 					img='/images/logos/x-logo.png'
 					title='X (Twitter)'
-					content='I refurbish, repair, and customize Oakley sunglasses. I enjoy providing custom paint jobs with a splash of colors - marbled, splattered, and dripped. Custom paint can be one color, or a combination of complimentary colors. Patterns can also be small or large, thin or thick, dense or sparse.  As the customer, you choose!'
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle' 
+					content='I use this account to regularly post great articles I come across that strike me on topics such as 
+						leadership, coaching, team culture, industry trends, technology topics, architectural patterns, and more. ' />
 				<Callout
 					url='https://www.goodreads.com/review/list/49377228-brian-whaley?shelf=books-for-work' 
 					img='/images/logos/goodreads-logo.png'
 					title='Goodreads'
-					content='I refurbish, repair, and customize Oakley sunglasses. I enjoy providing custom paint jobs with a splash of colors - marbled, splattered, and dripped. Custom paint can be one color, or a combination of complimentary colors. Patterns can also be small or large, thin or thick, dense or sparse.  As the customer, you choose!'
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle' 
+					content='This Goodreads Shelf is a collection of books that i have found to be 
+						invaluable to build, strengthen, and manage my career and leadership skills over my career, 
+						i hope these are useful to you too. '/>
+				<Callout
+					url='https://github.com/brianwhaley'
+					img='images/logos/github-logo.png'
+					title='GitHub Portfolio'
+					layout='vertical' 
+					shape='squircle' 
+					content='This is a link to my GitHub account.  I have only uploaded a few pieces of code.
+						Repositories include a library of LotusScripts and agents;
+						pilot applications written in jQuery, Angular, React and Node, Spring iOS, and Java Android.  
+						I enjoy working most on my component library and using it to rabidly build web sites for small businesses.'/>
 				<Callout
 					url="/recipes" 
 					img='images/pizza-gaine.jpg'
 					title='Family Recipes'
-					content='Technologist,
-                        Digital Transformation Professional, User Experience Champion,
-                        Landscape and Macro Photographer, Avid World Traveler,
-                        Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food'
 					layout='vertical' 
-					shape='squircle' />
+					shape='squircle' 
+					content='This is my recipe book. It is a collection of recipes from 3 generations of my family, 
+						from my friends, and my life as an Italian-American and as a Bariatric Patient. 
+						I have cooked most of the recipes myself. I have tasted them all, however, 
+						and they are fantastic! Please enjoy!'/>
 			</div>
 		</div>
 	);

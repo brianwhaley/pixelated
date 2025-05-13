@@ -1,7 +1,8 @@
 "use client";
 
-import React, { Fragment, Suspense } from "react";
+import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
@@ -27,11 +28,10 @@ function UseQuery() {
 
 export default function Stkr() {
 	return (
-		<Fragment>
-
+		<>
 			<section className="section" id="stkr-section">
 				<div className="section-container">
-					<CalloutHeader title="Stkr" />
+					<PageHeader title="Stkr" />
 					<div className="callout-body">
 						<Suspense>
 							<UseQuery />
@@ -172,6 +172,6 @@ export default function Stkr() {
 				</div>
 			</section>
 
-		</Fragment>
+		</>
 	);
 }

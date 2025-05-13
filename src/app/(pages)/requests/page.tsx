@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { Table } from "@brianwhaley/pixelated-components";
@@ -58,12 +59,9 @@ export default function Requests() {
 
 	return (
 		<div className="section-container">
-			<CalloutHeader title="Custom Sunglass Requests" />
+			<PageHeader title="Custom Sunglass Requests" />
 			<button type="button" id="showDialog" onClick={showDialog}>Request a Custom</button>
 			<br /><br />
-
-
-
 			<dialog id="newRequestDialog">
 				<FormEngine name="newrequest" id="newRequestForm" formData={formData} />
 				<br />

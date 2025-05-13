@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment } from "react";
-import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { SocialCards } from "@brianwhaley/pixelated-components";
 import "./ebay.css";
 
@@ -18,7 +18,7 @@ export default function Ebay() {
 		<Fragment>
 			<section id="social-cards-section">
 				<div className="section-container">
-					<CalloutHeader title="Ebay Items For Sale" />
+					<PageHeader title="Custom Sunglasses For Sale on eBay" />
 					<div className="row-1col">
 						<div id="ebayCards" className="callout">
 							<div className="callout-body">

@@ -1,9 +1,9 @@
-import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 
 export default function Privacy() {
 	return (
 		<>
-			<CalloutHeader title="Privacy Policy" />
+			<PageHeader title="Privacy Policy" />
 			<div className="callout-body">
                 All applications created by Pixelated are privacy respecting applications. We go out of our way to keep as little information about users as possible.<br/>
 				<br/>

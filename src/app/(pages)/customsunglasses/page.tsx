@@ -1,6 +1,7 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+import { PageHeader } from "@/app/components/general/pixelated.general";
 import { Callout, CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components";
 import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
 
@@ -12,10 +13,10 @@ export default function CustomSunglasses() {
 		handleModalOpen(event);
   	};
 	return (
-		<Fragment>
+		<>
 			<section id="customs-section">
 				<div className="section-container">
-					<CalloutHeader title="Custom Painted Sunglasses by BTW" />
+					<PageHeader title="Custom Painted Sunglasses by BTW" />
 					<div className="row-4col">
 						<div className="gridItem">
 							<Callout
@@ -166,6 +167,6 @@ export default function CustomSunglasses() {
 
 			<Modal modalContent={modalContent} />
 
-		</Fragment>
+		</>
 	);
 }

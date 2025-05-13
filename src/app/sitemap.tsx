@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-
+// import { getAllRoutes } from "@brianwhaley/pixelated-components"; 
 import myRoutes from "@/app/data/routes.json";
 
 export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
@@ -39,15 +39,53 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		return posts; // Return the complete list of posts
 	}
 
+	// TODO : This is a dupe of utility function in components library
+	
+	interface Route {
+		name: string;
+		path?: string;
+		title?: string;
+		description?: string; 
+		keywords?: string;
+		routes?: Route[];
+		[key: string]: any; 
+	}
+	async function getAllRoutes(json: Route, key: string) {
+		const result: any[] = [];
+		function traverse(obj: any[] | Route | null) {
+			if (typeof obj !== 'object' || obj === null) {
+				return;
+			}
+			if (Array.isArray(obj)) {
+				obj.forEach(item => traverse(item));
+			} else {
+				for (const k in obj) {
+					if (k === key) {
+						result.push(...obj[k]);
+					}
+					if (typeof obj[k] === 'object') {
+						traverse(obj[k]);
+					}
+				}
+			}
+		}
+		traverse(json);
+		return result;
+	}
+
+
 	const sitemap = [];
 	const origin = await getOrigin();
-	for ( const route of myRoutes.routes ){
-		sitemap.push({
-			url: `${origin}${route.path}` ,
-			lastModified: new Date(),
-			changeFrequency: "hourly" as const,
-			priority: 1.0,
-		});			
+	const allRoutes = getAllRoutes(myRoutes as Route, "routes");
+	for ( const route of await allRoutes ){
+		if(route.path){
+			sitemap.push({
+				url: `${origin}${route.path}` ,
+				lastModified: new Date(),
+				changeFrequency: "hourly" as const,
+				priority: 1.0,
+			});	
+		}		
 	}
  	const blogPosts = await getBlogItems();
 	for await (const post of blogPosts ?? []) {
