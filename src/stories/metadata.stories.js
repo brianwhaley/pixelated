@@ -1,21 +1,21 @@
 import React from 'react';
-import { getMetadata } from '../components/metadata/pixelated.metadata';
+import { getRouteByKey } from '../components/metadata/pixelated.metadata';
 import myRoutes from '../data/routes.json';
 import '../components/callout/pixelated.callout.css';
 import '../css/pixelated.grid.scss';
 
 export default {
 	title: 'Metadata',
-	component: getMetadata
+	component: getRouteByKey
 };
 
 
 // Parent Component
 const PageMetadata = () => {
-	const myMetaData = getMetadata(myRoutes, 'name', 'Home');
+	const myMetaData = getRouteByKey(myRoutes, 'name', 'Home');
 	return (
 		<>
-			{JSON.stringify(getMetadata(myRoutes, 'name', 'Home'))}
+			{JSON.stringify(getRouteByKey(myRoutes, 'name', 'Home'))}
 		</>
 	);
 };

@@ -1,7 +1,7 @@
 "use server"; 
 
 import React from 'react';
-import { getAllRoutes } from "../utilities/pixelated.routing";
+import { getAllRoutes } from "../metadata/pixelated.metadata";
 import myRoutes from "../../data/routes.json";
 
 /* 
@@ -37,6 +37,7 @@ export function Sitemap(){
 	const allRoutes = getAllRoutes(myRoutes, "routes");
 	for ( const route of allRoutes ){
 		if(route.path){
+			const newURL = 
 			sitemap.push(
 				`<url>
 					<loc>${origin}${route.path}</loc>
@@ -47,6 +48,7 @@ export function Sitemap(){
 			);	
 		}		
 	}
+	console.log("Routes:", sitemap);
 	/* const blogPosts = getBlogItems();
 	for (const post of blogPosts.posts) {
 		sitemap.push(
@@ -66,7 +68,7 @@ export function Sitemap(){
 			xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
 			http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
 			xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-		${sitemap}
+		${ sitemap.join('') }
 		</urlset>
 	`);
 

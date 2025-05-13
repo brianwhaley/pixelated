@@ -184,7 +184,7 @@ CalloutSmall.propTypes = {
 };
 
 
-/* ========== CALLOUT HEADER ========== */
+/* ========== CALLOUT HEADER SMALL ========== */
 
 
 export function CalloutHeaderSmall(props: GenericCalloutHeader) {
