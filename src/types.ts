@@ -1,6 +1,6 @@
 
 export type Route = {
-	name: string;
+	name?: string;
 	path?: string;
 	title?: string;
 	description?: string; 
