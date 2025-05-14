@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "add terms, privacy pages and components, removed joke page, reorg routes"
+git commit -m "fix for sitemap.xml, metadata functions"
 git push pixelated dev --tags
 git push pixelated dev:main
 

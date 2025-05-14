@@ -2,7 +2,8 @@
 
 import React from "react";
 import { usePathname } from 'next/navigation';
-import { getRouteByKey } from "@brianwhaley/pixelated-components";
+import { getRouteByKey } from "@/app/components/metadata/pixelated.metadata";
+// import { getMetadata } from "@brianwhaley/pixelated-components";
 import HomeLayout from "@/app/layouts/home-layout";
 import PageLayout from "@/app/layouts/page-layout";
 import "@/app/css/pixelated.global.css";
@@ -12,7 +13,6 @@ import myRoutes from "@/app/data/routes.json";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
-	// const metadata = getMetadata({routes: myRoutes.routes, key:"path", value: pathname}) as { title: string; description: string; keywords: string };
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 	let layout;
 	if (pathname === '/') {

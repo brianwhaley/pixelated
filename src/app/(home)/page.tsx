@@ -1,13 +1,12 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
 import { Callout, CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
 	return (
-		<Fragment>
-
+		<>
 			<section id="products-section">
 				<div className="section-container">
 					<br />
@@ -150,7 +149,6 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-
-		</Fragment>
+		</>
 	);
 }
