@@ -27,9 +27,9 @@ const menuItems = allRoutes.map((thisRoute) => (
 });
 
 export default function Nav() {
-    return (
-        <div className="section-container">
-            <MenuSimple menuItems={menuItems} />
-        </div>
-    );
+	return (
+		<div className="section-container">
+			<MenuSimple menuItems={menuItems} />
+		</div>
+	);
 }

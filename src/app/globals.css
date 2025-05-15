@@ -51,7 +51,7 @@ main .section-container {
 .bigText {
     margin: auto 10%;
     text-align: center;
-    font-size: 1.75em;
+    font-size: 1.5em;
 }
 
 .tightGrid,
@@ -64,7 +64,7 @@ main .section-container {
 }
 
 .contactCTA {
-    font-size: 1.75em;
+    font-size: 1.5em;
     color: white;
     height: 200px;
     display: flex;
@@ -101,39 +101,39 @@ main .section-container {
 /* ===== SIMPLE MENU STYLES ===== */
 
 .menuWrapper {
-    width: 100%;
+    width: 100% !important;
 }
 
 .menu, 
 .menu ul {
-    width: 100%;
+    width: 100% !important;
 }
 
 .menuItem {
-    border: 0px;
-    width: 20%; /* 5 MENU ITEMS */
-    text-indent: 0px;
-    font-size: small;
+    border: 0px  !important;
+    width: 20%  !important; /* 5 MENU ITEMS */
+    text-indent: 0px  !important;
+    font-size: small  !important;
 }
 
 .menuItem a {
-    background: none;
-    text-align: center;
-    text-indent: 0px;
-    font-size: small;
+    background: none  !important;
+    text-align: center  !important;
+    text-indent: 0px  !important;
+    font-size: small  !important;
 }
 
 .menuItem a:hover {
 	/* background: #FFF; */
-    font-size: medium;
-	border-left: none;
-    text-indent: 0px;
+    font-size: medium  !important;
+	border-left: none  !important;
+    text-indent: 0px  !important;
     /* background-image: url('/images/splatter.jpg'); */
-    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
-    background-repeat: no-repeat;
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg")  !important;
+    background-repeat: no-repeat  !important;
     /* background-attachment: fixed; */
-    background-position: center;
-    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center  !important;
+    background-size: cover  !important; /* Resize the background image to cover the entire container */
 
 }
 

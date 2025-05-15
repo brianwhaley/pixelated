@@ -1,6 +1,8 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
+import { getAllImages } from "@/app/elements/pixelated.metadata";
+import { getContentfulCardTitles } from "@/app/elements/pixelated.contentful";
 
 import myRoutes from "@/app/data/routes.json";
 
@@ -23,6 +25,23 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 			priority: 1.0,
 		});			
 	}
+
+	const contentfulHeaders = await getContentfulCardTitles();
+	for ( const header of contentfulHeaders ){
+		sitemap.push({
+			url: `${origin}/projects/${encodeURIComponent(header)}` ,
+			lastModified: new Date(),
+			changeFrequency: "hourly" as const,
+			priority: 1.0,
+		});			
+	}
+
+	const images = getAllImages();
+	sitemap.push({
+		url: `${origin}/images`, // Provide a valid URL for the images
+		images: images,
+	});
+	
 	return sitemap;
 	
 }
