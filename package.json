@@ -1,8 +1,29 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "1.2.16",
+  "version": "1.2.17",
   "private": false,
+  "author": "Brian T. Whaley",
   "description": "Pixelated UI Components",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./esm": "./dist/esm/index.js",
+    "./cjs": "./dist/cjs/index.js"
+  },
   "homepage": "https://github.com/brianwhaley/pixelated-components#readme",
   "bugs": {
     "url": "https://github.com/brianwhaley/pixelated-components/issues"
@@ -11,22 +32,28 @@
     "type": "git",
     "url": "git+https://github.com/brianwhaley/pixelated-components.git"
   },
-  "license": "MIT",
-  "author": "Brian T. Whaley",
-  "type": "module",
-  "main": "dist/index",
-  "types": "dist/index",
-  "directories": {
-    "doc": "docs"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "storybook": "rm -rf node_modules/cache && storybook dev -p 6006",
-    "build-storybook": "rm -rf node_modules/cache && storybook build",
+    "build": "npm run buildClean && npm run tscCJS && npm run tscESM && npm run rsyncCJS && npm run rsyncESM",
+    "buildClean": "rm -rf dist ",
+    "tscCJS": "npx tsc --project tsconfig.cjs.json",
+    "tscESM": "npx tsc --project tsconfig.esm.json",
+    "babelCJS": "NODE_ENV=production babel src --out-dir dist/cjs --copy-files --no-copy-ignored ",
+    "babelESM": "NODE_ENV=production babel src --out-dir dist/esm --copy-files --no-copy-ignored ",
+    "rsyncCJS": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist/cjs",
+    "rsyncESM": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist/esm",
+    "buildBabel": "NODE_ENV=production babel src --out-dir dist --copy-files",
+    "storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
+    "buildStorybook": "rm -rf node_modules/.cache && storybook build",
     "test": "react-scripts test"
+  },
+  "scripts-old": {
+    "babelESM": "NODE_ENV=production babel src --out-dir dist/esm --copy-files --ignore '**/*.js','**/*.jsx','**/*.mjs','**/*.mjsx','**/*.cjs','**/*.cjsx','**/*.ts','**/*.tsx','**/*.mts','**/*.mtsx','**/*.cts','**/*.ctsx' ",
+    "build-combineDTS": "find dist/types -name '*.d.ts' -print0 | xargs -0 cat > dist/index.d.ts ",
+    "build-combineDTS-old": "cat dist/types/**/*.d.ts > dist/index.d.ts",
+    "build-webpack": "rm -rf dist && npx tsc --project tsconfig.json && webpack --config webpack.config.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -44,6 +71,8 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
+    "@eslint/json": "^0.12.0",
+    "@eslint/markdown": "^6.4.0",
     "@storybook/addon-controls": "^8.6.12",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react-webpack5": "^8.6.12",
@@ -70,16 +99,15 @@
     "sass-loader": "^16.0.5",
     "storybook": "^8.6.12",
     "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^19.1.0"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
-  "publishConfig-old": {
-    "registry": "https://npm.pkg.github.com"
   }
 }
