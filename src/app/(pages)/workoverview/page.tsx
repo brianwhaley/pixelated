@@ -8,8 +8,8 @@ export default function Work() {
 	return (
 		<div className="section-container">
 			<PageHeader title="Work Overview" />
-			<div className="row-12col">
-				<div className="grid-s3-e8">
+			<div className="row-8col">
+				<div className="grid-s2-e6">
 					<Callout
 						url="/workportfolio"
 						img='images/circuitboard.jpg'

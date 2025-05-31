@@ -41,6 +41,58 @@ export function getAllRoutes(routes: Route, key: string) {
 }
 
 
+import fs from 'fs';
+import path from 'path';
+
+/* interface ImageInfo {
+    loc: string;
+    title?: string,
+    caption?: string;
+    license?: string,
+    geo_location?: string,
+} */
+
+export function getAllImages() {
+	// const imagePaths: ImageInfo[] = [];
+	const imagePaths: string[] = [];
+	const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg', '.webp']; 
+	const publicDir = './public';
+	
+	function walk (currentDir: string) {
+		fs.readdirSync(currentDir).forEach(file => {
+			const filePath = path.join(currentDir, file);
+			const fileStat = fs.statSync(filePath);
+			if (fileStat.isDirectory()) {
+				walk(filePath); // Recursive call for subdirectories
+			} else {
+				if (fs.statSync(filePath).isFile() && (imageExtensions.some(ext => file.endsWith(ext))) ) {
+					// Found an image!
+					// const imageURL = `/${filePath.replace('./public/', '')}`; // Construct URL
+					// Add to your image data list (e.g., { url: imageURL, alt: "description" })
+					const relativePath = path.relative(publicDir, filePath).replace(/\\/g, '/');
+					const fullPath = `/${relativePath}`;
+					// imagePaths.push({loc: fullPath});
+					imagePaths.push(fullPath);
+				}
+			}
+		});
+	};
+	walk(publicDir);
+	// return JSON.stringify(imagePaths);
+	return imagePaths;
+}
+/* 
+<image:image>
+    <image:loc>https://example.com/images/sample.jpg</image:loc>
+    <image:title>Example Image</image:title>
+    <image:caption>This is an example image.</image:caption>
+    <image:geo_location>New York City</image:geo_location>
+    <image:license></image:license>
+</image:image>
+https://developers.google.com/search/blog/2022/05/spring-cleaning-sitemap-extensions
+*/
+
+
 export const getMetadata = (routes: any, key: string = "name", value: string = "Home" ) => {
 	// const allRoutes = getAllRoutes(routes, "routes");
 	// const foundObject = allRoutes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);

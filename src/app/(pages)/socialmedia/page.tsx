@@ -78,7 +78,7 @@ export default function SocialMedia() {
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.jpg" /></div>
+						<div className="gridItem"><CalloutSmall shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.png" /></div>
 						<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" /></div>
 						<div className="gridItem"></div>
 					</div>

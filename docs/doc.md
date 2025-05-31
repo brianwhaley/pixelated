@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "fix for sitemap.xml, metadata functions"
+git commit -m "component library version bump"
 git push pixelated dev --tags
 git push pixelated dev:main
 
