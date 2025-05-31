@@ -7,11 +7,7 @@ TODO #17 Menu Simple Component: Convert to TypeScript
 */
 
 /* ========== MENU ========== */
-export function MenuSimple(props) {
-	MenuSimple.propTypes = {
-		menuItems: PropTypes.object.isRequired,
-	};
-
+export function MenuSimple(props: { menuItems: { [x: string]: any; }; }) {
 	function generateMenuItems() {
 		const myItems = [];
 		for (const itemKey in props.menuItems) {
@@ -19,7 +15,6 @@ export function MenuSimple(props) {
 		}
 		return myItems;
 	}
-
   	if (typeof document !== 'undefined') { const menu = document.getElementById('menu'); };
 	return (
 		<div className="menuWrapper">
@@ -33,15 +28,17 @@ export function MenuSimple(props) {
 		</div>
 	);
 }
+MenuSimple.propTypes = {
+	menuItems: PropTypes.object.isRequired,
+};
 
 /* ========== MENU ITEM ========== */
-export function MenuSimpleItem(props) {
-	MenuSimpleItem.propTypes = {
-		name: PropTypes.string.isRequired,
-		href: PropTypes.string.isRequired,
-	};
-
+export function MenuSimpleItem(props: { href: string; name: string; }) {
 	return (
 		<li className='menuItem'><a href={props.href}>{props.name}</a></li>
 	);
 }
+MenuSimpleItem.propTypes = {
+	name: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired,
+};

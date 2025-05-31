@@ -4,24 +4,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.carouselsimple.css';
 
-function capitalize(str) {
+function capitalize(str: string) {
 	return str && String(str[0]).toUpperCase() + String(str).slice(1);
 }
 
 
 /* ========== CAROUSEL ========== */
-export function CarouselSimple(props) {
+export function CarouselSimple(props: { cards: any[]; }) {
 	const debug = false;
-	let timer = useRef();
+	let timer = useRef<NodeJS.Timeout | null>(null);
 	// const [ cards, setCards ] = useState();
 	const [ cardIndex, setcardIndex ] = useState(0);
 
 	function startTimer() {
-  		clearTimeout(timer.current);
+		if (timer.current) clearTimeout(timer.current);
   		timer.current = setTimeout(nextCard, 5000); 
 	}
 	function stopTimer() {
-  		clearTimeout(timer.current);
+		if (timer.current) clearTimeout(timer.current);
 	}
 
 	function previousCard() {
@@ -63,6 +63,7 @@ export function CarouselSimple(props) {
 							cardLength={props.cards.length}
 							link={card.link}
 							image={card.image}
+							imageAlt={card.imageAlt}
 							headerText={card.headerText} 
 							bodyText={card.bodyText}
 						/>
@@ -98,9 +99,19 @@ CarouselSimple.propTypes = {
 
 
 /* ========== CAROUSEL CARD ========== */
-function CarouselCard(props) {
+type CarouselCard = {
+	index: number,
+	cardIndex: number,
+	cardLength: number,
+	link?: string,
+	image: string,
+	imageAlt?: string,
+	headerText?: string,
+	bodyText?: string,
+};
+function CarouselCard( props: CarouselCard ) {
 	const myZindex = props.cardLength - props.index;
-	const styles = {
+	const styles: React.CSSProperties = {
 		zIndex: myZindex
 	};
 	styles.transition = 'all 1.0s ease 0.1s';
@@ -113,7 +124,7 @@ function CarouselCard(props) {
 	}
 	const cardBody = (
 		<>
-			{ (props.image) ? <div className="carouselCardImage"><img src={props.image} /></div> : null }
+			{ (props.image) ? <div className="carouselCardImage"><img src={props.image} alt={props?.imageAlt}/></div> : null }
 			{ (props.headerText) ? <div className="carouselCardHeader"><h3>{props.headerText}</h3></div> : null  }
 			{ (props.bodyText) ? <div className="carouselCardBody">{props.bodyText}</div> : null  }
 		</>
@@ -133,13 +144,14 @@ CarouselCard.propTypes = {
 	cardLength: PropTypes.number.isRequired,
 	link: PropTypes.string,
 	image: PropTypes.string.isRequired,
+	imageAlt: PropTypes.string,
 	headerText: PropTypes.string,
 	bodyText: PropTypes.string,
 };
 
 
 /* ========== CAROUSEL  ARROW ========== */
-function CarouselButton(props) {
+function CarouselButton(props: { clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
 	return (
 		<div className={`carouselButton textOutline`}
 			onClick={ props.clickFunction }>
@@ -152,7 +164,7 @@ CarouselButton.propTypes = {
 	glyph: PropTypes.string.isRequired
 };
 
-function CarouselArrow(props) {
+function CarouselArrow(props: { direction: string; clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
 	return (
 		<div className={`carouselButton${capitalize(props.direction)} textOutline`}
 			onClick={ props.clickFunction }>

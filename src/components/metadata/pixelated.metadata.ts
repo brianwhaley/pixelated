@@ -1,6 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { Route } from "../../types";
+export type Route = {
+	name?: string;
+	path?: string;
+	title?: string;
+	description?: string; 
+	keywords?: string;
+	routes?: Route[];
+	[key: string]: any; 
+}
 
 export function getRouteByKey(obj: any, key: string, value: any): any {
 	if (typeof obj !== 'object' || obj === null) {
@@ -41,6 +49,61 @@ export function getAllRoutes(routes: Route, key: string) {
 }
 
 
+
+
+import fs from 'fs';
+import path from 'path';
+
+/* interface ImageInfo {
+    loc: string;
+    title?: string,
+    caption?: string;
+    license?: string,
+    geo_location?: string,
+} */
+
+export function getAllImages() {
+	// const imagePaths: ImageInfo[] = [];
+	const imagePaths: string[] = [];
+	const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg', '.webp']; 
+	const publicDir = './public';
+	
+	function walk (currentDir: string) {
+		fs.readdirSync(currentDir).forEach(file => {
+			const filePath = path.join(currentDir, file);
+			const fileStat = fs.statSync(filePath);
+			if (fileStat.isDirectory()) {
+				walk(filePath); // Recursive call for subdirectories
+			} else {
+				if (fs.statSync(filePath).isFile() && (imageExtensions.some(ext => file.endsWith(ext))) ) {
+					// Found an image!
+					// const imageURL = `/${filePath.replace('./public/', '')}`; // Construct URL
+					// Add to your image data list (e.g., { url: imageURL, alt: "description" })
+					const relativePath = path.relative(publicDir, filePath).replace(/\\/g, '/');
+					const fullPath = `/${relativePath}`;
+					// imagePaths.push({loc: fullPath});
+					imagePaths.push(fullPath);
+				}
+			}
+		});
+	};
+	walk(publicDir);
+	// return JSON.stringify(imagePaths);
+	return imagePaths;
+}
+/* 
+<image:image>
+    <image:loc>https://example.com/images/sample.jpg</image:loc>
+    <image:title>Example Image</image:title>
+    <image:caption>This is an example image.</image:caption>
+    <image:geo_location>New York City</image:geo_location>
+    <image:license></image:license>
+</image:image>
+https://developers.google.com/search/blog/2022/05/spring-cleaning-sitemap-extensions
+*/
+
+
+
 export const getMetadata = (routes: any, key: string = "name", value: string = "Home" ) => {
 	// const allRoutes = getAllRoutes(routes, "routes");
 	// const foundObject = allRoutes.find((obj: { [x: string]: string; }) => obj && Object.prototype.hasOwnProperty.call(obj, key) && obj[key as keyof typeof obj] === value);
@@ -62,19 +125,14 @@ export const getMetadata = (routes: any, key: string = "name", value: string = "
 
 
 export const setClientMetadata = ({title, description, keywords}: {title: string, description: string, keywords: string}) => {
-	const titleElem = document.querySelector('title');
-	if (titleElem) {
-		titleElem.innerText = title;
-	}
-	const metaDesc = document.querySelector("meta[name='description']");
-	if (metaDesc) {
-		metaDesc.setAttribute('content', description);
-	}
-	const metaKeywords = document.querySelector("meta[name='keywords']");
-	if (metaKeywords) {
-		metaKeywords.setAttribute('content', keywords);
-	}
+	document.title = title;
+	(document.querySelector("meta[property='og:title']"))?.setAttribute('content', title);
+	(document.querySelector("meta[name='description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[property='og:description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[itemprop='description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[name='keywords']"))?.setAttribute('content', keywords);
 };
+
 
 export const setServerMetadata = ({key, value}: { key: string; value: string }) => {
 	const myMetaData = getMetadata({key, value});

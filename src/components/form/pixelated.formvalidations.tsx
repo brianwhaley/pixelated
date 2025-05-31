@@ -20,45 +20,47 @@ export const formURLs = [
 export function getAllInvalidFields () {
 	const invalids = [];
 	for (const field of document.querySelectorAll('[required]')) {
-		if (!field.reportValidity()) {
-			invalids.push(field.id);
+		const inputField = field as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+		if (typeof inputField.reportValidity === 'function' && !inputField.reportValidity()) {
+			invalids.push(inputField.id);
 		}
 	}
 	return invalids;
 }
 
-export function isOneChecked (field) {
+export function isOneChecked (field: { id: string; }) {
 	const name = field.id.substring(0, field.id.indexOf('_') + 1);
 	const boxes = document.querySelectorAll("[id^='" + name + "']");
-	for (const box in boxes) {
-		const thisBox = boxes[box];
+	for (const box of Array.from(boxes)) {
+		const thisBox = box as HTMLInputElement;
 		if (thisBox.checked) return true;
 	}
 	return false;
 }
 
-export function isOneRadioSelected (field) {
+export function isOneRadioSelected (field: { name: string; }) {
 	const radios = document.getElementsByName(field.name);
 	let isValid = false;
-	for (const radio in radios) {
-		if (radios[radio].checked) isValid = true;
+	for (let i = 0; i < radios.length; i++) {
+		const radioElem = radios[i] as HTMLInputElement;
+		if (radioElem.checked) isValid = true;
 	}
 	return isValid;
 }
 
-export function isValidUSZipCode (field) {
+export function isValidUSZipCode (field: { value: string; }) {
 	const regexStr = /^\d{5}(-\d{4})?$/;
 	const regex = new RegExp(regexStr);
 	return regex.test(field.value); // was match
 }
 
-export function isValidUSPhoneNumber (field) {
+export function isValidUSPhoneNumber (field: { value: string; }) {
 	const regexStr = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s.]{0,1}[0-9]{3}[-\s.]{0,1}[0-9]{4}$/;
 	const regex = new RegExp(regexStr);
 	return regex.test(field.value); // was match
 }
 
-export function isValidEmailAddress (field) {
+export function isValidEmailAddress (field: { value: any; }) {
 	// let regex1 = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
 	const regexStr = /^\S+@\S+\.\S+$/;
 	const regex = new RegExp(regexStr);
@@ -66,12 +68,12 @@ export function isValidEmailAddress (field) {
 	return regex.test(str); // was match
 }
 
-export function isValidDate (field) {
+export function isValidDate (field: { value: string | number | Date; }) {
 	const date = new Date(field.value);
 	return date instanceof Date && !isNaN(date.valueOf());
 }
 
-export function isValidUrl (field) {
+export function isValidUrl (field: { value: string | URL; }) {
 	try {
 		return Boolean(new URL(field.value));
 	} catch (e) {

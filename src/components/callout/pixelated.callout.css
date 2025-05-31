@@ -13,17 +13,25 @@
 	overflow: hidden;
 }
 
+.calloutBody { 
+	--do-nothing: true;
+}
+
 .calloutTitle {
 	text-transform: uppercase;
 }
 
-.calloutBody {
+.calloutSubtitle {
+	text-align: center;
+}
+
+.calloutContent {
 	border-top: 0px solid transparent;
 	/* display: inline-block; */
 	padding: 5px;
 }
 
-.calloutBody li {
+.calloutContent li {
 	margin-bottom: 7px;
 }
 
@@ -85,6 +93,11 @@
 	.calloutImageHoriz {
 		/* .round-img-container */
 		/* .callout-image */
+    	width: 70%;
 		float: none;
+	}
+	.calloutImageVert {
+		width: 70%;
+		height: auto;
 	}
 }

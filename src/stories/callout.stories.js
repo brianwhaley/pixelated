@@ -13,6 +13,7 @@ export const CalloutStory = {
 		url: 'https://www.linkedin.com/in/brianwhaley',
 		img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
 		title: 'LinkedIn Profile',
+		subtitle: 'LinkedIn Profiles are good for anyone who is looking for a new job.',
 		content: 'My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.',
 		layout: 'horizontal',
 		shape: "squircle",

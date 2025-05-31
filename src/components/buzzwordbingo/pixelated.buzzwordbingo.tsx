@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './pixelated.buzzwordbingo.css';
 import "../../css/pixelated.grid.scss";
-import { buzzwords } from "../../data/buzzwords.js";
 
 /* 
 TODO #19 Buzzword Bingo Component : Fix css grid to remain 5 columns
@@ -14,7 +14,8 @@ function getBingoWords(arr: Array<string>, x: number){
     return myBingoWords;
 }
 
-export function BuzzwordBingo(){
+export function BuzzwordBingo(props: any){
+    const buzzwords = props.buzzwords;
     const myBingoHeaders = ["B", "I", "N", "G", "O"];
     const [bingoWords, setBingoWords] = useState <string[]> ([]);
     useEffect(() => { 
@@ -31,6 +32,9 @@ export function BuzzwordBingo(){
         </div>
     );
 }
+BuzzwordBingo.propTypes = {
+    buzzwords: PropTypes.array.isRequired,
+};
 
 function BingoHeader({ word }: { word: string }) {
     return (

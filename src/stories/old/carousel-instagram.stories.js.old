@@ -1,4 +1,4 @@
-import { Instagram } from '../components/carousel/pixelated.instagram';
+import { Instagram } from '../../components/carousel/pixelated.instagram';
 import '../components/form/pixelated.form.css';
 import '../css/pixelated.global.css';
 

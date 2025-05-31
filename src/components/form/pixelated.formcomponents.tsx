@@ -8,9 +8,13 @@ import "./pixelated.form.css";
 TODO #12 Form Component: Convert to TypeScript
 */
 
-const onChange = (me, event) => {
-	let myValidate = me.props.validate ? FV[me.props.validate](event.target) : true ;
-	let myParentValidate = me.props.parent && me.props.parent.validate ? FV[me.props.parent.validate](event.target) : true ;
+const onChange = (me: { props: any; }, event: React.ChangeEvent<HTMLInputElement>) => {
+	let myValidate = (typeof me.props.validate === "string" && me.props.validate in FV)
+		? (FV as unknown as Record<string, (target: EventTarget & HTMLInputElement) => boolean>)[me.props.validate](event.target)
+		: true ;
+	let myParentValidate = me.props.parent && me.props.parent.validate
+		? (FV as unknown as Record<string, (target: EventTarget & HTMLInputElement) => boolean>)[me.props.parent.validate](event.target)
+		: true ;
 	let myRequired = me.props.required ? event.target.checkValidity() : true ;
 	let myRequiredNotEmpty = (me.props.required && (!event.target.value)) ? false : true ;
 	let myValid = (myValidate && myParentValidate && myRequired && myRequiredNotEmpty ) ? true : false ;
@@ -22,7 +26,7 @@ const onChange = (me, event) => {
 
 
 
-function FormLabel(props) {
+function FormLabel(props: { label: string ; id: string ; tooltip: string; }) {
 	return (
 		<Fragment >
 			{ props.label && props.id 
@@ -49,14 +53,17 @@ FormLabel.defaultProps = {
 };
 
 
-function FormTooltip(props) {
-	
-	function toggleTooltip(e) {
+function FormTooltip(props: { id: string; text: string; }) {
+	function toggleTooltip(e: React.MouseEvent<HTMLAnchorElement>) {
 		e.preventDefault();
-		if (e.target.nextSibling.style.display == "block") {
-			e.target.nextSibling.style.display = "none";
-		} else {
-			e.target.nextSibling.style.display = "block";
+		const target = e.currentTarget as HTMLAnchorElement;
+		const nextSibling = target.nextSibling as HTMLElement | null;
+		if (nextSibling) {
+			if (nextSibling.style.display === "block") {
+				nextSibling.style.display = "none";
+			} else {
+				nextSibling.style.display = "block";
+			}
 		}
 		return false;
 	}
@@ -88,8 +95,7 @@ FormTooltip.defaultProps = {
 
 
 
-function FormValidate(props) {
-	
+function FormValidate(props: { id: string ; valid: boolean; }) {
 	return ( 
 		<Fragment>
 			{ !props.valid ? 
@@ -104,7 +110,7 @@ FormValidate.propTypes = {
 
 
 
-export function FormInput(props) {
+export function FormInput(props: { id: string | undefined; display: string; type: string; value: any; label: string | undefined; tooltip: string | undefined; list: string | number; }) {
 
 	const [isValid, setIsValid] = useState(true);
 	
@@ -112,7 +118,7 @@ export function FormInput(props) {
 	// ----- Input Props
 	let inputProps = JSON.parse(JSON.stringify(props));
 	["display", "label", "validate"].forEach(e => delete inputProps[e]);
-	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["onChange"] = (e: any) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
 	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
 	if ( ["submit","button"].indexOf(props.type) > -1 ) { inputProps["value"] = props.value; } ;
 	return (
@@ -122,7 +128,10 @@ export function FormInput(props) {
 			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
 			{ props.display == "vertical" ? formValidate : "" }
 			{ props.type != "checkbox" ? <input {...inputProps} /> : "" }
-			{ props.list ? <FormDataList id={props.list} items={FV[props.list]} /> : "" }
+			{ props.list && typeof props.list === "string" && props.list in FV
+					? <FormDataList id={props.list} items={FV[props.list as keyof typeof FV]} />
+					: ""
+			}
 			{ props.display != "vertical" ? formValidate : "" }
 		</div>
 	);
@@ -159,7 +168,7 @@ FormInput.propTypes = {
 
 
 
-export function FormSelect(props) {
+export function FormSelect(props: { options: { [x: string]: any; }; id: string | undefined; display: string; label: string | undefined; tooltip: string | undefined; }) {
 	
 	const [isValid, setIsValid] = useState(true);
 
@@ -178,7 +187,7 @@ export function FormSelect(props) {
 	// ----- Input Props
 	let inputProps = JSON.parse(JSON.stringify(props));
 	["options", "display", "label", "validate"].forEach(e => delete inputProps[e]);
-	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["onChange"] = (e: any) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
 	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
 	return (
 		<div>
@@ -218,7 +227,7 @@ FormSelect.propTypes = {
 
 
 
-function FormSelectOption(props) {
+function FormSelectOption(props: { text: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; }) {
 	let inputProps = JSON.parse(JSON.stringify(props));
 	["selected"].forEach(e => delete inputProps[e]);
 	return (
@@ -235,7 +244,7 @@ FormSelectOption.propTypes = {
 
 
 
-export function FormTextarea(props) {
+export function FormTextarea(props: { id: string | undefined; display: string; label: string | undefined; tooltip: string | undefined; }) {
 	
 	const [isValid, setIsValid] = useState(true);
 
@@ -243,7 +252,7 @@ export function FormTextarea(props) {
 	// ----- Input Props
 	let inputProps = JSON.parse(JSON.stringify(props));
 	["display", "label", "validate"].forEach(e => delete inputProps[e]);
-	inputProps["onChange"] = (e) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
+	inputProps["onChange"] = (e: any) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
 	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
 	return (
 		<div>
@@ -278,7 +287,7 @@ FormTextarea.propTypes = {
 
 
 
-export function FormRadio(props) {
+export function FormRadio(props: { options: { [x: string]: any; }; id: string | undefined; name: string | undefined; label: string | undefined; tooltip: string | undefined; display: string; }) {
 	
 	const [isValid, setIsValid] = useState(true);
 	
@@ -326,15 +335,15 @@ FormRadio.propTypes = {
 
 
 
-function FormRadioOption(props) {
+function FormRadioOption(props: { parent: { display: string; name: string | undefined; required: any; }; name: any; value: string | number | readonly string[] | undefined; checked: any; text: string; }) {
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="radio" 
 				id={`${props.name}-${props.value}`} 
 				name={props.parent.name} 
 				value={props.value} 
-				defaultChecked={props.checked ? "checked" : ""} 
-				required={props.parent.required ? "required" : ""} 
+				defaultChecked={!!props.checked} 
+				required={!!props.parent.required} 
 				onChange={ (e) => onChange({props}, e) } />
 			<label htmlFor={props.text}>{props.text}</label>
 		</span>
@@ -353,7 +362,7 @@ FormRadioOption.propTypes = {
 
 
 
-export function FormCheckbox(props) {
+export function FormCheckbox(props: { options: { [x: string]: any; }; name: string | undefined; id: string | undefined; label: string | undefined; tooltip: string | undefined; display: string; }) {
 	
 	const [ isValid, setIsValid ] = useState(true);
 	
@@ -400,7 +409,7 @@ FormCheckbox.propTypes = {
 
 
 
-function FormCheckboxOption(props) {
+function FormCheckboxOption(props: { parent: { display: string; name: string; }; text: string; value: string; }) {
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="checkbox" 
@@ -425,11 +434,11 @@ FormCheckboxOption.propTypes = {
 
 
 
-export function FormButton(props) {
+export function FormButton(props: { type: string | undefined; id: string | undefined; onClick: React.MouseEventHandler<HTMLButtonElement> | undefined; text: string; }) {
 	return (
 		<div>
 			<button 
-				type={props.type} 
+				type={props.type as "button" | "submit" | "reset" | undefined} 
 				id={props.id} 
 				onClick={props.onClick}>{props.text}</button>
 		</div>
@@ -446,7 +455,7 @@ FormButton.propTypes = {
 
 
 
-export function FormDataList(props) {
+export function FormDataList(props: { id: string; items: { [x: string]: any; }; }) {
 	const options = [];
 	for (const item in props.items) {
 		const thisItem = props.items[item];
@@ -464,7 +473,7 @@ FormDataList.propTypes = {
 
 
 
-export function FormFieldset(props) {
+export function FormFieldset() {
 	return (
 		<Fragment />
 	);

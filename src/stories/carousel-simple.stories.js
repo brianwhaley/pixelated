@@ -3,7 +3,7 @@ import '../components/carouselsimple/pixelated.carouselsimple.css';
 import '../css/pixelated.global.css';
 
 export default {
-	title: 'CarouselSimple',
+	title: 'Carousel',
 	component: CarouselSimple
 };
 

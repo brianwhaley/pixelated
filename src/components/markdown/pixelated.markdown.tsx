@@ -4,18 +4,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import "./pixelated.markdown.css";
-// import markdowndata from "./readme.md";
 
 /* 
 TODO #15 markdown Component: Convert to TypeScript 
 */
 
 /* ========== MARKDOWN ========== */
-export function Markdown(props: { markdowndata: any; }) {
-	Markdown.propTypes = {
-		markdowndata: PropTypes.string.isRequired,
-	}
-	
+export function Markdown(props: { markdowndata: any; }) {	
 	function markdownParser (text: any) {
 		const toHTML = text
 			.replace(/^#{6}\s(.*$)/gim, '<h6>$1</h6>') // h6 tag
@@ -43,13 +38,11 @@ export function Markdown(props: { markdowndata: any; }) {
 			;
 		return toHTML.trim(); // using trim method to remove whitespace
 	}
-	
 	return (
 		<div className="section-container">
 			<div className="markdown" dangerouslySetInnerHTML={{__html: markdownParser(props.markdowndata) }} />
 		</div>
 	);
-
 }
 Markdown.propTypes = {
 	markdowndata: PropTypes.string.isRequired,

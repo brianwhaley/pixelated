@@ -16,6 +16,7 @@ interface GenericCallout {
 	img: string,
 	imgclick?: Function,
 	title: string,
+	subtitle?: string,
 	content: string,
 	layout?: string,
 	shape?: string,
@@ -45,16 +46,21 @@ export function Callout(props: GenericCallout) {
 					</div>
 				</div>
 				<div className="gridItem">
-					{ (props.url)
-						? <CalloutHeader url={props.url} title={props.title} />
-						: <CalloutHeader title={props.title} />
-					}
 					<div className="calloutBody">
-						{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
-						{ (props.url) 
-							? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-							: null
+						{ (props.url)
+							? <CalloutHeader url={props.url} title={props.title} />
+							: <CalloutHeader title={props.title} />
 						}
+						<div className="calloutSubtitle">
+							{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+						</div>
+						<div className="calloutBody">
+							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+							{ (props.url) 
+								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
+								: null
+							}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -79,12 +85,17 @@ export function Callout(props: GenericCallout) {
 						</div>
 					</div>
 					<div className="gridItem">
-						<div className="calloutBody grid12">
-							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
-							{ (props.url)
-								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-								: null
-							}
+						<div className="calloutBody">
+							<div className="calloutSubtitle">
+								{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+							</div>
+							<div className="calloutContent grid12">
+								{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+								{ (props.url)
+									? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
+									: null
+								}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -103,17 +114,22 @@ export function Callout(props: GenericCallout) {
 					</div>
 				</div>
 				<div className="gridItem center">
-					{ (props.url)
-						? <CalloutHeader url={props.url} title={props.title} />
-						: <CalloutHeader title={props.title} />
-					}
-				</div>
-				<div className="calloutBody gridItem center">
-					{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
-					{ (props.url)
-						? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-						: null
-					}
+					<div className="calloutBody">
+						{ (props.url)
+							? <CalloutHeader url={props.url} title={props.title} />
+							: <CalloutHeader title={props.title} />
+						}
+						<div className="calloutSubtitle center">
+							{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+						</div>
+						<div className="calloutContent center">
+							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+							{ (props.url)
+								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
+								: null
+							}
+						</div>
+					</div>
 				</div>
 			</div>
 		) ;
@@ -124,6 +140,7 @@ Callout.propTypes = {
 	url: PropTypes.string,
 	img: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
+	subtitle: PropTypes.string,
 	content: PropTypes.string.isRequired,
 	layout: PropTypes.string,
 	shape: PropTypes.string,

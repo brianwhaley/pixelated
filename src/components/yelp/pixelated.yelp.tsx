@@ -12,12 +12,12 @@ Not ok.
 export function YelpReviews(props: { businessID: string, key: string }) {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<Error>();
 
     useEffect(() => {
         const fetchReviews = async () => {
             const apiKey = 'YOUR_YELP_API_KEY';
-            const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${businessId}/reviews`;
+            const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${props.businessID}/reviews`;
 
             try {
                 const response = await fetch(url, {
@@ -33,14 +33,14 @@ export function YelpReviews(props: { businessID: string, key: string }) {
                 const data = await response.json();
                 setReviews(data.reviews);
                 setLoading(false);
-            } catch (e) {
+            } catch (e: any) {
                 setError(e);
                 setLoading(false);
             }
         };
 
         fetchReviews();
-    }, [businessId]);
+    }, [props.businessID]);
 
     if (loading) {
         return <p>Loading reviews...</p>;
@@ -53,7 +53,7 @@ export function YelpReviews(props: { businessID: string, key: string }) {
     return (
         <div>
             <h3>Yelp Reviews</h3>
-            {reviews.map((review) => (
+            {reviews.map((review: any) => (
                 <div key={review.id} className="review">
                     <p className="rating">Rating: {review.rating}</p>
                     <p className="text">{review.text}</p>

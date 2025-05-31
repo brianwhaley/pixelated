@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { MenuExpandoButton, MenuExpando } from '../components/menu/pixelated.menu-expando';
+import { MenuExpandoButton, MenuExpando } from '../../components/menu/pixelated.menu-expando';
 import '../components/menu/pixelated.menu-expando.css';
 import '../css/pixelated.global.css';
 

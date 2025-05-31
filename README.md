@@ -44,6 +44,11 @@ This is a library of components I have found useful to build web sites quickly.
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
+* [![Storybook][Storybook.js]][Storybook-url]
+* [![Contentful][Contentful.com]][Contentful-url]
+* [![Wordpress][Wordpress.com]][Wordpress-url]
+* [![Github][Github.com]][Github-url]
+* [![npm][npm.org]][npm-url]
 
 
 
@@ -70,19 +75,24 @@ To get a local copy up and running follow these simple example steps.
 ## Usage
 
 Components to help build websites quicker:
-1. Page Callouts
-2. Image Carousel
-3. eBay Store Listings
-4. Form Components and Form Builder
-5. Markdown to HTMl Engine
-6. Menu Components - Simple and Accordion
-7. Modal Dialogs
-8. NerdJokes Integration
-9. Recipe XML MicroFormat Engine
-10. Resume MicroFormat Engine
-11. Social Card Engine
-12. Table Components
-13. Other Utilities
+1. Buzzword Bingo Cards
+1. Page Callouts - Large and Small
+1. Image Carousel - Page, Header, and Simple
+1. Contentful CMS Integration
+1. eBay Store Listings
+1. Form Components and Form Builder
+1. Google Search and Google Analytics Integration
+1. Markdown to HTMl Engine
+1. Menu Components - Simple and Accordion
+1. Metadata Injection from Route JSON file
+1. Modal Dialogs
+1. NerdJokes Integration
+1. Recipe XML MicroFormat Engine
+1. Resume MicroFormat Engine
+1. Sitemap.XML dynamic generation from Route JSON file
+1. Social Card Engine
+1. Table Components
+1. Other Utilities
 
 
 
@@ -91,8 +101,17 @@ Components to help build websites quicker:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] LinkedIn Recommendations
-- [ ] eBay Feedback
+- [ ] LinkedIn Recommendations Integration
+- [ ] eBay Feedback Integration
+- [ ] Yelp Recommendations integration
+- [ ] Calendly Integration
+- [ ] Instagram Image Integration for Carousels
+- [ ] Expanding menu based on 
+- [ ] eCommerce Features + Paypal ( or Stripe, Square)
+- [ ] Shopify Integration
+- [ ] Quickbooks Integration
+- [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
+- [ ] Zapier Integration
 
 
 See the [open issues](https://github.com/brianwhaley/pixelated-components/issues) for a full list of proposed features (and known issues).
@@ -152,30 +171,41 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/brianwhaley/pixelated-components.svg?style=for-the-badge
 [contributors-url]: https://github.com/brianwhaley/pixelated-components/graphs/contributors
+
 [forks-shield]: https://img.shields.io/github/forks/brianwhaley/pixelated-components.svg?style=for-the-badge
 [forks-url]: https://github.com/brianwhaley/pixelated-components/network/members
+
 [stars-shield]: https://img.shields.io/github/stars/brianwhaley/pixelated-components.svg?style=for-the-badge
 [stars-url]: https://github.com/brianwhaley/pixelated-components/stargazers
+
 [issues-shield]: https://img.shields.io/github/issues/brianwhaley/pixelated-components.svg?style=for-the-badge
 [issues-url]: https://github.com/brianwhaley/pixelated-components/issues
+
 [license-shield]: https://img.shields.io/github/license/brianwhaley/pixelated-components.svg?style=for-the-badge
 [license-url]: https://github.com/brianwhaley/pixelated-components/blob/master/LICENSE.txt
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/brianwhaley
+
 [product-screenshot]: images/screenshot.png
+
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
+
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+
+[Storybook.js]: https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white
+[Storybook-url]: https://storybook.js.org
+
+[Contentful.com]: https://img.shields.io/badge/Contentful-2478CC?logo=contentful&logoColor=fff
+[Contentful-url]: https://contentful.com
+
+[WordPress.com]: https://img.shields.io/badge/WordPress-%2321759B.svg?logo=wordpress&logoColor=white
+[Wordpress-url]: http://www.wordpress.com
+
+[npm.org]: https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff
+[npm-url]: https://www.npmjs.org
+
+[GitHub.com]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
+[Github-url]: https://www.github.com
