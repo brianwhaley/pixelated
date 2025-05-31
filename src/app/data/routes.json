@@ -10,25 +10,25 @@
 			"name": "Services", 
 			"path": "/services", 
 			"title": "Palmetto Epoxy - Services",
-			"description": "View the resume of Brian Whaley",
+			"description": "Let Palmetto Epoxy redesign your space, no matter the space.  We provide services to both residential and commercial spaces, paver sealing, driveway coating, epoxy garage floors, and concrete polishing.  Set the standard with Palmetto Epoxy!",
 			"keywords": "" 
 		} , { 
 			"name": "Projects", 
 			"path": "/projects", 
 			"title": "Palmetto Epoxy - Projects",
-			"description": "Every good piece of software needs a readme.  So do people.",
+			"description": "Flip through a collection of completed projects from Palmetto Epoxy. Examples include local residential and commercial coatings, floors, polishing, and paver sealing applications in the Bluffton South Carolina area. ",
 			"keywords": ""  
 		} , { 
 			"name": "About", 
 			"path": "/about", 
 			"title": "Palmetto Epoxy - About",
-			"description": "" ,
+			"description": "Palmetto Epoxy is a family owned business, run by Dennis and Martha Aberle, committed to making sure our customers are always satisfied. We're proud to serve the South Carolina Lowcountry, including Bluffton, Hilton Head, Hardeeville, Okatie, Ridgeland, and Beaufort." ,
 			"keywords": "" 
 		} , { 
 			"name": "Contact", 
 			"path": "/contact", 
 			"title": "Palmetto Epoxy - Contact",
-			"description": "",
+			"description": "Contact Palmetto Epoxy by filling out the form or by scheduling an appointment to answer any questions or set up an appointment to talk about Epoxy Flooring. ",
 			"keywords": "" 
 		} 
 	]

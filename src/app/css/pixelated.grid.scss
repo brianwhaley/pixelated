@@ -15,7 +15,7 @@
 	.row-#{$i}col { grid-template-columns: repeat(#{$i}, 1fr); }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
 	.row-2col, .row-3col, .row-4col { grid-template-columns: repeat(1, 1fr); }
 	.row-5col, .row-6col, .row-7col, .row-8col { grid-template-columns: repeat(2, 1fr); }
 	.row-9col, .row-10col, .row-11col, .row-12col { grid-template-columns: repeat(3, 1fr); }

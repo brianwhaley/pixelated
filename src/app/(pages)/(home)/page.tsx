@@ -1,24 +1,44 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ContactCTA from "@/app/elements/contact";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { CarouselSimple } from "@brianwhaley/pixelated-components";
-import "./home.css";
-
+import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
+
+	const [ carouselCards , setCarouselCards ] = useState<{ image: any }[]>([]);
+
+	useEffect(() => {
+		async function getCarouselCards() {
+			const contentType = "reviews"; 
+			const typeCards = await getContentfulEntriesByType(contentType); 
+			const reviewCards = typeCards.items.map(function (card: any) {
+				if(card.sys.contentType.sys.id == contentType) {
+					return {
+						titleText: card.fields.description,
+						descriptionText: card.fields.reviewer,
+					};
+				}
+			});
+			setCarouselCards(reviewCards);
+		}
+		getCarouselCards();
+	}, []);
+		
 	return (
 		<>
 			<h1>Palmetto Epoxy</h1>
 
-      	<section id="homeCTA-section">
+      		<section className="section-bwchip" id="homeCTA-section">
 				<div className="section-container">
 					<div className="homeCTA">
 						<div className="textOutline">
-						Elevate your space with a solution 
+					Elevate your space with a solution 
 							<br />
-						that&#39;s as practical as it is visually stunning.
+					that&#39;s as practical as it is visually stunning.
 							<br />
 							<button type="button" onClick={() => { window.location.href = '/contact'; }}>Schedule an Estimate</button>
 						</div>
@@ -26,7 +46,7 @@ export default function Home() {
 				</div>
 			</section>
 
-      	<section className="section-alt" id="callouts-section">
+      	<section className="section-alt" id="home-callouts-section">
 				<div className="section-container">
 					<div className="row-3col">
 						<div className="gridItem">
@@ -55,20 +75,9 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section id="portfolio-section">
+			<section id="home-reviews-section">
 				<div className="section-container">
-					<CarouselSimple cards={[
-						{
-							headerText: "\"Palmetto Epoxy installed durable, slip-resistant flooring in our garage that has totally exceeded our expectations.  Highly recommended!\"",
-							bodyText: " - Laurie Ellis",
-						} , {
-							headerText: "\"I highly recommend Palmetto Epoxy for any commercial flooring needs.  They were professional, efficient, and exceeded our expectations.\"",
-							bodyText: " - Jamie Bingham",
-						} , {
-							headerText: "\"Palmetto Epoxy did an exceptional job sealing our patio pavers.  They now look incredible and are so much easier to maintain.  We highly recommend their services for anyone looking to enhance and protect their outdoor spaces!\"",
-							bodyText: " - Lindsey Kim",
-						} 
-					]} />
+					<CarouselSimple cards={carouselCards} />
 				</div>
 			</section>
 
@@ -86,10 +95,8 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section id="contact-section">
-				<div className="section-container">
-					<ContactCTA />
-				</div>
+			<section className="section-bluechip" id="contact-section">
+				<ContactCTA />
 			</section>
 
 		</>

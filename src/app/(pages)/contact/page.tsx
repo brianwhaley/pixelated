@@ -83,23 +83,25 @@ export default function Contact() {
 	return (
 		<>
 			<h1>Contct Us</h1>
-			<div className="section-container">
-				<div className="row-12col">
-					<div className="grid-s1-e5">
-						<div>
-                            Please fill out the form below. 
-                            We would LOVE to answer any questions or to setup 
-                            an appointment to talk about our favorite subject… 
-                            Epoxy Flooring! 
-							<br /><br /><br /><br />
+			<section className="" id="contactus-section">
+				<div className="section-container">
+					<div className="row-12col">
+						<div className="grid-s1-e5">
+							<div>
+								Please fill out the form below. 
+								We would LOVE to answer any questions or to setup 
+								an appointment to talk about our favorite subject… 
+								Epoxy Flooring! 
+								<br /><br /><br /><br />
+							</div>
+							<FormEngine name="newrequest" id="newRequestForm" formData={formData} />
 						</div>
-						<FormEngine name="newrequest" id="newRequestForm" formData={formData} />
-					</div>
-					<div className="grid-s7-e6">
-						<iframe src="https://calendar.google.com/calendar/embed?src=brian.whaley%40gmail.com&mode=WEEK" style={{ border: 0 }} width="100%" height="400px" frameBorder="0" scrolling="no"></iframe>
+						<div className="grid-s7-e6">
+							<iframe src="https://calendar.google.com/calendar/embed?src=brian.whaley%40gmail.com&mode=WEEK" style={{ border: 0 }} width="100%" height="400px" frameBorder="0" scrolling="no"></iframe>
+						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 }

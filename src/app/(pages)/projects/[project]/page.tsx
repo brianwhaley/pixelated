@@ -1,21 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { getContentfulCardsData, getContentfulCardByField, getContentfulImagesFromCards } from "@/app/elements/pixelated.contentful";
+import { use, useState, useEffect, useRef } from 'react';
+// import { Metadata } from 'next';
+import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
+import { setClientMetadata } from '@/app/components/pixelated.metadata';
 import { CarouselSimple } from "@brianwhaley/pixelated-components";
-import "./project.css";
+import ContactCTA from "@/app/elements/contact";
 
-interface ProjectParams {
-  project: string;
-}
+/* type Params = {
+  params: {
+    project: string;
+  };
+};
 
-export default function Project({params}: { params: ProjectParams }){
+export const generateMetadata = async ({params}: Params): Promise<Metadata> => {
+	// Fetch data or perform server-side logic
+	const title = "Palmetto Epoxy - Projects - " + params.project;
+	return {
+		title
+	};
+};*/
+
+export default function Project({params}: { params: Promise<{ project: string }> }){
 
 	interface Card {
 		fields: {
-			header: string;
-			body: string;
+			title: string;
+			description: string;
+			keywords?: string;
 			link?: string,
 			carouselImages: any[];
 		};
@@ -23,26 +36,23 @@ export default function Project({params}: { params: ProjectParams }){
 
 	const [ card , setCard ] = useState<Card | null>(null);
 	const [ carouselCards , setCarouselCards ] = useState<{ image: any }[]>([]);
+	const { project } = use(params);
   
 	useEffect(() => {
 		async function getCarouselCards(project: string) {
-			const cards = await getContentfulCardsData(); 
-	    const newparams = {
+			const contentType = "carouselCard"; 
+			const cards = await getContentfulEntriesByType(contentType); 
+			const card = await getContentfulEntryByField({
 				cards: cards,
-				searchField: "header",
+				searchField: "title",
 				searchVal: project
-	    };
-			const card = await getContentfulCardByField(newparams);
-			setCard(card);
-			const images = await getContentfulImagesFromCards(card.fields.carouselImages, cards.includes.Asset);
-			const carouselCards = images.map(function (image) {
-				return { image: image } ;
 			});
-			setCarouselCards(carouselCards);
+			setCard(card);
+			const images = await getContentfulImagesFromEntries(card.fields.carouselImages, cards.includes.Asset);
+			setCarouselCards(images);
 		}
-		getCarouselCards(params.project);
-	}, [params.project]);
-
+		getCarouselCards(project);
+	}, [project]);
 
 
 	const isMounted = useRef(false);
@@ -53,19 +63,27 @@ export default function Project({params}: { params: ProjectParams }){
 		};
 	}, []);
 
+
+	useEffect(() => {
+		setClientMetadata({
+			title: "Palmetto Epoxy | Projects - " + card?.fields.title,
+			description: card?.fields.description?.split('. ', 1)[0] ?? "",
+			keywords: card?.fields.keywords?.split('. ', 1)[0] ?? ""
+		});
+	}, [card]);
 	
 
 	return (
 		<>
 			{ isMounted ? (
 	      		<>
-					<h1>{card?.fields.header}</h1>
-					<section id="portfolio-section">
+					<h1>{card?.fields.title}</h1>
+					<section id="project-carousel-section">
 						<div className="section-container">
-							{card?.fields.body}
+							<div>
+								{card?.fields.description}
+							</div>
 						</div>
-					</section>
-					<section id="portfolio-section">
 						<div className="section-container">
 							<CarouselSimple cards={carouselCards} />
 						</div>
@@ -73,13 +91,16 @@ export default function Project({params}: { params: ProjectParams }){
 					<br /><br />
 				</>
 			) : (
-				<section id="portfolio-section">
+				<section id="project-section">
 					<div className="section-container">
 						<div>Loading data...</div>
 					</div>
 				</section>
 			)
 			}
+			<section className="section-bluechip" id="contact-section">
+				<ContactCTA />
+			</section>
 		</>
 		
 	);

@@ -114,19 +114,14 @@ export const getMetadata = (routes: any, key: string = "name", value: string = "
 
 
 export const setClientMetadata = ({title, description, keywords}: {title: string, description: string, keywords: string}) => {
-	const titleElem = document.querySelector('title');
-	if (titleElem) {
-		titleElem.innerText = title;
-	}
-	const metaDesc = document.querySelector("meta[name='description']");
-	if (metaDesc) {
-		metaDesc.setAttribute('content', description);
-	}
-	const metaKeywords = document.querySelector("meta[name='keywords']");
-	if (metaKeywords) {
-		metaKeywords.setAttribute('content', keywords);
-	}
+	document.title = title;
+	(document.querySelector("meta[property='og:title']"))?.setAttribute('content', title);
+	(document.querySelector("meta[name='description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[property='og:description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[itemprop='description']"))?.setAttribute('content', description);
+	(document.querySelector("meta[name='keywords']"))?.setAttribute('content', keywords);
 };
+
 
 export const setServerMetadata = ({key, value}: { key: string; value: string }) => {
 	const myMetaData = getMetadata({key, value});

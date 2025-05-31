@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
-import { getRouteByKey } from "@/app/elements/pixelated.metadata";
+import { getRouteByKey } from "@/app/components/pixelated.metadata";
 import Header from "@/app/elements/header";
 import Footer from "@/app/elements/footer";
 import "@/app/css/pixelated.global.css";
 import "@/app/css/pixelated.grid.scss";
 import myRoutes from "@/app/data/routes.json";
 
-import "@/app/globals.css";
+import "@/app/css/globals.css";
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 	const pathname = usePathname();

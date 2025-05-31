@@ -1,6 +1,14 @@
 
 /* ===== HEADER STYLES ===== */
 
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-variant-caps: small-caps;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .headerLogo img {
     clip-path: rect(1% 98% 98% 1% round 15%);
 }
@@ -16,6 +24,22 @@
     margin: auto 0;
 }
 
+.headerAddress {
+    margin: auto 0;
+}
+
+
+.headerSocial {
+    margin: auto 0;
+}
+
+
+/* ===== CALLOUT STYLES ===== */
+
+#aboutus-section .gridItem {
+    margin: auto 0;
+}
+
 
 /* ===== CAROUSEL STYLES ===== */
 
@@ -27,13 +51,6 @@
 
 /* ===== SECTION STYLES ===== */
 
-h1 {
-    text-align: center;
-    font-size: 2.5em;
-    font-variant-caps: small-caps;
-    margin-bottom: 30px;
-}
-
 body {
     font-size: 16px;
     /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
@@ -43,10 +60,37 @@ body {
 }
 
 main .section-container {
-   /* margin-top: 50px;
-    margin-bottom: 50px; */
-    --do-nothing: true;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
+.section-bluechip {
+    background-image: 
+        linear-gradient(rgba(255,255,255,.25), 
+        rgba(255,255,255,.25)), 
+        url('https://images.ctfassets.net/0b82pebh837v/72Ctu7oGaGNja5gHpTz4Fd/50984bad832c63d7845e3c6d511a1735/BluChips.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.section-bwchip {
+    background-image: 
+        linear-gradient(rgba(255,255,255,.25), 
+        rgba(255,255,255,.25)), 
+        url('https://images.ctfassets.net/0b82pebh837v/10u8y8Qcv6hkLnp1stjZZx/b9b6be999291a643f2c1cb1c22e5fc58/IMG_5559.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.section-pavers {
+    background-image: 
+        linear-gradient(rgba(255,255,255,.25), 
+        rgba(255,255,255,.25)), 
+        url('https://images.ctfassets.net/0b82pebh837v/4vT6cKz1jGZNVnrLM8cNHG/6520f512d7dacd00224d13e87ae8084b/IMG_6229.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
 
 .bigText {
     margin: auto 10%;
@@ -66,14 +110,10 @@ main .section-container {
 .contactCTA {
     font-size: 1.5em;
     color: white;
-    height: 200px;
     display: flex;
     align-items: center; /* Vertically center */
     justify-content: center; /* Horizontally center (optional) */
     text-align: center;
-    background-image: linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.25)), url('https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/486e45ef-9e02-4859-a771-6e78b2e55e02/BluChips.jpg?format=2500w');
-    background-position: center;
-    margin: 30px 0;
 }
 
 .contactCTA button {
@@ -95,6 +135,10 @@ main .section-container {
     color: #369;
     /* background-color: #DDD; */
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
+}
+
+footer {
+    margin-top: 50px;
 }
 
 
@@ -142,4 +186,67 @@ main .section-container {
     display: block;
     margin: 5px 5px 20px 5px !important;
     padding: 5px;
+}
+
+
+/* =================
+   ===== PAGES ===== 
+   ================= */
+
+/* ===== HOME PAGE ===== */
+
+#homeCTA-section {
+    .homeCTA {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+    .homeCTA button {
+        border: 1px solid #999;
+        /* .rounded; */
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        font-size: 0.8em;
+        font-weight: bold;
+        width: 300px;
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+#home-callouts-section {
+     .calloutImageVert {
+        width: 90%;
+    }
+}
+
+#home-reviews-section {
+    .carouselContainer {
+        height: 400px;
+    }
+    .carouselCardsContainer {
+        width: 60%;
+        height: 350px;
+        margin: 0 auto;
+    }
+    .carouselCardBody {
+        text-align: center;
+        padding-top: 40px;
+    }
+}
+
+
+/* ===== PROJECT PAGE ===== */
+
+#project-carousel-section {
+    .carouselContainer {
+        height: 450px;
+    }
+    .carouselCardsContainer {
+        height: 400px;
+    }
 }
