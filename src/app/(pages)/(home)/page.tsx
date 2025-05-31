@@ -18,8 +18,8 @@ export default function Home() {
 			const reviewCards = typeCards.items.map(function (card: any) {
 				if(card.sys.contentType.sys.id == contentType) {
 					return {
-						titleText: card.fields.description,
-						descriptionText: card.fields.reviewer,
+						headerText: card.fields.description,
+						bodyText: card.fields.reviewer,
 					};
 				}
 			});
@@ -53,22 +53,25 @@ export default function Home() {
 							<Callout
 								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1e084272-4798-4793-9379-60afbf3e1c7b/Blue.jpg?format=2500w'
 								title="Floors You'll Adore"
-								layout='vertical' 
-								shape='square' />
+								layout='vertical'
+								shape='square'  
+								content='' />
 						</div>
 						<div className="gridItem">
 							<Callout
 								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/bf63d28c-d622-4e89-baf8-56d2ccb9194d/Epoxy+Floor+4.jpg?format=2500w'
 								title='Epoxy Excellence'
 								layout='vertical' 
-								shape='square' />
+								shape='square'  
+								content='' />
 						</div>
 						<div className="gridItem">
 							<Callout
 								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1719082000916-23J7QBKHZCRO9BWBDUZM/Grey_Bowling-Ball-Floor.jpg?format=2500w'
 								title='Shine On...'
 								layout='vertical' 
-								shape='square' />
+								shape='square'  
+								content='' />
 						</div>
 					</div>
 				
