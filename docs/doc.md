@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "initial commit"
+git commit -m "tweaks, new headers, component library bump"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
