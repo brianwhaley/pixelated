@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix metadata, added types page and Route type "
+git commit -m "split into cjs and esm dist folders"
 git push pixelated-components dev --tags --force
 npm publish
 git push pixelated-components dev:main -f
