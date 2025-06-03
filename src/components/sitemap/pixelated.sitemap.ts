@@ -12,7 +12,7 @@ TODO #10 Sitemap Component : Build out v1 of this component
 
 
 
-type SitemapEntry = {
+export type SitemapEntry = {
 	url: string;
 	lastModified: string;
 	changeFrequency: "hourly";

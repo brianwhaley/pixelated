@@ -4,13 +4,35 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.carouselsimple.css';
 
+export type CarouselCard = {
+	index: number,
+	cardIndex: number,
+	cardLength: number,
+	link?: string,
+	image: string,
+	imageAlt?: string,
+	imgFit?: 'contain' | 'cover' | 'fill',
+	headerText?: string,
+	bodyText?: string,
+};
+
 function capitalize(str: string) {
 	return str && String(str[0]).toUpperCase() + String(str).slice(1);
 }
 
+/* https://stackoverflow.com/questions/43430498/detecting-orientation-of-images-with-javascript */
+/* function getImageOrientation(img: HTMLImageElement) {
+  if (img.naturalHeight > img.naturalWidth) {
+    img.classList.add("portrait")
+  } else if (img.naturalHeight < img.naturalWidth) {
+    img.classList.add("landscape")
+  } else if (img.naturalHeight === img.naturalWidth) {
+	img.classList.add("square")
+  }
+}*/
 
 /* ========== CAROUSEL ========== */
-export function CarouselSimple(props: { cards: any[]; }) {
+export function CarouselSimple(props: { cards: CarouselCard[]; imgFit: 'contain' | 'cover' | 'fill' ; }) {
 	const debug = false;
 	let timer = useRef<NodeJS.Timeout | null>(null);
 	// const [ cards, setCards ] = useState();
@@ -51,6 +73,27 @@ export function CarouselSimple(props: { cards: any[]; }) {
   		//Runs only on the first render
 	}, [cardIndex]);
 
+	/* useEffect(() => {
+		if (typeof document !== 'undefined') {
+			var pics = document.querySelectorAll(".carouselCardsContainer img");
+			for (let i = 0; i < pics.length; i++) {
+				const pic = pics[i] as HTMLImageElement;
+				if (pic.complete) {
+					// The image is already loaded, call handler
+					console.log("Image already loaded: ", pic.src);
+					getImageOrientation(pic);
+				} else {
+					// The image is not loaded yet, set load event handler
+					console.log
+					pic.addEventListener("load", function(this: HTMLImageElement) {
+						getImageOrientation(this);
+					});
+				}
+			}
+		}
+  		//Runs only on the first render
+	}, []); */
+
 	if (props.cards.length > 0) {
 		return (
 			<div className="carouselContainer">
@@ -64,6 +107,7 @@ export function CarouselSimple(props: { cards: any[]; }) {
 							link={card.link}
 							image={card.image}
 							imageAlt={card.imageAlt}
+							imgFit={props.imgFit ? props.imgFit : 'fill'}	
 							headerText={card.headerText} 
 							bodyText={card.bodyText}
 						/>
@@ -94,21 +138,12 @@ export function CarouselSimple(props: { cards: any[]; }) {
 	}
 }
 CarouselSimple.propTypes = {
-	cards: PropTypes.object.isRequired
+	cards: PropTypes.object.isRequired,
+	imgFit: PropTypes.oneOf(['contain', 'cover', 'fill'])
 };
 
 
 /* ========== CAROUSEL CARD ========== */
-type CarouselCard = {
-	index: number,
-	cardIndex: number,
-	cardLength: number,
-	link?: string,
-	image: string,
-	imageAlt?: string,
-	headerText?: string,
-	bodyText?: string,
-};
 function CarouselCard( props: CarouselCard ) {
 	const myZindex = props.cardLength - props.index;
 	const styles: React.CSSProperties = {
@@ -122,9 +157,10 @@ function CarouselCard( props: CarouselCard ) {
 	} else if (props.index < props.cardIndex) {
 		styles.transform = 'translateX(-100%)';
 	}
+	const imgFit = props.imgFit ? "img" + capitalize(props.imgFit) : 'imgFill';
 	const cardBody = (
 		<>
-			{ (props.image) ? <div className="carouselCardImage"><img src={props.image} alt={props?.imageAlt}/></div> : null }
+			{ (props.image) ? <div className="carouselCardImage"><img src={props.image} alt={props?.imageAlt} className={imgFit} /></div> : null }
 			{ (props.headerText) ? <div className="carouselCardHeader"><h3>{props.headerText}</h3></div> : null  }
 			{ (props.bodyText) ? <div className="carouselCardBody">{props.bodyText}</div> : null  }
 		</>
@@ -138,7 +174,9 @@ function CarouselCard( props: CarouselCard ) {
 		
 	);
 }
-CarouselCard.propTypes = {
+/* 
+// REMOVE PROPTYPE AS TYPESCRIPT TYPE COVERS THIS
+// CarouselCard.propTypes = {
 	index: PropTypes.number.isRequired,
 	cardIndex: PropTypes.number.isRequired,
 	cardLength: PropTypes.number.isRequired,
@@ -147,7 +185,7 @@ CarouselCard.propTypes = {
 	imageAlt: PropTypes.string,
 	headerText: PropTypes.string,
 	bodyText: PropTypes.string,
-};
+}; */
 
 
 /* ========== CAROUSEL  ARROW ========== */

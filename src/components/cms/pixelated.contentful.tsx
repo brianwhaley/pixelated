@@ -47,7 +47,7 @@ export async function getContentfulEntriesByType(contentType: string) {
 
 
 // Define the type for the params object
-interface ContentfulCardParams {
+type ContentfulCardParams = {
     cards: any, 
     searchField: string;
     searchVal: string;
