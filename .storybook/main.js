@@ -2,6 +2,7 @@
 
 import path from 'path'; 
 import { fileURLToPath } from 'url';
+// import { sharedRulesConfig } from "../webpack.config.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,6 +18,9 @@ const config = {
       options: { fsCache: false } 
     },
   },
+  features: {
+    experimentalRSC: true,
+  },
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
@@ -26,64 +30,46 @@ const config = {
 
   webpackFinal: async (config) => {
 
-    // WEBPACK FOR JS FILES
-    config.module.rules.push({
-      test: /\.(js|jsx|ts|tsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            '@babel/preset-env', 
-            '@babel/preset-react'
-          ],
+    // config.module.rules = sharedRulesConfig;
+
+    config.module.rules.push(
+      {
+        test: /\.(js|jsx|mjs|cjs|mjsx|cjsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env', '@babel/preset-react' ],
+          },
         },
       },
-    });
-    config.resolve.extensions.push('.js', '.jsx', '.ts', '.tsx');
-
-    // WEBPACK FOR CSS FILES
-    /* config.module.rules.push({
-      test: /\.(css)$/,
-      use: {
-        loader: "css-loader",
-        options: {
-          url: false,
-          esModule: false
-        }
+      {
+        test: /\.(ts|tsx|mts|cts|mtsx|ctsx)$/,
+        exclude: /node_modules/ ,
+        use: 'ts-loader',
+      },
+      {
+        test: /\.(sa|sc)ss$/,
+        exclude: /node_modules/ ,
+        use: 'sass-loader',
+      },
+      {
+        test: /\.(bmp|gif|jpg|jpeg|png|svg|webp)$/,
+        exclude: /node_modules/ ,
+        type: 'asset/resource', 
+        use: [ 'url-loader', 'file-loader' ],
       }
-    })
-    config.resolve.extensions.push('.css'); */
+    );
 
-    // WEBPACK FOR LESS FILES
-    config.module.rules.push({
-      test: /\.(less)$/,
-      use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: { modules: false } },
-          { loader: 'less-loader', options: { lessOptions: { javascriptEnabled: true } } },
-      ]
-    })
-    config.resolve.extensions.push('.less'); 
-
-    // WEBPACK FOR IMAGE FILES
-    /* config.module.rules.push({
-      test: /\.(png|jpg|jpeg|gif|svg)$/,
-      type: 'asset/resource',
-      use: {
-        loader: 'url-loader',
-        options: {
-            name: '[name].[ext]',
-            outputPath: '../dist/images', // Output images to an 'images' folder in the Storybook build
-            publicPath: '/images/', // Public URL path to access images
-        },
-      },
-    }); */
+    config.resolve.extensions.push('.js', '.jsx', '.mjs', '.cjs', '.mjsx', '.cjsx' );
+    config.resolve.extensions.push('.ts', '.tsx', '.mts', '.cts', '.mtsx', '.ctsx' );
+    config.resolve.extensions.push('.sass', '.scss');
+    config.resolve.extensions.push('.bmp', '.gif', '.jpg', '.jpeg', '.png', '.svg', '.webp');
 
     // ALIAS FOR ABSOLUTE PATH FOR IMAGES
     config.resolve.alias = {
-      "/images": path.resolve(__dirname, "../dist/images"),
-      "images": path.resolve(__dirname, "../dist/images"),
+      "/images": path.resolve(__dirname, "../src/images"),
+      "images": path.resolve(__dirname, "../src/images"),
     };
 
     return config;
