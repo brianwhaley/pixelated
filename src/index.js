@@ -3,7 +3,6 @@
 
 export * from './components/buzzwordbingo/pixelated.buzzwordbingo.js';
 export * from './components/callout/pixelated.callout.js';
-export * from './components/carousel1/pixelated.carousel.js';
 export * from './components/carousel2/pixelated.carousel.js';
 export * from './components/carousel2/pixelated.carousel.drag.js';
 export * from './components/carousel2/pixelated.carousel.flickr.js';
