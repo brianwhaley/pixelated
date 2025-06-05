@@ -16,6 +16,18 @@
 #carouselCardsContainer {
 	--do-nothing: true;
 }
+
+/* .noDrag {
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-ms-user-drag: none;
+	user-drag: none;
+  	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+	user-select: none;
+} */
+
 .carouselCardWrapper {
 	display: inline-block;
 	position: absolute;
@@ -43,6 +55,14 @@
 
 .carouselCardHeader {
 	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	margin: 5px auto;
+	width: 100%;
+}
+
+.carouselCardSubHeader {
+	font-size: 1.1em;
 	font-weight: bold;
 	text-align: center;
 	margin: 5px auto;
@@ -98,23 +118,6 @@
 	width: 100%;
 	object-fit: cover;
 }
-
-
-
-/* .carouselCardImage img.portrait,
-.carouselCardImage img.square {
-	max-height: 100%; 
-	max-width: auto;
-	height: 100%;
-	width: auto;
-}
-.carouselCardImage img.landscape {
-	max-height: auto; 
-	max-width: 100%;
-	height: auto;
-	width: 100%;
-}
-*/
 
 .carouselButtons {
 	width: 100%;

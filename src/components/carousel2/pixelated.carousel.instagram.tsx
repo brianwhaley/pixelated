@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export function Instagram() {
-    const access_token = "1364139411507782|7wSJ9h_RPv_eEcOBmXCYvooNRws"
+    const access_token = "1364139411507782|7wSJ9h_RPv_eEcOBmXCYvooNRws";
     const url = "https://graph.instagram.com/v22.0/me?fields=id,media_type,media_url,caption,timestamp&access_token=" + access_token ;
 
     async function fetchInstas() {

@@ -1,0 +1,74 @@
+.carouselContainer {
+    height: 150px;
+}
+
+.carouselCardsContainer {
+    height: 100%;
+}
+
+.carouselCardWrapper { --do-nothing: true;}
+
+.carouselCard { --do-nothing: true;}
+
+.carouselCardLink { --do-nothing: true;}
+
+.carouselCardImage { 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carouselCardHeader { 
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    width: 50%;
+}
+.carouselCardHeader h3 {
+    text-align: left;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    color: white;
+    text-shadow: -1px 1px 1px black, 
+        1px 1px 1px black, 
+        1px -1px 1px black, 
+        -1px -1px 1px black, 
+        -1px 1px 5px black, 
+        1px 1px 5px black, 
+        1px -1px 5px black, 
+        -1px -1px 5px black;
+}
+
+.carouselCardSubHeader { 
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    width: 50%;
+    
+}
+.carouselCardSubHeader h4 {
+    text-align: right;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    color: white;
+    text-shadow: -1px 1px 1px black, 
+        1px 1px 1px black, 
+        1px -1px 1px black, 
+        -1px -1px 1px black, 
+        -1px 1px 5px black, 
+        1px 1px 5px black, 
+        1px -1px 5px black, 
+        -1px -1px 5px black;
+}
+
+.carouselCardBody { --do-nothing: true;}
+
+.carouselButtons { 
+    display: none;
+}
+
+.carouselButton { 
+    display: none;
+}
+
+.carouselLoading { --do-nothing: true;}

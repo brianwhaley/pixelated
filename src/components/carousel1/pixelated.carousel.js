@@ -35,7 +35,7 @@ function capitalize(str) {
 }
 
 /* ========== CAROUSEL ========== */
-export function Carousel(props) {
+export function Carousel1(props) {
 	
 	const defaultFlickr = { 
 		flickr : {

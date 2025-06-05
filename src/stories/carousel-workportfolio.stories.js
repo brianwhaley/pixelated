@@ -2,7 +2,7 @@ import { Carousel } from '../components/carousel2/pixelated.carousel';
 import { GetFlickrData, GenerateFlickrCards } from '../components/carousel2/pixelated.carousel.flickr';
 import '../components/carousel2/pixelated.carousel.css';
 import '../css/pixelated.global.css';
-import './carousel-hero.stories.css';
+import './carousel.stories.css';
 
 export default {
 	title: 'Carousel',
@@ -18,7 +18,7 @@ async function getFlickrCards() {
 				method: 'flickr.photos.search',
 				api_key: '882cab5548d53c9e6b5fb24d59cc321d',
 				user_id: '15473210@N04',
-				tags: 'pixelatedviewsgallery',
+				tags: 'workportfolio',
 				extras: 'date_taken,description,owner_name',
 				sort: 'date-taken-desc',
 				per_page: 500,
@@ -41,10 +41,10 @@ async function getFlickrCards() {
 	return myScrubbedFlickrCards;
 }
 
-export const CarouselHero = {
+export const CarouselWorkPortfolio = {
 	args: {
 		cards: await getFlickrCards() ,
-		draggable: false,
-		imgFit: "cover",
+		draggable: true,
+		imgFit: "contain",
 	}
 };

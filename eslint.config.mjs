@@ -1,5 +1,6 @@
 import react from "eslint-plugin-react"; 
 import globals from "globals";
+import json from "@eslint/json";
 
 export default [
 	{
@@ -18,7 +19,7 @@ export default [
 			react,
 		},
 		rules: {
-			'indent': ['error', 'tab'],
+			"indent": ["error", "tab"],
 			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
 			"semi": ["error", "always"]
 		},

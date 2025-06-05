@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import './pixelated.carouselsimple.css';
+import { DragHandler } from './pixelated.carousel.drag';
+import './pixelated.carousel.css';
 
 export type CarouselCard = {
 	index: number,
@@ -13,6 +14,7 @@ export type CarouselCard = {
 	imageAlt?: string,
 	imgFit?: 'contain' | 'cover' | 'fill',
 	headerText?: string,
+	subHeaderText?: string,
 	bodyText?: string,
 };
 
@@ -20,22 +22,16 @@ function capitalize(str: string) {
 	return str && String(str[0]).toUpperCase() + String(str).slice(1);
 }
 
-/* https://stackoverflow.com/questions/43430498/detecting-orientation-of-images-with-javascript */
-/* function getImageOrientation(img: HTMLImageElement) {
-  if (img.naturalHeight > img.naturalWidth) {
-    img.classList.add("portrait")
-  } else if (img.naturalHeight < img.naturalWidth) {
-    img.classList.add("landscape")
-  } else if (img.naturalHeight === img.naturalWidth) {
-	img.classList.add("square")
-  }
-}*/
-
 /* ========== CAROUSEL ========== */
-export function CarouselSimple(props: { cards: CarouselCard[]; imgFit: 'contain' | 'cover' | 'fill' ; }) {
+export function Carousel(
+	props: { 
+		cards: CarouselCard[],
+		draggable?: boolean,
+		imgFit?: 'contain' | 'cover' | 'fill' ,
+	}) {
+
 	const debug = false;
 	let timer = useRef<NodeJS.Timeout | null>(null);
-	// const [ cards, setCards ] = useState();
 	const [ cardIndex, setcardIndex ] = useState(0);
 
 	function startTimer() {
@@ -70,35 +66,26 @@ export function CarouselSimple(props: { cards: CarouselCard[]; imgFit: 'contain'
 		if (typeof document !== 'undefined') {
 			startTimer();
 		}
-  		//Runs only on the first render
 	}, [cardIndex]);
 
-	/* useEffect(() => {
-		if (typeof document !== 'undefined') {
-			var pics = document.querySelectorAll(".carouselCardsContainer img");
-			for (let i = 0; i < pics.length; i++) {
-				const pic = pics[i] as HTMLImageElement;
-				if (pic.complete) {
-					// The image is already loaded, call handler
-					console.log("Image already loaded: ", pic.src);
-					getImageOrientation(pic);
-				} else {
-					// The image is not loaded yet, set load event handler
-					console.log
-					pic.addEventListener("load", function(this: HTMLImageElement) {
-						getImageOrientation(this);
-					});
-				}
-			}
-		}
-  		//Runs only on the first render
-	}, []); */
+	/* ========== DRAGGABLE HANDLER ========== */
+	if (props.draggable && props.draggable === true) {
+		if (debug) console.log('CarouselSimple: Dragging enabled');
+		DragHandler({
+			activeIndex: cardIndex, 
+			targetDiv: 'carouselCardWrapper', 
+			nextImage: nextCard, 
+			previousImage: previousCard
+		});
+	} else {
+		if (debug) console.log('CarouselSimple: Dragging disabled');
+	}
 
-	if (props.cards.length > 0) {
+	if (props.cards && props.cards.length > 0) {
 		return (
 			<div className="carouselContainer">
 				<div className="carouselCardsContainer">
-					{ props.cards.map((card, i) => (
+					{ props.cards.map((card: CarouselCard, i: number) => (
 						<CarouselCard
 							key={i}
 							index={i}
@@ -108,7 +95,8 @@ export function CarouselSimple(props: { cards: CarouselCard[]; imgFit: 'contain'
 							image={card.image}
 							imageAlt={card.imageAlt}
 							imgFit={props.imgFit ? props.imgFit : 'fill'}	
-							headerText={card.headerText} 
+							headerText={card.headerText} 	
+							subHeaderText={card.subHeaderText} 
 							bodyText={card.bodyText}
 						/>
 					))}
@@ -137,8 +125,9 @@ export function CarouselSimple(props: { cards: CarouselCard[]; imgFit: 'contain'
 		);
 	}
 }
-CarouselSimple.propTypes = {
+Carousel.propTypes = {
 	cards: PropTypes.object.isRequired,
+	draggable: PropTypes.bool,
 	imgFit: PropTypes.oneOf(['contain', 'cover', 'fill'])
 };
 
@@ -159,33 +148,25 @@ function CarouselCard( props: CarouselCard ) {
 	}
 	const imgFit = props.imgFit ? "img" + capitalize(props.imgFit) : 'imgFill';
 	const cardBody = (
-		<>
-			{ (props.image) ? <div className="carouselCardImage"><img src={props.image} alt={props?.imageAlt} className={imgFit} /></div> : null }
-			{ (props.headerText) ? <div className="carouselCardHeader"><h3>{props.headerText}</h3></div> : null  }
-			{ (props.bodyText) ? <div className="carouselCardBody">{props.bodyText}</div> : null  }
-		</>
+		< div draggable='false'>
+			{ (props.link) ? <div draggable='false' className="carouselCardLink" /> : null }
+			{ (props.image) ? <div draggable='false' className="carouselCardImage"><img draggable='false' src={props.image} alt={props?.imageAlt} className={imgFit} /></div> : null }
+			{ (props.headerText) ? <div draggable='false' className="carouselCardHeader"><h3 draggable='false'>{props.headerText}</h3></div> : null  }
+			{ (props.subHeaderText) ? <div draggable='false' className="carouselCardSubHeader"><h4 draggable='false'>{props.subHeaderText}</h4></div> : null  }
+			{ (props.bodyText) ? <div draggable='false' className="carouselCardBody">{props.bodyText}</div> : null  }
+		</div>
 	);
 	return (
-		<div id={'c-' + props.index} className="carouselCardWrapper" style={styles}>
-			<div className="carouselCard" >
-				{ (props.link) ? <a href={props.link}>{ cardBody }</a> : cardBody }
+		<div draggable='true' id={'c-' + props.index} className="carouselCardWrapper" style={styles}>
+			<div draggable='false' className="carouselCard">
+				{ (props.link) ? <a draggable='false' href={props.link} target="_blank">{ cardBody }</a> : cardBody }
 			</div>
 		</div>
 		
 	);
 }
-/* 
-// REMOVE PROPTYPE AS TYPESCRIPT TYPE COVERS THIS
-// CarouselCard.propTypes = {
-	index: PropTypes.number.isRequired,
-	cardIndex: PropTypes.number.isRequired,
-	cardLength: PropTypes.number.isRequired,
-	link: PropTypes.string,
-	image: PropTypes.string.isRequired,
-	imageAlt: PropTypes.string,
-	headerText: PropTypes.string,
-	bodyText: PropTypes.string,
-}; */
+// REMOVED PROPTYPE AS TYPESCRIPT TYPE COVERS THIS
+
 
 
 /* ========== CAROUSEL  ARROW ========== */
@@ -226,3 +207,5 @@ function CarouselLoading() {
 	);
 }
 
+/* ========== CAROUSEL IMAGE ORIENTATION ========== */
+/* https://stackoverflow.com/questions/43430498/detecting-orientation-of-images-with-javascript */

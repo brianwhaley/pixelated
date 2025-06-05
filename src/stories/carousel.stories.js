@@ -2,7 +2,7 @@ import { Carousel } from '../components/carousel2/pixelated.carousel';
 import { GetFlickrData, GenerateFlickrCards } from '../components/carousel2/pixelated.carousel.flickr';
 import '../components/carousel2/pixelated.carousel.css';
 import '../css/pixelated.global.css';
-import './carousel-hero.stories.css';
+import './carousel.stories.css';
 
 export default {
 	title: 'Carousel',
@@ -23,7 +23,7 @@ async function getFlickrCards() {
 				sort: 'date-taken-desc',
 				per_page: 500,
 				format: 'json',
-				photoSize: 'Large',
+				photoSize: 'Medium',
 				nojsoncallback: 'true' /*,
 				startPos: 0 */
 			}
@@ -41,10 +41,20 @@ async function getFlickrCards() {
 	return myScrubbedFlickrCards;
 }
 
-export const CarouselHero = {
+export const Carousel2 = {
 	args: {
 		cards: await getFlickrCards() ,
-		draggable: false,
-		imgFit: "cover",
+		draggable: true,
+		imgFit: "contain",
+	},
+	argTypes: {
+		imgFit: {
+			options: ['contain', 'cover', 'fill'],
+			control: { type: 'select' },
+		},
+		draggable: {
+			options: [true, false],
+			control: { type: 'select' },
+		}
 	}
 };

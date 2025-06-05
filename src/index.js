@@ -3,8 +3,11 @@
 
 export * from './components/buzzwordbingo/pixelated.buzzwordbingo.js';
 export * from './components/callout/pixelated.callout.js';
-export * from './components/carousel/pixelated.carousel';
-export * from './components/carouselsimple/pixelated.carouselsimple.js';
+export * from './components/carousel1/pixelated.carousel.js';
+export * from './components/carousel2/pixelated.carousel.js';
+export * from './components/carousel2/pixelated.carousel.drag.js';
+export * from './components/carousel2/pixelated.carousel.flickr.js';
+/* export * from './components/carousel2/pixelated.carousel.instagram.js'; */
 export * from './components/cms/pixelated.contentful.js';
 /* export * from './components/cms/pixelated.storyblok.js'; */
 export * from './components/ebay/pixelated.ebay.js';
@@ -16,8 +19,8 @@ export * from './components/google/pixelated.googleanalytics.js';
 export * from './components/google/pixelated.googlesearch.js';
 /* export * from './components/linkedin/pixelated.linkedin.js'; */
 export * from './components/markdown/pixelated.markdown.js';
-export * from './components/menu/pixelated.menu-accordion';
-/* export * from './components/menu/pixelated.menu-expando. '; */
+export * from './components/menu/pixelated.menu-accordion.js';
+/* export * from './components/menu/pixelated.menu-expando.js '; */
 export * from './components/menu/pixelated.menu-simple.js';
 export * from './components/nerdjoke/pixelated.nerdjoke.js';
 export * from './components/modal/pixelated.modal.js';
@@ -27,7 +30,7 @@ export * from './components/socialcard/pixelated.socialcard.js';
 export * from './components/table/pixelated.table.js';
 export * from './components/utilities/pixelated.api.js';
 export * from './components/utilities/pixelated.functions.js';
-/* export * from './components/yelp/pixelated.yelp'; */
+/* export * from './components/yelp/pixelated.yelp.js'; */
 
 export * from './components/metadata/pixelated.metadata.js';
 export * from './components/sitemap/pixelated.sitemap.js';
