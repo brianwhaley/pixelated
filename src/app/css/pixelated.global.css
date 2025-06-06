@@ -393,22 +393,22 @@ input.gsc-input {
 ===========  CUSTOM CAROUSEL    ===========
 ======================================== */
 
-.carouselCardImage {
+main .carouselCardImage {
     height: 550px !important;
 	margin-top: 5px !important;
 }
 
-.carouselCardHeader { 
+main .carouselCardHeader { 
     display: none;
 }
 
-.carouselCardSubHeader { 
+main .carouselCardSubHeader { 
     position: absolute;
     bottom: 5px;
     width: 100%;
     
 }
-.carouselCardSubHeader h4 {
+main .carouselCardSubHeader h4 {
     text-align: center;
     font-size: 11px !important;
     font-weight: normal !important;
