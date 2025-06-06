@@ -1,19 +1,21 @@
 "use client";
 
 import React from "react";
-import { Callout } from "@brianwhaley/pixelated-components";
 import ContactCTA from "@/app/elements/contact";
+import PageTitle from "@/app/elements/pageTitle";
+import { Callout } from "@brianwhaley/pixelated-components";
 
 export default function About() {
 	return (
 		<>
-			<h1>About Us</h1>
-			
+			<PageTitle title="About Us" />
+		
 			<section className="" id="aboutus-section">
 				<div className="section-container">
 					<div className="row-1col ">
 						<div className="gridItem ">
 							<Callout
+								title="About Palmetto Epoxy"
 								img='/images/dennis-and-martha-aberle.jpg'
 								alt="Dennis and Martha Aberle of Palmetto Epoxy" 
 								subtitle='Our team is made up of the dynamic duo of Dennis and Martha Aberle, 

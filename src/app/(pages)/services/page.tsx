@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import { Callout } from "@brianwhaley/pixelated-components";
 import ContactCTA from "@/app/elements/contact";
+import PageTitle from "@/app/elements/pageTitle";
+import { Callout } from "@brianwhaley/pixelated-components";
+
 
 export default function Services() {
 	return (
 		<>
-			<h1>Services</h1>
+			<PageTitle title="Services" />
+			
 			<section className="" id="services-section">
 				<div className="section-container">
 					<div className="row-3col ">
@@ -19,7 +22,7 @@ export default function Services() {
 								layout='vertical' 
 								shape='squircle' />
 						</div>
-						<div className="gridItem"><Callout />
+						<div className="gridItem">
 							<Callout
 								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/a0212c2b-138f-4824-84e5-94fc9aa0af5c/Epoxy+Floor+4.jpg?format=2500w'
 								title='Commercial'

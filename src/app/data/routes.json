@@ -5,31 +5,37 @@
 			"path": "/", 
 			"title": "Palmetto Epoxy",
 			"description": "Transform your space with Palmetto Epoxy! We specialize in creating beautiful, durable epoxy floors that add value and functionality to any space. Contact us for custom designs and fast, efficient installation.",
-			"keywords": ""  
+			"keywords": "Palmetto Epoxy, Bluffton, South Carolina, beautiful epoxy floors, durable epoxy floors, custom epoxy floor designs, fast epoxy installation"  
 		} , { 
 			"name": "Services", 
 			"path": "/services", 
 			"title": "Palmetto Epoxy - Services",
 			"description": "Let Palmetto Epoxy redesign your space, no matter the space.  We provide services to both residential and commercial spaces, paver sealing, driveway coating, epoxy garage floors, and concrete polishing.  Set the standard with Palmetto Epoxy!",
-			"keywords": "" 
+			"keywords": "Palmetto Epoxy, residential epoxy flooring, commercial epoxy flooring, paver sealing, driveway coating, epoxy garage floors, concrete polishing" 
 		} , { 
 			"name": "Projects", 
 			"path": "/projects", 
 			"title": "Palmetto Epoxy - Projects",
 			"description": "Flip through a collection of completed projects from Palmetto Epoxy. Examples include local residential and commercial coatings, floors, polishing, and paver sealing applications in the Bluffton South Carolina area. ",
-			"keywords": ""  
+			"keywords": "Palmetto Epoxy, completed projects, residential floor coating, commercial floor coating, floor polishing, paver sealing, Bluffton, South Carolina"  
 		} , { 
 			"name": "About", 
 			"path": "/about", 
 			"title": "Palmetto Epoxy - About",
 			"description": "Palmetto Epoxy is a family owned business, run by Dennis and Martha Aberle, committed to making sure our customers are always satisfied. We're proud to serve the South Carolina Lowcountry, including Bluffton, Hilton Head, Hardeeville, Okatie, Ridgeland, and Beaufort." ,
-			"keywords": "" 
+			"keywords": "Palmetto Epoxy, family owned business, Dennis Aberle, Martha Aberle, South Carolina epoxy, low country epoxy, lowcountry epoxy, Bluffton epoxy, Hilton Head epoxy, Hardeeville epoxy, Okatie epoxy, Ridgeland epoxy, Beaufort epoxy" 
 		} , { 
 			"name": "Contact", 
 			"path": "/contact", 
 			"title": "Palmetto Epoxy - Contact",
 			"description": "Contact Palmetto Epoxy by filling out the form or by scheduling an appointment to answer any questions or set up an appointment to talk about Epoxy Flooring. ",
-			"keywords": "" 
+			"keywords": "Palmetto Epoxy, epoxy floor coatings, contact us, schedule an appointment," 
+		} , { 
+			"name": "", 
+			"path": "/submitreview", 
+			"title": "Palmetto Epoxy - Submit your Review",
+			"description": "Share your experience with Palmetto Epoxy! We value your feedback and would love to hear about your epoxy flooring project. ",
+			"keywords": "Palmetto Epoxy, epoxy floor coatings, share your feedback" 
 		} 
 	]
 }

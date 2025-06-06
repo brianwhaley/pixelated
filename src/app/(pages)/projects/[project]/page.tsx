@@ -3,10 +3,11 @@
 
 import { use, useState, useEffect, useRef } from 'react';
 // import { Metadata } from 'next';
+import ContactCTA from "@/app/elements/contact";
+import PageTitle from "@/app/elements/pageTitle";
 import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import { setClientMetadata } from '@/app/components/pixelated.metadata';
-import { CarouselSimple } from "@brianwhaley/pixelated-components";
-import ContactCTA from "@/app/elements/contact";
+import { Carousel } from "@brianwhaley/pixelated-components";
 
 /* type Params = {
   params: {
@@ -77,7 +78,8 @@ export default function Project({params}: { params: Promise<{ project: string }>
 		<>
 			{ isMounted ? (
 	      		<>
-					<h1>{card?.fields.title}</h1>
+					<PageTitle title={card?.fields.title} />
+							
 					<section id="project-carousel-section">
 						<div className="section-container">
 							<div>
@@ -85,7 +87,15 @@ export default function Project({params}: { params: Promise<{ project: string }>
 							</div>
 						</div>
 						<div className="section-container">
-							<CarouselSimple cards={carouselCards} />
+							<Carousel
+								cards={carouselCards.map((card, index) => ({
+									...card,
+									index: index,
+									cardIndex: index,
+									cardLength: carouselCards.length
+								}))}
+								imgFit='contain'
+							/>
 						</div>
 					</section>
 					<br /><br />

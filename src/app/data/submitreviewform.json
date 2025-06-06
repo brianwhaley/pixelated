@@ -1,0 +1,106 @@
+{
+	"fields" : [
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "hidden",
+				"id" : "from",
+				"name" : "from",
+				"value" : "brian.whaley@pixelated.tech"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "hidden",
+				"id" : "to",
+				"name" : "to",
+				"value" : "brian.whaley@pixelated.tech"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "hidden",
+				"id" : "subject",
+				"name" : "subject",
+				"value" : "Palmetto Epoxy Review Submit"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "firstname",
+				"name" : "firstname",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "First Name (required) : ",
+				"tooltip" : "Please type in your First Name"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "lastname",
+				"name" : "lastname",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Last Name (required) : ",
+				"tooltip" : "Please type in your Last Name"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "email",
+				"id" : "email",
+				"name" : "email",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Email Address (required) : ",
+				"validate" : "isValidEmailAddress",
+				"tooltip" : "Please type in your Email Address"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "date",
+				"id" : "installdate",
+				"name" : "installdate",
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Date of Installation (required) : ",
+				"tooltip" : "Please select the installation date"
+			}
+		},
+		{
+			"component" : "FormTextarea",
+			"props" : {
+				"id" : "review",
+				"name" : "review",
+				"rows" : "5",
+				"cols" : "30",
+				"defaultValue" : null,
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Review (required) : ",
+				"tooltip": "Please enter the details of your review"
+			}
+		},
+		{
+			"component" : "FormButton",
+			"props" : {
+				"type" : "submit",
+				"id" : "submit",
+				"text" : "Submit Review"
+			}
+		}
+	]
+}

@@ -1,0 +1,75 @@
+{
+	"fields" : [
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "firstname",
+				"name" : "firstname",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "First Name (required) : ",
+				"tooltip" : "Please type in your First Name"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "lastname",
+				"name" : "lastname",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "Last Name (required) : ",
+				"tooltip" : "Please type in your Last Name"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "email",
+				"id" : "email",
+				"name" : "email",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "Email Address (required) : ",
+				"validate" : "isValidEmailAddress",
+				"tooltip" : "Please type in your Email Address"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "subject",
+				"id" : "subject",
+				"name" : "subject",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "Subject (required) : ",
+				"tooltip" : "Please type in the subject of your request"
+			}
+		},
+		{
+			"component" : "FormTextarea",
+			"props" : {
+				"id" : "message",
+				"name" : "message",
+				"rows" : "5",
+				"cols" : "30",
+				"defaultValue" : null,
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "Message (required) : ",
+				"tooltip": "Please enter the details of your request"
+			}
+		}
+	]
+}

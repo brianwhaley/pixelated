@@ -3,25 +3,30 @@
 
 import React, { useState, useEffect } from "react";
 import ContactCTA from "@/app/elements/contact";
+import PageTitle from "@/app/elements/pageTitle";
 import { Callout } from "@brianwhaley/pixelated-components";
-import { CarouselSimple } from "@brianwhaley/pixelated-components";
+import { Carousel } from "@brianwhaley/pixelated-components";
+import type { CarouselCard } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
 
-	const [ carouselCards , setCarouselCards ] = useState<{ image: any }[]>([]);
+	const [ carouselCards , setCarouselCards ] = useState<CarouselCard[]>([]);
 
 	useEffect(() => {
 		async function getCarouselCards() {
 			const contentType = "reviews"; 
 			const typeCards = await getContentfulEntriesByType(contentType); 
-			const reviewCards = typeCards.items.map(function (card: any) {
-				if(card.sys.contentType.sys.id == contentType) {
-					return {
-						headerText: card.fields.description,
-						bodyText: card.fields.reviewer,
-					};
-				}
+			const items = typeCards.items.filter((card: any) => card.sys.contentType.sys.id === contentType);
+			const cardLength = items.length;
+			const reviewCards = items.map(function (card: any, index: number) {
+				return {
+					headerText: card.fields.description,
+					bodyText: card.fields.reviewer,
+					index: index,
+					cardIndex: index,
+					cardLength: cardLength,
+				};
 			});
 			setCarouselCards(reviewCards);
 		}
@@ -30,15 +35,15 @@ export default function Home() {
 		
 	return (
 		<>
-			<h1>Palmetto Epoxy</h1>
+			<PageTitle title="Palmetto Epoxy" />
 
-      		<section className="section-bwchip" id="homeCTA-section">
+      		<section id="homeCTA-section">
 				<div className="section-container">
 					<div className="homeCTA">
-						<div className="textOutline">
-					Elevate your space with a solution 
+						<div className="">
+							Elevate your space with a solution 
 							<br />
-					that&#39;s as practical as it is visually stunning.
+							that&#39;s as practical as it is visually stunning.
 							<br />
 							<button type="button" onClick={() => { window.location.href = '/contact'; }}>Schedule an Estimate</button>
 						</div>
@@ -80,7 +85,21 @@ export default function Home() {
 
 			<section id="home-reviews-section">
 				<div className="section-container">
-					<CarouselSimple cards={carouselCards} />
+					<Carousel cards={carouselCards} />
+				</div>
+			</section>
+
+			<section  className="section-pavers textOutline" id="reviewCTA-section">
+				<div className="section-container">
+					<div className="homeCTA">
+						<div className="">
+							Voice your opinion and  
+							<br />
+							share your experience with us.
+							<br />
+							<button type="button" onClick={() => { window.location.href = '/submitreview'; }}>Submit your Review</button>
+						</div>
+					</div>
 				</div>
 			</section>
 

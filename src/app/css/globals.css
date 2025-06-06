@@ -195,27 +195,27 @@ footer {
 
 /* ===== HOME PAGE ===== */
 
-#homeCTA-section {
-    .homeCTA {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-size: 1.5em;
-        margin-bottom: 30px;
-    }
-    .homeCTA button {
-        border: 1px solid #999;
-        /* .rounded; */
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        font-size: 0.8em;
-        font-weight: bold;
-        width: 300px;
-        margin: 10px;
-        padding: 10px;
-    }
+#homeCTA-section .homeCTA ,
+#reviewCTA-section .homeCTA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+#homeCTA-section .homeCTA button ,
+#reviewCTA-section .homeCTA button {
+    border: 1px solid #999;
+    /* .rounded; */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
 }
 
 #home-callouts-section {
@@ -240,11 +240,21 @@ footer {
 }
 
 
+
+/* ===== PROJECTS PAGE ===== */
+
+#projects-section {
+    .carouselContainer {
+        border: none
+    }
+}
+
 /* ===== PROJECT PAGE ===== */
 
 #project-carousel-section {
     .carouselContainer {
         height: 450px;
+        border: none
     }
     .carouselCardsContainer {
         height: 400px;
