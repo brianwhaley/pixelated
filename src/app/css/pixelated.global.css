@@ -390,13 +390,35 @@ input.gsc-input {
 
 
 /* ========================================
-===========  TWITTER WIDGETS    ===========
+===========  CUSTOM CAROUSEL    ===========
 ======================================== */
 
-#twitter-widget-0,
-#twitter-widget-1 {
-	width: 100% !important;
+.carouselCardImage {
+    height: 550px !important;
+	margin-top: 5px !important;
 }
 
-/* check JS for css changes too */
+.carouselCardHeader { 
+    display: none;
+}
 
+.carouselCardSubHeader { 
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    
+}
+.carouselCardSubHeader h4 {
+    text-align: center;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    color: white;
+    text-shadow: -1px 1px 1px black, 
+        1px 1px 1px black, 
+        1px -1px 1px black, 
+        -1px -1px 1px black, 
+        -1px 1px 5px black, 
+        1px 1px 5px black, 
+        1px -1px 5px black, 
+        -1px -1px 5px black;
+}
