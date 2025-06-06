@@ -68,6 +68,20 @@
         -1px -1px 5px black;
 }
 
+@media screen and (max-width: 480px) {
+    #page-hero .carouselCardHeader { 
+        width: 100%;
+    }
+    #page-hero .carouselCardHeader h3 {
+        text-align: center;
+    }
+    #page-hero .carouselCardSubHeader { 
+        width: 0%;
+        display: none
+        
+    }
+} 
+
 #page-hero .carouselCardBody { --do-nothing: true;}
 
 #page-hero .carouselButtons { 

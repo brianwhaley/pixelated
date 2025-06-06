@@ -146,9 +146,10 @@ section.section-alt {
 
 @media screen and (max-width: 480px) {
     #page-hero {
-		height: 125px;
+		--do-nothing: true;
+		/* height: 125px; */
     }
-}
+} 
 
 #page-hero-overlay {
 	background: rgba(240,240,240,0.5);

@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "css fix for carousel hero details"
+git commit -m "another css fix for carousel hero details, carousel galelry wrapper optimization "
 git push pixelated dev --tags
 git push pixelated dev:main
 
