@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "component library version bump"
+git commit -m "update carousels to new component"
 git push pixelated dev --tags
 git push pixelated dev:main
 
