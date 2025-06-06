@@ -20,7 +20,7 @@ form button {
 span.displayVertical:last-child,
 span.displayVertical:last-of-type {
     display:block;
-	margin: 1px 5px 20px 20px !important;
+	margin: 1px 5px 20px 10px !important;
 }
 
 span.displayVertical {

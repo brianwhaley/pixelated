@@ -12,6 +12,7 @@ export * from './components/cms/pixelated.contentful.js';
 export * from './components/ebay/pixelated.ebay.js';
 /* export * from './components/ecommerce/pixelated.ecommerce.js'; */
 export * from './components/form/pixelated.form.js';
+export * from './components/form/pixelated.form.submit.js';
 export * from './components/form/pixelated.formcomponents.js';
 export * from './components/form/pixelated.formvalidations.js';
 export * from './components/google/pixelated.googleanalytics.js';
