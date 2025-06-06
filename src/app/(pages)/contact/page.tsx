@@ -3,7 +3,7 @@
 import React from "react";
 import PageTitle from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
-import formData from "@/app/data/contactForm.json";
+import formData from "@/app/data/contactform.json";
 
 // const calendarID = "palmettoepoxy%40gmail.com"
 const calendarID = "1b783753ce78e200e6e505694b0610c48c8b5ca756f4d71986c4f7de97caaa13%40group.calendar.google.com";
