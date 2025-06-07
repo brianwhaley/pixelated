@@ -9,6 +9,8 @@ import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulIma
 import { setClientMetadata } from '@/app/components/pixelated.metadata';
 import { Carousel } from "@brianwhaley/pixelated-components";
 
+const imageOrigin = "https://images.palmetto-epoxy.com";
+
 /* type Params = {
   params: {
     project: string;
@@ -50,6 +52,9 @@ export default function Project({params}: { params: Promise<{ project: string }>
 			});
 			setCard(card);
 			const images = await getContentfulImagesFromEntries(card.fields.carouselImages, cards.includes.Asset);
+			/* for (const img of images) {
+				img.image = img.image.replace("//images.ctfassets.net", imageOrigin);
+			} */
 			setCarouselCards(images);
 		}
 		getCarouselCards(project);

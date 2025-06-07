@@ -53,6 +53,15 @@ h1 {
     /* border: none !important; */
 }
 
+.carouselCard a {
+    color: black;
+}
+
+a:has(.carouselCardBody):hover {
+    text-decoration: none;
+    color: #369;
+}
+
 
 /* ===== SECTION STYLES ===== */
 

@@ -1,8 +1,8 @@
 
 import { getAllRoutes, getAllImages } from "./pixelated.metadata";
-import { getContentfulFieldValues } from "./pixelated.contentful";
+import { getContentfulFieldValues, getContentfulAssetURLs } from "./pixelated.contentful";
 // import { getContentfulFieldValues } from "@brianwhaley/pixelated-components";
-import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";
+import type { SitemapEntry } from "@brianwhaley/pixelated-components";
 // import myRoutes from "../../data/routes.json";
 
 /* 
@@ -126,6 +126,24 @@ export async function createContentfulURLs(origin: string){
 			priority: 1.0,
 		});			
 	}
+	return sitemap;
+}
+
+
+
+export async function createContentfulAssetURLs(origin: string){
+	const sitemap = [];
+	// const origin = await getOrigin();
+	const images = await getContentfulAssetURLs();
+	const newImages = images.map((image)=>{
+		const oldImage = image.image;
+		const newImage = oldImage.replace("//images.ctfassets.net", origin);
+		return (newImage);
+	});
+	sitemap.push({
+		url: `${origin}/images`, // Provide a valid URL for the images
+		images: newImages,
+	});
 	return sitemap;
 }
 

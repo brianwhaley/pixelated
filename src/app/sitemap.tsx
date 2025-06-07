@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createImageURLs, createContentfulURLs } from "@/app/components/pixelated.sitemap";
+import { createPageURLs, createImageURLs, createContentfulURLs, createContentfulAssetURLs } from "@/app/components/pixelated.sitemap";
 
 import myRoutes from "@/app/data/routes.json";
 
@@ -18,6 +18,7 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		...(await createPageURLs(myRoutes.routes, origin)),
 		...(await createContentfulURLs(origin)),
 		...(await createImageURLs(origin)),
+		// ...(await createContentfulAssetURLs("https://images.palmetto-epoxy.com")),
 	];
 	return sitemap;
 }

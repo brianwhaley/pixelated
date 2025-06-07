@@ -26,10 +26,13 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "fixes for mboile - css, form input sizes, etc."
+git commit -m "carousel anchor target fix, first attempot at images subdomain"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
 
 ## ===== ARTWORK =====
 https://www.freepik.com/free-vector/rainbow-coloured-watercolour-splatter-design-0307_58525796.htm#fromView=keyword&page=1&position=1&uuid=368642c7-d47f-457a-876f-a35218120abf&query=Watercolor+Splatter
+
+## ===== SET UP GODADDY TO POINT TO AMPLIFY =====
+https://www.google.com/search?q=how+to+set+up+godaddy+nameservers+to+point+to+amplify&oq=how+to+set+up+godaddy+nameservers+to+point+to+amplify+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCTEyNjI5ajBqMagCALACAA&sourceid=chrome&ie=UTF-8

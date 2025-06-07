@@ -5,9 +5,10 @@ import ContactCTA from "@/app/elements/contact";
 import PageTitle from "@/app/elements/pageTitle";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCard } from "@brianwhaley/pixelated-components";
-
 import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import "@/app/css/globals.css";
+
+const imageOrigin = "https://images.palmetto-epoxy.com";
 
 export default function Projects() {
 
@@ -35,6 +36,9 @@ export default function Projects() {
 					});
 				}
 			}
+			/* for (const img of reviewCards) {
+				img.image = img.image.replace("//images.ctfassets.net", imageOrigin);
+			} */
 			setCarouselCards(reviewCards);
 		}
 		getCarouselCards();
