@@ -1,7 +1,8 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createImageURLs, createContentfulURLs, createContentfulAssetURLs } from "@/app/components/pixelated.sitemap";
+import { createPageURLs, createImageURLs, createContentfulURLs } from "@/app/components/pixelated.sitemap";
+// , createContentfulAssetURLs
 
 import myRoutes from "@/app/data/routes.json";
 
