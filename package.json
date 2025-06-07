@@ -1,6 +1,6 @@
 {
   "name": "palmetto-epoxy",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev --experimental-https",
@@ -13,7 +13,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^2.0.1",
+    "@brianwhaley/pixelated-components": "^2.0.2",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
