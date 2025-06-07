@@ -1,14 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import PageTitle from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
+import { emailFormData } from "@brianwhaley/pixelated-components";
 import formData from "@/app/data/contactform.json";
 
 // const calendarID = "palmettoepoxy%40gmail.com"
 const calendarID = "1b783753ce78e200e6e505694b0610c48c8b5ca756f4d71986c4f7de97caaa13%40group.calendar.google.com";
 
 export default function Contact() {
+
+	function postSubmit(e: Event) {
+		alert("Thank you for contacting us! We will get back to you as soon as we can.");
+		const myForm = e.target as HTMLFormElement;
+		myForm.reset();
+	}
+	
+	useEffect(() => {
+		const form = document.getElementById("newRequestForm") as HTMLFormElement;
+		if (form) {
+			const submitbutton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+			const submitDiv = submitbutton.parentElement as HTMLDivElement;
+			if(submitDiv) {
+				submitDiv.style.textAlign = "center";
+				submitDiv.style.margin = "20px auto";
+			}
+		}
+	}, []);
+		
 	return (
 		<>
 			<PageTitle title="Contact Us" />
@@ -23,7 +43,12 @@ export default function Contact() {
 								Epoxy Flooring! 
 								<br /><br /><br /><br />
 							</div>
-							<FormEngine name="newrequest" id="newRequestForm" formData={formData} />
+							<FormEngine 
+								name="newrequest" 
+								id="newRequestForm" 
+								formData={formData} 
+								onSubmitHandler={(e: Event) => emailFormData(e, postSubmit)} 
+							/>
 						</div>
 						<div className="grid-s7-e6">
 							<iframe src={`https://calendar.google.com/calendar/embed?src=${calendarID}&mode=WEEK`} style={{ border: 0 }} width="100%" height="600px" frameBorder="0" scrolling="no"></iframe>

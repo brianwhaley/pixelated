@@ -3,6 +3,30 @@
 		{
 			"component" : "FormInput",
 			"props" : {
+				"type" : "hidden",
+				"id" : "from",
+				"name" : "from",
+				"value" : "palmettoepoxy@gmail.com"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "hidden",
+				"id" : "to",
+				"name" : "to",
+				"value" : "palmettoepoxy@gmail.com"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "hidden",
+				"id" : "subject",
+				"name" : "subject",
+				"value" : "Palmetto Epoxy Contact Us Submit"
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
 				"type" : "text",
 				"id" : "firstname",
 				"name" : "firstname",
@@ -69,6 +93,14 @@
 				"required" : "required",
 				"label" : "Message (required) : ",
 				"tooltip": "Please enter the details of your request"
+			}
+		},
+		{
+			"component" : "FormButton",
+			"props" : {
+				"type" : "submit",
+				"id" : "submit",
+				"text" : "Submit Request"
 			}
 		}
 	]

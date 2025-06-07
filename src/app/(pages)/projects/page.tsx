@@ -33,6 +33,7 @@ export default function Projects() {
 						headerText: card.fields.title,
 						bodyText: card.fields.description,
 						link: card.fields.link,
+						linkTarget: "_self"
 					});
 				}
 			}

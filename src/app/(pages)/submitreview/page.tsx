@@ -20,7 +20,6 @@ export default function SubmitReview() {
 			const installdate = form.querySelector('input#installdate[type="date"]') as HTMLInputElement;
 			const submitbutton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 			const submitDiv = submitbutton.parentElement as HTMLDivElement;
-			console.log("submitDiv", submitDiv);
 			if(submitDiv) {
 				submitDiv.style.textAlign = "center";
 				submitDiv.style.margin = "20px auto";

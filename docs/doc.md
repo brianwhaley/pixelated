@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "carousel anchor target fix, first attempot at images subdomain"
+git commit -m "add submit button to contact us form"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
