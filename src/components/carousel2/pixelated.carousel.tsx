@@ -10,6 +10,7 @@ export type CarouselCard = {
 	cardIndex: number,
 	cardLength: number,
 	link?: string,
+	linkTarget?: string,
 	image: string,
 	imageAlt?: string,
 	imgFit?: 'contain' | 'cover' | 'fill',
@@ -92,6 +93,7 @@ export function Carousel(
 							cardIndex={cardIndex}
 							cardLength={props.cards.length}
 							link={card.link}
+							linkTarget={card.linkTarget || '_self'}
 							image={card.image}
 							imageAlt={card.imageAlt}
 							imgFit={props.imgFit ? props.imgFit : 'fill'}	
@@ -159,7 +161,7 @@ function CarouselCard( props: CarouselCard ) {
 	return (
 		<div draggable='true' id={'c-' + props.index} className="carouselCardWrapper" style={styles}>
 			<div draggable='false' className="carouselCard">
-				{ (props.link) ? <a draggable='false' href={props.link} target="_blank">{ cardBody }</a> : cardBody }
+				{ (props.link) ? <a draggable='false' href={props.link} target={props.linkTarget}>{ cardBody }</a> : cardBody }
 			</div>
 		</div>
 		
