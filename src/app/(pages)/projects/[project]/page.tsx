@@ -9,7 +9,7 @@ import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulIma
 import { setClientMetadata } from '@/app/components/pixelated.metadata';
 import { Carousel } from "@brianwhaley/pixelated-components";
 
-const imageOrigin = "https://images.palmetto-epoxy.com";
+// const imageOrigin = "https://images.palmetto-epoxy.com";
 
 /* type Params = {
   params: {

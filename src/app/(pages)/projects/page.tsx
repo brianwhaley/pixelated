@@ -8,7 +8,7 @@ import type { CarouselCard } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import "@/app/css/globals.css";
 
-const imageOrigin = "https://images.palmetto-epoxy.com";
+// const imageOrigin = "https://images.palmetto-epoxy.com";
 
 export default function Projects() {
 

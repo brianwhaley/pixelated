@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React from "react";
@@ -8,14 +9,14 @@ const allRoutes = myRoutes.routes;
 const menuItems = allRoutes
 	.filter((thisRoute) => thisRoute.name)
 	.map((thisRoute) => (
-		thisRoute.routes
-			? { [thisRoute.name]: thisRoute.routes.map((subRoute) => ({ [subRoute.name]: subRoute.path })) }
+		"routes" in thisRoute && Array.isArray((thisRoute as any).routes)
+			? { [thisRoute.name]: (thisRoute as any).routes.map((subRoute: any) => ({ [subRoute.name]: subRoute.path })) }
 			: { [thisRoute.name]: thisRoute.path }
 	)).reduce((obj, item) => {
 		if( typeof Object.values(item)[0] == "object") {
 		// Nested Object
 			const subitems = Object.values(item)[0];
-			const newSubitems = subitems.reduce((obj2, item2) => {
+			const newSubitems = subitems.reduce((obj2: any , item2: any) => {
 				Object.assign(obj2, item2);
 				return obj2;
 			});
