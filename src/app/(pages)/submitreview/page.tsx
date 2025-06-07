@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import PageTitle from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
-import { emailFormData } from "@/app/components/pixelated.form.submit";
+import { emailFormData } from "@brianwhaley/pixelated-components";
 import formData from "@/app/data/submitreviewform.json";
 
 export default function SubmitReview() {

@@ -6,7 +6,7 @@
 				"type" : "hidden",
 				"id" : "from",
 				"name" : "from",
-				"value" : "brian.whaley@pixelated.tech"
+				"value" : "palmettoepoxy@gmail.com"
 			}
 		},{
 			"component" : "FormInput",
@@ -14,7 +14,7 @@
 				"type" : "hidden",
 				"id" : "to",
 				"name" : "to",
-				"value" : "brian.whaley@pixelated.tech"
+				"value" : "palmettoepoxy@gmail.com"
 			}
 		},{
 			"component" : "FormInput",

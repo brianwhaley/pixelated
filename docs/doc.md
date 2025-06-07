@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "upgrade carousel component, review submit page, new page titles, added GA"
+git commit -m "fixes for mboile - css, form input sizes, etc."
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

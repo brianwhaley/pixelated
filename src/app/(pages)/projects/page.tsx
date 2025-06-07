@@ -46,7 +46,10 @@ export default function Projects() {
 			
 			<section className="" id="projects-section">
 				<div className="section-container">
-					<Carousel cards={carouselCards} imgFit='contain' />
+					<Carousel 
+						cards={carouselCards} 
+						draggable={true} 
+						imgFit='contain' />
 				</div>
 			</section>
             

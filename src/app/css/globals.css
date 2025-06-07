@@ -28,6 +28,11 @@ h1 {
     margin: auto 0;
 }
 
+@media screen and (max-width: 480px) {
+    .headerAddress {
+        text-align: center
+    }
+}
 
 .headerSocial {
     margin: auto 0;
@@ -189,6 +194,13 @@ footer {
 }
 
 
+@media screen and (max-width: 480px) {
+    label, input, textarea, select, form button {
+        font-size: 1.0em !important;
+    }
+}
+
+
 /* =================
    ===== PAGES ===== 
    ================= */
@@ -236,6 +248,14 @@ footer {
     .carouselCardBody {
         text-align: center;
         padding-top: 40px;
+    }
+    @media screen and (max-width: 480px) {
+        .carouselCardsContainer {
+            width: 90%;
+        }
+    }
+    .carouselCardHeader {
+        font-size: 1.2em;
     }
 }
 

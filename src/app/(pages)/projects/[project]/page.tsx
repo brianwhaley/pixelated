@@ -93,7 +93,8 @@ export default function Project({params}: { params: Promise<{ project: string }>
 									index: index,
 									cardIndex: index,
 									cardLength: carouselCards.length
-								}))}
+								}))} 
+								draggable={true}
 								imgFit='contain'
 							/>
 						</div>

@@ -51,7 +51,7 @@ export default function Home() {
 				</div>
 			</section>
 
-      	<section className="section-alt" id="home-callouts-section">
+      		<section className="section-alt" id="home-callouts-section">
 				<div className="section-container">
 					<div className="row-3col">
 						<div className="gridItem">
@@ -79,13 +79,15 @@ export default function Home() {
 								content='' />
 						</div>
 					</div>
-				
 				</div>
 			</section>
 
 			<section id="home-reviews-section">
 				<div className="section-container">
-					<Carousel cards={carouselCards} />
+					<Carousel 
+						cards={carouselCards} 
+						draggable={true}
+						imgFit='contain' />
 				</div>
 			</section>
 
