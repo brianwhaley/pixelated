@@ -10,9 +10,9 @@ import "@/app/css/globals.css";
 
 // const imageOrigin = "https://images.palmetto-epoxy.com";
 
-export default function Projects() {
+/* Carousel bug conflict with drag and click */
 
-	// Import the CarouselCard type from the package
+export default function Projects() {
 
 	const [ carouselCards , setCarouselCards ] = useState<CarouselCard[]>([]);
 	
@@ -53,7 +53,7 @@ export default function Projects() {
 				<div className="section-container">
 					<Carousel 
 						cards={carouselCards} 
-						draggable={true} 
+						draggable={false} 
 						imgFit='contain' />
 				</div>
 			</section>

@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "add submit button to contact us form"
+git commit -m "Carousel bug - conflict with drag and click, disabling drag on projects carousel"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
