@@ -71,14 +71,14 @@
 			"component" : "FormInput",
 			"props" : {
 				"type" : "subject",
-				"id" : "subject",
-				"name" : "subject",
+				"id" : "messagesubject",
+				"name" : "messagesubject",
 				"defaultValue" : null,
 				"size" : "40",
 				"display" : "vertical",
 				"required" : "required",
 				"label" : "Subject (required) : ",
-				"tooltip" : "Please type in the subject of your request"
+				"tooltip" : "Please type in the subject of your message"
 			}
 		},
 		{

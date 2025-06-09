@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { emailFormData } from "@brianwhaley/pixelated-components";
+import { Loading, ToggleLoading } from "@brianwhaley/pixelated-components";
+import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
+
 import formData from "@/app/data/contactform.json";
 
 // const calendarID = "palmettoepoxy%40gmail.com"
@@ -11,8 +14,21 @@ const calendarID = "1b783753ce78e200e6e505694b0610c48c8b5ca756f4d71986c4f7de97ca
 
 export default function Contact() {
 
+	const [modalContent, setModalContent] = useState<React.ReactNode>();
+	useEffect(() => {
+		const myContent = <div className="centered"><br /><br />Thank you for contacting us!<br />We will get back to you as soon as we can.<br /><br /><br /></div>;
+		setModalContent(myContent);
+	}, []);
+
+	function handleSubmit(e: Event) {
+		ToggleLoading({show: true});
+		emailFormData(e, postSubmit);
+	}
+
 	function postSubmit(e: Event) {
-		alert("Thank you for contacting us! We will get back to you as soon as we can.");
+		// alert("Thank you for contacting us! We will get back to you as soon as we can.");
+		handleModalOpen(e as MouseEvent);
+		ToggleLoading({show: false});
 		const myForm = e.target as HTMLFormElement;
 		myForm.reset();
 	}
@@ -47,7 +63,7 @@ export default function Contact() {
 								name="newrequest" 
 								id="newRequestForm" 
 								formData={formData} 
-								onSubmitHandler={(e: Event) => emailFormData(e, postSubmit)} 
+								onSubmitHandler={handleSubmit} 
 							/>
 						</div>
 						<div className="grid-s7-e6">
@@ -56,6 +72,8 @@ export default function Contact() {
 					</div>
 				</div>
 			</section>
+			<Loading />
+			<Modal modalContent={modalContent} />
 		</>
 	);
 }

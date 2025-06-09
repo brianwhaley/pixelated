@@ -1,19 +1,31 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { emailFormData } from "@brianwhaley/pixelated-components";
+import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
+import { Loading, ToggleLoading } from "@brianwhaley/pixelated-components";
 import formData from "@/app/data/submitreviewform.json";
 
 export default function SubmitReview() {
 
+	function handleSubmit(e: Event) {
+		ToggleLoading({show: true});
+		emailFormData(e, postSubmit);
+	}
+
 	function postSubmit(e: Event) {
-		alert("Thank you for your review! We appreciate your feedback.");
+		// alert("Thank you for your review! We appreciate your feedback.");
+		handleModalOpen(e as MouseEvent);
+		ToggleLoading({show: false});
 		const myForm = e.target as HTMLFormElement;
 		myForm.reset();
 	}
 
+	const myContent = <div className="centered"><br /><br />Thank you for your review! <br />We appreciate your feedback.<br /><br /><br /></div>;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [modalContent, setModalContent] = useState<React.ReactNode>(myContent);
 	useEffect(() => {
 		const form = document.getElementById("submitReviewForm") as HTMLFormElement;
 		if (form) {
@@ -29,6 +41,7 @@ export default function SubmitReview() {
 				installdate.dispatchEvent(new Event('change'));
 			}
 		}
+
 	}, []);
 
 	return (
@@ -48,12 +61,14 @@ export default function SubmitReview() {
 								name="submitreview" 
 								id="submitReviewForm" 
 								formData={formData} 
-								onSubmitHandler={(e: Event) => emailFormData(e, postSubmit)} 
+								onSubmitHandler={handleSubmit} 
 							/>
 						</div>
 					</div>
 				</div>
 			</section>
+			<Loading />
+			<Modal modalContent={modalContent} />
 		</>
 	);
 }
