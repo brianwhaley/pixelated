@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import { DragHandler } from './pixelated.carousel.drag';
 import './pixelated.carousel.css';
 
-export type CarouselCard = {
+/* 
+TODO: #20 Carousel bug conflict with drag and click
+*/
+
+export type CarouselCardType = {
 	index: number,
 	cardIndex: number,
 	cardLength: number,
@@ -26,13 +30,13 @@ function capitalize(str: string) {
 /* ========== CAROUSEL ========== */
 export function Carousel(
 	props: { 
-		cards: CarouselCard[],
+		cards: CarouselCardType[],
 		draggable?: boolean,
 		imgFit?: 'contain' | 'cover' | 'fill' ,
 	}) {
 
 	const debug = false;
-	let timer = useRef<NodeJS.Timeout | null>(null);
+	let timer = useRef<ReturnType<typeof setTimeout>>(null);
 	const [ cardIndex, setcardIndex ] = useState(0);
 
 	function startTimer() {
@@ -86,7 +90,7 @@ export function Carousel(
 		return (
 			<div className="carouselContainer">
 				<div className="carouselCardsContainer">
-					{ props.cards.map((card: CarouselCard, i: number) => (
+					{ props.cards.map((card: CarouselCardType, i: number) => (
 						<CarouselCard
 							key={i}
 							index={i}
@@ -135,7 +139,7 @@ Carousel.propTypes = {
 
 
 /* ========== CAROUSEL CARD ========== */
-function CarouselCard( props: CarouselCard ) {
+function CarouselCard( props: CarouselCardType ) {
 	const myZindex = props.cardLength - props.index;
 	const styles: React.CSSProperties = {
 		zIndex: myZindex

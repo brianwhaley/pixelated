@@ -15,7 +15,7 @@ export function MenuSimple(props: { menuItems: { [x: string]: any; }; }) {
 		}
 		return myItems;
 	}
-  	if (typeof document !== 'undefined') { const menu = document.getElementById('menu'); };
+  	// if (typeof document !== 'undefined') { const menu = document.getElementById('menu'); };
 	return (
 		<div className="menuWrapper">
 			<hr />

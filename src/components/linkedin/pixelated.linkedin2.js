@@ -53,6 +53,7 @@ export function LinkedInAuthRecommendations() {
 					const data = await response.json();
 					setAccessToken(data.access_token);
 				} catch (err) {
+					console.log(err);
 					setError('Failed to get access token');
 				}
 			};
@@ -75,6 +76,7 @@ export function LinkedInAuthRecommendations() {
 				const data = await response.json();
 				setRecommendations(data.elements || []);
 			} catch (err) {
+				console.log(err);
 				setError('Failed to fetch recommendations');
 			}
 		};

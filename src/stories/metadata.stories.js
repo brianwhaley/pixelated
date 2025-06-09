@@ -12,7 +12,6 @@ export default {
 
 // Parent Component
 const PageMetadata = () => {
-	const myMetaData = getRouteByKey(myRoutes, 'name', 'Home');
 	return (
 		<>
 			{JSON.stringify(getRouteByKey(myRoutes, 'name', 'Home'))}

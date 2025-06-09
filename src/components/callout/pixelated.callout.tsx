@@ -11,9 +11,10 @@ function validateShape(thisShape: string | undefined) {
 	}
 }
 
-interface GenericCallout {
+interface CalloutType {
 	url?: string,
 	img: string,
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 	imgclick?: Function,
 	title: string,
 	subtitle?: string,
@@ -22,14 +23,14 @@ interface GenericCallout {
 	shape?: string,
 	alt?: string,
 }
-interface GenericCalloutHeader {
+interface CalloutHeaderType {
 	title: string,
 	url?: string
 }
 
 /* ========== CALLOUT ========== */
 
-export function Callout(props: GenericCallout) {
+export function Callout(props: CalloutType) {
 	const myShape = validateShape(props.shape); 
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -151,7 +152,7 @@ Callout.propTypes = {
 /* ========== CALLOUT HEADER ========== */
 
 
-export function CalloutHeader(props: GenericCalloutHeader) {
+export function CalloutHeader(props: CalloutHeaderType) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<div className="calloutHeader">
@@ -171,7 +172,7 @@ CalloutHeader.propTypes = {
 /* ========== CALLOUT SMALL ========== */
 
 
-export function CalloutSmall(props: GenericCallout) {
+export function CalloutSmall(props: CalloutType) {
 	const myShape = validateShape(props.shape); 
 	return (
 		<div>
@@ -204,7 +205,7 @@ CalloutSmall.propTypes = {
 /* ========== CALLOUT HEADER SMALL ========== */
 
 
-export function CalloutHeaderSmall(props: GenericCalloutHeader) {
+export function CalloutHeaderSmall(props: CalloutHeaderType) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<div className="calloutHeader">

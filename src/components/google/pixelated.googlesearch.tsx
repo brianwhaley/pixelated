@@ -4,6 +4,7 @@ import React from "react";
 
 export function Search(props: { id: string }) {
 	if(typeof document !== 'undefined'){
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const gsearch = (function () {
 			const gcse = document.createElement("script");
 			gcse.type = "text/javascript";

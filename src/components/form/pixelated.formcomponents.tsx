@@ -1,5 +1,5 @@
 
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
@@ -129,8 +129,8 @@ export function FormInput(props: { id: string | undefined; display: string; type
 			{ props.display == "vertical" ? formValidate : "" }
 			{ props.type != "checkbox" ? <input {...inputProps} /> : "" }
 			{ props.list && typeof props.list === "string" && props.list in FV
-					? <FormDataList id={props.list} items={FV[props.list as keyof typeof FV]} />
-					: ""
+				? <FormDataList id={props.list} items={FV[props.list as keyof typeof FV]} />
+				: ""
 			}
 			{ props.display != "vertical" ? formValidate : "" }
 		</div>

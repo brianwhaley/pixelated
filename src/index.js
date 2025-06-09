@@ -18,6 +18,7 @@ export * from './components/form/pixelated.formvalidations.js';
 export * from './components/google/pixelated.googleanalytics.js';
 export * from './components/google/pixelated.googlesearch.js';
 /* export * from './components/linkedin/pixelated.linkedin.js'; */
+export * from './components/loading/pixelated.loading.js';
 export * from './components/markdown/pixelated.markdown.js';
 export * from './components/menu/pixelated.menu-accordion.js';
 /* export * from './components/menu/pixelated.menu-expando.js '; */

@@ -16,6 +16,10 @@ form button {
     border-radius: 5px;
 }
 
+.textarea {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
 .displayVertical,
 span.displayVertical:last-child,
 span.displayVertical:last-of-type {

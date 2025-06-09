@@ -9,24 +9,25 @@ declare global {
 }
 
 export function Analytics(props: { id: string }) {
-    if(typeof document !== 'undefined'){
-        const ganalytics = (function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(...args: any[]) { window.dataLayer.push(args); }
+	if(typeof document !== 'undefined'){
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const ganalytics = (function () {
+			window.dataLayer = window.dataLayer || [];
+			function gtag(...args: any[]) { window.dataLayer.push(args); }
 	        gtag("js", new Date());
 	        gtag("config", props.id);
 
-            const ga = document.createElement("script");
-            ga.type = "text/javascript";
-            ga.async = true;
-            ga.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//www.googletagmanager.com/gtag/js?id=" + props.id;
-            const s = document.getElementsByTagName("script")[0];
-            s.parentNode?.insertBefore(ga, s);
-        })();
-    }
-    return (
-        <div className="ga" suppressHydrationWarning />
-    );
+			const ga = document.createElement("script");
+			ga.type = "text/javascript";
+			ga.async = true;
+			ga.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//www.googletagmanager.com/gtag/js?id=" + props.id;
+			const s = document.getElementsByTagName("script")[0];
+			s.parentNode?.insertBefore(ga, s);
+		})();
+	}
+	return (
+		<div className="ga" suppressHydrationWarning />
+	);
 }
 
 /* 

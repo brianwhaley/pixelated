@@ -37,7 +37,7 @@ async function getFlickrCards() {
 		delete obj.link;
 		delete obj.bodyText;
 		return obj;
-		});
+	});
 	return myScrubbedFlickrCards;
 }
 

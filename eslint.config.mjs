@@ -1,39 +1,59 @@
-import react from "eslint-plugin-react"; 
 import globals from "globals";
-import json from "@eslint/json";
+import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import reactPlugin from 'eslint-plugin-react';
+// import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
 	{
 		files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
-		languageOptions:{
+		languageOptions: {
+			parser: tsParser,
 			parserOptions: {
-				ecmaFeatures: {
-					jsx: true,
-				},
+				project: './tsconfig.json',
 			},
-			globals:{
+			globals: {
 				...globals.browser,
+				...globals.node,
 			},
 		},
 		plugins: {
-			react,
+			'@typescript-eslint': tsPlugin,
+			react: reactPlugin,
+			// 'react-hooks': reactHooksPlugin,
+			import: importPlugin,
 		},
 		rules: {
+			...js.configs.recommended.rules,
+          	...tsPlugin.configs.recommended.rules,
+          	...reactPlugin.configs.recommended.rules,
+          	// ...reactHooksPlugin.configs.recommended.rules,
 			"indent": ["error", "tab"],
 			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
-			"semi": ["error", "always"]
+			"semi": ["error", "always"],
+          	// '@typescript-eslint/explicit-function-return-type': 'off',
+          	'@typescript-eslint/no-explicit-any': 'off',
+
+		},
+		settings: {
+			react: {
+				version: 'detect',
+			},
 		},
 	},
-	{
-		files: ["**/*.json"],
-		language: "json/json",
-		plugins: {
-			json,
-		},
-		rules: {
-			'indent': ['error', 'tab'],
-			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
-			"json/no-duplicate-keys": "error",
-		},
-	},
+	{ 
+		ignores: [
+			".storybook/",
+			"dist/", 
+			"node_modules/", 
+			"/*", 
+			"!/src",
+			"src/stories/",
+			"src/tests/",
+			"eslint.config.mjs",
+			"webpack.config.js",
+		],
+	}
 ];

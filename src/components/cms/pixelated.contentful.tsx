@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 const base_url = "https://cdn.contentful.com";
 const space_id = "0b82pebh837v";

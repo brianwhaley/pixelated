@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.menu-expando.css';
 
@@ -14,7 +14,7 @@ Not enough css control for anomation.
 
 /* ========== MENU ========== */
 export function MenuExpando(props) {
-	const debug = false;
+	// const debug = false;
 
 	function generateMenuItems() {
 		const myItems = [];
@@ -53,14 +53,14 @@ MenuExpandoItem.propTypes = {
 
 
 /* ========== MENU BUTTON ========== */
-export function MenuExpandoButton(props) {
+export function MenuExpandoButton() {
 
 	function handleMenuExpandoButtonClick(event){
 		const debug = false; 
 		if (debug) console.log("MenuExpandoButton clicked");
 		event.preventDefault();
 		event.stopPropagation();
-		const button = document.getElementById('menuExpandoButton');
+		// const button = document.getElementById('menuExpandoButton');
 		const details = document.getElementById('menuExpandoWrapper');
 		details.open = !details.open;
 	}

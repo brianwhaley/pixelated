@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "anchor target fix for carousel"
+git commit -m "added loading spinner component and handler, fixed eslint"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

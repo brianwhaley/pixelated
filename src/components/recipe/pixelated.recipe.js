@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.recipe.css';
 
@@ -13,7 +13,7 @@ export function RecipeBook(props) {
 		recipeCategories: PropTypes.array.isRequired
 	};
 
-	const [ recipeElems, setRecipeElems ] = useState( generateMyElems() );
+	const [ recipeElems ] = useState( generateMyElems() );
 	const [ outputElems, setOutputElems ] = useState(  ); 
 	const [ showOnlyCat, setShowOnlyCat ] = useState('');
 	const [ showOnlyRecipe, setShowOnlyRecipe ] = useState(''); 

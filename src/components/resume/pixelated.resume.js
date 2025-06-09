@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Fragment } from "react";
 import { format } from "date-fns";
 import "./pixelated.resume.css";
@@ -8,10 +10,10 @@ function isValidDate(dateString) {
 	return !isNaN(date.getTime());
 }
 
-function isStr(str) {
+/* function isStr(str) {
 	const myStr = String(str).trim();
 	return myStr != null && myStr !== "" && myStr.length > 0 && typeof myStr !== 'undefined';
-}
+} */
 
 // type IObj = { [key: string]: any }
 
@@ -101,7 +103,7 @@ export function ResumeContact(props) {
 		<Fragment>
 			<h2>{ props.title }</h2>
 			<ul>
-				<li><span className="p-email"><a href={`mailto:${myContact?.properties.email[0]}`} target="_blank" rel="noopener" >{myContact?.properties.email[0]}</a></span></li>
+				<li><span className="p-email"><a href={`mailto:${myContact?.properties.email[0]}`} target="_blank" rel="noopener noreferrer" >{myContact?.properties.email[0]}</a></span></li>
 				<li><span className="p-street-address">{myContact?.properties.adr[0].properties["street-address"]}, </span>
 					<span className="p-locality">{myContact?.properties.adr[0].properties.locality}, </span>
 					<span className="p-region">{myContact?.properties.adr[0].properties.region} </span>
@@ -142,7 +144,7 @@ export function ResumeEvents(props) {
 			<span className="p-org">{myLocation.org}</span>	
 			{ (myLocation.locality[0]) ? <span className="p-locality">, {myLocation.locality[0]}</span> : null }
 			{ (myLocation.region[0]) ? <span className="p-region">, {myLocation.region[0]} </span> : null }
-			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank"><img src="/images/icons/link.png" className='u-url-icon' /></a> : null }
+			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank" rel="noreferrer"><img src="/images/icons/link.png" className='u-url-icon' /></a> : null }
 		</li>;
 		// ADD TO THE ARRAY
 		myElems.push(myElem);
@@ -254,7 +256,7 @@ export function ResumeReference (props) {
 	return (
 		<Fragment>
 			<div>
-				{(myReference?.url[0]) ? <a href={myReference?.url[0]} target="_blank" className="u-url" rel="noopener"><span className="p-name">{myReference?.name[0]}</span></a> : <span className="p-name">{myReference?.name[0]}</span>}, 
+				{(myReference?.url[0]) ? <a href={myReference?.url[0]} target="_blank" className="u-url" rel="noopener noreferrer"><span className="p-name">{myReference?.name[0]}</span></a> : <span className="p-name">{myReference?.name[0]}</span>}, 
 				{' '} <span className="p-locality">{myReference?.locality[0]}</span>, 
 				{' '} <span className="p-region">{myReference?.region[0]}</span>
 			</div>
@@ -263,7 +265,7 @@ export function ResumeReference (props) {
 				{' '} <span className="p-org">{myReference?.org[0]}</span>
 			</div>
 			<div>
-				email : <a href={`mailto:${myReference?.email[0]}`} target="_blank" rel="noopener" className="u-email" >{myReference?.email[0]}</a>
+				email : <a href={`mailto:${myReference?.email[0]}`} target="_blank" rel="noopener noreferrer" className="u-email" >{myReference?.email[0]}</a>
 				{' '} || phone : <a href={`tel:${myReference?.tel[0]}`} className="p-tel">{myReference?.tel[0]}</a>
 			</div>
 			<br /><hr /><br />
@@ -280,8 +282,8 @@ export function ResumeProjects(props) {
 		const myProjects = myEvent.properties.projects;
 		const projects = myProjects?.map((project, iKey) =>
 			<li key={"i" + iKey} className="p-project">
-				{ (project.properties.url[0]) ? <a href={project.properties.url[0]} target="_blank" className="u-url"><span className="p-name">{project.properties.name[0]}</span> </a> : <span className="p-name">{project.properties.name[0]}</span> }
-				{' '} { (project.properties.photo[0]) ? <a href={project.properties.photo[0]} target="_blank" className="u-photo"><img src='/images/icons/img.png' className='u-photo-icon' /></a> : null}
+				{ (project.properties.url[0]) ? <a href={project.properties.url[0]} target="_blank" className="u-url" rel="noreferrer"><span className="p-name">{project.properties.name[0]}</span> </a> : <span className="p-name">{project.properties.name[0]}</span> }
+				{' '} { (project.properties.photo[0]) ? <a href={project.properties.photo[0]} target="_blank" className="u-photo" rel="noreferrer"><img src='/images/icons/img.png' className='u-photo-icon' /></a> : null}
 				{ (project.properties.note[0]) ? <div className="p=note">{project.properties.note[0]}</div> : null}
 			</li>
 		);

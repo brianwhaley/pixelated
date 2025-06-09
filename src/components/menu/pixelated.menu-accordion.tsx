@@ -1,9 +1,8 @@
 'use client';
 
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.menu-accordion.css';
-import { set } from 'date-fns';
 
 declare global {
 	interface Window {
@@ -16,6 +15,7 @@ TODO #18 Menu Accordion Component : Add SubMenu Indicator
 */
 
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 	let myItems = [];
 	for (const itemKey in menuData) {
@@ -40,7 +40,7 @@ export function MenuAccordion(props: { menuItems: any; }) {
 	const left = useRef(-250);
 	function setLeft(leftVal: number) { left.current = leftVal; };
 	const documentRef = useRef<Document | null>(null);
-	const [ menuItems, setMenuItems ] = useState();
+	// const [ menuItems, setMenuItems ] = useState();
 	function moveMenu() {
 		if (debug) console.log("Moving Menu... Left: ", left);
 		const menu = documentRef.current ? documentRef.current.getElementById('accordionMenu') : null;

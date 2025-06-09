@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export function LinkedIn(props) {
+export function LinkedIn() {
 
 	const [data, setData] = useState(null);
 	const proxyURL = 'https://proxy.pixelated.tech/prod/proxy?url=';
@@ -46,9 +46,9 @@ export function LinkedIn(props) {
 
 			window.location.href = fullOAuthURL;
 
-			console.log(await oAuthPromise);
-			const response = await oAuthPromise.response;
-			console.log(await response);
+			// console.log(await oAuthPromise);
+			// const response = await oAuthPromise.response;
+			// console.log(await response);
 		} catch (err) {
 			console.log("Error : ", err);
 		}

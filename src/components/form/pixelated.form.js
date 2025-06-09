@@ -75,10 +75,10 @@ function mapTypeToComponent(myType){
 	return myComponent;
 }
 
-export function FormBuilder(props) {
+export function FormBuilder() {
 	const debug = false ;
-	const [ url, setURL ] = useState('');
-	const [ htmlPaste, setHtmlPaste ] = useState('');
+	// const [ url, setURL ] = useState('');
+	// const [ htmlPaste, setHtmlPaste ] = useState('');
 	const [ formData, setFormData ] = useState({});
 	const [ fieldFormData, setFieldFormData ] = useState({});
 
@@ -103,7 +103,7 @@ export function FormBuilder(props) {
 		return (field);
 	}
 
-	function getCircularReplacer() {
+	/* function getCircularReplacer() {
 		const seen = new WeakSet();
 		return (key, value) => {
 		  	if (typeof value === 'object' && value !== null) {
@@ -114,7 +114,7 @@ export function FormBuilder(props) {
 		  	}
 		  	return value;
 		};
-	}
+	} */
 
 	return (
 		<div className="section-container">
@@ -241,7 +241,7 @@ Submit a page URL of a form to extract all form elements and
 convert them to JSON to create a form via FormEngine 
 */
 
-export function FormExtractor(props) {
+export function FormExtractor() {
 	FormExtractor.propTypes = {
 		url: PropTypes.string
 	};
@@ -479,7 +479,6 @@ export function FormExtractEngine(props) {
 	}
 
 	useEffect(() => {
-		if (debug) console.log("Mounted : ", mounted.current);
 		if (debug) console.log("Component Is Mounted...");
 		if (props.url) {
 			const newURL = proxy + props.url;

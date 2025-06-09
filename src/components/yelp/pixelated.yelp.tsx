@@ -10,61 +10,61 @@ Not ok.
 */
 
 export function YelpReviews(props: { businessID: string, key: string }) {
-    const [reviews, setReviews] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<Error>();
+	const [reviews, setReviews] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<Error>();
 
-    useEffect(() => {
-        const fetchReviews = async () => {
-            const apiKey = 'YOUR_YELP_API_KEY';
-            const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${props.businessID}/reviews`;
+	useEffect(() => {
+		const fetchReviews = async () => {
+			const apiKey = 'YOUR_YELP_API_KEY';
+			const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${props.businessID}/reviews`;
 
-            try {
-                const response = await fetch(url, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    },
-                });
+			try {
+				const response = await fetch(url, {
+					headers: {
+						Authorization: `Bearer ${apiKey}`,
+					},
+				});
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
 
-                const data = await response.json();
-                setReviews(data.reviews);
-                setLoading(false);
-            } catch (e: any) {
-                setError(e);
-                setLoading(false);
-            }
-        };
+				const data = await response.json();
+				setReviews(data.reviews);
+				setLoading(false);
+			} catch (e: any) {
+				setError(e);
+				setLoading(false);
+			}
+		};
 
-        fetchReviews();
-    }, [props.businessID]);
+		fetchReviews();
+	}, [props.businessID]);
 
-    if (loading) {
-        return <p>Loading reviews...</p>;
-    }
+	if (loading) {
+		return <p>Loading reviews...</p>;
+	}
 
-    if (error) {
-        return <p>Error: {error.message}</p>;
-    }
+	if (error) {
+		return <p>Error: {error.message}</p>;
+	}
 
-    return (
-        <div>
-            <h3>Yelp Reviews</h3>
-            {reviews.map((review: any) => (
-                <div key={review.id} className="review">
-                    <p className="rating">Rating: {review.rating}</p>
-                    <p className="text">{review.text}</p>
-                    <p className="user">
+	return (
+		<div>
+			<h3>Yelp Reviews</h3>
+			{reviews.map((review: any) => (
+				<div key={review.id} className="review">
+					<p className="rating">Rating: {review.rating}</p>
+					<p className="text">{review.text}</p>
+					<p className="user">
                         - {review.user.name}
-                    </p>
-                    <hr />
-                </div>
-            ))}
-        </div>
-    );
+					</p>
+					<hr />
+				</div>
+			))}
+		</div>
+	);
 }
 
 /* 

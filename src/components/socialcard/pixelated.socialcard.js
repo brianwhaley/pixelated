@@ -130,7 +130,8 @@ export function SocialCards(props) {
 		if (debug) { console.log('Getting Feed Entries... ', myURL); }
 		const proxiedURL = state.proxy.proxyURL + '?' + state.proxy.proxyURLParam + '=' + encodeURIComponent(myURL);
 		let sourceCardData = [];
-		const result = await RSSFeedToJson(proxiedURL)
+		// const result = await RSSFeedToJson(proxiedURL)
+		await RSSFeedToJson(proxiedURL)
 			.then(
 				(items) => {
 					let i = 0;
