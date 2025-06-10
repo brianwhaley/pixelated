@@ -1,6 +1,6 @@
 
 import { getAllRoutes, getAllImages } from "../metadata/pixelated.metadata";
-import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";
+import type { SitemapEntry } from "@brianwhaley/pixelated-components";
 // import myRoutes from "../../data/routes.json";
 
 /* 
@@ -19,10 +19,13 @@ type SitemapEntry = {
 */
 
 
-
+/* 
 function getOrigin() {
 	return window.location.origin;
 }
+*/
+
+
 /* 
 import { headers } from 'next/headers';
 async function getOrigin(): Promise<string> {

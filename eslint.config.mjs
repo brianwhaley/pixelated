@@ -9,38 +9,34 @@ import tseslint from "typescript-eslint";
 import parser from '@typescript-eslint/parser';
 
 export default defineConfig([
-  { 
+	{ 
 		files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
-    languageOptions: { 
-      globals: globals.browser 
-    }, 
-    plugins: {
-      '@next/next': pluginNext,
-		},
-    extends: [
-      eslint.configs.recommended,
-      tseslint.configs.recommended,
-    ],
-    rules: {
-      ...pluginNext.configs.recommended.rules,
-      'indent': ['error', 'tab'],
-      'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
-      "semi": ["error", "always"],
-      "@next/next/no-img-element": "off",
-      "@next/next/no-html-link-for-pages": "off",
-    },
-  },
-	{
-		files: ["**/*.json"],
-		language: "json/json",
+		languageOptions: { 
+			globals: globals.browser 
+		}, 
 		plugins: {
-			json,
+			'@next/next': pluginNext,
 		},
+		extends: [
+			eslint.configs.recommended,
+			tseslint.configs.recommended,
+		],
 		rules: {
+			...pluginNext.configs.recommended.rules,
 			'indent': ['error', 'tab'],
 			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
-			"json/no-duplicate-keys": "error",
+			"semi": ["error", "always"],
+			"@next/next/no-img-element": "off",
+			"@next/next/no-html-link-for-pages": "off",
 		},
 	},
-    globalIgnores(["node-modules/*", "src/tests/*"]),
+	globalIgnores([
+    ".next/",
+    "certificates/",
+    "node-modules/*", 
+    "/*", 
+    "!/src",
+    "src/tests/",
+    "eslint.config.mjs",
+  ]),
 ]);

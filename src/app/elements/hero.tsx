@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import { GetFlickrData, GenerateFlickrCards } from '@brianwhaley/pixelated-components';
+import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import './hero.css';
 
 
@@ -25,19 +26,18 @@ export default function Hero() {
 						per_page: 500,
 						format: 'json',
 						photoSize: 'Large',
-						nojsoncallback: 'true' /*,
-						startPos: 0 */
+						nojsoncallback: 'true',
 					}
 				} 
 			});
 			const myFlickrImages = await myPromise;
 			const myFlickrCards = GenerateFlickrCards({flickrImages: myFlickrImages, photoSize: 'Medium'});
 			// REMOVE LINKS
-			const myScrubbedFlickrCards = myFlickrCards.map((obj: any) => {
+			const myScrubbedFlickrCards = myFlickrCards.map((obj: CarouselCardType) => {
 				delete obj.link;
 				delete obj.bodyText;
 				return obj;
-				});
+			});
 			setFlickrCards(myScrubbedFlickrCards);
 		}
 		getFlickrCards();

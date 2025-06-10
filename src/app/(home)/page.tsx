@@ -17,7 +17,7 @@ export default function Home() {
 							stock photography, touchup services, home design and remodeling, and more.  Explore our detailed offereings below.  
 						</div>
 					</div>
-					<div className="row-4col">
+					<div className="row-3col">
 						<Callout
 							url="/workoverview" 
 							img='images/circuitboard.jpg'
@@ -44,13 +44,13 @@ export default function Home() {
 								or a combination of complimentary colors. Patterns can also be small or large, 
 								thin or thick, dense or sparse.  As the customer, you choose!'
 							layout='vertical' />
-						<Callout
+						{/* <Callout
 							url='/homedesign' 
 							img='https://farm66.static.flickr.com/65535/54513221006_5d2117cdf3_b.jpg'
 							title='Home Design & Remodeling'
 							content='We design a holistic plan for interior and exterior design of homes,
 								including kitchens, bathrooms, bedrooms, color schemes, artwork, garages, patios, decks, and more.'
-							layout='vertical' />
+							layout='vertical' /> */}
 					</div>
 				</div>
 			</section>

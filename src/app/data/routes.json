@@ -105,23 +105,6 @@
 				} 
 			]
 		} , { 
-			"name": "Home Design",
-			"routes": [
-				{ 
-					"name": "Design Overview", 
-					"path": "/homedesign", 
-					"title": "Pixelated - Brian Whaley - Home Design",
-					"description": "Overview of the home design and remideling work our designers have worked on.",
-					"keywords": "pixelated, home design, home remodeling " 
-				} , { 
-					"name": "Design Gallery", 
-					"path": "/designgallery", 
-					"title": "Pixelated - Brian Whaley - Design Gallery",
-					"description": "A gallery of photos from the home design and remideling proejcts that our designers ahve worked on",
-					"keywords": "pixelated, home design, home remodeling, callery, carousel" 
-				}
-			]
-		} , { 
 			"name": "Sandbox",
 			"routes": [
 				{ 
