@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "loading spinner and modal on contact us and submit review page, cpmponent library bump"
+git commit -m "add social media, fix for google analytics, component library bump"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

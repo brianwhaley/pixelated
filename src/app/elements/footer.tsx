@@ -4,8 +4,6 @@ import React from "react";
 import Nav from "@/app/elements/nav";
 import { Analytics } from "@brianwhaley/pixelated-components";
 
-
-
 export default function Footer() {
 	return (
 		<div className="section-container">

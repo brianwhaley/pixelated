@@ -14,7 +14,6 @@ import "@/app/css/globals.css";
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
-
 	const [ origin, setOrigin ] = useState<string | null>(null);
 	const [ host, setHost ] = useState<string | null>(null);
 	useEffect(() => {
@@ -30,20 +29,18 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<meta name="description" content={metadata?.description} />
 				<meta name="keywords" content={metadata?.keywords} />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-
 				<meta property="og:site_name" content="Palmetto Epoxy" />
 				<meta property="og:title" content={metadata?.title} />
 				<meta property="og:url" content={origin ?? undefined} />
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={metadata?.description} />
-				<meta property="og:image" content="http://static1.squarespace.com/static/63f19158f84f2b1e64ff6df7/t/667729a5d1494f54b5044af8/1719085481930/Palmetto%2BEpoxy%2Blogo%2B2.1_cropped.jpg?format=1500w" />
+				<meta property="og:image" content="/images/palmetto-epoxy-logo.jpg" />
 				<meta property="og:image:width" content="1375" />
 				<meta property="og:image:height" content="851" />
 				<meta itemProp="name" content="Palmetto Epoxy" />
 				<meta itemProp="url" content={origin ?? undefined} />
 				<meta itemProp="description" content={metadata?.description} />
-				<meta itemProp="thumbnailUrl" content="http://static1.squarespace.com/static/63f19158f84f2b1e64ff6df7/t/667729a5d1494f54b5044af8/1719085481930/Palmetto%2BEpoxy%2Blogo%2B2.1_cropped.jpg?format=1500w" />
-
+				<meta itemProp="thumbnailUrl" content="/images/palmetto-epoxy-logo.jpg" />
 				<link rel="alternate" href={host} hrefLang="en-us" />
 				<link rel="canonical" href={origin} />
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
