@@ -1,4 +1,4 @@
-export function html2dom (str) {
+export function html2dom (str: string) {
 	if (window.DOMParser) {
 		 
 		const parser = new DOMParser();
@@ -10,9 +10,10 @@ export function html2dom (str) {
 	return dom;
 }
 
-export function mergeDeep () {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function mergeDeep (a: any, b: any) {
 	// first is default vals, all other objects overwrite
-	const extended = {};
+	const extended: { [key: string]: any } = {};
 	for (let i = 0; i < arguments.length; i++) {
 		const thisObj = arguments[i];
 		for (const prop in thisObj) {
@@ -20,7 +21,8 @@ export function mergeDeep () {
 				if (
 					Object.prototype.toString.call(thisObj[prop]) === '[object Object]'
 				) {
-					extended[prop] = mergeDeep(true, extended[prop], thisObj[prop]);
+					// not sure why true was the first param... or why there were 3 params
+					extended[prop] = mergeDeep(extended[prop], thisObj[prop]);
 				} else {
 					extended[prop] = thisObj[prop];
 				}
@@ -30,13 +32,13 @@ export function mergeDeep () {
 	return extended;
 }
 
-export function pushNewValueToStateArray (that, oldState, newValue) {
+export function pushNewValueToStateArray (that: any, oldState: any, newValue: any) {
 	const myNewArray = that.state[oldState];
 	myNewArray.push(newValue);
 	that.setState({ [oldState]: myNewArray });
 }
 
-export function randomBetween (min, max) {
+export function randomBetween (min: number, max: number) {
 	/* ===== RANDOM NUM BETWEEN MIN AND MAX ===== */
 	if (min < 0) {
 		return min + Math.random() * (Math.abs(min) + max);
@@ -68,8 +70,8 @@ export function generateUUID () {
 	return window.URL.createObjectURL(new Blob([])).substr(-36);
 }
 
-export function capitalize (string) {
-	return string[0].toUpperCase() + string.toLowerCase().slice(1);
+export function capitalize (str: string) {
+	return str[0].toUpperCase() + str.toLowerCase().slice(1);
 }
 
 /*
@@ -78,9 +80,9 @@ Array.prototype.contains = function(obj) {
 };
 */
 
-export function attributeMap (oldAttribute) {
+export function attributeMap (oldAttribute: string) {
 	// https://reactjs.org/docs/dom-elements.html
-	const attributes = {
+	const attributes: { [key: string]: string } = {
 		autocapitalize: 'autoCapitalize',
 		autocomplete: 'autoComplete',
 		autocorrect: 'autoCorrect',
@@ -109,5 +111,5 @@ export function attributeMap (oldAttribute) {
 		spellcheck: 'spellCheck',
 		tabindex: 'tabIndex'
 	};
-	return attributes[oldAttribute] ? attributes[oldAttribute] : oldAttribute;
+	return (attributes[oldAttribute] ? attributes[oldAttribute] : oldAttribute);
 }

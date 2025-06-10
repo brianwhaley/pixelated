@@ -40,3 +40,8 @@ export function ToggleLoading(props: {show?: boolean}) {
 		}
 	}
 }
+
+/* 
+https://signalvnoise.com/posts/2577-loading-spinner-animation-using-css-and-webkit
+https://www.andreaverlicchi.eu/blog/css-3-only-spinning-loading-animation/
+*/

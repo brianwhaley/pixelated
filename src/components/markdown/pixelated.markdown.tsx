@@ -5,10 +5,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import "./pixelated.markdown.css";
 
-/* 
-TODO #15 markdown Component: Convert to TypeScript 
-*/
-
 /* ========== MARKDOWN ========== */
 export function Markdown(props: { markdowndata: any; }) {	
 	function markdownParser (text: any) {

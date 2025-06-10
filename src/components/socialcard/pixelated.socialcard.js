@@ -4,9 +4,10 @@ import { mergeDeep } from '../utilities/pixelated.functions';
 import './pixelated.socialcard.css';
 
 /* ========== NOTES ==========
-TO DO : Blurb FaceBook Github iStock LinkedIn SnapChat ShutterStock TickTock 
-	Google News Saved Articles
+TODO #24 SocialCard Component - Add Blurb FaceBook Github iStock LinkedIn SnapChat ShutterStock TickTock Google News Saved Articles
 ERRORS: 500px, shutterfly
+
+TODO: #25 SocialCard Component - Convert to TypeScript
 */
 
 /* ========== SOCIALCARDS ========== */

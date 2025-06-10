@@ -5,12 +5,6 @@ import { getContentfulFieldValues } from "../cms/pixelated.contentful";
 // import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";
 // import myRoutes from "../../data/routes.json";
 
-/* 
-TODO #10 Sitemap Component : Build out v1 of this component
-*/
-
-
-
 
 export type SitemapEntry = {
 	url: string;
@@ -20,12 +14,9 @@ export type SitemapEntry = {
 };
 
 
-
-
 /* function getOrigin() {
 	return window.location.origin;
 } */
-
 
 	
 /* 
@@ -37,7 +28,6 @@ async function getOrigin(): Promise<string> {
 	return `${protocol}://${host}`;
 }
 */
-
 
 
 export async function createPageURLs(myRoutes: { path: string }[], origin: string) {

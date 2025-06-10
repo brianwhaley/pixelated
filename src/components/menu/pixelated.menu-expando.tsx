@@ -13,7 +13,7 @@ Not enough css control for anomation.
 
 
 /* ========== MENU ========== */
-export function MenuExpando(props) {
+export function MenuExpando(props: any) {
 	// const debug = false;
 
 	function generateMenuItems() {
@@ -41,7 +41,7 @@ MenuExpando.propTypes = {
 
 
 /* ========== MENU ITEM ========== */
-export function MenuExpandoItem(props) {
+export function MenuExpandoItem(props: any) {
 	return (
 		<li><a href={props.href}>{props.name}</a></li>
 	);
@@ -55,14 +55,14 @@ MenuExpandoItem.propTypes = {
 /* ========== MENU BUTTON ========== */
 export function MenuExpandoButton() {
 
-	function handleMenuExpandoButtonClick(event){
+	function handleMenuExpandoButtonClick(event: React.MouseEvent<HTMLDivElement>){
 		const debug = false; 
 		if (debug) console.log("MenuExpandoButton clicked");
 		event.preventDefault();
 		event.stopPropagation();
 		// const button = document.getElementById('menuExpandoButton');
-		const details = document.getElementById('menuExpandoWrapper');
-		details.open = !details.open;
+		const details = document.getElementById('menuExpandoWrapper') as HTMLDetailsElement;
+		if (details) details.open = !details.open;
 	}
 
 	return (

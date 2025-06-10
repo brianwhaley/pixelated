@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const config = {
   addons: [
-    '@storybook/addon-controls',
+    // '@storybook/addon-controls', // consildated into main bundle as part of Storybook 9
     '@storybook/preset-scss',
 ],
   core: {
@@ -17,6 +17,8 @@ const config = {
       name: "@storybook/builder-webpack5",
       options: { fsCache: false } 
     },
+    enableCrashReports: false,
+
   },
   features: {
     experimentalRSC: true,

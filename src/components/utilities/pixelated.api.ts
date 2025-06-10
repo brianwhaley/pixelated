@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types';
 
-export function getXHRData (apiURL, apiMethod, myCallback) {
-	getXHRData.propTypes = {
-		apiURL: PropTypes.string.isRequired,
-		apiMethod: PropTypes.string.isRequired
-	};
-	 
+export function getXHRData (apiURL: string, apiMethod: string, myCallback: any) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(apiMethod, apiURL, true);
 	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -22,12 +17,13 @@ export function getXHRData (apiURL, apiMethod, myCallback) {
 	};
 	xhr.send();
 }
+getXHRData.propTypes = {
+	apiURL: PropTypes.string.isRequired,
+	apiMethod: PropTypes.string.isRequired
+};
 
-export function generateURL (baseURL, props) {
-	generateURL.propTypes = {
-		baseURL: PropTypes.string.isRequired,
-		props: PropTypes.object
-	};
+
+export function generateURL (baseURL: string, props: any) {
 	let url = baseURL;
 	let allProps = '';
 	for (const prop in props) {
@@ -38,3 +34,7 @@ export function generateURL (baseURL, props) {
 	url += allProps;
 	return url;
 }
+generateURL.propTypes = {
+	baseURL: PropTypes.string.isRequired,
+	props: PropTypes.object
+};

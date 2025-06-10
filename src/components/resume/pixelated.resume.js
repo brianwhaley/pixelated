@@ -5,6 +5,10 @@ import { format } from "date-fns";
 import "./pixelated.resume.css";
 import "../../css/pixelated.grid.scss";
 
+/*
+TODO: #23 Resume Component: Convert to TypeScript
+*/ 
+
 function isValidDate(dateString) {
 	let date = new Date(dateString);
 	return !isNaN(date.getTime());

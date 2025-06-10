@@ -10,11 +10,6 @@ declare global {
 	}
 }
 
-/* 
-TODO #18 Menu Accordion Component : Add SubMenu Indicator
-*/
-
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 	let myItems = [];

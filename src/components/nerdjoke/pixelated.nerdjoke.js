@@ -4,7 +4,11 @@ import { getXHRData, generateURL } from '../utilities/pixelated.api';
 import './pixelated.nerdjoke.css';
 import '../../css/pixelated.grid.scss';
 
-const debug = true;
+/* 
+TODO: #21 NerdJoke Component - Convert to TypeScript
+*/
+
+const debug = false;
 
 export class NerdJoke extends Component {
 	constructor (props) {

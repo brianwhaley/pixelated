@@ -4,6 +4,7 @@ import './pixelated.recipe.css';
 
 /* 
 TODO #9 Recipe Component: Change URL so you can deep link to a specific recipe
+TODO: #22 Recipe Component: Convert to TypeScript
 */
 
 /* ========== RECIPE BOOK ========== */

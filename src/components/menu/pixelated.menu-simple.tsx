@@ -2,10 +2,6 @@ import React, { } from 'react';
 import PropTypes from 'prop-types';
 import './pixelated.menu-simple.css';
 
-/* 
-TODO #17 Menu Simple Component: Convert to TypeScript
-*/
-
 /* ========== MENU ========== */
 export function MenuSimple(props: { menuItems: { [x: string]: any; }; }) {
 	function generateMenuItems() {
