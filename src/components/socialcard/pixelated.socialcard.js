@@ -10,6 +10,29 @@ ERRORS: 500px, shutterfly
 TODO: #25 SocialCard Component - Convert to TypeScript
 */
 
+/* function removeAnchors(element) {
+	const anchors = element.querySelectorAll('a');
+	anchors.forEach(anchor => {
+		const parent = anchor.parentNode;
+		const text = anchor.innerHTML;
+		parent.insertBefore(document.createTextNode(text), anchor);
+		parent.removeChild(anchor);
+	});
+} */
+
+function removeDeadHrefs(element) {
+	const parser = new DOMParser();
+  	const doc = parser.parseFromString(element, 'text/html');
+	const anchors = doc.querySelectorAll('a');
+	anchors.forEach(anchor => {
+		const href = anchor.getAttribute('href');
+		if (href && !href.startsWith('http://') && !href.startsWith('https://')) {
+			anchor.removeAttribute('href');
+		}
+	});
+	return doc.body.innerHTML;
+}
+
 /* ========== SOCIALCARDS ========== */
 export function SocialCards(props) {
 	SocialCards.propTypes = {
@@ -84,6 +107,7 @@ export function SocialCards(props) {
 							author: item.querySelector('author')?.textContent,
 							category: item.querySelector('category')?.textContent,
 							description: item.querySelector('description')?.textContent,
+							// description: removeDeadAnchors(item.querySelector('description')?.textContent),
 							guid: item.querySelector('guid')?.textContent,
 							link: item.querySelector('link')?.textContent,
 							pubDate: item.querySelector('pubDate')?.textContent,
@@ -98,6 +122,7 @@ export function SocialCards(props) {
 							author: item.querySelector('author')?.textContent,
 							category: item.querySelector('category')?.attributes.getNamedItem('term').nodeValue,
 							description: item.querySelector('content')?.textContent,
+							// description: removeDeadAnchors(item.querySelector('content')?.textContent),
 							guid: item.querySelector('id')?.textContent,
 							link: item.querySelector('link')?.attributes.getNamedItem('href').nodeValue,
 							pubDate: item.querySelector('published')?.textContent,
@@ -257,7 +282,7 @@ export function SocialCard(props) {
 						{props.card.title}
 					</a>
 				</div>
-				<div className="cardBody" dangerouslySetInnerHTML={{ __html: props.card.description }} />
+				<div className="cardBody" dangerouslySetInnerHTML={{ __html: removeDeadHrefs(props.card.description) }} />
 				<div className="cardDate">{props.card.pubDate}</div>
 			</div>
 		</div>
