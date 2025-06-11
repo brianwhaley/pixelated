@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix for broken links in socialcards"
+git commit -m "web imgs for contentful"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

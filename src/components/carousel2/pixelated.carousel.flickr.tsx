@@ -89,7 +89,7 @@ export function GetFlickrData( props: { flickr: any } ) {
 		} catch (err) {
 			console.log('Error fetching Flickr data:', err);
 		} finally {
-			console.log('Flickr data fetch completed');
+			if (debug) console.log('Flickr data fetch completed');
 		}
 	};
 	return fetchFlickrData();

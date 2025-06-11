@@ -84,7 +84,7 @@ export async function getContentfulImagesFromEntries(images: any, assets: any){
 		for (const asset of assets) {
 			if( image.sys.id == asset.sys.id ) {
 				imageURLs.push({ 
-					image: asset.fields.file.url,
+					image: asset.fields.file.url + "?fm=webp",
 					imageAlt: asset.fields.description,
 				});
 			}
@@ -93,3 +93,38 @@ export async function getContentfulImagesFromEntries(images: any, assets: any){
 	return imageURLs;
 }
 
+
+
+
+/* ========== GET CONTENTFUL ASSETS ========== */
+export async function getContentfulAssets(){
+	const full_url = base_url + "/spaces/" + space_id + "/environments/" + environment + "/assets?access_token=" + access_token ;
+	try {
+		const response = await fetch(full_url);
+		if (!response.ok) {
+			throw new Error(`Response status: ${response.status}`);
+		}
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		if (error instanceof Error) {
+			console.error(error.message);
+		} else {
+			console.error(error);
+		}
+	}
+}
+
+/* ========== GET CONTENTFUL ASSET URLS ========== */
+export async function getContentfulAssetURLs(){
+	const assetURLs = [];
+	const assets: any = await getContentfulAssets();
+	for (const asset of assets.items) {
+		assetURLs.push({ 
+			image: asset.fields.file.url + "?fm=webp" ,
+			imageAlt: asset.fields.description,
+		});
+	}
+	console.log("Asset URLs: ", assetURLs);
+	return assetURLs;
+}
