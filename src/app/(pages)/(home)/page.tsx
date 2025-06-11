@@ -6,12 +6,12 @@ import ContactCTA from "@/app/elements/contact";
 import PageTitle from "@/app/elements/pageTitle";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
-import type { CarouselCard } from "@brianwhaley/pixelated-components";
+import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
 
-	const [ carouselCards , setCarouselCards ] = useState<CarouselCard[]>([]);
+	const [ carouselCards , setCarouselCards ] = useState<CarouselCardType[]>([]);
 
 	useEffect(() => {
 		async function getCarouselCards() {
@@ -56,7 +56,7 @@ export default function Home() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1e084272-4798-4793-9379-60afbf3e1c7b/Blue.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg'
 								title="Floors You'll Adore"
 								layout='vertical'
 								shape='square'  
@@ -64,7 +64,7 @@ export default function Home() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/bf63d28c-d622-4e89-baf8-56d2ccb9194d/Epoxy+Floor+4.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg'
 								title='Epoxy Excellence'
 								layout='vertical' 
 								shape='square'  
@@ -72,7 +72,7 @@ export default function Home() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1719082000916-23J7QBKHZCRO9BWBDUZM/Grey_Bowling-Ball-Floor.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg'
 								title='Shine On...'
 								layout='vertical' 
 								shape='square'  
@@ -110,7 +110,7 @@ export default function Home() {
 					<div className="row-12col">
 						<div className="grid-s1-e6">
 							<img alt="May River High School Athletics - Welcome to the Tank!" 
-								src="https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/eeeb48e8-b7d5-45b9-aba2-af08e6638ed4/MR+Sharks+2.jpg?format=2500w" />
+								src="https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg" />
 						</div>
 						<div className="grid-s7-e6 bigText">
 						Palmetto Epoxy is a proud Sponsor of May River HS Girls Soccer

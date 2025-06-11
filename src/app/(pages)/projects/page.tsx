@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import ContactCTA from "@/app/elements/contact";
 import PageTitle from "@/app/elements/pageTitle";
 import { Carousel } from "@brianwhaley/pixelated-components";
-import type { CarouselCard } from "@brianwhaley/pixelated-components";
+import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import "@/app/css/globals.css";
 
@@ -14,13 +14,13 @@ import "@/app/css/globals.css";
 
 export default function Projects() {
 
-	const [ carouselCards , setCarouselCards ] = useState<CarouselCard[]>([]);
+	const [ carouselCards , setCarouselCards ] = useState<CarouselCardType[]>([]);
 	
 	useEffect(() => {
 		async function getCarouselCards() {
 			const contentType = "carouselCard"; 
 			const typeCards = await getContentfulEntriesByType(contentType); 
-			const reviewCards : CarouselCard[] = [];
+			const reviewCards : CarouselCardType[] = [];
 			for (const card of typeCards.items) {
 				if ( card.sys.contentType.sys.id == contentType ) {
 					const images = await getContentfulImagesFromEntries( [card.fields.image], typeCards.includes.Asset);

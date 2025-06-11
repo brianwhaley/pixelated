@@ -16,7 +16,7 @@ export default function Services() {
 					<div className="row-3col ">
 						<div className="gridItem ">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/b8642d27-d58a-4ba9-8cd5-890a28b0a5d9/Epoxy+Shining.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/1xi23O70o42mFz38ElKNw3/8ada068a8405e49c9389c0b0f94d87b6/Epoxy_Shining.jpg'
 								title='Residential'
 								content='Enhance your home with durable, stylish epoxy floors tailored to any room.'
 								layout='vertical' 
@@ -24,7 +24,7 @@ export default function Services() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/a0212c2b-138f-4824-84e5-94fc9aa0af5c/Epoxy+Floor+4.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg'
 								title='Commercial'
 								content='Upgrade your business space with sleek, resilient commercial-grade epoxy flooring.'
 								layout='vertical' 
@@ -32,7 +32,7 @@ export default function Services() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1721875911469-JC7JDY9ZMZDRQSL56EWB/IMG_6229.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/4XSmKyMglzHAGa3PrDrnyt/b42f90a173ca7d860acadbb0defa9eeb/IMG_6229.jpg'
 								title='Paver Sealing'
 								content='Protect and beautify your pavers with our professional sealing services.'
 								layout='vertical' 
@@ -40,7 +40,7 @@ export default function Services() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/49e1ef9d-b3dd-4d30-8105-924b09b303b6/Driveway+Polishjpg.jpg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/70SC4FojTqV1pVl0vTCbXH/88217839618887f3b73088a9f3f86ff9/Driveway_Polishjpg.jpg'
 								title='Driveway Coating'
 								content='Boost curb appeal and durability with our specialized driveway coating solutions.'
 								layout='vertical' 
@@ -48,7 +48,7 @@ export default function Services() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1679539158241-FV1IHGSIGOWZPWNOEB4Z/Seapines+1_Done.JPG?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/39vkbzDrlvLtK3fF86T7Zy/7b21429c376a679dd364cd56685b00f2/Seapines_1_Done.JPG'
 								title='Epoxy Garage Floors'
 								content='Transform your garage with our high-performance, spill-resistant epoxy floors.'
 								layout='vertical' 
@@ -56,7 +56,7 @@ export default function Services() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.squarespace-cdn.com/content/v1/63f19158f84f2b1e64ff6df7/1719085090346-HF8FLE8VBRTORW1WKZFA/image-asset.jpeg?format=2500w'
+								img='https://images.ctfassets.net/0b82pebh837v/6DVnMXkegjtf8hJoPoj3PJ/b2270332d1136dc6a559c7df8cbe70b3/image-asset.jpeg'
 								title='Concrete Polishing'
 								content='Bring out the natural beauty of your concrete with our expert polishing services.'
 								layout='vertical' 

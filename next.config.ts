@@ -7,6 +7,18 @@ const nextConfig: NextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https", 
+				hostname: "www.palmetto-epoxy.com", 
+			},
+			{
+				protocol: "https", 
+				hostname: "images.ctfassets.net/", 
+			},
+		],
+	},
 
 	webpack5: true,
 	webpack: (config) => {
