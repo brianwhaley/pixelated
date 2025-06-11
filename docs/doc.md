@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "fix for broken links in social cards affecting site search indexing"
+git commit -m "fix"
 git push pixelated dev --tags
 git push pixelated dev:main
 
