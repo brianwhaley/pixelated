@@ -82,7 +82,7 @@ main .section-container {
     background-image: 
         linear-gradient(rgba(255,255,255,.25), 
         rgba(255,255,255,.25)), 
-        url('https://images.ctfassets.net/0b82pebh837v/72Ctu7oGaGNja5gHpTz4Fd/50984bad832c63d7845e3c6d511a1735/BluChips.jpg');
+        url('https://images.ctfassets.net/0b82pebh837v/72Ctu7oGaGNja5gHpTz4Fd/50984bad832c63d7845e3c6d511a1735/BluChips.jpg?fm=webp');
     background-position: center;
     background-size: cover;
 }
@@ -91,7 +91,7 @@ main .section-container {
     background-image: 
         linear-gradient(rgba(255,255,255,.25), 
         rgba(255,255,255,.25)), 
-        url('https://images.ctfassets.net/0b82pebh837v/10u8y8Qcv6hkLnp1stjZZx/b9b6be999291a643f2c1cb1c22e5fc58/IMG_5559.jpg');
+        url('https://images.ctfassets.net/0b82pebh837v/10u8y8Qcv6hkLnp1stjZZx/b9b6be999291a643f2c1cb1c22e5fc58/IMG_5559.jpg?fm=webp');
     background-position: center;
     background-size: cover;
 }
@@ -100,7 +100,7 @@ main .section-container {
     background-image: 
         linear-gradient(rgba(255,255,255,.25), 
         rgba(255,255,255,.25)), 
-        url('https://images.ctfassets.net/0b82pebh837v/4vT6cKz1jGZNVnrLM8cNHG/6520f512d7dacd00224d13e87ae8084b/IMG_6229.jpg');
+        url('https://images.ctfassets.net/0b82pebh837v/4vT6cKz1jGZNVnrLM8cNHG/6520f512d7dacd00224d13e87ae8084b/IMG_6229.jpg?fm=webp');
     background-position: center;
     background-size: cover;
 }

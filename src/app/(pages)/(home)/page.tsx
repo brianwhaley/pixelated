@@ -56,7 +56,7 @@ export default function Home() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout
-								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg'
+								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
 								title="Floors You'll Adore"
 								layout='vertical'
 								shape='square'  
@@ -64,7 +64,7 @@ export default function Home() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg'
+								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg?fm=webp'
 								title='Epoxy Excellence'
 								layout='vertical' 
 								shape='square'  
@@ -72,7 +72,7 @@ export default function Home() {
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg'
+								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
 								title='Shine On...'
 								layout='vertical' 
 								shape='square'  
@@ -110,7 +110,7 @@ export default function Home() {
 					<div className="row-12col">
 						<div className="grid-s1-e6">
 							<img alt="May River High School Athletics - Welcome to the Tank!" 
-								src="https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg" />
+								src="https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg?fm=webp" />
 						</div>
 						<div className="grid-s7-e6 bigText">
 						Palmetto Epoxy is a proud Sponsor of May River HS Girls Soccer
