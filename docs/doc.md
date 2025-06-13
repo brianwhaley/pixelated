@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "image & performance fixes"
+git commit -m "fix ga tag with @next third party ga tag component"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
