@@ -15,10 +15,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 	const [ origin, setOrigin ] = useState<string | null>(null);
-	const [ host, setHost ] = useState<string | null>(null);
+	// const [ host, setHost ] = useState<string | null>(null);
 	useEffect(() => {
 		setOrigin(window.location.origin || null);
-		setHost(window.location.host || null);
+		// setHost(window.location.host || null);
 	}, []);
 
 	return (
