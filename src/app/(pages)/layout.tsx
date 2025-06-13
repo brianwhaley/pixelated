@@ -41,7 +41,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<meta itemProp="url" content={origin ?? undefined} />
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/palmetto-epoxy-logo.jpg" />
-				<link rel="alternate" href={host} hrefLang="en-us" />
+				<link rel="alternate" href={origin} hrefLang="en-us" />
 				<link rel="canonical" href={origin} />
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
