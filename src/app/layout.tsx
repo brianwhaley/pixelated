@@ -23,10 +23,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 	}
 
 	const [ origin, setOrigin ] = useState<string | null>(null);
-	const [ host, setHost ] = useState<string | null>(null);
+	// const [ host, setHost ] = useState<string | null>(null);
 	useEffect(() => {
 		setOrigin(window.location.origin || null);
-		setHost(window.location.host || null);
+		// setHost(window.location.host || null);
 	}, []);
 
 	return (
@@ -53,7 +53,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/bg6-512.gif" />
 
-				<link rel="alternate" href={host ?? undefined} hrefLang="en-us" />
+				<link rel="alternate" href={origin ?? undefined} hrefLang="en-us" />
 				<link rel="canonical" href={origin ?? undefined} />
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
