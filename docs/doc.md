@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "fix ga tag component, split social media callouts"
+git commit -m "add subscribe page, schedule page, new social media links"
 git push pixelated dev --tags
 git push pixelated dev:main
 

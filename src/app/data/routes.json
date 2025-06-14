@@ -7,29 +7,6 @@
 			"description": "Pixelated offers a wide varity of products and services, including custom web development for small businesses, stock photography, touchup services, home design and remodeling, and more.",
 			"keywords": "pixelated, web development, small business, stock photography, home redesign, remodeling, social media"  
 		} , {
-			"name": "About Me",
-			"routes": [
-				{ 
-					"name": "Resume", 
-					"path": "/resume", 
-					"title": "Pixelated - Brian Whaley - Resume",
-					"description": "View the resume of Brian Whaley",
-					"keywords": "brian whaley, resume, curriculum vitae, professional summary, contact information, education, skills, qualifications, work history, projects, voluteer work, certifications, honors and awards, training and conferences, rererences" 
-				} , { 
-					"name": "ReadMe", 
-					"path": "/readme", 
-					"title": "Pixelated - Brian Whaley - ReadMe",
-					"description": "Every good piece of software needs a readme.  So do people.",
-					"keywords": "brian whaley, readme, management style"  
-				} , { 
-					"name": "Family Recipes", 
-					"path": "/recipes", 
-					"title": "Pixelated - Brian Whaley - Recipes",
-					"description": "Pace / Barbano / Whaley Recipes through the ages",
-					"keywords": "family recipes, pace family, barbano family, whaley family, italian recipes" 
-				} 
-			]
-		} , {
 			"name": "Web Development",
 			"routes": [
 				{ 
@@ -44,30 +21,13 @@
 					"title": "Pixelated - Brian Whaley - Work Portfolio",
 					"description": "A carousel gallery showing screenshots of some of the web properties I have worked on." ,
 					"keywords": "pixelated, brian whaley, carousel, gallery, screenshots, web development, work portfolio" 
+				} , { 
+					"name": "Schedule a Meeting", 
+					"path": "/schedule", 
+					"title": "Pixelated - Brian Whaley - Schedule an Appointment",
+					"description": "Schedule a consult appointment with Pixelated for custom IT development work - web development, social media mearketing, search engine optimization, and small business modernization." ,
+					"keywords": "pixelated, brian whaley, schedule an appointment, schedule a meeting, web development, small business modernization" 
 				} 
-			]
-		} , {
-			"name": "Photography",
-			"routes": [
-				{ 
-					"name": "Photo Overview", 
-					"path": "/photography", 
-					"title": "Pixelated - Brian Whaley - Photography",
-					"description": "An overview of the Pixelated phtography portfolio.",
-					"keywords": "pixelated, photography, overview, gallery, carousel, social media" 
-				} , { 
-					"name": "Photo Gallery", 
-					"path": "/photogallery", 
-					"title": "Pixelated - Brian Whaley - Photo Gallery",
-					"description": "A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. ",
-					"keywords": "pixelated, gallery, carousel, photographs, landscape, macro, travel" 
-				} , { 
-					"name": "Social Media", 
-					"path": "/socialmedia", 
-					"title": "Pixelated - Brian Whaley - Social Media",
-					"description": "Links to all my digital footprints",
-					"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
-				}
 			]
 		} , { 
 			"name" : "Custom Sunglasses",
@@ -97,11 +57,63 @@
 					"description": "Request some custom sunglass work for yourself.",
 					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses, requests, form" 
 				} , { 
+					"name": "Subscribe", 
+					"path": "/subscribe", 
+					"title": "Pixelated - Brian Whaley - Subscribe",
+					"description": "Subscribe th Pixelated newsletters, announcements, and updates.",
+					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses, subscribe, subscription, newsletter, announcement, drop, update" 
+				} , { 
 					"name": "My Customs", 
 					"path": "/mycustoms", 
 					"title": "Pixelated - Brian Whaley - My Customs",
 					"description": "These are pictures of the custom sunglasses in my personal collection.",
 					"keywords": "pixelated, custom sunglasses, personal collection, collection" 
+				} 
+			]
+		} , {
+			"name": "Photography",
+			"routes": [
+				{ 
+					"name": "Photo Overview", 
+					"path": "/photography", 
+					"title": "Pixelated - Brian Whaley - Photography",
+					"description": "An overview of the Pixelated phtography portfolio.",
+					"keywords": "pixelated, photography, overview, gallery, carousel, social media" 
+				} , { 
+					"name": "Photo Gallery", 
+					"path": "/photogallery", 
+					"title": "Pixelated - Brian Whaley - Photo Gallery",
+					"description": "A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. ",
+					"keywords": "pixelated, gallery, carousel, photographs, landscape, macro, travel" 
+				} , { 
+					"name": "Social Media", 
+					"path": "/socialmedia", 
+					"title": "Pixelated - Brian Whaley - Social Media",
+					"description": "Links to all my digital footprints",
+					"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
+				}
+			]
+		} , {
+			"name": "About Me",
+			"routes": [
+				{ 
+					"name": "Resume", 
+					"path": "/resume", 
+					"title": "Pixelated - Brian Whaley - Resume",
+					"description": "View the resume of Brian Whaley",
+					"keywords": "brian whaley, resume, curriculum vitae, professional summary, contact information, education, skills, qualifications, work history, projects, voluteer work, certifications, honors and awards, training and conferences, rererences" 
+				} , { 
+					"name": "ReadMe", 
+					"path": "/readme", 
+					"title": "Pixelated - Brian Whaley - ReadMe",
+					"description": "Every good piece of software needs a readme.  So do people.",
+					"keywords": "brian whaley, readme, management style"  
+				} , { 
+					"name": "Family Recipes", 
+					"path": "/recipes", 
+					"title": "Pixelated - Brian Whaley - Recipes",
+					"description": "Pace / Barbano / Whaley Recipes through the ages",
+					"keywords": "family recipes, pace family, barbano family, whaley family, italian recipes" 
 				} 
 			]
 		} , { 
