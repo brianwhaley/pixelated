@@ -1,10 +1,10 @@
 {
   "name": "pixelated",
-  "version": "3.0.38",
+  "version": "3.0.39",
   "private": true,
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3000 --experimental-https",
-    "build": "npm run clean && next build",
+    "build": "npm run clean && NODE_ENV=production next build",
     "start": "npm run clean && next build && next start",
     "lint": "next lint",
     "clean": "rm -rf .next && rm -rf out"
