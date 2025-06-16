@@ -11,7 +11,7 @@ export default function Header() {
 
 			<div className="row-12col">
 				<div className="grid-s1-e3 headerLogo">
-					<a href="/"><img src="/images/palmetto-epoxy-logo.jpg" alt="Palmetto Epoxy Logo" /></a>
+					<a href="/"><img src="/images/palmetto-epoxy-logo.jpg" alt="Palmetto Epoxy Logo" fetchPriority="high" loading="eager" /></a>
 				</div>
 				
 

@@ -17,7 +17,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 	const [ origin, setOrigin ] = useState<string | null>(null);
 	// const [ host, setHost ] = useState<string | null>(null);
 	useEffect(() => {
-		setOrigin(window.location.origin || null);
+		setOrigin(window.location.origin);
 		// setHost(window.location.host || null);
 	}, []);
 
@@ -41,9 +41,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<meta itemProp="url" content={origin ?? undefined} />
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/palmetto-epoxy-logo.jpg" />
-				<link rel="alternate" href={origin} hrefLang="en-us" />
-				<link rel="canonical" href={origin} />
+				<link rel="alternate" href={origin ?? undefined} hrefLang="en-us" />
+				<link rel="canonical" href={origin ?? undefined} />
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+				<link rel="preload" fetchPriority="high" as="image" href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" type="image/webp"></link>
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="manifest" href="/manifest.webmanifest" />
 			</head>

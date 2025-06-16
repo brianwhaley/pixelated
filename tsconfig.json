@@ -17,6 +17,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typeRoots": ["./src"],
     "plugins": [
       {
         "name": "next"
@@ -29,7 +30,8 @@
     }
   },
   "include": [
-    "**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
     "**/*.tsx",
     "src",
     ".next/types/**/*.ts"
