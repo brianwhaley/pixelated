@@ -85,13 +85,7 @@
 					"title": "Pixelated - Brian Whaley - Photo Gallery",
 					"description": "A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. ",
 					"keywords": "pixelated, gallery, carousel, photographs, landscape, macro, travel" 
-				} , { 
-					"name": "Social Media", 
-					"path": "/socialmedia", 
-					"title": "Pixelated - Brian Whaley - Social Media",
-					"description": "Links to all my digital footprints",
-					"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
-				}
+				} 
 			]
 		} , {
 			"name": "About Me",
@@ -108,6 +102,12 @@
 					"title": "Pixelated - Brian Whaley - ReadMe",
 					"description": "Every good piece of software needs a readme.  So do people.",
 					"keywords": "brian whaley, readme, management style"  
+				} , { 
+					"name": "Social Media", 
+					"path": "/socialmedia", 
+					"title": "Pixelated - Brian Whaley - Social Media",
+					"description": "Links to all my digital footprints",
+					"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
 				} , { 
 					"name": "Family Recipes", 
 					"path": "/recipes", 

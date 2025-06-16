@@ -1,9 +1,10 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
-import { CalloutHeader, CalloutSmall } from "@brianwhaley/pixelated-components";
+import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { SocialCards } from "@brianwhaley/pixelated-components";
+import SocialTags from "@/app/elements/socialtags";
 
 /* ========== NOTES ==========
 TO DO : Google News Saved Articles
@@ -44,45 +45,16 @@ const myRSSFeeds = {
 
 export default function SocialMedia() {
 	return (
-		<Fragment>
-			<section id="social-links-section">
+		<>
+			<section id="page-header-section">
+				<div className="section-container">
+					<PageHeader title="Social Media Presence" />
+				</div>
+			</section>
+
+			<section className="section-alt" id="social-links-section">
 				<div className="section-container callout">
-					<div className="row-12col">
-						<div className="grid-s1-e12">
-							<PageHeader title="Social Media Links" />
-						</div>
-					</div>
-					<div className="row-12col">
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.linkedin.com/in/brianwhaley" img="/images/logos/linkedin-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/brianwhaley" img="/images/logos/twitter-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://reddit.com/user/btw-73/saved" img="/images/logos/reddit-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.pinterest.com/brianwhaley" img="/images/logos/pinterest-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.goodreads.com/user/show/49377228-brian-whaley" img="/images/logos/goodreads-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.youtube.com/user/brianwhaley" img="/images/logos/youtube-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://pixelatedviews.tumblr.com" img="/images/logos/tumblr-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.etsy.com/people/bwhaley73" img="/images/logos/etsy-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.ebay.com/usr/btw73/" img="/images/logos/ebay-logo.png" /></div>
-						{/* <CalloutSmall shape="squircle" url="https://foursquare.com/brianwhaley" img="/images/logos/foursquare-logo.png" / > */}
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://trees.ancestry.com/tree/7237865" img="/images/logos/ancestry-logo.jpg" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.facebook.com/brian.t.whaley" img="/images/logos/facebook-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://blog.pixelated.tech" img="/images/logos/wordpress-logo.png" /></div>
-					</div>
-
-					<div className="row-12col">
-						<div className="gridItem"></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://github.com/brianwhaley" img="/images/logos/github-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://maps.app.goo.gl/j5Tpcxxr9roydxd2A" img="/images/logos/googlemaps-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://500px.com/brianwhaley" img="/images/logos/500px-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.flickr.com/photos/brianwhaley/" img="/images/logos/flickr-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://secure.istockphoto.com/portfolio/brianwhaley" img="/images/logos/istock-logo.jpg" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.shutterstock.com/g/brianwhaley" img="/images/logos/shutterstock-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://www.blurb.com/user/brianwhaley" img="/images/logos/blurb-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://brianwhaley.shutterfly.com" img="/images/logos/shutterfly-logo.png" /></div>
-						<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" /></div>
-						<div className="gridItem"></div>
-					</div>
-
+					<SocialTags />
 				</div>
 			</section>
 
@@ -102,6 +74,6 @@ export default function SocialMedia() {
 					</div>
 				</div>
 			</section>
-		</Fragment>
+		</>
 	);
 }
