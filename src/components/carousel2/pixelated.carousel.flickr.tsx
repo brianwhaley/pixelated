@@ -10,7 +10,8 @@ type FlickrApiType = {
         method: string;
         api_key: string;
         user_id: string;
-        tags: string;
+        tags?: string;
+        photoset_id?: string;
         extras: string;
         sort: string;
         per_page: number;
@@ -77,7 +78,16 @@ export function GetFlickrData( props: { flickr: any } ) {
 				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
 			const jsonData = await response.json();
-			const myFlickrImages = jsonData.photos.photo;
+			let myFlickrImages = [];
+			if(jsonData.photos) {
+				// photos for tags - flickr.photos.search
+				myFlickrImages = jsonData.photos.photo;
+			} else if (jsonData.photoset) {
+				// photoset for albums - flickr.photosets.getPhotos
+				myFlickrImages = jsonData.photoset.photo;
+			} else {
+				console.log('Error fetching Flickr images');
+			}
 			myFlickrImages.sort((a: any, b: any) => {
 				return new Date(b.datetaken).getTime() - new Date(a.datetaken).getTime();
 			}); // b - a for reverse sort
