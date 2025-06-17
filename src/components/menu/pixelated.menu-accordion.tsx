@@ -83,8 +83,9 @@ export function MenuAccordion(props: { menuItems: any; }) {
 			if (isMenuClicked) {
 				// MENU ITEM CLICKED
 				const target = event.target as HTMLAnchorElement;
-				if ( !target.href || target.href.length !> 0 ) {
+				if ( !(target.href) || !(target.href.length > 0)) {
 					// NO HREF - EXPAND / COLLAPSE SUB MENU
+					// event.preventDefault();
 					event.stopPropagation();
 					expandMenuItem(target);
 				} else {

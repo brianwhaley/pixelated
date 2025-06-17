@@ -26,7 +26,7 @@
 
 .menuExpandoButtonHeader {
 	background-color: #336699;
-	background-image: url(/images/bg6.gif);
+	background-image: url(/images/pix/pix-bg.gif);
 	color: #FFFFFF;
 	padding: 15px;
 
@@ -110,7 +110,7 @@ details.menuExpandoWrapper > summary::-webkit-details-marker {
 	/* this is the button */
 	color: black;
 	background: #CCC;
-	background-image: url(/images/bg6-lt.jpg);
+	background-image: url(/images/pix/pix-bg-lite.jpg);
 	display: block;
 	font-weight: bold;
 	height: 30px;
@@ -121,7 +121,7 @@ details.menuExpandoWrapper > summary::-webkit-details-marker {
 
 .menuExpando ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/images/bg7-dk.gif);
+	background-image: url(/images/pix/pix-bg-sm-bw.gif);
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }
