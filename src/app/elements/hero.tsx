@@ -9,7 +9,7 @@ import './hero.css';
 
 export default function Hero() {
 
-	const [flickrCards, setFlickrCards] = useState([]);
+	const [flickrCards, setFlickrCards] = useState<CarouselCardType[]>([]);
 
 	useEffect(() => {
 		async function getFlickrCards() {

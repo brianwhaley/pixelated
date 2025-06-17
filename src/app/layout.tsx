@@ -45,13 +45,13 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 				<meta property="og:url" content={origin ?? undefined} />
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={metadata?.description} />
-				<meta property="og:image" content="/images/bg6-512.gif" />
+				<meta property="og:image" content="/images/pix/pix-bg-512.gif" />
 				<meta property="og:image:width" content="512" />
 				<meta property="og:image:height" content="512" />
 				<meta itemProp="name" content="Pixelated" />
 				<meta itemProp="url" content={origin ?? undefined} />
 				<meta itemProp="description" content={metadata?.description} />
-				<meta itemProp="thumbnailUrl" content="/images/bg6-512.gif" />
+				<meta itemProp="thumbnailUrl" content="/images/pix-bg-512.gif" />
 
 				<link rel="alternate" href={origin ?? undefined} hrefLang="en-us" />
 				<link rel="canonical" href={origin ?? undefined} />

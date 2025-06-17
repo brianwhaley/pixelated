@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "page speed fixes"
+git commit -m "pix bg img reorg, accordion menu fix, flickr imgs by album / photoset"
 git push pixelated dev --tags
 git push pixelated dev:main
 

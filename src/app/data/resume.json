@@ -1264,7 +1264,27 @@
 								"postal-code": [ "07834" ],
 								"country-name": [ "USA" ]
 							}
-						}]
+						}],
+						"projects" : [
+							{
+								"type": [ "h-card" ],
+								"properties": {
+									"name": [ "Palmetto Epoxy" ],
+									"url": [ "https://www.palmetto-epoxy.com/" ],
+									"photo": [ "" ],
+									"note": [ ]
+								}
+							},
+							{
+								"type": [ "h-card" ],
+								"properties": {
+									"name": [ "Pixelated Web Site" ],
+									"url": [ "https://www.pixelated.tech/" ],
+									"photo": [ "" ],
+									"note": [ ]
+								}
+							}
+						]
 					}
 				},
 				{

@@ -4,11 +4,18 @@ import React, { useState, useEffect } from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import GalleryWrapper from "@/app/elements/gallerywrapper";
+import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 
 export default function Gallery () {
 
-	const [ flickrCards, setFlickrCards ] = useState([]);
-	const props = { tags: "homedesign", photoSize: 'Large', callback: setFlickrCards } ;
+	const [ flickrCards, setFlickrCards ] = useState<CarouselCardType[]>([]);
+	const props = { 
+		tags: "", // "homedesign"
+		method: "flickr.photosets.getPhotos", 
+		photoset_id: "72177720326059353",
+		photoSize: "Large", 
+		callback: setFlickrCards 
+	};
 	useEffect(() => {
 		async function fetchGallery() {
 			await GalleryWrapper(props);
