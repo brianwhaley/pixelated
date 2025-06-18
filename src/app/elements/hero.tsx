@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import { GetFlickrData, GenerateFlickrCards } from '@brianwhaley/pixelated-components';
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
+import { getCloudinaryRemoteFetchURL } from "@/app/components/pixelated.cloudinary";
 import './hero.css';
 
 
@@ -36,6 +37,7 @@ export default function Hero() {
 			const myScrubbedFlickrCards = myFlickrCards.map((obj: CarouselCardType) => {
 				delete obj.link;
 				delete obj.bodyText;
+				obj.image = getCloudinaryRemoteFetchURL(obj.image, "dlbon7tpq");
 				return obj;
 			});
 			setFlickrCards(myScrubbedFlickrCards);

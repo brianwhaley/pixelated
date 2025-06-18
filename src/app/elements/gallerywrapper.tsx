@@ -1,5 +1,6 @@
 import { GetFlickrData, GenerateFlickrCards } from '@brianwhaley/pixelated-components';
 import type { CarouselCardType } from '@brianwhaley/pixelated-components';
+import { getCloudinaryRemoteFetchURL } from "@/app/components/pixelated.cloudinary";
 
 export default async function GalleryWrapper(
 	props: { 
@@ -43,6 +44,7 @@ export default async function GalleryWrapper(
 				delete obj.link;
 				delete obj.headerText;
 				delete obj.bodyText;
+				obj.image = getCloudinaryRemoteFetchURL(obj.image, "dlbon7tpq");
 				return obj;
 			});
 			props.callback(myScrubbedFlickrCards);
