@@ -92,3 +92,16 @@ https://microformats.org/wiki/h-recipe
 ## ===== EMAIL FORWARDING =====
 https://app.improvmx.com/
 *@pixelated.tech => brian.whaley@gmail.com
+
+
+# ===== IMAGE CDN WITH CLOUDINARY =====
+https://cloudinary.com/blog/transparent_webp_format_cdn_delivery_based_on_visitors_browsers
+https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
+
+# ===== EMAIL LIST MANAGEMENT WITH HUBSPOT =====
+
+# ===== CALENDAR AND APPOINTMENT MANAGEMENT WITH HUBSPOT =====
+
+# ===== CHECKOUT WITH PAYPAL ===== 
+https://www.freecodecamp.org/news/integrate-paypal-into-html-css-js-product-pages/
+https://dev.to/evansifyke/how-to-integrate-paypal-with-html-css-and-javascript-2mnb

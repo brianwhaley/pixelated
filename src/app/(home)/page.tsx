@@ -14,8 +14,11 @@ export default function Home() {
 					<PageHeader title="Pixelated Products & Services" />
 					<div className="row-12col">
 						<div className="grid-s3-e8">
-							Pixelated offers a wide varity of products and services, including custom web development for small businesses, 
-							stock photography, touchup services, home design and remodeling, and more.  Explore our detailed offereings below.  
+							Pixelated offers a wide variety of products and services, 
+							including custom web development for small businesses, 
+							refurbished and customized sunglasses, stock photography, 
+							touchup services, home design and remodeling, and more. 
+							Explore our detailed offerings below. 
 						</div>
 					</div>
 					<div className="row-3col">

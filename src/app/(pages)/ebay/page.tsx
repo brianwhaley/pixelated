@@ -1,35 +1,28 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
+import { EbayItems } from "@brianwhaley/pixelated-components";
 import { PageHeader } from "@/app/components/general/pixelated.general";
-import { SocialCards } from "@brianwhaley/pixelated-components";
-import "./ebay.css";
 
 export default function Ebay() {
-	
-	const myRSSFeeds = {
-		ebay: { 
-			url: "https://rssbay.net/feed?keyword=sunglasses&globalId=EBAY-US&auction=1&buyitnow=1&condition=-&seller=btw73&time-frame-type=-&time-frame-value=-", 
-			entryCount: 100
-		 },
+
+	const apiProps = {
+		proxyURL: "https://proxy.pixelated.tech/prod/proxy?url=",
+		qsSearchURL: '?q=sunglasses&filter=sellers:{pixelatedtech}&limit=100',
+		appId: 'BrianWha-Pixelate-PRD-1fb4458de-1a8431fe', // clientId
+		appCertId: 'PRD-fb4458deef01-0d54-496a-b572-a04b', // clientSecret
+		tokenScope: 'https://api.ebay.com/oauth/api_scope',
+		globalId: 'EBAY-US',
 	};
 
 	return (
-		<Fragment>
-			<section id="social-cards-section">
+		<>
+			<section id="ebay-section">
 				<div className="section-container">
 					<PageHeader title="Custom Sunglasses For Sale on eBay" />
-					<div className="row-1col">
-						<div id="ebayCards" className="callout">
-							<div className="callout-body">
-								<div className="masonry" id="ebay">
-									<SocialCards sources={myRSSFeeds}></SocialCards>
-								</div>
-							</div>
-						</div>
-					</div>
+					<EbayItems apiProps={apiProps} />
 				</div>
 			</section>
-		</Fragment>
+		</>
 	);
 }
