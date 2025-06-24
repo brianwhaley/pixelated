@@ -8,6 +8,7 @@ textarea,
 select,
 form button {
     font-size: 1.1em;
+	font-family: Verdana, Geneva, sans-serif;
     padding: 2px 5px;
     margin: 5px !important;
     vertical-align: middle;
@@ -16,15 +17,11 @@ form button {
     border-radius: 5px;
 }
 
-.textarea {
-	font-family: Verdana, Geneva, sans-serif;
-}
-
 .displayVertical,
 span.displayVertical:last-child,
 span.displayVertical:last-of-type {
     display:block;
-	margin: 1px 5px 20px 10px !important;
+	margin: 1px 5px 20px 20px !important;
 }
 
 span.displayVertical {

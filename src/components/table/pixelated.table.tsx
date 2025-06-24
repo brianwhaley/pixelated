@@ -1,9 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 
 import './pixelated.table.css';
 
-export function Table (props:{ data: Array<{ [key: string]: any }> }) {
+function isImageURL(url: string) {
+  	const isImage = /\.(jpeg|jpg|gif|png|webp|svg|bmp)$/i.test(url);
+	const isURL = () => { try { new URL(url); return true; } catch { return false; } };
+	return isImage && isURL ;
+}
+
+Table.propTypes = {
+	data: PropTypes.array.isRequired,
+	id: PropTypes.string,
+};
+export type TableType = InferProps<typeof Table.propTypes>;
+export function Table (props: TableType) {
 
 	function getHeadings (data: Array<{ [key: string]: any }>) {
 		const headings = Object.keys(data[0]).map((key, i) => {
@@ -20,13 +31,14 @@ export function Table (props:{ data: Array<{ [key: string]: any }> }) {
 
 	function getCells (obj:{ [key: string]: any }) {
 		return Object.values(obj).map((value, i) => {
-			return <td key={i}>{value}</td>;
+			const myValue = (isImageURL(value)) ? <img src={value} /> : value ;
+			return <td key={i}>{myValue}</td>;
 		});
 	}
 
 	return (
 		<div>
-			<table className="pixTable">
+			<table id={props.id ?? undefined} className="pixTable">
 				<thead>{getHeadings(props.data)}</thead>
 				<tbody>{getRows(props.data)}</tbody>
 			</table>
@@ -34,6 +46,4 @@ export function Table (props:{ data: Array<{ [key: string]: any }> }) {
 	);
 
 };
-Table.propTypes = {
-	data: PropTypes.array
-};
+

@@ -4,6 +4,20 @@ import React, { useState, useEffect } from 'react';
 TODO #6 Finish LinkedIn Integration to show recommendations
 */
 
+/* 
+https://www.linkedin.com/company/pixelatedtech
+https://www.linkedin.com/company/106825397/admin/dashboard/
+
+https://developer.linkedin.com/
+https://www.linkedin.com/developers/apps/222241632/products?refreshKey=1743873578146
+https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/reputation-guides/recommendation
+https://learn.microsoft.com/en-us/answers/questions/1021872/how-do-i-get-access-to-this-linkedin-api-connectio
+
+https://github.com/jsushank17/LinkedIN-Rest-API-with-React-JS-and-Express/blob/master/CustomLinkedIN.jsx
+https://reintech.io/blog/integrating-linkedin-testimonials-on-your-website
+
+*/
+
 export function LinkedIn() {
 
 	const debug = true ;
@@ -158,17 +172,3 @@ export function LinkedIn() {
 		</div>
 	);
 }
-
-/* 
-https://www.linkedin.com/company/pixelatedtech
-https://www.linkedin.com/company/106825397/admin/dashboard/
-
-https://developer.linkedin.com/
-https://www.linkedin.com/developers/apps/222241632/products?refreshKey=1743873578146
-https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/reputation-guides/recommendation
-https://learn.microsoft.com/en-us/answers/questions/1021872/how-do-i-get-access-to-this-linkedin-api-connectio
-
-https://github.com/jsushank17/LinkedIN-Rest-API-with-React-JS-and-Express/blob/master/CustomLinkedIN.jsx
-https://reintech.io/blog/integrating-linkedin-testimonials-on-your-website
-
-*/

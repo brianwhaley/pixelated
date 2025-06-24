@@ -9,6 +9,13 @@ import "../../css/pixelated.grid.scss";
 TODO: #23 Resume Component: Convert to TypeScript
 */ 
 
+
+/* 
+Resume Microformat - https://microformats.org/wiki/h-resume
+Details Summary Expand Collapse - https://www.w3schools.com/tags/tag_details.asp
+*/
+
+
 function isValidDate(dateString) {
 	let date = new Date(dateString);
 	return !isNaN(date.getTime());
@@ -315,8 +322,3 @@ export function ResumeProjects(props) {
 	}
 }
 
-
-/* 
-Resume Microformat - https://microformats.org/wiki/h-resume
-Details Summary Expand Collapse - https://www.w3schools.com/tags/tag_details.asp
-*/

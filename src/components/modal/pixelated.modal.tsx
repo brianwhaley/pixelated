@@ -3,6 +3,10 @@
 import React, { useEffect } from 'react';
 import './pixelated.modal.css';
 
+/* 
+https://www.w3schools.com/howto/howto_css_modals.asp
+*/
+
 export function Modal(props: { modalContent: React.ReactNode }) {
 
 	useEffect(() => {
@@ -45,7 +49,3 @@ export const handleModalOpen = (event: MouseEvent) => {
 	const myModal = document.getElementById("myModal");
 	if (myModal) { myModal.style.display = 'block'; } ;
 };
-
-/* 
-https://www.w3schools.com/howto/howto_css_modals.asp
-*/

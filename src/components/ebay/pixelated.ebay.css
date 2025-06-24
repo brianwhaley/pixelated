@@ -14,23 +14,14 @@
 
 .ebayItem {
     border: 1px solid #DDD;
-    text-align: center;
-    height: 435px;
-    padding: 20px 40px;
-    padding-bottom: 50px;
+    text-align: left;
+    padding: 20px 5px !important;
 }
 
 @media screen and (max-width: 480px) {
 	.ebayItem {
-        height: auto;
+		text-align: center;
 	}
-}
-
-.ebayItemH {
-    border: 1px solid #DDD;
-    text-align: center;
-    padding: 20px 40px;
-    padding-bottom: 50px;
 }
 
 .ebayItemHeader {
@@ -42,8 +33,25 @@
     font-weight: bold;
 }
 
+/* ===== PHOTO CAROUSEL ON EBAY ITEM DETAIL PAGE ===== */
+.ebayItemPhotoCarousel {
+    width: 100%;
+    height: 400px;
+}
+.ebayItemPhotoCarousel .carouselContainer {
+    background: none;
+    border: none;
+    height: 400px;
+}
+.ebayItemPhotoCarousel .carouselButtons,
+.ebayItemPhotoCarousel .carouselButton {
+    display: inline-block;
+}
+
 .ebayItemPhoto img {
     padding: 10px 0;
+    width: 100%;
+
 }
 
 .ebayItemDetails {
@@ -63,23 +71,4 @@
     -moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-}
-
-.ebayPagination {
-    text-align: center;
-    padding-top: 20px;
-}
-
-.ebayPage {
-    display: inline-block;
-    font-size: larger;
-    font-weight: bold;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.ebayPageCurrent {
-    display: inline-block;
-    padding: 10px;
-    color: #999;
 }

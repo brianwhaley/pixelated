@@ -4,6 +4,13 @@ import React from "react";
 // import { useEffect } from "react";
 import PropTypes from 'prop-types';
 
+
+/* 
+// gtag("config", "UA-2370059-2"); // pixelatedviews.com
+// gtag("config", 'G-1J1W90VBE1'); // pixelated.tech
+*/
+
+
 declare global {
 	interface Window {
 		dataLayer?: any[];
@@ -55,8 +62,3 @@ window.gtag('config', '${props.id}');
 Analytics.propTypes = {
 	id: PropTypes.string.isRequired,
 };
-
-/* 
-// gtag("config", "UA-2370059-2"); // pixelatedviews.com
-// gtag("config", 'G-1J1W90VBE1'); // pixelated.tech
-*/

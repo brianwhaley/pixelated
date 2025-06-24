@@ -1,5 +1,10 @@
 
 
+/* 
+https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-multiple-stories
+*/
+
+
 export async function getStoryBlokCards(){
 	const base_url = "https://api.storyblok.com/v2/cdn/stories?";
 	const content_type = "CarouselCard";
@@ -22,6 +27,3 @@ export async function getStoryBlokCards(){
 	}    
 }
 // getStoryBlokCards();
-/* 
-https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-multiple-stories
-*/

@@ -21,6 +21,25 @@ type FlickrApiType = {
     };
 };
 
+const defaultFlickr = { 
+	flickr : {
+		baseURL: 'https://api.flickr.com/services/rest/?',
+		urlProps: {
+			method: 'flickr.photos.search',
+			api_key: '882cab5548d53c9e6b5fb24d59cc321d',
+			user_id: '15473210@N04',
+			tags: 'pixelatedviewsgallery',
+			extras: 'date_taken,description,owner_name',
+			sort: 'date-taken-desc',
+			per_page: 500,
+			format: 'json',
+			photoSize: 'Medium',
+			nojsoncallback: 'true' /*,
+			startPos: 0 */
+		}
+	} , 
+};
+
 
 function getFlickrSize (size: string) {
 	switch (size) {
@@ -47,25 +66,6 @@ function getFlickrSize (size: string) {
 
 
 export function GetFlickrData( props: { flickr: any } ) {
-
-	const defaultFlickr = { 
-		flickr : {
-			baseURL: 'https://api.flickr.com/services/rest/?',
-			urlProps: {
-				method: 'flickr.photos.search',
-				api_key: '882cab5548d53c9e6b5fb24d59cc321d',
-				user_id: '15473210@N04',
-				tags: 'pixelatedviewsgallery',
-				extras: 'date_taken,description,owner_name',
-				sort: 'date-taken-desc',
-				per_page: 500,
-				format: 'json',
-				photoSize: 'Medium',
-				nojsoncallback: 'true' /*,
-				startPos: 0 */
-			}
-		} , 
-	};
 
 	const debug = false;
 	const flickr = mergeDeep(defaultFlickr.flickr, props.flickr) as FlickrApiType;

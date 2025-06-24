@@ -7,6 +7,10 @@ TODO #9 Recipe Component: Change URL so you can deep link to a specific recipe
 TODO: #22 Recipe Component: Convert to TypeScript
 */
 
+
+/* http://microformats.org/wiki/h-recipe */
+
+
 /* ========== RECIPE BOOK ========== */
 export function RecipeBook(props) {
 	RecipeBook.propTypes = {
@@ -212,5 +216,3 @@ export function BackToTop() {
 		</div>
 	);
 }
-
-/* http://microformats.org/wiki/h-recipe */

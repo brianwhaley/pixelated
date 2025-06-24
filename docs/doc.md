@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "carousel enhance flickr photos fetch by album ie photoset id"
+git commit -m "ebay integration, shopping cart functionality, paypal integration"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

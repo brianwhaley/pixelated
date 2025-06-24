@@ -131,7 +131,7 @@ section.section-alt {
 	background-image: url(/images/pix/pix-bg.gif);
 	color: #FFF;
 	height: 60px;
-	padding: 15px;
+	padding: 10px 15px;
 	z-index: 2000;
 }
 

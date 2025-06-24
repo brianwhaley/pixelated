@@ -9,6 +9,12 @@ import './pixelated.carousel.css';
 TODO: #20 Carousel bug conflict with drag and click
 */
 
+
+/* ========== CAROUSEL IMAGE ORIENTATION ========== */
+/* https://stackoverflow.com/questions/43430498/detecting-orientation-of-images-with-javascript */
+
+
+
 export type CarouselCardType = {
 	index: number,
 	cardIndex: number,
@@ -212,6 +218,3 @@ function CarouselLoading() {
 		</div>
 	);
 }
-
-/* ========== CAROUSEL IMAGE ORIENTATION ========== */
-/* https://stackoverflow.com/questions/43430498/detecting-orientation-of-images-with-javascript */

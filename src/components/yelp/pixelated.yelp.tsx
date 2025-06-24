@@ -9,6 +9,15 @@ as Yelp Base API Access costs $229 per month.
 Not ok.  
 */
 
+
+/* 
+https://www.yelp.com/developers
+https://www.google.com/search?q=yelp+reviews+react+component&oq=yelp+reviews+react+component&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigATIHCAYQIRirAtIBCDYzOThqMWo3qAIAsAIA&sourceid=chrome&ie=UTF-8
+https://www.reddit.com/r/nextjs/comments/16smhqa/next_js_fetching_data_from_yelp_api/
+https://helloputnam.medium.com/easiest-way-to-include-business-reviews-on-a-web-app-google-facebook-yelp-etc-de3e243bbe75
+*/
+
+
 export function YelpReviews(props: { businessID: string, key: string }) {
 	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -66,10 +75,3 @@ export function YelpReviews(props: { businessID: string, key: string }) {
 		</div>
 	);
 }
-
-/* 
-https://www.yelp.com/developers
-https://www.google.com/search?q=yelp+reviews+react+component&oq=yelp+reviews+react+component&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigATIHCAYQIRirAtIBCDYzOThqMWo3qAIAsAIA&sourceid=chrome&ie=UTF-8
-https://www.reddit.com/r/nextjs/comments/16smhqa/next_js_fetching_data_from_yelp_api/
-https://helloputnam.medium.com/easiest-way-to-include-business-reviews-on-a-web-app-google-facebook-yelp-etc-de3e243bbe75
-*/
