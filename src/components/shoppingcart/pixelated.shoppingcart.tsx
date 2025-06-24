@@ -20,7 +20,10 @@ import { FormButton } from '../form/pixelated.formcomponents';
 const debug = false;
 const shoppingCartKey = "pixelatedCart";
 const shippingInfoKey = "pixelatedCartShipping";
-const PayPalClientID = "AT10GG2ZHoApTtEw7dJoU6XRDYkf3wEvK2k_-eZ9GOvOK-REphG8yKCyZCqFi95OrxKgrdctlfWxayHG";
+// const sbPayPalApiKey = "AT10GG2ZHoApTtEw7dJoU6XRDYkf3wEvK2k_-eZ9GOvOK-REphG8yKCyZCqFi95OrxKgrdctlfWxayHG";
+// const sbPayPalSecret = "EDUrdPonwcNYZwO5j7hNmFSmF-13zptaCndUnO0-Vr_j0GYEW4m-Tfar9IaukHwm0ixL5fUojOOFtZVk";
+// const payPalApiKey = "AeWRwYpsrfslATCndF6xjL4GLcqA1UxQZLC5vxQE-FTvPezXfLbCJO_uAFk5zoXUKRFnP-zJ_73yEkBE";
+// const payPalSecret = "EBvYvynRXZCI6RbK4rg2NiENNG4N8tbgl8qAmpxB6f9nUkZjXMODxXJZ91JycP439kPrQcnB7uRKp0-F";
 
 /* 
 TODO #5 Build eCommerce Components
@@ -286,7 +289,7 @@ function completeCheckout() {
 /* ========== SHOPPING CART UI COMPONENT ========== */
 /* ================================================ */
 
-export function ShoppingCart() {
+export function ShoppingCart( props: {payPalClientID: string} ) {
 
 	const [ shoppingCart, setShoppingCart ] = useState<ShoppingCartType[]>();
 	const [ shippingInfo, setShippingInfo ] = useState<AddressType[]>();
@@ -417,7 +420,7 @@ export function ShoppingCart() {
 				<FormButton className="pixCartButton" type="button" id="backToCart" text="<= Back To Cart"
 					onClick={() => SetProgressStep("ShippingInfo")} />
 				<br />
-				<PayPal payPalClientID={PayPalClientID} 
+				<PayPal payPalClientID={props.payPalClientID} 
 					checkoutData={getCheckoutData()} 
 					onApprove={handleOnApprove} />
 			</div>

@@ -45,7 +45,6 @@ export * from './components/recipe/pixelated.recipe.js';
 export * from './components/resume/pixelated.resume.js';
 
 export * from './components/shoppingcart/pixelated.paypal.js';
-/* export * from './components/shoppingcart/pixelated.shippo.js'; */
 export * from './components/shoppingcart/pixelated.shoppingcart.js';
 
 export * from './components/sitemap/pixelated.sitemap.js';
