@@ -20,7 +20,8 @@ PayPal.PropTypes = {
 export type PayPalType = InferProps<typeof PayPal.propTypes>;
 export function PayPal(props: any) {
     const paypalScript = document.createElement('script');
-    paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${props.payPalClientID}&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,card&disable-funding=paylater`;
+    // paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${props.payPalClientID}&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,card&disable-funding=paylater`;
+    paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${props.payPalClientID}&currency=USD&components=buttons&enable-funding=venmo,card&disable-funding=paylater`;
     paypalScript.onload = () => {
       if (window.paypal) {
         // Now you can access paypal object within the window scope

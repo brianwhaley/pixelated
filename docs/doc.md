@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "api key swap for production"
+git commit -m "paypal fix - remove buyer-country=US from js import"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
