@@ -12,6 +12,14 @@
 	position: relative;
     overflow: hidden;
 }
+@media screen and (max-width: 480px) {
+    .carouselContainer {
+		height: 350px;
+	}
+	.carouselCardsContainer {
+        height: 300px;
+    }
+}
 
 #carouselCardsContainer {
 	--do-nothing: true;
