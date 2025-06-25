@@ -60,17 +60,24 @@ form span {
 
 .tooltip {
 	display: inline;
-	margin-right: 5px;
+	margin-right: 10px;
 	position: relative;
 }
 
 .tooltipIcon {
-  	display: inline;
+  	/* display: inline;
 	color: white !important;
     background-color: #369;
     border-radius: 20px;
-    padding: 0 3px;
+    padding: 0 3px; */
     vertical-align: middle;
+}
+
+.tooltipIcon img {
+  	width: 20px;
+	margin: 5px 0 0 -10px;
+	background-color: #DDD;
+    border-radius: 5px;
 }
 
 .tooltipText {

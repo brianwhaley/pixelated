@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
@@ -50,15 +50,15 @@ FormLabel.defaultProps = {
 export type FormLabelType = InferProps<typeof FormLabel.propTypes>;
 function FormLabel(props: FormLabelType) {
 	return (
-		<Fragment >
+		< >
 			{ props.label && props.id 
-				? <label className={props.className ?? undefined} 
+				? <label className={props.className || ''} 
 					id={`lbl-${props.id}`} htmlFor={props.id}>{props.label}</label> 
 				: "" }
 			{ props.tooltip 
 				? <FormTooltip id={props.id} text={props.tooltip} />
 				: "" }
-		</Fragment>
+		</>
 	);
 }
 
@@ -93,18 +93,21 @@ function FormTooltip(props: FormTooltipType) {
 	// ℹ	8505	2139	 	INFORMATION SOURCE
 	// ⚠	9888	26A0	 	WARNING SIGN
 	// 				24BE		I IN CIRCLE
+	// {'\u2139'}
 	let thisID = "tooltip-" + props.id;
 	return (
-		<Fragment >
+		<>
 			{ props.text && props.id 
-				? <Fragment>
-					<div id={thisID} className={`tooltip ${props.className}`}>
-						<a href="#" className="tooltipIcon" onClick={toggleTooltip}>{'\u2139'}</a>
+				? <>
+					<div id={thisID} className={`tooltip ${props.className || ''}`}>
+						<a href="#" className="tooltipIcon" onClick={toggleTooltip}>
+							<img src="/images/icons/tooltip-icon-2.png" />
+						</a>
 						<div className="tooltipText">{props.text}</div>
 					</div>
-				</Fragment>
+				</>
 				: "" }
-		</Fragment>
+		</>
 	);
 }
 
@@ -119,10 +122,10 @@ FormValidate.propTypes = {
 export type FormValidateType = InferProps<typeof FormValidate.propTypes>;
 function FormValidate(props: FormValidateType) {
 	return ( 
-		<Fragment>
+		<>
 			{ !props.valid ? 
 				<span id={props.id}>{ props.valid  ? "\u2705" : "\u274C" }</span> : "" }
-		</Fragment>
+		</>
 	);
 }
 
@@ -503,7 +506,7 @@ export function FormButton(props: FormButtonType) {
 			<button 
 				type={props.type as "button" | "submit" | "reset" | undefined} 
 				id={props.id} 
-				className={props.className ?? undefined} 
+				className={props.className || ""} 
 				onClick={props.onClick}>{props.text}</button>
 		</div>
 	);
@@ -546,7 +549,7 @@ FormFieldset.propTypes = {
 export type FormFieldsetType = InferProps<typeof FormFieldset.propTypes>;
 export function FormFieldset() {
 	return (
-		<Fragment />
+		<></>
 	);
 }
 

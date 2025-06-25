@@ -271,7 +271,7 @@ export function EbayItem(props: any) {
 				<br />
 				<div className="ebayItemAddToCart">
 					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
-					<GoToCartButton href={"./cart"} itemID={thisItem.legacyItemId} />
+					<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
 				</div>
 			</div>
 		</div>
@@ -376,7 +376,7 @@ export function EbayItemDetail(props: any)  {
 							<br />
 							<div className="ebayItemAddToCart">
 								<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
-								<GoToCartButton href={"./cart"} itemID={thisItem.legacyItemId} />
+								<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
 							</div>
 
 						</div>
