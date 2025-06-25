@@ -398,6 +398,11 @@ main .carouselCardImage {
     height: 550px !important;
 	margin-top: 5px !important;
 }
+@media screen and (max-width: 480px) {
+    main .carouselCardImage {
+        height: 300px !important;
+    }
+}
 
 main .carouselCardHeader { 
     display: none;

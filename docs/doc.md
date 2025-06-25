@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "paypal fix remove buyer-country from js import"
+git commit -m "fix for mobile for ebay and shopping cart"
 git push pixelated dev --tags
 git push pixelated dev:main
 
