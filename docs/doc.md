@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "ebay query syntax fix"
+git commit -m "ebay query improvement"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

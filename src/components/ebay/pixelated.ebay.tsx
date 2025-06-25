@@ -76,7 +76,7 @@ const defaultEbayProps = {
 	baseTokenURL: 'https://api.ebay.com/identity/v1/oauth2/token',
 	tokenScope: 'https://api.ebay.com/oauth/api_scope',
 	baseSearchURL : 'https://api.ebay.com/buy/browse/v1/item_summary/search',
-	qsSearchURL: '?q=sunglasses&category_ids=79720&aspect_filter=categoryId:79720&filter=sellers:{pixelatedtech}&limit=100',
+	qsSearchURL: '?q=sunglasses&fieldgroups=full&category_ids=79720&aspect_filter=categoryId:79720&filter=sellers:{pixelatedtech}&sort=newlyListed&limit=200',
 	baseItemURL: 'https://api.ebay.com/buy/browse/v1/item',
 	qsItemURL: '/v1|295959752403|0?fieldgroups=PRODUCT,ADDITIONAL_SELLER_DETAILS',
 	appId: 'BrianWha-Pixelate-PRD-1fb4458de-1a8431fe', // clientId
