@@ -249,9 +249,10 @@ EbayItems.propTypes = {
 export function EbayListItem(props: any) {
 	const thisItem = props.item;
 	// const itemURL = thisItem.itemWebUrl;
-	const itemURL = "./ebay/" + thisItem.legacyItemId;
+	const itemURL = "./store/" + thisItem.legacyItemId;
 	const itemURLTarget = "_self"; /* "_blank" */
 	const shoppingCartItem = getShoppingCartItem(thisItem);
+	// CHANGE EBAY URL TO LOCAL EBAY ITEM DETAIL URL
 	shoppingCartItem.itemURL = itemURL;
 	return (
 		<div className="ebayItem row-12col">
