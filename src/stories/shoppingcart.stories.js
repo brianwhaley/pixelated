@@ -48,7 +48,7 @@ const ParentShoppingCart = () => {
 			</div>
             <br />
 			<div>
-				<ShoppingCart payPalApiKey={sbPayPalApiKey} />
+				<ShoppingCart payPalClientID={sbPayPalApiKey} />
 			</div>
 		</>
 	);

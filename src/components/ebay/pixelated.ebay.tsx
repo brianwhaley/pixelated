@@ -268,7 +268,7 @@ export function EbayItem(props: any) {
 						: thisItem.price.value + " " + thisItem.price.currency
 					}
 				</div>
-
+				<br />
 				<div className="ebayItemAddToCart">
 					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
 					<GoToCartButton href={"./cart"} itemID={thisItem.legacyItemId} />

@@ -102,7 +102,7 @@
     border-radius: 5px;
     min-width: 200px;
     height: auto;
-    margin: 5px 0;
+    margin: 5px auto;
 }
 #pixCartButton.pixCartButton {
     width: 80px;

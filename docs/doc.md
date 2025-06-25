@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "paypal fix - remove buyer-country=US from js import"
+git commit -m "mobile fixes for eaby and shopping cart"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

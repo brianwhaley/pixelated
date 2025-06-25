@@ -47,6 +47,14 @@
 .ebayItemPhotoCarousel .carouselButton {
     display: inline-block;
 }
+@media screen and (max-width: 480px) {
+	.ebayItemPhotoCarousel {
+        height: 350px;
+    }
+    .ebayItemPhotoCarousel .carouselContainer {
+        height: 300px;
+    }
+}
 
 .ebayItemPhoto img {
     padding: 10px 0;
@@ -56,6 +64,11 @@
 
 .ebayItemDetails {
     padding-bottom: 10px;
+}
+@media screen and (max-width: 480px) {
+	.ebayItemDetails {
+        text-align: left;
+    }
 }
 
 .ebayItemPrice{
