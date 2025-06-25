@@ -76,7 +76,7 @@ const defaultEbayProps = {
 	baseTokenURL: 'https://api.ebay.com/identity/v1/oauth2/token',
 	tokenScope: 'https://api.ebay.com/oauth/api_scope',
 	baseSearchURL : 'https://api.ebay.com/buy/browse/v1/item_summary/search',
-	qsSearchURL: '?q=sunglasses&filter=sellers:{pixelatedtech}&limit=100',
+	qsSearchURL: '?q=sunglasses&category_ids=79720&aspect_filter=categoryId:79720&filter=sellers:{pixelatedtech}&limit=100',
 	baseItemURL: 'https://api.ebay.com/buy/browse/v1/item',
 	qsItemURL: '/v1|295959752403|0?fieldgroups=PRODUCT,ADDITIONAL_SELLER_DETAILS',
 	appId: 'BrianWha-Pixelate-PRD-1fb4458de-1a8431fe', // clientId
@@ -91,7 +91,7 @@ const defaultEbayProps = {
 
 
 export function getEbayAppToken(props: any){
-	const apiProps = props.apiProps;
+	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchToken = async () => {
 		if (debug) console.log("Fetching Token");
 		try {
@@ -125,7 +125,7 @@ export function getEbayAppToken(props: any){
 
 
 export function getEbayItemsSearch(props: any){
-	const apiProps = props.apiProps;
+	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
 		if (debug) console.log("Fetching ebay API Data");
 		try {
