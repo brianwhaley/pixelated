@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
 		return [
 			{ source: '/customsgallery.html', destination: '/customsgallery', permanent: true, },
 			{ source: '/customsunglasses.html', destination: '/customsunglasses', permanent: true, },
+			{ source: '/ebay', destination: '/store', permanent: true, },
 			{ source: '/gallery.html', has: [ { type: 'query', key: 'tag', value: 'customsunglasses' } ], destination: '/customsunglasses', permanent: true, },
 			{ source: '/gallery.html', has: [ { type: 'query', key: 'tag', value: 'pixelatedviewsgallery' } ], destination: '/photogallery', permanent: true, },
 			{ source: '/index.html', destination: '/', permanent: true, },

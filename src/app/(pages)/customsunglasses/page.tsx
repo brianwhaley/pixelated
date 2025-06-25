@@ -29,17 +29,17 @@ export default function CustomSunglasses() {
 						</div><div className="gridItem">
 							<Callout
 								// url="https://www.ebay.com/sch/i.html?sid=btw73" 
-								url="/ebay" 
-								img='/images/logos/ebay-logo.png'
-								title='Customs, BTW on eBay' 
-								content='View some cutomized Oakley sunglasses available for purchase on eBay.'
+								url="/store" 
+								img='/images/customs/btw-signature.jpg'
+								title='Custom Sunglass Store' 
+								content='View some cutomized Oakley sunglasses available for purchase.'
 								layout='vertical' 
 								shape='round' />
 						</div><div className="gridItem">
 							<Callout
 								// url="https://www.ebay.com/sch/i.html?sid=btw73" 
 								url="/requests" 
-								img='/images/customs/btw-signature.jpg'
+								img='/images/icons/request-icon.jpg'
 								title='Customs Request List' 
 								content='Sharing my backlog of requests for upcoming customized sunglasses'
 								layout='vertical' 

@@ -39,17 +39,11 @@
 					"description": "A sampling of the custom sunglasses I paint in my spare time",
 					"keywords": "pixelated, custom sunglasses, oakley, refurbish, restore, custom paint, ebay, gallery, carousel" 
 				} , { 
-					"name": "Customs Gallery", 
-					"path": "/customsgallery", 
-					"title": "Pixelated - Brian Whaley - Customs Gallery",
-					"description": "A carousel gallery of some of the paint styles I do on sunglasses, including marbles, splatters, drips, and repairs",
-					"keywords": "pixelated, gallery, carousel, custom paint, oakely, marble, splatter, drip, repair" 
-				} , { 
-					"name": "Customs on eBay", 
-					"path": "/ebay", 
-					"title": "Pixelated - Brian Whaley - Customs on eBay",
-					"description": "Check out my store on ebay where I sell my custom sunglasses",
-					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses" 
+					"name": "Customs Store", 
+					"path": "/store", 
+					"title": "Pixelated - Brian Whaley - Customs Store",
+					"description": "Check out my Custom Sunglasses store where I sell my custom painted sunglasses",
+					"keywords": "pixelated, online store, ecommerce, custom sunglasses" 
 				} , { 
 					"name": "Customs Request", 
 					"path": "/requests", 
@@ -62,6 +56,12 @@
 					"title": "Pixelated - Brian Whaley - Subscribe",
 					"description": "Subscribe th Pixelated newsletters, announcements, and updates.",
 					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses, subscribe, subscription, newsletter, announcement, drop, update" 
+				} , { 
+					"name": "Customs Gallery", 
+					"path": "/customsgallery", 
+					"title": "Pixelated - Brian Whaley - Customs Gallery",
+					"description": "A carousel gallery of some of the paint styles I do on sunglasses, including marbles, splatters, drips, and repairs",
+					"keywords": "pixelated, gallery, carousel, custom paint, oakely, marble, splatter, drip, repair" 
 				} , { 
 					"name": "My Customs", 
 					"path": "/mycustoms", 
