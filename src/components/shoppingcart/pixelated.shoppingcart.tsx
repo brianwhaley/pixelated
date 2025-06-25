@@ -494,7 +494,7 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 					<div><b>Quantity: </b>{thisItem.itemQuantity}</div>
 					<br />
 					<div>
-						<FormButton className="pixCartButton" type="button" id="RemoveFromCart" text="Remove Item From Cart"
+						<FormButton className="pixCartButton" type="button" id={`btn-rm-${thisItem.itemID}`} text="Remove Item From Cart"
 							onClick={()=>RemoveFromShoppingCart(thisItem)} />
 					</div>
 				</div>
@@ -582,7 +582,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	}
 	return (
 		<div>
-			<button className="pixCartButton" type="button" id={props.itemID}
+			<button className="pixCartButton" type="button" id={`btn-add-${props.itemID}`}
 				onClick={(e)=>handleClick(e)} >
 				Add To Shopping Cart
 			</button>
@@ -594,7 +594,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 export function GoToCartButton(props: {href: string, itemID: string}){
 	return (
 		<div>
-			<button className="pixCartButton" type="button" id={props.itemID}
+			<button className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`}
 				onClick={()=>window.location.href=props.href} >
 				Go To Shopping Cart
 			</button>
