@@ -4,7 +4,9 @@
 
 import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
+import { PayPal } from "./pixelated.paypal";
 import { FormEngine } from "../form/pixelated.form";
+import { FormButton } from '../form/pixelated.formcomponents';
 import '../form/pixelated.form.css';
 import { CalloutHeader } from "../callout/pixelated.callout";
 import { Table } from "../table/pixelated.table";
@@ -12,10 +14,7 @@ import { Modal, handleModalOpen } from '../modal/pixelated.modal';
 // import shippingFromData from "../../data/shipping.from.json";
 import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
-
-import { PayPal } from "./pixelated.paypal";
 import "./pixelated.shoppingcart.css";
-import { FormButton } from '../form/pixelated.formcomponents';
 
 const debug = false;
 const shoppingCartKey = "pixelatedCart";
@@ -195,9 +194,20 @@ function getCartSubTotal(cart: ShoppingCartType[]) {
 export function AddToShoppingCart(thisItem: ShoppingCartType) {
 	let cart: ShoppingCartType[] = getCart();
 	if(alreadyInCart(cart, thisItem.itemID)){
-		increaseQuantityCart(cart, thisItem.itemID);
+		const index = getIndexInCart(cart, thisItem.itemID);
+		if ( cart[index].itemQuantity < thisItem.itemQuantity) {
+			if (debug) console.log("Increasing quantity in cart");
+			increaseQuantityCart(cart, thisItem.itemID);
+		} else {
+			if (debug) console.log("Cant add more than item quantity to the cart");
+			// cant add moe than quantity
+		}
 	} else {
-		cart.push(thisItem);
+		// BE SURE TO ADD ONLY ONE TO THE CART
+		if (debug) console.log("Adding only one to the cart");
+		const cartItem = { ...thisItem };
+		cartItem.itemQuantity = 1;
+		cart.push(cartItem);
 	} 
 	localStorage.setItem("pixelatedCart", JSON.stringify(cart));
 	window.dispatchEvent(new Event('storage'));

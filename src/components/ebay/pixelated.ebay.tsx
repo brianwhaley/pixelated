@@ -8,6 +8,11 @@ import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;
 
+// category : 0 : {categoryId: '79720', categoryName: 'Sunglasses'}
+// category : 0 : {categoryId: '179241', categoryName: 'Accessories'}
+// categoryId : "79720"
+const cat = '79720'; // Ebay Sunglasses Category
+
 /* 
 TODO #2 Fix Ebay Items Api Call
 TODO #3 Convert eBay Component to Typescript
@@ -40,12 +45,20 @@ export type EbayApiType = {
 }
 
 function getShoppingCartItem(thisItem: any) {
+	let qty = 0;
+	if (thisItem.categoryId && thisItem.categoryId == cat) {
+		qty = 1;
+	} else if (thisItem.categories[0].categoryId && thisItem.categories[0].categoryId == cat) {
+		qty = 1;
+	} else {
+		qty = 10;
+	}
 	const shoppingCartItem: ShoppingCartType = {
 		itemImageURL : thisItem.image.imageUrl,
 		itemID: thisItem.legacyItemId,
 		itemURL: thisItem.itemWebUrl,
 		itemTitle: thisItem.title,
-		itemQuantity: 1,
+		itemQuantity: qty,
 		itemCost: thisItem.price.value,
 	};
 	return shoppingCartItem;
@@ -188,7 +201,7 @@ export function EbayItems(props: any) {
 		let newItems = [];
 		for (let key in props.items) {
 			const item = props.items[key];
-			const newItem = <EbayItem item={item} key={item.legacyItemId}  />;
+			const newItem = <EbayListItem item={item} key={item.legacyItemId}  />;
 			newItems.push(newItem);
 		}
 		return newItems;
@@ -233,7 +246,7 @@ EbayItems.propTypes = {
 };
 
 
-export function EbayItem(props: any) {
+export function EbayListItem(props: any) {
 	const thisItem = props.item;
 	// const itemURL = thisItem.itemWebUrl;
 	const itemURL = "./ebay/" + thisItem.legacyItemId;
@@ -257,10 +270,12 @@ export function EbayItem(props: any) {
 				</div>
 				<div className="ebayItemDetails grid12">
 					<div><b>Item ID: </b>{thisItem.legacyItemId}</div>
+					<div><b>Quantity: </b>{thisItem.categories[0].categoryId == cat ? 1 : 10}</div>
 					<div><b>Condition: </b>{thisItem.condition}</div>
 					<div><b>Seller: </b>{thisItem.seller.username} ({thisItem.seller.feedbackScore})<br />{thisItem.seller.feedbackPercentage}% positive</div>
 					<div><b>Buying Options: </b>{thisItem.buyingOptions[0]}</div>
 					<div><b>Location: </b>{thisItem.itemLocation.postalCode + ", " + thisItem.itemLocation.country}</div>
+					<div><b>Listing Date: </b>{thisItem.itemCreationDate}</div>
 				</div>
 				<div className="ebayItemPrice">
 					{ itemURL
@@ -277,7 +292,7 @@ export function EbayItem(props: any) {
 		</div>
 	);
 }
-EbayItem.propTypes = {
+EbayListItem.propTypes = {
 	item: PropTypes.object.isRequired
 };
 
@@ -360,11 +375,13 @@ export function EbayItemDetail(props: any)  {
 							<br />
 							<div className="ebayItemDetails grid12">
 								<div><b>Item ID: </b>{thisItem.legacyItemId}</div>
+								<div><b>Quantity: </b>{thisItem.categoryId == cat ? 1 : 10}</div>
 								<div><b>Category: </b>{thisItem.categoryPath}</div>
 								<div><b>Condition: </b>{thisItem.condition}</div>
 								<div><b>Seller: </b>{thisItem.seller.username} ({thisItem.seller.feedbackScore})<br />{thisItem.seller.feedbackPercentage}% positive</div>
 								<div><b>Buying Options: </b>{thisItem.buyingOptions[0]}</div>
 								<div><b>Location: </b>{thisItem.itemLocation.city + ", " + thisItem.itemLocation.stateOrProvince}</div>
+								<div><b>Listing Date: </b>{thisItem.itemCreationDate}</div>
 								<br />
 							</div>
 							<div className="ebayItemPrice">
