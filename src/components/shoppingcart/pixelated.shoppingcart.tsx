@@ -471,11 +471,12 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 
 export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 	const thisItem = props.item;
+	const thisItemTarget = "_self"; // "_blank"
 	return (
 		<div className="pixCartItem row-12col">
 			<div className="pixCartItemPhoto grid-s1-e3">
 				{ thisItem.itemURL
-					? <a href={thisItem.itemURL} target="_blank" rel="noopener noreferrer"><img src={thisItem.itemImageURL} alt={thisItem.itemTitle} /></a>
+					? <a href={thisItem.itemURL} target={thisItemTarget} rel="noopener noreferrer"><img src={thisItem.itemImageURL} alt={thisItem.itemTitle} /></a>
 					: <img src={thisItem.itemImageURL} alt={thisItem.itemTitle} />
 				}
 			</div>
@@ -483,7 +484,7 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 				<div className="pixCartItemHeader">
 					<span>
 						{ thisItem.itemURL
-							? <a href={thisItem.itemURL} target="_blank" rel="noopener noreferrer"><h2 className="">{thisItem.itemTitle}</h2></a>
+							? <a href={thisItem.itemURL} target={thisItemTarget} rel="noopener noreferrer"><h2 className="">{thisItem.itemTitle}</h2></a>
 							: <h2 className="">{thisItem.itemTitle}</h2>
 						}
 					</span>
@@ -501,7 +502,7 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 			</div>
 			<div className="grid-s11-e2">
 				<div className="pixCartItemPrice">
-					{ formatAsUSD(thisItem.itemCost) }
+					${ formatAsUSD(thisItem.itemCost) }
 				</div>
 			</div>
 		</div>
@@ -582,10 +583,12 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	}
 	return (
 		<div>
-			<button className="pixCartButton" type="button" id={`btn-add-${props.itemID}`}
+			<FormButton className="pixCartButton" type="button" id={`btn-add-${props.itemID}`} text="Add to Shopping Cart"
+				onClick={(e)=>handleClick(e)} />
+			{ /* <button className="pixCartButton" type="button" id={`btn-add-${props.itemID}`}
 				onClick={(e)=>handleClick(e)} >
 				Add To Shopping Cart
-			</button>
+			</button> */ }
 			<Modal modalContent={modalContent} />
 		</div>
 	);
@@ -594,10 +597,12 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 export function GoToCartButton(props: {href: string, itemID: string}){
 	return (
 		<div>
-			<button className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`}
+			<FormButton className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`} text="Go to Shopping Cart"
+				onClick={()=>window.location.href=props.href} />
+			{ /* <button className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`}
 				onClick={()=>window.location.href=props.href} >
 				Go To Shopping Cart
-			</button>
+			</button> */ }
 		</div>
 	);
 }

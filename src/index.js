@@ -12,9 +12,9 @@ export * from './components/carousel2/pixelated.carousel.flickr.js';
 export * from './components/carousel2/pixelated.cloudinary.js';
 
 export * from './components/cms/pixelated.contentful.js';
-/* export * from './components/cms/pixelated.storyblok.js'; */
 
-export * from './components/ebay/pixelated.ebay.js';
+export * from './components/ebay/pixelated.ebay.components.js';
+export * from './components/ebay/pixelated.ebay.functions.js';
 
 export * from './components/form/pixelated.form.js';
 export * from './components/form/pixelated.form.submit.js';

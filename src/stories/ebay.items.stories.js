@@ -1,4 +1,4 @@
-import { EbayItems } from '../components/ebay/pixelated.ebay';
+import { EbayItems } from '../components/ebay/pixelated.ebay.components';
 import '../components/ebay/pixelated.ebay.css';
 import '../css/pixelated.global.css';
 
