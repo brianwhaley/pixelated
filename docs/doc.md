@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "ebay items in sitemap, price format fixes, fix for targets on ebay detail page"
+git commit -m "fix for ebay get item function, multiple modals"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

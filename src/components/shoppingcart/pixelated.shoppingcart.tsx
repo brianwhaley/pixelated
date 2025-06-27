@@ -403,7 +403,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	}
 
 	if ( progressStep === "ThankYou" ) {
-		// ========== CHECKOUT ==========
+		// ========== THANK YOU ==========
 		const pmt = orderData.purchase_units[0].payments.captures[0];
 		return (
 			<div className="pixCart">
@@ -579,7 +579,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	}, []);
 	function handleClick(e: React.MouseEvent<HTMLButtonElement>){
 		props.handler(props.item);
-		handleModalOpen(e.nativeEvent);
+		handleModalOpen(e.nativeEvent, "-" + props.itemID);
 	}
 	return (
 		<div>
@@ -589,7 +589,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 				onClick={(e)=>handleClick(e)} >
 				Add To Shopping Cart
 			</button> */ }
-			<Modal modalContent={modalContent} />
+			<Modal modalContent={modalContent} modalID={"-" + props.itemID} />
 		</div>
 	);
 }

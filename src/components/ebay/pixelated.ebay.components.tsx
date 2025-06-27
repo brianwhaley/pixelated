@@ -1,6 +1,6 @@
  
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel2/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayAppToken, getEbayItemsSearch, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
 import { AddToShoppingCart, AddToCartButton, GoToCartButton } from "../shoppingcart/pixelated.shoppingcart";
@@ -20,8 +20,11 @@ TODO #4 Add eBay Item Details Component
 
 /* ========== EBAY ITEMS PAGE ========== */
 
-
-export function EbayItems(props: any) {
+EbayItems.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+};
+export type EbayItemsType = InferProps<typeof EbayItems.propTypes>;
+export function EbayItems(props: EbayItemsType) {
 	// https://developer.ebay.com/devzone/finding/HowTo/GettingStarted_JS_NV_JSON/GettingStarted_JS_NV_JSON.html
 	const [ items, setItems ] = useState([]);
 	const [ apiProps, setApiProps ] = useState(defaultEbayProps);
@@ -36,7 +39,7 @@ export function EbayItems(props: any) {
 		let newItems = [];
 		for (let key in props.items) {
 			const item = props.items[key];
-			const newItem = <EbayListItem item={item} key={item.legacyItemId}  />;
+			const newItem = <EbayListItem item={item} key={item.legacyItemId} />;
 			newItems.push(newItem);
 		}
 		return newItems;
@@ -76,12 +79,14 @@ export function EbayItems(props: any) {
 	}
 
 }
-EbayItems.propTypes = {
-	apiProps: PropTypes.object.isRequired,
+
+
+
+EbayListItem.propTypes = {
+	item: PropTypes.any.isRequired
 };
-
-
-export function EbayListItem(props: any) {
+export type EbayListItemType = InferProps<typeof EbayListItem.propTypes>;
+export function EbayListItem(props: EbayListItemType) {
 	const thisItem = props.item;
 	// const itemURL = thisItem.itemWebUrl;
 	const itemURL = "./store/" + thisItem.legacyItemId;
@@ -128,39 +133,38 @@ export function EbayListItem(props: any) {
 		</div>
 	);
 }
-EbayListItem.propTypes = {
-	item: PropTypes.object.isRequired
-};
 
 
-export function EbayItemHeader(props: any) {
-	return (
-		<span>
-			{ props.url
-				? <a href={props.url} target={props.target} rel="noopener noreferrer"><h2 className="">{props.title}</h2></a>
-				: <h2 className="">{props.title}</h2>
-			}
-		</span>
-	);
-}
+
 EbayItemHeader.propTypes = {
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string,
 	target: PropTypes.string,
 };
+export type EbayItemHeaderType = InferProps<typeof EbayItemHeader.propTypes>;
+export function EbayItemHeader(props: EbayItemHeaderType) {
+	return (
+		<span>
+			{ props.url
+				? <a href={props.url} target={props.target ?? ''} rel="noopener noreferrer"><h2 className="">{props.title}</h2></a>
+				: <h2 className="">{props.title}</h2>
+			}
+		</span>
+	);
+}
 
 
 /* ========== EBAY ITEM DETAIL PAGE ========== */
 
 
-export function EbayItemDetail(props: any)  {
+EbayItemDetail.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+	itemID: PropTypes.string.isRequired, // currently not used
+};
+export type EbayItemDetailType = InferProps<typeof EbayItemDetail.propTypes>;
+export function EbayItemDetail(props: EbayItemDetailType)  {
 	const [ item, setItem ] = useState({});
-	const [ apiProps, setApiProps ] = useState(defaultEbayProps);
-
-	useEffect(() => {
-		const newState = {...apiProps, ...props.apiProps};
-    	setApiProps(newState);
-  	}, [props]);
+	const [ apiProps ] = useState({ ...defaultEbayProps, ...props.apiProps });
 
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
@@ -247,7 +251,3 @@ export function EbayItemDetail(props: any)  {
 		);
 	}
 }
-EbayItemDetail.propTypes = {
-	apiProps: PropTypes.object.isRequired
-};
-

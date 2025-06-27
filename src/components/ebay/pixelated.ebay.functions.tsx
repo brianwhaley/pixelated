@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes, { InferProps } from "prop-types";
 import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart";
 const debug = false;
 
@@ -32,9 +32,10 @@ export type EbayApiType = {
 }
 
 
-getShoppingCartItem.PropTypes = {
+getShoppingCartItem.propTypes = {
 	thisItem: PropTypes.object.isRequired,
 };
+export type getShoppingCartItemType = InferProps<typeof getShoppingCartItem.propTypes>;
 export function getShoppingCartItem(thisItem: any) {
 	let qty = 0;
 	if (thisItem.categoryId && thisItem.categoryId == ebaySunglassCategory) {
@@ -80,8 +81,11 @@ export const defaultEbayProps = {
 
 /* ========== GET TOKEN ========== */
 
-
-export function getEbayAppToken(props: any){
+getEbayAppToken.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+};
+export type getEbayAppTokenType = InferProps<typeof getEbayAppToken.propTypes>;
+export function getEbayAppToken(props: getEbayAppTokenType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchToken = async () => {
 		if (debug) console.log("Fetching Token");
@@ -114,8 +118,12 @@ export function getEbayAppToken(props: any){
 
 /* ========== ITEM SEARCH ========== */
 
-
-export function getEbayItemsSearch(props: any){
+getEbayItemsSearch.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+	token: PropTypes.string.isRequired,
+};
+export type getEbayItemsSearchType = InferProps<typeof getEbayItemsSearch.propTypes>;
+export function getEbayItemsSearch(props: getEbayItemsSearchType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
 		if (debug) console.log("Fetching ebay API Data");
@@ -145,14 +153,18 @@ export function getEbayItemsSearch(props: any){
 
 /* ========== GET ITEM ========== */
 
-
-export function getEbayItem(props: any){
-	const apiProps = props.apiProps;
+getEbayItem.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+	token: PropTypes.string.isRequired,
+};
+export type getEbayItemType = InferProps<typeof getEbayItem.propTypes>;
+export function getEbayItem(props: getEbayItemType){
+	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
 		if (debug) console.log("Fetching ebay API Data");
 		try {
 			const response = await fetch(
-				apiProps.proxyURL + encodeURIComponent( apiProps.baseItemURL + apiProps.qsItemURL ) , {
+				apiProps.proxyURL + encodeURIComponent( (apiProps.baseItemURL ?? '') + (apiProps.qsItemURL ?? '') ) , {
 					method: 'GET',
 					headers: {
 						'Authorization' : 'Bearer ' + token ,
