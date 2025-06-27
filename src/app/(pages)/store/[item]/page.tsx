@@ -2,12 +2,11 @@
 
 import React, { use } from 'react';
 import { EbayItemDetail } from "@brianwhaley/pixelated-components";
+const debug = false;
 
 export default function EbayItem({params}: { params: Promise<{ item: string }> }){
-
 	const { item } = use(params);
-	console.log(item);
-
+	if (debug) console.log(item);
 	const apiProps = {
 		proxyURL: "https://proxy.pixelated.tech/prod/proxy?url=",
 		qsItemURL: `/v1|${item}|0?fieldgroups=PRODUCT,ADDITIONAL_SELLER_DETAILS`,
@@ -16,10 +15,9 @@ export default function EbayItem({params}: { params: Promise<{ item: string }> }
 		tokenScope: 'https://api.ebay.com/oauth/api_scope',
 		globalId: 'EBAY-US',
 	};
-
 	return (
 		<>
-			<EbayItemDetail apiProps={apiProps} />
+			<EbayItemDetail apiProps={apiProps} itemID={item} />
 		</>
 		
 	);

@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "price format fixes, include ebay items in sitemap, target fix on details page"
+git commit -m "fix for get item ebay function, multiple modals"
 git push pixelated dev --tags
 git push pixelated dev:main
 
