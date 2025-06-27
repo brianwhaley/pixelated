@@ -1,6 +1,6 @@
 {
   "name": "pixelated",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "private": true,
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3000 --experimental-https",
