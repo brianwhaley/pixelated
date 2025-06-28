@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 /* 
 // gtag("config", "UA-2370059-2"); // pixelatedviews.com
 // gtag("config", 'G-1J1W90VBE1'); // pixelated.tech
+// gtag("config", 'G-B1NZG3YT9Y'); // pixelvivid.com
 */
 
 

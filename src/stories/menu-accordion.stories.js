@@ -17,9 +17,10 @@ export default {
 const ParentAccordionMenu = () => {
 	return (
 	  	<>
-			<div style={{ position: 'absolute', left: '10px', top:'10px' }} >
+			<div style={{ left: '10px', top:'10px' }} >
 				<MenuAccordionButton />
 			</div>
+			<h2 className="pull-left pad textOutline">SiteName</h2>
 			<div style={{ position: 'fixed', left: '10px', top:'100px' }}>
 				<MenuAccordion menuItems={menuItems} />
 			</div>

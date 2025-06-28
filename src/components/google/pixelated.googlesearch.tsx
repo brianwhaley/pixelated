@@ -5,7 +5,9 @@ import React from "react";
 
 /* 
 ===== Google Programmable Search =====
-id = "009500278966481927899:bcssp73qony";
+pixelated id = "009500278966481927899:bcssp73qony";
+pixelvivid id = "e336d1c9d0e5e48e5";
+
 https://programmablesearchengine.google.com/controlpanel/all 
 https://dev.to/mjoycemilburn/searching-pdf-files-coding-a-goggle-custom-search-engine-gcse-component-in-react-36fk
 https://stackoverflow.com/questions/15779036/auto-adding-gsc-tab-0-after-the-url 

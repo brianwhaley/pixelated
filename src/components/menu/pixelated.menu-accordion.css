@@ -131,6 +131,28 @@
 	border-left: 5px #000 solid;
 }
 
+
+.panelMenuButton .hamburger{
+    /* the tricks */
+	display: block;
+   	-webkit-transform: scaleX(1.75);
+   	-moz-transform: scaleX(1.75);
+   	-o-transform: caleX(1.75); 
+   	transform: scaleX(1.75);
+	writing-mode: vertical-lr;
+	transform: scaleX(1.75);
+    /* optional */
+    font-size: 8pt;
+    cursor: pointer;
+    font-weight: 900;
+    color: #CCC;
+    margin: 5px 0 0 10px;
+}
+/* hamburger hover style */
+/* .accordionMenu .hamburger:hover {
+    color: #FFC75F;
+} */
+
 /* ===== LEVEL 2 ===== */
 
 .accordionMenu > ul > ul {
