@@ -81,11 +81,12 @@ export const defaultEbayProps = {
 
 /* ========== GET TOKEN ========== */
 
+
 getEbayAppToken.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 };
-export type getEbayAppTokenType = InferProps<typeof getEbayAppToken.propTypes>;
-export function getEbayAppToken(props: getEbayAppTokenType){
+type getEbayAppTokenType = InferProps<typeof getEbayAppToken.propTypes>;
+function getEbayAppToken(props: getEbayAppTokenType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchToken = async () => {
 		if (debug) console.log("Fetching Token");
@@ -107,6 +108,7 @@ export function getEbayAppToken(props: getEbayAppTokenType){
 			}
 			const data = await response.json();
 			const accessToken = data.access_token;
+			if (debug) console.log("Fetched eBay Access Token:", accessToken);
 			return accessToken;
 		} catch (error) {
 			console.error('Error fetching token:', error);
@@ -118,15 +120,16 @@ export function getEbayAppToken(props: getEbayAppTokenType){
 
 /* ========== ITEM SEARCH ========== */
 
-getEbayItemsSearch.propTypes = {
+
+getEbayBrowseSearch.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	token: PropTypes.string.isRequired,
 };
-export type getEbayItemsSearchType = InferProps<typeof getEbayItemsSearch.propTypes>;
-export function getEbayItemsSearch(props: getEbayItemsSearchType){
+type getEbayBrowseSearchType = InferProps<typeof getEbayBrowseSearch.propTypes>;
+function getEbayBrowseSearch(props: getEbayBrowseSearchType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
-		if (debug) console.log("Fetching ebay API Data");
+		if (debug) console.log("Fetching ebay API Browse Search Data");
 		try {
 			const response = await fetch(
 				apiProps.proxyURL + encodeURIComponent( apiProps.baseSearchURL + apiProps.qsSearchURL ) , {
@@ -142,7 +145,8 @@ export function getEbayItemsSearch(props: getEbayItemsSearchType){
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 			const data = await response.json();
-			return data;
+			if (debug) console.log("Fetched eBay API Browse Search Data:", await data);
+			return ( await data );
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -153,15 +157,16 @@ export function getEbayItemsSearch(props: getEbayItemsSearchType){
 
 /* ========== GET ITEM ========== */
 
-getEbayItem.propTypes = {
+
+getEbayBrowseItem.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	token: PropTypes.string.isRequired,
 };
-export type getEbayItemType = InferProps<typeof getEbayItem.propTypes>;
-export function getEbayItem(props: getEbayItemType){
+type getEbayBrowseItemType = InferProps<typeof getEbayBrowseItem.propTypes>;
+function getEbayBrowseItem(props: getEbayBrowseItemType){
 	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
-		if (debug) console.log("Fetching ebay API Data");
+		if (debug) console.log("Fetching ebay API Browse Item Data");
 		try {
 			const response = await fetch(
 				apiProps.proxyURL + encodeURIComponent( (apiProps.baseItemURL ?? '') + (apiProps.qsItemURL ?? '') ) , {
@@ -177,10 +182,60 @@ export function getEbayItem(props: getEbayItemType){
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 			const data = await response.json();
-			return data;
+			if (debug) console.log("Fetched eBay Item Data:", await data);
+			return ( await data );
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 	};
 	return fetchData(props.token);
 }
+
+
+
+
+
+/* ========== EXPORTED FUNCTIONS ========== */
+
+/* ========== GET EBAY ITEMS ========== */
+
+getEbayItems.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+};
+type getEbayItemsType = InferProps<typeof getEbayItems.propTypes>;
+export async function getEbayItems(props: getEbayItemsType) {
+	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
+	try {
+		const response = await getEbayAppToken({apiProps: apiProps});
+		if (debug) console.log("eBay App Token Response:", response);
+		const data = await getEbayBrowseSearch({ apiProps: apiProps, token: response });
+		if (debug) console.log("eBay Browse Search Data:", data);
+		return data;
+	} catch (error) {
+		console.error("Failed to fetch eBay Items:", error);
+	}
+	// Return an empty object if there's an error
+	return {};
+}
+
+/* ========== GET EBAY ITEMS ========== */
+
+getEbayItem.propTypes = {
+	apiProps: PropTypes.object.isRequired,
+};
+type getEbayItemType = InferProps<typeof getEbayItem.propTypes>;
+export async function getEbayItem(props: getEbayItemType) {
+	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
+	try {
+		const response = await getEbayAppToken({apiProps: apiProps});
+		if (debug) console.log("eBay App Token Response:", response);
+		const data = await getEbayBrowseItem({ apiProps: apiProps, token: response });
+		if (debug) console.log("eBay Browse Item Data:", data);
+		return data;
+	} catch (error) {
+		console.error("Failed to fetch eBay Items:", error);
+	}
+	// Return an empty object if there's an error
+	return {};
+}
+

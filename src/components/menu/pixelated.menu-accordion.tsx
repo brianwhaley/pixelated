@@ -158,6 +158,9 @@ MenuAccordionItem.propTypes = {
 
 
 /* ========== MENU BUTTON ========== */
+/* 
+https://www.unclebigbay.com/blog/building-the-world-simplest-hamburger-with-html-and-css
+*/
 export function MenuAccordionButton() {
 	function slideMobilePanel() {
 		window.moveMenu();

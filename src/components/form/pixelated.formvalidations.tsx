@@ -1,3 +1,6 @@
+import { validateDiscountCode } from '../shoppingcart/pixelated.shoppingcart';
+
+
 export const inputTypes = [
 	'button', 'checkbox', 'color', 'date', 'datetime-local', 'email',
 	'file', 'hidden', 'image', 'month', 'number', 'password', 'radio',
@@ -80,4 +83,8 @@ export function isValidUrl (field: { value: string | URL; }) {
 		console.log(e);
 		return false;
 	}
+}
+
+export function isValidDiscountCode(field: { value: string ; }) {
+	return validateDiscountCode(field);
 }

@@ -1,7 +1,7 @@
 
 import { getAllRoutes, getAllImages } from "../metadata/pixelated.metadata";
 import { getContentfulFieldValues } from "../cms/pixelated.contentful";
-import { getEbayAppToken, getEbayItemsSearch } from "../ebay/pixelated.ebay.functions";
+import { getEbayItems } from "../ebay/pixelated.ebay.functions";
 // import { getContentfulFieldValues } from "@brianwhaley/pixelated-components";
 // import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";
 // import myRoutes from "../../data/routes.json";
@@ -123,7 +123,7 @@ export async function createContentfulURLs(origin: string){
 
 
 
-const defaultEbayProps = {
+const ebayProps = {
 	proxyURL: "https://proxy.pixelated.tech/prod/proxy?url=",
 	baseTokenURL: 'https://api.ebay.com/identity/v1/oauth2/token',
 	tokenScope: 'https://api.ebay.com/oauth/api_scope',
@@ -139,21 +139,16 @@ const defaultEbayProps = {
 };
 export async function createEbayItemURLs(origin: string){
 	const sitemap: SitemapEntry[] = [];
-	await getEbayAppToken({apiProps: defaultEbayProps})
-		.then(async (response: any) => {
-			await getEbayItemsSearch({ apiProps: defaultEbayProps, token: response })
-				.then( (items: any) => {
-					console.log(items);
-					for (const item of items.itemSummaries) {
-						sitemap.push({
-							url: `${origin}/store/${item.legacyItemId}` ,
-							lastModified: item.itemCreationDate,
-							changeFrequency: "hourly" as const,
-							priority: 1.0,
-						});
-					}
-				});
+	const items: any = await getEbayItems({ apiProps: ebayProps });
+	console.log(items);
+	for (const item of items) {
+		sitemap.push({
+			url: `${origin}/store/${item.legacyItemId}` ,
+			lastModified: item.itemCreationDate,
+			changeFrequency: "hourly" as const,
+			priority: 1.0,
 		});
+	}
 	return sitemap;
 }
 

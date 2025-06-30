@@ -69,19 +69,20 @@
 	.ebayItemDetails {
         text-align: left;
     }
+    .ebayItems .ebayItemDetails {
+        display: none;
+    }
 }
 
 .ebayItemPrice{
     font-size: 1.5em;
     font-weight: bold;
-
     background-image: url(/images/pix/pix-bg-sm-bw.gif);
-    border: 1px solid #999;
     display: inline-block;
 	margin: 0 auto;
     padding: 5px 20px;
-	
+    /* border: 1px solid #999;
     -moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	border-radius: 5px; */
 }

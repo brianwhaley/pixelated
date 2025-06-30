@@ -15,8 +15,7 @@
 				"label" : "Name : ",
 				"tooltip" : "Please enter your First and Last Name"
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "text",
@@ -31,8 +30,7 @@
 				"label" : "Street Address : ",
 				"tooltip" : "Please enter your Street Address"
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "text",
@@ -47,8 +45,7 @@
 				"label" : "City : ",
 				"tooltip" : "Please enter your City"
             }
-        },
-		{
+        },{
             "component" : "FormSelect",
             "props" : {
                 "id" : "state",
@@ -116,8 +113,7 @@
 					{ "value" : "WY", "text" : "Wyoming" }
 				]
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "text",
@@ -346,8 +342,7 @@
 					{ "text": "Zimbabwe", "value": "ZW" }
 				]
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "tel",
@@ -363,8 +358,7 @@
 				"tooltip" : "Please enter your Phone Number",
 				"validate" : "isValidUSPhoneNumber"
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "email",
@@ -380,7 +374,22 @@
 				"tooltip" : "Please enter your Email Address",
 				"validate" : "isValidEmailAddress"
             }
-        },
+        },{
+            "component" : "FormInput",
+            "props" : {
+                "type" : "text",
+                "id" : "discountCode",
+                "name" : "discountCode",
+                "defaultValue" : null,
+                "placeholder": "Discount Code",
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : null,
+				"label" : "Discount Code : ",
+				"tooltip" : "Please enter any discount code you have received",
+				"validate" : "isValidDiscountCode"
+            }
+        } ,
 		{
             "component" : "FormRadio",
             "props" : {

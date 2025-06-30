@@ -1,8 +1,9 @@
- 
+"use client";
+
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel2/pixelated.carousel';
-import { defaultEbayProps, ebaySunglassCategory, getEbayAppToken, getEbayItemsSearch, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
+import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
 import { AddToShoppingCart, AddToCartButton, GoToCartButton } from "../shoppingcart/pixelated.shoppingcart";
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
@@ -26,13 +27,8 @@ EbayItems.propTypes = {
 export type EbayItemsType = InferProps<typeof EbayItems.propTypes>;
 export function EbayItems(props: EbayItemsType) {
 	// https://developer.ebay.com/devzone/finding/HowTo/GettingStarted_JS_NV_JSON/GettingStarted_JS_NV_JSON.html
-	const [ items, setItems ] = useState([]);
-	const [ apiProps, setApiProps ] = useState(defaultEbayProps);
-
-	useEffect(() => {
-		const newState = {...apiProps, ...props.apiProps};
-    	setApiProps(newState);
-  	}, [props]);
+	const [ items, setItems ] = useState<any[]>([]);
+	const [ apiProps ] = useState({ ...defaultEbayProps , ...props.apiProps});
 
 	function paintItems(props: any){
 		if (debug) console.log("Painting Items");
@@ -50,14 +46,16 @@ export function EbayItems(props: EbayItemsType) {
 
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
-		getEbayAppToken({apiProps: apiProps})
-			.then(response => {
-				getEbayItemsSearch({ apiProps: apiProps, token: response })
-					.then( data => {
-						if (debug) console.log("eBay API Search Data",data);
-						setItems(data.itemSummaries);
-					});
-			});
+		async function fetchItems() {
+			try {
+				const response: any = await getEbayItems({ apiProps: apiProps });
+				if (debug) console.log("eBay API Get Items Data", response);
+				setItems(response.itemSummaries);
+			} catch (error) {
+				console.error("Error fetching eBay items:", error);
+			}
+		}
+		fetchItems();
 	}, []);
 
 	if (items.length > 0 ) {
@@ -168,15 +166,18 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
-		getEbayAppToken({apiProps: apiProps})
-			.then(response => {
-				getEbayItem({ apiProps: apiProps, token: response })
-					.then( data => {
-						if (debug) console.log("eBay API Item Data",data);
-						setItem({...data});
-					});
-			});
+		async function fetchItems() {
+			try {
+				const response: any = await getEbayItem({ apiProps: apiProps });
+				if (debug) console.log("eBay API Get Items Data", response);
+				setItem(response);
+			} catch (error) {
+				console.error("Error fetching eBay items:", error);
+			}
+		}
+		fetchItems();
 	}, []);
+
 
 	if ( item && Object.keys(item) && Object.keys(item).length > 0 ) {
 		const thisItem = { ...item } as any;
@@ -192,51 +193,49 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 
 		return (
 			<div className="section-container">
-				<div id="ebayItems" className="ebayItems">
-					<div className="ebayItem row-12col">
-						<div className="ebayItemHeader grid-s1-e12">
+				<div className="ebayItem row-12col">
+					<div className="ebayItemHeader grid-s1-e12">
+						{ itemURL
+							? <EbayItemHeader url={itemURL} title={thisItem.title} />
+							: <EbayItemHeader title={thisItem.title} />
+						}
+					</div>
+					<br />
+					<div className="ebayItemPhotoCarousel grid-s1-e6">
+						<Carousel 
+							cards={images} 
+							draggable={true} 
+							imgFit={"contain"}
+						/>
+					</div>
+					<div className="grid-s7-e6">
+						<div className="ebayItemDetails grid12">
+							<div dangerouslySetInnerHTML={{ __html: thisItem.description.replace(/(<br\s*\/?>\s*){2,}/gi, '') }} />
+						</div>
+						<br />
+						<div className="ebayItemDetails grid12">
+							<div><b>Item ID: </b>{thisItem.legacyItemId}</div>
+							<div><b>Quantity: </b>{thisItem.categoryId == ebaySunglassCategory ? 1 : 10}</div>
+							<div><b>Category: </b>{thisItem.categoryPath}</div>
+							<div><b>Condition: </b>{thisItem.condition}</div>
+							<div><b>Seller: </b>{thisItem.seller.username} ({thisItem.seller.feedbackScore})<br />{thisItem.seller.feedbackPercentage}% positive</div>
+							<div><b>Buying Options: </b>{thisItem.buyingOptions[0]}</div>
+							<div><b>Location: </b>{thisItem.itemLocation.city + ", " + thisItem.itemLocation.stateOrProvince}</div>
+							<div><b>Listing Date: </b>{thisItem.itemCreationDate}</div>
+							<br />
+						</div>
+						<div className="ebayItemPrice">
 							{ itemURL
-								? <EbayItemHeader url={itemURL} title={thisItem.title} />
-								: <EbayItemHeader title={thisItem.title} />
+								? <a href={itemURL} target={itemURLTarget} rel="noreferrer">${thisItem.price.value + " " + thisItem.price.currency}</a>
+								: "$" + thisItem.price.value + " " + thisItem.price.currency
 							}
 						</div>
 						<br />
-						<div className="ebayItemPhotoCarousel grid-s1-e6">
-							<Carousel 
-								cards={images} 
-								draggable={true} 
-								imgFit={"contain"}
-							/>
+						<div className="ebayItemAddToCart">
+							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
+							<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
 						</div>
-						<div className="grid-s7-e6">
-							<div className="ebayItemDetails grid12">
-								<div dangerouslySetInnerHTML={{ __html: thisItem.description.replace(/(<br\s*\/?>\s*){2,}/gi, '') }} />
-							</div>
-							<br />
-							<div className="ebayItemDetails grid12">
-								<div><b>Item ID: </b>{thisItem.legacyItemId}</div>
-								<div><b>Quantity: </b>{thisItem.categoryId == ebaySunglassCategory ? 1 : 10}</div>
-								<div><b>Category: </b>{thisItem.categoryPath}</div>
-								<div><b>Condition: </b>{thisItem.condition}</div>
-								<div><b>Seller: </b>{thisItem.seller.username} ({thisItem.seller.feedbackScore})<br />{thisItem.seller.feedbackPercentage}% positive</div>
-								<div><b>Buying Options: </b>{thisItem.buyingOptions[0]}</div>
-								<div><b>Location: </b>{thisItem.itemLocation.city + ", " + thisItem.itemLocation.stateOrProvince}</div>
-								<div><b>Listing Date: </b>{thisItem.itemCreationDate}</div>
-								<br />
-							</div>
-							<div className="ebayItemPrice">
-								{ itemURL
-									? <a href={itemURL} target={itemURLTarget} rel="noreferrer">${thisItem.price.value + " " + thisItem.price.currency}</a>
-									: "$" + thisItem.price.value + " " + thisItem.price.currency
-								}
-							</div>
-							<br />
-							<div className="ebayItemAddToCart">
-								<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
-								<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
-							</div>
 
-						</div>
 					</div>
 				</div>
 			</div>
