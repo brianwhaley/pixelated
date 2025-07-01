@@ -62,15 +62,15 @@
 
 }
 
+.ebayItems .ebayItemDetails {
+    display: none;
+}
 .ebayItemDetails {
     padding-bottom: 10px;
 }
 @media screen and (max-width: 480px) {
 	.ebayItemDetails {
         text-align: left;
-    }
-    .ebayItems .ebayItemDetails {
-        display: none;
     }
 }
 

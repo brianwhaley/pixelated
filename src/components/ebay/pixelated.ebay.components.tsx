@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel2/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
-import { AddToShoppingCart, AddToCartButton, GoToCartButton } from "../shoppingcart/pixelated.shoppingcart";
+import { AddToShoppingCart, AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart";
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;
@@ -124,8 +124,9 @@ export function EbayListItem(props: EbayListItemType) {
 				</div>
 				<br />
 				<div className="ebayItemAddToCart">
+					<ViewItemDetails href={"/store"} itemID={thisItem.legacyItemId} />
 					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
-					<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
+					{ /* <GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} /> */}
 				</div>
 			</div>
 		</div>
@@ -233,7 +234,7 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 						<br />
 						<div className="ebayItemAddToCart">
 							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
-							<GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} />
+							{ /* <GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} /> */}
 						</div>
 
 					</div>

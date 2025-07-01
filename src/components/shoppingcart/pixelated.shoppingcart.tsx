@@ -633,6 +633,16 @@ export function CartButton(props: {href: string}) {
 	);
 }
 
+export function ViewItemDetails(props: {href: string, itemID: string}){
+	return (
+		<div>
+			<FormButton className="pixCartButton" type="button" 
+				id={`btn-item-${props.itemID}`} text="View Item Details"
+				onClick={()=>window.location.href = `${props.href}/${props.itemID}`} />
+		</div>
+	);
+}
+
 export function AddToCartButton(props: {handler: any, item: ShoppingCartType, itemID: string}){
 	const [modalContent, setModalContent] = useState<React.ReactNode>();
 	useEffect(() => {
@@ -645,12 +655,9 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	}
 	return (
 		<div>
-			<FormButton className="pixCartButton" type="button" id={`btn-add-${props.itemID}`} text="Add to Shopping Cart"
+			<FormButton className="pixCartButton" type="button" 
+				id={`btn-add-${props.itemID}`} text="Add to Shopping Cart"
 				onClick={(e)=>handleClick(e)} />
-			{ /* <button className="pixCartButton" type="button" id={`btn-add-${props.itemID}`}
-				onClick={(e)=>handleClick(e)} >
-				Add To Shopping Cart
-			</button> */ }
 			<Modal modalContent={modalContent} modalID={"-" + props.itemID} />
 		</div>
 	);
@@ -659,12 +666,9 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 export function GoToCartButton(props: {href: string, itemID: string}){
 	return (
 		<div>
-			<FormButton className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`} text="Go to Shopping Cart"
+			<FormButton className="pixCartButton" type="button" 
+				id={`btn-cart-${props.itemID}`} text="Go to Shopping Cart"
 				onClick={()=>window.location.href=props.href} />
-			{ /* <button className="pixCartButton" type="button" id={`btn-cart-${props.itemID}`}
-				onClick={()=>window.location.href=props.href} >
-				Go To Shopping Cart
-			</button> */ }
 		</div>
 	);
 }
