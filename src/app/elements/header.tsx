@@ -10,7 +10,7 @@ export default function Header() {
 	return (
 		<div className="section-container">
 			<MenuAccordionButton />
-			<h2 className="pull-left pad">Pixelated  - by Brian Whaley</h2>
+			<h2 className="pull-left pad">Pixelated</h2>
 			<div className="right">
 				<CartButton href={'/cart'} />
 			</div>

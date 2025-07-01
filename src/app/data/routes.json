@@ -3,173 +3,77 @@
 		{ 
 			"name": "Home", 
 			"path": "/", 
-			"title": "Pixelated - Brian Whaley - Home",
+			"title": "Pixelated - Home",
 			"description": "Pixelated offers a wide varity of products and services, including custom web development for small businesses, stock photography, touchup services, home design and remodeling, and more.",
 			"keywords": "pixelated, web development, small business, stock photography, home redesign, remodeling, social media"  
-		} , {
-			"name": "Web Development",
-			"routes": [
-				{ 
-					"name": "Work Overview", 
-					"path": "/workoverview", 
-					"title": "Pixelated - Brian Whaley - Work Overview",
-					"description": "An overview of my work experience, including my resume, a readme file, social media accounts, and personal family recipes." ,
-					"keywords": "pixelated, brian whaley, web development, custom, small business, global, high performance teams, digital products, technology strategy, highly available, e-commerce portal, web sites, web applications, onshore, offshore, hybrid teams" 
-				} , { 
-					"name": "Work Portfolio", 
-					"path": "/workportfolio", 
-					"title": "Pixelated - Brian Whaley - Work Portfolio",
-					"description": "A carousel gallery showing screenshots of some of the web properties I have worked on." ,
-					"keywords": "pixelated, brian whaley, carousel, gallery, screenshots, web development, work portfolio" 
-				} , { 
-					"name": "Schedule a Meeting", 
-					"path": "/schedule", 
-					"title": "Pixelated - Brian Whaley - Schedule an Appointment",
-					"description": "Schedule a consult appointment with Pixelated for custom IT development work - web development, social media mearketing, search engine optimization, and small business modernization." ,
-					"keywords": "pixelated, brian whaley, schedule an appointment, schedule a meeting, web development, small business modernization" 
-				} 
-			]
 		} , { 
-			"name" : "Custom Sunglasses",
-			"routes" : [
-				{ 
-					"name": "Customs Overview", 
-					"path": "/customsunglasses", 
-					"title": "Pixelated - Brian Whaley - Custom Sunglasses",
-					"description": "A sampling of the custom sunglasses I paint in my spare time",
-					"keywords": "pixelated, custom sunglasses, oakley, refurbish, restore, custom paint, ebay, gallery, carousel" 
-				} , { 
-					"name": "Customs Store", 
-					"path": "/store", 
-					"title": "Pixelated - Brian Whaley - Customs Store",
-					"description": "Check out my Custom Sunglasses store where I sell my custom painted sunglasses",
-					"keywords": "pixelated, online store, ecommerce, custom sunglasses" 
-				} , { 
-					"name": "Customs Request", 
-					"path": "/requests", 
-					"title": "Pixelated - Brian Whaley - Customs Request",
-					"description": "Request some custom sunglass work for yourself.",
-					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses, requests, form" 
-				} , { 
-					"name": "Subscribe", 
-					"path": "/subscribe", 
-					"title": "Pixelated - Brian Whaley - Subscribe",
-					"description": "Subscribe th Pixelated newsletters, announcements, and updates.",
-					"keywords": "pixelated, online store, ecommerce, ebay, custom sunglasses, subscribe, subscription, newsletter, announcement, drop, update" 
-				} , { 
-					"name": "Customs Gallery", 
-					"path": "/customsgallery", 
-					"title": "Pixelated - Brian Whaley - Customs Gallery",
-					"description": "A carousel gallery of some of the paint styles I do on sunglasses, including marbles, splatters, drips, and repairs",
-					"keywords": "pixelated, gallery, carousel, custom paint, oakely, marble, splatter, drip, repair" 
-				} , { 
-					"name": "My Customs", 
-					"path": "/mycustoms", 
-					"title": "Pixelated - Brian Whaley - My Customs",
-					"description": "These are pictures of the custom sunglasses in my personal collection.",
-					"keywords": "pixelated, custom sunglasses, personal collection, collection" 
-				} 
-			]
-		} , {
-			"name": "Photography",
-			"routes": [
-				{ 
-					"name": "Photo Overview", 
-					"path": "/photography", 
-					"title": "Pixelated - Brian Whaley - Photography",
-					"description": "An overview of the Pixelated phtography portfolio.",
-					"keywords": "pixelated, photography, overview, gallery, carousel, social media" 
-				} , { 
-					"name": "Photo Gallery", 
-					"path": "/photogallery", 
-					"title": "Pixelated - Brian Whaley - Photo Gallery",
-					"description": "A carousel of some of my best photographs throughout my life. They are primarily landscape photographs, macro photographs, and travel photographs. ",
-					"keywords": "pixelated, gallery, carousel, photographs, landscape, macro, travel" 
-				} 
-			]
-		} , {
-			"name": "About Me",
-			"routes": [
-				{ 
-					"name": "Resume", 
-					"path": "/resume", 
-					"title": "Pixelated - Brian Whaley - Resume",
-					"description": "View the resume of Brian Whaley",
-					"keywords": "brian whaley, resume, curriculum vitae, professional summary, contact information, education, skills, qualifications, work history, projects, voluteer work, certifications, honors and awards, training and conferences, rererences" 
-				} , { 
-					"name": "ReadMe", 
-					"path": "/readme", 
-					"title": "Pixelated - Brian Whaley - ReadMe",
-					"description": "Every good piece of software needs a readme.  So do people.",
-					"keywords": "brian whaley, readme, management style"  
-				} , { 
-					"name": "Social Media", 
-					"path": "/socialmedia", 
-					"title": "Pixelated - Brian Whaley - Social Media",
-					"description": "Links to all my digital footprints",
-					"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
-				} , { 
-					"name": "Family Recipes", 
-					"path": "/recipes", 
-					"title": "Pixelated - Brian Whaley - Recipes",
-					"description": "Pace / Barbano / Whaley Recipes through the ages",
-					"keywords": "family recipes, pace family, barbano family, whaley family, italian recipes" 
-				} 
-			]
+			"name": "Work Overview", 
+			"path": "/workoverview", 
+			"title": "Pixelated - Brian Whaley - Work Overview",
+			"description": "An overview of my work experience, including my resume, a readme file, social media accounts, and personal family recipes." ,
+			"keywords": "pixelated, brian whaley, web development, custom, small business, global, high performance teams, digital products, technology strategy, highly available, e-commerce portal, web sites, web applications, onshore, offshore, hybrid teams" 
 		} , { 
-			"name": "Sandbox",
-			"routes": [
-				{ 
-					"name": "Buzzword Bingo", 
-					"path": "/buzzwordbingo", 
-					"title": "Pixelated - Brian Whaley - Buzzword Bingo",
-					"description": "Buzzword Bingo is a game that is played in meetings to help keep you awake.",
-					"keywords": "" 
-				} , { 
-					"name": "NerdJokes", 
-					"path": "/nerdjokes", 
-					"title": "Pixelated - Brian Whaley - NerdJokes",
-					"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-					"keywords": "" 
-				} , { 
-					"name": "Stkr", 
-					"path": "/stkr", 
-					"title": "Pixelated - Brian Whaley - Stkr",
-					"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-					"keywords": "" 
-				} , {
-					"name": "Form", 
-					"path": "/form", 
-					"title": "Pixelated - Brian Whaley - Form",
-					"description": "Test my Form Builder, Form Components, and Form Validations",
-					"keywords": "" 
-				} , { 
-					"name": "Form Build", 
-					"path": "/form/build", 
-					"title": "Pixelated - Brian Whaley - Form Builder",
-					"description": "Build your own form with my Form Builder",
-					"keywords": ""  
-				} , { 
-					"name": "Form Extract", 
-					"path": "/form/extract", 
-					"title": "Pixelated - Brian Whaley - Form Extract",
-					"description": "Extract the JSON needed from a live site to use my Form Builder",
-					"keywords": ""  
-				}
-			]
+			"name": "Work Portfolio", 
+			"path": "/workportfolio", 
+			"title": "Pixelated - Brian Whaley - Work Portfolio",
+			"description": "A carousel gallery showing screenshots of some of the web properties I have worked on." ,
+			"keywords": "pixelated, brian whaley, carousel, gallery, screenshots, web development, work portfolio" 
+		} , { 
+			"name": "Schedule a Meeting", 
+			"path": "/schedule", 
+			"title": "Pixelated - Schedule an Appointment",
+			"description": "Schedule a consult appointment with Pixelated for custom IT development work - web development, social media mearketing, search engine optimization, and small business modernization." ,
+			"keywords": "pixelated, brian whaley, schedule an appointment, schedule a meeting, web development, small business modernization" 
+		} , { 
+
+			"name": "Social Media", 
+			"path": "/socialmedia", 
+			"title": "Pixelated - Social Media",
+			"description": "Links to all my digital footprints",
+			"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
+		} , { 
+			"name": "NerdJokes", 
+			"path": "/nerdjokes", 
+			"title": "Pixelated - NerdJokes",
+			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+			"keywords": "" 
+		} , { 
+			"name": "Stkr", 
+			"path": "/stkr", 
+			"title": "Pixelated - Stkr",
+			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+			"keywords": "" 
+		} , {
+			"name": "Form", 
+			"path": "/form", 
+			"title": "Pixelated - Form",
+			"description": "Test my Form Builder, Form Components, and Form Validations",
+			"keywords": "" 
+		} , { 
+			"name": "Form Build", 
+			"path": "/form/build", 
+			"title": "Pixelated - Form Builder",
+			"description": "Build your own form with my Form Builder",
+			"keywords": ""  
+		} , { 
+			"name": "Form Extract", 
+			"path": "/form/extract", 
+			"title": "Pixelated - Form Extract",
+			"description": "Extract the JSON needed from a live site to use my Form Builder",
+			"keywords": ""  
 		}, {
 			"name": "Legal",
 			"routes": [
 				{
 					"name": "Terms of Service", 
 					"path": "/terms", 
-					"title": "Pixelated - Brian Whaley - Terms of Service",
+					"title": "Pixelated - Terms of Service",
 					"description": "Pixelated Terms of Service",
 					"keywords": "pixelated, terms of service"  
 				} , { 
 					"name": "Privacy Policy", 
 					"path": "/privacy", 
-					"title": "Pixelated - Brian Whaley - Privacy Policy",
+					"title": "Pixelated - Privacy Policy",
 					"description": "Pixelated Privacy Policy",
 					"keywords": "pixelated, privacy policy, data retention"  
 				}
