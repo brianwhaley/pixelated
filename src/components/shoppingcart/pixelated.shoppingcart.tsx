@@ -304,6 +304,11 @@ export function validateDiscountCode(field: { value: string ; }) {
 	return false;
 }
 
+export function validateContentfulDiscountCode(field: { value: string ; }) { 
+	
+	return false;
+}
+
 /* ========== CHECKOUT FUNCTIONS ========== */
 
 function AddDiscountToCart() {
