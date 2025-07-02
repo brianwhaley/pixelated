@@ -5,6 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel2/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
 import { AddToShoppingCart, AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart";
+import { getCloudinaryRemoteFetchURL as getImg} from "../carousel2/pixelated.cloudinary";
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;
@@ -23,6 +24,8 @@ TODO #4 Add eBay Item Details Component
 
 EbayItems.propTypes = {
 	apiProps: PropTypes.object.isRequired,
+	cloudinaryProductEnv: PropTypes.string,
+
 };
 export type EbayItemsType = InferProps<typeof EbayItems.propTypes>;
 export function EbayItems(props: EbayItemsType) {
@@ -30,19 +33,22 @@ export function EbayItems(props: EbayItemsType) {
 	const [ items, setItems ] = useState<any[]>([]);
 	const [ apiProps ] = useState({ ...defaultEbayProps , ...props.apiProps});
 
-	function paintItems(props: any){
+	paintItems.propTypes = {
+		items: PropTypes.array.isRequired,
+		cloudinaryProductEnv: PropTypes.string,
+	};
+	type paintItemsType = InferProps<typeof paintItems.propTypes>;
+	function paintItems(props: paintItemsType){
 		if (debug) console.log("Painting Items");
 		let newItems = [];
 		for (let key in props.items) {
 			const item = props.items[key];
-			const newItem = <EbayListItem item={item} key={item.legacyItemId} />;
+			const newItem = <EbayListItem item={item} key={item.legacyItemId} 
+				cloudinaryProductEnv={props.cloudinaryProductEnv} />;
 			newItems.push(newItem);
 		}
 		return newItems;
 	}
-	paintItems.PropTypes = {
-		items: PropTypes.array.isRequired
-	};
 
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
@@ -62,7 +68,7 @@ export function EbayItems(props: EbayItemsType) {
 		return (
 			<div className="section-container">
 				<div id="ebayItems" className="ebayItems">
-					{ paintItems({items}) }
+					{ paintItems( { items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
 				</div>
 			</div>
 		);
@@ -81,7 +87,8 @@ export function EbayItems(props: EbayItemsType) {
 
 
 EbayListItem.propTypes = {
-	item: PropTypes.any.isRequired
+	item: PropTypes.any.isRequired,
+	cloudinaryProductEnv: PropTypes.string,
 };
 export type EbayListItemType = InferProps<typeof EbayListItem.propTypes>;
 export function EbayListItem(props: EbayListItemType) {
@@ -89,15 +96,24 @@ export function EbayListItem(props: EbayListItemType) {
 	// const itemURL = thisItem.itemWebUrl;
 	const itemURL = "./store/" + thisItem.legacyItemId;
 	const itemURLTarget = "_self"; /* "_blank" */
-	const shoppingCartItem = getShoppingCartItem(thisItem);
+	const itemImage = (props.cloudinaryProductEnv) 
+		? getImg(thisItem.thumbnailImages[0].imageUrl, props.cloudinaryProductEnv) 
+		: thisItem.thumbnailImages[0].imageUrl;
+	
+	console.log(itemImage);
+	
+	const shoppingCartItem = getShoppingCartItem({ thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
+	
+	console.log(shoppingCartItem);
+	
 	// CHANGE EBAY URL TO LOCAL EBAY ITEM DETAIL URL
 	shoppingCartItem.itemURL = itemURL;
 	return (
 		<div className="ebayItem row-12col">
 			<div className="ebayItemPhoto grid-s1-e4">
 				{ itemURL
-					? <a href={itemURL} target={itemURLTarget} rel="noopener noreferrer"><img src={thisItem.image.imageUrl} alt={thisItem.title} /></a>
-					: <img src={thisItem.image.imageUrl} alt={thisItem.title} />
+					? <a href={itemURL} target={itemURLTarget} rel="noopener noreferrer"><img src={itemImage} alt={thisItem.title} /></a>
+					: <img src={itemImage} alt={thisItem.title} />
 				}
 			</div>
 			<div className="grid-s5-e8">
@@ -159,15 +175,15 @@ export function EbayItemHeader(props: EbayItemHeaderType) {
 EbayItemDetail.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	itemID: PropTypes.string.isRequired, // currently not used
+	cloudinaryProductEnv: PropTypes.string,
 };
 export type EbayItemDetailType = InferProps<typeof EbayItemDetail.propTypes>;
 export function EbayItemDetail(props: EbayItemDetailType)  {
 	const [ item, setItem ] = useState({});
 	const [ apiProps ] = useState({ ...defaultEbayProps, ...props.apiProps });
-
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
-		async function fetchItems() {
+		async function fetchItem() {
 			try {
 				const response: any = await getEbayItem({ apiProps: apiProps });
 				if (debug) console.log("eBay API Get Items Data", response);
@@ -176,22 +192,20 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 				console.error("Error fetching eBay items:", error);
 			}
 		}
-		fetchItems();
+		fetchItem();
 	}, []);
-
-
 	if ( item && Object.keys(item) && Object.keys(item).length > 0 ) {
 		const thisItem = { ...item } as any;
 		if (debug) console.log(thisItem);
 		const images = thisItem.additionalImages.map(( thisImage: any ) => (
-			{ image: thisImage.imageUrl }
+			{ image: (props.cloudinaryProductEnv) 
+				? getImg(thisImage.imageUrl, props.cloudinaryProductEnv) 
+				: thisImage.imageUrl }
 		));
 		const itemURL = undefined;
 		const itemURLTarget = "_self"; /* "_blank" */
-
-		const shoppingCartItem = getShoppingCartItem(thisItem);
+		const shoppingCartItem = getShoppingCartItem({thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
 		shoppingCartItem.itemURL = itemURL;
-
 		return (
 			<div className="section-container">
 				<div className="ebayItem row-12col">

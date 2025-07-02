@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "new View Details button"
+git commit -m "ebay image thumbnail fix, integrate with cloudinary for improved images for store components"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
@@ -42,3 +42,9 @@ https://webpack.js.org/configuration/module/#rule
 
 ## Shields.io MD Badges
 https://github.com/inttter/md-badges?tab=readme-ov-file 
+
+
+# ===== IMAGE CDN WITH CLOUDINARY =====
+https://cloudinary.com/blog/transparent_webp_format_cdn_delivery_based_on_visitors_browsers
+https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
+

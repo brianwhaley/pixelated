@@ -1,5 +1,6 @@
 import PropTypes, { InferProps } from "prop-types";
 import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart";
+import { getCloudinaryRemoteFetchURL as getImg} from "../carousel2/pixelated.cloudinary";
 const debug = false;
 
 
@@ -33,11 +34,17 @@ export type EbayApiType = {
 
 
 getShoppingCartItem.propTypes = {
-	thisItem: PropTypes.object.isRequired,
+	thisItem: PropTypes.any.isRequired,
+	cloudinaryProductEnv: PropTypes.string,
 };
 export type getShoppingCartItemType = InferProps<typeof getShoppingCartItem.propTypes>;
-export function getShoppingCartItem(thisItem: any) {
+export function getShoppingCartItem(props: getShoppingCartItemType) {
+
+	console.log(props);
+
+	
 	let qty = 0;
+	const thisItem = props.thisItem;
 	if (thisItem.categoryId && thisItem.categoryId == ebaySunglassCategory) {
 		qty = 1;
 	} else if (thisItem.categories[0].categoryId && thisItem.categories[0].categoryId == ebaySunglassCategory) {
@@ -46,13 +53,21 @@ export function getShoppingCartItem(thisItem: any) {
 		qty = 10;
 	}
 	const shoppingCartItem: ShoppingCartType = {
-		itemImageURL : thisItem.image.imageUrl,
+		itemImageURL : ( thisItem.thumbnailImages && props.cloudinaryProductEnv ) 
+			? getImg(thisItem.thumbnailImages[0].imageUrl, props.cloudinaryProductEnv) 
+			: (thisItem.thumbnailImages) 
+				? thisItem.thumbnailImages[0].imageUrl 
+				: (thisItem.image && props.cloudinaryProductEnv)
+					? getImg(thisItem.image.imageUrl, props.cloudinaryProductEnv)
+					: thisItem.image.imageUrl,
 		itemID: thisItem.legacyItemId,
 		itemURL: thisItem.itemWebUrl,
 		itemTitle: thisItem.title,
 		itemQuantity: qty,
 		itemCost: thisItem.price.value,
 	};
+
+	console.log(props.cloudinaryProductEnv);
 	return shoppingCartItem;
 }
 

@@ -16,6 +16,7 @@ export const EbayItemsGrid = {
 			appCertId: 'PRD-fb4458deef01-0d54-496a-b572-a04b', // clientSecret
 			tokenScope: 'https://api.ebay.com/oauth/api_scope',
 			globalId: 'EBAY-US',
-		}
+		},
+		cloudinaryProductEnv: "dzjibwmev",
 	}
 };
