@@ -16,6 +16,7 @@ https://amanhimself.dev/blog/prop-types-in-react-and-typescript/#inferring-propt
 
 
 const onChange = (me: { props: any; }, event: React.ChangeEvent<HTMLInputElement>) => {
+	// TEST VALUES
 	let myValidate = (typeof me.props.validate === "string" && me.props.validate in FV)
 		? (FV as unknown as Record<string, (target: EventTarget & HTMLInputElement) => boolean>)[me.props.validate](event.target)
 		: true ;
@@ -24,11 +25,14 @@ const onChange = (me: { props: any; }, event: React.ChangeEvent<HTMLInputElement
 		: true ;
 	let myRequired = me.props.required ? event.target.checkValidity() : true ;
 	let myRequiredNotEmpty = (me.props.required && (!event.target.value)) ? false : true ;
-	let myValid = (myValidate && myParentValidate && myRequired && myRequiredNotEmpty ) ? true : false ;
-	// me.setState({ isValid : myValid });
-	if (me.props.setIsValid) me.props.setIsValid(myValid);
-	if (me.props.parent && me.props.parent.setIsValid) me.props.parent.setIsValid(myValid);
-	return true;
+	// RETURN VALUES
+	Promise.all([myValidate, myParentValidate, myRequired, myRequiredNotEmpty])
+		.then((result) => {
+			let myValid = (result[0] && result[1] && result[2] && result[3]) ? true : false ;
+			if (me.props.setIsValid) me.props.setIsValid(myValid);
+			if (me.props.parent && me.props.parent.setIsValid) me.props.parent.setIsValid(myValid);
+			return true;
+		});
 };
 
 

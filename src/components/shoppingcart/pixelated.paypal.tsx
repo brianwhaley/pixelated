@@ -66,7 +66,7 @@ export function initPayPalButton(props: {checkoutData: CheckoutType, onApprove: 
                                 "tax_total": { "currency_code":"USD", "value": checkoutData.salesTax},
                                 // "insurance": { "currency_code": "USD", "value": checkoutData.insuranceCost },
                                 // "shipping_discount": { "currency_code": "USD", "value": checkoutData.shippingDiscount },
-                                // "discount": { "currency_code": "USD", "value": checkoutData.discountAmount },
+                                "discount": { "currency_code": "USD", "value": checkoutData.subtotal_discount },
                             }
                         },
                         "items": checkoutData.items.map((item: ShoppingCartType) => {

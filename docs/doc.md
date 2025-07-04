@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "ebay image thumbnail fix, integrate with cloudinary for improved images for store components"
+git commit -m "Contentful Discount Codes, fix for PayPal Discount"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

@@ -39,10 +39,6 @@ getShoppingCartItem.propTypes = {
 };
 export type getShoppingCartItemType = InferProps<typeof getShoppingCartItem.propTypes>;
 export function getShoppingCartItem(props: getShoppingCartItemType) {
-
-	console.log(props);
-
-	
 	let qty = 0;
 	const thisItem = props.thisItem;
 	if (thisItem.categoryId && thisItem.categoryId == ebaySunglassCategory) {
@@ -66,8 +62,6 @@ export function getShoppingCartItem(props: getShoppingCartItemType) {
 		itemQuantity: qty,
 		itemCost: thisItem.price.value,
 	};
-
-	console.log(props.cloudinaryProductEnv);
 	return shoppingCartItem;
 }
 

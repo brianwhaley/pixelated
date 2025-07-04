@@ -14,17 +14,32 @@ import { Modal, handleModalOpen } from '../modal/pixelated.modal';
 // import shippingFromData from "../../data/shipping.from.json";
 import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
-import dc from "../../data/shoppingCartDiscountCodes.json";
-const codeList = dc.discountCodes;
+import { getContentfulDiscountCodes } from "../cms/pixelated.contentful";
+import type { DiscountCodeType } from "../cms/pixelated.contentful";
+
+// import dc from "../../data/shoppingCartDiscountCodes.json";
+// const codeList2 = dc.discountCodes;
+
 import "./pixelated.shoppingcart.css";
+import { get } from 'http';
 
 const debug = false;
-const shoppingCartKey = "pixelatedCart";
-const shippingInfoKey = "pixelatedCartShipping";
+const shoppingCartKey = "pixelvividCart";
+const shippingInfoKey = "pixelvividCartShipping";
+const discountCodesKey = "pixelvividDiscountCodes";
+const checkoutInfoKey = "pixelvividCartCheckout";
 // const sbPayPalApiKey = "AT10GG2ZHoApTtEw7dJoU6XRDYkf3wEvK2k_-eZ9GOvOK-REphG8yKCyZCqFi95OrxKgrdctlfWxayHG";
 // const sbPayPalSecret = "EDUrdPonwcNYZwO5j7hNmFSmF-13zptaCndUnO0-Vr_j0GYEW4m-Tfar9IaukHwm0ixL5fUojOOFtZVk";
 // const payPalApiKey = "AeWRwYpsrfslATCndF6xjL4GLcqA1UxQZLC5vxQE-FTvPezXfLbCJO_uAFk5zoXUKRFnP-zJ_73yEkBE";
 // const payPalSecret = "EBvYvynRXZCI6RbK4rg2NiENNG4N8tbgl8qAmpxB6f9nUkZjXMODxXJZ91JycP439kPrQcnB7uRKp0-F";
+
+
+const apiProps = {
+	base_url: "https://cdn.contentful.com",
+	space_id: "soi9w77t7027",
+	environment: "master",
+	access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
+};
 
 /* 
 TODO #5 Build eCommerce Components
@@ -61,7 +76,7 @@ export type AddressType = {
 export type CheckoutType = {
 	items: ShoppingCartType[];
 	subtotal: number,
-	subtotal_discount?: number,
+	subtotal_discount: number,
 	shippingTo: AddressType,
 	shippingCost: number,
 	handlingFee: number,
@@ -134,15 +149,23 @@ const shippingOptions = [
 
 /* ========== SHOPPING CART FUNCTIONS ========== */
 
+
+function formatAsUSD(cost: number) {
+	return cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+}
+
+
 function getCart() {
 	const cart = localStorage.getItem(shoppingCartKey);
 	return cart ? JSON.parse(cart) : [];
 }
 
+
 function setCart(shoppingCartJSON: ShoppingCartType[]) {
-	localStorage.setItem('pixelatedCart', JSON.stringify(shoppingCartJSON));
+	localStorage.setItem(shoppingCartKey, JSON.stringify(shoppingCartJSON));
 	window.dispatchEvent(new Event('storage'));
 }
+
 
 function alreadyInCart(cart: ShoppingCartType[], itemID: string) {
 	for (const key in cart) {
@@ -154,6 +177,7 @@ function alreadyInCart(cart: ShoppingCartType[], itemID: string) {
 	return false;
 }
 
+
 function increaseQuantityCart(cart: ShoppingCartType[], itemID: string) {
 	for (const key in cart) {
 		const item = cart[key];
@@ -162,6 +186,7 @@ function increaseQuantityCart(cart: ShoppingCartType[], itemID: string) {
 		} 
 	}
 }
+
 
 function getIndexInCart(cart: ShoppingCartType[], itemID: string) {
 	for (let i = 0; i < cart.length; i++) {
@@ -173,6 +198,7 @@ function getIndexInCart(cart: ShoppingCartType[], itemID: string) {
 	return -1;
 }
 
+
 function getCartItemCount(cart: ShoppingCartType[]) {
 	let cartCount = 0 ;
 	for (let i = 0; i < cart.length; i++) {
@@ -183,6 +209,7 @@ function getCartItemCount(cart: ShoppingCartType[]) {
 	}
 	return cartCount;
 }
+
 
 function getCartSubTotal(cart: ShoppingCartType[]) {
 	let cartSubTotal = 0;
@@ -196,6 +223,7 @@ function getCartSubTotal(cart: ShoppingCartType[]) {
 	}
 	return cartSubTotal;
 }
+
 
 export function AddToShoppingCart(thisItem: ShoppingCartType) {
 	let cart: ShoppingCartType[] = getCart();
@@ -215,47 +243,42 @@ export function AddToShoppingCart(thisItem: ShoppingCartType) {
 		cartItem.itemQuantity = 1;
 		cart.push(cartItem);
 	} 
-	localStorage.setItem("pixelatedCart", JSON.stringify(cart));
+	localStorage.setItem(shoppingCartKey, JSON.stringify(cart));
 	window.dispatchEvent(new Event('storage'));
 }
+
 
 export function RemoveFromShoppingCart(thisItem: ShoppingCartType) { 
 	let cart: ShoppingCartType[] = getCart();
 	if(alreadyInCart(cart, thisItem.itemID)){
 		cart.splice(getIndexInCart(cart, thisItem.itemID), 1);
 	}
- 	localStorage.setItem("pixelatedCart", JSON.stringify(cart));
+ 	localStorage.setItem(shoppingCartKey, JSON.stringify(cart));
 	window.dispatchEvent(new Event('storage'));
 }
+
 
 export function ClearShoppingCart() { 
-	// localStorage.setItem("pixelatedCart", JSON.stringify([]) );
-	localStorage.removeItem("pixelatedCart");
-	localStorage.removeItem("pixelatedCartShipping" );
+	localStorage.removeItem( shoppingCartKey );
+	localStorage.removeItem( shippingInfoKey );
 	window.dispatchEvent(new Event('storage'));
 }
 
-function formatAsUSD(cost: number) {
-	return cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-}
 
 /* ========== SHIPPING INFO FUNCTIONS ========== */
+
 
 function getShippingInfo(){
 	const ship = localStorage.getItem(shippingInfoKey);
 	return ship ? JSON.parse(ship) : [];
 }
 
+
 export function SetShippingInfo(shippingFormData: any) { 
 	localStorage.setItem(shippingInfoKey, JSON.stringify(shippingFormData) );
-	// localStorage.setItem("pixelatedCartFinal", "0");
 	window.dispatchEvent(new Event('storage'));
 }
 
-function getDiscountCodeInfo(code: string){
-	const discountCode = codeList.find(item => item.codeName.toLowerCase() === code.toLowerCase());
-	return discountCode ? discountCode : null;
-}
 
 function getShippingCost(): number {
 	const ship = getShippingInfo();
@@ -264,9 +287,101 @@ function getShippingCost(): number {
 	return (option && option.price) ? Math.ceil(Number(option.price)*100)/100 : 0;
 }
 
+
+/* ========== DISCOUNT CODE FUNCTIONS ========== */
+
+
+export async function validateDiscountCode(field: { value: string ; }) { 
+	try {
+		const codeList = await getContentfulDiscountCodes({ apiProps: apiProps, contentType: "discountCodes" });
+		if (!codeList) { return false; } // If no codes are found, return false
+		if(field.value == '') { return true; } // If the field is empty, return true (no code entered)
+		if ( codeList.some((code : DiscountCodeType) => code && code.codeName.toLowerCase() === field.value.toLowerCase() )) {
+			// if code is in the codeList
+			const foundCode = codeList.find((code : DiscountCodeType) => code.codeName.toLowerCase() === field.value.toLowerCase() );
+			if(foundCode) {
+				// if code is active - between start and end date
+				const startDate = new Date(foundCode.codeStart);
+				const endDate = new Date(foundCode.codeEnd);
+				const today = new Date();
+				const isActive = today >= startDate && today <= endDate;
+				return isActive;
+			}
+		} else {
+			// if code is not in the codeList
+			return false;
+		}
+	} catch (error) {
+		console.error("Error fetching discount codes:", error); // Handle potential errors
+		throw error; // Or return false;
+	}
+}
+
+
+async function getRemoteDiscountCodes(){
+	if (debug) console.log("Getting Contentful Discount Codes");
+	try {
+		const discountCodes = await getContentfulDiscountCodes({ 
+			apiProps: apiProps, 
+			contentType: "discountCodes" 
+		});
+		if (debug) console.log("Retrieved Contentful Discount Codes: ", discountCodes);
+		return discountCodes;
+	} catch ( error ) {
+		console.error("An error occurred getting discount codes:", error);
+	};
+}
+
+
+function getLocalDiscountCodes(){
+	const discountCodes = localStorage.getItem(discountCodesKey);
+	return discountCodes ? JSON.parse(discountCodes) : [];
+
+}
+
+
+function setDiscountCodes(discountCodesJSON: DiscountCodeType[]) {
+	if (debug) console.log("Set Discount Codes LocalStorage: ", discountCodesJSON);
+	localStorage.setItem(discountCodesKey, JSON.stringify(discountCodesJSON));
+	window.dispatchEvent(new Event('storage'));
+}
+
+
+function getDiscountCode(codeString: string){
+	if (debug) console.log("Getting Discount Code Object");
+	if (!codeString || codeString === '') { return undefined; } // If the code is empty, return null
+	const discountCodes: DiscountCodeType[] = getLocalDiscountCodes();
+	if (!discountCodes) { return undefined; } // If no codes are found, return null
+	// Find the discount code in the list
+	const discountCode = discountCodes.find((code: DiscountCodeType) => {
+		if (code && code.codeName){
+			return code.codeName.toLowerCase() === codeString.toLowerCase();
+		}else {
+			return undefined;
+		}
+	});
+	return discountCode;
+}
+
+
+function getCartSubtotalDiscount(cart: ShoppingCartType[]) {
+	if (!cart) { return 0; } // If cart is empty, return null
+	const cartSubTotal = getCartSubTotal(cart);
+	const shippingInfo = getShippingInfo();
+	const discountCode = getDiscountCode(shippingInfo.discountCode);
+	if (!discountCode) { return 0; } // If no codes are found, return null
+	const discountAmount = (cartSubTotal * discountCode.codeValue);
+	return discountAmount;
+}
+
+
+/* ========== CHECKOUT FUNCTIONS ========== */
+
+
 function getHandlingFee(){
 	return 3.99;
 }
+
 
 function getSalesTax(): number {
 	const itemCost = getCartSubTotal(getCart());
@@ -277,63 +392,23 @@ function getSalesTax(): number {
 	return ( Math.ceil(salesTax * 100) / 100 ) ; 
 }
 
-export function getCheckoutTotal(): number {
+
+export function getCheckoutTotal() {
 	const itemCost = getCartSubTotal(getCart());
+	const itemDiscount = getCartSubtotalDiscount(getCart());	
 	const shippingCost = getShippingCost();
 	const handlingFee = getHandlingFee();
 	const salesTax = getSalesTax();
-	const checkoutTotal = itemCost + shippingCost + handlingFee + salesTax;
+	const checkoutTotal = itemCost - itemDiscount + shippingCost + handlingFee + salesTax;
 	return ( Math.ceil(checkoutTotal * 100) / 100 ) ;
 }
 
-export function validateDiscountCode(field: { value: string ; }) { 
-	// if code is in the codeList
-	if(field.value == '') {
-		return true;
-	} else if ( codeList.some(code => code && code.codeName.toLowerCase() === field.value.toLowerCase() )) {
-		if (debug) console.log("Found code in the list");
-		const foundCode = codeList.find(code => code.codeName.toLowerCase() === field.value.toLowerCase() );
-		if(foundCode) {
-			// if code is active - between start and end date
-			const startDate = new Date(foundCode.codeStart);
-			const endDate = new Date(foundCode.codeEnd);
-			const today = new Date();
-			return today >= startDate && today <= endDate;
-		}
-	}
-	return false;
-}
-
-export function validateContentfulDiscountCode(field: { value: string ; }) { 
-	
-	return false;
-}
-
-/* ========== CHECKOUT FUNCTIONS ========== */
-
-function AddDiscountToCart() {
-	let cart: ShoppingCartType[] = getCart();
-	const shippingInfo = getShippingInfo();
-	const discountCode = getDiscountCodeInfo(shippingInfo.discountCode);
-	if(discountCode){
-		const discountItem: ShoppingCartType = {
-			itemImageURL: undefined,
-			itemID: discountCode?.codeName || '',
-			itemTitle: discountCode?.codeName + " - " + discountCode?.codeDescription,
-			itemQuantity: 1,
-			itemCost: -1 * Number(getCartSubTotal(getCart())) * Number(discountCode?.codeValue) || 0,
-		};
-		cart.push(discountItem);
-		if (debug) console.log("Adding discount item to cart", discountItem);
-		AddToShoppingCart(discountItem);
-	}
-}
 
 function getCheckoutData(){
 	const checkoutObj: CheckoutType = {
 		items: getCart(),
 		subtotal: getCartSubTotal(getCart()),
-		subtotal_discount: undefined,
+		subtotal_discount: getCartSubtotalDiscount(getCart()),
 		shippingTo: getShippingInfo(),
 		shippingCost: getShippingCost(),
 		handlingFee: getHandlingFee(),
@@ -344,6 +419,7 @@ function getCheckoutData(){
 	};
 	return checkoutObj;
 }
+
 
 function completeCheckout() {
 }
@@ -358,6 +434,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 
 	const [ shoppingCart, setShoppingCart ] = useState<ShoppingCartType[]>();
 	const [ shippingInfo, setShippingInfo ] = useState<AddressType[]>();
+	const [ checkoutInfo, setCheckoutInfo ] = useState<CheckoutType>();
 	const [ orderData, setOrderData ] = useState() as any;
 	const [ progressStep, setProgressStep ] = useState<ProgressStepType>("EmptyCart");
 
@@ -396,10 +473,15 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	}, [shippingInfo]); */
 
 	useEffect(() => {
+		// UPDATE DISCOUNT CODES ON EACH PAGE LOAD
+		(async () => {
+			setDiscountCodes(await getRemoteDiscountCodes());
+		})();
 		// UPDATE SHOPPINGCART AND SHIPPINGINFO STATES IF LOCALSTORAGE CHANGES
 		function handleStorageChange(){
 			setShoppingCart( getCart() );
 			setShippingInfo( getShippingInfo() );
+			setCheckoutInfo( getCheckoutData() );
 			SetProgressStep();
 		}
 		window.addEventListener('storage', handleStorageChange);
@@ -442,7 +524,6 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 		const formData = new FormData(formElement);
 		const formObject = Object.fromEntries(formData);
 		SetShippingInfo(formObject);
-		AddDiscountToCart();
 	}
 
 	handleOnApprove.propTypes = {
@@ -481,7 +562,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 		return (
 			<div className="pixCart">
 				<CalloutHeader title="Checkout Summary : " />
-				{ CheckoutItems() }
+				{ checkoutInfo && <CheckoutItems checkoutData={checkoutInfo} /> }
 				<br />
 				<FormButton className="pixCartButton" type="button" id="backToCart" text="<= Back To Cart"
 					onClick={() => SetProgressStep("ShippingInfo")} />
@@ -525,6 +606,9 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 }
 
 
+ShoppingCartItem.PropTypes = {
+	item: PropTypes.object.isRequired
+};
 export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 	const thisItem = props.item;
 	const thisItemTarget = "_self"; // "_blank"
@@ -560,59 +644,61 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 			</div>
 			<div className="grid-s11-e2">
 				<div className="pixCartItemPrice">
-					${ formatAsUSD(thisItem.itemCost) }
+					{ formatAsUSD(thisItem.itemCost) }
 				</div>
 			</div>
 		</div>
 	);
 }
-ShoppingCartItem.PropTypes = {
-	item: PropTypes.object.isRequired
-};
 
 
-export function CheckoutItems() {
-	const checkoutData = getCheckoutData();
-	const items = checkoutData.items.map((item: ShoppingCartType, i: number) => (
+
+export function CheckoutItems(props: { checkoutData: CheckoutType }) {
+	const items = props.checkoutData.items.map((item: ShoppingCartType, i: number) => (
 		<div key={item.itemID}>{item.itemQuantity} X - {item.itemTitle} ( {formatAsUSD(item.itemCost)} )</div> 		
 	));
-	const to = checkoutData.shippingTo;
+	const to = props.checkoutData.shippingTo;
 	const addr = <><div>{to.name}</div><div>{to.street1}</div><div>{to.city}, {to.state} {to.zip}</div></> ;
-	const checkoutTableData = [{
+	let checkoutTableData = [{
 		"Name": "Shopping Cart Items : ",
 		"Value": items,
-	}, /* {
+	}, {
 		"Name": "Subtotal Discount : ",
-		"Value": formatAsUSD(checkoutData.subtotal_discount ?? 0),
-	}, */ {
+		"Value": formatAsUSD(props.checkoutData.subtotal_discount),
+	}, {
 		"Name": "Subtotal : ",
-		"Value": formatAsUSD(checkoutData.subtotal),
+		"Value": formatAsUSD(props.checkoutData.subtotal),
 	},{
 		"Name": "Shipping Address : ",
 		"Value": addr,
 	},{
 		"Name": "Shipping Cost : ",
-		"Value": formatAsUSD(checkoutData.shippingCost),
+		"Value": formatAsUSD(props.checkoutData.shippingCost),
 	},{
 		"Name": "Handling Fee : ",
-		"Value": formatAsUSD(checkoutData.handlingFee),
+		"Value": formatAsUSD(props.checkoutData.handlingFee),
 	}, /* {
-		"Name": "Insurance Cost : ",
-		"Value": formatAsUSD(checkoutData.insuranceCost ?? 0),
-	}, */ /* {
-		"Name": "Shipping Discount : ",
-		"Value": formatAsUSD(checkoutData.shipping_discount ?? 0),
-	}, */{
+			"Name": "Insurance Cost : ",
+			"Value": formatAsUSD(checkoutData.insuranceCost ?? 0),
+		}, */ /* {
+			"Name": "Shipping Discount : ",
+			"Value": formatAsUSD(checkoutData.shipping_discount ?? 0),
+		}, */{
 		"Name": "Sales Tax : ",
-		"Value": formatAsUSD(checkoutData.salesTax),
+		"Value": formatAsUSD(props.checkoutData.salesTax),
 	},{
 		"Name": "TOTAL : ",
-		"Value": formatAsUSD(checkoutData.total),
+		"Value": formatAsUSD(props.checkoutData.total),
 	}];
+
+	if (props.checkoutData.subtotal_discount == 0) {
+		checkoutTableData = checkoutTableData.filter(obj => obj.Name !== "Subtotal Discount : ");
+	}
 	return (
 		<Table id="pixCheckout" data={checkoutTableData} />
 	);
 }
+
 
 export function CartButton(props: {href: string}) {
 	const [ cartCount, setCartCount ] = useState(0);
@@ -638,6 +724,7 @@ export function CartButton(props: {href: string}) {
 	);
 }
 
+
 export function ViewItemDetails(props: {href: string, itemID: string}){
 	return (
 		<div>
@@ -647,6 +734,7 @@ export function ViewItemDetails(props: {href: string, itemID: string}){
 		</div>
 	);
 }
+
 
 export function AddToCartButton(props: {handler: any, item: ShoppingCartType, itemID: string}){
 	const [modalContent, setModalContent] = useState<React.ReactNode>();
@@ -668,6 +756,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	);
 }
 
+
 export function GoToCartButton(props: {href: string, itemID: string}){
 	return (
 		<div>
@@ -678,7 +767,9 @@ export function GoToCartButton(props: {href: string, itemID: string}){
 	);
 }
 
+
 function ThankYou() { }
+
 
 function WishList() { }
 

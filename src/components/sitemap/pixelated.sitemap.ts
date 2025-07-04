@@ -1,4 +1,4 @@
-
+import PropTypes, { InferProps } from "prop-types";
 import { getAllRoutes, getAllImages } from "../metadata/pixelated.metadata";
 import { getContentfulFieldValues } from "../cms/pixelated.contentful";
 import { getEbayItems } from "../ebay/pixelated.ebay.functions";
@@ -103,15 +103,27 @@ export async function createWordPressURLs(){
 
 
 
-export async function createContentfulURLs(origin: string){
+createContentfulURLs.propTypes = {
+	apiProps: PropTypes.shape({
+		base_url: PropTypes.string.isRequired,
+		space_id: PropTypes.string.isRequired,
+		environment: PropTypes.string.isRequired,
+		access_token: PropTypes.string.isRequired,
+	}).isRequired,
+	origin: PropTypes.string.isRequired,
+};
+export type createContentfulURLsType = InferProps<typeof createContentfulURLs.propTypes>;
+export async function createContentfulURLs(props: createContentfulURLsType){
 	const sitemap: SitemapEntry[] = [];
 	// const origin = await getOrigin();
 	const contentType = "carouselCard"; 
 	const field = "title";
-	const contentfulTitles = await getContentfulFieldValues(contentType, field);
+	const contentfulTitles = await getContentfulFieldValues({
+		apiProps: props.apiProps, contentType: contentType, field: field
+	});
 	for ( const title of contentfulTitles ){
 		sitemap.push({
-			url: `${origin}/projects/${encodeURIComponent(title)}` ,
+			url: `${props.origin}/projects/${encodeURIComponent(title)}` ,
 			lastModified: (new Date()).toISOString(),
 			changeFrequency: "hourly" as const,
 			priority: 1.0,

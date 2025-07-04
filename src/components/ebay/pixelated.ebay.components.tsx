@@ -99,13 +99,7 @@ export function EbayListItem(props: EbayListItemType) {
 	const itemImage = (props.cloudinaryProductEnv) 
 		? getImg(thisItem.thumbnailImages[0].imageUrl, props.cloudinaryProductEnv) 
 		: thisItem.thumbnailImages[0].imageUrl;
-	
-	console.log(itemImage);
-	
 	const shoppingCartItem = getShoppingCartItem({ thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
-	
-	console.log(shoppingCartItem);
-	
 	// CHANGE EBAY URL TO LOCAL EBAY ITEM DETAIL URL
 	shoppingCartItem.itemURL = itemURL;
 	return (
