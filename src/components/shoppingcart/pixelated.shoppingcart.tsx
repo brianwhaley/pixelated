@@ -221,7 +221,7 @@ function getCartSubTotal(cart: ShoppingCartType[]) {
 			cartSubTotal += (item.itemQuantity * item.itemCost);
 		} 
 	}
-	return cartSubTotal;
+	return Math.ceil(Number(cartSubTotal)*100)/100;
 }
 
 
@@ -370,7 +370,7 @@ function getCartSubtotalDiscount(cart: ShoppingCartType[]) {
 	const shippingInfo = getShippingInfo();
 	const discountCode = getDiscountCode(shippingInfo.discountCode);
 	if (!discountCode) { return 0; } // If no codes are found, return null
-	const discountAmount = (cartSubTotal * discountCode.codeValue);
+	const discountAmount = Math.ceil(Number(cartSubTotal * discountCode.codeValue) * 100) / 100;
 	return discountAmount;
 }
 

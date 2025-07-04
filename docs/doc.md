@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "Contentful Discount Codes, fix for PayPal Discount"
+git commit -m "Fix for discount code to be rounded to 1/100th"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
