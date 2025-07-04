@@ -3,6 +3,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
 import PropTypes, { InferProps } from 'prop-types';
 import { PayPal } from "./pixelated.paypal";
 import { FormEngine } from "../form/pixelated.form";
@@ -155,6 +156,11 @@ function formatAsUSD(cost: number) {
 }
 
 
+function formatAsHundredths(num: number) {
+  	return Math.trunc(num * 100) / 100;
+}
+
+
 function getCart() {
 	const cart = localStorage.getItem(shoppingCartKey);
 	return cart ? JSON.parse(cart) : [];
@@ -221,7 +227,7 @@ function getCartSubTotal(cart: ShoppingCartType[]) {
 			cartSubTotal += (item.itemQuantity * item.itemCost);
 		} 
 	}
-	return Math.trunc(Number(cartSubTotal)*100)/100;
+	return formatAsHundredths(cartSubTotal);
 }
 
 
@@ -284,7 +290,7 @@ function getShippingCost(): number {
 	const ship = getShippingInfo();
 	const method = ship.shippingMethod;
 	const option = shippingOptions.find(item => item.id === method);
-	return (option && option.price) ? Math.trunc(Number(option.price)*100)/100 : 0;
+	return (option && option.price) ? formatAsHundredths(Number(option.price)) : 0;
 }
 
 
@@ -370,7 +376,7 @@ function getCartSubtotalDiscount(cart: ShoppingCartType[]) {
 	const shippingInfo = getShippingInfo();
 	const discountCode = getDiscountCode(shippingInfo.discountCode);
 	if (!discountCode) { return 0; } // If no codes are found, return null
-	const discountAmount = Math.trunc(Number(cartSubTotal * discountCode.codeValue) * 100) / 100;
+	const discountAmount = formatAsHundredths(cartSubTotal * discountCode.codeValue);
 	return discountAmount;
 }
 
@@ -389,7 +395,7 @@ function getSalesTax(): number {
 	const handlingFee = getHandlingFee();
 	const njSalesTaxRate = 0.06675;
 	const salesTax = njSalesTaxRate * (itemCost + shippingCost + handlingFee);
-	return ( Math.trunc(salesTax * 100) / 100 ) ; 
+	return formatAsHundredths(salesTax); 
 }
 
 
@@ -398,9 +404,11 @@ export function getCheckoutTotal() {
 	const itemDiscount = getCartSubtotalDiscount(getCart());	
 	const shippingCost = getShippingCost();
 	const handlingFee = getHandlingFee();
+	const insuranceCost = 0;
+	const shipping_discount = 0;
 	const salesTax = getSalesTax();
-	const checkoutTotal = itemCost - itemDiscount + shippingCost + handlingFee + salesTax;
-	return ( Math.trunc(checkoutTotal * 100) / 100 ) ;
+	const checkoutTotal = itemCost - itemDiscount + shippingCost + handlingFee + insuranceCost + shipping_discount + salesTax;
+	return formatAsHundredths(checkoutTotal);
 }
 
 
@@ -417,6 +425,7 @@ function getCheckoutData(){
 		salesTax: getSalesTax(),
 		total: getCheckoutTotal(),
 	};
+	console.log(checkoutObj);
 	return checkoutObj;
 }
 

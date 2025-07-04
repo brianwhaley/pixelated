@@ -7,6 +7,16 @@ import PropTypes, { InferProps } from 'prop-types';
 import type { ShoppingCartType, CheckoutType } from "./pixelated.shoppingcart";
 const debug = false;
 
+function isScriptSrc(scriptSrc) {
+    const scripts = document.querySelectorAll('script[src]');
+    for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].src.includes(scriptSrc)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /* 
 https://www.freecodecamp.org/news/integrate-paypal-into-html-css-js-product-pages/
 https://dev.to/evansifyke/how-to-integrate-paypal-with-html-css-and-javascript-2mnb
@@ -20,19 +30,20 @@ PayPal.PropTypes = {
 export type PayPalType = InferProps<typeof PayPal.propTypes>;
 export function PayPal(props: any) {
     const paypalScript = document.createElement('script');
-    // paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${props.payPalClientID}&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,card&disable-funding=paylater`;
     paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${props.payPalClientID}&currency=USD&components=buttons&enable-funding=venmo,applepay,card&disable-funding=paylater`;
     paypalScript.onload = () => {
-      if (window.paypal) {
-        // Now you can access paypal object within the window scope
-        const PayPalButton = paypal.Buttons.driver("react", {
-            React,
-            ReactDOM
-        });
-        initPayPalButton({checkoutData: props.checkoutData, onApprove: props.onApprove});
-      }
+        if (window.paypal) {
+            // Now you can access paypal object within the window scope
+            const PayPalButton = paypal.Buttons.driver("react", {
+                React,
+                ReactDOM
+            });
+            initPayPalButton({checkoutData: props.checkoutData, onApprove: props.onApprove});
+        }
     };
-    document.head.appendChild(paypalScript);
+    if(!isScriptSrc('https://www.paypal.com/sdk/js')) {
+        document.head.appendChild(paypalScript);
+    }
 	return (
 		<>
 			<link rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"/>
