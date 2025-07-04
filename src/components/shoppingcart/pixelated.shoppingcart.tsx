@@ -221,7 +221,7 @@ function getCartSubTotal(cart: ShoppingCartType[]) {
 			cartSubTotal += (item.itemQuantity * item.itemCost);
 		} 
 	}
-	return Math.ceil(Number(cartSubTotal)*100)/100;
+	return Math.trunc(Number(cartSubTotal)*100)/100;
 }
 
 
@@ -284,7 +284,7 @@ function getShippingCost(): number {
 	const ship = getShippingInfo();
 	const method = ship.shippingMethod;
 	const option = shippingOptions.find(item => item.id === method);
-	return (option && option.price) ? Math.ceil(Number(option.price)*100)/100 : 0;
+	return (option && option.price) ? Math.trunc(Number(option.price)*100)/100 : 0;
 }
 
 
@@ -370,7 +370,7 @@ function getCartSubtotalDiscount(cart: ShoppingCartType[]) {
 	const shippingInfo = getShippingInfo();
 	const discountCode = getDiscountCode(shippingInfo.discountCode);
 	if (!discountCode) { return 0; } // If no codes are found, return null
-	const discountAmount = Math.ceil(Number(cartSubTotal * discountCode.codeValue) * 100) / 100;
+	const discountAmount = Math.trunc(Number(cartSubTotal * discountCode.codeValue) * 100) / 100;
 	return discountAmount;
 }
 
@@ -389,7 +389,7 @@ function getSalesTax(): number {
 	const handlingFee = getHandlingFee();
 	const njSalesTaxRate = 0.06675;
 	const salesTax = njSalesTaxRate * (itemCost + shippingCost + handlingFee);
-	return ( Math.ceil(salesTax * 100) / 100 ) ; 
+	return ( Math.trunc(salesTax * 100) / 100 ) ; 
 }
 
 
@@ -400,7 +400,7 @@ export function getCheckoutTotal() {
 	const handlingFee = getHandlingFee();
 	const salesTax = getSalesTax();
 	const checkoutTotal = itemCost - itemDiscount + shippingCost + handlingFee + salesTax;
-	return ( Math.ceil(checkoutTotal * 100) / 100 ) ;
+	return ( Math.trunc(checkoutTotal * 100) / 100 ) ;
 }
 
 
