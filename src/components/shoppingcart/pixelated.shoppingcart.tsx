@@ -17,6 +17,7 @@ import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
 import { getContentfulDiscountCodes } from "../cms/pixelated.contentful";
 import type { DiscountCodeType } from "../cms/pixelated.contentful";
+import { emailJSON } from "../form/pixelated.form.submit";
 
 // import dc from "../../data/shoppingCartDiscountCodes.json";
 // const codeList2 = dc.discountCodes;
@@ -425,7 +426,7 @@ function getCheckoutData(){
 		salesTax: getSalesTax(),
 		total: getCheckoutTotal(),
 	};
-	console.log(checkoutObj);
+	if (debug) console.log(checkoutObj);
 	return checkoutObj;
 }
 
@@ -549,6 +550,16 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	}
 
 	if ( progressStep === "ThankYou" ) {
+		// ========== SENDMAIL ==========
+		const json = {
+			'to' : 'brian@pixelvivid.com',
+			'from' : 'brian@pixelvivid.com',
+			'subject' : 'PixelVivid Purchase',
+			'orderData' : JSON.stringify(orderData, null, 2),
+		};
+		const sendMailResponse = emailJSON(json);
+		console.log("SendMail Response:", sendMailResponse);
+
 		// ========== THANK YOU ==========
 		const pmt = orderData.purchase_units[0].payments.captures[0];
 		return (

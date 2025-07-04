@@ -161,7 +161,19 @@ export function initPayPalButton(props: {checkoutData: CheckoutType, onApprove: 
         },
         onError: function (err: Error) {
             console.log(err);
+            switch (e.toString()) {
+                case 'Error: Detected popup close':
+                    showInfoBanner('PayPal Payment cancelled'); // Or handle as needed
+                    break;
+                default:
+                    showError('PayPal error');
+            }
         },
+        onCancel: function(data) {
+            // Show a cancel page or return to cart
+            // For example, redirect the user to a cancellation page:
+            window.location.href = "/cart";
+        }
     })
     .render("#paypal-button-container");
 }

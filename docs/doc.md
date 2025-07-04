@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "Fix for paypal - totals match, zoid errors"
+git commit -m "sendmail on order approve"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
