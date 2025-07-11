@@ -4,31 +4,29 @@
             "component" : "FormInput",
             "props" : {
                 "type" : "text",
-                "id" : "name",
-                "name" : "name",
+                "id" : "firstname",
+                "name" : "firstname",
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
-				"label" : "Name : ",
-				"tooltip" : "Please type in your Full Name"
+				"label" : "First Name : ",
+				"tooltip" : "Please type in your First Name"
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "text",
-                "id" : "address",
-                "name" : "address",
+                "id" : "lastname",
+                "name" : "lastname",
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
-				"label" : "Full Address : ",
-				"tooltip" : "Please type in your Full Mailing Address"
+				"label" : "Last Name : ",
+				"tooltip" : "Please type in your Last Name"
             }
-        },
-		{
+        },{
             "component" : "FormInput",
             "props" : {
                 "type" : "email",
@@ -42,8 +40,21 @@
 				"validate" : "isValidEmailAddress",
 				"tooltip" : "Please type in your Email Address"
             }
-        },
-		{
+        },{
+            "component" : "FormInput",
+            "props" : {
+                "type" : "tel",
+                "id" : "phone",
+                "name" : "phone",
+                "defaultValue" : null,
+				"size" : "40",
+				"display" : "horizontal",
+				"required" : "required",
+				"label" : "Phone : ",
+				"validate" : "isValidUSPhoneNumber",
+				"tooltip" : "Please type in your Phone Number"
+            }
+        },{
             "component" : "FormSelect",
             "props" : {
                 "id" : "source",
@@ -57,23 +68,43 @@
 					{ "value" : "", "text" : "" },
 					{ "value" : "eBay", "text" : "eBay" },
 					{ "value" : "OakleyForum", "text" : "OakelyForum" },
+					{ "value" : "Email", "text" : "Email" },
+					{ "value" : "PixelVivid Web Site", "text" : "PixelVivid Web Site" },
+					{ "value" : "Social Media", "text" : "Social Media" },
 					{ "value" : "Other", "text" : "Other" }
 				],
 				"tooltip" : "Choose the best options that describes where you heard about us"
             }
-		},
-		{
+		},{
             "component" : "FormTextarea",
             "props" : {
-                "id" : "request",
-                "name" : "request",
+                "id" : "message",
+                "name" : "message",
                 "rows" : "5",
                 "cols" : "40",
                 "defaultValue" : null,
 				"display" : "horizontal",
 				"required" : "required",
-				"label" : "Request : ",
+				"label" : "Request Message : ",
 				"tooltip": "Please enter the details of your request"
+            }
+        },{
+            "component" : "FormInput",
+            "props" : {
+                "type" : "submit",
+                "id" : "newRequestFormSubmit",
+                "name" : "newRequestFormSubmit",
+                "value" : "Submit",
+				"display" : "horizontal"
+            }
+        },{
+            "component" : "FormButton",
+            "props" : {
+				"type" : "button",
+                "id" : "newRequestFormClose",
+                "name" : "newRequestFormClose",
+                "text" : "Close",
+				"display" : "horizontal"
             }
         }
     ]

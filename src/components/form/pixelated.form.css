@@ -45,6 +45,7 @@ form button:hover {
 }
 
 form button, 
+form input[type = button], 
 form input[type = submit], 
 form input[type = reset] {
 	padding: 5px 20px;

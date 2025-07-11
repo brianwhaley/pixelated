@@ -1,25 +1,26 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import * as FC from './pixelated.formcomponents';
 import * as FV from './pixelated.formvalidations';
 import { generateKey, capitalize, attributeMap } from '../utilities/pixelated.functions';
 import './pixelated.form.css';
 
+const debug = false ;
 
 /* ===== FORM ENGINE =====
 Generate all the elements to display a form */
 
-export function FormEngine(props) {
-	FormEngine.propTypes = {
-		name: PropTypes.string,
-		id: PropTypes.string,
-		method: PropTypes.string,
-		onSubmitHandler: PropTypes.func,
-		formData: PropTypes.object.isRequired
-	};
-	const debug = false ;
+FormEngine.propTypes = {
+	name: PropTypes.string,
+	id: PropTypes.string,
+	method: PropTypes.string,
+	onSubmitHandler: PropTypes.func,
+	formData: PropTypes.object.isRequired
+};
+export type FormEngineType = InferProps<typeof FormEngine.propTypes>;
+export function FormEngine(props: FormEngineType) {
 
-	function generateFormProps(props) {
+	function generateFormProps(props: any) {
 		// GENERATE PROPS TO RENDER THE FORM CONTAINER, INTERNAL FUNCTION
 		if (debug) console.log("Generating Form Props");
 		const formProps = JSON.parse(JSON.stringify(props));
@@ -27,32 +28,58 @@ export function FormEngine(props) {
 		return formProps;
 	}
 
-	function generateNewFields(props) {
+	generateNewFields.propTypes = {
+		formData: PropTypes.any.isRequired,
+	};
+	type generateNewFieldsType = InferProps<typeof generateNewFields.propTypes>;
+	function generateNewFields(props: generateNewFieldsType) {
 		// CORE OF THE FORM ENGINE - CONVERT JSON TO COMPONENTS - INTERNAL
 		if (debug) console.log("Generating Form Fields");
 		const newFields = [];
-		if (props.formData && props.formData.fields) {
-			const thisFields = props.formData.fields;
-			for (let field = 0; field < thisFields.length; field++) {
-				const thisField = thisFields[field];
+		const formFields = props.formData.fields;
+		if (props.formData && formFields) {
+			// const thisFields = formFields;
+			for (let field = 0; field < formFields.length; field++) {
+				const thisField = formFields[field];
 				const newProps = JSON.parse(JSON.stringify(thisField.props));
 				newProps.key = generateKey();
-				const newElement = React.createElement(FC[thisField.component], newProps);
+
+				// Convert string numeric props to numbers where needed
+				const numericProps = ['maxLength', 'minLength', 'rows', 'cols', 'size', 'step'];
+				numericProps.forEach(prop => {
+					if (
+						newProps[prop] !== undefined &&
+						newProps[prop] !== null &&
+						newProps[prop] !== ''
+					) {
+						// Only convert if the value is not already a number
+						if (typeof newProps[prop] === 'string') {
+							const num = Number(newProps[prop]);
+							if (!isNaN(num)) {
+								newProps[prop] = num;
+							}
+						}
+					}
+				});
+
+				const componentName: string = thisField.component;
+				const newElementType = (FC as Record<string, React.ElementType>)[componentName];
+				const newElement = React.createElement(newElementType, newProps);
 				newFields.push(newElement);
 			}
 		}
 		return newFields;
 	}
 
-	function handleSubmit(e) {
+	function handleSubmit(event: React.FormEvent) {
 		// HANDLES THE FORM ACTION / FORM SUBMIT - EXPOSED EXTERNAL
-		e.preventDefault();
-		if (props.onSubmitHandler) props.onSubmitHandler(e);
+		event.preventDefault();
+		if (props.onSubmitHandler) props.onSubmitHandler(event);
 		return true;
 	}
 
 	return (
-		<form {...generateFormProps(props)} onSubmit={(e) => { handleSubmit(e); }} suppressHydrationWarning >{generateNewFields(props)}</form>
+		<form {...generateFormProps(props)} onSubmit={(event) => { handleSubmit(event); }} suppressHydrationWarning >{generateNewFields(props)}</form>
 	);
 }
 
@@ -61,8 +88,7 @@ export function FormEngine(props) {
 Display all the components for a Form Builder - 
 Element Buttons, Element Details, and the Form */
 
-function mapTypeToComponent(myType){
-	const debug = false ;
+function mapTypeToComponent(myType: string){
 	if (debug) console.log("Mapping Type Field to Component");
 	let myComponent = 
 	(["button"].includes(myType)) ? 'FormButton' : 
@@ -76,23 +102,24 @@ function mapTypeToComponent(myType){
 }
 
 export function FormBuilder() {
-	const debug = false ;
 	// const [ url, setURL ] = useState('');
 	// const [ htmlPaste, setHtmlPaste ] = useState('');
-	const [ formData, setFormData ] = useState({});
-	const [ fieldFormData, setFieldFormData ] = useState({});
+	type FormFieldsType = { [key: string]: any }
+	const [ formData, setFormData ] = useState<FormFieldsType>({});
+	const [ fieldFormData, setFieldFormData ] = useState<FormFieldsType>({});
 
-	function appendFormData(event) {
+	function appendFormData(event: Event) {
 		// APPEND JSON FOR NEW FIELD TO EXISTING JSON CONFIG OBJECT - EXPOSED EXTERNAL
 		if (debug) console.log("Appending form Data...");
-		const props = {};
-		for (const prop in event.target) {
-			const thisProp = event.target[prop];
+		const props: { [key: string]: any } = {};
+		const target = event.target as HTMLFormElement;
+		for (const prop in target) {
+			const thisProp = (target as any)[prop];
 			if (thisProp && thisProp.value && ( thisProp.value !== Object(thisProp.value) ) ) { 
 				props[thisProp.name] = thisProp.value; 
 			}
 		}
-		const field = {};
+		const field: { [key: string]: any } = {};
 		field.props = props;
 		field.component = mapTypeToComponent(field.props.type);
 		let fields = [];
@@ -130,7 +157,7 @@ export function FormBuilder() {
 			</div>
 			<div><br /><br /><hr /><br /><br /></div>
 			<div style={{ display: 'block', verticalAlign: 'top' }}>
-				<FormEngine formData={formData} />
+				<FormEngine formData={formData || {}} />
 			</div>
 		</div>
 	);
@@ -144,21 +171,21 @@ Dynamically generate, component by component, and prop by prop,
 the JSON to create a form via FormEngine 
 */
 
-export function FormBuild(props) {
-	FormBuild.propTypes = {
-		setFormData: PropTypes.func
-	};
-	const debug = false ;
+FormBuild.propTypes = {
+	setFormData: PropTypes.func.isRequired,
+};
+type FormBuildType = InferProps<typeof FormBuild.propTypes>;
+export function FormBuild(props: FormBuildType) {
 
-	function generateFieldJSON (component, type) {
+	function generateFieldJSON (component: string, type: string) {
 		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - INTERNAL
 		if (debug) console.log("Generating Form JSON for ", component , " Type : ", type);
-		const form = { fields: [] };
+		const form: { fields: { [key: string]: any }[] } = { fields: [] };
 		let i = 0;
-		for (const prop in FC[component].propTypes) {
-			const field = {};
+		for (const prop in FC[component as keyof typeof FC].propTypes) {
+			const field: { [key: string]: any } = {};
 			field.component = 'FormInput';
-			const props = {};
+			const props: { [key: string]: any } = {};
 			props.label = prop;
 			props.name = prop;
 			props.id = prop;
@@ -185,9 +212,10 @@ export function FormBuild(props) {
 		return (form);
 	}
 
-	function handlePhaseOneSubmit(event){
+	function handlePhaseOneSubmit(event: Event){
 		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - EXTERNAL
-		const myType = event.target.type.value;
+		const target = event.target as HTMLFormElement;
+		const myType = target.type.value;
 		const myComponent = mapTypeToComponent(myType);
 		const fieldJSON = generateFieldJSON(myComponent, myType);
 		props.setFormData(fieldJSON);
@@ -195,7 +223,7 @@ export function FormBuild(props) {
 	}
 
 	function generateTypeField() {
-		const form = { fields: [] };
+		const form: { [key: string]: any } = {};
 
 		const typeField = {
 			component: 'FormInput',
@@ -207,7 +235,6 @@ export function FormBuild(props) {
 				list: 'inputTypes'
 			}
 		};
-		form.fields[0] = typeField;
 		const addButton = {
 			component: 'FormButton',
 			props: {
@@ -217,19 +244,19 @@ export function FormBuild(props) {
 				text: '===  Build  ==='
 			}
 		};
-		form.fields[1] = addButton;
+		form.fields = [typeField, addButton];
 		return (form) ;
 	}
 
 	return (
-		<Fragment>
+		<>
 			<FormEngine 
 				formData={generateTypeField()}
 				onSubmitHandler={ event => { handlePhaseOneSubmit(event); } } 
 				name="build" 
 				id="build" 
 				method="post" />
-		</Fragment>
+		</>
 	);
 }
 
@@ -241,17 +268,22 @@ Submit a page URL of a form to extract all form elements and
 convert them to JSON to create a form via FormEngine 
 */
 
-export function FormExtractor() {
-	FormExtractor.propTypes = {
-		url: PropTypes.string
+FormExtractor.propTypes = {
+	url: PropTypes.string.isRequired
+};
+export type FormExtractorType = InferProps<typeof FormExtractor.propTypes>;
+export function FormExtractor(props: FormExtractorType) {
+	
+	const [ url, setURL ] = useState<string>(props.url);
+	const [ htmlPaste, setHtmlPaste ] = useState<string | undefined>();
+	const [ formData, setFormData ] = useState ({});
+
+	setParentState.propTypes = {
+		url: PropTypes.string.isRequired,
+		htmlPaste: PropTypes.string.isRequired,
 	};
-
-	const debug = false;
-	const [ url, setURL ] = useState();
-	const [ htmlPaste, setHtmlPaste ] = useState();
-	const [ formData, setFormData ] = useState ();
-
-	function setParentState(childState) {
+	type setParentStateType = InferProps<typeof setParentState.propTypes>;
+	function setParentState(childState: setParentStateType) {
 		// SET STATE FROM PARENT VALUES - EXPOSED EXTERNAL
 		if (debug) console.log("Setting Parent State...");
 		setURL(childState.url);
@@ -283,23 +315,22 @@ export function FormExtractor() {
 	);
 }
 
-
-export function FormExtractUI(props) {
-	FormExtractUI.propTypes = {
-		setParentState: PropTypes.func.isRequired
-	};
-
-	const debug = false;
+FormExtractUI.propTypes = {
+	setParentState: PropTypes.func.isRequired
+};
+type FormExtractUIType = InferProps<typeof FormExtractUI.propTypes>;
+export function FormExtractUI(props: FormExtractUIType) {
 	const [url, setURL] = useState();
 	const [htmlPaste, setHtmlPaste] = useState();
 
-	function onChange (event) {
+	function onChange (event: React.ChangeEvent) {
 		// UPDATE URL OR HTML_PASTE ON CHANGE - EXTERNAL
 		if (debug) console.log("Element Changed...");
-		if(event.target.name == "url") {
-			setURL(event.target.value);
-		} else if (event.target.name == "htmlPaste") {
-			setHtmlPaste(event.target.value);
+		const target = event.target as HTMLFormElement;
+		if(target.name == "url") {
+			setURL(target.value);
+		} else if (target.name == "htmlPaste") {
+			setHtmlPaste(target.value);
 		}
 	}
 
@@ -312,11 +343,11 @@ export function FormExtractUI(props) {
 	return (
 		<form onSubmit={ e => { e.preventDefault(); } } method="post" name="extract">
 			<label htmlFor="url">URL : </label>
-			<input type="text" list="form_urls" id="url" name="url" size="100" onChange={onChange} />
+			<input type="text" list="form_urls" id="url" name="url" size={100} onChange={onChange} />
 			<FC.FormDataList id='form_urls' items={FV.formURLs} />
 			<div style={{ width: '100%', textAlign: 'center' }}>OR</div>
 			<label htmlFor="htmlPaste">HTML : </label>
-			<textarea id="htmlPaste" name="htmlPaste" rows="10" cols="80" onChange={onChange} /><br />
+			<textarea id="htmlPaste" name="htmlPaste" rows={10} cols={80} onChange={onChange} /><br />
 			<div style={{ width: '100%', textAlign: 'center' }}>
 				<button type="button" onClick={onSubmit}>Extract</button>
 				<input type="reset" />
@@ -325,29 +356,28 @@ export function FormExtractUI(props) {
 	);
 }
 
-export function FormExtractEngine(props) {
-	FormExtractEngine.propTypes = {
-		url: PropTypes.string,
-		htmlPaste: PropTypes.string,
-		setFormData: PropTypes.func.isRequired
-	};
-
-	const debug = false;
+FormExtractEngine.propTypes = {
+	url: PropTypes.string,
+	htmlPaste: PropTypes.string,
+	setFormData: PropTypes.func.isRequired
+};
+type FormExtractEngineType = InferProps<typeof FormExtractEngine.propTypes>;
+export function FormExtractEngine(props: FormExtractEngineType) {
 	const proxy = 'https://proxy.pixelated.tech/prod/proxy?url=';
 	// const proxy = "https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=";
 	// const proxy = "https://thingproxy.freeboard.io/fetch/";
-	const [ url, setURL ] = useState();
-	const [ htmlPaste, setHtmlPaste ] = useState();
-	const [ formJson, setFormJson ] = useState();
+	const [ url, setURL ] = useState<string | null | undefined>(props.url);
+	const [ htmlPaste, setHtmlPaste ] = useState<string | null | undefined>(props.htmlPaste);
+	const [ formJson, setFormJson ] = useState<any>();
 
-	function extractOptions (thisElement) {
+	function extractOptions (thisElement: HTMLSelectElement) {
 		// GENERATE OPTIONS FOR SELECT FIELD - INTERNAL
 		if (debug) console.log("Extracting Options...");
 		if (thisElement.tagName.toLowerCase() === 'select' && thisElement.options && thisElement.options.length) {
 			const options = [];
 			for (let option = 0; option < thisElement.options.length; option++) {
 				const thisOption = thisElement.options[option];
-				const attribs = {};
+				const attribs: { [key: string]: any } = {};
 				for (let attrib = 0; attrib < thisOption.attributes.length; attrib++) {
 					const thisAttrib = thisOption.attributes[attrib];
 					attribs[attributeMap(thisAttrib.name)] = thisAttrib.value;
@@ -360,7 +390,7 @@ export function FormExtractEngine(props) {
 		return false;
 	}
 
-	function extractSelectedOptions (thisOptions) {
+	function extractSelectedOptions (thisOptions: any) {
 		if (debug) console.log("Extracting Selected Options...");
 		// GENERATE LIST OF SELECTED OPTIONS FOR SELECT FIELD - INTERNAL
 		if (thisOptions && thisOptions.length) {
@@ -381,12 +411,12 @@ export function FormExtractEngine(props) {
 		return false;
 	}
 
-	function extractAttribs (thisElement) {
+	function extractAttribs (thisElement: HTMLFormElement) {
 		if (debug) console.log("Extracting Attributes...");
 		// EXTRACT ALL ATTRIBUTES FOR A FORM ELEMENT - INTERNAL
 		// LOOK AT THAT - JAVASCRIPT REFLECTION!
 		if (thisElement && thisElement.attributes && thisElement.attributes.length) {
-			const props = {};
+			const props: { [key: string]: any } = {};
 			for (let attrib = 0; attrib < thisElement.attributes.length; attrib++) {
 				const thisAttrib = thisElement.attributes[attrib];
 				if (thisAttrib.name === 'style') {
@@ -404,21 +434,22 @@ export function FormExtractEngine(props) {
 		return false;
 	}
 
-	function extractLabel (html, thisElement) {
+	function extractLabel (html: any, thisElement: HTMLFormElement) {
 		// IDENTIFY AND EXTRACT LABEL PROPERTIES FOR A SPECIFIC FIELD - INTERNAL
 		if (debug) console.log("Extracting Label...");
-		if (thisElement.attributes.id && thisElement.attributes.id.value) {
-			const thisID = thisElement.attributes.id.value;
+		const myElement = thisElement.attributes.getNamedItem('id');
+		if (myElement && myElement.value) {
+			const thisID = myElement.value;
 			const thisLabel = html.querySelector("label[for='" + thisID + "']");
 			if (thisLabel) return thisLabel;
 		}
 		return false;
 	}
 
-	function formToJSON (html) {
+	function formToJSON (html: any) {
 		// CONVERT HTML TO CONFIG JSON - INTERNAL
 		if (debug) console.log("Converting Form to JSON...");
-		const json = {};
+		const json: { [key: string]: any } = {};
 		json.fields = [];
 		const forms = html.getElementsByTagName('form');
 		// ----- FORMS
@@ -428,11 +459,11 @@ export function FormExtractEngine(props) {
 				// ----- ELEMENTS
 				for (let element = 0; element < thisForm.elements.length; element++) {
 					const thisElement = thisForm[element];
-					const elem = {};
+					const elem: { [key: string]: any } = {};
 					if (thisElement && thisElement.attributes && thisElement.tagName) {
 						// ----- COMPONENT
 						elem.component = 'Form' + capitalize(thisElement.tagName);
-						let props = {};
+						let props: { [key: string]: any } = {};
 						// ----- ELEMENT ATTRIBUTES
 						const thisProps = extractAttribs(thisElement);
 						if (thisProps) props = thisProps;
@@ -461,7 +492,7 @@ export function FormExtractEngine(props) {
 		return json;
 	}
 
-	function getHTML (url, callback) {
+	function getHTML (url: string, callback: any) {
 		// GET SERVER SIDE HTML THROUGH XMLHTTPREQUEST - INTERNAL
 		if (debug) console.log("Getting HTML From URL...");
 		const xhr = new XMLHttpRequest();
@@ -489,7 +520,7 @@ export function FormExtractEngine(props) {
 				getHTML(newURL, formToJSON);
 			}
 		} else if (props.htmlPaste) {
-			let json = '';
+			let json: { [key: string]: any } = {};
 			if (!htmlPaste || (props.htmlPaste !== htmlPaste)) {
 				setHtmlPaste( props.htmlPaste );
 				const thisHTML = new DOMParser().parseFromString(props.htmlPaste, 'text/html');

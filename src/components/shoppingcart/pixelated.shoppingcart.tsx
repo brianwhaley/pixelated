@@ -16,7 +16,6 @@ import { Modal, handleModalOpen } from '../modal/pixelated.modal';
 import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
 import { getContentfulDiscountCodes } from "../cms/pixelated.contentful";
-import type { DiscountCodeType } from "../cms/pixelated.contentful";
 import { emailJSON } from "../form/pixelated.form.submit";
 
 // import dc from "../../data/shoppingCartDiscountCodes.json";
@@ -24,6 +23,7 @@ import { emailJSON } from "../form/pixelated.form.submit";
 
 import "./pixelated.shoppingcart.css";
 import { get } from 'http';
+import { Url } from 'url';
 
 const debug = false;
 const shoppingCartKey = "pixelvividCart";
@@ -44,10 +44,6 @@ const apiProps = {
 };
 
 /* 
-TODO #5 Build eCommerce Components
-*/
-
-/* 
 https://stackoverflow.com/questions/55328748/how-to-store-and-retrieve-shopping-cart-items-in-localstorage
 https://michalkotowski.pl/writings/how-to-refresh-a-react-component-when-local-storage-has-changed
 */
@@ -55,14 +51,31 @@ https://michalkotowski.pl/writings/how-to-refresh-a-react-component-when-local-s
 /* ========== TYPES ========== */
 
 export type ShoppingCartType = {
-	itemImageURL? : string,
     itemID: string,
 	itemURL?: string,
     itemTitle: string,
+	itemImageURL? : string,
     itemQuantity: number,
     itemCost: number,
 }
 
+export type ShoppingCartItemType = {
+    itemID: string,
+	itemURL?: string,
+    itemTitle: string,
+	itemDescription: string,
+    itemCost: number,
+	itemCategory?: string,
+	itemCondition?: string,
+	itemProperties?: { [key: string]: any },
+	itemImageThumbnail? : string,
+	itemImages?: string[],
+    itemQuantity: number,
+	itemSeller?: string,
+	itemBuyingFormat?: string,
+	itemLocation?: string,
+	itemListingDate: string, 
+}
 
 export type AddressType = {
     name: string,
@@ -74,6 +87,15 @@ export type AddressType = {
     email?: string,
     phone?: string,
 }
+
+export type DiscountCodeType = {
+	codeName: string,
+	codeDescription: string,
+	codeType: string,
+	codeStart: string,
+	codeEnd: string,
+	codeValue: number,
+};
 
 export type CheckoutType = {
 	items: ShoppingCartType[];
@@ -698,12 +720,12 @@ export function CheckoutItems(props: { checkoutData: CheckoutType }) {
 		"Name": "Handling Fee : ",
 		"Value": formatAsUSD(props.checkoutData.handlingFee),
 	}, /* {
-			"Name": "Insurance Cost : ",
-			"Value": formatAsUSD(checkoutData.insuranceCost ?? 0),
-		}, */ /* {
-			"Name": "Shipping Discount : ",
-			"Value": formatAsUSD(checkoutData.shipping_discount ?? 0),
-		}, */{
+		"Name": "Insurance Cost : ",
+		"Value": formatAsUSD(checkoutData.insuranceCost ?? 0),
+	}, */ /* {
+		"Name": "Shipping Discount : ",
+		"Value": formatAsUSD(checkoutData.shipping_discount ?? 0),
+	}, */{
 		"Name": "Sales Tax : ",
 		"Value": formatAsUSD(props.checkoutData.salesTax),
 	},{

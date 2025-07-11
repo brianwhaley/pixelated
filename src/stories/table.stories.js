@@ -11,5 +11,7 @@ export default {
 export const Requests = {
 	args: {
 		data: requestData,
+		id: "requestData",
+		sortable: true,
 	}
 };

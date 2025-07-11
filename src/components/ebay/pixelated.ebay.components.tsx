@@ -12,13 +12,6 @@ const debug = false;
 
 
 
-/* 
-TODO #2 Fix Ebay Items Api Call
-TODO #3 Convert eBay Component to Typescript
-TODO #4 Add eBay Item Details Component
-*/
-
-
 
 /* ========== EBAY ITEMS PAGE ========== */
 

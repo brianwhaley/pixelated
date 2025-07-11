@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from "prop-types";
 import { mergeDeep } from '../utilities/pixelated.functions';
 import './pixelated.socialcard.css';
 
 /* ========== NOTES ==========
 TODO #24 SocialCard Component - Add Blurb FaceBook Github iStock LinkedIn SnapChat ShutterStock TickTock Google News Saved Articles
 ERRORS: 500px, shutterfly
-
-TODO: #25 SocialCard Component - Convert to TypeScript
-*/
 
 /* function removeAnchors(element) {
 	const anchors = element.querySelectorAll('a');
@@ -20,7 +17,7 @@ TODO: #25 SocialCard Component - Convert to TypeScript
 	});
 } */
 
-function removeDeadHrefs(element) {
+function removeDeadHrefs(element: string) {
 	const parser = new DOMParser();
   	const doc = parser.parseFromString(element, 'text/html');
 	const anchors = doc.querySelectorAll('a');
@@ -33,11 +30,12 @@ function removeDeadHrefs(element) {
 	return doc.body.innerHTML;
 }
 
+SocialCards.propTypes = {
+	sources: PropTypes.object.isRequired
+};
+export type SocialCardsType = InferProps<typeof SocialCards.propTypes>;
 /* ========== SOCIALCARDS ========== */
-export function SocialCards(props) {
-	SocialCards.propTypes = {
-		sources: PropTypes.object.isRequired
-	};
+export function SocialCards(props: SocialCardsType) {
 	const debug = false ;
 	const [ state, setState ] = useState({
 		loading: true,
@@ -86,14 +84,14 @@ export function SocialCards(props) {
 		}, props.sources )
 	});
 
-	async function RSSFeedToJson (url) {
+	async function RSSFeedToJson (url: string) {
 		if (debug) { console.log('Fetching RSS...', url ); }
 		async function fetchRSS () {
 			try {
 				const response = await fetch(url, {
 					method: 'GET',
 					credentials: 'same-origin',
-					crossDomain: true,
+					// crossDomain: true,
 					mode: 'cors',
 					headers: { 'Content-Type': 'application/json' }
 				});
@@ -120,11 +118,11 @@ export function SocialCards(props) {
 					items = Array.from(xml.querySelectorAll('entry')).map(item => {
 						return {
 							author: item.querySelector('author')?.textContent,
-							category: item.querySelector('category')?.attributes.getNamedItem('term').nodeValue,
+							category: item.querySelector('category')?.attributes.getNamedItem('term')?.nodeValue,
 							description: item.querySelector('content')?.textContent,
 							// description: removeDeadAnchors(item.querySelector('content')?.textContent),
 							guid: item.querySelector('id')?.textContent,
-							link: item.querySelector('link')?.attributes.getNamedItem('href').nodeValue,
+							link: item.querySelector('link')?.attributes.getNamedItem('href')?.nodeValue,
 							pubDate: item.querySelector('published')?.textContent,
 							source: item.querySelector('source')?.textContent,
 							title: item.querySelector('title')?.textContent
@@ -139,7 +137,7 @@ export function SocialCards(props) {
 		return fetchRSS();
 	}
 
-	function sortCardsByPubDate (a, b) {
+	function sortCardsByPubDate (a: any, b: any) {
 		const property = 'pubDate';
 		const dateA = new Date(a[property]);
 		const dateB = new Date(b[property]);
@@ -152,17 +150,17 @@ export function SocialCards(props) {
 		}
 	}
 
-	async function getFeedEntries (myURL, entryCount) {
+	async function getFeedEntries (myURL: string, entryCount: number) {
 		if (debug) { console.log('Getting Feed Entries... ', myURL); }
 		const proxiedURL = state.proxy.proxyURL + '?' + state.proxy.proxyURLParam + '=' + encodeURIComponent(myURL);
-		let sourceCardData = [];
+		let sourceCardData: any[] = [];
 		// const result = await RSSFeedToJson(proxiedURL)
 		await RSSFeedToJson(proxiedURL)
 			.then(
-				(items) => {
+				(items: any) => {
 					let i = 0;
 					for (const prop in items) {
-						let myNewCard = [];
+						let myNewCard: any = {};
 						const item = items[prop];
 						myNewCard = item;
 						/* ===== FIX FOR DESCRIPTION ===== */
@@ -193,10 +191,10 @@ export function SocialCards(props) {
 
 	async function gatherData () {
 		if (debug) { console.log('Gathering Data...'); }
-		let allCardData = [] ;
+		let allCardData: any[] = [] ;
 		for (const prop in state.sources) {
 			const source = state.sources[prop];
-			let sourceCardData = [] ;
+			let sourceCardData: any[] = [] ;
 			if (Object.prototype.hasOwnProperty.call(source, 'url') && source.url && source.url.length > 0) {
 				sourceCardData = await getFeedEntries(source.url, source.entryCount);
 				allCardData = [...allCardData, ...sourceCardData] ;
@@ -210,46 +208,44 @@ export function SocialCards(props) {
 
 	useEffect(() => {
 		if (debug) { console.log("Did Mount!"); }
-		let myCardData = [];
-		let mySocialCards = [];
+		let myNewCardData: any = [];
+		let myNewSocialCards: any = [];
 		const generateSocialCards = async () => {
 			try {
-				myCardData = await gatherData();
-				for (const prop in myCardData) {
-					let myOptions = [];
-					const card = myCardData[prop];
+				myNewCardData = await gatherData();
+				for (const prop in myNewCardData) {
+					let myOptions: any = {};
+					const card = myNewCardData[prop];
 					switch (true) {
-					case (card.link.indexOf('500px.com') > -1): myOptions = state.sources.SOOpx; break;
-					case (card.link.indexOf('blog') > -1): myOptions = state.sources.blog; break;
-					case (card.link.indexOf('ebay.com') > -1): myOptions = state.sources.ebay; break;
-					case (card.link.indexOf('etsy.com') > -1): myOptions = state.sources.etsy; break;
-					// case (card.link.indexOf('facebook.com') > -1): myOptions = state.sources.facebook; break
-					case (card.link.indexOf('flickr.com') > -1): myOptions = state.sources.flickr; break;
-					// case (card.link.indexOf('foursquare.com') > -1): myOptions = state.sources.foursquare; break
-					case (card.link.indexOf('github.com') > -1): myOptions = state.sources.github; break;
-					case (card.link.indexOf('goodreads.com') > -1): myOptions = state.sources.goodreads; break;
-					case (card.link.indexOf('instagram') > -1): myOptions = state.sources.instagram; break;
-					case (card.link.indexOf('pinterest.com') > -1): myOptions = state.sources.pinterest; break;
-					case (card.link.indexOf('reddit.com') > -1): myOptions = state.sources.reddit; break;
-					case (card.link.indexOf('shutterfly.com') > -1): myOptions = state.sources.shutterfly; break;
-					case (card.link.indexOf('tumblr.com') > -1): myOptions = state.sources.tumblr; break;
-					case (card.link.indexOf('twitter') > -1): myOptions = state.sources.twitter; break;
-					case (card.link.indexOf('x.com') > -1): myOptions = state.sources.x; break;
-					case (card.link.indexOf('youtube') > -1): myOptions = state.sources.youtube; break;
-					case (card.link.indexOf('other') > -1): myOptions = state.sources.other; break;
+					case (card.link?.indexOf('500px.com') > -1): myOptions = state.sources.SOOpx; break;
+					case (card.link?.indexOf('blog') > -1): myOptions = state.sources.blog; break;
+					case (card.link?.indexOf('ebay.com') > -1): myOptions = state.sources.ebay; break;
+					case (card.link?.indexOf('etsy.com') > -1): myOptions = state.sources.etsy; break;
+					case (card.link?.indexOf('flickr.com') > -1): myOptions = state.sources.flickr; break;
+					case (card.link?.indexOf('github.com') > -1): myOptions = state.sources.github; break;
+					case (card.link?.indexOf('goodreads.com') > -1): myOptions = state.sources.goodreads; break;
+					case (card.link?.indexOf('instagram') > -1): myOptions = state.sources.instagram; break;
+					case (card.link?.indexOf('pinterest.com') > -1): myOptions = state.sources.pinterest; break;
+					case (card.link?.indexOf('reddit.com') > -1): myOptions = state.sources.reddit; break;
+					case (card.link?.indexOf('shutterfly.com') > -1): myOptions = state.sources.shutterfly; break;
+					case (card.link?.indexOf('tumblr.com') > -1): myOptions = state.sources.tumblr; break;
+					case (card.link?.indexOf('twitter') > -1): myOptions = state.sources.twitter; break;
+					case (card.link?.indexOf('x.com') > -1): myOptions = state.sources.x; break;
+					case (card.link?.indexOf('youtube') > -1): myOptions = state.sources.youtube; break;
+					case (card.link?.indexOf('other') > -1): myOptions = state.sources.other; break;
 					default: myOptions = state.sources.blank; break;
 					}
 					/* ===== UPDATE STATE ===== */
 					const newSocialCard = <SocialCard key={prop + '' + card.guid} iconSrc={myOptions.iconSrc} iconSrcAlt={myOptions.iconSrcAlt} card={card} />;
-					mySocialCards.push(newSocialCard);
+					myNewSocialCards.push(newSocialCard);
 				}
 			} catch (e) {
 				console.log("Error : ", e);
 			} finally {
 				setState({ 
 					...state, 
-					myCardData: myCardData,
-					mySocialCards: mySocialCards, 
+					myCardData: myNewCardData,
+					mySocialCards: myNewSocialCards, 
 					loading: false
 				});
 			}
@@ -265,14 +261,14 @@ export function SocialCards(props) {
 
 }
 
+SocialCard.propTypes = {
+	iconSrc: PropTypes.string.isRequired,
+	iconSrcAlt: PropTypes.string.isRequired,
+	card: PropTypes.any.isRequired
+};
+export type SocialCardType = InferProps<typeof SocialCard.propTypes>;
 /* ========== SOCIALCARD ========== */
-export function SocialCard(props) {
-	SocialCard.propTypes = {
-		iconSrc: PropTypes.string.isRequired,
-		iconSrcAlt: PropTypes.string.isRequired,
-		card: PropTypes.object.isRequired
-	};
-
+export function SocialCard(props: SocialCardType) {
 	return (
 		<div className="masonryItem" key={props.card.guid}>
 			<div className="card">

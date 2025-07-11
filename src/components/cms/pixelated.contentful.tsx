@@ -9,15 +9,6 @@ export type ContentfulApiType = {
 	access_token: string;
 };
 
-export type DiscountCodeType = {
-	codeName: string,
-	codeDescription: string,
-	codeType: string,
-	codeStart: string,
-	codeEnd: string,
-	codeValue: number,
-};
-
 /* ========== GET CONTENTFUL CARDS ========== */
 getContentfulEntries.propTypes = {
 	apiProps: PropTypes.shape({

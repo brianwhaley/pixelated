@@ -20,6 +20,7 @@ export * from './components/form/pixelated.form.js';
 export * from './components/form/pixelated.form.submit.js';
 export * from './components/form/pixelated.formcomponents.js';
 export * from './components/form/pixelated.formvalidations.js';
+export * from './components/form/pixelated.hubspot.js';
 
 export * from './components/google/pixelated.googleanalytics.js';
 export * from './components/google/pixelated.googlesearch.js';

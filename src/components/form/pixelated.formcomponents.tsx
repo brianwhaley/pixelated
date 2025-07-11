@@ -4,10 +4,6 @@ import PropTypes, { InferProps } from "prop-types";
 import * as FV from "./pixelated.formvalidations";
 import "./pixelated.form.css";
 
-/*
-TODO #12 Form Component: Convert to TypeScript
-*/
-
 
 /* 
 InferProps to generate Types

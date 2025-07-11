@@ -11,6 +11,12 @@ table.pixTable {
 	text-transform: uppercase;
 	font-size: 1.2em;
 	padding: 5px;
+  	color: #369;
+  	text-decoration: none;
+	white-space: nowrap;
+}
+.pixTable th:hover {
+  text-decoration: underline;
 }
 
 .pixTable td {
@@ -50,4 +56,17 @@ dialog {
   	top: 50%;
   	left: 50%;
   	transform: translate(-50%, -50%);
+}
+
+
+.sortArrow {
+	display: inline-block;
+	margin-left: 5px;
+	font-size: 0.8em;
+}
+.sortArrow.asc::before {
+	content: '▲'; /* Up arrow for ascending */
+}
+.sortArrow.desc::before {
+	content: '▼'; /* Down arrow for descending */
 }

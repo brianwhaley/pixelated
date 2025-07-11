@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 
 import './pixelated.table.css';
@@ -11,14 +11,19 @@ function isImageURL(url: string) {
 
 Table.propTypes = {
 	data: PropTypes.array.isRequired,
-	id: PropTypes.string,
+	id: PropTypes.string.isRequired,
+	sortable: PropTypes.bool,
 };
 export type TableType = InferProps<typeof Table.propTypes>;
 export function Table (props: TableType) {
 
+	const [ tableData, setTableData ] = useState(props.data);
+
 	function getHeadings (data: Array<{ [key: string]: any }>) {
 		const headings = Object.keys(data[0]).map((key, i) => {
-			return <th key={i}>{key}</th>;
+			return (props.sortable && props.sortable == true) 
+				? <th key={i} onClick={() => { sortTable(key); }}>{key} <span className="sortArrow" /></th>
+				: <th key={i}>{key}</th>;
 		});
 		return <tr>{headings}</tr>;
 	}
@@ -36,11 +41,77 @@ export function Table (props: TableType) {
 		});
 	}
 
+	/* ========== SORT FUNCTIONS ========== */
+
+	function getHeader(column: string){
+		const table = document.getElementById(props.id) as HTMLTableElement;
+		const headers = table.querySelectorAll('th');
+		let myHeader = undefined;
+		headers.forEach(header => {
+			if (header.innerText.trim().toUpperCase() === column.trim().toUpperCase()) {
+				myHeader = header as HTMLTableCellElement;
+			}
+		});
+		return (myHeader);
+	}
+
+	function getDirection(header: HTMLTableCellElement){
+		const arrow = header.querySelector('.sortArrow');
+		let oldDirection = '';
+		if (arrow){
+			const oldClassList = arrow.classList;
+			if (oldClassList.contains('asc')) {
+				oldDirection = 'asc';
+			} else if (oldClassList.contains('desc')) {
+				oldDirection = 'desc';
+			} 
+		}
+		return (oldDirection);
+	}
+
+	function clearAllArrows() {
+		const table = document.getElementById(props.id) as HTMLTableElement;
+		const headers = table.querySelectorAll('th');
+		headers.forEach(header => {
+			const arrow = header.querySelector('.sortArrow');
+			if (arrow) {
+				arrow.classList.remove('asc', 'desc');
+			}
+		});
+	}
+
+	function updateArrow(column: string, oldDirection: string) {
+		const header = getHeader(column) as unknown as HTMLTableCellElement;
+		const arrow = header.querySelector('.sortArrow');
+		if (arrow) {
+			if (oldDirection == 'asc') {
+				arrow.classList.add('desc');
+			} else {
+				arrow.classList.add('asc');
+			}
+		}
+	}
+
+	function sortTable(column: string) {
+		const oldTableData = [...tableData];
+		const myHeader = getHeader(column);
+		if (myHeader && getDirection(myHeader) === 'asc') {
+			setTableData(oldTableData.sort((a, b) => b[column].localeCompare(a[column])));
+		} else {
+			setTableData( oldTableData.sort((a, b) => a[column].localeCompare(b[column])) );
+		}
+		if (myHeader) {
+			const oldDirection = getDirection(myHeader);
+			clearAllArrows();
+			updateArrow(column, oldDirection );
+		}
+	}
+
 	return (
 		<div>
 			<table id={props.id ?? undefined} className="pixTable">
-				<thead>{getHeadings(props.data)}</thead>
-				<tbody>{getRows(props.data)}</tbody>
+				<thead>{getHeadings(tableData)}</thead>
+				<tbody>{getRows(tableData)}</tbody>
 			</table>
 		</div>
 	);

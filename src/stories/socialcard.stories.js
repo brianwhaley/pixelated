@@ -6,7 +6,7 @@ const mySources = {
 	SOOpx: { url: "https://500px.com/brianwhaley/rss" },
 	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Views Blog Post" },
 	/* BLURB */
-	ebay: { url: "https://rssbay.net/feed?keyword=sunglasses&globalId=EBAY-US&auction=1&buyitnow=1&condition=-&seller=btw73&time-frame-type=-&time-frame-value=-" },
+	ebay: { url: "https://rssbay.net/feed?keyword=sunglasses&globalId=EBAY-US&auction=1&buyitnow=1&condition=-&seller=pixelatedtech&time-frame-type=-&time-frame-value=-" },
 	etsy: { url: "https://www.etsy.com/people/bwhaley73/favorites/items.rss" },
 	/* FACEBOOK */
 	flickr: { url : "https://www.flickr.com/services/feeds/photoset.gne?nsid=15473210@N04&set=72157712416706518&lang=en-us&format=rss2" },
