@@ -60,6 +60,9 @@ export function EbayItems(props: EbayItemsType) {
 	if (items.length > 0 ) {
 		return (
 			<div className="section-container">
+				<div className="ebayItemsHeader">
+					<EbayItemHeader title={`${items.length} Store Items`} />
+				</div>
 				<div id="ebayItems" className="ebayItems">
 					{ paintItems( { items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
 				</div>

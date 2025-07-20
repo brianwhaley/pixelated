@@ -12,6 +12,12 @@
 	}
 }
 
+.ebayItemsHeader {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+}
+
 .ebayItem {
     border: 1px solid #DDD;
     text-align: left;
