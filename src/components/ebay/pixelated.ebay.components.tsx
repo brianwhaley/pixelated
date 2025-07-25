@@ -24,6 +24,7 @@ export type EbayItemsType = InferProps<typeof EbayItems.propTypes>;
 export function EbayItems(props: EbayItemsType) {
 	// https://developer.ebay.com/devzone/finding/HowTo/GettingStarted_JS_NV_JSON/GettingStarted_JS_NV_JSON.html
 	const [ items, setItems ] = useState<any[]>([]);
+	const [ aspects, setAspects ] = useState<any[]>([]);
 	const [ apiProps ] = useState({ ...defaultEbayProps , ...props.apiProps});
 
 	paintItems.propTypes = {
@@ -43,17 +44,33 @@ export function EbayItems(props: EbayItemsType) {
 		return newItems;
 	}
 
+	fetchItems.propTypes = {
+		aspectName: PropTypes.string,
+		aspectValue: PropTypes.string,
+	};
+	type fetchItemsType = InferProps<typeof fetchItems.propTypes>;
+	async function fetchItems(props?: fetchItemsType) {
+		try {
+			const myApiProps = { ...apiProps };
+			if(props) {
+				const params = new URLSearchParams(myApiProps.qsSearchURL);
+				let aspects = params.get('aspect_filter'); 
+				const newAspects = props.aspectName + ":{" + props.aspectValue + "}";
+				aspects = (aspects) ? aspects + "," + newAspects : newAspects ;
+				params.set('aspect_filter', aspects);
+				myApiProps.qsSearchURL = "?" + decodeURIComponent(params.toString());
+			}
+			const response: any = await getEbayItems({ apiProps: myApiProps });
+			if (debug) console.log("eBay API Get Items Data", response);
+			setItems(response.itemSummaries);
+			setAspects(response.refinement.aspectDistributions);
+		} catch (error) {
+			console.error("Error fetching eBay items:", error);
+		}
+	}
+
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
-		async function fetchItems() {
-			try {
-				const response: any = await getEbayItems({ apiProps: apiProps });
-				if (debug) console.log("eBay API Get Items Data", response);
-				setItems(response.itemSummaries);
-			} catch (error) {
-				console.error("Error fetching eBay items:", error);
-			}
-		}
 		fetchItems();
 	}, []);
 
@@ -62,6 +79,9 @@ export function EbayItems(props: EbayItemsType) {
 			<div className="section-container">
 				<div className="ebayItemsHeader">
 					<EbayItemHeader title={`${items.length} Store Items`} />
+				</div>
+				<div className="ebayItemsHeader">
+					<EbayListFilter aspects={aspects} callback={fetchItems}/>
 				</div>
 				<div id="ebayItems" className="ebayItems">
 					{ paintItems( { items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
@@ -79,6 +99,84 @@ export function EbayItems(props: EbayItemsType) {
 	}
 
 }
+
+
+
+
+EbayListFilter.propTypes = {
+	aspects: PropTypes.any.isRequired,
+	callback: PropTypes.func.isRequired,
+};
+export type EbayListFilterType = InferProps<typeof EbayListFilter.propTypes>;
+export function EbayListFilter(props: EbayListFilterType) {
+
+	const aspectNames = props.aspects.map(( aspect: any ) => (
+		aspect.localizedAspectName 
+	)).sort();
+
+	let aspectNamesValues: any = {};
+	for (let key in props.aspects) {
+		const aspect = props.aspects[key];
+		const thisAspectName: string = aspect.localizedAspectName;
+		const aspectNameValues = aspect.aspectValueDistributions.map(( aspectValue: any ) => {
+			return ( aspectValue.localizedAspectValue );
+		}).sort();
+		aspectNamesValues[thisAspectName] = aspectNameValues;
+	}
+
+	function onAspectNameChange(){
+		const aspectName = document.getElementById("aspectName") as HTMLSelectElement;
+		const aspectValue = document.getElementById("aspectValue") as HTMLSelectElement;
+		const aspectNameValues = aspectNamesValues[aspectName.value];
+		aspectNameValues.unshift("");
+		aspectValue.options.length = 0;
+		aspectNameValues.forEach( (aspectValueString: string) => {
+			const option = document.createElement('option');
+			option.textContent = aspectValueString; 
+			option.value = aspectValueString;
+			aspectValue.appendChild(option);
+		});
+	}
+
+	function onAspectValueChange(){
+		// const aspectName = document.getElementById("aspectName") as HTMLSelectElement;
+		// const aspectValue = document.getElementById("aspectValue") as HTMLSelectElement;
+		return ;
+	}
+
+	function handleAspectFilter(){
+		const aspectName = document.getElementById("aspectName") as HTMLSelectElement;
+		const aspectValue = document.getElementById("aspectValue") as HTMLSelectElement;
+		if (aspectName.value && aspectValue.value) {
+			props.callback({ aspectName: aspectName.value, aspectValue: aspectValue.value });
+		}
+	}
+
+	return (
+		<form name="ebayItemsFilter" id="ebayItemsFilter">
+			<span className="filterInput">
+				<label htmlFor="aspectName">Aspect:</label>
+				<select id="aspectName" onChange={onAspectNameChange}>
+					<option value=""></option>
+					{ aspectNames.map((aspectName: any, index: number) =>
+						<option key={index} value={aspectName}>{aspectName}</option>
+					)}
+				</select>
+			</span>
+			<span className="filterInput">
+				<label htmlFor="aspectValue" onChange={onAspectValueChange}>Value:</label>
+				<select id="aspectValue">
+					<option value=""></option>
+				</select>
+			</span>
+			<span className="filterInput">
+				<button type="button" onClick={handleAspectFilter}>Filter</button>
+			</span>
+		</form>
+	);
+}
+
+
 
 
 

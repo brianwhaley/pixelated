@@ -18,6 +18,21 @@
     text-align: center;
 }
 
+#ebayItemsFilter {
+    font-size: 0.8em;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 480px) {
+    #ebayItemsFilter {
+        text-align: left;
+    }
+	.filterInput { 
+        display: block;
+    }
+}
+
+
 .ebayItem {
     border: 1px solid #DDD;
     text-align: left;
