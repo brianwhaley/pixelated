@@ -70,6 +70,21 @@
 		{
 			"component" : "FormInput",
 			"props" : {
+				"type" : "tel",
+				"id" : "telephone",
+				"name" : "telephone",
+				"defaultValue" : null,
+				"size" : "40",
+				"display" : "vertical",
+				"required" : "required",
+				"label" : "Telephone (required) : ",
+				"validate" : "isValidUSPhoneNumber",
+				"tooltip" : "Please type in your Telephone Number"
+			}
+		},
+		{
+			"component" : "FormInput",
+			"props" : {
 				"type" : "subject",
 				"id" : "messagesubject",
 				"name" : "messagesubject",

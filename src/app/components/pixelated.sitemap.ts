@@ -5,6 +5,13 @@ import { getContentfulFieldValues, getContentfulAssetURLs } from "./pixelated.co
 import type { SitemapEntry } from "@brianwhaley/pixelated-components";
 // import myRoutes from "../../data/routes.json";
 
+const apiProps = {
+	base_url: "https://cdn.contentful.com",
+	space_id: "0b82pebh837v",
+	environment: "master",
+	access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+};
+
 /* 
 TODO #10 Sitemap Component : Build out v1 of this component
 */
@@ -117,7 +124,7 @@ export async function createContentfulURLs(origin: string){
 	// const origin = await getOrigin();
 	const contentType = "carouselCard"; 
 	const field = "title";
-	const contentfulTitles = await getContentfulFieldValues(contentType, field);
+	const contentfulTitles = await getContentfulFieldValues({apiProps: apiProps, contentType: contentType, field: field});
 	for ( const title of contentfulTitles ){
 		sitemap.push({
 			url: `${origin}/projects/${encodeURIComponent(title)}` ,
@@ -134,7 +141,7 @@ export async function createContentfulURLs(origin: string){
 export async function createContentfulAssetURLs(origin: string){
 	const sitemap = [];
 	// const origin = await getOrigin();
-	const images = await getContentfulAssetURLs();
+	const images = await getContentfulAssetURLs({apiProps: apiProps});
 	const newImages = images.map((image)=>{
 		const oldImage = image.image;
 		const newImage = oldImage.replace("//images.ctfassets.net", origin);

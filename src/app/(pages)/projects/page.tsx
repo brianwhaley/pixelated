@@ -16,14 +16,21 @@ export default function Projects() {
 
 	const [ carouselCards , setCarouselCards ] = useState<CarouselCardType[]>([]);
 	
+	const apiProps = {
+		base_url: "https://cdn.contentful.com",
+		space_id: "0b82pebh837v",
+		environment: "master",
+		access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+	};
+
 	useEffect(() => {
 		async function getCarouselCards() {
 			const contentType = "carouselCard"; 
-			const typeCards = await getContentfulEntriesByType(contentType); 
+			const typeCards = await getContentfulEntriesByType({ apiProps: apiProps, contentType: contentType }); 
 			const reviewCards : CarouselCardType[] = [];
 			for (const card of typeCards.items) {
 				if ( card.sys.contentType.sys.id == contentType ) {
-					const images = await getContentfulImagesFromEntries( [card.fields.image], typeCards.includes.Asset);
+					const images = await getContentfulImagesFromEntries({ images: [card.fields.image], assets: typeCards.includes.Asset });
 					reviewCards.push({
 						index: card.sys.contentType.sys.id.indexOf("card"),
 						cardIndex: reviewCards.length,

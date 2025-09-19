@@ -37,6 +37,13 @@ export default function Project({params}: { params: Promise<{ project: string }>
 		};
 	}
 
+	const apiProps = {
+		base_url: "https://cdn.contentful.com",
+		space_id: "0b82pebh837v",
+		environment: "master",
+		access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+	};
+
 	const [ card , setCard ] = useState<Card | null>(null);
 	const [ carouselCards , setCarouselCards ] = useState<{ image: any }[]>([]);
 	const { project } = use(params);
@@ -44,14 +51,14 @@ export default function Project({params}: { params: Promise<{ project: string }>
 	useEffect(() => {
 		async function getCarouselCards(project: string) {
 			const contentType = "carouselCard"; 
-			const cards = await getContentfulEntriesByType(contentType); 
+			const cards = await getContentfulEntriesByType({ apiProps: apiProps, contentType: contentType }); 
 			const card = await getContentfulEntryByField({
 				cards: cards,
 				searchField: "title",
 				searchVal: project
 			});
 			setCard(card);
-			const images = await getContentfulImagesFromEntries(card.fields.carouselImages, cards.includes.Asset);
+			const images = await getContentfulImagesFromEntries({ images: card.fields.carouselImages, assets: cards.includes.Asset });
 			/* for (const img of images) {
 				img.image = img.image.replace("//images.ctfassets.net", imageOrigin);
 			} */

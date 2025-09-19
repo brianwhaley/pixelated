@@ -13,10 +13,17 @@ export default function Home() {
 
 	const [ carouselCards , setCarouselCards ] = useState<CarouselCardType[]>([]);
 
+	const apiProps = {
+		base_url: "https://cdn.contentful.com",
+		space_id: "0b82pebh837v",
+		environment: "master",
+		access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+	};
+
 	useEffect(() => {
 		async function getCarouselCards() {
 			const contentType = "reviews"; 
-			const typeCards = await getContentfulEntriesByType(contentType); 
+			const typeCards = await getContentfulEntriesByType({ apiProps: apiProps, contentType: contentType }); 
 			const items = typeCards.items.filter((card: any) => card.sys.contentType.sys.id === contentType);
 			const cardLength = items.length;
 			const reviewCards = items.map(function (card: any, index: number) {

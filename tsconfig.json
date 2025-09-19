@@ -17,7 +17,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typeRoots": ["./src"],
+    // "typeRoots": ["./src"], // Removed to use default typeRoots (node_modules/@types)
+    "types": [],
     "plugins": [
       {
         "name": "next"
