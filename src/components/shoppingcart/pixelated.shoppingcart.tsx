@@ -781,7 +781,7 @@ export function ViewItemDetails(props: {href: string, itemID: string}){
 export function AddToCartButton(props: {handler: any, item: ShoppingCartType, itemID: string}){
 	const [modalContent, setModalContent] = useState<React.ReactNode>();
 	useEffect(() => {
-		const myContent = <div className="centered"><br /><br />Item {props.itemID} has been added to your cart.<br /><br /><br /></div>;
+		const myContent = <div className="centered"><br /><br />Item {props.itemID} has been added to your cart.<br /><br />{GoToCartButton({href: "/cart", itemID: props.itemID})}<br /><br /></div>;
 		setModalContent(myContent);
 	}, []);
 	function handleClick(e: React.MouseEvent<HTMLButtonElement>){

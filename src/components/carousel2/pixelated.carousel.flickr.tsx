@@ -42,6 +42,7 @@ const defaultFlickr = {
 
 
 function getFlickrSize (size: string) {
+	// https://www.flickr.com/services/api/misc.urls.html
 	switch (size) {
 	case 'Square' : return '_s'; // 75
 	case 'Large Square' : return '_q'; // 150
