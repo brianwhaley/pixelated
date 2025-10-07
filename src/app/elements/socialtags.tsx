@@ -19,7 +19,6 @@ export default function SocialTags() {
 				<div className="gridItem"><CalloutSmall shape="squircle" url="http://twitter.com/pixelatedviews" img="/images/logos/twitter-logo.png" alt="Twitter" title={""} content={""} /></div>
 				<div className="gridItem"><CalloutSmall shape="squircle" url="https://www.instagram.com/pixelated.views/" img="/images/logos/instagram-logo.jpg" alt="Instagram" title={""} content={""} /></div>
 				<div className="gridItem"><CalloutSmall shape="squircle" url="http://blog.pixelated.tech" img="/images/logos/google-reader-logo.png" alt="Pixelated Blog" title={""} content={""} /></div>
-				<div className="gridItem"></div>
 			</div>
         
 		</>

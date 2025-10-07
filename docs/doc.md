@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "remove sunglass and photography pages"
+git commit -m "Pixelated Technologies, new home page content, css adjustments"
 git push pixelated dev --tags
 git push pixelated dev:main
 
