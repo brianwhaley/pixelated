@@ -33,6 +33,7 @@ export default function Home() {
 		<>
 			<section id="products-section">
 				<div className="section-container">
+					<PageHeader title="Pixelated Technologies" />
 					<div className="row-12col">
 						<div className="grid-s3-e8">
 							<Callout
@@ -54,7 +55,7 @@ export default function Home() {
 
 			<section id="products-section">
 				<div className="section-container">
-					<PageHeader title="Pixelated Technologies Products and Services" />
+					<CalloutHeader title="Products and Services" />
 					<div className="row-3col">
 						<Callout
 							img='images/icons/webdev.png'

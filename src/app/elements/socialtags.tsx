@@ -9,7 +9,7 @@ export default function SocialTags() {
 
 			<div className="row-12col">
 				<div className="grid-s1-e12">
-					<CalloutHeader url="" title="Pixelated Technologies Social Media" />
+					<CalloutHeader url="" title="Our Social Media" />
 				</div>
 			</div>
 
