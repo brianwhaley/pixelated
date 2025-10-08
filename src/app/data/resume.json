@@ -1254,7 +1254,7 @@
 							"type": [ "h-card" ],
 							"properties": {
 								"job-title": [ "Owner" ],
-								"org": [ "Pixelated" ],
+								"org": [ "Pixelated Technologies" ],
 								"url": [ ],
 								"email": [ ],
 								"tel": [ "(973) 710-8008" ],
@@ -1278,7 +1278,7 @@
 							{
 								"type": [ "h-card" ],
 								"properties": {
-									"name": [ "Pixelated Web Site" ],
+									"name": [ "Pixelated Technologies Web Site" ],
 									"url": [ "https://www.pixelated.tech/" ],
 									"photo": [ "" ],
 									"note": [ ]

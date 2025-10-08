@@ -11,7 +11,7 @@ export default function Terms() {
 				<br/>
                     If you sign up for an account on the Services, you are responsible for all activity on your account. Be mindful about protecting your account password and let us know immediately if you think there are any issues.<br/>
 				<br/>
-                    You own all content you contribute to the Services, but you're ok with Pixelated using it in connection with its Services. Public Information is public, so don't include any private or sensitive information in any public part of the Services.<br/>
+                    You own all content you contribute to the Services, but you're ok with Pixelated Technologies using it in connection with its Services. Public Information is public, so don't include any private or sensitive information in any public part of the Services.<br/>
 				<br/>
                     You're allowed to use the Services only in accordance with this agreement. Generally speaking, you are only allowed to use content that you find on the site in connection with your use of the Services and solely for personal and non-commercial purposes. We can edit, take down, or block any content on the Services at any time.<br/>
 				<br/>

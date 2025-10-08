@@ -25,7 +25,7 @@ export default function Schedule() {
 			<PageHeader title="Schedule a meeting with Pixelated" />
 			<div className="row-1col" suppressHydrationWarning={true} >
 				<div>
-					Schedule a consult appointment with Pixelated for custom IT development work: 
+					Schedule a consult appointment with Pixelated Technologies for custom IT development work: 
 					<ul>
 						<li>Web development</li>
 						<li>Social media mearketing</li>

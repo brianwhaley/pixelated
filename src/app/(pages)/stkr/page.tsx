@@ -154,7 +154,7 @@ export default function Stkr() {
 				<div className="section-container">
 					<CalloutHeader title="Customer Support" />
 					<div className="callout-body">
-						For Customer Support, please contact <a href="mailto:stkr@pixelated.tech?subject=Stkr Customer Support">stkr@pixelated.tech</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Slack Workspace</a>.
+						For Customer Support, please contact <a href="mailto:stkr@pixelated.tech?subject=Stkr Customer Support">stkr@pixelated.tech</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Technologies Slack Workspace</a>.
 						<br/>
 					</div>
 				</div>

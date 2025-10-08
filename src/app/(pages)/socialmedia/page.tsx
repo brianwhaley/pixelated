@@ -13,7 +13,7 @@ ERRORS: 500px, shutterfly - malformed XML RSS
 
 const myRSSFeeds = {
 	// SOOpx: { url: "https://500px.com/brianwhaley/rss" },
-	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Views Blog Post" },
+	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Technologies Blog Post" },
 	/* BLURB */
 	// ebay: { url: "https://rssbay.net/feed?keyword=sunglasses&globalId=EBAY-US&auction=1&buyitnow=1&condition=-&seller=btw73&time-frame-type=-&time-frame-value=-" },
 	// etsy: { url: "https://www.etsy.com/people/bwhaley73/favorites/items.rss" },

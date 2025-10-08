@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "Pixelated Technologies, new home page content, css adjustments"
+git commit -m "minor css fixes and metadata fixes"
 git push pixelated dev --tags
 git push pixelated dev:main
 

@@ -259,8 +259,8 @@ footer {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #AAA;
-  padding-bottom: 5px;
+  	border-bottom: 1px solid #AAA;
+  	padding-bottom: 5px;
 }
 
 /* USE THE FIX VERSIONS TO PREVENT MEDIA QUERIES FROM REDRAWING THEM */
@@ -406,9 +406,9 @@ input.gsc-input {
 ===========  GALLERY CAROUSEL    ===========
 ======================================== */
 
-/* #gallery-section {
-	margin-bottom: 50px;
-} */
+#gallery-section {
+	--do-nothing: true;
+}
 #gallery-section .carouselContainer {
 	background: none;
 	border: none;
@@ -417,11 +417,9 @@ input.gsc-input {
     height: 550px !important;
 	margin-top: 5px !important;
 }
-/* #gallery-section .carouselCardImage .imgContain {
-    max-height: 98%;
-    height: 98%;
-    border: 1px solid black;
-} */
+#gallery-section .carouselCardImage .imgContain {
+	--do-nothing: true;
+}
 @media screen and (max-width: 480px) {
     #gallery-section .carouselCardImage {
         height: 300px !important;

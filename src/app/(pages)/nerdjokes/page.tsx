@@ -126,7 +126,7 @@ export default function NerdJokes() {
 				<div className="section-container">
 					<CalloutHeader title="Customer Support" />
 					<div className="callout-body">
-						For Customer Support, please contact <a href="mailto:nerdjokes@pixelated.tech?subject=NerdJokes Customer Support">nerdjokes@pixelated.tech</a> or join the <a href="https://pixelated-tech.slack.com/archives/C013LBYFK9U">#nerdjokes-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Slack Workspace</a>.
+						For Customer Support, please contact <a href="mailto:nerdjokes@pixelated.tech?subject=NerdJokes Customer Support">nerdjokes@pixelated.tech</a> or join the <a href="https://pixelated-tech.slack.com/archives/C013LBYFK9U">#nerdjokes-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Technologies Slack Workspace</a>.
 						<br/>
 					</div>
 				</div>
