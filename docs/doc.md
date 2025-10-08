@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "all packages up to date"
+git commit -m "add google business social"
 git push pixelated dev --tags
 git push pixelated dev:main
 
