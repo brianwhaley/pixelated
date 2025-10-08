@@ -4,7 +4,7 @@ import '../css/pixelated.global.css';
 
 const mySources = {
 	SOOpx: { url: "https://500px.com/brianwhaley/rss" },
-	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Views Blog Post" },
+	blog: { url: "https://blog.pixelated.tech/feed/", iconSrcAlt: "Pixelated Technologies Blog Post" },
 	/* BLURB */
 	ebay: { url: "https://rssbay.net/feed?keyword=sunglasses&globalId=EBAY-US&auction=1&buyitnow=1&condition=-&seller=pixelatedtech&time-frame-type=-&time-frame-value=-" },
 	etsy: { url: "https://www.etsy.com/people/bwhaley73/favorites/items.rss" },
@@ -29,7 +29,7 @@ const mySources = {
 	// twitter: { url: "https://twitrss.me/twitter_user_to_rss/?user=brianwhaley" },
 	// twitter: { url : "https://rss.app/feeds/MPULoVcijU5AAHxU.xml", iconSrcAlt: 'Tweets from Brian Whaley'},
 	// twitter: { url: "https://twitrss.me/twitter_user_to_rss/?user=pixelatedviews" }
-	x2: { url : "https://rsshub.app/twitter/user/pixelatedviews", iconSrcAlt: 'Tweets from Pixelated'},
+	x2: { url : "https://rsshub.app/twitter/user/pixelatedviews", iconSrcAlt: 'Tweets from Pixelated Technologies'},
 	// twitter2: { url : "https://rss.app/feeds/B0rl26o7ehFAuBoq.xml", iconSrcAlt: 'Tweets from picelated.views'},
 	youtube: { url: "https://www.youtube.com/feeds/videos.xml%3Fchannel_id=UCKk2eBwml-4mEsmMK-dK6sQ" }
 };

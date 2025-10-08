@@ -7,7 +7,7 @@ const menuItems = {
 	Resume: '/resume.html',
 	'Work Portfolio': './gallery.html?tag=portfolio-all',
 	'Photo Gallery': './gallery.html?tag=pixelatedviewsgallery',
-	'Pixelated Blog': 'https://blog.pixelated.tech',
+	'Pixelated Technologies Blog': 'https://blog.pixelated.tech',
 	'Custom Sunglasses': './customsunglasses',
 	'Social Media': './socialmedia.html',
 	Stkr: '/stkr.html',

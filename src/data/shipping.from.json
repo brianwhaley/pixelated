@@ -6,7 +6,7 @@
                 "type" : "text",
                 "id" : "name",
                 "name" : "name",
-                "value" : "Pixelated",
+                "value" : "Pixelated Technologies",
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",

@@ -97,13 +97,20 @@ body {
 
 section {
 	/* margin-bottom: 50px; */
-	padding: 10px 0
+	padding: 30px 0
 }
 
 section.section-alt {
 	/* margin-bottom: 50px; */
 	padding: 30px 0;
     background-color: #CCC;
+
+}
+
+section.section-alt2 {
+	/* margin-bottom: 50px; */
+	padding: 30px 0;
+    background-color: #F9F9F9;
 
 }
 
@@ -251,8 +258,8 @@ footer {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #AAA;
-  padding-bottom: 5px;
+  	border-bottom: 1px solid #AAA;
+  	padding-bottom: 5px;
 }
 
 /* USE THE FIX VERSIONS TO PREVENT MEDIA QUERIES FROM REDRAWING THEM */
@@ -351,4 +358,94 @@ footer {
         visibility: hidden;
     }
 
+}
+
+
+
+
+
+/* ========================================
+===========  GALLERY CAROUSEL    ===========
+======================================== */
+
+#gallery-section {
+	--do-nothing: true;
+}
+#gallery-section .carouselContainer {
+	background: none;
+	border: none;
+}
+#gallery-section .carouselCardImage {
+    height: 550px !important;
+	margin-top: 5px !important;
+}
+#gallery-section .carouselCardImage .imgContain {
+	--do-nothing: true;
+}
+@media screen and (max-width: 480px) {
+    #gallery-section .carouselCardImage {
+        height: 300px !important;
+    }
+}
+#gallery-section .carouselCardHeader { 
+    display: none;
+}
+#gallery-section .carouselCardSubHeader { 
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+}
+#gallery-section .carouselCardSubHeader h4 {
+    text-align: center;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    color: white;
+    text-shadow: -1px 1px 1px black, 
+        1px 1px 1px black, 
+        1px -1px 1px black, 
+        -1px -1px 1px black, 
+        -1px 1px 5px black, 
+        1px 1px 5px black, 
+        1px -1px 5px black, 
+        -1px -1px 5px black;
+}
+
+
+/* ========================================
+=========  FEEDBACK CAROUSEL    ===========
+======================================== */
+
+#feedback-section {
+	margin-bottom: 50px;
+}
+#feedback-section .carouselContainer {
+	background: none;
+	border: none;
+	height: 300px;
+}
+#feedback-section .carouselCardsContainer {
+	width: 60%;
+	height: 300px;
+	margin: 0 auto;
+}
+#feedback-section .carouselCardWrapper {
+	background-color: #CCC; /* white */
+	padding: 10px;
+}
+#feedback-section .carouselCardBody {
+	text-align: center;
+	padding-top: 40px;
+}
+@media screen and (max-width: 480px) {
+	#feedback-section .carouselCardsContainer {
+		width: 90%;
+		font-size: 0.9em;
+	}
+}
+#feedback-section .carouselCardHeader {
+	display: inline;
+	font-size: 1.2em;
+}
+#feedback-section .carouselButtons {
+	display: none;
 }

@@ -101,3 +101,32 @@
 		height: auto;
 	}
 }
+
+
+/* ========================================
+===============  CALLOUTS   ===============
+======================================== */
+
+/* Define the animation */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to a class */
+.animate-on-scroll {
+  animation: slideInFromBottom 0.5s ease-out forwards;
+  /* 'forwards' ensures the animation stays at its end state */
+}
+
+/* Initially hide the element */
+.hidden {
+  opacity: 0;
+  transform: translateY(50%); /* Or other initial state */
+}

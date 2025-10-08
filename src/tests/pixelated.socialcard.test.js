@@ -16,7 +16,7 @@ const card = {
 };
 
 const myState = {
-	blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Views Blog Post' },
+	blog: { url: 'https://blog.pixelated.tech/feed/', iconSrcAlt: 'Pixelated Technologies Blog Post' },
 	etsy: { url: 'https://www.etsy.com/people/bwhaley73/favorites/items.rss' },
 	/* foursquare: { url: 'https://feeds.foursquare.com/history/LZSXBIJMSBHI5EQXV1GTQOVQW5XRJ0FP.rss' }, */
 	/* goodreads:{ url: 'https://www.goodreads.com/review/list?id=49377228&v=2&key=mRDzpwnLeoPPAQf7CAIpPQ&shelf=currently-reading' }, */

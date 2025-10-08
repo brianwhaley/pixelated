@@ -11,7 +11,7 @@ function validateShape(thisShape: string | undefined) {
 	}
 }
 
-interface CalloutType {
+export interface CalloutType {
 	url?: string,
 	img: string,
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
@@ -23,7 +23,7 @@ interface CalloutType {
 	shape?: string,
 	alt?: string,
 }
-interface CalloutHeaderType {
+export interface CalloutHeaderType {
 	title: string,
 	url?: string
 }
@@ -175,7 +175,7 @@ CalloutHeader.propTypes = {
 export function CalloutSmall(props: CalloutType) {
 	const myShape = validateShape(props.shape); 
 	return (
-		<div>
+		<div className={"calloutSmall"}>
 			<div className={`imgContainer ${myShape} gridItem center`}>
 				<a href={props.url} target="_blank"rel="noopener noreferrer">
 					<img src={props.img} alt={(props.alt) ? props.alt : props.title} 
@@ -222,3 +222,33 @@ CalloutHeaderSmall.propTypes = {
 };
 
 
+/* ========== CALLOUT ANIMATE ========== */
+
+
+export function CalloutAnimate() {
+	const options = {
+		root: null, // Observes intersection with the viewport
+		rootMargin: "0px 0px -100px 0px", // Shrinks the top of the root by 200px
+		threshold: 0 // Triggers when any part of the element intersects the adjusted root
+	};
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			// if (entry.intersectionRatio > 0.5) {
+			// Add the animation class when the element enters the viewport
+				entry.target.classList.add('animate-on-scroll');
+				// Optionally, stop observing once animated if you only want it to animate once
+				observer.unobserve(entry.target);
+			} else {
+				// Optionally, remove the animation class if you want it to re-animate on re-entry
+				// entry.target.classList.remove('animate-on-scroll');
+			}
+		});
+	}, options);
+	// Select the elements you want to observe and initially hide them
+	const elementsToAnimate = document.querySelectorAll('.pageTitle , .callout , .calloutSmall , .calloutHeader , .carouselContainer');
+	elementsToAnimate.forEach((element) => {
+		element.classList.add('hidden'); // Apply initial hidden state
+		observer.observe(element); // Start observing each element
+	});
+}
