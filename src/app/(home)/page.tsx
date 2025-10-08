@@ -2,15 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
-import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
+import { Callout, CalloutHeader, CalloutAnimate } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import GalleryWrapper from "@/app/elements/gallerywrapper";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 
+
 export default function Home() {
-
-
 
 	const [ flickrCards, setFlickrCards ] = useState<CarouselCardType[]>([]);
 	const props = { 
@@ -25,15 +24,37 @@ export default function Home() {
 			await GalleryWrapper(props);
 		}
 		fetchGallery();
+		CalloutAnimate();
 	}, []); 
+
 
 
 	return (
 		<>
 			<section id="products-section">
 				<div className="section-container">
-					<br />
-					<PageHeader title="Pixelated Technologies - Products & Services" />
+					<div className="row-12col">
+						<div className="grid-s3-e8">
+							<Callout
+								img='images/pix/pix-bg-512.png'
+								title='About Pixelated Technologies'
+								content='Pixelated Technologies is a Digital Services company that 
+								specializes in transforming small businesses through
+								custom IT solutions, including web development, social media marketing,
+								search engine optimization, content management, eCommerce solutions,
+								and small business modernization. Our mission is to empower small businesses
+								to thrive in the digital age by providing tailored technology services that
+								drive growth and efficiency.'
+								shape="round" 
+								layout='horizontal2' />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="products-section">
+				<div className="section-container">
+					<PageHeader title="Pixelated Technologies Products and Services" />
 					<div className="row-3col">
 						<Callout
 							img='images/icons/webdev.png'
