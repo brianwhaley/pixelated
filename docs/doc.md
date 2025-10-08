@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "minor css fixes and metadata fixes"
+git commit -m "all packages up to date"
 git push pixelated dev --tags
 git push pixelated dev:main
 
