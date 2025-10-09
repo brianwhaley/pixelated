@@ -14,6 +14,13 @@ export default function Footer() {
 				{ /* <Analytics id="G-X2R4REQ3NG" /> */ }
 				<GoogleAnalytics gaId="G-X2R4REQ3NG" />
 			</div>
+
+			<br />
+			<div className="centered">
+				<p className="footer-text">&copy; {new Date().getFullYear()} Palmetto Epoxy. All rights reserved.</p>
+			</div>
+			<br /><br />
+
 		</div>
 	);
 }
