@@ -12,15 +12,18 @@ function validateShape(thisShape: string | undefined) {
 }
 
 export interface CalloutType {
+	layout?: string,
+	isboxed?: boolean,
+	boxshape?: string,
 	url?: string,
 	img: string,
+	imgshape?: string,
+	shape?: string,
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 	imgclick?: Function,
 	title: string,
 	subtitle?: string,
 	content: string,
-	layout?: string,
-	shape?: string,
 	alt?: string,
 }
 export interface CalloutHeaderType {
@@ -37,7 +40,7 @@ export function Callout(props: CalloutType) {
 	switch (props.layout) {
 	case 'horizontal':
 		return (
-			<div className={"callout row-2col"}>
+			<div className={"callout row-2col" + (props.isboxed ? " boxed" : "")}>
 				<div className="gridItem">
 					<div className={`imgContainer ${myShape} calloutImageHoriz`}>
 						{ props.url
@@ -69,7 +72,7 @@ export function Callout(props: CalloutType) {
 
 	case 'horizontal2':
 		return (
-			<div className={`callout row-1col`}>
+			<div className={"callout row-1col" + (props.isboxed ? " boxed" : "")}>
 				<div className="gridItem center">
 					{ (props.url)
 						? <CalloutHeader url={props.url} title={props.title} />
@@ -105,7 +108,7 @@ export function Callout(props: CalloutType) {
 
 	case 'vertical':
 		return (
-			<div className={`callout row-1col `}>
+			<div className={"callout row-1col" + (props.isboxed ? " boxed" : "")}>
 				<div className="gridItem center">
 					<div className={`imgContainer ${myShape} calloutImageVert center`}>
 						{ (props.url)
@@ -138,13 +141,17 @@ export function Callout(props: CalloutType) {
 	}
 }
 Callout.propTypes = {
+	layout: PropTypes.string,
+	isboxed: PropTypes.bool,
+	boxshape: PropTypes.string,
 	url: PropTypes.string,
 	img: PropTypes.string.isRequired,
+	ingshape: PropTypes.string,
+	shape: PropTypes.string,
+	imgclick: PropTypes.func,
 	title: PropTypes.string.isRequired,
 	subtitle: PropTypes.string,
 	content: PropTypes.string.isRequired,
-	layout: PropTypes.string,
-	shape: PropTypes.string,
 	alt: PropTypes.string,
 };
 
@@ -246,7 +253,7 @@ export function CalloutAnimate() {
 		});
 	}, options);
 	// Select the elements you want to observe and initially hide them
-	const elementsToAnimate = document.querySelectorAll('.pageTitle , .callout , .calloutSmall , .calloutHeader , .carouselContainer');
+	const elementsToAnimate = document.querySelectorAll('.callout , .calloutSmall , .calloutHeader , .carouselContainer');
 	elementsToAnimate.forEach((element) => {
 		element.classList.add('hidden'); // Apply initial hidden state
 		observer.observe(element); // Start observing each element

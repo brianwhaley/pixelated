@@ -103,8 +103,32 @@
 }
 
 
+
 /* ========================================
-===============  CALLOUTS   ===============
+=============  BOXED CALLOUT  =============
+======================================== */
+
+.callout.boxed {
+	padding: 0px;
+    margin: 10px;
+    border: 1.5px solid #666;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.boxed .imgContainer {
+	clip-path: none;
+    width: 100%;
+}
+
+.boxed .calloutBody {
+    padding: 20px;
+}
+
+
+
+/* ========================================
+==========  CALLOUT ANIMATIONS   ==========
 ======================================== */
 
 /* Define the animation */
