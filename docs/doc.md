@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add simple boxed callouts with rounded corners"
+git commit -m "aupdated all packages, storybook is broken"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
