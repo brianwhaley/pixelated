@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@/app/components/metadata/pixelated.metadata";
 // import { getRouteByKey } from "@brianwhaley/pixelated-components";
 // import { getMetadata } from "@brianwhaley/pixelated-components";
+import { CalloutAnimate } from "@brianwhaley/pixelated-components";
 import HomeLayout from "@/app/layouts/home-layout";
 import PageLayout from "@/app/layouts/page-layout";
 import "@/app/css/pixelated.global.css";
@@ -28,6 +29,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 		setOrigin(window.location.origin || null);
 		// setHost(window.location.host || null);
 	}, []);
+
+	// useEffect(() => {
+	CalloutAnimate();
+	// }, []);
 
 	return (
 		<html lang="en">

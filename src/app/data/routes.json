@@ -19,37 +19,7 @@
 			"title": "Pixelated Technologies - Social Media",
 			"description": "Links to all my digital footprints",
 			"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
-		} , { 
-			"name": "NerdJokes", 
-			"path": "/nerdjokes", 
-			"title": "Pixelated Technologies - NerdJokes",
-			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
-		} , { 
-			"name": "Stkr", 
-			"path": "/stkr", 
-			"title": "Pixelated Technologies - Stkr",
-			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
 		} , {
-			"name": "Form", 
-			"path": "/form", 
-			"title": "Pixelated Technologies - Form",
-			"description": "Test my Form Builder, Form Components, and Form Validations",
-			"keywords": "" 
-		} , { 
-			"name": "Form Build", 
-			"path": "/form/build", 
-			"title": "Pixelated Technologies - Form Builder",
-			"description": "Build your own form with my Form Builder",
-			"keywords": ""  
-		} , { 
-			"name": "Form Extract", 
-			"path": "/form/extract", 
-			"title": "Pixelated Technologies - Form Extract",
-			"description": "Extract the JSON needed from a live site to use my Form Builder",
-			"keywords": ""  
-		}, {
 			"name": "Legal",
 			"routes": [
 				{
@@ -64,6 +34,41 @@
 					"title": "Pixelated Technologies - Privacy Policy",
 					"description": "Pixelated Technologies Privacy Policy",
 					"keywords": "pixelated, privacy policy, data retention"  
+				}
+			]
+		}, {
+			"name": "Sandbox",
+			"routes": [
+				{ 
+					"name": "NerdJokes", 
+					"path": "/nerdjokes", 
+					"title": "Pixelated Technologies - NerdJokes",
+					"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , { 
+					"name": "Stkr", 
+					"path": "/stkr", 
+					"title": "Pixelated Technologies - Stkr",
+					"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , {
+					"name": "Form", 
+					"path": "/form", 
+					"title": "Pixelated Technologies - Form",
+					"description": "Test my Form Builder, Form Components, and Form Validations",
+					"keywords": "" 
+				} , { 
+					"name": "Form Build", 
+					"path": "/form/build", 
+					"title": "Pixelated Technologies - Form Builder",
+					"description": "Build your own form with my Form Builder",
+					"keywords": ""  
+				} , { 
+					"name": "Form Extract", 
+					"path": "/form/extract", 
+					"title": "Pixelated Technologies - Form Extract",
+					"description": "Extract the JSON needed from a live site to use my Form Builder",
+					"keywords": ""  
 				}
 			]
 		}

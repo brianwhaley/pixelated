@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
-import { Callout, CalloutHeader, CalloutAnimate } from "@brianwhaley/pixelated-components";
+import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import GalleryWrapper from "@/app/elements/gallerywrapper";
@@ -24,7 +24,6 @@ export default function Home() {
 			await GalleryWrapper(props);
 		}
 		fetchGallery();
-		CalloutAnimate();
 	}, []); 
 
 

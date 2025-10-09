@@ -52,7 +52,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "add callout scroll animation, page title fix"
+git commit -m "footer, callouts box-capable, bump component library"
 git push pixelated dev --tags
 git push pixelated dev:main
 

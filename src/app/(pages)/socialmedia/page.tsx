@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React from 'react';
 import { PageHeader } from "@/app/components/general/pixelated.general";
 import { CalloutHeader } from "@brianwhaley/pixelated-components";
 import { SocialCards } from "@brianwhaley/pixelated-components";
@@ -44,6 +44,7 @@ const myRSSFeeds = {
 };
 
 export default function SocialMedia() {
+
 	return (
 		<>
 			<section id="page-header-section">
