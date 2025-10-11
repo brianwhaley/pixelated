@@ -30,9 +30,11 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 		// setHost(window.location.host || null);
 	}, []);
 
-	// useEffect(() => {
-	CalloutAnimate();
-	// }, []);
+	useEffect(() => {
+	// if (typeof window !== "undefined"){ 
+    	CalloutAnimate();
+	// }
+	}, []);
 
 	return (
 		<html lang="en">
