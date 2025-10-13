@@ -37,11 +37,11 @@ export * from './components/menu/pixelated.menu-simple.js';
 
 export * from './components/metadata/pixelated.metadata.js';
 
-export * from './components/metadata/pixelated.microanimations.js';
-
-export * from './components/nerdjoke/pixelated.nerdjoke.js';
+export * from './components/microanimations/pixelated.microanimations.js';
 
 export * from './components/modal/pixelated.modal.js';
+
+export * from './components/nerdjoke/pixelated.nerdjoke.js';
 
 export * from './components/recipe/pixelated.recipe.js';
 
