@@ -56,10 +56,10 @@ export function Callout(props: CalloutType) {
 							: <CalloutHeader title={props.title} />
 						}
 						<div className="calloutSubtitle">
-							{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+							{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
 						</div>
 						<div className="calloutBody">
-							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+							{ (props.content) ? ( <> {props.content} </> ) : null}
 							{ (props.url) 
 								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 								: null
@@ -91,10 +91,10 @@ export function Callout(props: CalloutType) {
 					<div className="gridItem">
 						<div className="calloutBody">
 							<div className="calloutSubtitle">
-								{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+								{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
 							</div>
 							<div className="calloutContent grid12">
-								{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+								{ (props.content) ? ( <> {props.content} </> ) : null}
 								{ (props.url)
 									? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 									: null
@@ -124,10 +124,10 @@ export function Callout(props: CalloutType) {
 							: <CalloutHeader title={props.title} />
 						}
 						<div className="calloutSubtitle center">
-							{ (props.subtitle) ? ( <><h3>{props.subtitle}</h3><br /></> ) : null}
+							{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
 						</div>
 						<div className="calloutContent center">
-							{ (props.content) ? ( <> {props.content} <br /><br /> </> ) : null}
+							{ (props.content) ? ( <> {props.content} </> ) : null}
 							{ (props.url)
 								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
 								: null
@@ -227,35 +227,3 @@ CalloutHeaderSmall.propTypes = {
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string
 };
-
-
-/* ========== CALLOUT ANIMATE ========== */
-
-
-export function CalloutAnimate() {
-	const options = {
-		root: null, // Observes intersection with the viewport
-		rootMargin: "0px 0px -100px 0px", // Shrinks the top of the root by 200px
-		threshold: 0 // Triggers when any part of the element intersects the adjusted root
-	};
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-			// if (entry.intersectionRatio > 0.5) {
-			// Add the animation class when the element enters the viewport
-				entry.target.classList.add('animate-on-scroll');
-				// Optionally, stop observing once animated if you only want it to animate once
-				observer.unobserve(entry.target);
-			} else {
-				// Optionally, remove the animation class if you want it to re-animate on re-entry
-				// entry.target.classList.remove('animate-on-scroll');
-			}
-		});
-	}, options);
-	// Select the elements you want to observe and initially hide them
-	const elementsToAnimate = document.querySelectorAll('.callout , .calloutSmall , .calloutHeader , .carouselContainer');
-	elementsToAnimate.forEach((element) => {
-		element.classList.add('hidden'); // Apply initial hidden state
-		observer.observe(element); // Start observing each element
-	});
-}
