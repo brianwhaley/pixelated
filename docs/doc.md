@@ -13,7 +13,7 @@ https://localhost:3000
 git remote add palmetto-epoxy https://github.com/brianwhaley/palmetto-epoxy.git
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
-
+npm audit fix --force
 npm install @brianwhaley/pixelated-components@latest --force --save
 
 rm -rf node_modules && rm -rf package-lock.json && npm install --force
@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "footer, update all libraries, bump component library"
+git commit -m "update micro interactions"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

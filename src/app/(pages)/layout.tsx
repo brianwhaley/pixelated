@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@/app/components/pixelated.metadata";
+import { MicroInteractions } from "@brianwhaley/pixelated-components"
 import Header from "@/app/elements/header";
 import Footer from "@/app/elements/footer";
 import "@/app/css/pixelated.global.css";
@@ -19,6 +20,14 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 	useEffect(() => {
 		setOrigin(window.location.origin);
 		// setHost(window.location.host || null);
+	}, []);
+	useEffect(() => {
+		MicroInteractions({ 
+			buttonring: true,
+			formglow: true,
+			imgtwist: true,
+			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer',
+		});
 	}, []);
 
 	return (
