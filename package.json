@@ -1,9 +1,9 @@
 {
   "name": "palmetto-epoxy",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "private": true,
   "scripts": {
-    "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3001 --experimental-https",
+    "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3003 --experimental-https",
     "build": "npm run clean && NODE_ENV=production next build",
     "start": "npm run clean && next build && next start",
     "lint": "next lint",
@@ -13,28 +13,28 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^2.1.32",
-    "next": "^15.5.4",
+    "@brianwhaley/pixelated-components": "^2.1.36",
+    "next": "^15.5.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@next/third-parties": "^15.5.4",
+    "@next/third-parties": "^15.5.5",
     "@tailwindcss/postcss": "^4.1.14",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.7.2",
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
+    "@types/react-dom": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
     "eslint": "^9.37.0",
-    "eslint-config-next": "^15.5.4",
+    "eslint-config-next": "^15.5.5",
     "sass": "^1.93.2",
     "sass-loader": "^16.0.5",
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0",
+    "typescript-eslint": "^8.46.1",
     "webpack": "^5.102.1"
   }
 }
