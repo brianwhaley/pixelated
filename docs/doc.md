@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "update micro interactions"
+git commit -m "callout boxed grid fix"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
