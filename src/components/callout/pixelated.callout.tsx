@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import './pixelated.callout.css';
 import "../../css/pixelated.grid.scss";
 
@@ -11,30 +11,10 @@ function validateShape(thisShape: string | undefined) {
 	}
 }
 
-export interface CalloutType {
-	layout?: string,
-	isboxed?: boolean,
-	boxshape?: string,
-	url?: string,
-	img: string,
-	imgshape?: string,
-	shape?: string,
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-	imgclick?: Function,
-	title: string,
-	subtitle?: string,
-	content: string,
-	alt?: string,
-}
-export interface CalloutHeaderType {
-	title: string,
-	url?: string
-}
-
 /* ========== CALLOUT ========== */
 
 export function Callout(props: CalloutType) {
-	const myShape = validateShape(props.shape); 
+	const myShape = validateShape(props.shape ?? undefined); 
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
 	switch (props.layout) {
@@ -154,10 +134,11 @@ Callout.propTypes = {
 	content: PropTypes.string.isRequired,
 	alt: PropTypes.string,
 };
+export type CalloutType = InferProps<typeof Callout.propTypes>;
+
 
 
 /* ========== CALLOUT HEADER ========== */
-
 
 export function CalloutHeader(props: CalloutHeaderType) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
@@ -174,19 +155,21 @@ CalloutHeader.propTypes = {
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string
 };
+export type CalloutHeaderType = InferProps<typeof CalloutHeader.propTypes>;
+
 
 
 /* ========== CALLOUT SMALL ========== */
 
 
-export function CalloutSmall(props: CalloutType) {
-	const myShape = validateShape(props.shape); 
+export function CalloutSmall(props: CalloutSmallType) {
+	const myShape = validateShape(props.shape ?? undefined); 
 	return (
 		<div className={"calloutSmall"}>
 			<div className={`imgContainer ${myShape} gridItem center`}>
-				<a href={props.url} target="_blank"rel="noopener noreferrer">
-					<img src={props.img} alt={(props.alt) ? props.alt : props.title} 
-						onClick={(props.imgclick) ? event => props.imgclick?.(event, props.url) : () => window.open(props.url, '_blank') } 
+				<a href={props.url ?? ''} target="_blank" rel="noopener noreferrer">
+					<img src={props.img} alt={props.alt ?? props.title ?? undefined}
+						onClick={(props.imgclick) ? event => props.imgclick?.(event, props.url) : () => window.open(props.url ?? '', '_blank') }
 					/>
 				</a>
 			</div>
@@ -207,11 +190,12 @@ CalloutSmall.propTypes = {
 	shape: PropTypes.string,
 	alt: PropTypes.string,
 };
+export type CalloutSmallType = InferProps<typeof CalloutSmall.propTypes>;
 
 
 /* ========== CALLOUT HEADER SMALL ========== */
 
-
+/* SAME TYPE AS CALLOUTHEADER */
 export function CalloutHeaderSmall(props: CalloutHeaderType) {
 	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (

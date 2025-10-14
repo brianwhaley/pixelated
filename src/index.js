@@ -37,7 +37,7 @@ export * from './components/menu/pixelated.menu-simple.js';
 
 export * from './components/metadata/pixelated.metadata.js';
 
-export * from './components/microanimations/pixelated.microanimations.js';
+export * from './components/microinteractions/pixelated.microinteractions.js';
 
 export * from './components/modal/pixelated.modal.js';
 

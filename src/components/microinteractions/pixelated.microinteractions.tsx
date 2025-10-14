@@ -1,16 +1,19 @@
 
 // import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from "prop-types";
-import './pixelated.microanimations.css';
+import './pixelated.microinteractions.css';
 
 /* ========== MICRO ANIMATIONS ========== */
-MicroAnimations.propTypes = {
-	imgtwist: PropTypes.bool,
+MicroInteractions.propTypes = {
 	buttonring: PropTypes.bool,
+	formglow: PropTypes.bool,
+	grayscalehover: PropTypes.bool,
+	imgtwist: PropTypes.bool,
+	simplemenubutton: PropTypes.bool,
 	scrollfadeElements: PropTypes.string,
 };
-export type MicroAnimationsType = InferProps<typeof MicroAnimations.propTypes> & { [key: string]: unknown };
-export function MicroAnimations(props: MicroAnimationsType) {
+export type MicroInteractionsType = InferProps<typeof MicroInteractions.propTypes> & { [key: string]: unknown };
+export function MicroInteractions(props: MicroInteractionsType) {
 	// const debug = true ;
 	const body = document.body;
 	for (const propName in props) {
@@ -47,8 +50,6 @@ function ScrollFade(elements: string) {
 	}, options);
 	// Select the elements you want to observe and initially hide them
 	const elementsToAnimate = document.querySelectorAll(elements);
-	console.log(elements);
-	console.log(elementsToAnimate);
 	elementsToAnimate.forEach((element) => {
 		element.classList.add('hidden'); // Apply initial hidden state
 		observer.observe(element); // Start observing each element
