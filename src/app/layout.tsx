@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@/app/components/metadata/pixelated.metadata";
 // import { getRouteByKey } from "@brianwhaley/pixelated-components";
 // import { getMetadata } from "@brianwhaley/pixelated-components";
-import { MicroAnimations } from "@brianwhaley/pixelated-components";
+import { MicroInteractions } from "@brianwhaley/pixelated-components";
 import HomeLayout from "@/app/layouts/home-layout";
 import PageLayout from "@/app/layouts/page-layout";
 import "@/app/css/pixelated.global.css";
@@ -31,10 +31,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 	}, []);
 
 	useEffect(() => {
-		MicroAnimations({ 
-			imgtwist: true,
-			// buttonglow: true,
+		MicroInteractions({ 
 			buttonring: true,
+			formglow: true,
+			imgtwist: true,
 			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer',
 		});
 	}, []);
