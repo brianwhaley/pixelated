@@ -758,12 +758,12 @@ export function CartButton(props: {href: string}) {
 		};
 	}, []);
 	useEffect(() => {
-		if (cartCount){
-			if(cartCount > 0) {
-				MicroInteractions({cartpulse: true});
-			} else {
-				MicroInteractions({cartpulse: false});
-			}
+		if (cartCount && cartCount > 0) {
+			console.log("Start Pulsing: " + cartCount);
+			MicroInteractions({cartpulse: true});
+		} else {
+			console.log("Stop Pulsing: " + cartCount);
+			MicroInteractions({cartpulse: false});
 		}
 	}, [cartCount]);
 	return (
