@@ -81,6 +81,21 @@ body.grayscalehover img:hover {
 
 
 
+/* ========== IMG HUE ROTATE ON HOVER ========== */
+@keyframes RotateHue {
+    from { filter: hue-rotate(0deg); }
+    to { filter: hue-rotate(360deg); }
+}
+body.imghue img {
+  --do-nothing: true;
+}
+body.imghue img:hover {
+    animation: RotateHue 1.5s linear infinite alternate;
+}
+
+
+
+
 /* ========== IMG ZOOM AND ROTATE ON HOVER ========== */
 body.imgtwist img:not(.imgContain, .imgCover) {
   text-align: center;

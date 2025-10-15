@@ -10,6 +10,7 @@ MicroInteractions.propTypes = {
 	formglow: PropTypes.bool,
 	grayscalehover: PropTypes.bool,
 	imgtwist: PropTypes.bool,
+	imghue: PropTypes.bool,
 	simplemenubutton: PropTypes.bool,
 	scrollfadeElements: PropTypes.string,
 };

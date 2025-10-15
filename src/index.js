@@ -56,6 +56,8 @@ export * from './components/socialcard/pixelated.socialcard.js';
 
 export * from './components/table/pixelated.table.js';
 
+export * from './components/timeline/pixelated.timeline.js';
+
 export * from './components/utilities/pixelated.api.js';
 export * from './components/utilities/pixelated.functions.js';
 
