@@ -115,6 +115,7 @@
     border: 1.5px solid #666;
     border-radius: 25px;
     overflow: hidden;
+	/* force all griditems to same height */
 	grid-auto-rows: 1fr; /* fix for callout vs boxed vs grid */
 }
 

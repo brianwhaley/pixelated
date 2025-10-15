@@ -6,17 +6,18 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 import PropTypes, { InferProps } from 'prop-types';
 import { PayPal } from "./pixelated.paypal";
+import { CalloutHeader } from "../callout/pixelated.callout";
+import { getContentfulDiscountCodes } from "../cms/pixelated.contentful";
 import { FormEngine } from "../form/pixelated.form";
 import { FormButton } from '../form/pixelated.formcomponents';
+import { emailJSON } from "../form/pixelated.form.submit";
 import '../form/pixelated.form.css';
-import { CalloutHeader } from "../callout/pixelated.callout";
-import { Table } from "../table/pixelated.table";
+import { MicroInteractions } from '../microinteractions/pixelated.microinteractions';
 import { Modal, handleModalOpen } from '../modal/pixelated.modal';
+import { Table } from "../table/pixelated.table";
 // import shippingFromData from "../../data/shipping.from.json";
 import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
-import { getContentfulDiscountCodes } from "../cms/pixelated.contentful";
-import { emailJSON } from "../form/pixelated.form.submit";
 
 // import dc from "../../data/shoppingCartDiscountCodes.json";
 // const codeList2 = dc.discountCodes;
@@ -26,6 +27,7 @@ import { get } from 'http';
 import { Url } from 'url';
 
 const debug = false;
+/* ========== LOCALSTORAGE KEYS ========== */
 const shoppingCartKey = "pixelvividCart";
 const shippingInfoKey = "pixelvividCartShipping";
 const discountCodesKey = "pixelvividDiscountCodes";
@@ -755,6 +757,15 @@ export function CartButton(props: {href: string}) {
 			window.removeEventListener('storage', handleStorageChange);
 		};
 	}, []);
+	useEffect(() => {
+		if (cartCount){
+			if(cartCount > 0) {
+				MicroInteractions({cartpulse: true});
+			} else {
+				MicroInteractions({cartpulse: false});
+			}
+		}
+	}, [cartCount]);
 	return (
 		<div className="pixCart">
 			<button className="pixCartButton" type="button" id="pixCartButton"

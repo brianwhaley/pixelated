@@ -18,7 +18,6 @@ const debug = false;
 EbayItems.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	cloudinaryProductEnv: PropTypes.string,
-
 };
 export type EbayItemsType = InferProps<typeof EbayItems.propTypes>;
 export function EbayItems(props: EbayItemsType) {

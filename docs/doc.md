@@ -11,7 +11,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "callout bug fixes, add formglow grayscalehover simplemenubutton microinteractions, change microanimations component name, grid fix callouts same height"
+git commit -m "micro interaction for shopping cart button"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

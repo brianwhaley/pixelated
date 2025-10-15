@@ -6,6 +6,7 @@ import './pixelated.microinteractions.css';
 /* ========== MICRO ANIMATIONS ========== */
 MicroInteractions.propTypes = {
 	buttonring: PropTypes.bool,
+	cartpulse: PropTypes.bool,
 	formglow: PropTypes.bool,
 	grayscalehover: PropTypes.bool,
 	imgtwist: PropTypes.bool,
@@ -20,6 +21,8 @@ export function MicroInteractions(props: MicroInteractionsType) {
 		if (Object.prototype.hasOwnProperty.call(props, propName)) {
 			if (props[propName] === true) {
 				body.classList.add(propName);
+			} else if (props[propName] === false) {
+				body.classList.remove(propName);
 			}
 		}
 	}
