@@ -1,7 +1,8 @@
 
 import React from 'react';
 import PropTypes, { InferProps } from "prop-types";
-import "@/app/components/timeline/pixelated.timeline.css";
+import "./pixelated.timeline.css";
+import "../../css/pixelated.grid.scss";
 
 Timeline.propTypes = {
 	timelineData: PropTypes.arrayOf(
