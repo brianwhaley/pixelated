@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { /* useState, useEffect */ } from "react";
 import { PageHeader } from "@/app/components/general/pixelated.general";
 import { Callout, CalloutHeader } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
-import { Carousel } from "@brianwhaley/pixelated-components";
-import GalleryWrapper from "@/app/elements/gallerywrapper";
-import type { CarouselCardType } from "@brianwhaley/pixelated-components";
+// import { Carousel } from "@brianwhaley/pixelated-components";
+// import GalleryWrapper from "@/app/elements/gallerywrapper";
+// import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 
 
 export default function Home() {
 
-	const [ flickrCards, setFlickrCards ] = useState<CarouselCardType[]>([]);
+	/* const [ flickrCards, setFlickrCards ] = useState<CarouselCardType[]>([]);
 	const props = { 
 		tags: "", // "workportfolio"
 		method: "flickr.photosets.getPhotos", 
@@ -24,7 +24,7 @@ export default function Home() {
 			await GalleryWrapper(props);
 		}
 		fetchGallery();
-	}, []); 
+	}, []); */
 
 
 
@@ -37,7 +37,7 @@ export default function Home() {
 						<div className="grid-s3-e8">
 							<Callout
 								img='images/pix/pix-bg-512.png'
-								title='About Pixelated Technologies'
+								title=''
 								content='Pixelated Technologies is a Digital Services company that 
 								specializes in transforming small businesses through
 								custom IT solutions, including web development, social media marketing,
@@ -132,30 +132,17 @@ export default function Home() {
 
 			<section className="section-alt" id="social-section">
 				<div className="section-container">
-
 					<SocialTags />
-
 					<div className="row-1col">
 						<div className="gridItem">
 							<div className="callout-body">
 								Links to each of my social media accounts and a few recent postings from each,
-								including my Blog, Facebook, Instagram, LinkedIn, Twitter, and more.
+								including my Blog, Facebook, Google Business Profile and GOogle Reviews, 
+								Instagram, LinkedIn, X / Twitter, and more.
 								<br/>
-								<div className="centeredbutton"><a href="socialmedia">My Social Media</a></div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
-
-			<section id="gallery-section">
-				<div className="section-container">
-					<br />
-					<CalloutHeader title="Work Portfolio Gallery" />
-					<Carousel 
-						cards={flickrCards} 
-						draggable={true}
-						imgFit="contain" />
 				</div>
 			</section>
 
@@ -163,8 +150,33 @@ export default function Home() {
 				<div className="section-container">
 					<CalloutHeader title="About Pixelated Technologies" />
 					<div className="row-12col">
+
 						<div className="grid-s3-e8">
 							<Callout
+								layout='horizontal'
+								url='schedule'
+								img='/images/icons/calendar-icon.png'
+								title='Schedule an Appointment'
+								content='Schedule a consultation appointment with Pixelated Technologies 
+								for custom IT development work - web development, 
+								social media marketing, search engine optimization, 
+								and small business modernization.'/>
+						</div>
+
+						<div className="grid-s3-e8">
+							<Callout
+								layout='horizontal'
+								url='schedule'
+								img='/images/icons/portfolio.png'
+								title='Portfolio'
+								content='View examples of web development 
+								and design work delivered by our team members 
+								over the years in our portfolio of screenshots and logos.'/>
+						</div>
+
+						<div className="grid-s3-e8">
+							<Callout
+								layout='horizontal' 
 								img='images/brianwhaley-headshot.jpg'
 								title='Brian T. Whaley'
 								content='The owner of Pixelated Technologies.
@@ -172,20 +184,9 @@ export default function Home() {
 									Digital Transformation Professional, 
 									User Experience Champion, SEO and Social Media Ninja, 
 									Landscape and Macro Photographer, Avid World Traveler,
-									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food'
-								layout='horizontal2' />
+									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food' />
 						</div>
-						<div className="grid-s3-e8">
-							<Callout
-								url='schedule'
-								img='/images/icons/calendar-icon.jpg'
-								title='Schedule an Appointment'
-								layout='horizontal2'
-								content='Schedule a consultation appointment with Pixelated Technologies 
-								for custom IT development work - web development, 
-								social media marketing, search engine optimization, 
-								and small business modernization.'/>
-						</div>
+						
 					</div>
 				</div>
 			</section>

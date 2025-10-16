@@ -15,7 +15,7 @@ export default function Process() {
 				What would make your company more efficient?
 				What would make your customers happier with your service?
 				Once we identify these, we can put together a Strategy tailored just for you.`,
-			image: "/images/process/gather-info.png",
+			image: "/images/icons/gather-info.png",
 			direction: "left"
 		},{ 
 			title: "Build our Strategy",
@@ -25,7 +25,7 @@ export default function Process() {
 				review metrics of success and how they will be gathered, 
 				how to manage advertising and marketing (digital and traditional media)
 				and a social media analysis and plan. `,
-			image: "/images/process/strategy.png",
+			image: "/images/icons/strategy.png",
 			direction: "right"
 		},{ 
 			title: "Implement",
@@ -33,14 +33,14 @@ export default function Process() {
 				We will break down the details of the strategy to implement the plan.
 				Out objective here is to improve the results for the customer and 
 				make the health of your company and its colleagues a better place to work.`,
-			image: "/images/process/implement.png",
+			image: "/images/icons/implement.png",
 			direction: "left"
 		},{ 
 			title: "Measure Outcomes",
 			content: `It is important to know where you are, and where you want to be, 
 			to come up with a plan on how to get there. The right measurements will show how 
 			Pixelated Technologies is helping your customers and you achieve the right outcomes.  `,
-			image: "/images/process/measure.png",
+			image: "/images/icons/measure.png",
 			direction: "right"
 		},{ 
 			title: "Refine Results",
@@ -48,7 +48,7 @@ export default function Process() {
 			Advertise in different social media outlets, target a different geographic area, 
 			measure different outcomes, or change the strategy.  Small and simple changes
 			will put you right back on course.`,
-			image: "/images/process/optimize.png",
+			image: "/images/icons/optimize.png",
 			direction: "left"
 		},{ 
 			title: "Support",
@@ -56,7 +56,7 @@ export default function Process() {
 				we will continue to support you and your customers with the latest technology and
 				updates to keep you on course.  We can help you expand your content, 
 				create posts for social media, and help you expand your marketing into new areas. `,
-			image: "/images/process/support.png",
+			image: "/images/icons/support.png",
 			direction: "right"
 		}
 	];
@@ -81,7 +81,7 @@ export default function Process() {
 					<div className="grid-s3-e8">
 						<Callout
 							url='schedule'
-							img='/images/icons/calendar-icon.jpg'
+							img='/images/icons/calendar-icon.png'
 							title='Lets Get Started'
 							layout='horizontal2'
 							content='Schedule a consultation appointment with Pixelated Technologies 

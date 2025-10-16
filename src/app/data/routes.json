@@ -13,18 +13,17 @@
 			"description": "Pixelated Technologies offers a proven process to get results for you and your customer gather information, develop a strategy, implement, measure outcomes, refine results, and support. ",
 			"keywords": "pixelated, web development, small business, process, strategy, implement, measure, refine, support"  
 		} , { 
+			"name": "Portfolio", 
+			"path": "/portfolio", 
+			"title": "Pixelated Technologies - Portfolio",
+			"description": "Examples of web development and design work delivered by our team members over the years.  ",
+			"keywords": "pixelated, web development, design, small business, delivery"  
+		} , { 
 			"name": "Schedule a Meeting", 
 			"path": "/schedule", 
 			"title": "Pixelated Technologies - Schedule an Appointment",
 			"description": "Schedule a consult appointment with Pixelated Technologies for custom IT development work - web development, social media mearketing, search engine optimization, and small business modernization." ,
 			"keywords": "pixelated, brian whaley, schedule an appointment, schedule a meeting, web development, small business modernization" 
-		} , { 
-
-			"name": "Social Media", 
-			"path": "/socialmedia", 
-			"title": "Pixelated Technologies - Social Media",
-			"description": "Links to all my digital footprints",
-			"keywords": "pixelated, social media, photography, stock photography, istock, shutterstock, blurb, shutterfly, x, twitter, 500px, flickr, instagram" 
 		} , {
 			"name": "Legal",
 			"routes": [
