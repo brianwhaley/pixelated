@@ -1,0 +1,67 @@
+.tilesContainer { 
+    --do-nothing: true;
+}
+
+.tileContainer {
+    --do-nothing: true;
+}
+
+.tile {
+    --do-nothing: true;
+}
+
+.tileImage {
+    position: relative;
+    aspect-ratio: 1;
+    border: 2px solid #CCC;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    margin: 10px;
+}
+
+.tileImage img {
+    width: 100%;
+    height: 100% !important;
+    position: relative;
+    display: inline-block;
+    align-self: start;
+    object-fit: cover;
+}
+
+.tileImageOverlay {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    background:rgba(0,0,0,.5);
+    /* All other styling - see example */
+    img {
+        vertical-align:top; /* Default is baseline, this fixes a common alignment issue */
+    }
+}
+
+.tileImage:hover .tileImageOverlay {
+    visibility: visible;
+}
+
+.tileImageOverlayText {
+    position: absolute;
+    padding: 20px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tileImageOverlayTitle{
+    margin-bottom: 10px;
+}
+
+.tileImageOverlayBody{
+    font-size: 16px;
+    font-weight: initial;
+}

@@ -4,6 +4,7 @@ npm config set registry https://registry.npmjs.org
 npm login --scope=@brianwhaley --registry=https://registry.npmjs.org
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
+npm audit fix --force
 
 eslint --fix --ext .js,.jsx .
 
@@ -11,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "css file path fix for timeline component"
+git commit -m "new icons, new tile component"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
