@@ -7,6 +7,12 @@
 			"description": "Pixelated Technologies offers a wide varity of products and services, including custom web development for small businesses, stock photography, touchup services, home design and remodeling, and more.",
 			"keywords": "pixelated, web development, small business, stock photography, home redesign, remodeling, social media"  
 		} , { 
+			"name": "Our Process", 
+			"path": "/process", 
+			"title": "Pixelated Technologies - Our Process",
+			"description": "Pixelated Technologies offers a proven process to get results for you and your customer gather information, develop a strategy, implement, measure outcomes, refine results, and support. ",
+			"keywords": "pixelated, web development, small business, process, strategy, implement, measure, refine, support"  
+		} , { 
 			"name": "Schedule a Meeting", 
 			"path": "/schedule", 
 			"title": "Pixelated Technologies - Schedule an Appointment",

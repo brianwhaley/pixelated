@@ -50,7 +50,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "callout boxed grid css fix"
+git commit -m "new process page, implementing new timeline component"
 git push pixelated dev --tags
 git push pixelated dev:main
 

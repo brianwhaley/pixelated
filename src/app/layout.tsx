@@ -6,8 +6,10 @@ import { getRouteByKey } from "@/app/components/metadata/pixelated.metadata";
 // import { getRouteByKey } from "@brianwhaley/pixelated-components";
 // import { getMetadata } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import HomeLayout from "@/app/layouts/home-layout";
-import PageLayout from "@/app/layouts/page-layout";
+import Header from "@/app/elements/header";
+import Nav from "@/app/elements/nav";
+import Search from '@/app/elements/search';
+import Footer from '@/app/elements/footer';
 import "@/app/css/pixelated.global.css";
 import "@/app/css/pixelated.grid.scss";
 import myRoutes from "@/app/data/routes.json";
@@ -16,13 +18,7 @@ import myRoutes from "@/app/data/routes.json";
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
-	let layout;
-	if (pathname === '/') {
-		layout = <HomeLayout>{children}</HomeLayout> ;
-	} else {
-		layout = <PageLayout>{children}</PageLayout> ;
-	}
-
+	
 	const [ origin, setOrigin ] = useState<string | null>(null);
 	// const [ host, setHost ] = useState<string | null>(null);
 	useEffect(() => {
@@ -35,7 +31,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 			buttonring: true,
 			formglow: true,
 			imgtwist: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer',
+			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer',
 		});
 	}, []);
 
@@ -69,7 +65,16 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="manifest" href="/manifest.webmanifest" />
 			</head>
-			<body>{layout}</body>
+			<body>
+				<header>
+					<div id="page-header" className="fixed-header"><Header /></div>
+					<div id="fixed-header-spacer"></div>
+					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
+				</header>
+				<nav><Nav /></nav>
+				<main>{children}</main>
+				<footer><Footer /></footer>
+			</body>
 		</html>
 	);
 }
