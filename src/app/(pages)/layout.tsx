@@ -4,13 +4,12 @@ import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@/app/components/pixelated.metadata";
 import { MicroInteractions } from "@brianwhaley/pixelated-components"
+import "@brianwhaley/pixelated-components/dist/css/pixelated.global.css";
+import "@brianwhaley/pixelated-components/dist/css/pixelated.grid.scss";
 import Header from "@/app/elements/header";
 import Footer from "@/app/elements/footer";
-import "@/app/css/pixelated.global.css";
-import "@/app/css/pixelated.grid.scss";
 import myRoutes from "@/app/data/routes.json";
-
-import "@/app/css/globals.css";
+import "@/app/globals.css";
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 	const pathname = usePathname();
