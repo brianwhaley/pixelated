@@ -6,7 +6,6 @@ import PageTitle from "@/app/elements/pageTitle";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
-import "@/app/css/globals.css";
 
 // const imageOrigin = "https://images.palmetto-epoxy.com";
 

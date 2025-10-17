@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import "@/app/css/globals.css";
 
 export default function ContactCTA() {
 	return (
