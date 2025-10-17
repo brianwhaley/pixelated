@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.1.42",
+  "version": "2.1.43",
   "private": false,
   "author": "Brian T. Whaley",
   "description": "Pixelated UI Components",
@@ -20,6 +20,10 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./dist/css/*": {
+      "import": "./dist/esm/css/*",
+      "require": "./dist/cjs/css/*"
     },
     "./esm": "./dist/esm/index.js",
     "./cjs": "./dist/cjs/index.js"
