@@ -1,6 +1,6 @@
 {
   "name": "palmetto-epoxy",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "private": true,
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3003 --experimental-https",
@@ -13,23 +13,23 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^2.1.36",
-    "next": "^15.5.5",
+    "@brianwhaley/pixelated-components": "^2.1.42",
+    "next": "^15.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@next/third-parties": "^15.5.5",
+    "@next/third-parties": "^15.5.6",
     "@tailwindcss/postcss": "^4.1.14",
-    "@types/node": "^24.7.2",
+    "@types/node": "^24.8.1",
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
     "@typescript-eslint/parser": "^8.46.1",
     "eslint": "^9.37.0",
-    "eslint-config-next": "^15.5.5",
+    "eslint-config-next": "^15.5.6",
     "sass": "^1.93.2",
     "sass-loader": "^16.0.5",
     "tailwindcss": "^4.1.14",
