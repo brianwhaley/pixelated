@@ -1,1 +1,5 @@
 /* @import "tailwindcss"; */
+
+.tileImageOverlay {
+    background: rgba(51, 102, 153, .7) !important;
+}
