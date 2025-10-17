@@ -57,11 +57,16 @@ body.formglow form button, input, select, textarea {
       all 0.25s ease-in-out;
   outline: 5px solid transparent !important;
 }
-body.formglow input:hover, select:hover, textarea:hover {
+body.formglow input:hover, 
+body.formglow select:hover, 
+body.formglow textarea:hover {
   outline: 5px solid rgba(0, 208, 0, 0.2) !important;
   outline-offset: 3px;
 }
-body.formglow form button:hover, input:focus, select:focus, textarea:focus {
+body.formglow form button:hover, 
+body.formglow input:focus, body.formglow input:focus:hover, 
+body.formglow select:focus, body.formglow select:focus:hover, 
+body.formglow textarea:focus, body.formglow textarea:focus:hover {
   outline: 5px solid rgba(0, 208, 0, 1) !important;
   outline-offset: 3px;
 }
