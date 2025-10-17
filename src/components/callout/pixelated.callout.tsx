@@ -88,8 +88,8 @@ export function Callout(props: CalloutType) {
 
 	case 'vertical':
 		return (
-			<div className={"callout row-1col" + (props.isboxed ? " boxed" : "")}>
-				<div className="gridItem center">
+			<div className={"callout" + (props.isboxed ? " boxed" : "")}>
+				<div className="center">
 					<div className={`imgContainer ${myShape} calloutImageVert center`}>
 						{ (props.url)
 							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
@@ -97,7 +97,7 @@ export function Callout(props: CalloutType) {
 						}
 					</div>
 				</div>
-				<div className="gridItem center">
+				<div className="center">
 					<div className="calloutBody">
 						{ (props.url)
 							? <CalloutHeader url={props.url} title={props.title} />

@@ -4,7 +4,6 @@
 
 .callout {
 	padding: 20px;
-	grid-auto-rows: auto; /* fix for callout vs boxed vs grid */
 }
 
 .calloutHeader {
@@ -41,6 +40,7 @@
     border: 1px solid #AAA;
 	overflow: hidden;
 	margin: 0px auto;
+	aspect-ratio: 1;
 }
 
 .imgContainer.round {
@@ -115,8 +115,6 @@
     border: 1.5px solid #666;
     border-radius: 25px;
     overflow: hidden;
-	/* force all griditems to same height */
-	grid-auto-rows: 1fr; /* fix for callout vs boxed vs grid */
 }
 
 .boxed .imgContainer {

@@ -1,12 +1,7 @@
 
 @mixin rowBase {
     display: grid ;
-	grid-auto-flow: row;
     gap: 10px; /* Spacing between grid items */
-	justify-items: stretch ;
-	align-items: start ;
-	justify-content: stretch; 
-	align-content: stretch; 
     padding: 5px; /* Padding around the container */
     /* border: 1px solid black; /* For visual clarity */
 }
