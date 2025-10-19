@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import './pixelated.menu-accordion.css';
 
 declare global {
@@ -10,27 +10,34 @@ declare global {
 	}
 }
 
+export type MenuItem = { 
+	name: string,
+	path: string,
+	target?: string,
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 	let myItems = [];
 	for (const itemKey in menuData) {
 		const myItem = menuData[itemKey];
-		if ( typeof myItem === 'object' && myItem !== null ){
+		// if ( typeof myItem === 'object' && myItem !== null ){
+		if ( typeof myItem === 'object' && myItem.routes ) {
 			// MENU GROUP
 			myItems.push(
-				<MenuAccordionItem key={itemKey + "-i"} name={"▶ " + itemKey} href={''} />,
-				<MenuAccordionGroup key={itemKey + "-g"} menuItems={myItem} hidden={true} />
+				<MenuAccordionItem key={myItem.name + "-i"} name={"▶ " + myItem.name} href={''} />,
+				<MenuAccordionGroup key={myItem.name + "-g"} menuItems={myItem} hidden={true} />
 			);
 		} else {
 			// INDIVIDUAL MENU ITEM
-			myItems.push(<MenuAccordionItem key={itemKey} name={itemKey} href={myItem} />);
+			myItems.push(<MenuAccordionItem key={myItem.name} name={myItem.name} href={myItem.path} target={myItem.target} />);
 		};
 	}
 	return myItems;
 }
 
 /* ========== MENU ========== */
-export function MenuAccordion(props: { menuItems: any; }) {
+export function MenuAccordion(props: MenuAccordionType) {
 	const debug = false;
 	const left = useRef(-250);
 	function setLeft(leftVal: number) { left.current = leftVal; };
@@ -118,41 +125,48 @@ export function MenuAccordion(props: { menuItems: any; }) {
 MenuAccordion.propTypes = {
 	menuItems: PropTypes.object.isRequired
 };
+export type MenuAccordionType = InferProps<typeof MenuAccordion.propTypes>;
+
 
 
 
 
 /* ========== MENU GROUP ========== */
-export function MenuAccordionGroup(props: { menuItems: { [x: string]: any; }; hidden: any; }) {
+export function MenuAccordionGroup(props: MenuAccordionGroupType) {
+	const myMenuItems = ((props.menuItems as any).routes) ? (props.menuItems as any).routes : props.menuItems;
 	return (
 		<ul className={(props.hidden ? "menuHide" : "menuShow")} >
-			{ generateMenuItems( props.menuItems, props.hidden ) }
+			{ generateMenuItems( myMenuItems, props.hidden ?? false ) }
 		</ul>
 	);
 }
 MenuAccordionGroup.propTypes = {
-	menuItems: PropTypes.string.isRequired,
+	menuItems: PropTypes.object.isRequired,
 	hidden: PropTypes.bool,
 };
+export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTypes>;
 
 
 
 /* ========== MENU ITEM ========== */
-export function MenuAccordionItem(props: { href: string ; name: string }) {
+export function MenuAccordionItem(props: MenuAccordionItemType) {
 	if(props.href && props.href.length > 0) {
-		return (
-			<li><a href={props.href}>{props.name}</a></li>
-		);
+		if (props.target && props.target.length > 0) { 
+			return ( <li><a href={props.href} target={props.target}>{props.name}</a></li> );
+		} else {
+			return ( <li><a href={props.href}>{props.name}</a></li> );
+		}
 	} else {
-		return (
-			<li><a>{props.name}</a></li>
-		);
+		return ( <li><a>{props.name}</a></li> );
 	} 
 }
 MenuAccordionItem.propTypes = {
 	name: PropTypes.string.isRequired,
-	href: PropTypes.string.isRequired
+	href: PropTypes.string.isRequired,
+	target: PropTypes.string,
 };
+export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
+
 
 
 
@@ -175,3 +189,5 @@ export function MenuAccordionButton() {
 }
 MenuAccordionButton.propTypes = {
 };
+export type MenuAccordionButtonType = InferProps<typeof MenuAccordionButton.propTypes>;
+

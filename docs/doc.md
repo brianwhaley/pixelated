@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "finally found how to export css files in package.json"
+git commit -m "rework menu accordion params to accept routes directly"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
