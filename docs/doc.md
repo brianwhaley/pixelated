@@ -50,7 +50,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "import global and grid css from pixelated.components"
+git commit -m "update accordion menu to use routes json"
 git push pixelated dev --tags
 git push pixelated dev:main
 
