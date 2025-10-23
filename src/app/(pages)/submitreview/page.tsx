@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import PageTitle from "@/app/elements/pageTitle";
+import { PageTitle } from "@/app/elements/pageTitle";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { emailFormData } from "@brianwhaley/pixelated-components";
 import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";

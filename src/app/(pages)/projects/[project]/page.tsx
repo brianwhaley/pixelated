@@ -4,9 +4,9 @@
 import { use, useState, useEffect, useRef } from 'react';
 // import { Metadata } from 'next';
 import ContactCTA from "@/app/elements/contact";
-import PageTitle from "@/app/elements/pageTitle";
+import { PageTitle } from "@/app/elements/pageTitle";
 import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
-import { setClientMetadata } from '@/app/components/pixelated.metadata';
+import { setClientMetadata } from '@brianwhaley/pixelated-components';
 import { Carousel } from "@brianwhaley/pixelated-components";
 
 // const imageOrigin = "https://images.palmetto-epoxy.com";
@@ -90,7 +90,7 @@ export default function Project({params}: { params: Promise<{ project: string }>
 		<>
 			{ isMounted ? (
 	      		<>
-					<PageTitle title={card?.fields.title} />
+					<PageTitle title={card?.fields.title || ""} />
 							
 					<section id="project-carousel-section">
 						<div className="section-container">

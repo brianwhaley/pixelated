@@ -2,7 +2,7 @@
 
 import React from "react";
 import ContactCTA from "@/app/elements/contact";
-import PageTitle from "@/app/elements/pageTitle";
+import { PageTitle } from "@/app/elements/pageTitle";
 import { Callout } from "@brianwhaley/pixelated-components";
 
 

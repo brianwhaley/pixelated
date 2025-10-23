@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import ContactCTA from "@/app/elements/contact";
-import PageTitle from "@/app/elements/pageTitle";
+import { PageTitle } from "@/app/elements/pageTitle";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";

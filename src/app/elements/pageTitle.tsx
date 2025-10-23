@@ -1,14 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { PageHeader } from "@brianwhaley/pixelated-components";
 
-export default function PageTitle(params: {title?: string}) {
-	return (
-		<>
-			<br />
-      		<section className="section-bwchip textOutline" id="page-title-section">
-				<h1>{params.title}</h1>
-			</section>
-		</>
-	);
+export type PageTitleType = {
+    title: string
+}
+export function PageTitle({title}: PageTitleType ) {
+    return (
+        <>
+            <br />
+            <section className="section-bwchip textOutline" id="page-title-section">
+                <PageHeader title={title} />
+            </section>
+        </>
+    )
 }
