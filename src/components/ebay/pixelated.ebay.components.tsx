@@ -203,7 +203,7 @@ export function EbayListItem(props: EbayListItemType) {
 					: <img src={itemImage} alt={thisItem.title} />
 				}
 			</div>
-			<div className="grid-s5-e8">
+			<div className="ebayItemBody grid-s5-e8">
 				<div className="ebayItemHeader">
 					{ itemURL
 						? <EbayItemHeader url={itemURL} target={itemURLTarget} title={thisItem.title} />

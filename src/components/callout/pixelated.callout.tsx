@@ -1,213 +1,101 @@
-import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
-import './pixelated.callout.css';
-import "../../css/pixelated.grid.scss";
+"use client";
 
-function validateShape(thisShape: string | undefined) {
-	if(thisShape && ["round", "squircle", "square"].includes(thisShape)) {
-		return thisShape;
-	} else {
-		return "round";
-	}
+import React, { /* useState, useEffect */ } from "react";
+import "./pixelated.callout.css";
+
+/* ==================== NOTES ====================
+DEFAULT = flexbox layout, no border around callout
+BOXED = border around callout
+BOXED GRID = applies both
+FULL = full width callout with minimal margin and padding
+GRID = grid layout
+SPLIT = full width split page layout, cannot use LAYOUT (HORIZONTAL / VERTICAL) 
+LAYOUT = horizontal or vertical callout, VERTICAL cannot use DIRECTION (LEFT / RIGHT)
+DIRECTION = used to place image on left or right side, does not apply to VERTICAL layout
+
+GRID is basic 1/2 GRID shape, needs enhanement
+BOXSHAPE has not been complete
+==================== NOTES ==================== */
+
+export type CalloutType = {
+	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'split',
+	layout?: 'horizontal' | 'vertical' ,
+	direction?: 'left' | 'right' ,
+	// boxShape?: string,
+	url?: string,
+	img: string,
+	imgAlt?: string,
+	imgShape?: 'square' | 'bevel' | 'squircle' | 'round',
+	imgClick?: (event: React.MouseEvent, url: string) => void,
+	title?: string,
+	subtitle?: string,
+	content?: string
 }
+export function Callout({
+	style = 'default', layout = "horizontal", direction = 'left', url,
+	img, imgAlt, imgShape = 'square', imgClick, title, subtitle, content }: CalloutType) {
 
-/* ========== CALLOUT ========== */
+	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
-export function Callout(props: CalloutType) {
-	const myShape = validateShape(props.shape ?? undefined); 
-	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
+	const body = <div className="calloutBody" >
+		{ (title) ? <CalloutHeader title={title} url={url} target={target} /> : null }
+		{ (subtitle) ? <div className="calloutSubtitle"><h3>{subtitle}</h3></div> : null }
+		{ content ? <div className="calloutContent"><>{content}</></div> : null }
+		{ url && title ? <CalloutButton title={title || ""} url={url} target={target} /> : null }
+	</div> ;
 
-	switch (props.layout) {
-	case 'horizontal':
-		return (
-			<div className={"callout row-2col" + (props.isboxed ? " boxed" : "")}>
-				<div className="gridItem">
-					<div className={`imgContainer ${myShape} calloutImageHoriz`}>
-						{ props.url
-							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
-						}
-					</div>
-				</div>
-				<div className="gridItem">
-					<div className="calloutBody">
-						{ (props.url)
-							? <CalloutHeader url={props.url} title={props.title} />
-							: <CalloutHeader title={props.title} />
-						}
-						<div className="calloutSubtitle">
-							{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
-						</div>
-						<div className="calloutBody">
-							{ (props.content) ? ( <> {props.content} </> ) : null}
-							{ (props.url) 
-								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-								: null
-							}
-						</div>
-					</div>
-				</div>
-			</div>
-		) ;
+	const image = <div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
+		{ (url)
+			? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}><img src={img} alt={imgAlt ?? title ?? undefined} /></a>
+			: <img src={img} alt={imgAlt ?? title ?? undefined} 
+				onClick={(imgClick) ? event => imgClick?.(event, url ?? '') : () => window.open(url ?? '', '_blank')} />
+		}
+	</div>;
 
-	case 'horizontal2':
-		return (
-			<div className={"callout row-1col" + (props.isboxed ? " boxed" : "")}>
-				<div className="gridItem center">
-					{ (props.url)
-						? <CalloutHeader url={props.url} title={props.title} />
-						: <CalloutHeader title={props.title} />
-					}
-				</div>
-				<div className="row-2col">
-					<div className="gridItem">
-						<div className={`imgContainer ${myShape} calloutImageHoriz`}>
-							{ (props.url)
-								? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-								: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
-							}
-						</div>
-					</div>
-					<div className="gridItem">
-						<div className="calloutBody">
-							<div className="calloutSubtitle">
-								{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
-							</div>
-							<div className="calloutContent grid12">
-								{ (props.content) ? ( <> {props.content} </> ) : null}
-								{ (props.url)
-									? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-									: null
-								}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		) ;
-
-	case 'vertical':
-		return (
-			<div className={"callout" + (props.isboxed ? " boxed" : "")}>
-				<div className="center">
-					<div className={`imgContainer ${myShape} calloutImageVert center`}>
-						{ (props.url)
-							? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><img src={props.img} alt={props.title} /></a>
-							: <img src={props.img} alt={(props.alt) ? props.alt : props.title} />
-						}
-					</div>
-				</div>
-				<div className="center">
-					<div className="calloutBody">
-						{ (props.url)
-							? <CalloutHeader url={props.url} title={props.title} />
-							: <CalloutHeader title={props.title} />
-						}
-						<div className="calloutSubtitle center">
-							{ (props.subtitle) ? ( <h3>{props.subtitle}</h3> ) : null}
-						</div>
-						<div className="calloutContent center">
-							{ (props.content) ? ( <> {props.content} </> ) : null}
-							{ (props.url)
-								? <div className="centeredbutton"><a href={props.url} target={calloutTarget} rel="noopener noreferrer">{props.title}</a></div>
-								: null
-							}
-						</div>
-					</div>
-				</div>
-			</div>
-		) ;
-
-	}
+	return (
+		<div className={"callout" + 
+			(style ? " " + style : "") +
+			(layout && style!=='split' ? " " + layout : "") + 
+			(direction && layout!=='vertical' ? " " + direction : "") } >
+			{ (direction === "right") ? <>{body}{image}</> : <>{image}{body}</> }
+		</div>
+	);
 }
-Callout.propTypes = {
-	layout: PropTypes.string,
-	isboxed: PropTypes.bool,
-	boxshape: PropTypes.string,
-	url: PropTypes.string,
-	img: PropTypes.string.isRequired,
-	ingshape: PropTypes.string,
-	shape: PropTypes.string,
-	imgclick: PropTypes.func,
-	title: PropTypes.string.isRequired,
-	subtitle: PropTypes.string,
-	content: PropTypes.string.isRequired,
-	alt: PropTypes.string,
-};
-export type CalloutType = InferProps<typeof Callout.propTypes>;
 
 
 
 /* ========== CALLOUT HEADER ========== */
-
-export function CalloutHeader(props: CalloutHeaderType) {
-	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
+export type CalloutHeaderType = {
+	title: string,
+	url?: string,
+	target?: string
+};
+export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 	return (
 		<div className="calloutHeader">
-			{props.url
-				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="calloutTitle">{props.title}</h2></a>
-				: <h2 className="calloutTitle">{props.title}</h2>
+			{ (url)
+				? <a href={url} target={target ? target : ""} rel={target=="_blank" ? "noopener noreferrer" : ""}><h2 className="calloutTitle">{title}</h2></a>
+				: <h2 className="calloutTitle">{title}</h2>
 			}
 		</div>
 	);
 }
-CalloutHeader.propTypes = {
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string
+
+
+
+/* ========== CALLOUT BUTTON ========== */
+export type CalloutButtonType = {
+	title: string,
+	url?: string,
+	target?: string
 };
-export type CalloutHeaderType = InferProps<typeof CalloutHeader.propTypes>;
-
-
-
-/* ========== CALLOUT SMALL ========== */
-
-
-export function CalloutSmall(props: CalloutSmallType) {
-	const myShape = validateShape(props.shape ?? undefined); 
+export function CalloutButton( { title, url, target } : CalloutHeaderType) {
 	return (
-		<div className={"calloutSmall"}>
-			<div className={`imgContainer ${myShape} gridItem center`}>
-				<a href={props.url ?? ''} target="_blank" rel="noopener noreferrer">
-					<img src={props.img} alt={props.alt ?? props.title ?? undefined}
-						onClick={(props.imgclick) ? event => props.imgclick?.(event, props.url) : () => window.open(props.url ?? '', '_blank') }
-					/>
-				</a>
-			</div>
-			{ (props.title) ? <div className="calloutHeader gridItem center">
-				{ props.url
-					? <CalloutHeaderSmall url={props.url} title={props.title} />
-					: <CalloutHeaderSmall title={props.title} />
-				}
-			</div> : null }
-		</div>
-	);
-}
-CalloutSmall.propTypes = {
-	url: PropTypes.string,
-	imgclick: PropTypes.func,
-	img: PropTypes.string.isRequired,
-	title: PropTypes.string,
-	shape: PropTypes.string,
-	alt: PropTypes.string,
-};
-export type CalloutSmallType = InferProps<typeof CalloutSmall.propTypes>;
-
-
-/* ========== CALLOUT HEADER SMALL ========== */
-
-/* SAME TYPE AS CALLOUTHEADER */
-export function CalloutHeaderSmall(props: CalloutHeaderType) {
-	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
-	return (
-		<div className="calloutHeader">
-			{props.url
-				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h3 className="calloutTitle">{props.title}</h3></a>
-				: <h3 className="calloutTitle">{props.title}</h3>
+		<div className="calloutButton">
+			{ (url) 
+				? <button type="button" className="calloutButton"><a href={url || ""} target={target || ""} rel={target=="_blank" ? "noopener noreferrer" : ""}>{title}</a></button>
+				: null
 			}
 		</div>
 	);
 }
-CalloutHeaderSmall.propTypes = {
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string
-};

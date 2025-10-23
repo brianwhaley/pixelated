@@ -269,12 +269,12 @@ convert them to JSON to create a form via FormEngine
 */
 
 FormExtractor.propTypes = {
-	url: PropTypes.string.isRequired
+	url: PropTypes.string
 };
 export type FormExtractorType = InferProps<typeof FormExtractor.propTypes>;
 export function FormExtractor(props: FormExtractorType) {
 	
-	const [ url, setURL ] = useState<string>(props.url);
+	const [ url, setURL ] = useState<string>(props.url || "");
 	const [ htmlPaste, setHtmlPaste ] = useState<string | undefined>();
 	const [ formData, setFormData ] = useState ({});
 

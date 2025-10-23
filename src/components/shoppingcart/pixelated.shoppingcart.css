@@ -55,8 +55,8 @@
     font-size: 1.5em;
     font-weight: bold;
 
-    background-image: url(/images/pix/pix-bg-sm-bw.gif);
-    border: 1px solid #999;
+    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
+    border: 2px solid #ccc;
     display: inline-block;
 	margin: 0 auto;
     padding: 5px 20px;

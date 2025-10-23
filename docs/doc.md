@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "rework menu accordion params to accept routes directly"
+git commit -m "overhaul callout to use flexbox, added callout split, add general components, minor css fixes"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
