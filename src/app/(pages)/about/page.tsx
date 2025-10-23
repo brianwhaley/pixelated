@@ -12,12 +12,12 @@ export default function About() {
 		
 			<section className="" id="aboutus-section">
 				<div className="section-container">
-					<div className="row-1col ">
-						<div className="gridItem ">
+					<div className="row-5col ">
+						<div className="grid-s2-e3">
 							<Callout
 								title="About Palmetto Epoxy"
 								img='/images/dennis-and-martha-aberle.jpg'
-								alt="Dennis and Martha Aberle of Palmetto Epoxy" 
+								imgAlt="Dennis and Martha Aberle of Palmetto Epoxy" 
 								subtitle='Our team is made up of the dynamic duo of Dennis and Martha Aberle, 
 									and together, we&#39;re committed to making sure our customers are always satisfied. 
 									We believe that the key to great flooring is all about the details, 
@@ -25,8 +25,8 @@ export default function About() {
 									We&#39;re all about quality products, meticulous workmanship, 
 									and unmatched customer service.'
 								content=''
-								layout='horizontal' 
-								shape='square' />
+								layout='vertical' 
+								imgShape='square' />
 						</div>
 					</div>
 

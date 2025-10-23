@@ -20,7 +20,7 @@ export default function Services() {
 								title='Residential'
 								content='Enhance your home with durable, stylish epoxy floors tailored to any room.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 						<div className="gridItem">
 							<Callout
@@ -28,7 +28,7 @@ export default function Services() {
 								title='Commercial'
 								content='Upgrade your business space with sleek, resilient commercial-grade epoxy flooring.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 						<div className="gridItem">
 							<Callout
@@ -36,7 +36,7 @@ export default function Services() {
 								title='Paver Sealing'
 								content='Protect and beautify your pavers with our professional sealing services.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 						<div className="gridItem">
 							<Callout
@@ -44,7 +44,7 @@ export default function Services() {
 								title='Driveway Coating'
 								content='Boost curb appeal and durability with our specialized driveway coating solutions.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 						<div className="gridItem">
 							<Callout
@@ -52,7 +52,7 @@ export default function Services() {
 								title='Epoxy Garage Floors'
 								content='Transform your garage with our high-performance, spill-resistant epoxy floors.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 						<div className="gridItem">
 							<Callout
@@ -60,7 +60,7 @@ export default function Services() {
 								title='Concrete Polishing'
 								content='Bring out the natural beauty of your concrete with our expert polishing services.'
 								layout='vertical' 
-								shape='squircle' />
+								imgShape='squircle' />
 						</div>
 					</div>
 				</div>

@@ -15,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     // "typeRoots": ["./src"], // Removed to use default typeRoots (node_modules/@types)
     "types": [],
@@ -35,7 +35,8 @@
     "src/**/*.d.ts",
     "**/*.tsx",
     "src",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

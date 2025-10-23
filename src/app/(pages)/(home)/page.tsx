@@ -63,27 +63,24 @@ export default function Home() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout
-								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
-								title="Floors You'll Adore"
 								layout='vertical'
-								shape='square'  
-								content='' />
+								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
+								imgShape='bevel'  
+								title="Floors You'll Adore" />
 						</div>
 						<div className="gridItem">
 							<Callout
+								layout='vertical' 
 								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg?fm=webp'
-								title='Epoxy Excellence'
-								layout='vertical' 
-								shape='square'  
-								content='' />
+								imgShape='bevel'  
+								title='Epoxy Excellence' />
 						</div>
 						<div className="gridItem">
 							<Callout
-								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
-								title='Shine On...'
 								layout='vertical' 
-								shape='square'  
-								content='' />
+								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
+								imgShape='bevel'  
+								title='Shine On...' />
 						</div>
 					</div>
 				</div>
