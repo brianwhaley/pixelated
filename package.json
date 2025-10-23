@@ -1,7 +1,11 @@
 {
   "name": "palmetto-epoxy",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "private": true,
+  "author": {
+    "name": "Pixelated Technologies",
+    "url": "https://www.pixelated.tech/"
+  },
   "scripts": {
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3003 --experimental-https",
     "build": "npm run clean && NODE_ENV=production next build",
