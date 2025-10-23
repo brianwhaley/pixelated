@@ -1,5 +1,35 @@
 /* @import "tailwindcss"; */
 
+
+.section-container {
+    padding: 0px 20px;
+}
+
+#examples-section .callout {
+    margin: 0;
+}
+
 .tileImageOverlay {
     background: rgba(51, 102, 153, .7) !important;
+}
+
+.tileImageOverlay {
+    width: 0% !important;
+    transition: all 0.25s ease-in-out;
+}
+
+.tileImage:hover .tileImageOverlay {
+    width: 100% !important;
+}
+
+.tileImage:hover .tileImageOverlayText {
+    visibility: visible;
+    transition-delay: 0.25s; 
+}
+
+.tileImageOverlayText {
+    visibility: hidden;
+    transition: visibility 0.25s ease-in-out;
+    transition-delay: 0s; 
+
 }

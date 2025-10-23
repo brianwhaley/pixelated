@@ -24,7 +24,10 @@ npm run dev
 
 https://localhost:3000
 
-## ===== COMMPN NPM COMMANDS =====
+## ===== COMMON NPM COMMANDS =====
+
+npm outdated --parseable | awk -F: 'NR > 0 { pkg=$2 ; print "Updating " pkg "..." ; fflush() ; system("npm install --force --save --silent " pkg) ; }'
+npm audit fix --force
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
@@ -50,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "update accordion menu to use routes json"
+git commit -m "update callout components, general page headers"
 git push pixelated dev --tags
 git push pixelated dev:main
 

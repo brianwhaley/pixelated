@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { PageHeader } from "@/app/components/general/pixelated.general";
+import { PageHeader } from "@brianwhaley/pixelated-components";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { Timeline } from "@brianwhaley/pixelated-components";
 
@@ -78,12 +78,13 @@ export default function Process() {
 				<Timeline timelineData={timelineData} />
 
 				<div className="row-12col">
-					<div className="grid-s3-e8">
+					<div className="grid-s2-e10">
 						<Callout
+							style='boxed'
+							layout='horizontal'
 							url='schedule'
 							img='/images/icons/calendar-icon.png'
 							title='Lets Get Started'
-							layout='horizontal2'
 							content='Schedule a consultation appointment with Pixelated Technologies 
 							to get  you started with custom IT development work - web development, 
 							social media marketing, search engine optimization, 
