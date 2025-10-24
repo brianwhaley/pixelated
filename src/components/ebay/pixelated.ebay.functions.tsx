@@ -50,11 +50,11 @@ export function getShoppingCartItem(props: getShoppingCartItemType) {
 	}
 	const shoppingCartItem: ShoppingCartType = {
 		itemImageURL : ( thisItem.thumbnailImages && props.cloudinaryProductEnv ) 
-			? getImg(thisItem.thumbnailImages[0].imageUrl, props.cloudinaryProductEnv) 
+			? getImg({url: thisItem.thumbnailImages[0].imageUrl, product_env: props.cloudinaryProductEnv} ) 
 			: (thisItem.thumbnailImages) 
 				? thisItem.thumbnailImages[0].imageUrl 
 				: (thisItem.image && props.cloudinaryProductEnv)
-					? getImg(thisItem.image.imageUrl, props.cloudinaryProductEnv)
+					? getImg({url: thisItem.image.imageUrl, product_env: props.cloudinaryProductEnv})
 					: thisItem.image.imageUrl,
 		itemID: thisItem.legacyItemId,
 		itemURL: thisItem.itemWebUrl,

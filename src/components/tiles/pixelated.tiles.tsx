@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from "prop-types";
 import type { CarouselCardType } from "../carousel2/pixelated.carousel";
 import { Loading } from "@brianwhaley/pixelated-components";
 import "./pixelated.tiles.css";
@@ -41,12 +41,12 @@ Tiles.propTypes = {
 
 
 /* ========== TILE ========== */
-function Tile( props: any ) {
+function Tile( props: TileType ) {
 	return (
 		<div className="tile" id={'tile-' + props.index}>
 			{ (props.image) ? 
 				<div className="tileImage">
-					<img src={props.image} alt={props?.imageAlt} />
+					<img src={props.image} alt={props?.imageAlt ?? undefined} />
 					<div className="tileImageOverlay">
 						<div className="tileImageOverlayText">
 							<div className="tileImageOverlayTitle">{props.imageAlt}</div>
@@ -59,3 +59,11 @@ function Tile( props: any ) {
 		
 	);
 }
+Tile.propTypes = {
+	index: PropTypes.number.isRequired,
+	cardLength: PropTypes.number.isRequired,
+	image: PropTypes.string,
+	imageAlt: PropTypes.string,
+	bodyText: PropTypes.string,
+};
+export type TileType = InferProps<typeof Tile.propTypes>;

@@ -37,6 +37,10 @@ function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 }
 
 /* ========== MENU ========== */
+MenuAccordion.propTypes = {
+	menuItems: PropTypes.object.isRequired
+};
+export type MenuAccordionType = InferProps<typeof MenuAccordion.propTypes>;
 export function MenuAccordion(props: MenuAccordionType) {
 	const debug = false;
 	const left = useRef(-250);
@@ -122,16 +126,17 @@ export function MenuAccordion(props: MenuAccordionType) {
 		</div>
 	);
 }
-MenuAccordion.propTypes = {
-	menuItems: PropTypes.object.isRequired
-};
-export type MenuAccordionType = InferProps<typeof MenuAccordion.propTypes>;
 
 
 
 
 
 /* ========== MENU GROUP ========== */
+MenuAccordionGroup.propTypes = {
+	menuItems: PropTypes.object.isRequired,
+	hidden: PropTypes.bool,
+};
+export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTypes>;
 export function MenuAccordionGroup(props: MenuAccordionGroupType) {
 	const myMenuItems = ((props.menuItems as any).routes) ? (props.menuItems as any).routes : props.menuItems;
 	return (
@@ -140,15 +145,17 @@ export function MenuAccordionGroup(props: MenuAccordionGroupType) {
 		</ul>
 	);
 }
-MenuAccordionGroup.propTypes = {
-	menuItems: PropTypes.object.isRequired,
-	hidden: PropTypes.bool,
-};
-export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTypes>;
+
 
 
 
 /* ========== MENU ITEM ========== */
+MenuAccordionItem.propTypes = {
+	name: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired,
+	target: PropTypes.string,
+};
+export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
 export function MenuAccordionItem(props: MenuAccordionItemType) {
 	if(props.href && props.href.length > 0) {
 		if (props.target && props.target.length > 0) { 
@@ -160,12 +167,6 @@ export function MenuAccordionItem(props: MenuAccordionItemType) {
 		return ( <li><a>{props.name}</a></li> );
 	} 
 }
-MenuAccordionItem.propTypes = {
-	name: PropTypes.string.isRequired,
-	href: PropTypes.string.isRequired,
-	target: PropTypes.string,
-};
-export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
 
 
 
@@ -175,6 +176,9 @@ export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propType
 /* 
 https://www.unclebigbay.com/blog/building-the-world-simplest-hamburger-with-html-and-css
 */
+MenuAccordionButton.propTypes = {
+};
+export type MenuAccordionButtonType = InferProps<typeof MenuAccordionButton.propTypes>;
 export function MenuAccordionButton() {
 	function slideMobilePanel() {
 		window.moveMenu();
@@ -187,7 +191,3 @@ export function MenuAccordionButton() {
 
 	);
 }
-MenuAccordionButton.propTypes = {
-};
-export type MenuAccordionButtonType = InferProps<typeof MenuAccordionButton.propTypes>;
-

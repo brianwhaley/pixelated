@@ -1,5 +1,5 @@
 
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import { generateURL } from '../utilities/pixelated.api';
 import { mergeDeep } from '../utilities/pixelated.functions';
 
@@ -41,6 +41,7 @@ const defaultFlickr = {
 };
 
 
+
 function getFlickrSize (size: string) {
 	// https://www.flickr.com/services/api/misc.urls.html
 	switch (size) {
@@ -66,6 +67,10 @@ function getFlickrSize (size: string) {
 }
 
 
+
+GetFlickrData.PropTypes = {
+	flickr: PropTypes.object.isRequired,
+};
 export function GetFlickrData( props: { flickr: any } ) {
 
 	const debug = false;
@@ -106,12 +111,14 @@ export function GetFlickrData( props: { flickr: any } ) {
 	return fetchFlickrData();
 
 }
-GetFlickrData.PropTypes = {
-	flickr: PropTypes.object.isRequired,
+
+
+GenerateFlickrCards.propTypes = {
+	flickrImages: PropTypes.array.isRequired,
+	photoSize: PropTypes.string.isRequired,
 };
-
-
-export function GenerateFlickrCards(props: { flickrImages: any, photoSize: string }) {
+export type GenerateFlickrCardsType = InferProps<typeof GenerateFlickrCards.propTypes>;
+export function GenerateFlickrCards(props: GenerateFlickrCardsType) {
 	if (props.flickrImages?.length > 0) {
 		const photoSize = getFlickrSize(props.photoSize);
 		const flickrCards = props.flickrImages.map((image: any, i: number) => (
@@ -127,8 +134,5 @@ export function GenerateFlickrCards(props: { flickrImages: any, photoSize: strin
 		return flickrCards;
 	}
 }
-GenerateFlickrCards.propTypes = {
-	flickrImages: PropTypes.array.isRequired,
-	photoSize: PropTypes.string.isRequired,
-};
+
     

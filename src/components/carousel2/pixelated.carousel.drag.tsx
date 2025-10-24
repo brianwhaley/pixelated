@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 
 /* 
     if (props.draggable && props.draggable === true) {
@@ -11,7 +11,15 @@ import PropTypes from 'prop-types';
     }
 */
 
-export function DragHandler(props: { activeIndex: number, targetDiv: string, nextImage: () => void, previousImage: () => void} ) {
+DragHandler.propTypes = {
+	activeIndex: PropTypes.number.isRequired, 
+	targetDiv: PropTypes.string.isRequired,
+	nextImage: PropTypes.func.isRequired, 
+	previousImage:  PropTypes.func.isRequired, 
+};
+export type DragHandlerType = InferProps<typeof DragHandler.propTypes>;
+export function DragHandler(props: DragHandlerType ) {
+// export function DragHandler(props: { activeIndex: number, targetDiv: string, nextImage: () => void, previousImage: () => void} ) {
 
 	const classSelector = props.targetDiv;
 	const divSelector = 'div.' + classSelector ;
@@ -188,9 +196,3 @@ export function DragHandler(props: { activeIndex: number, targetDiv: string, nex
 	handleEventListeners(props.activeIndex);
 
 }
-DragHandler.prototypes = {
-	activeIndex: PropTypes.number.isRequired, 
-	targetDiv: PropTypes.string.isRequired,
-	nextImage: PropTypes.func.isRequired, 
-	previousImage:  PropTypes.func.isRequired, 
-};

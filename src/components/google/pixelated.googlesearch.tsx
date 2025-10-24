@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import PropTypes, { InferProps } from "prop-types";
+
 
 
 /* 
@@ -21,7 +23,11 @@ https://nextjs.org/docs/messages/react-hydration-error
 */
 
 
-export function Search(props: { id: string }) {
+Search.propTypes = {
+	id: PropTypes.string.isRequired,
+};
+export type SearchType = InferProps<typeof Search.propTypes>;
+export function Search(props: SearchType) {
 	if(typeof document !== 'undefined'){
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const gsearch = (function () {

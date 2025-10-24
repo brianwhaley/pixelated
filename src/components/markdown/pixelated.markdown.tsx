@@ -2,10 +2,14 @@
 /* https://randyperkins2k.medium.com/writing-a-simple-markdown-parser-using-javascript-1f2e9449a558 */
 
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from "prop-types";
 import "./pixelated.markdown.css";
 
 /* ========== MARKDOWN ========== */
+Markdown.propTypes = {
+	markdowndata: PropTypes.string.isRequired,
+};
+export type MarkdownType = InferProps<typeof Markdown.propTypes>;
 export function Markdown(props: { markdowndata: any; }) {	
 	function markdownParser (text: any) {
 		const toHTML = text
@@ -40,6 +44,4 @@ export function Markdown(props: { markdowndata: any; }) {
 		</div>
 	);
 }
-Markdown.propTypes = {
-	markdowndata: PropTypes.string.isRequired,
-};
+

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes /* , { InferProps } */ from 'prop-types';
 import { DragHandler } from './pixelated.carousel.drag';
 import './pixelated.carousel.css';
 
@@ -33,7 +33,14 @@ function capitalize(str: string) {
 	return str && String(str[0]).toUpperCase() + String(str).slice(1);
 }
 
+
 /* ========== CAROUSEL ========== */
+Carousel.propTypes = {
+	cards: PropTypes.array.isRequired,
+	draggable: PropTypes.bool,
+	imgFit: PropTypes.oneOf(['contain', 'cover', 'fill'])
+};
+// export type CarouselType = InferProps<typeof Carousel.propTypes>;
 export function Carousel(
 	props: { 
 		cards: CarouselCardType[],
@@ -137,11 +144,7 @@ export function Carousel(
 		);
 	}
 }
-Carousel.propTypes = {
-	cards: PropTypes.object.isRequired,
-	draggable: PropTypes.bool,
-	imgFit: PropTypes.oneOf(['contain', 'cover', 'fill'])
-};
+
 
 
 /* ========== CAROUSEL CARD ========== */
@@ -182,6 +185,10 @@ function CarouselCard( props: CarouselCardType ) {
 
 
 /* ========== CAROUSEL  ARROW ========== */
+CarouselButton.propTypes = {
+	clickFunction: PropTypes.func.isRequired,
+	glyph: PropTypes.string.isRequired
+};
 function CarouselButton(props: { clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
 	return (
 		<div className={`carouselButton textOutline`}
@@ -190,11 +197,14 @@ function CarouselButton(props: { clickFunction: React.MouseEventHandler<HTMLDivE
 		</div>
 	);
 }
-CarouselButton.propTypes = {
+
+
+
+CarouselArrow.propTypes = {
+	direction: PropTypes.string.isRequired,
 	clickFunction: PropTypes.func.isRequired,
 	glyph: PropTypes.string.isRequired
 };
-
 function CarouselArrow(props: { direction: string; clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
 	return (
 		<div className={`carouselButton${capitalize(props.direction)} textOutline`}
@@ -203,11 +213,7 @@ function CarouselArrow(props: { direction: string; clickFunction: React.MouseEve
 		</div>
 	);
 }
-CarouselArrow.propTypes = {
-	direction: PropTypes.string.isRequired,
-	clickFunction: PropTypes.func.isRequired,
-	glyph: PropTypes.string.isRequired
-};
+
 
 
 /* ========== CAROUSEL LOADING ========== */

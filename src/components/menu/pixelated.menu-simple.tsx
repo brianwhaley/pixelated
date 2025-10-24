@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from "prop-types";
 import './pixelated.menu-simple.css';
 
 /* ========== MENU ========== */
@@ -28,13 +28,16 @@ MenuSimple.propTypes = {
 	menuItems: PropTypes.object.isRequired,
 };
 
+
 /* ========== MENU ITEM ========== */
-export function MenuSimpleItem(props: { href: string; name: string; }) {
-	return (
-		<li className='menuItem'><a href={props.href}>{props.name}</a></li>
-	);
-}
+
 MenuSimpleItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 };
+export type MenuSimpleItemType = InferProps<typeof MenuSimpleItem.propTypes>;
+export function MenuSimpleItem(props: MenuSimpleItemType) {
+	return (
+		<li className='menuItem'><a href={props.href}>{props.name}</a></li>
+	);
+}

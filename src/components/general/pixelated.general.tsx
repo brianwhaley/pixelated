@@ -1,43 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import "./pixelated.general.css";
 
-export type GenericHeader = {
+export type PageHeaderType = {
 	title: string,
 	url?: string
-}
-
+};
 /* ========== CALLOUT HEADER ========== */
-export function PageHeader(props: GenericHeader) {
-	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
+export function PageHeader( { title , url }: PageHeaderType) {
+	const calloutTarget = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<>
-			{props.url
-				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h1 className="pageHeader">{props.title}</h1></a>
-				: <h1 className="pageHeader">{props.title}</h1>
+			{url
+				? <a href={url} target={calloutTarget} rel="noopener noreferrer"><h1 className="pageHeader">{title}</h1></a>
+				: <h1 className="pageHeader">{title}</h1>
 			}
 		</>
 	);
-}
-PageHeader.propTypes = {
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string
 };
 
 
 /* ========== CALLOUT HEADER ========== */
-export function PageSectionHeader(props: GenericHeader) {
-	const calloutTarget = props.url && props.url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
+export type PageSectionHeaderType = {
+	title: string,
+	url?: string
+};
+export function PageSectionHeader( { title , url }: PageSectionHeaderType) {
+	const calloutTarget = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
 		<>
-			{props.url
-				? <a href={props.url} target={calloutTarget} rel="noopener noreferrer"><h2 className="pageSectionHeader">{props.title}</h2></a>
-				: <h2 className="pageSectionHeader">{props.title}</h2>
+			{url
+				? <a href={url} target={calloutTarget} rel="noopener noreferrer"><h2 className="pageSectionHeader">{title}</h2></a>
+				: <h2 className="pageSectionHeader">{title}</h2>
 			}
 		</>
 	);
-}
-PageSectionHeader.propTypes = {
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string
 };

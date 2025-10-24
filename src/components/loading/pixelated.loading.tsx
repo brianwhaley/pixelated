@@ -1,6 +1,7 @@
  
 import React from "react";
 import "./pixelated.loading.scss";
+import PropTypes, { InferProps } from "prop-types";
 
 
 /* 
@@ -32,9 +33,12 @@ export function Loading() {
 	);
 }
 
-export function ToggleLoading(props: {show?: boolean}) {
+ToggleLoading.propTypes = {
+	show: PropTypes.bool,
+};
+export type ToggleLoadingType = InferProps<typeof ToggleLoading.propTypes>;
+export function ToggleLoading(props: ToggleLoadingType) {
 	if ( typeof window !== "undefined" && typeof document !== "undefined") {
-		 
 		const loadingElem = document.getElementById("loadingSpinner") as HTMLDivElement;
 		if(!loadingElem) return;
 		if(props.show && props.show === true) { loadingElem!.style.display = "inline-block"; return; } // Show content

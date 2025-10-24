@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 
 
 /* 
@@ -8,7 +9,13 @@ https://developers.facebook.com/tools/explorer
 */
 
 
-export function Instagram() {
+Instagram.propTypes = {
+	access_token: PropTypes.string.isRequired,
+	url: PropTypes.string.isRequired
+};
+export type InstagramType = InferProps<typeof Instagram.propTypes>;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function Instagram(props: InstagramType) {
 	const access_token = "1364139411507782|7wSJ9h_RPv_eEcOBmXCYvooNRws";
 	const url = "https://graph.instagram.com/v22.0/me?fields=id,media_type,media_url,caption,timestamp&access_token=" + access_token ;
 

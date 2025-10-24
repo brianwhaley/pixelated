@@ -2,7 +2,7 @@
 
 import React from "react";
 // import { useEffect } from "react";
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from "prop-types";
 
 
 /* 
@@ -29,7 +29,11 @@ function isGA() {
 	return ( hasGtag || hasDataLayer || hasGAScript || hasGAScriptID || hasGAInitScriptID ) ;
 }
 
-export function Analytics( props: { id: string } ) {
+Analytics.propTypes = {
+	id: PropTypes.string.isRequired,
+};
+export type AnalyticsType = InferProps<typeof Analytics.propTypes>;
+export function Analytics( props: AnalyticsType ) {
 	if(typeof window === 'undefined'){ return; }
 	if(typeof document === 'undefined'){ return; }
 	if(isGA()){ return; }
@@ -61,6 +65,3 @@ window.gtag('config', '${props.id}');
 		<div className="ga" suppressHydrationWarning />
 	);
 }
-Analytics.propTypes = {
-	id: PropTypes.string.isRequired,
-};

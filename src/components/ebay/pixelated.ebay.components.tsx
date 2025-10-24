@@ -190,7 +190,7 @@ export function EbayListItem(props: EbayListItemType) {
 	const itemURL = "./store/" + thisItem.legacyItemId;
 	const itemURLTarget = "_self"; /* "_blank" */
 	const itemImage = (props.cloudinaryProductEnv) 
-		? getImg(thisItem.thumbnailImages[0].imageUrl, props.cloudinaryProductEnv) 
+		? getImg({url: thisItem.thumbnailImages[0].imageUrl, product_env: props.cloudinaryProductEnv}) 
 		: thisItem.thumbnailImages[0].imageUrl;
 	const shoppingCartItem = getShoppingCartItem({ thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
 	// CHANGE EBAY URL TO LOCAL EBAY ITEM DETAIL URL
@@ -286,7 +286,7 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 		if (debug) console.log(thisItem);
 		const images = thisItem.additionalImages.map(( thisImage: any ) => (
 			{ image: (props.cloudinaryProductEnv) 
-				? getImg(thisImage.imageUrl, props.cloudinaryProductEnv) 
+				? getImg({url: thisImage.imageUrl, product_env: props.cloudinaryProductEnv}) 
 				: thisImage.imageUrl }
 		));
 		const itemURL = undefined;
