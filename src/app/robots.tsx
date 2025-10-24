@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
 			allow: '/',
 			disallow: '',
 		},
-		sitemap: 'https://palmetto-epoxy.tech/sitemap.xml',
+		sitemap: 'https://palmetto-epoxy.com/sitemap.xml',
 	};
 }

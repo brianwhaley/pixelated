@@ -10,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
 		default_locale: "en",
 		description: "Palmetto Epoxy",
 		developer: {
-			name: "Palmetto Epoxy",
-			url: "https://www.palmetto-epoxy.com"
+			name: "Brian Whaley",
+			url: "https://www.pixelated.tech"
 		}, 
 		// @ts-expect-error - Object literal may only specify known properties, and 'author' does not exist in type 'Manifest'.ts(2353)
 		default_locale: "en",

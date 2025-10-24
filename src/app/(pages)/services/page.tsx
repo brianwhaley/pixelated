@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
-import ContactCTA from "@/app/elements/contact";
-import { PageTitle } from "@/app/elements/pageTitle";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { Callout } from "@brianwhaley/pixelated-components";
 
 
 export default function Services() {
 	return (
 		<>
-			<PageTitle title="Services" />
+			<CalloutLibrary.PageTitle title="Services" />
 			
 			<section className="" id="services-section">
 				<div className="section-container">
@@ -67,7 +66,7 @@ export default function Services() {
 			</section>
 
 			<section className="section-bluechip" id="contact-section">
-				<ContactCTA />
+				<CalloutLibrary.ContactCTA />
 			</section>
 		</>
 	);

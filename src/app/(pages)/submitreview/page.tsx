@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { PageTitle } from "@/app/elements/pageTitle";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { FormEngine } from "@brianwhaley/pixelated-components";
 import { emailFormData } from "@brianwhaley/pixelated-components";
 import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
@@ -46,7 +46,7 @@ export default function SubmitReview() {
 
 	return (
 		<>
-			<PageTitle title="Submit your Review" />
+			<CalloutLibrary.PageTitle title="Submit your Review" />
 			<section className="" id="submitreview-section">
 				<div className="section-container">
 					<div className="row-12col">

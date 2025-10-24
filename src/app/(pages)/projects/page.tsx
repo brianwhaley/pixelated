@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ContactCTA from "@/app/elements/contact";
-import { PageTitle } from "@/app/elements/pageTitle";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
@@ -53,7 +52,7 @@ export default function Projects() {
 
 	return (
 		<>
-			<PageTitle title="Projects" />
+			<CalloutLibrary.PageTitle title="Projects" />
 			
 			<section className="" id="projects-section">
 				<div className="section-container">
@@ -65,7 +64,7 @@ export default function Projects() {
 			</section>
             
 			<section className="section-bluechip" id="contact-section">
-				<ContactCTA />
+				<CalloutLibrary.ContactCTA />
 			</section>
 		</>
 	);

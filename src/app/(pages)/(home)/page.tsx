@@ -2,8 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ContactCTA from "@/app/elements/contact";
-import { PageTitle } from "@/app/elements/pageTitle";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
@@ -42,7 +41,7 @@ export default function Home() {
 		
 	return (
 		<>
-			<PageTitle title="Palmetto Epoxy" />
+			<CalloutLibrary.PageTitle title="Palmetto Epoxy" />
 
       		<section id="homeCTA-section">
 				<div className="section-container">
@@ -109,22 +108,28 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="section-alt" id="portfolio-section-2">
+			<section className="section-alt" id="lowcountrysbest-section">
+				<CalloutLibrary.LowCountrysBest />
+			</section>
+
+			<section id="sponsor-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s1-e6">
-							<img alt="May River High School Athletics - Welcome to the Tank!" 
-								src="https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg?fm=webp" />
-						</div>
-						<div className="grid-s7-e6 bigText">
-						Palmetto Epoxy is a proud Sponsor of May River HS Girls Soccer
+						<div className="grid-s2-e10">
+							<Callout
+								style='grid'
+								direction='right'
+								layout='horizontal'
+								img='https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg?fm=webp'
+								imgShape='square'  
+								title="Palmetto Epoxy is a proud Sponsor of May River HS Girls Soccer" />
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<section className="section-bluechip" id="contact-section">
-				<ContactCTA />
+				<CalloutLibrary.ContactCTA />
 			</section>
 
 		</>

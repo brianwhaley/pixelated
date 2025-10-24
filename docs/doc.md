@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "update callout coponent, page / section headers, package update fixes"
+git commit -m "create callout library, add lowcountrys best social and callouts, seo and sitemap fixes"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
