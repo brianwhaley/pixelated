@@ -3,8 +3,7 @@
 
 import { use, useState, useEffect, useRef } from 'react';
 // import { Metadata } from 'next';
-import ContactCTA from "@/app/elements/calloutlibrary";
-import { PageTitle } from "@/app/elements/pageTitle";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import { setClientMetadata } from '@brianwhaley/pixelated-components';
 import { Carousel } from "@brianwhaley/pixelated-components";
@@ -90,7 +89,7 @@ export default function Project({params}: { params: Promise<{ project: string }>
 		<>
 			{ isMounted ? (
 	      		<>
-					<PageTitle title={card?.fields.title || ""} />
+					<CalloutLibrary.PageTitle title={card?.fields.title || ""} />
 							
 					<section id="project-carousel-section">
 						<div className="section-container">
@@ -122,7 +121,7 @@ export default function Project({params}: { params: Promise<{ project: string }>
 			)
 			}
 			<section className="section-bluechip" id="contact-section">
-				<ContactCTA />
+				<CalloutLibrary.ContactCTA />
 			</section>
 		</>
 		
