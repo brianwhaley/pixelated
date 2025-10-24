@@ -122,7 +122,7 @@ export default function Home() {
 								layout='horizontal'
 								img='https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg?fm=webp'
 								imgShape='square'  
-								title="Palmetto Epoxy is a proud Sponsor of May River HS Girls Soccer" />
+								title="Palmetto Epoxy is a proud Sponsor of May River High School Girls Soccer" />
 						</div>
 					</div>
 				</div>
