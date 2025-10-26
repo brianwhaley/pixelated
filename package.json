@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -31,16 +31,6 @@
     },
     "./css/*": "./dist/css/*"
   },
-  "exports-20251024": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    },
-    "./css/*": "./dist/esm/css/*",
-    "./esm": "./dist/esm/index.js",
-    "./cjs": "./dist/cjs/index.js"
-  },
   "homepage": "https://github.com/brianwhaley/pixelated-components#readme",
   "bugs": {
     "url": "https://github.com/brianwhaley/pixelated-components/issues"
@@ -66,30 +56,10 @@
     "buildStorybook": "rm -rf node_modules/.cache && storybook build",
     "test": "react-scripts test"
   },
-  "scripts-20251024": {
-    "build": "npm run buildClean && npm run tscCJS && npm run tscESM && npm run rsyncCJS && npm run rsyncESM",
-    "buildClean": "rm -rf dist ",
-    "tscCJS": "npx tsc --project tsconfig.cjs.json",
-    "tscESM": "npx tsc --project tsconfig.esm.json",
-    "rsyncCJS": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist/cjs",
-    "rsyncESM": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist/esm",
+  "scripts-old": {
     "buildBabel": "npm run buildClean && NODE_ENV=production babel src --out-dir dist --copy-files",
     "build-webpack": "rm -rf dist && npx tsc --project tsconfig.json && webpack --config webpack.config.js && npm run build-webpack-rsync",
-    "build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css",
-    "storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
-    "buildStorybook": "rm -rf node_modules/.cache && storybook build",
-    "test": "react-scripts test"
-  },
-  "scripts-202506": {
-    "babelCJS": "NODE_ENV=production babel src --out-dir dist/cjs --copy-files --no-copy-ignored ",
-    "babelESM": "NODE_ENV=production babel src --out-dir dist/esm --copy-files --no-copy-ignored ",
-    "buildBabel": "NODE_ENV=production babel src --out-dir dist --copy-files"
-  },
-  "scripts-202502": {
-    "babelESM": "NODE_ENV=production babel src --out-dir dist/esm --copy-files --ignore '**/*.js','**/*.jsx','**/*.mjs','**/*.mjsx','**/*.cjs','**/*.cjsx','**/*.ts','**/*.tsx','**/*.mts','**/*.mtsx','**/*.cts','**/*.ctsx' ",
-    "build-combineDTS": "find dist/types -name '*.d.ts' -print0 | xargs -0 cat > dist/index.d.ts ",
-    "build-combineDTS-old": "cat dist/types/**/*.d.ts > dist/index.d.ts",
-    "build-webpack": "rm -rf dist && npx tsc --project tsconfig.json && webpack --config webpack.config.js"
+    "build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
