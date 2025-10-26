@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "server components available in separate /server export path. new callout overlay style. removed cjs and esm references in files, build, dist, etc.  "
+git commit -m "remove tar file"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
