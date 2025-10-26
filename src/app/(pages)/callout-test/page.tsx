@@ -239,7 +239,28 @@ export default function Home() {
 				/>
 			</div>
 
-			<div><br />.<br />.<br />.<br />.</div>
+			<div className="row-2col">
+				<div className="gridItem">
+					<Callout
+						style='overlay' 
+						direction='left'
+						img='https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto/https://farm6.static.flickr.com/5562/30577897340_eb945b4ab3_b.jpg'
+						title='Content Management'
+						subtitle=''
+						content='Pixelated Technologies can help you implement a content management system (CMS) that allows you to easily update and manage your website content. '
+					/>
+				</div>
+				<div className="gridItem">
+					<Callout
+						style='overlay' 
+						direction='left'
+						img='https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto/https://farm6.static.flickr.com/5562/30577897340_eb945b4ab3_b.jpg'
+						title='Content Management'
+						subtitle=''
+						content='Pixelated Technologies can help you implement a content management system (CMS) that allows you to easily update and manage your website content. '
+					/>
+				</div>
+			</div>
 
 		</>
 	);
