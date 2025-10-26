@@ -1,10 +1,17 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createImageURLs, createContentfulURLs } from "@/app/components/pixelated.sitemap";
+import { createPageURLs, createImageURLs, createContentfulURLs } from "@brianwhaley/pixelated-components/server";
 // , createContentfulAssetURLs
 
 import myRoutes from "@/app/data/routes.json";
+
+const contentfulApiProps = {
+	base_url: "https://cdn.contentful.com",
+	space_id: "0b82pebh837v",
+	environment: "master",
+	access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+};
 
 async function getOrigin(): Promise<string> {
 	const headerList = await headers();
@@ -17,7 +24,7 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 	const origin = await getOrigin();
 	const sitemap = [
 		...(await createPageURLs(myRoutes.routes, origin)),
-		...(await createContentfulURLs(origin)),
+		...(await createContentfulURLs({ apiProps: contentfulApiProps, origin: origin })),
 		...(await createImageURLs(origin)),
 		// ...(await createContentfulAssetURLs("https://images.palmetto-epoxy.com")),
 	];
