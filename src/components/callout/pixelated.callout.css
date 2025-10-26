@@ -15,6 +15,7 @@
     padding: 20px;
     align-items: stretch;
     width: 100%;
+    float: unset !important; /* fix for left style applied from global css */
 }
 
 .callout.vertical {

@@ -10,11 +10,13 @@ import "../../css/pixelated.grid.scss";
 export function Tiles(
 	props: { 
 		cards: CarouselCardType[],
+		rowCount?: number,
 	}) {
+	const rowCount = props.rowCount ?? 2;
 	if (props.cards && props.cards.length > 0) {
 		return (
 			<div className="tilesContainer">
-				<div className="tileContainer row-2col">
+				<div className={`tileContainer row-${rowCount}col`}>
 					{ props.cards.map((card: CarouselCardType, i: number) => (
 						<div key={i} className="gridItem">
 							<Tile
@@ -37,6 +39,7 @@ export function Tiles(
 }
 Tiles.propTypes = {
 	cards: PropTypes.object.isRequired,
+	rowCount: PropTypes.number,
 };
 
 
