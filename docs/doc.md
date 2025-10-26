@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "update typescript and proptypes for multiple components"
+git commit -m "server components available in separate /server export path. new callout overlay style, "
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
@@ -48,4 +48,3 @@ https://github.com/inttter/md-badges?tab=readme-ov-file
 # ===== IMAGE CDN WITH CLOUDINARY =====
 https://cloudinary.com/blog/transparent_webp_format_cdn_delivery_based_on_visitors_browsers
 https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
-

@@ -8,7 +8,7 @@ import './pixelated.menu-expando.css';
 /* 
 NOTE : 
 Stopped development on details / summary for now.
-Not enough css control for anomation.
+Not enough css control for animation.
 */
 
 

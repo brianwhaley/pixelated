@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
-import { Carousel } from '../carousel2/pixelated.carousel';
+import { Carousel } from '../carousel/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
-import { AddToShoppingCart, AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart";
-import { getCloudinaryRemoteFetchURL as getImg} from "../carousel2/pixelated.cloudinary";
+import { AddToShoppingCart,  } from "../shoppingcart/pixelated.shoppingcart.functions";
+import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
+import { getCloudinaryRemoteFetchURL as getImg} from "../carousel/pixelated.cloudinary";
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;

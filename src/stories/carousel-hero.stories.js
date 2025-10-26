@@ -1,6 +1,6 @@
-import { Carousel } from '../components/carousel2/pixelated.carousel';
-import { GetFlickrData, GenerateFlickrCards } from '../components/carousel2/pixelated.carousel.flickr';
-import '../components/carousel2/pixelated.carousel.css';
+import { Carousel } from '../components/carousel/pixelated.carousel';
+import { GetFlickrData, GenerateFlickrCards } from '../components/carousel/pixelated.carousel.flickr';
+import '../components/carousel/pixelated.carousel.css';
 import '../css/pixelated.global.css';
 import './carousel-hero.stories.css';
 

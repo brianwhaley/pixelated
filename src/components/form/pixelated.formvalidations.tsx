@@ -1,4 +1,4 @@
-import { validateDiscountCode } from '../shoppingcart/pixelated.shoppingcart';
+import { validateDiscountCode } from '../shoppingcart/pixelated.shoppingcart.functions.js';
 
 
 export const inputTypes = [

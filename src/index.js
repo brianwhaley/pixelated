@@ -5,11 +5,11 @@ export * from './components/buzzwordbingo/pixelated.buzzwordbingo';
 
 export * from './components/callout/pixelated.callout';
 
-export * from './components/carousel2/pixelated.carousel';
-export * from './components/carousel2/pixelated.carousel.drag';
-export * from './components/carousel2/pixelated.carousel.flickr';
-/* export * from './components/carousel2/pixelated.carousel.instagram'; */
-export * from './components/carousel2/pixelated.cloudinary';
+export * from './components/carousel/pixelated.carousel';
+export * from './components/carousel/pixelated.carousel.drag';
+export * from './components/carousel/pixelated.carousel.flickr';
+/* export * from './components/carousel/pixelated.carousel.instagram'; */
+export * from './components/carousel/pixelated.cloudinary';
 
 export * from './components/cms/pixelated.contentful';
 
@@ -43,14 +43,15 @@ export * from './components/microinteractions/pixelated.microinteractions';
 
 export * from './components/modal/pixelated.modal';
 
-export * from './components/nerdjoke/pixelated.nerdjoke';
+export * from './components/nerdjoke/pixelated.nerdjoke.js';
 
-export * from './components/recipe/pixelated.recipe';
+export * from './components/recipe/pixelated.recipe.js';
 
 export * from './components/resume/pixelated.resume';
 
 export * from './components/shoppingcart/pixelated.paypal';
-export * from './components/shoppingcart/pixelated.shoppingcart';
+export * from './components/shoppingcart/pixelated.shoppingcart.components';
+export * from './components/shoppingcart/pixelated.shoppingcart.functions';
 
 export * from './components/sitemap/pixelated.sitemap';
 

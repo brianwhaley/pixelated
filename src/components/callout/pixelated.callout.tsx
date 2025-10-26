@@ -18,7 +18,7 @@ BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
 export type CalloutType = {
-	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'split',
+	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'overlay' | 'split',
 	layout?: 'horizontal' | 'vertical' ,
 	direction?: 'left' | 'right' ,
 	// boxShape?: string,

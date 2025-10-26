@@ -1,6 +1,6 @@
 import PropTypes, { InferProps } from "prop-types";
-import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart";
-import { getCloudinaryRemoteFetchURL as getImg} from "../carousel2/pixelated.cloudinary";
+import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart.functions.js";
+import { getCloudinaryRemoteFetchURL as getImg} from "../carousel/pixelated.cloudinary.js";
 const debug = false;
 
 
@@ -94,8 +94,8 @@ export const defaultEbayProps = {
 getEbayAppToken.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 };
-type getEbayAppTokenType = InferProps<typeof getEbayAppToken.propTypes>;
-function getEbayAppToken(props: getEbayAppTokenType){
+export type getEbayAppTokenType = InferProps<typeof getEbayAppToken.propTypes>;
+export function getEbayAppToken(props: getEbayAppTokenType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchToken = async () => {
 		if (debug) console.log("Fetching Token");
@@ -134,8 +134,8 @@ getEbayBrowseSearch.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	token: PropTypes.string.isRequired,
 };
-type getEbayBrowseSearchType = InferProps<typeof getEbayBrowseSearch.propTypes>;
-function getEbayBrowseSearch(props: getEbayBrowseSearchType){
+export type getEbayBrowseSearchType = InferProps<typeof getEbayBrowseSearch.propTypes>;
+export function getEbayBrowseSearch(props: getEbayBrowseSearchType){
 	const apiProps = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
 		if (debug) console.log("Fetching ebay API Browse Search Data");
@@ -171,8 +171,8 @@ getEbayBrowseItem.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 	token: PropTypes.string.isRequired,
 };
-type getEbayBrowseItemType = InferProps<typeof getEbayBrowseItem.propTypes>;
-function getEbayBrowseItem(props: getEbayBrowseItemType){
+export type getEbayBrowseItemType = InferProps<typeof getEbayBrowseItem.propTypes>;
+export function getEbayBrowseItem(props: getEbayBrowseItemType){
 	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
 	const fetchData = async (token: string) => {
 		if (debug) console.log("Fetching ebay API Browse Item Data");
@@ -211,7 +211,7 @@ function getEbayBrowseItem(props: getEbayBrowseItemType){
 getEbayItems.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 };
-type getEbayItemsType = InferProps<typeof getEbayItems.propTypes>;
+export type getEbayItemsType = InferProps<typeof getEbayItems.propTypes>;
 export async function getEbayItems(props: getEbayItemsType) {
 	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
 	try {
@@ -232,7 +232,7 @@ export async function getEbayItems(props: getEbayItemsType) {
 getEbayItem.propTypes = {
 	apiProps: PropTypes.object.isRequired,
 };
-type getEbayItemType = InferProps<typeof getEbayItem.propTypes>;
+export type getEbayItemType = InferProps<typeof getEbayItem.propTypes>;
 export async function getEbayItem(props: getEbayItemType) {
 	const apiProps: EbayApiType = { ...defaultEbayProps, ...props.apiProps };
 	try {
@@ -246,5 +246,37 @@ export async function getEbayItem(props: getEbayItemType) {
 	}
 	// Return an empty object if there's an error
 	return {};
+}
+
+
+
+
+/* ========== ITEM SEARCH ========== */
+
+export function getEbayItemsSearch(props: any){
+	const apiProps = { ...defaultEbayProps, ...props.apiProps };
+	const fetchData = async (token: string) => {
+		if (debug) console.log("Fetching ebay API Data");
+		try {
+			const response = await fetch(
+				apiProps.proxyURL + encodeURIComponent( apiProps.baseSearchURL + apiProps.qsSearchURL ) , {
+					method: 'GET',
+					headers: {
+						'Authorization' : 'Bearer ' + token ,
+						'X-EBAY-C-MARKETPLACE-ID' : 'EBAY_US',
+						'X-EBAY-C-ENDUSERCTX' : 'affiliateCampaignId=<ePNCampaignId>,affiliateReferenceId=<referenceId>',
+						'X-EBAY-SOA-SECURITY-APPNAME' : 'BrianWha-Pixelate-PRD-1fb4458de-1a8431fe',
+					}
+				});
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			const data = await response.json();
+			return data;
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+	return fetchData(props.token);
 }
 
