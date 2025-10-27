@@ -70,6 +70,10 @@
     height: 400px;
 }
 
+.ebayItemPhotoCarousel .carouselCardsContainer {
+    height: 100%;
+}
+
 .ebayItemPhotoCarousel .carouselButtons,
 .ebayItemPhotoCarousel .carouselButton {
     display: inline-block;
@@ -84,10 +88,13 @@
     }
 }
 
+.ebayItemPhoto {
+    overflow: hidden;
+}
+
 .ebayItemPhoto img {
     padding: 10px 0;
     width: 100%;
-
 }
 
 .ebayItems .ebayItemDetails {

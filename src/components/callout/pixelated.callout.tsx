@@ -55,10 +55,11 @@ export function Callout({
 	</div> ;
 
 	const image = <div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
-		{ (url)
+		{ (url && !imgClick)
 			? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}><img src={img} alt={imgAlt ?? title ?? undefined} /></a>
-			: <img src={img} alt={imgAlt ?? title ?? undefined} 
-				onClick={(imgClick) ? event => imgClick?.(event, url ?? '') : () => window.open(url ?? '', '_blank')} />
+			: (url && imgClick)
+				? <img src={img} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
+				: <img src={img} alt={imgAlt ?? title ?? undefined} />
 		}
 	</div>;
 
