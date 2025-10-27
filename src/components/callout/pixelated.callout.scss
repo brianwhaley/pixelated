@@ -212,6 +212,15 @@
     display: grid;
 }
 
+@for $i from 1 through 11 {
+    @for $k from 1 through 11 {
+        .calloutGrid-#{$i}-#{$k} { grid-template-columns: #{$i}fr #{$k}fr; }
+        @media screen and (max-width: 480px) {
+			.calloutGrid-#{$i}-#{$k} { grid-template-columns: 1fr; }
+		}
+    }
+}
+
 .callout.grid {
     --do-nothing: true;
     /* assumes horizontal left */

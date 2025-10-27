@@ -1,7 +1,7 @@
 "use client";
 
 import React, { /* useState, useEffect */ } from "react";
-import "./pixelated.callout.css";
+import "./pixelated.callout.scss";
 
 /* ==================== NOTES ====================
 DEFAULT = flexbox layout, no border around callout
@@ -18,13 +18,14 @@ BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
 type ShapeType = 'square' | 'bevel' | 'squircle' | 'round';
+type gridColumnsType = {left: number, right: number};
 
 export type CalloutType = {
 	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'overlay' | 'split',
 	boxShape?: ShapeType,
 	layout?: 'horizontal' | 'vertical' ,
 	direction?: 'left' | 'right' ,
-	gridColumns?: `${number| ''}fr ${number| ''}fr`,
+	gridColumns?: gridColumnsType,
 	url?: string,
 	img: string,
 	imgAlt?: string,
@@ -39,7 +40,7 @@ export function Callout({
 	boxShape = "squircle", 
 	layout = "horizontal", 
 	direction = 'left', 
-	gridColumns = '1fr 2fr', 
+	gridColumns = {left: 1, right: 2},
 	url, img, imgAlt, 
 	imgShape = 'square', 
 	imgClick, title, subtitle, content }: CalloutType) {
@@ -67,9 +68,8 @@ export function Callout({
 			(style ? " " + style : "") + 
 			((style==='boxed' || style==='boxed grid') && boxShape ? " " + boxShape : "") + 
 			(layout && style!=='split' ? " " + layout : "") + 
-			(direction && layout!=='vertical' ? " " + direction : "")} 
-			style={
-				(style && (style==='boxed grid' || style==='grid') && gridColumns ? {gridTemplateColumns: gridColumns} : {}) 
+			(direction && layout!=='vertical' ? " " + direction : "") +
+			(style && (style==='boxed grid' || style==='grid') && gridColumns ? ` calloutGrid-${gridColumns.left}-${gridColumns.right}` : '')
 			} >
 			{ (direction === "right") ? <>{body}{image}</> : <>{image}{body}</> }
 		</div>
