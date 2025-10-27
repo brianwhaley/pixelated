@@ -17,23 +17,32 @@ GRID is basic 1/2 GRID shape, needs enhanement
 BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
+type ShapeType = 'square' | 'bevel' | 'squircle' | 'round';
+
 export type CalloutType = {
 	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'overlay' | 'split',
+	boxShape?: ShapeType,
 	layout?: 'horizontal' | 'vertical' ,
 	direction?: 'left' | 'right' ,
-	// boxShape?: string,
+	gridColumns?: `${number| ''}fr ${number| ''}fr`,
 	url?: string,
 	img: string,
 	imgAlt?: string,
-	imgShape?: 'square' | 'bevel' | 'squircle' | 'round',
+	imgShape?: ShapeType,
 	imgClick?: (event: React.MouseEvent, url: string) => void,
 	title?: string,
 	subtitle?: string,
 	content?: string
 }
 export function Callout({
-	style = 'default', layout = "horizontal", direction = 'left', url,
-	img, imgAlt, imgShape = 'square', imgClick, title, subtitle, content }: CalloutType) {
+	style = 'default', 
+	boxShape = "squircle", 
+	layout = "horizontal", 
+	direction = 'left', 
+	gridColumns = '1fr 2fr', 
+	url, img, imgAlt, 
+	imgShape = 'square', 
+	imgClick, title, subtitle, content }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -53,10 +62,15 @@ export function Callout({
 	</div>;
 
 	return (
-		<div className={"callout" + 
-			(style ? " " + style : "") +
+		<div 
+			className={"callout" + 
+			(style ? " " + style : "") + 
+			((style==='boxed grid' || style==='grid') && boxShape ? " " + boxShape : "") + 
 			(layout && style!=='split' ? " " + layout : "") + 
-			(direction && layout!=='vertical' ? " " + direction : "") } >
+			(direction && layout!=='vertical' ? " " + direction : "")} 
+			style={
+				(style && (style==='boxed grid' || style==='grid') && gridColumns ? {gridTemplateColumns: gridColumns} : {}) 
+			} >
 			{ (direction === "right") ? <>{body}{image}</> : <>{image}{body}</> }
 		</div>
 	);

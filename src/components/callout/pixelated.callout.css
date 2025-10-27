@@ -15,7 +15,7 @@
     padding: 20px;
     align-items: stretch;
     width: 100%;
-    float: unset !important; /* fix for left style applied from global css */
+    float: unset !important; /* fix for left / right style applied from global css */
 }
 
 .callout.vertical {
@@ -150,8 +150,24 @@
 	padding: 0px;
     margin: 10px 0;
     border: 1.5px solid #666;
-    border-radius: 25px;
+    /* border-radius: 25px; */ /* moved to specific box shapes */
     overflow: hidden; /* hide image beyond round corners */
+}
+
+.callout.boxed.square {
+    border-radius: 0px;
+}
+
+.callout.boxed.bevel {
+    border-radius: 5px;
+}
+
+.callout.boxed.squircle {
+    border-radius: 25px;
+}
+
+.callout.boxed.round {
+    border-radius: 100%;
 }
 
 .callout.boxed .calloutImage {
@@ -195,13 +211,24 @@
 .callout.grid * {
     display: grid;
 }
+
 .callout.grid {
-	grid-template-columns: 1fr 2fr;
+    --do-nothing: true;
+    /* assumes horizontal left */
+	/* grid-template-columns: 1fr 2fr; */ /* moved to tsx */
 }
+
+.callout.grid.right {
+    --do-nothing: true;
+    /* assumes horizontal right */
+	/* grid-template-columns: 2fr 1fr; */ /* moved to tsx */
+}
+
 .callout.grid.vertical {
 	grid-template-columns: 1fr;
 
 }
+
 .callout.grid .calloutImage img {
     /* duplicate of .callout .calloutImage img */
     width: 100%;
@@ -209,6 +236,7 @@
     object-fit: cover;
     object-position: top;
 }
+
 .callout.grid .calloutBody {
 	grid-auto-rows: min-content;
 }
