@@ -9,13 +9,17 @@
     margin: 0;
 }
 
+/* 
 .tileImageOverlay {
     background: rgba(51, 102, 153, .7) !important;
-}
-
-.tileImageOverlay {
     width: 0% !important;
     transition: all 0.25s ease-in-out;
+}
+
+.tileImageOverlayText {
+    visibility: hidden;
+    transition: visibility 0s ease-in-out;
+    transition-delay: 0s; 
 }
 
 .tileImage:hover .tileImageOverlay {
@@ -26,10 +30,4 @@
     visibility: visible;
     transition-delay: 0.25s; 
 }
-
-.tileImageOverlayText {
-    visibility: hidden;
-    transition: visibility 0.25s ease-in-out;
-    transition-delay: 0s; 
-
-}
+*/

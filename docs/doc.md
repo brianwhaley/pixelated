@@ -53,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "bump component library, use new server exports path"
+git commit -m "add micro interaction for tile overlay on portfolio page"
 git push pixelated dev --tags
 git push pixelated dev:main
 
