@@ -65,7 +65,7 @@ export function Callout({
 		<div 
 			className={"callout" + 
 			(style ? " " + style : "") + 
-			((style==='boxed grid' || style==='grid') && boxShape ? " " + boxShape : "") + 
+			((style==='boxed' || style==='boxed grid') && boxShape ? " " + boxShape : "") + 
 			(layout && style!=='split' ? " " + layout : "") + 
 			(direction && layout!=='vertical' ? " " + direction : "")} 
 			style={
