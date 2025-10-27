@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix for callout grid columns, ebay and modal image overflow style"
+git commit -m "embedded mouseover micro interaction styles for tiles"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

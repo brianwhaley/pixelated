@@ -31,20 +31,22 @@
 .tileImageOverlay {
     visibility: hidden;
     position: absolute;
-    width: 100%;
+    width: 0%;
     height: 100%;
     bottom: 0;
     left: 0;
     display: inline-block;
-    background:rgba(0,0,0,.5);
+    background: rgba(51, 102, 153, .7);
+    transition: all 0.25s ease-in-out;
     /* All other styling - see example */
     img {
-        vertical-align:top; /* Default is baseline, this fixes a common alignment issue */
+        vertical-align: top; /* Default is baseline, this fixes a common alignment issue */
     }
 }
 
 .tileImage:hover .tileImageOverlay {
     visibility: visible;
+    width: 100% !important;
 }
 
 .tileImageOverlayText {
@@ -55,6 +57,14 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
+    visibility: hidden;
+    transition: visibility 0s ease-in-out;
+    transition-delay: 0s; 
+}
+
+.tileImage:hover .tileImageOverlayText {
+    visibility: visible;
+    transition-delay: 0.25s; 
 }
 
 .tileImageOverlayTitle{
