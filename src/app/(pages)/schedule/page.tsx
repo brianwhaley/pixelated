@@ -23,18 +23,32 @@ export default function Schedule() {
 	return (
 		<div className="section-container">
 			<PageHeader title="Schedule a meeting with Pixelated" />
-			<div className="row-1col" suppressHydrationWarning={true} >
-				<div>
-					Schedule a consult appointment with Pixelated Technologies for custom IT development work: 
-					<ul>
-						<li>Web development</li>
-						<li>Social media mearketing</li>
-						<li>Search engine optimization</li>
-						<li>Small business modernization</li>
-					</ul>
+			<div className="row-12col">
+				<div className="grid-s3-e8"> 
+					<div className="row-1col" suppressHydrationWarning={true} >
+						<div>
+							<p>
+						Our team of experts is here to help you achieve your business goals with tailored solutions. 
+						Whether you're looking to enhance your online presence or streamline your operations, we've got you covered.
+							</p>
+							<p>
+						Feel free to explore our services and book a meeting 
+						with Pixelated Technologies to discuss how we can assist you in growing your business:
+							</p>
+							<ul>
+								<li>Web development</li>
+								<li>Social media mearketing</li>
+								<li>Search engine optimization</li>
+								<li>Small business modernization</li>
+							</ul>
+					
+						</div>
+					</div>
 				</div>
-				{bodyContent}
 			</div>
+
+			{bodyContent}
+			
 		</div>
 	);
 }

@@ -1,9 +1,11 @@
 "use client";
 
 import React from 'react';
-import { PageHeader } from "@brianwhaley/pixelated-components";
+import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
 import { Callout } from "@brianwhaley/pixelated-components";
 import { Timeline } from "@brianwhaley/pixelated-components";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
+
 
 export default function Process() {
     
@@ -68,10 +70,24 @@ export default function Process() {
 				<PageHeader title="The Pixelated Technologies Process" />
 				<div className="row-12col">
 					<div className="grid-s3-e8"> 
-						Pixelated Technologies offers a proven process 
-						to get results for you and your customers - gather information, 
-						build a strategy, implement, measure outcomes, 
-						refine results, and support.
+						<p>
+							Pixelated Technologies offers a proven process 
+							to get results for you and your customers - gather information, 
+							build a strategy, implement, measure outcomes, 
+							refine results, and support.
+						</p>
+						<p>
+							Our process is designed to ensure that every step is tailored to your unique needs. 
+							We start by understanding your business challenges and goals, then craft a strategy 
+							that aligns with your vision. By implementing this strategy with precision and measuring 
+							the outcomes, we ensure that you see tangible results. Finally, we refine and support 
+							your journey to ensure long-term success.
+						</p>
+						<p>
+							Whether you are looking to optimize your operations, enhance customer satisfaction, 
+							or stay ahead of the competition, our proven process will guide you every step of the way. 
+							Let us help you transform your business and achieve your goals with confidence.
+						</p>
 					</div>
 				</div>
 				<br />
@@ -79,16 +95,12 @@ export default function Process() {
 
 				<div className="row-12col">
 					<div className="grid-s2-e10">
-						<Callout
-							style='boxed'
-							layout='horizontal'
-							url='schedule'
-							img='/images/icons/calendar-icon.png'
-							title='Lets Get Started'
-							content='Schedule a consultation appointment with Pixelated Technologies 
-							to get  you started with custom IT development work - web development, 
-							social media marketing, search engine optimization, 
-							and small business modernization.'/>
+						<PageSectionHeader title="Let's Get Started!" />
+						<CalloutLibrary.scheduleAppointment
+							style='boxed grid'
+							gridColumns={{left:1,right:2}}
+							layout='horizontal' />
+
 					</div>
 				</div>
 

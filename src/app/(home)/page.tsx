@@ -4,6 +4,7 @@ import React, { /* useState, useEffect */ } from "react";
 import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
 import { Callout } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
+import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 
 export default function Home() {
 
@@ -20,7 +21,7 @@ export default function Home() {
 								img='images/pix/pix-bg-512.png'
 								imgShape="squircle" 
 								title=''
-								content='Pixelated Technologies is a Digital Services company that 
+								subtitle='Pixelated Technologies is a Digital Services company that 
 								specializes in transforming small businesses through
 								custom IT solutions, including web development, social media marketing,
 								search engine optimization, content management, eCommerce solutions,
@@ -131,16 +132,7 @@ export default function Home() {
 					<PageSectionHeader title="About Pixelated Technologies" />
 					<div className="row-12col">
 						<div className="grid-s3-e4">
-							<Callout
-								layout='vertical'
-								url='schedule'
-								img='/images/icons/calendar-icon.png'
-								imgShape='squircle'
-								title='Schedule an Appointment'
-								content='Schedule a consultation appointment with Pixelated Technologies 
-								for custom IT development work - web development, 
-								social media marketing, search engine optimization, 
-								and small business modernization.'/>
+							<CalloutLibrary.scheduleAppointment />
 						</div>
 						<div className="grid-s7-e4">
 							<Callout
@@ -149,9 +141,13 @@ export default function Home() {
 								img='/images/icons/portfolio.png'
 								imgShape='squircle'
 								title='Portfolio'
-								content='View examples of web development 
-								and design work delivered by our team members 
-								over the years in our portfolio of screenshots and logos.'/>
+								content='Explore our portfolio to see examples of the web development 
+								and design work delivered by our team members over the years. 
+								From responsive websites and custom web applications to branding 
+								and logo designs, our portfolio showcases the diverse range of 
+								projects we have successfully completed for small businesses. 
+								Discover how Pixelated Technologies can bring your vision to life 
+								with tailored solutions that meet your unique needs.'/>
 						</div>
 					</div>
 				</div>
