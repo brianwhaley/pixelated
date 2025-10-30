@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "bump component library, use server exports path"
+git commit -m "seo fix with canonical and alternate, bump component library, nextjs 16.0.1"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 
