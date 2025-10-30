@@ -376,9 +376,15 @@ export function getCartSubtotalDiscount(cart: ShoppingCartType[]) {
 	const shippingInfo = getShippingInfo();
 	const discountCode = getDiscountCode(shippingInfo.discountCode);
 	if (!discountCode) { return 0; } // If no codes are found, return null
-	const discountAmount = formatAsHundredths(cartSubTotal * discountCode.codeValue);
+	let discountAmount = 0;
+	if(discountCode.codeType === 'amount'){
+		discountAmount = formatAsHundredths(discountCode.codeValue);
+	} else if(discountCode.codeType === 'percent'){
+		discountAmount = formatAsHundredths(cartSubTotal * discountCode.codeValue);
+	}
 	return discountAmount;
 }
+
 
 
 /* ========== CHECKOUT FUNCTIONS ========== */

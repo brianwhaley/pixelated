@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "embedded mouseover micro interaction styles for tiles"
+git commit -m "added amount and percent discount types to shopping cart"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
