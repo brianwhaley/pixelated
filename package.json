@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -63,13 +63,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@brianwhaley/pixelated-components": "^2.3.6",
+    "@brianwhaley/pixelated-components": "^2.3.7",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "core-js": "^3.46.0",
     "date-fns": "^4.1.0",
     "globals": "^16.4.0",
-    "react-router-dom": "^7.9.4"
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
@@ -83,10 +83,10 @@
     "@eslint/markdown": "^7.5.0",
     "@storybook/addon-controls": "^9.0.8",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react-webpack5": "^9.1.15",
+    "@storybook/react-webpack5": "^10.0.2",
     "@storybook/test": "^8.6.14",
     "@storybook/testing-library": "^0.2.1",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.9.2",
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
@@ -98,14 +98,14 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-storybook": "^9.1.15",
+    "eslint-plugin-storybook": "^10.0.2",
     "file-loader": "^6.2.0",
     "less-loader": "^12.3.0",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "sass": "^1.93.2",
     "sass-loader": "^16.0.6",
-    "storybook": "^9.1.15",
+    "storybook": "^10.0.2",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
