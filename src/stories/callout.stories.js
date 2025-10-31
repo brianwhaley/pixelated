@@ -1,5 +1,5 @@
 import { Callout } from '../components/callout/pixelated.callout';
-import '../components/callout/pixelated.callout.css';
+import '../components/callout/pixelated.callout.scss';
 import '../css/pixelated.grid.scss';
 
 export default {
@@ -10,21 +10,34 @@ export default {
 export const CalloutStory = {
 	title: 'Callout',
 	args: {
+		style: 'default',
+		layout: 'horizontal',
+		boxShape: 'bevel',
+		direction: 'left',
+		gridColumns: { left: 1, right: 3 },
 		url: 'https://www.linkedin.com/in/brianwhaley',
 		img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png',
+		imgShape: "squircle",
+		imgAlt: 'Hooray for LinkedIn!',
 		title: 'LinkedIn Profile',
 		subtitle: 'LinkedIn Profiles are good for anyone who is looking for a new job.',
 		content: 'My LinkedIn Profile - Work History, Education, Volunteer Work, Honors and Awards, Certifications, Skills, and more.',
-		layout: 'horizontal',
-		shape: "squircle",
 	},
 	argTypes: {
-		layout: {
-			options: ['horizontal', 'horizontal2', "vertical"],
+		style: {
+			options: ['default' , 'boxed' , 'boxed grid' , 'full' , 'grid' , 'overlay' , 'split'],
 			control: { type: 'select' },
 		},
-		shape: {
-			options: ['round', 'squircle', 'square'],
+		direction: {
+			options: ['left', "right"],
+			control: { type: 'select' },
+		},
+		layout: {
+			options: ['horizontal', "vertical"],
+			control: { type: 'select' },
+		},
+		imgShape: {
+			options: ['round', 'bevel', 'squircle', 'square'],
 			control: { type: 'select' },
 		},
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getRouteByKey } from '../components/metadata/pixelated.metadata';
 import myRoutes from '../data/routes.json';
-import '../components/callout/pixelated.callout.css';
+import '../components/callout/pixelated.callout.scss';
 import '../css/pixelated.grid.scss';
 
 export default {

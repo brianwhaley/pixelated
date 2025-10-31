@@ -2,7 +2,8 @@
 import PropTypes, { InferProps } from 'prop-types';
 import { generateURL } from '../utilities/pixelated.api';
 import { mergeDeep } from '../utilities/pixelated.functions';
-
+import { getCloudinaryRemoteFetchURL } from "../carousel/pixelated.cloudinary.js";
+import type { CarouselCardType } from '../carousel/pixelated.carousel.js';
 
 type FlickrApiType = {
     baseURL: string;
@@ -113,6 +114,7 @@ export function GetFlickrData( props: { flickr: any } ) {
 }
 
 
+
 GenerateFlickrCards.propTypes = {
 	flickrImages: PropTypes.array.isRequired,
 	photoSize: PropTypes.string.isRequired,
@@ -135,4 +137,60 @@ export function GenerateFlickrCards(props: GenerateFlickrCardsType) {
 	}
 }
 
+
+
+
+FlickrWrapper.propTypes = {
+	method: PropTypes.string,
+	api_key: PropTypes.string.isRequired,
+	user_id: PropTypes.string.isRequired,
+	tags: PropTypes.string,
+	photoset_id: PropTypes.string,
+	photoSize: PropTypes.string,
+	callback: PropTypes.func.isRequired,
+	/* 	callback: (arg0: CarouselCardType[]) => void; */
+};
+export type FlickrWrapperType = InferProps<typeof FlickrWrapper.propTypes>;
+export function FlickrWrapper (props: FlickrWrapperType) {
+	const flickr = {
+		flickr : {
+			baseURL: 'https://api.flickr.com/services/rest/?',
+			urlProps: {
+				method: props.method || 'flickr.photos.search',
+				api_key: props.api_key /* || '882cab5548d53c9e6b5fb24d59cc321d' */ ,
+				user_id: props.user_id /* || '15473210@N04' */,
+				tags: props.tags || '' /* || 'btw-customsunglasses' */ ,
+				photoset_id: props.photoset_id || '',
+				photoSize: props.photoSize || 'Large',
+				extras: 'date_taken,description,owner_name',
+				sort: 'date-taken-desc',
+				per_page: 500,
+				format: 'json',
+				nojsoncallback: 'true' 
+			}
+		} 
+	};
     
+	async function getFlickrCards() {
+		const myPromise = GetFlickrData(flickr);
+		const myFlickrImages = await myPromise;
+		const myPhotoSize = flickr.flickr.urlProps.photoSize;
+		const myFlickrCards = GenerateFlickrCards({flickrImages: myFlickrImages, photoSize: myPhotoSize});
+		// REMOVE LINKS
+		if (myFlickrCards) { 
+			const myScrubbedFlickrCards = myFlickrCards.map((obj, index): CarouselCardType => {
+				return {
+					index: index,
+					cardIndex: index,
+					cardLength: myFlickrCards.length,
+					image: getCloudinaryRemoteFetchURL({url:obj.image, product_env:"dlbon7tpq"}),
+					imageAlt: obj.imageAlt,
+					subHeaderText: obj.subHeaderText
+				};
+			});
+			props.callback(myScrubbedFlickrCards);
+			return myScrubbedFlickrCards;
+		}
+	} 
+	return getFlickrCards();
+}

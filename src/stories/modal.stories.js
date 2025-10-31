@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CalloutSmall } from "../components/callout/pixelated.callout";
+import { Callout } from "../components/callout/pixelated.callout";
 import { Modal, handleModalOpen } from "../components/modal/pixelated.modal";
 
 export default {
@@ -18,7 +18,12 @@ const PageModal = () => {
 		<>
         	<div className="row-4col">
 				<div className="gridItem">
-					<CalloutSmall url="https://farm66.static.flickr.com/65535/50797219348_a7f5b18dd5_b.jpg" imgclick={handleImageClick} img="https://www.pixelated.tech/images/customs/black-white-splatter.jpg" alt="Black White Splatter" />
+					<Callout 
+						url="https://farm66.static.flickr.com/65535/50797219348_a7f5b18dd5_b.jpg" 
+						img="https://www.pixelvivid.com/images/customs/black-white-splatter.jpg" 
+						imgClick={handleImageClick} 
+						imgShape="squircle"
+						imgAlt="Black White Splatter" />
 				</div>
 			</div>
 			<Modal modalContent={modalContent} />
