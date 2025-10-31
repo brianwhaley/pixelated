@@ -2,6 +2,8 @@
 
 import path from 'path'; 
 import { fileURLToPath } from 'url';
+import fs from 'fs';
+import webpack from 'webpack';
 // import { sharedRulesConfig } from "../webpack.config.js"
 
 const __filename = fileURLToPath(import.meta.url);
@@ -68,11 +70,38 @@ const config = {
     config.resolve.extensions.push('.sass', '.scss');
     config.resolve.extensions.push('.bmp', '.gif', '.jpg', '.jpeg', '.png', '.svg', '.webp');
 
-    // ALIAS FOR ABSOLUTE PATH FOR IMAGES
+    // ALIASES
+    // Prefer the compiled ESM build for imports that include ".js" extensions.
+    // This makes Storybook load the same built files the server uses.
     config.resolve.alias = {
       "/images": path.resolve(__dirname, "../src/images"),
       "images": path.resolve(__dirname, "../src/images"),
+      // Resolve the package import to the package's compiled dist folder
+      '@brianwhaley/pixelated-components': path.resolve(__dirname, '../dist'),
     };
+
+    // If source files import explicit `.js` relative paths (e.g. '../foo/bar.js'),
+    // webpack will try to resolve them under `src`. Use NormalModuleReplacementPlugin
+    // to rewrite such requests to the corresponding file under `dist/` when it exists.
+    config.plugins = config.plugins || [];
+    config.plugins.push(new webpack.NormalModuleReplacementPlugin(/\.js$/, function(resource) {
+      try {
+        const req = resource.request;
+        if (!req || !req.startsWith('.')) return;
+        const issuerContext = resource.context || '';
+        const srcRoot = path.resolve(__dirname, '../src');
+        if (!issuerContext.startsWith(srcRoot)) return;
+        const absPath = path.resolve(issuerContext, req);
+        if (!absPath.startsWith(srcRoot)) return;
+        const rel = path.relative(srcRoot, absPath);
+        const distPath = path.resolve(__dirname, '../dist', rel);
+        if (fs.existsSync(distPath)) {
+          resource.request = distPath;
+        }
+      } catch (e) {
+        // ignore and let normal resolution continue
+      }
+    }));
 
     return config;
   },
