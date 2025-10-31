@@ -53,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "seo fix for canonical and alternate, bump component library, nextjs 16.0.1"
+git commit -m "remove gallerywrapper for flickrwrapper, sort by imgalt for portfolio"
 git push pixelated dev --tags
 git push pixelated dev:main
 

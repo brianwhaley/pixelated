@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
-import { Callout } from "@brianwhaley/pixelated-components";
 import { Timeline } from "@brianwhaley/pixelated-components";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 
