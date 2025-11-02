@@ -9,6 +9,10 @@ h1 {
     margin-bottom: 30px;
 }
 
+.headerLogo{
+    overflow: hidden;
+}
+
 .headerLogo img {
     clip-path: rect(1% 98% 98% 1% round 15%);
 }
