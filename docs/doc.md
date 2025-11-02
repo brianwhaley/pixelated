@@ -53,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "remove gallerywrapper for flickrwrapper, sort by imgalt for portfolio"
+git commit -m "new 404 component, bump component library"
 git push pixelated dev --tags
 git push pixelated dev:main
 
