@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import type { CarouselCardType } from "../carousel/pixelated.carousel";
-import { Loading } from "../loading/pixelated.loading";
+import { Loading } from "../general/pixelated.loading";
 import "./pixelated.tiles.css";
 import "../../css/pixelated.grid.scss";
 

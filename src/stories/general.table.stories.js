@@ -1,14 +1,14 @@
-import { Table } from "../components/table/pixelated.table";
+import { Table } from "../components/general/pixelated.table";
 import requestData from "../data/requests.json";
 import '../css/pixelated.global.css';
 
 
 export default {
-	title: 'Table',
+	title: 'General',
 	component: Table
 };
 
-export const Requests = {
+export const Table_Requests = {
 	args: {
 		data: requestData,
 		id: "requestData",

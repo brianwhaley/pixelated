@@ -1,5 +1,5 @@
 import { Carousel } from '../components/carousel/pixelated.carousel';
-import { GetFlickrData, GenerateFlickrCards } from '../components/carousel/pixelated.carousel.flickr';
+import { GetFlickrData, GenerateFlickrCards } from '../components/cms/pixelated.flickr';
 import '../components/carousel/pixelated.carousel.css';
 import '../css/pixelated.global.css';
 import './carousel.stories.css';

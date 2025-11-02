@@ -1,0 +1,25 @@
+
+.fofBodyContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.fofBodyContainer h1 {
+    font-size: 2em;
+}
+
+.fofImageContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.fofImageContainer .fofImageWrapper {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.fofImageContainer .fofImageWrapper img {
+    margin: 0 auto;
+}

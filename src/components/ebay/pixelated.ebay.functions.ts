@@ -1,6 +1,6 @@
 import PropTypes, { InferProps } from "prop-types";
 import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart.functions.js";
-import { getCloudinaryRemoteFetchURL as getImg} from "../carousel/pixelated.cloudinary.js";
+import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary.js";
 const debug = false;
 
 

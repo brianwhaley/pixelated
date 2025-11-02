@@ -4,7 +4,7 @@ import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
 import '../css/pixelated.global.css';
 
 export default {
-	title: 'Contentful',
+	title: 'CMS',
 	component: Carousel
 };
 
@@ -51,4 +51,4 @@ const FeedbackGallery = () => {
 	);
 };
 
-export const Primary = () => <FeedbackGallery />;
+export const Contentful = () => <FeedbackGallery />;

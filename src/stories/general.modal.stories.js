@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Callout } from "../components/callout/pixelated.callout";
-import { Modal, handleModalOpen } from "../components/modal/pixelated.modal";
+import { Modal, handleModalOpen } from "../components/general/pixelated.modal";
 
 export default {
-	title: 'Modal',
+	title: 'General',
 	component: Modal
 };
 
@@ -31,4 +31,4 @@ const PageModal = () => {
 	);
 };
 
-export const Primary = () => <PageModal />;
+export const ModalPopup = () => <PageModal />;

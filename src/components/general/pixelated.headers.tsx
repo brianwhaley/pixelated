@@ -1,5 +1,5 @@
 import React from 'react';
-import "./pixelated.general.css";
+import "./pixelated.headers.css";
 
 export type PageHeaderType = {
 	title: string,

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { createPageURLs, jsonToSitemapEntries } from '../components/sitemap/pixelated.sitemap';
+import { createPageURLs, jsonToSitemapEntries } from '../components/seo/pixelated.sitemap';
 import myRoutes from "../data/routes.json";
 
 export default {
-	title: 'Sitemap XML',
+	title: 'SEO',
 	component: createPageURLs
 };
 
@@ -25,4 +25,4 @@ const PageURLs = () => {
 	);
 };
 
-export const Primary = () => <PageURLs />;
+export const Sitemap_XML = () => <PageURLs />;

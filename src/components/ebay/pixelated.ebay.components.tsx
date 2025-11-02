@@ -6,7 +6,7 @@ import { Carousel } from '../carousel/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
 import { AddToShoppingCart,  } from "../shoppingcart/pixelated.shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
-import { getCloudinaryRemoteFetchURL as getImg} from "../carousel/pixelated.cloudinary";
+import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary";
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;

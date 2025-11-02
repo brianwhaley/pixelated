@@ -1,11 +1,11 @@
 import React from 'react';
-import { getRouteByKey } from '../components/metadata/pixelated.metadata';
+import { getRouteByKey } from '../components/seo/pixelated.metadata';
 import myRoutes from '../data/routes.json';
 import '../components/callout/pixelated.callout.scss';
 import '../css/pixelated.grid.scss';
 
 export default {
-	title: 'Metadata',
+	title: 'SEO',
 	component: getRouteByKey
 };
 
@@ -19,7 +19,7 @@ const PageMetadata = () => {
 	);
 };
 
-export const Primary = {
+export const Metadata = {
 	render: () => <PageMetadata /> ,
 	args: {
 		routes: myRoutes,

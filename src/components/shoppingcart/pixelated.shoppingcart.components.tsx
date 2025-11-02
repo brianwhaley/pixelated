@@ -9,9 +9,9 @@ import { FormEngine } from "../form/pixelated.form";
 import { FormButton } from '../form/pixelated.formcomponents';
 import { emailJSON } from "../form/pixelated.form.submit";
 import '../form/pixelated.form.css';
-import { MicroInteractions } from '../microinteractions/pixelated.microinteractions';
-import { Modal, handleModalOpen } from '../modal/pixelated.modal';
-import { Table } from "../table/pixelated.table";
+import { MicroInteractions } from '../general/pixelated.microinteractions';
+import { Modal, handleModalOpen } from '../general/pixelated.modal';
+import { Table } from "../general/pixelated.table";
 // import shippingFromData from "../../data/shipping.from.json";
 import shippingToData from "../../data/shipping.to.json";
 // import shippingParcelData from "../../data/shipping.parcel.json";
@@ -336,9 +336,9 @@ export function CartButton(props: {href: string}) {
 	}, [cartCount]);
 	return (
 		<div className="pixCart">
-			<button className="pixCartButton" type="button" id="pixCartButton"
+			<button className="pixCartButton" type="button" id="pixCartButton" 
 				onClick={()=>window.location.href=props.href} >
-				<img src="/images/icons/cart-icon.png" />
+				<img src="/images/icons/cart-icon.png" alt="View Shopping Cart" />
 				<span>&nbsp;{`(${cartCount})`}</span>
 			</button>
 		</div>

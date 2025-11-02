@@ -1,6 +1,6 @@
 
-import { PageHeader, PageSectionHeader } from "../components/general/pixelated.general";
-import '../components/general/pixelated.general.css';
+import { PageHeader, PageSectionHeader } from "../components/general/pixelated.headers";
+import '../components/general/pixelated.headers.css';
 import '../css/pixelated.global.css';
 
 export default {

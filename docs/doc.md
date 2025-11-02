@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fixed storybook, add stories for new callout, tiles, timleine, fixes for contentful, general, loading, menu, metadata, modal, shoppingcart, added flickrwrapper for carousel"
+git commit -m "add 404 components, reorganize component folders, reorganize story folders"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

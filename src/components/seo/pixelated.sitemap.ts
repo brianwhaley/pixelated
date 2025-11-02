@@ -1,7 +1,7 @@
 import PropTypes, { InferProps } from "prop-types";
-import { getAllRoutes, getAllImages } from "../metadata/pixelated.metadata.js";
+import { getAllRoutes, getAllImages } from "./pixelated.metadata.js";
 import { getContentfulFieldValues } from "../cms/pixelated.contentful.js";
-import { getEbayAppToken, getEbayItemsSearch } from "../ebay/pixelated.ebay.functions";
+import { getEbayAppToken, getEbayItemsSearch } from "../ebay/pixelated.ebay.functions.js";
 // import { getEbayItems } from "../ebay/pixelated.ebay.functions.js";
 // import { getContentfulFieldValues } from "@brianwhaley/pixelated-components";
 // import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";

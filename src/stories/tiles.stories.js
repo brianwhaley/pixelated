@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tiles } from "../components/tiles/pixelated.tiles";
-import { FlickrWrapper } from "../components/carousel/pixelated.carousel.flickr";
+import { FlickrWrapper } from "../components/cms/pixelated.flickr";
 import '../components/tiles/pixelated.tiles.css';
 
 import '../css/pixelated.global.css';
