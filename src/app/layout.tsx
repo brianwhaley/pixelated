@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
-import { getRouteByKey } from "@brianwhaley/pixelated-components";
+import { getRouteByKey, loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
@@ -16,12 +16,16 @@ import "./globals.css";
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
-	
-	const [ origin, setOrigin ] = useState<string | null>(null);
-	// const [ host, setHost ] = useState<string | null>(null);
+
+	const [ origin, setOrigin ] = useState<string>();
+
 	useEffect(() => {
-		setOrigin(window.location.origin || null);
-		// setHost(window.location.host || null);
+		const myOrigin = window.location.origin ;
+		loadAllImagesFromCloudinary({ 
+			origin: myOrigin,
+			product_env: "dlbon7tpq"
+		});
+		setOrigin(myOrigin);
 	}, []);
 
 	useEffect(() => {
