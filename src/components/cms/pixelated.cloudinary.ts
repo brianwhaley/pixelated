@@ -30,20 +30,18 @@ loadAllImagesFromCloudinary.propTypes = {
 };
 export type loadAllImagesFromCloudinaryType = InferProps<typeof loadAllImagesFromCloudinary.propTypes>;
 export function loadAllImagesFromCloudinary(props: loadAllImagesFromCloudinaryType){
-	if(origin.includes("localhost")) { return; } // do nothing in local dev 
-	if(props.origin && props.origin.includes("localhost")) { return; } // do nothing in local dev 
+	const origin = document.location.origin;
+	if(origin && origin.includes("localhost")) { return; } // do nothing in local dev 
 	const cloudinary_prefix = cloudinary_domain + props.product_env + cloudinary_props;
 	const images = document.querySelectorAll('img');
 	images.forEach(img => {
 		const currentSrc = img.getAttribute('src');
 		if (currentSrc && !currentSrc.startsWith(cloudinary_domain) && !currentSrc.startsWith('http')) {
 			// Assuming relative paths, prepend the CDN base URL
-			// img.setAttribute('src', cloudinary_prefix + ( origin || props.origin ) + "/" + currentSrc);
 			img.setAttribute('src', cloudinary_prefix + origin + "/" + currentSrc);
-		} else if (currentSrc && currentSrc.startsWith('http') && currentSrc.includes(origin)) {
+		} else if (currentSrc && currentSrc.startsWith('http') && origin && currentSrc.includes(origin)) {
 			// The image is already using an absolute URL from your original domain,
 			// replace the domain with the CDN domain.
-			// img.setAttribute('src', currentSrc.replace('https://your-original-domain.com/', cloudinary_prefix));
 			img.setAttribute('src', cloudinary_prefix + currentSrc);
 		}
 	});
