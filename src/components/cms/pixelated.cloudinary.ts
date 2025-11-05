@@ -5,12 +5,46 @@ https://cloudinary.com/blog/transparent_webp_format_cdn_delivery_based_on_visito
 https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
 */
 
+const cloudinary_domain = "https://res.cloudinary.com/";
+// const cloudinary_product_env = "dlbon7tpq";
+const cloudinary_props = "/image/fetch/f_auto,q_auto/";
+
+
+
 getCloudinaryRemoteFetchURL.propTypes = {
 	url: PropTypes.string.isRequired,
 	product_env: PropTypes.string.isRequired
 };
 export type getCloudinaryRemoteFetchURLType = InferProps<typeof getCloudinaryRemoteFetchURL.propTypes>;
 export function getCloudinaryRemoteFetchURL(props: getCloudinaryRemoteFetchURLType) {
-	const cloudinary_prefix = "https://res.cloudinary.com/" + props.product_env + "/image/fetch/f_auto,q_auto/";
+	const cloudinary_prefix = cloudinary_domain + props.product_env + cloudinary_props;
 	return cloudinary_prefix + props.url ;
+}
+
+
+
+
+loadAllImagesFromCloudinary.propTypes = {
+	origin: PropTypes.string,
+	product_env: PropTypes.string.isRequired
+};
+export type loadAllImagesFromCloudinaryType = InferProps<typeof loadAllImagesFromCloudinary.propTypes>;
+export function loadAllImagesFromCloudinary(props: loadAllImagesFromCloudinaryType){
+	if(origin.includes("localhost")) { return; } // do nothing in local dev 
+	if(props.origin && props.origin.includes("localhost")) { return; } // do nothing in local dev 
+	const cloudinary_prefix = cloudinary_domain + props.product_env + cloudinary_props;
+	const images = document.querySelectorAll('img');
+	images.forEach(img => {
+		const currentSrc = img.getAttribute('src');
+		if (currentSrc && !currentSrc.startsWith(cloudinary_domain) && !currentSrc.startsWith('http')) {
+			// Assuming relative paths, prepend the CDN base URL
+			// img.setAttribute('src', cloudinary_prefix + ( origin || props.origin ) + "/" + currentSrc);
+			img.setAttribute('src', cloudinary_prefix + origin + "/" + currentSrc);
+		} else if (currentSrc && currentSrc.startsWith('http') && currentSrc.includes(origin)) {
+			// The image is already using an absolute URL from your original domain,
+			// replace the domain with the CDN domain.
+			// img.setAttribute('src', currentSrc.replace('https://your-original-domain.com/', cloudinary_prefix));
+			img.setAttribute('src', cloudinary_prefix + currentSrc);
+		}
+	});
 }

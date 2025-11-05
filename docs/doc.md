@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "added wordpress components, micro interaction story, new images, nested css, more 404 images"
+git commit -m "add loadAllImagesFromCloudinary"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
