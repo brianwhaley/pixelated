@@ -53,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "new 404 component, bump component library"
+git commit -m "new images, more 404 images, new blog post page, bump component library"
 git push pixelated dev --tags
 git push pixelated dev:main
 

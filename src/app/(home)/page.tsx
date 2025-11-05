@@ -62,7 +62,7 @@ export default function Home() {
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
 						<Callout
 							layout='vertical' 
-							img='images/icons/seo.png'
+							img='images/icons/seo-2.png'
 							imgShape="squircle" 
 							title='Search Engine Optimization'
 							subtitle='Is your website optimized for search engines?

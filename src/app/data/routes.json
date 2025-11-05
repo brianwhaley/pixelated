@@ -19,6 +19,12 @@
 			"description": "Examples of web development and design work delivered by our team members over the years.  ",
 			"keywords": "pixelated, web development, design, small business, delivery"  
 		} , { 
+			"name": "Blog Posts", 
+			"path": "/blog", 
+			"title": "Pixelated Technologies - Blog Posts",
+			"description": "Read the latest blog posts from Pixelated Technologies.",
+			"keywords": "pixelated, blog, web development, small business"  
+		} , { 
 			"name": "Schedule a Meeting", 
 			"path": "/schedule", 
 			"title": "Pixelated Technologies - Schedule an Appointment",

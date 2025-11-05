@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import { createPageURLs, createWordPressURLs, createImageURLs } from "@brianwhaley/pixelated-components/server";
 // import type { SitemapEntry } from '@brianwhaley/pixelated-components/dist/types';
 import myRoutes from "@/app/data/routes.json";
+const wpSite = "blog.pixelated.tech";
 
 async function getOrigin(): Promise<string> {
 	const headerList = await headers();
@@ -30,8 +31,9 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 
 	const sitemap = [
 		...(await createPageURLs(flatRoutes, origin)),
-		...(await createWordPressURLs()),
+		...(await createWordPressURLs({site: wpSite})),
 		...(await createImageURLs(origin)),
 	];
+	console.log("Generated sitemap entries:", sitemap.length);
 	return sitemap;
 }

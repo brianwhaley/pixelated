@@ -20,9 +20,7 @@ export default function Portfolio() {
 		callback: getFlickrCards 
 	};
 	function getFlickrCards(cards: CarouselCardType[]) {
-		console.log("Flickr Cards:", flickrCards);
 		const myCards = cards.sort((a, b) => ((a.imageAlt ?? '') < (b.imageAlt ?? '')) ? 1 : -1);
-		console.log("Sorted Flickr Cards:", myCards);
 		setFlickrCards(myCards);
 	}
 	useEffect(() => {
