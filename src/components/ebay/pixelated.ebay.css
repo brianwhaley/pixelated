@@ -64,19 +64,23 @@
     height: 400px;
 }
 
-.ebayItemPhotoCarousel .carouselContainer {
-    background: none;
-    border: none;
-    height: 400px;
-}
+.ebayItemPhotoCarousel { 
 
-.ebayItemPhotoCarousel .carouselCardsContainer {
-    height: 100%;
-}
+    .carouselContainer {
+        background: none;
+        border: none;
+        height: 400px;
+    }
 
-.ebayItemPhotoCarousel .carouselButtons,
-.ebayItemPhotoCarousel .carouselButton {
-    display: inline-block;
+    .carouselCardsContainer {
+        height: 100%;
+    }
+
+    .carouselButtons,
+    .carouselButton {
+        display: inline-block;
+    }
+
 }
 
 @media screen and (max-width: 480px) {

@@ -18,11 +18,11 @@ const menuItems = {
 };
 
 export default {
-	title: 'Menu - Simple',
+	title: 'Menu',
 	component: MenuSimple
 };
 
-export const Primary = {
+export const Simple = {
 	args: {
 		menuItems
 	}

@@ -6,6 +6,7 @@
 export * from './components/cms/pixelated.cloudinary.js';
 
 export * from './components/cms/pixelated.contentful.js';
+export * from './components/cms/pixelated.wordpress.functions.js';
 
 export * from './components/ebay/pixelated.ebay.functions.js';
 

@@ -7,20 +7,22 @@
 
 
 /* ========== BUTTON RING ON HOVER ========== */
-body.buttonring button,
-body.buttonring .button,
-body.buttonring .centeredbutton {
-  /* ALSO USE CLASS = BUTTON */
-  outline: 0px solid transparent !important; /* Initial transparent outline */
-	outline-offset: 3px; /* Optional: Adjusts the distance of the outline from the border */
-  transition: outline-width 0.25s ease-in-out, outline-color 0.3s ease-in-out;
-  /* cursor: pointer; */
-}
-body.buttonring button:hover,
-body.buttonring .button:hover,
-body.buttonring .centeredbutton:hover {
-  outline-width: 5px !important; /* Outline animates out 5px */
-  outline-color: #369 !important; /* Or a different color for the outline */
+body.buttonring {
+  button,
+  .button,
+  .centeredbutton {
+    /* ALSO USE CLASS = BUTTON */
+    outline: 0px solid transparent !important; /* Initial transparent outline */
+    outline-offset: 3px; /* Optional: Adjusts the distance of the outline from the border */
+    transition: outline-width 0.25s ease-in-out, outline-color 0.3s ease-in-out;
+    /* cursor: pointer; */
+  }
+  button:hover,
+  .button:hover,
+  .centeredbutton:hover {
+    outline-width: 5px !important; /* Outline animates out 5px */
+    outline-color: #369 !important; /* Or a different color for the outline */
+  }
 }
 
 
@@ -49,40 +51,47 @@ body.cartpulse .pixCart #pixCartButton {
 
 
 /* ========== FORM GLOW ON HOVER AND FOCUS ========== */
-body.formglow form div {
-  padding: 5px
-}
-body.formglow form button, input, select, textarea {
-  transition: all 0.25s ease-in-out, 
-      all 0.25s ease-in-out;
-  outline: 5px solid transparent !important;
-}
-body.formglow input:hover, 
-body.formglow select:hover, 
-body.formglow textarea:hover {
-  outline: 5px solid rgba(0, 208, 0, 0.2) !important;
-  outline-offset: 3px;
-}
-body.formglow form button:hover, 
-body.formglow input:focus, body.formglow input:focus:hover, 
-body.formglow select:focus, body.formglow select:focus:hover, 
-body.formglow textarea:focus, body.formglow textarea:focus:hover {
-  outline: 5px solid rgba(0, 208, 0, 1) !important;
-  outline-offset: 3px;
+body.formglow {
+
+	form div {
+		padding: 5px
+	}
+	form button, input, select, textarea {
+		transition: all 0.25s ease-in-out, 
+			all 0.25s ease-in-out;
+		outline: 5px solid transparent !important;
+	}
+	form input:hover, 
+	select:hover, 
+	textarea:hover {
+		outline: 5px solid rgba(0, 208, 0, 0.2) !important;
+		outline-offset: 3px;
+	}
+	form button:hover, 
+	input:focus, input:focus:hover, 
+	select:focus, select:focus:hover, 
+	textarea:focus, textarea:focus:hover {
+		outline: 5px solid rgba(0, 208, 0, 1) !important;
+		outline-offset: 3px;
+	}
+
 }
 
 
 
 
 /* ========== IMG GREYSCALE HOVER ========== */
-body.grayscalehover img {
-  filter: grayscale(100%);
-  transition: filter 0.25s ease-in-out; /* Optional: for a smooth transition */
-}
-body.grayscalehover img:hover {
-  filter: grayscale(0%);
-}
+body.grayscalehover {
 
+	img {
+		filter: grayscale(100%);
+		transition: filter 0.25s ease-in-out; /* Optional: for a smooth transition */
+	}
+	img:hover {
+		filter: grayscale(0%);
+	}
+
+}
 
 
 
@@ -102,14 +111,17 @@ body.imghue img:hover {
 
 
 /* ========== IMG ZOOM AND ROTATE ON HOVER ========== */
-body.imgtwist img:not(.imgContain, .imgCover) {
-  text-align: center;
-	max-width: 100%;
-	height: auto;
-	transition: transform 125ms linear;
-}
-body.imgtwist img:hover:not(.imgContain, .imgCover) {
-	transform: scale(1.1) rotate(-5deg);
+body.imgtwist {
+
+	img:not(.imgContain, .imgCover) {
+		text-align: center;
+		max-width: 100%;
+		height: auto;
+		transition: transform 125ms linear;
+	}
+	img:hover:not(.imgContain, .imgCover) {
+		transform: scale(1.1) rotate(-5deg);
+	}
 }
 
 
@@ -144,41 +156,43 @@ body.imgtwist img:hover:not(.imgContain, .imgCover) {
 
 /* ========== SIMPLE MENU BUTTON CENTER FILL HOVER ========== */
 body.simplemenubutton .menu .menuItem {
-  --do-nothing: true;
+  	--do-nothing: true;
 }
-body.simplemenubutton .menu .menuItem a {
-  text-align: center;
-  position: relative;
-  text-indent: 0px !important;
-  z-index: 10;
-}
-body.simplemenubutton .menu .menuItem a:before,
-body.simplemenubutton .menu .menuItem a:after {
-  content: "";
-  position: absolute;
-  background-color: #1d93da;
-  width: 0%;
-  height: 100%;
-  top: 0;
-  transition: all 0.25s ease-in-out;
-  z-index: -1;
-}
-body.simplemenubutton .menu .menuItem a:before {
-  left: 50%;
-  transform: translateX(-50%);
-}
-body.simplemenubutton .menu .menuItem a:after {
-  right: 50%;
-  transform: translateX(50%);
-}
-body.simplemenubutton .menu .menuItem a:hover {
-  border-left: 0px solid transparent !important;
-  text-indent: 0px !important;
-  color: #fff;
-}
-body.simplemenubutton .menu .menuItem a:hover:before,
-body.simplemenubutton .menu .menuItem a:hover:after {
-  width: 100%;
+body.simplemenubutton .menu .menuItem {
+	a {
+		text-align: center;
+		position: relative;
+		text-indent: 0px !important;
+		z-index: 10;
+	}
+	a:before,
+	a:after {
+		content: "";
+		position: absolute;
+		background-color: #1d93da;
+		width: 0%;
+		height: 100%;
+		top: 0;
+		transition: all 0.25s ease-in-out;
+		z-index: -1;
+	}
+	a:before {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	a:after {
+		right: 50%;
+		transform: translateX(50%);
+	}
+	a:hover {
+		border-left: 0px solid transparent !important;
+		text-indent: 0px !important;
+		color: #fff;
+	}
+	a:hover:before,
+	a:hover:after {
+		width: 100%;
+	}
 }
 
 

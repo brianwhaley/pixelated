@@ -9,7 +9,7 @@ const allRoutes = myRoutes.routes;
 const menuItems = getAccordionMenuData(allRoutes);
 
 export default {
-	title: 'Menu - Accordion',
+	title: 'Menu',
 	component: MenuAccordion
 };
 
@@ -28,5 +28,5 @@ const ParentAccordionMenu = () => {
 	);
 };
 
-export const Primary = () => <ParentAccordionMenu />;
-Primary.args = { menuItems: menuItems};
+export const Accordion = () => <ParentAccordionMenu />;
+Accordion.args = { menuItems: menuItems};

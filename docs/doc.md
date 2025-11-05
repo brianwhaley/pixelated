@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add 404 components, reorganize component folders, reorganize story folders"
+git commit -m "added wordpress components, micro interaction story, new images, nested css, more 404 images"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

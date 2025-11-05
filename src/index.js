@@ -12,6 +12,8 @@ export * from './components/carousel/pixelated.carousel.drag';
 export * from './components/cms/pixelated.flickr';
 export * from './components/cms/pixelated.cloudinary';
 export * from './components/cms/pixelated.contentful';
+export * from './components/cms/pixelated.wordpress.components';
+export * from './components/cms/pixelated.wordpress.functions';
 
 export * from './components/ebay/pixelated.ebay.components';
 export * from './components/ebay/pixelated.ebay.functions';

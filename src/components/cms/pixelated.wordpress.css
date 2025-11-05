@@ -1,0 +1,55 @@
+
+/* https://microformats.org/wiki/h-entry */
+
+
+.blogPostSummary { 
+    border: 1px solid #ccc;
+    margin: 10px; 
+    padding: 20px; 
+    border-radius: 25px;
+}
+
+.blogPostCategories { 
+    /* border: 1px solid #ccc; */
+    margin: 10px; 
+    padding: 20px; 
+    border-radius: 25px;
+}
+
+.blogPostSummary { 
+
+    article {
+        .p-name { --do-nothing: true; }
+        .p-summary { padding-bottom: 20px; }
+        .e-content { --do-nothing: true }
+        .dt-published { padding-bottom: 20px; }
+        .dt-updated { --do-nothing: true }
+        .p-author { --do-nothing: true }
+        .p-category { --do-nothing: true }
+        .u-url { --do-nothing: true }
+        .u-uid { --do-nothing: true }
+        .p-location { --do-nothing: true }
+        .u-syndication { --do-nothing: true }
+        .u-in-reply-to { --do-nothing: true } 
+        .p-rsvp { --do-nothing: true }
+        .u-like-of { --do-nothing: true }
+        .u-repost-of { --do-nothing: true }
+    }
+
+    article * {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+}
+
+    .blogPostSummary .p-category img,
+    .blogPostCategories .p-category img { 
+        width: 30px;
+        height: 30px;
+        margin: 0 5px;
+        vertical-align: middle;
+    }
