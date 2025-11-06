@@ -24,15 +24,48 @@
 
 
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function isInViewport(el: Element) {
+	const rect = el.getBoundingClientRect();
+	return (
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+}
+
+
+
+function isPartiallyInViewport(el: Element) {
+	const rect = el.getBoundingClientRect();
+	return (
+		rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+		rect.bottom > 0 &&
+		rect.right > 0
+	);
+}
+
+
 export function preloadImages(){
 	const images = document.querySelectorAll("img");
 	images.forEach(function(image) {
+
+		// PRELOAD THE IMAGE WITH A LINK TAG
 		const link = document.createElement('link');
 		link.rel = 'preload';
 		link.as = 'image';
 		link.href = image.src;
 		document.head.appendChild(link);
 		preloadImage(image.src);
+
+		// SET FETCHPRIORITY = HIGH FOR ALL IMAGES IN VIEWPORT
+		if( isPartiallyInViewport(image) ) {
+			console.log("Image partially in viewport, setting fetchpriority high:", image);
+			image.setAttribute('fetchpriority', 'high');
+		}
+		
 	});
 }
 

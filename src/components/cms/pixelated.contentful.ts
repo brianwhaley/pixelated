@@ -2,6 +2,8 @@ import PropTypes, { InferProps } from "prop-types";
 
 const debug = false;
 
+const ctfQSParams = "?fm=webp&q=50";
+
 export type ContentfulApiType = {
 	base_url: string;
 	space_id: string;
@@ -127,7 +129,7 @@ export async function getContentfulImagesFromEntries(props: getContentfulImagesF
 		for (const asset of props.assets) {
 			if( image.sys.id == asset.sys.id ) {
 				imageURLs.push({ 
-					image: asset.fields.file.url + "?fm=webp",
+					image: asset.fields.file.url + ctfQSParams,
 					imageAlt: asset.fields.description,
 				});
 			}
@@ -183,7 +185,7 @@ export async function getContentfulAssetURLs(props: getContentfulAssetURLsType) 
 	const assets: any = await getContentfulAssets(props);
 	for (const asset of assets.items) {
 		assetURLs.push({
-			image: asset.fields.file.url + "?fm=webp",
+			image: asset.fields.file.url + ctfQSParams,
 			imageAlt: asset.fields.description,
 		});
 	}

@@ -7,7 +7,7 @@ https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
 
 const cloudinary_domain = "https://res.cloudinary.com/";
 // const cloudinary_product_env = "dlbon7tpq";
-const cloudinary_props = "/image/fetch/f_auto,q_auto/";
+const cloudinary_props = "/image/fetch/f_auto,q_auto,dpr_auto/";
 
 
 
@@ -22,6 +22,14 @@ export function getCloudinaryRemoteFetchURL(props: getCloudinaryRemoteFetchURLTy
 }
 
 
+export function userIsMobile() {
+	let match = false;
+	if (typeof window !== 'undefined') {
+		const mediaQuery = window.matchMedia('(max-width: 768px)'); // Example breakpoint
+		match = mediaQuery.matches;
+	}
+	return match;
+}
 
 
 loadAllImagesFromCloudinary.propTypes = {

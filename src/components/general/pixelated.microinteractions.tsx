@@ -30,6 +30,30 @@ export function MicroInteractions(props: MicroInteractionsType) {
 	if (props.scrollfadeElements) ScrollFade(props.scrollfadeElements as string);
 }
 
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function isElementInViewport(el: Element) {
+	const rect = el.getBoundingClientRect();
+	return (
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+}
+
+
+function isElementPartiallyInViewport(el: Element) {
+	const rect = el.getBoundingClientRect();
+	return (
+		rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+		rect.bottom > 0 &&
+		rect.right > 0
+	);
+}
+
+
 function ScrollFade(elements: string) {
 	const options = {
 		root: null, // Observes intersection with the viewport
@@ -55,7 +79,18 @@ function ScrollFade(elements: string) {
 	// Select the elements you want to observe and initially hide them
 	const elementsToAnimate = document.querySelectorAll(elements);
 	elementsToAnimate.forEach((element) => {
-		element.classList.add('hidden'); // Apply initial hidden state
-		observer.observe(element); // Start observing each element
+		if( isElementPartiallyInViewport(element) ) {
+			console.log("Element partially in viewport:", element);
+			if (element.classList.contains('hidden')) {
+				element.classList.remove('hidden');
+			}
+			if (element.classList.contains('scrollfade')) {
+				element.classList.remove('scrollfade');
+			}
+		} else {
+			// Apply initial hidden state to elements NOT on the screen
+			element.classList.add('hidden'); // Apply initial hidden state
+			observer.observe(element); // Start observing each element
+		}
 	});
 }

@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "added defer for CSS, preload for images"
+git commit -m "perf fixes for partial viewport in microinteractions, img fetchpriority"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
