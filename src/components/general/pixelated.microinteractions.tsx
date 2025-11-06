@@ -80,7 +80,6 @@ function ScrollFade(elements: string) {
 	const elementsToAnimate = document.querySelectorAll(elements);
 	elementsToAnimate.forEach((element) => {
 		if( isElementPartiallyInViewport(element) ) {
-			console.log("Element partially in viewport:", element);
 			if (element.classList.contains('hidden')) {
 				element.classList.remove('hidden');
 			}

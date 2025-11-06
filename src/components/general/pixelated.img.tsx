@@ -57,12 +57,13 @@ export function preloadImages(){
 		link.rel = 'preload';
 		link.as = 'image';
 		link.href = image.src;
+		link.type = 'image/' + image.src.split('.').pop();
+		if(isPartiallyInViewport(image)) link.fetchPriority = 'high';
 		document.head.appendChild(link);
 		preloadImage(image.src);
 
 		// SET FETCHPRIORITY = HIGH FOR ALL IMAGES IN VIEWPORT
 		if( isPartiallyInViewport(image) ) {
-			console.log("Image partially in viewport, setting fetchpriority high:", image);
 			image.setAttribute('fetchpriority', 'high');
 		}
 		
@@ -75,6 +76,4 @@ function preloadImage(url: string) {
 	const img = new Image();
 	img.src = url;
 }
-
-// <link rel="preload" as="image" href="hero.jpeg">
 
