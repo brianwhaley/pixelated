@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
 
 	/* config options here */
+	experimental: {
+    	optimizeCss: true,
+  	},
 	transpilePackages: ['@brianwhaley/pixelated-components'],
 	trailingSlash: false,
 	typescript: {

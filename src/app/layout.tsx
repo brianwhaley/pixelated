@@ -11,7 +11,10 @@ import Nav from "@/app/elements/nav";
 import Search from '@/app/elements/search';
 import Footer from '@/app/elements/footer';
 import myRoutes from "@/app/data/routes.json";
+// LOAD THIS CSS FILE LAST
 import "./globals.css";
+// LOAD THIS JS FILE LAST
+import { deferAllCSS } from "./elements/pixelated.defer";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
@@ -26,6 +29,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 			product_env: "dlbon7tpq"
 		});
 		setOrigin(myOrigin);
+		document.addEventListener('DOMContentLoaded', deferAllCSS);
 	}, []);
 
 	useEffect(() => {
