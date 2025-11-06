@@ -4,22 +4,32 @@ import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components"
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
-import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
+import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
+import { deferAllCSS } from "@brianwhaley/pixelated-components";
+import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
 import Footer from "@/app/elements/footer";
 import myRoutes from "@/app/data/routes.json";
+import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 import "@/app/globals.css";
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
-	const [ origin, setOrigin ] = useState<string | null>(null);
-	// const [ host, setHost ] = useState<string | null>(null);
+
+	const [ url, setURL ] = useState<string>();
 	useEffect(() => {
-		setOrigin(window.location.origin);
-		// setHost(window.location.host || null);
+		document.addEventListener('DOMContentLoaded', deferAllCSS);
+		preloadImages();
+		deferAllCSS();
+		if (typeof window !== "undefined" ) setURL(window.location.href);
+		loadAllImagesFromCloudinary({ 
+			origin: window.location.origin,
+			product_env: "dlbon7tpq"
+		});
 	}, []);
+
 	useEffect(() => {
 		MicroInteractions({ 
 			buttonring: true,
@@ -39,18 +49,18 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 				<meta property="og:site_name" content="Palmetto Epoxy" />
 				<meta property="og:title" content={metadata?.title} />
-				<meta property="og:url" content={origin ?? undefined} />
+				<meta property="og:url" content={url} />
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={metadata?.description} />
 				<meta property="og:image" content="/images/palmetto-epoxy-logo.jpg" />
 				<meta property="og:image:width" content="1375" />
 				<meta property="og:image:height" content="851" />
 				<meta itemProp="name" content="Palmetto Epoxy" />
-				<meta itemProp="url" content={origin ?? undefined} />
+				<meta itemProp="url" content={url} />
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/palmetto-epoxy-logo.jpg" />
-				{ /* <link rel="alternate" href={origin ?? undefined} hrefLang="en-us" />
-				<link rel="canonical" href={origin ?? undefined} /> */ }
+				<link rel="canonical" href={url} />
+				{ /* <link rel="alternate" href={url} hrefLang="en-us" /> */ }
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="preload" fetchPriority="high" as="image" href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" type="image/webp"></link>
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
