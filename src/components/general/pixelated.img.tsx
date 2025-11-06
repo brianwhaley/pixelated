@@ -57,7 +57,7 @@ export function preloadImages(){
 		link.rel = 'preload';
 		link.as = 'image';
 		link.href = image.src;
-		link.type = 'image/' + image.src.split('.').pop();
+		// link.type = 'image/' + image.src.split('.').pop();
 		if(isPartiallyInViewport(image)) link.fetchPriority = 'high';
 		document.head.appendChild(link);
 		preloadImage(image.src);
