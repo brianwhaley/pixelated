@@ -15,7 +15,6 @@
     padding: 20px;
     align-items: stretch;
     width: 100%;
-    float: unset !important; /* fix for left / right style applied from global css */
 }
 
 .callout.vertical {
@@ -67,6 +66,11 @@
 
 .callout .calloutBody > * {
     padding: 5px 20px;
+}
+
+.callout.left,
+.callout.right {
+    float: unset !important; /* OVERRIDE pixelated.global.css */
 }
 
 .callout.left .calloutBody > * {

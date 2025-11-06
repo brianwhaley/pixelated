@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "remove link.type from img preload"
+git commit -m "fix for .callout.left and .callout.right colliding with .left, .right from pixelated.global.css"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
