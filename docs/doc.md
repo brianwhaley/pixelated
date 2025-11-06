@@ -26,7 +26,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "new css defer and img preload functions"
+git commit -m "fixes for img, css, and scrollfade microinteractions"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

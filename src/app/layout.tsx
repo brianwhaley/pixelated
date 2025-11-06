@@ -65,6 +65,8 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<link rel="preload" fetchPriority="high" as="image" href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" type="image/webp"></link>
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="manifest" href="/manifest.webmanifest" />
+				<link rel="preconnect" href="https://images.ctfassets.net/" />
+				<link rel="preconnect" href="https://res.cloudinary.com/" />
 			</head>
 			<body>
 				<header><Header /></header>
