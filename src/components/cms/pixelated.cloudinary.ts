@@ -38,7 +38,11 @@ export function loadAllImagesFromCloudinary(props: loadAllImagesFromCloudinaryTy
 		const currentSrc = img.getAttribute('src');
 		if (currentSrc && !currentSrc.startsWith(cloudinary_domain) && !currentSrc.startsWith('http')) {
 			// Assuming relative paths, prepend the CDN base URL
-			img.setAttribute('src', cloudinary_prefix + origin + "/" + currentSrc);
+			if(currentSrc.startsWith('/')){
+				img.setAttribute('src', cloudinary_prefix + origin + currentSrc);
+			} else {
+				img.setAttribute('src', cloudinary_prefix + origin + '/' + currentSrc);
+			}
 		} else if (currentSrc && currentSrc.startsWith('http') && origin && currentSrc.includes(origin)) {
 			// The image is already using an absolute URL from your original domain,
 			// replace the domain with the CDN domain.

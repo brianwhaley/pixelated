@@ -24,7 +24,9 @@ export * from './components/form/pixelated.formcomponents';
 export * from './components/form/pixelated.formvalidations';
 export * from './components/form/pixelated.hubspot';
 
+export * from './components/general/pixelated.css';
 export * from './components/general/pixelated.headers';
+export * from './components/general/pixelated.img';
 export * from './components/general/pixelated.loading';
 export * from './components/general/pixelated.microinteractions';
 export * from './components/general/pixelated.modal';
