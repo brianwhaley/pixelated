@@ -9,7 +9,19 @@ const allRoutes = myroutes.routes;
 // const menuItems = getAccordionMenuData(allRoutes);
 
 export default function Nav() {
+	// DIRTY FIX FOR CSS DEFER AND ACCORDION MENU
+	// copied from pixelated-components/src/components/menu/menu-accordion.tsx
+	const customCSS = `
+      	.accordionUp {
+			top: 60px;
+			transition: transform 0.55s ease-out 0.0s;
+			transform: translateY(-150%);
+		}
+    `;
 	return (
-		<MenuAccordion menuItems={allRoutes} />
+		<>
+			<style dangerouslySetInnerHTML={{ __html: customCSS }} />
+			<MenuAccordion menuItems={allRoutes} />
+		</>
 	);
 }

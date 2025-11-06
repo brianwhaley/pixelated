@@ -2,34 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
-import { getRouteByKey, loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
+import { getRouteByKey } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
-import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
+import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
+import { deferAllCSS } from "@brianwhaley/pixelated-components";
+import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
 import Nav from "@/app/elements/nav";
 import Search from '@/app/elements/search';
 import Footer from '@/app/elements/footer';
 import myRoutes from "@/app/data/routes.json";
-// LOAD THIS CSS FILE LAST
+import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
+// LOAD THIS AS LAST CSS FILE
 import "./globals.css";
-// LOAD THIS JS FILE LAST
-import { deferAllCSS } from "./elements/pixelated.defer";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
-	const [ origin, setOrigin ] = useState<string>();
 
+	const [ url, setURL ] = useState<string>();
 	useEffect(() => {
-		const myOrigin = window.location.origin ;
+		document.addEventListener('DOMContentLoaded', deferAllCSS);
+		preloadImages();
+		deferAllCSS();
+		if (typeof window !== "undefined" ) setURL(window.location.href);
 		loadAllImagesFromCloudinary({ 
-			origin: myOrigin,
+			origin: window.location.origin,
 			product_env: "dlbon7tpq"
 		});
-		setOrigin(myOrigin);
-		document.addEventListener('DOMContentLoaded', deferAllCSS);
 	}, []);
 
 	useEffect(() => {
@@ -53,21 +55,26 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 				<meta property="og:site_name" content="Pixelated" />
 				<meta property="og:title" content={metadata?.title} />
-				<meta property="og:url" content={origin ?? undefined} />
+				<meta property="og:url" content={url} />
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={metadata?.description} />
 				<meta property="og:image" content="/images/pix/pix-bg-512.gif" />
 				<meta property="og:image:width" content="512" />
 				<meta property="og:image:height" content="512" />
 				<meta itemProp="name" content="Pixelated" />
-				<meta itemProp="url" content={origin ?? undefined} />
+				<meta itemProp="url" content={url} />
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/pix-bg-512.gif" />
-				{ /* <link rel="alternate" href={origin ?? undefined} hrefLang="en-us" />
-				<link rel="canonical" href={origin ?? undefined} /> */ }
+				<link rel="canonical" href={url} />
+				{ /* <link rel="alternate" href={url} hrefLang="en-us" /> */ }
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="manifest" href="/manifest.webmanifest" />
+				<link rel="preconnect" href="https://res.cloudinary.com/" />
+				<link rel="preconnect" href="https://farm2.static.flickr.com" />
+				<link rel="preconnect" href="https://farm6.static.flickr.com" />
+				<link rel="preconnect" href="https://farm8.static.flickr.com" />
+				<link rel="preconnect" href="https://farm66.static.flickr.com" />
 			</head>
 			<body>
 				<header>
