@@ -113,15 +113,9 @@ export default function Home() {
 
 			<section className="section-alt" id="social-section">
 				<div className="section-container">
-					<SocialTags />
-					<div className="row-1col">
-						<div className="gridItem">
-							<div className="callout-body">
-								Links to each of my social media accounts and a few recent postings from each,
-								including my Blog, Facebook, Google Business Profile and Google Reviews, 
-								Instagram, LinkedIn, X / Twitter, and more.
-								<br/>
-							</div>
+					<div className="row-12col">
+						<div className="grid-s3-e8">
+							<SocialTags />
 						</div>
 					</div>
 				</div>

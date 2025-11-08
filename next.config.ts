@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
 	async redirects() {
 		return [
 			{ source: '/buzzwordbingo', destination: '/', permanent: true, },
+			{ source: '/contact', destination: '/schedule', permanent: true, },
+			{ source: '/contactus', destination: '/schedule', permanent: true, },
 			{ source: '/customsgallery', destination: '/portfolio', permanent: true, },
 			{ source: '/customsgallery.html', destination: '/portfolio', permanent: true, },
 			{ source: '/customsunglasses', destination: '/portfolio', permanent: true, },

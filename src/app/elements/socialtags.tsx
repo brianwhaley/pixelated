@@ -11,7 +11,7 @@ export default function SocialTags() {
 
 			<div className="row-12col">
 				<div className="grid-s1-e12">
-					<PageSectionHeader url="" title="Our Social Media" />
+					<PageSectionHeader url="" title="Follow us on Social Media" />
 				</div>
 			</div>
 
