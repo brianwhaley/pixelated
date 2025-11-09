@@ -1,21 +1,8 @@
 import { MenuSimple } from '../components/menu/pixelated.menu-simple';
+import myRoutes from '../data/routes2.json';
+const allRoutes = myRoutes.routes;
 import '../components/menu/pixelated.menu-accordion.css';
 import '../css/pixelated.global.css';
-
-const menuItems = {
-	Home: '/index.html',
-	Resume: '/resume.html',
-	Readme: '/readme.html',
-	'Work Portfolio': '/gallery.html?tag=portfolio-all',
-	'PixelatedTech Blog': 'https://blog.pixelated.tech',
-	Stkr: '/stkr.html',
-	NerdJokes: '/nerdjokes.html',
-	'Social Media': '/socialmedia.html',
-	Photography: '/photography.html',
-	'Photo Gallery': '/gallery.html?tag=pixelatedviewsgallery',
-	'Custom Sunglasses': '/customsunglasses.html',
-	Recipes: '/recipes.html'
-};
 
 export default {
 	title: 'Menu',
@@ -24,6 +11,6 @@ export default {
 
 export const Simple = {
 	args: {
-		menuItems
+		menuItems: allRoutes
 	}
 };

@@ -14,24 +14,32 @@ export type MenuItem = {
 	name: string,
 	path: string,
 	target?: string,
+	hidden?: boolean,
+	routes?: MenuItem[],
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
-	let myItems = [];
+	const myItems: React.ReactNode[] = [];
+	let index = 0;
 	for (const itemKey in menuData) {
 		const myItem = menuData[itemKey];
+		const safeName = (myItem && myItem.name) ? String(myItem.name).replace(/\s+/g, '_') : 'item';
+		const keyBase = `${safeName}-${itemKey}-${index}`;
 		// if ( typeof myItem === 'object' && myItem !== null ){
 		if ( typeof myItem === 'object' && myItem.routes ) {
-			// MENU GROUP
+			// MENU GROUP - push the toggle and the nested group separately with unique keys
 			myItems.push(
-				<MenuAccordionItem key={myItem.name + "-i"} name={"▶ " + myItem.name} href={''} />,
-				<MenuAccordionGroup key={myItem.name + "-g"} menuItems={myItem} hidden={true} />
+				<MenuAccordionItem key={`${keyBase}-parent`} name={"▶ " + myItem.name} href={''} />,
+				<MenuAccordionGroup key={`${keyBase}-group`} menuItems={myItem} hidden={true} />
 			);
 		} else {
 			// INDIVIDUAL MENU ITEM
-			myItems.push(<MenuAccordionItem key={myItem.name} name={myItem.name} href={myItem.path} target={myItem.target} />);
-		};
+			myItems.push(
+				<MenuAccordionItem key={`${keyBase}-item`} name={myItem.name} href={myItem.path} target={myItem.target} hidden={myItem.hidden} />
+			);
+		}
+		index++;
 	}
 	return myItems;
 }
@@ -140,7 +148,7 @@ export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTy
 export function MenuAccordionGroup(props: MenuAccordionGroupType) {
 	const myMenuItems = ((props.menuItems as any).routes) ? (props.menuItems as any).routes : props.menuItems;
 	return (
-		<ul className={(props.hidden ? "menuHide" : "menuShow")} >
+		<ul className={(props.hidden ? "menuHide" : "menuShow")} key={"menu-group-" + (props.menuItems as any).name}>
 			{ generateMenuItems( myMenuItems, props.hidden ?? false ) }
 		</ul>
 	);
@@ -154,17 +162,19 @@ MenuAccordionItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 	target: PropTypes.string,
+	hidden: PropTypes.bool,
 };
 export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
 export function MenuAccordionItem(props: MenuAccordionItemType) {
+	if (props.hidden) return null;
 	if(props.href && props.href.length > 0) {
 		if (props.target && props.target.length > 0) { 
-			return ( <li><a href={props.href} target={props.target}>{props.name}</a></li> );
+			return ( <li key={"menu-item-" + props.name}><a href={props.href} target={props.target}>{props.name}</a></li> );
 		} else {
-			return ( <li><a href={props.href}>{props.name}</a></li> );
+			return ( <li key={"menu-item-" + props.name}><a href={props.href}>{props.name}</a></li> );
 		}
 	} else {
-		return ( <li><a>{props.name}</a></li> );
+		return ( <li key={"menu-item-" + props.name}><a>{props.name}</a></li> );
 	} 
 }
 

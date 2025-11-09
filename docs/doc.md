@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix for .callout.left and .callout.right colliding with .left, .right from pixelated.global.css"
+git commit -m "improvements to simple menu, accordion menu, start global vars for css, callout stories, menu stories"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
