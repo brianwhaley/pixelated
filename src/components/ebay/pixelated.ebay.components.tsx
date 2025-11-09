@@ -7,6 +7,7 @@ import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getS
 import { AddToShoppingCart,  } from "../shoppingcart/pixelated.shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary";
+import { Loading , ToggleLoading } from "../general/pixelated.loading";	
 import "../../css/pixelated.grid.scss";
 import "./pixelated.ebay.css";
 const debug = false;
@@ -71,28 +72,33 @@ export function EbayItems(props: EbayItemsType) {
 
 	useEffect(() => {
 		if (debug) console.log("Running useEffect");
+		ToggleLoading(true);
 		fetchItems();
+		ToggleLoading(false);
 	}, []);
 
 	if (items.length > 0 ) {
 		return (
-			<div className="section-container">
-				<div className="ebayItemsHeader">
-					<EbayItemHeader title={`${items.length} Store Items`} />
+			<>
+				<Loading />
+				<div className="section-container">
+					<div className="ebayItemsHeader">
+						<EbayItemHeader title={`${items.length} Store Items`} />
+					</div>
+					<div className="ebayItemsHeader">
+						<EbayListFilter aspects={aspects} callback={fetchItems} />
+					</div>
+					<div id="ebayItems" className="ebayItems">
+						{ paintItems({ items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
+					</div>
 				</div>
-				<div className="ebayItemsHeader">
-					<EbayListFilter aspects={aspects} callback={fetchItems}/>
-				</div>
-				<div id="ebayItems" className="ebayItems">
-					{ paintItems( { items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
-				</div>
-			</div>
+			</>
 		);
 	} else {
 		return (
 			<div className="section-container">
 				<div id="ebayItems" className="ebayItems">
-					<div className="centered">Loading...</div>
+					<Loading />
 				</div>
 			</div>
 		);

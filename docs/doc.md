@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "improvements to simple menu, accordion menu, start global vars for css, callout stories, menu stories"
+git commit -m "add Loading component to eBay Listing component"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
