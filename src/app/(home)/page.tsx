@@ -111,7 +111,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="section-alt" id="social-section">
+			<section className="section-alt3" id="social-section">
 				<div className="section-container">
 					<div className="row-12col">
 						<div className="grid-s3-e8">
@@ -147,7 +147,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="section-alt2" id="spotlight-section">
+			<section className="section-alt" id="spotlight-section">
 				<div className="section-container">
 
 					<div className="row-12col">

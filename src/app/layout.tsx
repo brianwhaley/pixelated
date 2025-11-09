@@ -8,6 +8,7 @@ import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
 import { deferAllCSS } from "@brianwhaley/pixelated-components";
 import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
+import HeaderNav from "./elements/headernav";
 import Nav from "@/app/elements/nav";
 import Search from '@/app/elements/search';
 import Footer from '@/app/elements/footer';
@@ -16,6 +17,7 @@ import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 // LOAD THIS AS LAST CSS FILE
 import "./globals.css";
+
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
@@ -79,7 +81,13 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 			<body>
 				<header>
 					<div id="page-header" className="fixed-header"><Header /></div>
+					<div id="page-header-nav" className="fixed-header-nav">
+						<div className="section-container">
+							<HeaderNav />
+						</div>
+					</div>
 					<div id="fixed-header-spacer"></div>
+					<div id="fixed-header-nav-spacer"></div>
 					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
 				</header>
 				<nav><Nav /></nav>

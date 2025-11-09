@@ -53,7 +53,7 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "content updates to schedule page, social component"
+git commit -m "simple menu for desktop, accordion menu for mobile, style variables"
 git push pixelated dev --tags
 git push pixelated dev:main
 
