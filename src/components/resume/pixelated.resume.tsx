@@ -169,7 +169,9 @@ export function ResumeEvents(props: ResumeEventsType) {
 			<span className="p-org">{myLocation.org}</span>	
 			{ (myLocation.locality[0]) ? <span className="p-locality">, {myLocation.locality[0]}</span> : null }
 			{ (myLocation.region[0]) ? <span className="p-region">, {myLocation.region[0]} </span> : null }
-			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank" rel="noreferrer"><img src="/images/icons/link.png" className='u-url-icon' /></a> : null }
+			{ (myLocation.url[0]) ? <a href={myLocation.url[0]} target="_blank" rel="noreferrer">
+				<img src="/images/icons/link.png" title={myLocation.url[0]} alt={myLocation.url[0]} className='u-url-icon' />
+				</a> : null }
 		</li>;
 		// ADD TO THE ARRAY
 		myElems.push(myElem);
@@ -338,8 +340,15 @@ export function ResumeProjects(props: ResumeProjectsType) {
 		const myProjects = myEvent.properties.projects;
 		const projects = myProjects?.map((project: any, iKey: string) =>
 			<li key={"i" + iKey} className="p-project">
-				{ (project.properties.url[0]) ? <a href={project.properties.url[0]} target="_blank" className="u-url" rel="noreferrer"><span className="p-name">{project.properties.name[0]}</span> </a> : <span className="p-name">{project.properties.name[0]}</span> }
-				{' '} { (project.properties.photo[0]) ? <a href={project.properties.photo[0]} target="_blank" className="u-photo" rel="noreferrer"><img src='/images/icons/img.png' className='u-photo-icon' /></a> : null}
+				{ (project.properties.url[0]) 
+					? <a href={project.properties.url[0]} target="_blank" className="u-url" rel="noreferrer">
+						<span className="p-name">{project.properties.name[0]}</span>
+					</a> 
+					: <span className="p-name">{project.properties.name[0]}</span> }
+				{' '} { (project.properties.photo[0]) 
+					? <a href={project.properties.photo[0]} target="_blank" className="u-photo" rel="noreferrer">
+						<img src='/images/icons/img.png' title={project.properties.name[0]} alt={project.properties.name[0]} className='u-photo-icon' /></a> 
+					: null}
 				{ (project.properties.note[0]) ? <div className="p=note">{project.properties.note[0]}</div> : null}
 			</li>
 		);

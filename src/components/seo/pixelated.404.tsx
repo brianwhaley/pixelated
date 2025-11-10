@@ -29,7 +29,10 @@ export function FourOhFour (props: FourOhFourType) {
 				</div>	
 				<div className="fofImageContainer">
 					<div className="fofImageWrapper">
-						<img src={cloudinaryURL} alt={"Page Not Found - " + images[randomIndex].description} />
+						<img src={cloudinaryURL} 
+							title={"Page Not Found - " + images[randomIndex].description} 
+							alt={"Page Not Found - " + images[randomIndex].description} 
+						/>
 					</div>
 				</div>
 			</>

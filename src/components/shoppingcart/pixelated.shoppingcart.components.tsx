@@ -232,7 +232,7 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 				{ thisItem.itemURL && thisItem.itemImageURL
 					? <a href={thisItem.itemURL} target={thisItemTarget} rel="noopener noreferrer"><img src={thisItem.itemImageURL} alt={thisItem.itemTitle} /></a>
 					: thisItem.itemImageURL 
-						? <img src={thisItem.itemImageURL} alt={thisItem.itemTitle} />
+						? <img src={thisItem.itemImageURL} title={thisItem.itemTitle} alt={thisItem.itemTitle} />
 						: <></>
 				}
 			</div>
@@ -338,7 +338,7 @@ export function CartButton(props: {href: string}) {
 		<div className="pixCart">
 			<button className="pixCartButton" type="button" id="pixCartButton" 
 				onClick={()=>window.location.href=props.href} >
-				<img src="/images/icons/cart-icon.png" alt="View Shopping Cart" />
+				<img src="/images/icons/cart-icon.png" title="View Shopping Cart" alt="View Shopping Cart" />
 				<span>&nbsp;{`(${cartCount})`}</span>
 			</button>
 		</div>

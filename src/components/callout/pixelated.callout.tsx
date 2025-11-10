@@ -56,10 +56,12 @@ export function Callout({
 
 	const image = <div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
 		{ (url && !imgClick)
-			? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}><img src={img} alt={imgAlt ?? title ?? undefined} /></a>
+			? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
+				<img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
+			</a>
 			: (url && imgClick)
-				? <img src={img} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
-				: <img src={img} alt={imgAlt ?? title ?? undefined} />
+				? <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
+				: <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
 		}
 	</div>;
 

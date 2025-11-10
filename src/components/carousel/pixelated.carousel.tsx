@@ -165,7 +165,7 @@ function CarouselCard( props: CarouselCardType ) {
 	const cardBody = (
 		< div draggable='false'>
 			{ (props.link) ? <div draggable='false' className="carouselCardLink" /> : null }
-			{ (props.image) ? <div draggable='false' className="carouselCardImage"><img draggable='false' src={props.image} alt={props?.imageAlt} className={imgFit} /></div> : null }
+			{ (props.image) ? <div draggable='false' className="carouselCardImage"><img draggable='false' src={props.image} title={props?.imageAlt} alt={props?.imageAlt} className={imgFit} /></div> : null }
 			{ (props.headerText) ? <div draggable='false' className="carouselCardHeader"><h3 draggable='false'>{props.headerText}</h3></div> : null  }
 			{ (props.subHeaderText) ? <div draggable='false' className="carouselCardSubHeader"><h4 draggable='false'>{props.subHeaderText}</h4></div> : null  }
 			{ (props.bodyText) ? <div draggable='false' className="carouselCardBody">{props.bodyText}</div> : null  }

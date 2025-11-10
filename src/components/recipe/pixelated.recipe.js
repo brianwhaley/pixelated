@@ -120,7 +120,7 @@ export function Recipe (props) {
 	const instructions = recipe.instructions.map((instruction, iKey) =>
 		<li key={iKey} className="p-instruction">{instruction}</li>
 	);
-	const recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} alt={recipe.name} /> : null);
+	const recipeImage = (recipe.photo.length > 0 ? <img className='u-photo' src={recipe.photo} title={recipe.name} alt={recipe.name} /> : null);
 	const isHidden = ((props.showOnly.length > 0) && (!(props.id.includes(props.showOnly))) ? { display: 'none' } : { display: 'initial' });
 	/* event.preventDefault(); */
 	
@@ -210,7 +210,7 @@ export function BackToTop() {
 	return (
 		<div className="backToTop">
 			<a href="#top" onClick={scrollToTop}>
-				<div><img src="/images/icons/up.jpg" alt="Back To Top" /></div>
+				<div><img src="/images/icons/up.jpg" title="Back To Top" alt="Back To Top" /></div>
 				<div>Back To Top</div>
 			</a>
 		</div>

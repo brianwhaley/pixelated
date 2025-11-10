@@ -48,7 +48,7 @@ export default function TimelineItem(props: TimelineItemType) {
 			<div className="timelineContent">
 				<div className="row-3col">
 					<div className="grid-s1-e1">
-				        <img src={props.image ?? undefined} alt={props.title} />
+				        <img src={props.image ?? undefined} title={props.title} alt={props.title} />
 					</div>
 					<div className="grid-s2-e3">
 						<h2>{props.title}</h2>

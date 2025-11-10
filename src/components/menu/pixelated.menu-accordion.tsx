@@ -196,7 +196,7 @@ export function MenuAccordionButton() {
 	return (
 		<div className="panelMenuButton pull-left" id="panelMenuButton" onClick={slideMobilePanel}>
 			<span className="hamburger textOutline">|||</span>
-			{ /* <img src="/images/icons/mobile-menu2.png" alt="Mobile Menu"/> */ }
+			{ /* <img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/> */ }
 		</div>
 
 	);

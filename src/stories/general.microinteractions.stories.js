@@ -51,6 +51,7 @@ const PageMicroInteractions = () => {
 			<div>imgtwist : </div>
 			<img 
 				src="https://www.pixelated.tech/images/pix/pix-bg-512.png" 
+				title="Image Hue" 
 				alt="Image Hue" 
 				style={{width: '150px', height: '150px'}} />
 			<br/><br/>

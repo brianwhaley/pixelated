@@ -10,7 +10,7 @@ export default {
 const PageModal = () => {
 	const [modalContent, setModalContent] = useState();
 	const handleImageClick = (event, url) => {
-		const myContent = <img src={url} alt="Modal Image" />;
+		const myContent = <img src={url} title="Modal Image" alt="Modal Image" />;
 		setModalContent(myContent);
 		handleModalOpen(event);
   	};

@@ -101,7 +101,9 @@ function FormTooltip(props: FormTooltipType) {
 				? <>
 					<div id={thisID} className={`tooltip ${props.className || ''}`}>
 						<a href="#" className="tooltipIcon" onClick={toggleTooltip}>
-							<img src="/images/icons/tooltip-icon-2.png" />
+							<img title={props.id + " - " + props.text} 
+								alt={props.id + " - " + props.text} 
+								src="/images/icons/tooltip-icon-2.png" />
 						</a>
 						<div className="tooltipText">{props.text}</div>
 					</div>

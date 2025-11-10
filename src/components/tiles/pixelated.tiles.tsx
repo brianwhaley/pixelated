@@ -49,7 +49,7 @@ function Tile( props: TileType ) {
 		<div className="tile" id={'tile-' + props.index}>
 			{ (props.image) ? 
 				<div className="tileImage">
-					<img src={props.image} alt={props?.imageAlt ?? undefined} />
+					<img src={props.image} title={props?.imageAlt ?? undefined} alt={props?.imageAlt ?? undefined} />
 					<div className="tileImageOverlay">
 						<div className="tileImageOverlayText">
 							<div className="tileImageOverlayTitle">{props.imageAlt}</div>

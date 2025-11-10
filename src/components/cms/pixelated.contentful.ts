@@ -5,28 +5,25 @@ const debug = false;
 const ctfQSParams = "?fm=webp&q=50";
 
 export type ContentfulApiType = {
+	proxyURL?: string;
 	base_url: string;
 	space_id: string;
 	environment: string;
 	access_token: string;
 };
 
-/* ========== GET CONTENTFUL CARDS ========== */
-getContentfulEntries.propTypes = {
-	apiProps: PropTypes.shape({
-		base_url: PropTypes.string.isRequired,
-		space_id: PropTypes.string.isRequired,
-		environment: PropTypes.string.isRequired,
-		access_token: PropTypes.string.isRequired,
-	}).isRequired,
+
+
+
+/* ========== CALL CONTENTFUL DELIVERY API ========== */
+callContentfulDeliveryAPI.propTypes = {
+	full_url: PropTypes.string.isRequired,
 };
-export type getContentfulEntriesType = InferProps<typeof getContentfulEntries.propTypes>;
-export async function getContentfulEntries(props: getContentfulEntriesType) {
-	const { base_url, space_id, environment, access_token } = props.apiProps;
-	// const full_url = base_url + "/spaces/" + space_id + "/environments/" + environment + "/content_types/" + contentType + "?access_token=" + access_token ;
-	const full_url = base_url + "/spaces/" + space_id + "/environments/" + environment + "/entries?access_token=" + access_token ;
+export type callContentfulDeliveryAPIType = InferProps<typeof callContentfulDeliveryAPI.propTypes>;
+export async function callContentfulDeliveryAPI(props: callContentfulDeliveryAPIType) {
+	if(debug) console.log("Calling Contentful Delivery API:", props.full_url);
 	try {
-		const response = await fetch(full_url);
+		const response = await fetch(props.full_url);
 		if (!response.ok) {
 			throw new Error(`Response status: ${response.status}`);
 		}
@@ -39,6 +36,32 @@ export async function getContentfulEntries(props: getContentfulEntriesType) {
 			console.error(error);
 		}
 	}
+	return null;
+} 
+
+
+
+
+
+/* ========== GET CONTENTFUL CARDS ========== */
+getContentfulEntries.propTypes = {
+	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
+		base_url: PropTypes.string.isRequired,
+		space_id: PropTypes.string.isRequired,
+		environment: PropTypes.string.isRequired,
+		access_token: PropTypes.string.isRequired,
+	}).isRequired,
+};
+export type getContentfulEntriesType = InferProps<typeof getContentfulEntries.propTypes>;
+export async function getContentfulEntries(props: getContentfulEntriesType) {
+	const { base_url, space_id, environment, access_token } = props.apiProps;
+	// const full_url = base_url + "/spaces/" + space_id + "/environments/" + environment + "/content_types/" + contentType + "?access_token=" + access_token ;
+	const full_url = base_url + 
+		"/spaces/" + space_id + 
+		"/environments/" + environment + 
+		"/entries?access_token=" + access_token ;
+	return await callContentfulDeliveryAPI({ full_url });
 }
 /* 
 https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/entries/entries-collection/get-all-entries-of-a-space/console/js-plain
@@ -49,6 +72,7 @@ https://www.contentful.com/developers/docs/references/content-delivery-api/#/ref
 /* ========== GET CONTENTFUL CARDS BY TYPE ========== */
 getContentfulEntriesByType.propTypes = {
 	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
 		base_url: PropTypes.string.isRequired,
 		space_id: PropTypes.string.isRequired,
 		environment: PropTypes.string.isRequired,
@@ -68,6 +92,64 @@ export async function getContentfulEntriesByType(props: getContentfulEntriesByTy
 	allEntries.items = typeEntries;
 	return allEntries;
 }
+
+
+
+
+
+
+
+/* ========== GET CONTENTFUL CARDS BY TYPE ========== */
+getContentfulContentType.propTypes = {
+	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
+		base_url: PropTypes.string.isRequired,
+		space_id: PropTypes.string.isRequired,
+		environment: PropTypes.string.isRequired,
+		access_token: PropTypes.string.isRequired,
+	}).isRequired,
+	contentType: PropTypes.string.isRequired,
+};
+export type getContentfulContentTypeType = InferProps<typeof getContentfulContentType.propTypes>;
+export async function getContentfulContentType(props: getContentfulContentTypeType) {
+	const { base_url, space_id, environment, access_token } = props.apiProps;
+	const full_url = base_url + 
+		"/spaces/" + space_id + 
+		"/environments/" + environment + 
+		"/content_types/" + props.contentType + 
+		"?access_token=" + access_token ;
+	return await callContentfulDeliveryAPI({ full_url });
+}
+
+
+
+
+
+
+
+/* ========== GET CONTENTFUL ENTRY BY ENTRY ID ========== */
+getContentfulEntryByEntryID.propTypes = {
+	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
+		base_url: PropTypes.string.isRequired,
+		space_id: PropTypes.string.isRequired,
+		environment: PropTypes.string.isRequired,
+		access_token: PropTypes.string.isRequired,
+	}).isRequired,
+	entry_id: PropTypes.string.isRequired,
+};
+export type getContentfulEntryByEntryIDType = InferProps<typeof getContentfulEntryByEntryID.propTypes>;
+export async function getContentfulEntryByEntryID(props: getContentfulEntryByEntryIDType) {
+	const { base_url, space_id, environment, access_token } = props.apiProps;
+	const full_url = base_url + 
+		"/spaces/" + space_id + 
+		"/environments/" + environment + 
+		"/entries/" + props.entry_id + 
+		"?access_token=" + access_token ;
+	return await callContentfulDeliveryAPI({ full_url });
+}
+
+
 
 
 
@@ -92,9 +174,14 @@ export async function getContentfulEntryByField(params: ContentfulCardParams) {
 
 
 
+
+
+
+
 /* ========== GET CONTENTFUL CARD TITLES ========== */
 getContentfulFieldValues.propTypes = {
 	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
 		base_url: PropTypes.string.isRequired,
 		space_id: PropTypes.string.isRequired,
 		environment: PropTypes.string.isRequired,
@@ -144,6 +231,7 @@ export async function getContentfulImagesFromEntries(props: getContentfulImagesF
 /* ========== GET CONTENTFUL ASSETS ========== */
 getContentfulAssets.propTypes = {
 	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
 		base_url: PropTypes.string.isRequired,
 		space_id: PropTypes.string.isRequired,
 		environment: PropTypes.string.isRequired,
@@ -153,26 +241,21 @@ getContentfulAssets.propTypes = {
 export type getContentfulAssetsType = InferProps<typeof getContentfulAssets.propTypes>;
 export async function getContentfulAssets(props: getContentfulAssetsType){
 	const { base_url, space_id, environment, access_token } = props.apiProps;
-	const full_url = base_url + "/spaces/" + space_id + "/environments/" + environment + "/assets?access_token=" + access_token ;
-	try {
-		const response = await fetch(full_url);
-		if (!response.ok) {
-			throw new Error(`Response status: ${response.status}`);
-		}
-		const json = await response.json();
-		return json;
-	} catch (error) {
-		if (error instanceof Error) {
-			console.error(error.message);
-		} else {
-			console.error(error);
-		}
-	}
+	const full_url = base_url + 
+		"/spaces/" + space_id + 
+		"/environments/" + environment + 
+		"/assets?access_token=" + access_token ;
+	return await callContentfulDeliveryAPI({ full_url });
 }
+
+
+
+
 
 /* ========== GET CONTENTFUL ASSET URLS ========== */
 getContentfulAssetURLs.propTypes = {
 	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
 		base_url: PropTypes.string.isRequired,
 		space_id: PropTypes.string.isRequired,
 		environment: PropTypes.string.isRequired,
@@ -189,7 +272,7 @@ export async function getContentfulAssetURLs(props: getContentfulAssetURLsType) 
 			imageAlt: asset.fields.description,
 		});
 	}
-	console.log("Asset URLs: ", assetURLs);
+	if (debug) console.log("Asset URLs: ", assetURLs);
 	return assetURLs;
 }
 
@@ -198,6 +281,7 @@ export async function getContentfulAssetURLs(props: getContentfulAssetURLsType) 
 /* ========== GET CONTENTFUL DISCOUNT CODES ========== */
 getContentfulDiscountCodes.propTypes = {
 	apiProps: PropTypes.shape({
+		proxyURL: PropTypes.string,
 		base_url: PropTypes.string.isRequired,
 		space_id: PropTypes.string.isRequired,
 		environment: PropTypes.string.isRequired,
@@ -235,5 +319,3 @@ export async function getContentfulDiscountCodes(props: getContentfulDiscountCod
 		return [];
 	}
 }
-
-

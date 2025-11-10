@@ -67,7 +67,7 @@ export function MenuExpandoButton() {
 
 	return (
 		<div className="menuExpandoButton" id="menuExpandoButton" onClick={handleMenuExpandoButtonClick}>
-			<img src="/images/icons/mobile-menu2.png" alt="Mobile Menu"/>
+			<img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/>
 		</div>
 	);
 }

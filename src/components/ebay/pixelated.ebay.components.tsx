@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel/pixelated.carousel';
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./pixelated.ebay.functions";
-import { AddToShoppingCart,  } from "../shoppingcart/pixelated.shoppingcart.functions";
+import { AddToShoppingCart } from "../shoppingcart/pixelated.shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary";
 import { Loading , ToggleLoading } from "../general/pixelated.loading";	
@@ -81,16 +81,14 @@ export function EbayItems(props: EbayItemsType) {
 		return (
 			<>
 				<Loading />
-				<div className="section-container">
-					<div className="ebayItemsHeader">
-						<EbayItemHeader title={`${items.length} Store Items`} />
-					</div>
-					<div className="ebayItemsHeader">
-						<EbayListFilter aspects={aspects} callback={fetchItems} />
-					</div>
-					<div id="ebayItems" className="ebayItems">
-						{ paintItems({ items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
-					</div>
+				<div className="ebayItemsHeader">
+					<EbayItemHeader title={`${items.length} Store Items`} />
+				</div>
+				<div className="ebayItemsHeader">
+					<EbayListFilter aspects={aspects} callback={fetchItems} />
+				</div>
+				<div id="ebayItems" className="ebayItems">
+					{ paintItems({ items: items, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
 				</div>
 			</>
 		);
@@ -206,8 +204,8 @@ export function EbayListItem(props: EbayListItemType) {
 		<div className="ebayItem row-12col">
 			<div className="ebayItemPhoto grid-s1-e4">
 				{ itemURL
-					? <a href={itemURL} target={itemURLTarget} rel="noopener noreferrer"><img src={itemImage} alt={thisItem.title} /></a>
-					: <img src={itemImage} alt={thisItem.title} />
+					? <a href={itemURL} target={itemURLTarget} rel="noopener noreferrer"><img src={itemImage} title={thisItem.title} alt={thisItem.title} /></a>
+					: <img src={itemImage} title={thisItem.title} alt={thisItem.title} />
 				}
 			</div>
 			<div className="ebayItemBody grid-s5-e8">
@@ -301,7 +299,7 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 		const shoppingCartItem = getShoppingCartItem({thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
 		shoppingCartItem.itemURL = itemURL;
 		return (
-			<div className="section-container">
+			<>
 				<div className="ebayItem row-12col">
 					<div className="ebayItemHeader grid-s1-e12">
 						{ itemURL
@@ -347,15 +345,15 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 
 					</div>
 				</div>
-			</div>
+			</>
 		);
 	} else {
 		return (
-			<div className="section-container">
+			<>
 				<div id="ebayItems" className="ebayItems">
 					<div className="centered">Loading...</div>
 				</div>
-			</div>
+			</>
 		);
 	}
 }

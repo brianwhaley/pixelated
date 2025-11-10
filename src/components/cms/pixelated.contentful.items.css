@@ -1,0 +1,131 @@
+/* ========================================
+=========    CONTENTFUL ITEMS     =========
+======================================== */
+
+.contentfulItems {
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+	.contentfulItems {
+		padding: 20px;
+	}
+}
+
+.contentfulItemsHeader {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#contentfulItemsFilter {
+    font-size: 0.8em;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 480px) {
+    #contentfulItemsFilter {
+        text-align: left;
+    }
+	.filterInput { 
+        display: block;
+    }
+}
+
+.contentfulItem {
+    border: 1px solid #DDD;
+    text-align: left;
+    padding: 20px 5px !important;
+}
+
+@media screen and (max-width: 480px) {
+	.contentfulItem {
+		text-align: center;
+	}
+}
+
+.contentfulItemBody {
+    grid-auto-rows: min-content;
+    margin: 10px 0;
+}
+
+.contentfulItemHeader {
+    margin: 0 auto;
+}
+
+.contentfulItemHeader h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+/* ===== PHOTO CAROUSEL ON CONTENTFUL ITEM DETAIL PAGE ===== */
+.contentfulItemPhotoCarousel {
+    width: 100%;
+    height: 400px;
+}
+
+.contentfulItemPhotoCarousel { 
+
+    .carouselContainer {
+        background: none;
+        border: none;
+        height: 400px;
+    }
+
+    .carouselCardsContainer {
+        height: 100%;
+    }
+
+    .carouselButtons,
+    .carouselButton {
+        display: inline-block;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+	.contentfulItemPhotoCarousel {
+        height: 350px;
+    }
+    .contentfulItemPhotoCarousel .carouselContainer {
+        height: 300px;
+    }
+}
+
+.contentfulItemPhoto {
+    overflow: hidden;
+}
+
+.contentfulItemPhoto img {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.contentfulItems .contentfulItemDetails {
+    display: none;
+}
+
+.contentfulItemDetails {
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 480px) {
+	.contentfulItemDetails {
+        text-align: left;
+    }
+}
+
+.contentfulItemPrice{
+    font-size: 1.5em;
+    font-weight: bold;
+    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
+    border: 2px solid #CCC;
+    border-radius: 5px;
+    display: inline-block;
+	margin: 0 auto;
+    padding: 5px 20px;
+    /* border: 1px solid #999;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; */
+}

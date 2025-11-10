@@ -20,7 +20,7 @@ export function Markdown(props: { markdowndata: any; }) {
 			.replace(/^#{2}\s(.*$)/gim, '<h2>$1</h2>') // h2 tag
 			.replace(/^#{1}\s(.*$)/gim, '<h1>$1</h1>') // h1 tag
 			.replace(/(=|-|\*){3}/gim, '<hr />') // horizontal rule
-			.replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />") // images
+			.replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' title='$1' src='$2' />") // images
 			.replace(/\[([^[]+)\]\((.*)\)/gim, '<a href="$2">$1</a>') // links
 			.replace(/^\*{1}\s+(.*$)/gim, '<ul><li>$1</li></ul>') // unordered list
 			.replace(/<\/ul>\s?<ul>/g, '') // duplicate unordered list

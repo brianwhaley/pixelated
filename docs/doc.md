@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add Loading component to eBay Listing component"
+git commit -m "first version of Contentful List Grid and Store Item components"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

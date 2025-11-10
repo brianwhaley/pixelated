@@ -274,7 +274,7 @@ export function SocialCard(props: SocialCardType) {
 			<div className="card">
 				<div className="cardTitle">
 					<a href={props.card.link} target="_blank" rel="noopener noreferrer">
-						<img className="cardIcon" src={props.iconSrc} alt={props.iconSrcAlt} />
+						<img className="cardIcon" src={props.iconSrc} title={props.iconSrcAlt} alt={props.iconSrcAlt} />
 						{props.card.title}
 					</a>
 				</div>

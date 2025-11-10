@@ -36,7 +36,7 @@ export function Table (props: TableType) {
 
 	function getCells (obj:{ [key: string]: any }) {
 		return Object.values(obj).map((value, i) => {
-			const myValue = (isImageURL(value)) ? <img src={value} /> : value ;
+			const myValue = (isImageURL(value)) ? <img src={value} title={value} alt={value} /> : value ;
 			return <td key={i}>{myValue}</td>;
 		});
 	}

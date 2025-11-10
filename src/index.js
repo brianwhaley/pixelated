@@ -9,9 +9,10 @@ export * from './components/carousel/pixelated.carousel';
 export * from './components/carousel/pixelated.carousel.drag';
 /* export * from './components/carousel/pixelated.carousel.instagram'; */
 
-export * from './components/cms/pixelated.flickr';
 export * from './components/cms/pixelated.cloudinary';
 export * from './components/cms/pixelated.contentful';
+export * from './components/cms/pixelated.contentful.items.components';
+export * from './components/cms/pixelated.flickr';
 export * from './components/cms/pixelated.wordpress.components';
 export * from './components/cms/pixelated.wordpress.functions';
 
