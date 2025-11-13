@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "first version of Contentful List Grid and Store Item components"
+git commit -m "new AnalyticsEvent function for custom events"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

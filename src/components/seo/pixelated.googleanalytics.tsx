@@ -21,6 +21,7 @@ declare global {
 	}
 }
 
+
 function isGA() {
 	const hasGtag = typeof window.gtag === 'function';
 	const hasDataLayer = typeof window.dataLayer !== 'undefined' && Array.isArray(window.dataLayer);
@@ -29,6 +30,8 @@ function isGA() {
 	const hasGAInitScriptID = !!(document.querySelector('script#ga-init'));
 	return ( hasGtag || hasDataLayer || hasGAScript || hasGAScriptID || hasGAInitScriptID ) ;
 }
+
+
 
 Analytics.propTypes = {
 	id: PropTypes.string.isRequired,
@@ -52,7 +55,6 @@ window.gtag('js', new Date());
 window.gtag('config', '${props.id}');
 `;
 	document.head.appendChild(gaInit);
-
 	// INSTALL GA SCRIPT
 	const ga = document.createElement("script");
 	ga.setAttribute("id", "ga");
@@ -61,11 +63,11 @@ window.gtag('config', '${props.id}');
 	ga.src = gaSRC;
 	document.head.appendChild(ga);
 	// }, []); 
-
 	return (
 		<div className="ga" suppressHydrationWarning />
 	);
 }
+
 
 
 AnalyticsEvent.propTypes = {
