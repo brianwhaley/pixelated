@@ -33,7 +33,8 @@ export type CalloutType = {
 	imgClick?: (event: React.MouseEvent, url: string) => void,
 	title?: string,
 	subtitle?: string,
-	content?: string
+	content?: string,
+	buttonText?: string,
 }
 export function Callout({
 	style = 'default', 
@@ -43,7 +44,7 @@ export function Callout({
 	gridColumns = {left: 1, right: 2},
 	url, img, imgAlt, 
 	imgShape = 'square', 
-	imgClick, title, subtitle, content }: CalloutType) {
+	imgClick, title, subtitle, content, buttonText }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -51,7 +52,12 @@ export function Callout({
 		{ (title) ? <CalloutHeader title={title} url={url} target={target} /> : null }
 		{ (subtitle) ? <div className="calloutSubtitle"><h3>{subtitle}</h3></div> : null }
 		{ content ? <div className="calloutContent"><>{content}</></div> : null }
-		{ url && title ? <CalloutButton title={title || ""} url={url} target={target} /> : null }
+		{ url && buttonText 
+			? <CalloutButton title={buttonText} url={url} target={target} />
+			: url && title 
+				? <CalloutButton title={title || ""} url={url} target={target} /> 
+				: null 
+		}
 	</div> ;
 
 	const image = <div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>

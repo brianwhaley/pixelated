@@ -8,6 +8,7 @@ import PropTypes, { InferProps } from "prop-types";
 /* 
 // gtag("config", "UA-2370059-2"); // pixelatedviews.com
 // gtag("config", 'G-1J1W90VBE1'); // pixelated.tech
+// // gtag("config", 'AW-17721931789'); // pixelated.tech Google Ads
 // gtag("config", 'G-B1NZG3YT9Y'); // pixelvivid.com
 // gtag("config", 'G-K5QDEDTRB4'); // brianwhaley.com
 */
@@ -64,4 +65,24 @@ window.gtag('config', '${props.id}');
 	return (
 		<div className="ga" suppressHydrationWarning />
 	);
+}
+
+
+AnalyticsEvent.propTypes = {
+	event_name: PropTypes.string.isRequired,
+	event_parameters: PropTypes.object.isRequired,
+};
+export type AnalyticsEventType = InferProps<typeof AnalyticsEvent.propTypes>;
+export function AnalyticsEvent( props: AnalyticsEventType ) {
+	if(typeof window === 'undefined'){ return; }
+	if(typeof document === 'undefined'){ return; }
+	// if(isGA()){ 
+	const ga_evt = document.createElement("script");
+	ga_evt.setAttribute("id", "ga-event");
+	ga_evt.type = "text/javascript";
+	ga_evt.async = true;
+	ga_evt.innerHTML = `gtag('event', '${props.event_name}', ${JSON.stringify(props.event_parameters)});`;
+	document.head.appendChild(ga_evt);
+	// }
+	return ( null );
 }
