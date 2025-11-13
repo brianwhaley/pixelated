@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
 		author: "Brian Whaley", 
 		background_color: "#ffffff",
 		default_locale: "en",
-		description: "Brian Whaley's Pixelated Technologies",
+		description: "Pixelated Technologies",
 		/* developer: "Brian Whaley", */
 		/* version: version, */
 		developer: {
@@ -24,7 +24,7 @@ export default function manifest(): MetadataRoute.Manifest {
 			sizes: "64x64 32x32 24x24 16x16",
 			type: "image/x-icon"
 		}],
-		name: "Brian Whaley's Pixelated Technologies",
+		name: "Pixelated Technologies",
 		short_name: "Pixelated Technologies",
 		start_url: ".",
 		theme_color: "#000000",	

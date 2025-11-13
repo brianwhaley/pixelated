@@ -25,11 +25,11 @@
 			"description": "Read the latest blog posts from Pixelated Technologies.",
 			"keywords": "pixelated, blog, web development, small business"  
 		} , { 
-			"name": "Schedule Meeting", 
+			"name": "Schedule Assessment", 
 			"path": "/schedule", 
-			"title": "Pixelated Technologies - Schedule an Appointment",
-			"description": "Schedule a consult appointment with Pixelated Technologies for custom IT development work - web development, social media mearketing, search engine optimization, and small business modernization." ,
-			"keywords": "pixelated, brian whaley, schedule an appointment, schedule a meeting, web development, small business modernization" 
+			"title": "Pixelated Technologies - Schedule your free Digital Assessment",
+			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
+			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
 			"name": "Terms", 
 			"path": "/terms", 

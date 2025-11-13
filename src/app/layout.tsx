@@ -49,13 +49,16 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 		<html lang="en">
 			<head>
 				<title>{metadata?.title}</title>
+
 				<meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
+
 				<meta name="description" content={metadata?.description} />
 				<meta name="keywords" content={metadata?.keywords} />
 				<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 				<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-				<meta property="og:site_name" content="Pixelated" />
+
+				<meta property="og:site_name" content="Pixelated Technologies" />
 				<meta property="og:title" content={metadata?.title} />
 				<meta property="og:url" content={url} />
 				<meta property="og:type" content="website" />
@@ -63,10 +66,19 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 				<meta property="og:image" content="/images/pix/pix-bg-512.gif" />
 				<meta property="og:image:width" content="512" />
 				<meta property="og:image:height" content="512" />
-				<meta itemProp="name" content="Pixelated" />
+
+				<meta itemProp="name" content="Pixelated Technologies" />
 				<meta itemProp="url" content={url} />
 				<meta itemProp="description" content={metadata?.description} />
 				<meta itemProp="thumbnailUrl" content="/images/pix-bg-512.gif" />
+
+				<meta property="twitter:domain" content="pixelated.tech" />
+				<meta property="twitter:url" content={url} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:description" content={metadata?.description} />
+				<meta name="twitter:image" content="/images/pix/pix-bg-512.gif" />
+				<meta name="twitter:title" content={metadata?.title} />
+
 				<link rel="canonical" href={url} />
 				{ /* <link rel="alternate" href={url} hrefLang="en-us" /> */ }
 				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />

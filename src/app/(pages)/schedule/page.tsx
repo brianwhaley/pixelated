@@ -23,12 +23,16 @@ export default function Schedule() {
 
 	return (
 		<div className="section-container">
-			<PageHeader title="Schedule a meeting with Pixelated" />
+			<PageHeader title="Schedule your free Digital Assessment with Pixelated" />
 			<div className="row-12col">
 				<div className="grid-s3-e8"> 
 					<div suppressHydrationWarning={true} >
 						<p>
-						Our team of experts is here to help you focus on your customers and achieve your business goals. 
+						Our team of experts is here to help understand your 
+						current state of business and digital presence - 
+						web, social media, and search engine optimization - 
+						and review tailored solutions that help you focus 
+						on your customers and achieve your business goals. 
 						Fill out the form below to schedule a free no-obligation review of your current website, 
 						search engine optimization, content strategy, and social media presence.  
 						Our review also includes honest, tailored recommendations to strengthen your 
