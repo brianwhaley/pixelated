@@ -49,7 +49,7 @@ export default function SamplePage3() {
 
 					<header>
 						<div className="logoContainer">
-							<img src="/images/samples/mos-eisley.png" alt="logo" />
+							<img src="/images/samples/the-linen-table.jpg" alt="logo" />
 						</div>
 						<nav>
 							<hr />
@@ -135,28 +135,28 @@ export default function SamplePage3() {
 					<footer>
 						<section id="footer-callout-section">
 
-							<div className="socialContainer row-12col">
+							<div className="social-container row-12col">
 								<div className="grid-s4-e6">
 									<SocialTags />
 								</div>
 							</div>
 
-							<div className="socialContainer row-3col">
+							<div className="details-container row-3col">
 
 								<div className="gridItem" style={{ textAlign: 'center' }}>
 									<PageSectionHeader title="Location" />
-									<div>Mos Eisley Spaceport</div>
-									<div>1234 Tattooine Way</div>
+									<div>The Linen Table</div>
+									<div>1234 Robert Way</div>
 									<div>East Lansing, MI 48823</div>
 									<PageSectionHeader title="Contact Us" />
 									<div>Phone: (421) 867-5309</div>
-									<div>Email: mos.eisley@tattooine.com</div>
+									<div>Email: tom@thelinentable.com</div>
 								</div>
 
 								<div className="gridItem">
 									<iframe 
 										src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d18077.1874323106!2d-84.48602569271873!3d42.7242724449086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sMos%20Eisley%20Spaceport%2C%20East%20Lansing!5e0!3m2!1sen!2sus!4v1763350624811!5m2!1sen!2sus" 
-										width="600" 
+										width="100%" 
 										height="300" 
 										style={{ border: 0 }} 
 										allowFullScreen
@@ -168,12 +168,12 @@ export default function SamplePage3() {
 								<div className="gridItem"  style={{ textAlign: 'center' }}>
 									<PageSectionHeader title="Hours" />
 									<div>Mon: Closed</div>
-									<div>Tue: 12PM - 2:30PM</div>
-									<div>Wed: 12PM - 2:30PM</div>
-									<div>Thu: 12PM - 2:30PM</div>
-									<div>Fri: 12PM - 3PM</div>
+									<div>Tue: 12PM - 8:30PM</div>
+									<div>Wed: 12PM - 8:30PM</div>
+									<div>Thu: 12PM - 8:30PM</div>
+									<div>Fri: 12PM - 8:30PM</div>
 									<div>Sat: 4:30PM - 10:30PM</div>
-									<div>Sun: 3:30PM - 9PM</div>
+									<div>Sun: 12:30PM - 7PM</div>
 								</div>
 
 							</div>

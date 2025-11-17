@@ -31,8 +31,8 @@ const sampleTiles = [
 	{
 		index: 2, cardIndex: 2, cardLength: 3,
 		link: "/samples/page3",
-		image: "https://filmandfurniture.com/wp-content/uploads/2020/12/star-wars-cantina.jpg",
-		imageAlt: "Sample # 3: Mos Eisley Cantina",
+		image: "https://media.istockphoto.com/id/1198045184/photo/fine-dining-at-lunch.jpg?s=612x612&w=0&k=20&c=LS4QPJuFjbj1IveVKyV0NWC-BlabgyxFTy-dCCoJ35w=",
+		imageAlt: "Sample # 3: The Linen Table, Modern European Cuisine",
 	}, 
 ];
 

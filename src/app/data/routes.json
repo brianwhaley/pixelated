@@ -44,6 +44,41 @@
 			"description": "Pixelated Technologies Privacy Policy",
 			"keywords": "pixelated, privacy policy, data retention"  
 		} , { 
+			"name": "By The Way", 
+			"path": "/bytheway", 
+			"hidden": true,
+			"title": "Pixelated Technologies - By The Way",
+			"description": "By The Way Font",
+			"keywords": "pixelated technologies, custom font, by the way, by the way font" 
+		} , { 
+			"name": "Samples", 
+			"path": "/samples", 
+			"hidden": true,
+			"title": "Pixelated Technologies - Samples",
+			"description": "Samples",
+			"keywords": "pixelated technologies, web design samples" 
+		} , { 
+			"name": "Sample 1", 
+			"path": "/samples/sample1", 
+			"hidden": true,
+			"title": "Pixelated Technologies - Sample 1",
+			"description": "Sample 1",
+			"keywords": "pixelated technologies, web design sample 1" 
+		} , { 
+			"name": "Sample 2", 
+			"path": "/samples/sample2", 
+			"hidden": true,
+			"title": "Pixelated Technologies - Sample 2",
+			"description": "Sample 2",
+			"keywords": "pixelated technologies, web design sample 2" 
+		} , { 
+			"name": "Sample 3", 
+			"path": "/samples/sample3", 
+			"hidden": true,
+			"title": "Pixelated Technologies - Sample 3",
+			"description": "Sample 3",
+			"keywords": "pixelated technologies, web design sample 3" 
+		} , { 
 			"name": "NerdJokes", 
 			"path": "/nerdjokes", 
 			"hidden": true,

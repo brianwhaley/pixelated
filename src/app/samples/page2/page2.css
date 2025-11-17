@@ -216,8 +216,14 @@ section {
 
 
 @media screen and (max-width: 480px) {
-     main {
+    main {
         margin-top: 0;
+    }
+    nav > div {
+        width: 100%;
+    }
+    nav .menu {
+        padding: 0;
     }
     #header-callout-section,
     #main-callout-section,
@@ -248,4 +254,3 @@ section {
         padding: 0;
     }
 }
-

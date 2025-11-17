@@ -1,0 +1,37 @@
+body {
+    font-family: 'By The Way Regular';
+    font-size: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'By The Way Bold SmallCaps';
+}
+
+.menu .menuItem a {
+    font-family: 'By The Way Narrow Bold SmallCaps';
+}
+
+.btw-nw-bd {
+    font-family: 'By The Way Narrow Bold';
+}
+.btw-nw-bd-smcp {
+    font-family: 'By The Way Narrow Bold SmallCaps';
+}
+.btw-nw {
+    font-family: 'By The Way Narrow';
+}
+.btw-nw-smcp {
+    font-family: 'By The Way Narrow SmallCaps';
+}
+.btw {
+    font-family: 'By The Way Regular';
+}
+.btw-bd {
+    font-family: 'By The Way Bold';
+}
+.btw-bd-smcp {
+    font-family: 'By The Way Bold SmallCaps';
+}
+.btw-smcp {
+    font-family: 'By The Way SmallCaps';
+}

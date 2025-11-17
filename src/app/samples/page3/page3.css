@@ -23,6 +23,11 @@ body.buttonring .callout.overlay button:hover {
     outline-color: var(--bg-color) !important; 
 }
 
+a, a:visited, a:hover, a:active {
+    color: var(--text-color);
+    text-decoration-color: var(--text-color);
+}
+
 nav a {
     color: var(--text-color);
 }
@@ -38,7 +43,7 @@ nav hr {
 }
 
 .logoContainer img {
-    height: 150px !important;
+    height: 130px !important;
     width: auto;
     filter: grayscale(60%);
     margin: 10px;
@@ -89,7 +94,7 @@ nav hr {
     flex-flow: column; /* FIX */
 }
 
-callout.split .calloutImage,
+.callout.split .calloutImage,
 .callout.split .calloutImage a {
     flex-grow: 1; /* FIX */
 }
@@ -98,6 +103,20 @@ callout.split .calloutImage,
     border: 1px solid #333;
 }
 
-.socialContainer {
+.social-container {
     margin-bottom: 30px;
+}
+
+.details-container {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .menuWrapper,
+    .menuWrapper * {
+        flex-wrap: wrap;
+    }
+    .details-container iframe {
+        padding-top: 20px;
+    }
 }
