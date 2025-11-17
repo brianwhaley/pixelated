@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.3.25",
+  "version": "2.3.26",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -63,14 +63,14 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@brianwhaley/pixelated-components": "^2.3.23",
+    "@brianwhaley/pixelated-components": "^2.3.25",
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.4",
     "core-js": "^3.46.0",
     "date-fns": "^4.1.0",
     "globals": "^16.5.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.5"
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
@@ -86,7 +86,7 @@
     "@storybook/react-webpack5": "^10.0.7",
     "@types/node": "^24.10.1",
     "@types/prop-types": "^15.7.15",
-    "@types/react": "^19.2.4",
+    "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
