@@ -1,0 +1,251 @@
+:root {
+    --primary-color: #F3EAD9; /* linen white */
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+
+body.imgtwist {
+	img:hover:not(.imgContain, .imgCover) {
+		transform: scale(1.1) rotate(0deg);
+	}
+}
+
+.negative-image {
+    filter: invert(100%) grayscale(100%) sepia(50%); /* Adjust filters as needed */
+    /* You can add more filters like brightness, contrast, etc. */
+}
+
+
+header {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--primary-color);
+}
+
+
+.header-bg, 
+.section-bg {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover; 
+    object-position: center top;
+    position: absolute; 
+    opacity: 0.3;
+    background-color: var(--primary-color);
+}
+
+
+header nav,
+header section {
+    position: relative;
+    z-index: 1;
+}
+
+#header-logo-row {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+
+    h1 {
+        text-align: left;
+        display: inline-block;
+    }
+    img {
+        height: 100px;
+        width: auto;
+        padding: 0 15px;
+        mix-blend-mode: multiply;
+    }
+}
+
+nav {
+    display: inline-block;
+    width: 100%;
+}
+
+.logo {
+    max-width: 200px;
+    max-height: 100px;
+    margin: 5px;
+}
+.logo-image {
+    max-width: 60px;
+    max-height: 60px;
+    vertical-align: middle;
+}
+.logo-text {
+    vertical-align: middle;
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menuWrapper { 
+    margin: 5px;
+
+    .menuItem {
+        border: none;
+    }
+    .menuItem a {
+        background: none;
+        font-size: 16px;
+        border: none;
+        color: black;
+        padding: 0 10px;
+    }
+    .menuItem a:hover {
+        background: black;
+        color: var(--primary-color);
+        border: none;
+    }
+}
+
+nav {
+    --do-nothing: true;
+}
+
+main {
+    background-color: var(--primary-color);
+}
+
+footer {
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+.socialContainer {
+    margin-bottom: 50px;
+}
+
+
+section {
+    position: relative;
+    overflow: hidden;
+
+    .callout {
+        z-index: 1;
+    }
+
+    .calloutHeader,
+    .calloutHeader a {
+        color: black;
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-size: 32px;
+    }
+    .calloutSubtitle { 
+        font-size: 24px;
+        font-weight: normal;
+    }
+    .calloutContent {
+        font-size: 16px;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: 0em;
+    }
+    .callout .calloutButton button {
+        background-color: black;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    .calloutButton button a {
+        color: var(--primary-color);
+    }
+}
+
+
+#header-callout-section .callout {
+    padding: 300px 0px 0px;
+}
+
+
+
+#main-callout-section {
+    .callout {
+        padding: 30px 15%;
+    }
+    .calloutImage {
+        border: 10px solid black;
+    }
+    .calloutImage a {
+        width: 100%;
+        height: auto;
+    }
+    .calloutTitle,
+    .calloutSubtitle,
+    .calloutContent {
+        text-align: right;
+    }
+}
+
+#services-section {
+    .callout {
+        padding: 400px 0 0 0;
+    }
+}
+
+.tileImageOverlay {
+    background: rgba(250, 240, 230, .5);
+}
+.tileImageOverlayText {
+    color: black;
+}
+
+#footer-callout-section {
+    padding: 50px 0;
+
+    .menuWrapper {
+        margin-bottom: 20px;
+    }
+    hr {
+        margin: 0px auto 20px auto;
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+     main {
+        margin-top: 0;
+    }
+    #header-callout-section,
+    #main-callout-section,
+    #aboutus-callout-section,
+    #services-section,
+    #footer-callout-section {
+        .callout {
+            margin: 0;
+            padding: 5px;
+        }
+        .calloutHeader,
+        .calloutHeader a { 
+            font-size: 28px;
+            text-align: center;
+        }
+        .calloutTitle { 
+            text-align: center;
+        }
+        .calloutSubtitle { 
+            font-size: 20px;
+        }
+        .calloutContent {
+            font-size: 16px;
+        }
+    }
+    #header-callout-section .callout,
+    #services-section .callout {
+        padding: 0;
+    }
+}
+

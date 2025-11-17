@@ -1,0 +1,103 @@
+ :root {
+    --bg-color: rgb(213, 199, 186);
+    --text-color: #333;
+ }
+
+body {
+    background-color: var(--bg-color) !important;
+    font-family: Bodoni Moda, serif;
+    color: var(--text-color);
+}
+
+body.imgtwist {
+	img:hover:not(.imgContain, .imgCover) {
+		transform: scale(1.1) rotate(0deg);
+	}
+}
+
+body.buttonring .callout button:hover {
+    outline-color: var(--text-color) !important; 
+}
+
+body.buttonring .callout.overlay button:hover {
+    outline-color: var(--bg-color) !important; 
+}
+
+nav a {
+    color: var(--text-color);
+}
+
+nav hr {
+    border-color: var(--text-color);
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoContainer img {
+    height: 150px !important;
+    width: auto;
+    filter: grayscale(60%);
+    margin: 10px;
+}
+
+.menuItem a {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.callout {
+    .calloutTitle {
+        font-size: 48px;
+        color: var(--text-color);
+    }
+    .calloutSubtitle {
+        font-size: 36px;
+    }
+    .calloutContent {
+        font-size: 18px;
+    }
+    .calloutButton button {
+        background-color: var(--text-color);
+    }
+    .calloutButton button a {
+        color: var(--bg-color);
+    }
+}
+
+.callout.overlay {
+    .calloutTitle {
+        font-size: 36px;
+        color: var(--bg-color);
+    }
+    img {
+        filter: brightness(50%);
+    }
+    .calloutButton button {
+        background-color: var(--bg-color);
+    }
+    .calloutButton button a {
+        color: var(--text-color);
+    }
+ }
+
+.callout.split .calloutImage {
+    --do-nothing: true;
+    flex-flow: column; /* FIX */
+}
+
+callout.split .calloutImage,
+.callout.split .calloutImage a {
+    flex-grow: 1; /* FIX */
+}
+
+.callout.split .calloutBody {
+    border: 1px solid #333;
+}
+
+.socialContainer {
+    margin-bottom: 30px;
+}

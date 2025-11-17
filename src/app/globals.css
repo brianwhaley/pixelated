@@ -5,7 +5,7 @@
 
 :root {
   --primary-color: #369;
-  --secondary-color: #CDE;
+  --secondary-color: #BCD;
   --accent1-color: #CCC;
   --accent2-color: #EEE;	
 }
@@ -21,66 +21,28 @@
 }
 
 .fixed-header-nav {
+
     z-index: 1000;
     width: 100%;
     position: fixed;
     top: 60px;
     left: 0;
-}
-
-.fixed-header-nav {
-
-    .menuWrapper, .menuWrapper * {
-        display: flex;
-        flex-direction: row;
-        flex-basis: 100%;
-        justify-content: center;  
-        align-items: center;
-        text-align: center;
-    }
-
-    .menuWrapper hr {
-        display: none;
-    }
-
-    .menu {
-        width: 100%;
-        padding: 5px 0;
-    }
-
-    .menu ul {
-        --do-nothing: true;
-    }
 
     .menuItem {
         background: none;
-        width: auto;
-        height: 30px;
-        border: none;
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: content; /* each item is its own size instead of auto */
     }
-
     .menuItem:hover {
-        /* background-image: url(/images/pix/pix-bg-bw.gif); */
         background-color: var(--accent1-color);
     }
-
-    .menuItem:not(:first-child) {
-        border-left: 2px solid var(--primary-color);
-    }
-
     .menuItem a {
-        text-indent: unset;
         font-size: unset;
         background: none;
     }
-
-
+    .menuItem a.selected {
+        background-color: var(--secondary-color);
+    }
     .menuItem a:hover {
         background: none;
-        text-indent: 0;
         border: none;
     }
 

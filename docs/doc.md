@@ -53,9 +53,9 @@ npm version minor
 eslint --fix
 npm version patch --force
 git add * -v
-git commit -m "new google ads analytics tag, AnalyticsEvent, Schedule CTA content changes"
+git commit -m "new image logos, 3 new samples, google component renames, global css fixes, robots fixes"
 git push -u pixelated dev --tags
-git push pixelated dev:main
+git push -u pixelated dev:main
 
 ## ===== Hydration Error =====
 https://www.reddit.com/r/nextjs/comments/1gabiqn/hydration_error_when_installing_nextjs_15/?rdt=34262

@@ -8,7 +8,7 @@ import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
 import { deferAllCSS } from "@brianwhaley/pixelated-components";
 import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
-import HeaderNav from "./elements/headernav";
+import HeaderNav from "@/app/elements/headernav";
 import Nav from "@/app/elements/nav";
 import Search from '@/app/elements/search';
 import Footer from '@/app/elements/footer';
@@ -16,7 +16,7 @@ import myRoutes from "@/app/data/routes.json";
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 // LOAD THIS AS LAST CSS FILE
-import "./globals.css";
+import "@/app/globals.css";
 
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {

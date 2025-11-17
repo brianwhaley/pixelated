@@ -1,0 +1,231 @@
+body {
+    background-color: white;
+}
+button {
+    /* why these dont inherit by default is beyond me */
+    font-family: inherit;
+    font-size: inherit;
+}
+
+header {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.5), 
+        rgba(255, 255, 255, 0.5)), 
+        url(https://thumbs.dreamstime.com/b/moscow-region-aug-landscape-design-residential-house-taken-above-beautiful-landscaping-home-garden-summer-aerial-view-167797292.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#header-logo-row {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+
+    h1 {
+        text-align: left;
+        color: darkgreen;
+        display: inline-block;
+    }
+    img {
+        height: 100px;
+        width: auto;
+        padding: 0 15px;
+        mix-blend-mode: multiply;
+    }
+}
+
+.menuWrapper { 
+    .menuItem {
+        border: none;
+    }
+    .menuItem a {
+        background: none;
+        color: darkgreen;
+        font-size: 16px;
+        border: none;
+    }
+    .menuItem a:hover {
+        background: #060;
+        color: white;
+        border: none;
+    }
+    hr {
+        display: none;
+    }
+}
+
+nav {
+    --do-nothing: true;
+}
+
+main {
+    background-color: white;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.5), 
+        rgba(255, 255, 255, 0.5)), 
+        url(https://static.vecteezy.com/system/resources/previews/052/544/850/non_2x/fresh-green-lawn-grass-close-up-isolated-on-transparent-background-free-png.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.socialContainer {
+    margin-bottom: 50px;
+}
+
+
+#header-callout-section,
+#landscape-callout-section,
+#schedule-callout-section,
+#landscape-services-section,
+#footer-callout-section {
+    .calloutHeader,
+    .calloutHeader a {
+        text-align: center;
+        font-size: 32px;
+        color: darkgreen;
+    }
+    .calloutContent {
+        font-size: 18px;
+        color: darkgreen;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: 0em;
+    }
+    .calloutButton button {
+        background-color: darkgreen;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    .calloutButton button a {
+        color: white;
+    }
+}
+
+#header-callout-section {
+    .calloutTitle, 
+    .calloutSubtitle, 
+    .calloutSubtitle h3, 
+    .calloutButton,
+    .calloutButton button {
+        text-align: left;
+        margin: 0 !important;
+    }
+    .calloutHeader a { 
+        font-size: 26px;
+    }
+    .calloutSubtitle { 
+        font-size: 24px;
+        color: darkgreen;
+    }
+}
+
+
+#schedule-callout-section {
+    .callout {
+        padding: 30px 100px;
+    }
+    .calloutImage a {
+        width: 100%;
+        height: auto;
+    }
+    .calloutTitle {
+        text-align: left
+    }
+}
+
+.tileImageOverlay {
+    background: rgba(0, 102, 0, .7);
+}
+
+#landscape-services-section {
+    background-image: url(https://www.bednarlandscape.com/wp-content/uploads/2024/01/bg_module2.jpg)
+}
+
+#landscape-services-section {
+    .calloutImage.round {
+        background-color: #090;
+        border: 1px solid black;
+    }
+    .calloutHeader,
+    .calloutHeader a {
+        color: white;
+    }
+    .calloutSubtitle {
+        color: white;
+    }
+    .calloutContent {
+        color: white;
+    }
+    .calloutButton {
+        text-align: center;
+    }
+    .calloutButton button {
+        background-color: #090;
+    }
+} 
+
+
+#footer-callout-section {
+    padding: 50px 0;
+
+    .menuWrapper {
+        margin-bottom: 20px;
+    }
+    hr {
+        margin: 0px auto 20px auto;
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    #header-callout-section,
+    #landscape-callout-section,
+    #landscape-services-section,
+    #schedule-callout-section,
+    #footer-callout-section {
+        .calloutHeader,
+        .calloutHeader a { 
+            font-size: 20px;
+        }
+        .calloutSubtitle { 
+            font-size: 16px;
+            color: darkgreen;
+        }
+        .calloutContent {
+            font-size: 14px;
+        }
+    }
+    #landscape-services-section {
+        .calloutSubtitle {
+            color: white;
+        }
+    }
+    #schedule-callout-section {
+        .callout {
+            padding: 15px;
+        }
+    }   
+}
+
+body.imgtwist {
+	img:hover:not(.imgContain, .imgCover) {
+		transform: scale(1.1) rotate(0deg);
+	}
+}
