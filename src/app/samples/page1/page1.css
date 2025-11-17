@@ -1,3 +1,9 @@
+:root {
+    --primary-color: darkgreen;
+    --secondary-color: #090;
+    --text-color: black;
+}
+
 body {
     background-color: white;
 }
@@ -27,7 +33,7 @@ header {
 
     h1 {
         text-align: left;
-        color: darkgreen;
+        color: var(--primary-color);
         display: inline-block;
     }
     img {
@@ -38,18 +44,28 @@ header {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .header-nav {
+        float: left;
+        width: 100%;
+    }
+}
+
 .menuWrapper { 
     .menuItem {
         border: none;
     }
+    .menuItem:not(:first-child) {
+        border-left: 2px solid var(--primary-color);
+    }
     .menuItem a {
         background: none;
-        color: darkgreen;
+        color: var(--primary-color);
         font-size: 16px;
         border: none;
     }
     .menuItem a:hover {
-        background: #060;
+        background: var(--accent-color);
         color: white;
         border: none;
     }
@@ -94,17 +110,17 @@ footer {
     .calloutHeader a {
         text-align: center;
         font-size: 32px;
-        color: darkgreen;
+        color: var(--primary-color);
     }
     .calloutContent {
         font-size: 18px;
-        color: darkgreen;
+        color: var(--primary-color);
         font-style: normal;
         line-height: 1.6;
         letter-spacing: 0em;
     }
     .calloutButton button {
-        background-color: darkgreen;
+        background-color: var(--primary-color);
         font-size: 18px;
         font-weight: bold;
         padding: 10px 20px;
@@ -131,7 +147,7 @@ footer {
     }
     .calloutSubtitle { 
         font-size: 24px;
-        color: darkgreen;
+        color: var(--primary-color);
     }
 }
 
@@ -145,7 +161,7 @@ footer {
         height: auto;
     }
     .calloutTitle {
-        text-align: left
+        text-align: left;
     }
 }
 
@@ -154,12 +170,15 @@ footer {
 }
 
 #landscape-services-section {
-    background-image: url(https://www.bednarlandscape.com/wp-content/uploads/2024/01/bg_module2.jpg)
+    background-image: url(https://www.bednarlandscape.com/wp-content/uploads/2024/01/bg_module2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 #landscape-services-section {
     .calloutImage.round {
-        background-color: #090;
+        background-color: var(--secondary-color);
         border: 1px solid black;
     }
     .calloutHeader,
@@ -176,7 +195,7 @@ footer {
         text-align: center;
     }
     .calloutButton button {
-        background-color: #090;
+        background-color: var(--secondary-color);
     }
 } 
 
@@ -206,7 +225,7 @@ footer {
         }
         .calloutSubtitle { 
             font-size: 16px;
-            color: darkgreen;
+            color: var(--primary-color);
         }
         .calloutContent {
             font-size: 14px;

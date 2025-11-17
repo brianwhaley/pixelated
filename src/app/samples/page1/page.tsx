@@ -45,7 +45,7 @@ export default function SamplePage1() {
 			buttonring: true,
 			formglow: true,
 			imgtwist: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
 		});
 	}, []);
 
@@ -62,13 +62,13 @@ export default function SamplePage1() {
 								<div className="grid-s2-e10">
 									
 									<div id="header-logo-row">
-										<div className="pull-left">
-											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHtcizoFKcMO4UrSvmGeznuQSamg9FOV0Os03Wj9Ofkv6p63citEUpT-z871IEQW-fb8&usqp=CAU" alt="Brian's Landscape Services Logo" />
+										<div className="logo-image pull-left">
+											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHtcizoFKcMO4UrSvmGeznuQSamg9FOV0Os03Wj9Ofkv6p63citEUpT-z871IEQW-fb8&usqp=CAU" alt="Tom's Landscape Services Logo" />
 										</div>
-										<div className="pull-left">
-											<h1>Brian's<br />Landscape<br />Services</h1>
+										<div className="logo-text pull-left">
+											<h1>Tom's<br />Landscape<br />Services</h1>
 										</div>
-										<div>
+										<div className="header-nav">
 											<nav>
 												<MenuSimple menuItems={menuItems} />
 											</nav>
@@ -103,7 +103,7 @@ export default function SamplePage1() {
 										layout="vertical"
 										url='./'
 										title="Exceptional Lawn Maintenance and Landscape Designs"
-										content="Brian's Landscape Services offers professional landscaping 
+										content="Tom's Landscape Services offers professional landscaping 
 										throughout the entire state. We bring vivid displays of nature 
 										right to your doorstep through our comprehensive lawn and landscaping services. 
 										Our team of experienced landscapers is committed to embellishing your surroundings 

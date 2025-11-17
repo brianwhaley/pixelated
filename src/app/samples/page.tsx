@@ -20,7 +20,7 @@ const sampleTiles = [
 		index: 0, cardIndex: 0, cardLength: 3,
 		link: "/samples/page1",
 		image: "https://s3media.angieslist.com/s3fs-public/exterior-house-landscaped-garden.jpeg",
-		imageAlt: "Sample # 1: Brian's Landscape Services",
+		imageAlt: "Sample # 1: Tom's Landscape Services",
 	},
 	{
 		index: 1, cardIndex: 1, cardLength: 3,
@@ -56,7 +56,7 @@ export default function Samples() {
 			buttonring: true,
 			formglow: true,
 			imgtwist: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
 		});
 	}, []);
 
