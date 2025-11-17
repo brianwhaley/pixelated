@@ -45,6 +45,12 @@ input {
 	margin: 1px 5px !important;
 }
 
+input, select, textarea, button {
+	/* why these dont inherit by default is beyond me */
+  	font-family: inherit;
+  	font-size: inherit; 
+}
+
 input:focus,
 textarea:focus,
 select:focus {

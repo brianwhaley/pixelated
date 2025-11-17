@@ -3,8 +3,6 @@
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
 
-
-
 /* 
 ===== Google Programmable Search =====
 pixelated id = "009500278966481927899:bcssp73qony";
@@ -23,11 +21,11 @@ https://nextjs.org/docs/messages/react-hydration-error
 */
 
 
-Search.propTypes = {
+GoogleSearch.propTypes = {
 	id: PropTypes.string.isRequired,
 };
-export type SearchType = InferProps<typeof Search.propTypes>;
-export function Search(props: SearchType) {
+export type GoogleSearchType = InferProps<typeof GoogleSearch.propTypes>;
+export function GoogleSearch(props: GoogleSearchType) {
 	if(typeof document !== 'undefined'){
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const gsearch = (function () {

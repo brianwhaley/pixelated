@@ -1,6 +1,8 @@
 "use client";
 
 import React, { /* useState, useEffect */ } from "react";
+import PropTypes, { InferProps } from 'prop-types';
+
 import "./pixelated.callout.scss";
 
 /* ==================== NOTES ====================
@@ -17,17 +19,36 @@ GRID is basic 1/2 GRID shape, needs enhanement
 BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
-type ShapeType = 'square' | 'bevel' | 'squircle' | 'round';
-type gridColumnsType = {left: number, right: number};
+// type ShapeType = 'square' | 'bevel' | 'squircle' | 'round';
+// type gridColumnsType = {left: number, right: number};
 
-export type CalloutType = {
+Callout.propTypes = {
+	style: PropTypes.oneOf(['default', 'boxed', 'boxed grid', 'full', 'grid', 'overlay', 'split']),
+	boxShape: PropTypes.oneOf(['square', 'bevel', 'squircle', 'round']),
+	layout: PropTypes.oneOf(['horizontal', 'vertical']),
+	direction: PropTypes.oneOf(['left', 'right']),
+	gridColumns: PropTypes.shape({
+		left: PropTypes.number,
+		right: PropTypes.number
+	}),
+	url: PropTypes.string,
+	img: PropTypes.string,
+	imgAlt: PropTypes.string,
+	imgShape: PropTypes.oneOf(['square', 'bevel', 'squircle', 'round']),
+	imgClick: PropTypes.func,
+	title: PropTypes.string,
+	subtitle: PropTypes.string,
+	content: PropTypes.string,
+	buttonText: PropTypes.string,
+};
+/* export type CalloutType = {
 	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'overlay' | 'split',
 	boxShape?: ShapeType,
 	layout?: 'horizontal' | 'vertical' ,
 	direction?: 'left' | 'right' ,
 	gridColumns?: gridColumnsType,
 	url?: string,
-	img: string,
+	img?: string,
 	imgAlt?: string,
 	imgShape?: ShapeType,
 	imgClick?: (event: React.MouseEvent, url: string) => void,
@@ -35,7 +56,8 @@ export type CalloutType = {
 	subtitle?: string,
 	content?: string,
 	buttonText?: string,
-}
+} */
+export type CalloutType = InferProps<typeof Callout.propTypes>;
 export function Callout({
 	style = 'default', 
 	boxShape = "squircle", 
@@ -60,16 +82,17 @@ export function Callout({
 		}
 	</div> ;
 
-	const image = <div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
-		{ (url && !imgClick)
-			? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
-				<img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
-			</a>
-			: (url && imgClick)
-				? <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
-				: <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
-		}
-	</div>;
+	const image =  ( img ) ?
+		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
+			{ (url && !imgClick)
+				? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
+					<img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
+				</a>
+				: (url && imgClick)
+					? <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
+					: <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
+			} 
+		</div> : null ;
 
 	return (
 		<div 
@@ -88,11 +111,17 @@ export function Callout({
 
 
 /* ========== CALLOUT HEADER ========== */
-export type CalloutHeaderType = {
+CalloutHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string,
+	target: PropTypes.string
+};
+export type CalloutHeaderType = InferProps<typeof CalloutHeader.propTypes>;
+/* export type CalloutHeaderType = {
 	title: string,
 	url?: string,
 	target?: string
-};
+}; */
 export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 	return (
 		<div className="calloutHeader">
@@ -107,11 +136,17 @@ export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 
 
 /* ========== CALLOUT BUTTON ========== */
-export type CalloutButtonType = {
+CalloutButton.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string,
+	target: PropTypes.string
+};
+export type CalloutButtonType = InferProps<typeof CalloutButton.propTypes>;
+/* export type CalloutButtonType = {
 	title: string,
 	url?: string,
 	target?: string
-};
+}; */
 export function CalloutButton( { title, url, target } : CalloutHeaderType) {
 	return (
 		<div className="calloutButton">

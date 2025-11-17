@@ -49,6 +49,7 @@ export * from './components/resume/pixelated.resume';
 
 export * from './components/seo/pixelated.404';
 export * from './components/seo/pixelated.googleanalytics';
+export * from './components/seo/pixelated.googlemap';
 export * from './components/seo/pixelated.googlesearch';
 export * from './components/seo/pixelated.metadata';
 export * from './components/seo/pixelated.sitemap';

@@ -1,4 +1,4 @@
-import React, { } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import './pixelated.menu-simple.css';
 
@@ -30,13 +30,25 @@ export function MenuSimple(props: { menuItems: MenuSimpleItemType[] }) {
 		}
 		return myItems;
 	}
+	function styleSelectedMenuItem() {
+		const menuitems = document.querySelectorAll('.menuItem a');
+		const currentURL = window.location.href;
+		menuitems.forEach( (menuitem) => {
+			if ((menuitem as HTMLAnchorElement).href === currentURL) {
+				menuitem.classList.add('selected');
+			}
+		});
+	}
+	useEffect(() => {
+		styleSelectedMenuItem();
+	}, []);
 	return (
 		<div className="menuWrapper">
-			<hr />
+			{ /* <hr /> */ }
 			<div className="menu" id="menu">
 				<ul>{ generateMenuItems() }</ul>
 			</div>
-			<hr />
+			{ /* <hr /> */}
 		</div>
 	);
 }

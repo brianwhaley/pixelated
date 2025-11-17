@@ -7,6 +7,11 @@ import { Loading } from "../general/pixelated.loading";
 import "./pixelated.tiles.css";
 import "../../css/pixelated.grid.scss";
 
+
+Tiles.propTypes = {
+	cards: PropTypes.object.isRequired,
+	rowCount: PropTypes.number,
+};
 export function Tiles(
 	props: { 
 		cards: CarouselCardType[],
@@ -22,6 +27,7 @@ export function Tiles(
 							<Tile
 								index={i}
 								cardLength={props.cards.length}
+								link={card.link}
 								image={card.image}
 								imageAlt={card.imageAlt}
 								bodyText={card.bodyText}
@@ -37,36 +43,39 @@ export function Tiles(
 		);
 	}
 }
-Tiles.propTypes = {
-	cards: PropTypes.object.isRequired,
-	rowCount: PropTypes.number,
-};
+
 
 
 /* ========== TILE ========== */
-function Tile( props: TileType ) {
-	return (
-		<div className="tile" id={'tile-' + props.index}>
-			{ (props.image) ? 
-				<div className="tileImage">
-					<img src={props.image} title={props?.imageAlt ?? undefined} alt={props?.imageAlt ?? undefined} />
-					<div className="tileImageOverlay">
-						<div className="tileImageOverlayText">
-							<div className="tileImageOverlayTitle">{props.imageAlt}</div>
-							<div className="tileImageOverlayBody">{props.bodyText}</div>
-						</div>
-					</div>
-				</div> : null 
-			}
-		</div>
-		
-	);
-}
 Tile.propTypes = {
 	index: PropTypes.number.isRequired,
 	cardLength: PropTypes.number.isRequired,
-	image: PropTypes.string,
+	link: PropTypes.string,
+	image: PropTypes.string.isRequired,
 	imageAlt: PropTypes.string,
 	bodyText: PropTypes.string,
 };
 export type TileType = InferProps<typeof Tile.propTypes>;
+function Tile( props: TileType ) {
+	const tileBody = <div className="tileImage">
+		<img src={props.image} title={props?.imageAlt ?? undefined} alt={props?.imageAlt ?? undefined} />
+		<div className="tileImageOverlay">
+			<div className="tileImageOverlayText">
+				<div className="tileImageOverlayTitle">{props.imageAlt}</div>
+				<div className="tileImageOverlayBody">{props.bodyText}</div>
+			</div>
+		</div>
+	</div>;
+	return (
+		<div className="tile" id={'tile-' + props.index}>
+			{ props.link ?
+				<a href={props.link} className="tileLink">
+					{ tileBody }
+				</a>
+				:
+				tileBody
+			}
+		</div>
+	);
+}
+

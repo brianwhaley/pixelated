@@ -33,11 +33,11 @@ function isGA() {
 
 
 
-Analytics.propTypes = {
+GoogleAnalytics.propTypes = {
 	id: PropTypes.string.isRequired,
 };
-export type AnalyticsType = InferProps<typeof Analytics.propTypes>;
-export function Analytics( props: AnalyticsType ) {
+export type GoogleAnalyticsType = InferProps<typeof GoogleAnalytics.propTypes>;
+export function GoogleAnalytics( props: GoogleAnalyticsType ) {
 	if(typeof window === 'undefined'){ return; }
 	if(typeof document === 'undefined'){ return; }
 	if(isGA()){ return; }
@@ -70,12 +70,12 @@ window.gtag('config', '${props.id}');
 
 
 
-AnalyticsEvent.propTypes = {
+GoogleAnalyticsEvent.propTypes = {
 	event_name: PropTypes.string.isRequired,
 	event_parameters: PropTypes.object.isRequired,
 };
-export type AnalyticsEventType = InferProps<typeof AnalyticsEvent.propTypes>;
-export function AnalyticsEvent( props: AnalyticsEventType ) {
+export type GoogleAnalyticsEventType = InferProps<typeof GoogleAnalyticsEvent.propTypes>;
+export function GoogleAnalyticsEvent( props: GoogleAnalyticsEventType ) {
 	if(typeof window === 'undefined'){ return; }
 	if(typeof document === 'undefined'){ return; }
 	// if(isGA()){ 

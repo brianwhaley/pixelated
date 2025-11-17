@@ -3,43 +3,75 @@
 ============  SIMPLE MENU   ============
 ======================================== */
 
+:root {
+	--primary-color: #369;
+	--secondary-color: #BCD;
+	--accent1-color: #CCC;
+	--accent2-color: #EEE;	
+}
+
 .menuWrapper {
 	height: 100%;
 }
 
-.menu, .menu ul {
-	/* ALL LIST LEVELS */
-	display: inline-block;
+.menuWrapper, .menuWrapper * {
+	display: flex;
+	flex-direction: row;
+	flex-basis: 100%;
+	justify-content: center;  
+	align-items: center;
+	text-align: center;
+}
+
+.menu {
+	width: 100%;
+	padding: 5px 0;
+}
+
+.menu ul {
 	list-style-type: none;
-	margin: 0px;
-    padding: 0px;
+	margin: 0; /* override pixelated global styles */
+	padding: 0;
 }
 
 .menu a {
-	color: #000;
-	display: block;
+	color: black;
 	text-decoration: none;
 }
 
 .menuItem {
-	/* ALL LIST ITEM LEVELS */
-	border: 1px solid #FFF;
-    width: 150px;
-    display: inline-block;
+	border: 1px solid white;
+	background: none;
+	width: auto;
+	height: 30px;
+	border: none;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: content; /* each item is its own size instead of auto */
 }
+
+.menuItem:hover {
+	background-color: var(--accent1-color);
+}
+
+.menuItem:not(:first-child) {
+	border-left: 2px solid var(--primary-color);
+}
+
 
 .menuItem a {
 	/* this is the button */
-	background: #DDD;
-    font-size: smaller;
+	background-color: var(--accent1-color);
 	font-weight: bold;
 	height: 30px;
-	line-height:30px;
-	text-indent: 10px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.menuItem a.selected {
+	background-color: var(--secondary-color);
 }
 
 .menuItem a:hover {
-	background: #EEE;
-	text-indent: 5px;
-	border-left: 5px #000 solid;
+	background-color: var(--accent2-color);
 }
