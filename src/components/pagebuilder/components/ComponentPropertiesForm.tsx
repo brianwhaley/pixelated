@@ -1,8 +1,8 @@
 
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
-// import { PageSectionHeader } from '@/components/general/pixelated.headers';
-import { FormEngine } from '@/components/form/pixelated.form';
+// import { PageSectionHeader } from '../../general/pixelated.headers';
+import { FormEngine } from '../../form/pixelated.form';
 
 /**
  * ComponentPropertiesForm - Displays the component properties form

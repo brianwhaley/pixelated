@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "new pagebuilder functionality, new layout components - PageSection, GridItem, FlexItem"
+git commit -m "import path fixes for new components"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

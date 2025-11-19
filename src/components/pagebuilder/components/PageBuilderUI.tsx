@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { PageSectionHeader } from '@/components/general/pixelated.headers';
+import { PageSectionHeader } from '../../general/pixelated.headers';
 import { usePageBuilder } from '../usePageBuilder';
 import { ComponentSelector } from '../components/ComponentSelector';
 import { ComponentPropertiesForm } from '../components/ComponentPropertiesForm';
