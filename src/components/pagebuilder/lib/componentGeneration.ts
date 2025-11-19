@@ -78,7 +78,7 @@ export function generateFieldJSON(
 	form.fields.push({
 		component: 'FormInput',
 		props: {
-			label: 'Type',
+			label: 'Type:',
 			name: 'type',
 			id: 'type',
 			type: 'text',

@@ -52,8 +52,11 @@ export * from './components/pagebuilder/components/PageEngine';
 export * from './components/pagebuilder/lib/componentGeneration';
 export * from './components/pagebuilder/lib/componentMap';
 export * from './components/pagebuilder/lib/componentMetadata';
+export * from './components/pagebuilder/lib/pageStorage';
+export * from './components/pagebuilder/lib/pageStorageTypes';
 export * from './components/pagebuilder/lib/propTypeIntrospection';
 export * from './components/pagebuilder/lib/types';
+export * from './components/pagebuilder/lib/usePageBuilder';
 
 export * from './components/recipe/pixelated.recipe';
 

@@ -74,6 +74,21 @@ export function ComponentSelector(props: ComponentSelectorProps) {
 
 	return (
 		<div>
+			{parentPath && (
+				<div style={{
+					background: '#e3f2fd',
+					border: '1px solid #2196F3',
+					borderRadius: '4px',
+					padding: '0.75rem',
+					marginBottom: '1rem',
+					color: '#0d47a1'
+				}}>
+					<strong>➕ Adding child component</strong>
+					<div style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>
+						Select a component type to add as a child
+					</div>
+				</div>
+			)}
 			<label htmlFor="component-type-selector" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
 				Component Type:
 			</label>

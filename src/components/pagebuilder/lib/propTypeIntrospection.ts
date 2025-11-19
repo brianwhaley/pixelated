@@ -98,7 +98,7 @@ export function generateFormFieldFromPropType(
 ): FormField {
 	const propInfo = getPropTypeInfo(propType, componentName, propName);
 	const baseProps: any = {
-		label: propName,
+		label: propName + ':',
 		name: propName,
 		id: propName,
 	};

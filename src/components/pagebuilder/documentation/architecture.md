@@ -1,519 +1,397 @@
-# PageBuilder V2 - Architecture Guide
+# PageBuilder Architecture
 
 ## Overview
 
-PageBuilder V2 is a complete refactor featuring modular architecture with clean separation of concerns. The 778-line monolithic file has been split into 11 focused modules.
+PageBuilder V2 is a modular page builder featuring clean separation of concerns. The codebase is organized into focused modules with clear responsibilities and minimal dependencies.
 
 ## Directory Structure
 
 ```
-pagebuilder-v2/
-├── page.tsx (17 lines)                    # Entry point
-└── pagebuilder/
-    ├── lib/                               # Pure utility functions
-    │   ├── types.ts                       # TypeScript interfaces
-    │   ├── componentMap.ts                # Component registry
-    │   ├── propTypeIntrospection.ts       # PropTypes → form fields
-    │   └── componentGeneration.ts         # Form data extraction
-    ├── components/                         # React components
-    │   ├── PageEngine.tsx                 # Preview renderer
-    │   ├── ComponentTree.tsx              # Hierarchical tree viewer
-    │   ├── ComponentSelector.tsx          # Component type selector
-    │   ├── ComponentPropertiesForm.tsx    # Form wrapper
-    │   └── PageBuilderUI.tsx              # Main orchestrator
-    ├── usePageBuilder.ts                  # State management hook
-    └── documentation/                      # Documentation files
-        ├── README.md                      # Feature summary
-        ├── architecture.md                # This file
-        ├── documentation.md               # Technical details
-        ├── implementation-guide.md        # Legacy guide
-        └── visual-guide.md                # UI screenshots
+src/components/pagebuilder/
+├── lib/                              # Pure utility functions (no React)
+│   ├── types.ts                      # TypeScript type definitions
+│   ├── componentMap.ts               # Component registry
+│   ├── componentMetadata.ts          # Form field metadata
+│   ├── propTypeIntrospection.ts      # PropTypes analysis
+│   ├── componentGeneration.ts        # Form generation logic
+│   ├── pageStorage.ts                # File I/O operations
+│   ├── pageStorageTypes.ts           # Storage types
+│   └── index.ts                      # Public exports
+├── components/                        # React components
+│   ├── PageEngine.tsx                # Component renderer (preview)
+│   ├── ComponentSelector.tsx         # Component type picker
+│   ├── ComponentPropertiesForm.tsx   # Property editor wrapper
+│   ├── SaveLoadSection.tsx           # Save/load/delete UI
+│   └── PageBuilderUI.tsx             # Main orchestrator
+├── usePageBuilder.ts                 # State management hook
+├── pagebuilder.scss                  # Shared styles
+└── documentation/                     # Documentation files
+    ├── README.md                     # Overview and quick start
+    ├── architecture.md               # This file
+    ├── features.md                   # Feature documentation
+    ├── api-reference.md              # API documentation
+    └── implementation.md             # Setup guide
 ```
 
 ## Module Dependency Graph
 
 ```
-page.tsx
-  └─> PageBuilderUI
-        ├─> usePageBuilder
-        │     └─> lib/componentGeneration
-        │           ├─> lib/types
-        │           ├─> lib/componentMap
-        │           └─> lib/propTypeIntrospection
-        │                 └─> lib/types
-        ├─> ComponentSelector
-        │     ├─> lib/componentMap
-        │     └─> lib/componentGeneration
-        ├─> ComponentPropertiesForm
-        ├─> ComponentTree
-        │     └─> lib/componentMap
-        └─> PageEngine
-              └─> lib/componentMap
+PageBuilderUI
+├─> usePageBuilder
+│     └─> componentGeneration
+│           ├─> propTypeIntrospection
+│           │     └─> componentMetadata
+│           └─> componentMap
+├─> SaveLoadSection
+├─> ComponentSelector
+│     ├─> componentMap
+│     └─> componentGeneration
+├─> ComponentPropertiesForm
+└─> PageEngine
+      └─> componentMap
 ```
 
 ## Module Descriptions
 
-### Entry Point
-
-#### `page.tsx` (17 lines)
-Minimal Next.js page component.
-
-```typescript
-import { PageBuilderUI } from './pagebuilder/components/PageBuilderUI';
-
-export default function PageBuilder() {
-  return <PageBuilderUI />;
-}
-```
-
 ### Lib Modules (Pure Functions)
 
 #### `lib/types.ts`
-TypeScript interfaces providing type safety across the application.
+Core TypeScript interfaces providing type safety.
 
 **Key Types:**
-- `ComponentData` - Component structure with props, children, path
-- `PageData` - Root page structure
-- `EditMode` - Edit state structure
-- `PropTypeInfo` - PropTypes analysis result
-- `FormField` - Form field configuration
-- `FormData` - Complete form structure
+```typescript
+interface ComponentData {
+  component: string;
+  props: Record<string, any>;
+  children?: ComponentData[];
+}
+
+interface PageData {
+  components: ComponentData[];
+}
+
+interface EditMode {
+  path: string;
+  component: ComponentData;
+}
+
+interface PropTypeInfo {
+  type: 'text' | 'number' | 'checkbox' | 'select' | ...;
+  options?: string[];
+  isRequired: boolean;
+}
+
+interface FormField {
+  component: string;
+  props: Record<string, any>;
+}
+```
 
 #### `lib/componentMap.ts`
 Central registry of available components.
 
 **Exports:**
-- `componentMap` - Object mapping names to component types
+- `componentMap` - Maps component names to React components
 - `layoutComponents` - Array of components that can have children
-- `componentTypes` - Comma-separated string of all component names
-- `isLayoutComponent()` - Helper to check if component supports children
-- `getComponentType()` - Helper to get component from registry
 
-**To add new components:**
-1. Import the component
-2. Add to `componentMap` object
-3. If it's a container, add to `layoutComponents` array
+**Example:**
+```typescript
+export const componentMap = {
+  'Callout': Callout,
+  'PageSection': PageSection,
+  // ...
+};
+
+export const layoutComponents = ['PageSection', 'GridItem', 'FlexItem'];
+```
+
+**To Add New Components:**
+1. Import component
+2. Add to `componentMap`
+3. If container, add to `layoutComponents`
+
+#### `lib/componentMetadata.ts`
+Metadata for form field generation, imports const arrays from component files.
+
+**Structure:**
+```typescript
+import { CALLOUT_STYLES, SHAPES } from '../../callout/pixelated.callout';
+
+export const componentMetadata = {
+  'Callout': {
+    style: { type: 'select', options: CALLOUT_STYLES, default: 'default' },
+    imgShape: { type: 'select', options: SHAPES, default: 'square' },
+    title: { type: 'text' },
+    // ...
+  },
+  // ...
+};
+```
 
 #### `lib/propTypeIntrospection.ts`
-Analyzes PropTypes to generate appropriate form fields.
+Analyzes PropTypes to generate form fields.
 
 **Key Functions:**
-- `getPropTypeInfo(propType)` - Analyzes PropType structure
-  - Returns: `{ type, options, isRequired, elementType }`
-  - Handles: oneOf, shape, arrayOf, basic types
-  - **Important:** PropTypes has inverted logic for isRequired!
-- `generateFormFieldFromPropType(propName, propType, value)` - Creates form field config
-  - Returns: `{ component, props }`
-  - Generates: select, number, checkbox, text, etc.
+- `getPropTypeInfo(propType, componentName, propName)` - Analyzes PropType, checks metadata
+- `generateFormFieldFromPropType(propName, propType, value, componentName)` - Creates FormField
 
-**PropTypes Logic:**
-```typescript
-// INVERTED LOGIC!
-const isRequired = !('isRequired' in propType);
+**Logic:**
+1. Check `componentMetadata` first (for oneOf fields)
+2. Analyze PropType structure (name, isRequired, etc.)
+3. Return appropriate field type
 
-// Optional: PropTypes.string (HAS .isRequired property)
-// Required: PropTypes.string.isRequired (NO .isRequired property)
-```
-
-**Supported PropTypes:**
-| PropType | Generated Field | Notes |
-|----------|-----------------|-------|
-| `oneOf([...])` | Text with datalist | Dropdown suggestions |
-| `number` | Number input | With ↑↓ controls |
-| `bool` | Checkbox | ☑ / ☐ |
-| `shape({...})` | Text input | JSON placeholder |
-| `arrayOf(...)` | Text input | Comma-separated |
-| `string` | Text input | Standard |
-| `func` | Disabled text | Not editable |
-| `node/element` | Disabled text | Use children instead |
+**PropType Mappings:**
+- `oneOf` + metadata → FormSelect with options
+- `number` → FormInput type="number"
+- `bool` → FormInput type="checkbox"
+- `string` → FormInput type="text"
 
 #### `lib/componentGeneration.ts`
-Handles form data extraction and component object creation.
+Generates form data from component selection.
 
 **Key Functions:**
-- `generateComponentObject(event)` - Extracts data from form submission
-  - Parses JSON objects
-  - Converts types (numbers, booleans)
-  - Extracts parentPath
-  - Creates component with children array
-  - Generates unique path: `root[timestamp]` or `parent.children[timestamp]`
-- `generateFieldJSON(component, existingProps, parentPath)` - Creates form configuration
-  - Adds type field (disabled, shows component name)
-  - Adds hidden __parentPath field if nesting
-  - Introspects PropTypes for each prop
-  - Adds submit button ("Add" or "Update")
+- `generateFieldJSON(component, existingProps, parentPath)` - Creates complete form
+- `generateComponentObject(event)` - Extracts component data from form submission
+
+**Process:**
+1. Create form structure with metadata
+2. Add hidden type field
+3. Add parent path (if nested)
+4. Introspect PropTypes to generate fields
+5. Add submit button
+
+#### `lib/pageStorage.ts`
+Server-side file I/O operations for save/load functionality.
+
+**Key Functions:**
+- `validatePageName(name)` - Validates filename (alphanumeric, dash, underscore)
+- `listPages()` - Returns array of saved page names
+- `loadPage(name)` - Loads page JSON from file
+- `savePage(name, data)` - Writes page JSON to file
+- `deletePage(name)` - Deletes page file
+
+**Storage Location:** `public/data/pages/` (configurable via `PAGES_DIR` env var)
+
+**Features:**
+- Automatic directory creation
+- Pretty JSON formatting
+- Error handling with descriptive messages
+
+#### `lib/pageStorageTypes.ts`
+TypeScript interfaces for storage operations.
+
+**Types:**
+- `SavePageRequest` - Save request body
+- `SavePageResponse` - Save response
+- `LoadPageResponse` - Load response
+- `ListPagesResponse` - List response
+- `DeletePageResponse` - Delete response
 
 ### React Components
-
-#### `components/PageEngine.tsx`
-Recursively renders component tree for live preview.
-
-**How it works:**
-```typescript
-function renderComponent(componentData, index) {
-  // Get component type from registry
-  const componentType = componentMap[componentData.component];
-  
-  // Recursively render children
-  if (componentData.children?.length > 0) {
-    children = componentData.children.map(renderComponent);
-  }
-  
-  // Create React element dynamically
-  return React.createElement(componentType, props, children);
-}
-```
-
-**Features:**
-- Handles nested components recursively
-- Generates unique keys
-- Cleans props (removes `type` field)
-- Falls back to error message for unknown components
-
-#### `components/ComponentTree.tsx`
-Displays hierarchical tree with visual indicators.
-
-**Features:**
-- Indentation shows nesting depth
-- Color coding:
-  - Green background: selected for adding children
-  - Orange background: editing mode
-  - Blue border: layout component
-  - Gray background: regular component
-- Icons:
-  - 📦 for layout components
-  - Child count displayed: "(3 children)"
-- Buttons:
-  - ✏️ Edit (blue) - for all components
-  - ➕ Child (green) - only for layout components
-- Recursive rendering for nested children
-
-#### `components/ComponentSelector.tsx`
-Two-phase component selection with auto-generated forms.
-
-**Phase 1:** Select component type
-- Shows dropdown with all available components
-- User selects and clicks "Select Component"
-
-**Phase 2:** Configure properties
-- Auto-generates form based on component's PropTypes
-- Uses `generateFieldJSON()` from lib
-- Handles edit mode (pre-populates values)
-- Uses stable key tracking to prevent infinite re-renders
-
-**Edit Mode Handling:**
-```typescript
-useEffect(() => {
-  if (editMode?.component) {
-    const editKey = `${component}-${JSON.stringify(props)}`;
-    if (editKey !== lastEditMode) {
-      // Generate form with existing values
-      const form = generateFieldJSON(component, props, parentPath);
-      setEditableComponent(form);
-      setLastEditMode(editKey);
-    }
-  }
-}, [editMode, lastEditMode]);
-```
-
-#### `components/ComponentPropertiesForm.tsx`
-Simple wrapper around FormEngine.
-
-**Purpose:**
-- Shows FormEngine when form data exists
-- Shows placeholder text when no component selected
-- Keeps PageBuilderUI cleaner
 
 #### `components/PageBuilderUI.tsx`
 Main orchestrator composing all sub-components.
 
+**Responsibilities:**
+- Renders two-column layout
+- Passes state and handlers to child components
+- Manages component selection, editing, and preview
+
 **Layout:**
 ```
-┌─────────────────────────────────────────────────────────┐
-│ Row 2-column layout                                     │
-├────────────────────┬────────────────────┬───────────────┤
-│ Component Selector │ Component Tree     │               │
-│                    │ ├─ Clear Selection │               │
-│ Component          │ └─ Cancel Edit     │               │
-│ Properties Form    │                    │ Live Preview  │
-│                    │ Page JSON (collapsible)            │
-│                    │                    │               │
-└────────────────────┴────────────────────┴───────────────┘
-   Column 1             Column 2            Full Width
+┌─────────────────┬───────────────────────┐
+│ Component Editor│   Page Preview        │
+├─────────────────┤                       │
+│ Save/Load       │                       │
+│ Component       │   PageEngine          │
+│ Selector        │   (with edit UI)      │
+│ Properties      │                       │
+│ Form            │                       │
+│ Page JSON       │                       │
+└─────────────────┴───────────────────────┘
 ```
 
+**Props:** None (uses `usePageBuilder` hook)
+
+#### `components/SaveLoadSection.tsx`
+UI for saving, loading, and deleting pages.
+
+**Features:**
+- Text input for page name
+- Save button (calls `/api/pagebuilder/save`)
+- Load button (shows dropdown of saved pages)
+- Delete button per page
+- Success/error messages
+- Loading states
+
+**Props:**
+- `pageData` - Current page JSON
+- `onLoad` - Callback when page is loaded
+
+#### `components/ComponentSelector.tsx`
+Dropdown for selecting component type.
+
+**Features:**
+- Dropdown with all available components
+- Auto-generates form when component selected
+- Handles edit mode (pre-populates form)
+- Shows info box when adding child
+
+**Props:**
+- `setEditableComponent` - Callback to set form data
+- `parentPath` - Optional path for nested components
+- `editMode` - Optional edit mode state
+
+#### `components/ComponentPropertiesForm.tsx`
+Wrapper for FormEngine to display properties.
+
 **Responsibilities:**
-- Imports usePageBuilder hook
-- Renders ComponentSelector with callbacks
-- Renders ComponentPropertiesForm
-- Renders action buttons (Clear/Cancel)
-- Renders ComponentTree
-- Renders collapsible Page JSON viewer
-- Renders PageEngine for live preview
+- Renders FormEngine with generated form data
+- Shows placeholder when no component selected
+- Handles form submission
+
+**Props:**
+- `editableComponent` - Form data object
+- `onSubmit` - Form submission handler
+
+#### `components/PageEngine.tsx`
+Renders components from JSON with optional edit UI.
+
+**Features:**
+- Recursive component rendering
+- Conditional edit mode (borders, hover, buttons)
+- Floating action buttons (edit, add child, delete)
+- Selected component highlighting
+
+**Props:**
+- `pageData` - Page JSON structure
+- `editMode` - Boolean to show/hide edit UI
+- `selectedPath` - Path to highlight selected component
+- `onEditComponent` - Edit button handler
+- `onSelectComponent` - Add child button handler
+- `onDeleteComponent` - Delete button handler
+
+**Edit UI Elements:**
+- `.pagebuilder-component-wrapper` - Border and padding
+- `.pagebuilder-actions` - Floating button container
+- `.selected` - Green highlight for selected component
 
 ### State Management
 
 #### `usePageBuilder.ts`
-Custom hook encapsulating all state and business logic.
+Custom hook managing all PageBuilder state.
 
 **State:**
-- `pageJSON` - Complete page structure with components
-- `editableComponent` - Current form configuration
-- `selectedPath` - Path of selected component (for adding children)
-- `editMode` - Current component being edited (path + component data)
+- `pageJSON` - Current page structure
+- `editableComponent` - Form data for selected component
+- `selectedPath` - Path to component for adding children
+- `editMode` - Edit state (component + path)
 
 **Handlers:**
-- `handleAddNewComponent(event)` - Adds new or updates existing component
-  - Checks if in edit mode
-  - If editing: navigates to component path, preserves children, updates
-  - If adding: adds to root or parent's children based on selectedPath
-- `handleSelectComponent(component, path)` - Toggles component selection
-  - Used for adding children to layout components
-  - Highlights selected component in tree
+- `handleAddNewComponent(event)` - Adds or updates component
+- `handleSelectComponent(component, path)` - Selects component for adding child
 - `handleEditComponent(component, path)` - Loads component for editing
-  - Sets edit mode
-  - ComponentSelector auto-generates pre-populated form
-- `clearSelection()` - Clears selectedPath
-- `cancelEdit()` - Exits edit mode, clears form
+- `handleDeleteComponent(path)` - Removes component
+- `cancelEdit()` - Clears edit mode
+- `clearSelection()` - Clears selected path
 
-**Path Navigation:**
-```typescript
-// Splitting path: "root[0].children[1].children[2]"
-const pathParts = path.split(/[.[\]]/).filter(p => p);
-// Result: ['root', '0', 'children', '1', 'children', '2']
-
-// Navigate through nested structure
-let current = { components: pageJSON.components };
-for (const part of pathParts) {
-  if (part === 'root') current = current.components;
-  else if (part === 'children') continue;
-  else current = current[parseInt(part)];
-}
-```
+**Returns:**
+- All state values
+- All state setters (for external updates)
+- All handler functions
 
 ## Data Flow
 
 ### Adding a New Component
 
 ```
-User selects "Grid Section"
-  ↓
-ComponentSelector.handlePhaseOneSubmit()
-  ↓
-generateFieldJSON("Grid Section")
-  ↓
-Introspects GridSection.propTypes
-  ↓
-Generates form fields (columns: number, gap: text, etc.)
-  ↓
-FormEngine renders form
-  ↓
-User fills form and submits
-  ↓
-handleAddNewComponent(event)
-  ↓
-generateComponentObject(event)
-  ↓
-Extracts: { component: "Grid Section", props: {...}, children: [] }
-  ↓
-Adds to pageJSON.components
-  ↓
-ComponentTree re-renders showing new component
-  ↓
-PageEngine renders live preview
+1. User selects component type
+   └─> ComponentSelector calls generateFieldJSON()
+       └─> Creates form with PropTypes-based fields
+           └─> Passes to ComponentPropertiesForm
+
+2. User fills form and clicks "Add"
+   └─> Form submits to handleAddNewComponent()
+       └─> Calls generateComponentObject() to extract data
+           └─> Updates pageJSON state
+               └─> PageEngine re-renders with new component
+```
+
+### Editing a Component
+
+```
+1. User clicks ✏️ edit button
+   └─> PageEngine calls onEditComponent(component, path)
+       └─> usePageBuilder sets editMode
+           └─> ComponentSelector auto-generates form with values
+               └─> User edits and submits
+                   └─> handleAddNewComponent() updates at path
+                       └─> PageEngine re-renders
 ```
 
 ### Adding a Child Component
 
 ```
-User clicks ➕ Child button on Grid Section
-  ↓
-handleSelectComponent(component, "root[0]")
-  ↓
-setSelectedPath("root[0]")
-  ↓
-ComponentSelector receives parentPath="root[0]"
-  ↓
-User selects "Callout"
-  ↓
-generateFieldJSON("Callout", undefined, "root[0]")
-  ↓
-Adds hidden field: <input type="hidden" name="__parentPath" value="root[0]" />
-  ↓
-User fills form and submits
-  ↓
-handleAddNewComponent(event)
-  ↓
-generateComponentObject(event) extracts parentPath="root[0]"
-  ↓
-Navigates to root[0] in tree
-  ↓
-Pushes new Callout to root[0].children
-  ↓
-ComponentTree shows Grid Section with nested Callout
-  ↓
-PageEngine recursively renders Grid Section → Callout
+1. User clicks ➕ child button
+   └─> PageEngine calls onSelectComponent(component, path)
+       └─> usePageBuilder sets selectedPath
+           └─> ComponentSelector shows "Adding child" info
+               └─> Selected component gets green highlight
+                   └─> User selects type and fills form
+                       └─> Component added to children array
 ```
 
-### Editing an Existing Component
+### Saving a Page
 
 ```
-User clicks ✏️ Edit on a Callout
-  ↓
-handleEditComponent(component, "root[1]")
-  ↓
-setEditMode({ path: "root[1]", component: {...} })
-  ↓
-ComponentSelector useEffect detects editMode change
-  ↓
-generateFieldJSON("Callout", existingProps)
-  ↓
-Form fields pre-populated with current values
-  ↓
-FormEngine renders with defaultValue props
-  ↓
-User modifies and submits
-  ↓
-handleAddNewComponent(event) detects editMode
-  ↓
-Navigates to root[1]
-  ↓
-Preserves children if it's a layout component
-  ↓
-Replaces component at root[1] with updated version
-  ↓
-Clears editMode
-  ↓
-Tree and preview update
+1. User enters name and clicks 💾 Save
+   └─> SaveLoadSection calls /api/pagebuilder/save
+       └─> API route calls pageStorage.savePage()
+           └─> Writes JSON to public/data/pages/
+               └─> Returns success message
+                   └─> UI shows confirmation
 ```
 
-## Benefits of Refactored Architecture
+## Design Principles
 
-### Separation of Concerns
-- **Lib modules** contain pure functions (easy to test)
-- **Components** focus on UI and user interaction
-- **Hook** manages state and business logic
-- **Entry point** is minimal and clean
+### 1. Separation of Concerns
+- **Lib modules**: Pure functions, no React dependencies
+- **Components**: UI only, delegate logic to hooks/lib
+- **Hooks**: State management, no UI
 
-### Maintainability
-- 778 lines → 11 focused files (~70 lines average)
-- Each file has single responsibility
-- Easy to locate and fix bugs
-- Clear module boundaries
+### 2. Single Source of Truth
+- Component files export const arrays
+- PropTypes use these arrays
+- componentMetadata imports these arrays
+- TypeScript types generated via InferProps
 
-### Reusability
-- Lib functions can be imported elsewhere
-- Components can be used independently
-- Hook can be extended or customized
-- Component registry is centralized
+### 3. Type Safety
+- TypeScript interfaces for all data structures
+- PropTypes for runtime validation
+- InferProps for type generation
 
-### Testability
-- Pure functions in lib/ are trivial to unit test
-- Components can be tested in isolation
-- Mock the hook for component testing
-- Integration tests can use the whole UI
+### 4. Modularity
+- Small, focused modules
+- Clear dependencies
+- Easy to test and maintain
 
-### Type Safety
-- Centralized types in lib/types.ts
-- TypeScript interfaces prevent errors
-- InferProps ensures PropTypes match types
-- Compiler catches type mismatches
+### 5. Extensibility
+- Add components via componentMap
+- Add metadata via componentMetadata
+- Custom form fields via propTypeIntrospection
 
-### Extensibility
-- Add new components to componentMap
-- Add new PropTypes handlers
-- Extend usePageBuilder hook
-- Create new views using same data
+## Performance Considerations
+
+- **Form generation**: Happens once per component selection
+- **PropTypes introspection**: Cached in metadata
+- **Component rendering**: React's virtual DOM handles efficiently
+- **File I/O**: Server-side only, doesn't block client
 
 ## Future Enhancements
 
-### Potential Additions
-- **Save/Load** - Persist pageJSON to backend or localStorage
-- **Undo/Redo** - History tracking with state snapshots
-- **Drag & Drop** - Visual component arrangement
-- **Component Library** - Searchable component browser
-- **Templates** - Pre-built page layouts
-- **Export** - Generate JSX or JSON for production use
-- **Validation** - Real-time error checking
-- **Theming** - Live theme switching
-- **Responsive Preview** - Mobile/tablet/desktop views
-
-### Recommended Structure for Additions
-```
-pagebuilder/
-├── lib/
-│   └── storage.ts        # Save/load logic
-├── components/
-│   ├── HistoryPanel.tsx  # Undo/redo UI
-│   └── TemplateLibrary.tsx
-├── hooks/
-│   ├── usePageBuilder.ts
-│   ├── useHistory.ts     # Undo/redo state
-│   └── useStorage.ts     # Persistence
-└── utils/
-    └── export.ts         # JSX generation
-```
-
-## Troubleshooting
-
-### Common Issues
-
-**Form fields are disabled/locked:**
-- Check that you're using uncontrolled inputs (defaultValue, not value)
-- Verify FormEngine is receiving correct field configuration
-
-**Required field detection is wrong:**
-- Remember PropTypes has inverted logic!
-- Check `!('isRequired' in propType)` in getPropTypeInfo
-
-**Component not appearing in dropdown:**
-- Verify it's in componentMap
-- Check componentTypes string is generated
-
-**Children not nesting:**
-- Verify component is in layoutComponents array
-- Check that path is being passed correctly
-- Debug path navigation logic
-
-**Edit mode not working:**
-- Check editMode state structure
-- Verify useEffect dependencies
-- Look for infinite re-render loops
-
-### Debugging Tips
-
-**Enable logging:**
-```typescript
-// In usePageBuilder.ts
-console.log('Adding component:', newComponent);
-console.log('Current path:', selectedPath);
-console.log('Edit mode:', editMode);
-```
-
-**Inspect pageJSON:**
-```typescript
-// The collapsible Page JSON viewer shows the current state
-// Use browser DevTools to inspect the structure
-```
-
-**React DevTools:**
-- Install React DevTools browser extension
-- Inspect component props and state
-- Track re-renders with profiler
-
-**TypeScript:**
-- Check for type errors in Problems panel
-- Hover over variables to see inferred types
-- Use "Go to Definition" to trace data flow
-
-## Conclusion
-
-PageBuilder V2 demonstrates modern React best practices:
-- Modular architecture with clear boundaries
-- Custom hooks for state management
-- Pure functions for business logic
-- Type safety with TypeScript
-- Component composition
-- Separation of concerns
-
-The refactored structure is production-ready, maintainable, and extensible.
+- **Undo/Redo**: Add history stack to usePageBuilder
+- **Drag & Drop**: Implement drag-to-reorder
+- **Component Preview**: Thumbnail previews in selector
+- **Template Library**: Pre-built page templates
+- **Export/Import**: Bulk page management
+- **Versioning**: Track page version history

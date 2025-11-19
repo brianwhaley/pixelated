@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState } from 'react';
-import { generateComponentObject } from './lib/componentGeneration';
-import type { PageData, EditMode, ComponentData } from './lib/types';
+import { generateComponentObject } from './componentGeneration';
+import type { PageData, EditMode, ComponentData } from './types';
 
 /**
  * usePageBuilder - Custom hook for PageBuilder state management
@@ -176,7 +175,10 @@ export function usePageBuilder() {
 		editMode,
 		
 		// Setters
+		setPageJSON,
 		setEditableComponent,
+		setSelectedPath,
+		setEditMode,
 		
 		// Handlers
 		handleAddNewComponent,

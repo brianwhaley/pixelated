@@ -1,0 +1,106 @@
+/**
+ * PageBuilder Component Styles
+ * Hover effects for editable components in the preview
+ */
+
+.pagebuilder-component-wrapper {
+	position: relative;
+	transition: all 0.2s ease;
+	padding: 10px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	margin: 5px 0;
+	
+	&.selected {
+		border-color: #4CAF50;
+		border-width: 3px;
+		background: rgba(76, 175, 80, 0.05);
+		box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+		padding: 9px; /* Adjust padding to prevent layout shift */
+	}
+	
+	&:hover {
+		border-color: #2196F3;
+		border-width: 2px;
+		padding: 9px; /* Adjust padding to prevent layout shift */
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+		transform: translateY(-1px);
+	}
+	
+	/* Smooth micro-interaction similar to button hover */
+	&:hover::after {
+		content: '';
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		right: -2px;
+		bottom: -2px;
+		border-radius: 4px;
+		pointer-events: none;
+		animation: pulseOutline 0.6s ease-out;
+	}
+}
+
+@keyframes pulseOutline {
+	0% {
+		box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+	}
+	100% {
+		box-shadow: 0 0 0 8px rgba(33, 150, 243, 0);
+	}
+}
+
+/* Floating Action Menu */
+.pagebuilder-actions {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: flex;
+	gap: 4px;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	z-index: 10;
+	
+	.pagebuilder-component-wrapper:hover & {
+		opacity: 1;
+	}
+	
+	button {
+		width: 28px;
+		height: 28px;
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+		}
+		
+		&:active {
+			transform: scale(0.95);
+		}
+		
+		&.edit-btn {
+			background: #2196F3;
+			color: white;
+		}
+		
+		&.child-btn {
+			background: #4CAF50;
+			color: white;
+		}
+		
+		&.delete-btn {
+			background: #f44336;
+			color: white;
+		}
+	}
+}

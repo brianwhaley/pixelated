@@ -9,10 +9,13 @@ npm audit fix --force
 eslint --fix --ext .js,.jsx .
 
 eslint --fix
+
+npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
+npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "improved propType Introspection, select fields for pagebuilder, stories for pagebuilder and layout"
+git commit -m "added page json save / load / edit / delete functionality to the pagebuilder"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

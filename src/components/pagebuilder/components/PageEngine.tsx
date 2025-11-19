@@ -2,11 +2,13 @@
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { generateKey } from '../../utilities/pixelated.functions';
-import { componentMap } from '../lib/componentMap';
+import { componentMap, layoutComponents } from '../lib/componentMap';
+import './pagebuilder.scss';
 
 /**
- * PageEngine - Renders the live preview of components
- * Recursively renders components with their children
+ * PageEngine - Renders components with optional inline editing
+ * When editMode is true, shows borders, hover effects, and action buttons
+ * When editMode is false (default), renders clean components without edit UI
  */
 
 PageEngine.propTypes = {
@@ -19,18 +21,27 @@ PageEngine.propTypes = {
 			})
 		).isRequired,
 	}).isRequired,
+	editMode: PropTypes.bool,
+	selectedPath: PropTypes.string,
+	onEditComponent: PropTypes.func,
+	onSelectComponent: PropTypes.func,
+	onDeleteComponent: PropTypes.func,
 };
 
 export type PageEngineType = InferProps<typeof PageEngine.propTypes>;
 
 export function PageEngine(props: PageEngineType) {
+	const { editMode = false, selectedPath, onEditComponent, onSelectComponent, onDeleteComponent } = props;
+	
 	// Recursive function to render components with children
-	function renderComponent(componentData: any, index: number): React.JSX.Element {
+	function renderComponent(componentData: any, index: number, path: string = 'root'): React.JSX.Element {
 		const componentName: string = componentData.component;
 		const componentProps: any = { ...componentData.props };
 		delete componentProps.type;
 		
 		const componentType = (componentMap as Record<string, React.ElementType>)[componentName];
+		const currentPath = `${path}[${index}]`;
+		const isLayout = layoutComponents.includes(componentName);
 		
 		if (!componentType) {
 			return <div key={index}>Unknown component: {componentName}</div>;
@@ -40,17 +51,66 @@ export function PageEngine(props: PageEngineType) {
 		let children = null;
 		if (componentData.children && componentData.children.length > 0) {
 			children = componentData.children.map((child: any, childIndex: number) => 
-				renderComponent(child, childIndex)
+				renderComponent(child, childIndex, `${currentPath}.children`)
 			);
 		}
 		
 		componentProps.key = generateKey();
 		
-		if (children) {
-			return React.createElement(componentType, componentProps, children);
+		const element = children 
+			? React.createElement(componentType, componentProps, children)
+			: React.createElement(componentType, componentProps);
+		
+		// If not in edit mode, return element directly without wrapper
+		if (!editMode) {
+			return <React.Fragment key={`fragment-${index}`}>{element}</React.Fragment>;
 		}
 		
-		return React.createElement(componentType, componentProps);
+		// Edit mode: Wrap with hover effect and action buttons
+		const isSelected = selectedPath === currentPath;
+		return (
+			<div 
+				key={`wrapper-${index}`} 
+				className={`pagebuilder-component-wrapper ${isSelected ? 'selected' : ''}`}
+			>
+				{element}
+				{/* Floating Action Menu */}
+				<div className="pagebuilder-actions">
+					<button
+						className="edit-btn"
+						onClick={(e) => {
+							e.stopPropagation();
+							onEditComponent?.(componentData, currentPath);
+						}}
+						title="Edit properties"
+					>
+						✏️
+					</button>
+					{isLayout && (
+						<button
+							className="child-btn"
+							onClick={(e) => {
+								e.stopPropagation();
+								onSelectComponent?.(componentData, currentPath);
+							}}
+							title="Add child component"
+						>
+							➕
+						</button>
+					)}
+					<button
+						className="delete-btn"
+						onClick={(e) => {
+							e.stopPropagation();
+							onDeleteComponent?.(currentPath);
+						}}
+						title="Delete component"
+					>
+						🗑️
+					</button>
+				</div>
+			</div>
+		);
 	}
 
 	const components: React.JSX.Element[] = [];
