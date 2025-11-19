@@ -56,10 +56,9 @@ npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs -n1 -I {} sh -c 'echo "Install
 
 echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while read pkg; do echo "$pkg" >> /tmp/npm-updates.log && printf "." && npm install --force --save "$pkg" > /dev/null 2>&1; done && echo "\n\n✓ Updated packages:" && cat /tmp/npm-updates.log && rm /tmp/npm-updates.log
 npm audit fix --force
-npm install @brianwhaley/pixelated-components@latest --force --save
 npm version patch --force
 git add * -v
-git commit -m "remove pagebuilder v1, implement save / load / edit / delete functionality for pagebuilder"
+git commit -m "fullmenu admin menu fixes, page engine pages at /page"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

@@ -66,10 +66,12 @@
     CUSTOM Pixelated ACCORDION Menu Styles
  ======================================== */
 
-/* .accordionDown, 
+ /* only for fullMenu QS param */
+.accordionMenuWrapper,
+.accordionDown, 
 .accordionUp {
-	top: 100px;
-} */
+	top: 100px !important;
+}
 
 .panelMenuButton,
 #panelMenuButton {

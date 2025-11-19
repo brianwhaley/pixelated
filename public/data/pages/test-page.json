@@ -36,6 +36,61 @@
         }
       ],
       "path": "root[1763577315911]"
+    },
+    {
+      "component": "Page Section",
+      "props": {
+        "type": "Page Section",
+        "columns": 3,
+        "responsive": false
+      },
+      "children": [
+        {
+          "component": "Callout",
+          "props": {
+            "type": "Callout",
+            "layout": "vertical",
+            "img": "https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto,dpr_auto/https://www.pixelated.tech/images/icons/webdev.png",
+            "imgAlt": "Web Development",
+            "imgShape": "bevel",
+            "title": "Web Development",
+            "subtitle": "Do you need a new website or web application for your business? Is your current website outdated or not mobile-friendly? Have you focused on other parts of your business and need help with your online presence?",
+            "content": "Pixelated Technologies can be your Virtual Technology Department, providing custom web development solutions tailored to your business needs. We specialize in creating responsive, user-friendly websites and web applications that help small businesses succeed online."
+          },
+          "children": [],
+          "path": "root[1763586784257]"
+        },
+        {
+          "component": "Callout",
+          "props": {
+            "type": "Callout",
+            "layout": "vertical",
+            "img": "https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto,dpr_auto/https://www.pixelated.tech/images/icons/socialmedia.png",
+            "imgAlt": "Social Media Marketing",
+            "imgShape": "bevel",
+            "title": "Social Media Marketing",
+            "subtitle": "Are your social media accounts active and engaging? Are they integrated with your website and other online platforms? Do they help convert prospective customers into current customers?",
+            "content": "Let Pixelated Technologieshelp you develop a comprehensive social media strategy that aligns with your business goals. We can help you create and manage your social media accounts, produce engaging content, and analyze performance metrics to optimize your social media presence."
+          },
+          "children": [],
+          "path": "root[1763588275246]"
+        },
+        {
+          "component": "Callout",
+          "props": {
+            "type": "Callout",
+            "layout": "vertical",
+            "img": "https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto,dpr_auto/https://www.pixelated.tech/images/icons/seo-2.png",
+            "imgShape": "bevel",
+            "title": "Search Engine Optimization",
+            "subtitle": "Is your website optimized for search engines? Does it stand out from your competition, ranking well for relevant keywords and phrases? Do you have a plan to improve your search engine rankings over time?",
+            "content": "Pixelated Technologiescan help you improve your websites visibility and ranking on popular search engines. We can conduct a thorough SEO audit of your website, identify areas for improvement, and implement on-page and off-page SEO strategies to boost your search engine performance."
+          },
+          "children": [],
+          "path": "root[1763588282346]"
+        }
+      ],
+      "path": "root[1763586656373]"
     }
   ]
 }

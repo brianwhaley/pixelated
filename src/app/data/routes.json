@@ -43,83 +43,96 @@
 			"title": "Pixelated Technologies - Privacy Policy",
 			"description": "Pixelated Technologies Privacy Policy",
 			"keywords": "pixelated, privacy policy, data retention"  
-		} , { 
-			"name": "Page Builder", 
-			"path": "/pagebuilder", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Page Builder",
-			"description": "Page Builder",
-			"keywords": "pixelated technologies, page builder" 
-		} , { 
-			"name": "By The Way", 
-			"path": "/bytheway", 
-			"hidden": true,
-			"title": "Pixelated Technologies - By The Way",
-			"description": "By The Way Font",
-			"keywords": "pixelated technologies, custom font, by the way, by the way font" 
-		} , { 
-			"name": "Samples", 
-			"path": "/samples", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Samples",
-			"description": "Samples",
-			"keywords": "pixelated technologies, web design samples" 
-		} , { 
-			"name": "Sample 1", 
-			"path": "/samples/sample1", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Sample 1",
-			"description": "Sample 1",
-			"keywords": "pixelated technologies, web design sample 1" 
-		} , { 
-			"name": "Sample 2", 
-			"path": "/samples/sample2", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Sample 2",
-			"description": "Sample 2",
-			"keywords": "pixelated technologies, web design sample 2" 
-		} , { 
-			"name": "Sample 3", 
-			"path": "/samples/sample3", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Sample 3",
-			"description": "Sample 3",
-			"keywords": "pixelated technologies, web design sample 3" 
-		} , { 
-			"name": "NerdJokes", 
-			"path": "/nerdjokes", 
-			"hidden": true,
-			"title": "Pixelated Technologies - NerdJokes",
-			"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
-		} , { 
-			"name": "Stkr", 
-			"path": "/stkr", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Stkr",
-			"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
-			"keywords": "" 
 		} , {
-			"name": "Form", 
-			"path": "/form", 
+			"name": "Sandbox",
 			"hidden": true,
-			"title": "Pixelated Technologies - Form",
-			"description": "Test my Form Builder, Form Components, and Form Validations",
-			"keywords": "" 
-		} , { 
-			"name": "Form Build", 
-			"path": "/form/build", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Form Builder",
-			"description": "Build your own form with my Form Builder",
-			"keywords": ""  
-		} , { 
-			"name": "Form Extract", 
-			"path": "/form/extract", 
-			"hidden": true,
-			"title": "Pixelated Technologies - Form Extract",
-			"description": "Extract the JSON needed from a live site to use my Form Builder",
-			"keywords": ""  
+			"routes": [
+				{
+					"name": "Page Builder", 
+					"path": "/pagebuilder", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Page Builder",
+					"description": "Page Builder",
+					"keywords": "pixelated technologies, page builder" 
+				} , { 
+					"name": "Page Engine Pages", 
+					"path": "/page", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Page Engine Pages",
+					"description": "Page Engine Pages",
+					"keywords": "pixelated technologies, page engine, pages" 
+				} , { 
+					"name": "By The Way", 
+					"path": "/bytheway", 
+					"hidden": true,
+					"title": "Pixelated Technologies - By The Way",
+					"description": "By The Way Font",
+					"keywords": "pixelated technologies, custom font, by the way, by the way font" 
+				} , { 
+					"name": "Samples", 
+					"path": "/samples", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Samples",
+					"description": "Samples",
+					"keywords": "pixelated technologies, web design samples" 
+				} , { 
+					"name": "Sample 1", 
+					"path": "/samples/sample1", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sample 1",
+					"description": "Sample 1",
+					"keywords": "pixelated technologies, web design sample 1" 
+				} , { 
+					"name": "Sample 2", 
+					"path": "/samples/sample2", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sample 2",
+					"description": "Sample 2",
+					"keywords": "pixelated technologies, web design sample 2" 
+				} , { 
+					"name": "Sample 3", 
+					"path": "/samples/sample3", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sample 3",
+					"description": "Sample 3",
+					"keywords": "pixelated technologies, web design sample 3" 
+				} , { 
+					"name": "NerdJokes", 
+					"path": "/nerdjokes", 
+					"hidden": true,
+					"title": "Pixelated Technologies - NerdJokes",
+					"description": "NerdJokes Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , { 
+					"name": "Stkr", 
+					"path": "/stkr", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Stkr",
+					"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
+					"keywords": "" 
+				} , {
+					"name": "Form", 
+					"path": "/form", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Form",
+					"description": "Test my Form Builder, Form Components, and Form Validations",
+					"keywords": "" 
+				} , { 
+					"name": "Form Build", 
+					"path": "/form/build", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Form Builder",
+					"description": "Build your own form with my Form Builder",
+					"keywords": ""  
+				} , { 
+					"name": "Form Extract", 
+					"path": "/form/extract", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Form Extract",
+					"description": "Extract the JSON needed from a live site to use my Form Builder",
+					"keywords": ""  
+				}
+			]
 		}
 	]
 }
