@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@brianwhaley/pixelated-components": "^2.3.26",
+    "@brianwhaley/pixelated-components": "^2.4.1",
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "core-js": "^3.47.0",
