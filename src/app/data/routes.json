@@ -44,6 +44,13 @@
 			"description": "Pixelated Technologies Privacy Policy",
 			"keywords": "pixelated, privacy policy, data retention"  
 		} , { 
+			"name": "Page Builder", 
+			"path": "/pagebuilder", 
+			"hidden": true,
+			"title": "Pixelated Technologies - Page Builder",
+			"description": "Page Builder",
+			"keywords": "pixelated technologies, page builder" 
+		} , { 
 			"name": "By The Way", 
 			"path": "/bytheway", 
 			"hidden": true,

@@ -52,14 +52,35 @@ npm version minor
 
 eslint --fix
 
-npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
+npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs -n1 -I {} sh -c 'echo "Installing {}..." && npm install --force --save {}'
+
+echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while read pkg; do echo "$pkg" >> /tmp/npm-updates.log && printf "." && npm install --force --save "$pkg" > /dev/null 2>&1; done && echo "\n\n✓ Updated packages:" && cat /tmp/npm-updates.log && rm /tmp/npm-updates.log
 npm audit fix --force
 npm install @brianwhaley/pixelated-components@latest --force --save
 npm version patch --force
 git add * -v
-git commit -m "pagebuilder v1 and v2"
+git commit -m "remove pagebuilder v1, implement save / load / edit / delete functionality for pagebuilder"
 git push -u pixelated dev --tags
 git push pixelated dev:main
+
+
+## ===== SYNC JSON FILES FROM PRODUCTION
+
+#!/bin/bash
+# scripts/sync-pages-from-prod.sh
+
+PROD_URL="https://yoursite.com/data/pages"
+LOCAL_DIR="public/data/pages"
+
+# Get list of pages from API
+curl -s https://yoursite.com/api/pagebuilder/list | jq -r '.pages[]' | while read page; do
+  echo "Downloading $page..."
+  curl -s "https://yoursite.com/api/pagebuilder/load?name=$page" | jq -r '.data' > "$LOCAL_DIR/$page.json"
+done
+
+echo "✓ All pages synced from production"
+
+
 
 ## ===== Hydration Error =====
 https://www.reddit.com/r/nextjs/comments/1gabiqn/hydration_error_when_installing_nextjs_15/?rdt=34262

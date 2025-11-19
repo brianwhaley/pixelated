@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "component": "Page Header",
+      "props": {
+        "type": "Page Header",
+        "title": "Pixelated Technologies"
+      },
+      "children": [],
+      "path": "root[1763577039076]"
+    },
+    {
+      "component": "Page Section",
+      "props": {
+        "type": "Page Section",
+        "maxWidth": "1024",
+        "columns": -2,
+        "responsive": false
+      },
+      "children": [
+        {
+          "component": "Callout",
+          "props": {
+            "type": "Callout",
+            "style": "boxed",
+            "boxShape": "squircle",
+            "layout": "horizontal",
+            "direction": "left",
+            "img": "https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto,dpr_auto/https://www.pixelated.tech/images/pix/pix-bg-512.png",
+            "imgAlt": "Pixelated Technologies",
+            "title": "Pixelated Technologies",
+            "content": "Pixelated Technologies is a Digital Services company that specializes in transforming small businesses through custom IT solutions, including web development, social media marketing, search engine optimization, content management, eCommerce solutions, and small business modernization. Our mission is to empower small businesses to thrive in the digital age by providing tailored technology services that drive growth and efficiency."
+          },
+          "children": [],
+          "path": "root[2].children[1763577287961]"
+        }
+      ],
+      "path": "root[1763577315911]"
+    }
+  ]
+}
