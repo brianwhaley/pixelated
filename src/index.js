@@ -28,6 +28,7 @@ export * from './components/form/pixelated.hubspot';
 export * from './components/general/pixelated.css';
 export * from './components/general/pixelated.headers';
 export * from './components/general/pixelated.img';
+export * from './components/general/pixelated.layout';
 export * from './components/general/pixelated.loading';
 export * from './components/general/pixelated.microinteractions';
 export * from './components/general/pixelated.modal';
@@ -41,9 +42,19 @@ export * from './components/menu/pixelated.menu-accordion';
 /* export * from './components/menu/pixelated.menu-expando '; */
 export * from './components/menu/pixelated.menu-simple';
 
-export * from './components/nerdjoke/pixelated.nerdjoke.js';
+export * from './components/nerdjoke/pixelated.nerdjoke';
 
-export * from './components/recipe/pixelated.recipe.js';
+export * from './components/pagebuilder/components/ComponentPropertiesForm';
+export * from './components/pagebuilder/components/ComponentSelector';
+export * from './components/pagebuilder/components/ComponentTree';
+export * from './components/pagebuilder/components/PageBuilderUI';
+export * from './components/pagebuilder/components/PageEngine';
+export * from './components/pagebuilder/lib/componentGeneration';
+export * from './components/pagebuilder/lib/componentMap';
+export * from './components/pagebuilder/lib/propTypeIntrospection';
+export * from './components/pagebuilder/lib/types';
+
+export * from './components/recipe/pixelated.recipe';
 
 export * from './components/resume/pixelated.resume';
 

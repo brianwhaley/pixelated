@@ -7,7 +7,8 @@
   --primary-color: #369;
   --secondary-color: #CDE;
   --accent1-color: #CCC;
-  --accent2-color: #EEE;	
+  --accent2-color: #EEE;
+  --text-color: #000;	
 }
 
 * {
@@ -210,7 +211,8 @@ main {
 
 @media screen and (max-width: 480px) {
     main {
-		margin-top: 10px;
+		/* margin-top: 10px; */
+		padding-top: 10px
 	}
 }
 

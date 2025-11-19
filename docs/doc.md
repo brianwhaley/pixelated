@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "callout proptypes, simple menu css tweaks, Google component name changes, google maps v1, tiles link addition, global css tweaks, new logos, story fixes"
+git commit -m "new pagebuilder functionality, new layout components - PageSection, GridItem, FlexItem"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

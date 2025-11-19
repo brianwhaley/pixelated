@@ -13,6 +13,11 @@ export * from './components/ebay/pixelated.ebay.functions.js';
 export * from './components/form/pixelated.formvalidations.js';
 export * from './components/form/pixelated.hubspot.js';
 
+export * from './components/pagebuilder/lib/componentGeneration';
+export * from './components/pagebuilder/lib/componentMap';
+export * from './components/pagebuilder/lib/propTypeIntrospection';
+export * from './components/pagebuilder/lib/types';
+
 export * from './components/seo/pixelated.metadata.js';
 export * from './components/seo/pixelated.sitemap.js';
 

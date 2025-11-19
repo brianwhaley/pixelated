@@ -1,0 +1,189 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { useState } from 'react';
+import { generateComponentObject } from './lib/componentGeneration';
+import type { PageData, EditMode, ComponentData } from './lib/types';
+
+/**
+ * usePageBuilder - Custom hook for PageBuilder state management
+ * Handles all state and business logic for component management
+ */
+
+export function usePageBuilder() {
+	const [pageJSON, setPageJSON] = useState<PageData>({ components: [] });
+	const [editableComponent, setEditableComponent] = useState({});
+	const [selectedPath, setSelectedPath] = useState<string>('');
+	const [editMode, setEditMode] = useState<EditMode | null>(null);
+	
+	/**
+	 * Handles adding new components or updating existing ones
+	 */
+	function handleAddNewComponent(event: Event) {
+		const { component: newComponent, parentPath } = generateComponentObject(event);
+		
+		const components = JSON.parse(JSON.stringify(pageJSON.components));
+		
+		// Check if we're editing an existing component
+		if (editMode) {
+			// Update existing component at editMode.path
+			const pathParts = editMode.path.split(/[.[\]]/).filter(p => p);
+			let current: any = { components };
+			
+			for (let i = 0; i < pathParts.length - 1; i++) {
+				const part = pathParts[i];
+				if (part === 'children' || part === 'root') {
+					current = current[part === 'root' ? 'components' : part];
+				} else {
+					current = current[parseInt(part)];
+				}
+			}
+		
+			const lastPart = pathParts[pathParts.length - 1];
+			const index = parseInt(lastPart);
+		
+			// Preserve children if it's a layout component
+			if (current[index]?.children) {
+				newComponent.children = current[index].children;
+			}
+		
+			current[index] = newComponent;
+		
+			setPageJSON({ components });
+			setEditableComponent({});
+			setSelectedPath('');
+			setEditMode(null);
+			return;
+		}
+	
+		if (!parentPath) {
+			// Add to root level
+			components.push(newComponent);
+		} else {
+			// Find parent and add to its children
+			const pathParts = parentPath.split(/[[\].]/).filter(Boolean);
+			let current: any = { components };
+		
+			for (let i = 0; i < pathParts.length; i++) {
+				const part = pathParts[i];
+				if (part === 'root') {
+					current = current.components;
+				} else if (part === 'children') {
+					// Next part should be an index
+					continue;
+				} else {
+					const idx = parseInt(part);
+					if (!isNaN(idx)) {
+						current = current[idx];
+					}
+				}
+			}
+		
+			if (current && Array.isArray(current.children)) {
+				current.children.push(newComponent);
+			}
+		}
+	
+		setPageJSON({ components });
+		setEditableComponent({});
+		setSelectedPath('');
+	}
+	
+	/**
+	 * Handles selecting a component for adding children
+	 */
+	function handleSelectComponent(component: ComponentData, path: string) {
+		// Toggle selection - if clicking same component, unselect it
+		if (selectedPath === path) {
+			setSelectedPath('');
+		} else {
+			setSelectedPath(path);
+		}
+		setEditMode(null);
+	}
+	
+	/**
+	 * Handles editing an existing component
+	 */
+	function handleEditComponent(component: ComponentData, path: string) {
+		// Load component properties for editing
+		setEditMode({ path, component });
+		setSelectedPath('');
+		// ComponentSelector will generate the form when editMode changes
+	}
+	
+	/**
+	 * Clears component selection
+	 */
+	function clearSelection() {
+		setSelectedPath('');
+	}
+	
+	/**
+	 * Cancels edit mode
+	 */
+	function cancelEdit() {
+		setEditMode(null);
+		setEditableComponent({});
+	}
+	
+	/**
+	 * Handles deleting a component by path
+	 */
+	function handleDeleteComponent(path: string) {
+		const components = JSON.parse(JSON.stringify(pageJSON.components));
+		const pathParts = path.split(/[.[\]]/).filter(p => p);
+		
+		// Navigate to parent
+		let current: any = { components };
+		for (let i = 0; i < pathParts.length - 1; i++) {
+			const part = pathParts[i];
+			if (part === 'root') {
+				current = current.components;
+			} else if (part === 'children') {
+				continue;
+			} else {
+				current = current[parseInt(part)];
+			}
+		}
+		
+		// Get the index to delete
+		const lastPart = pathParts[pathParts.length - 1];
+		const index = parseInt(lastPart);
+		
+		// Delete from array
+		if (Array.isArray(current)) {
+			current.splice(index, 1);
+		} else if (current.children && Array.isArray(current.children)) {
+			current.children.splice(index, 1);
+		}
+		
+		setPageJSON({ components });
+		
+		// Clear edit mode and selection if deleting that component
+		if (editMode?.path === path) {
+			cancelEdit();
+		}
+		if (selectedPath === path) {
+			clearSelection();
+		}
+	}
+	
+	return {
+		// State
+		pageJSON,
+		editableComponent,
+		selectedPath,
+		editMode,
+		
+		// Setters
+		setEditableComponent,
+		
+		// Handlers
+		handleAddNewComponent,
+		handleSelectComponent,
+		handleEditComponent,
+		clearSelection,
+		cancelEdit,
+		handleDeleteComponent,
+	};
+}

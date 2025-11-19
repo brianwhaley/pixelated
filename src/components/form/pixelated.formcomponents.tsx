@@ -142,6 +142,7 @@ FormInput.propTypes = {
 	defaultValue: PropTypes.string,
 	value: PropTypes.string,
 	list: PropTypes.string,
+	listItems: PropTypes.string, /* this one is mine */
 	size: PropTypes.string,
 	maxLength: PropTypes.string,
 	placeholder: PropTypes.string,
@@ -171,10 +172,16 @@ export function FormInput(props: FormInputType) {
 	let formValidate = <FormValidate id={`${props.id}-validate`} valid={isValid} /> ;
 	// ----- Input Props
 	let inputProps = JSON.parse(JSON.stringify(props));
-	["display", "label", "validate"].forEach(e => delete inputProps[e]);
+	["display", "label", "listItems", "validate"].forEach(e => delete inputProps[e]);
 	inputProps["onChange"] = (e: any) => onChange({props: {...props, isValid: isValid, setIsValid: setIsValid }}, e) ;
 	inputProps["className"] = (props.display == "vertical") ? "displayVertical" : "" ;
 	if ( ["submit","button"].indexOf(props.type ?? "") > -1 ) { inputProps["value"] = props.value; } ;
+	let formDataList = props.list && props.list in FV
+		? FV[props.list as keyof typeof FV]
+		: props.list && props.listItems
+			? props.listItems.split(',')
+			: undefined ;
+
 	return (
 		<div>
 			{ props.type == "checkbox" ? <input {...inputProps} /> : "" }
@@ -182,11 +189,7 @@ export function FormInput(props: FormInputType) {
 			{ props.tooltip ? <FormTooltip id={props.id} text={props.tooltip} /> : "" }
 			{ props.display == "vertical" ? formValidate : "" }
 			{ props.type != "checkbox" ? <input {...inputProps} /> : "" }
-			{ props.list && typeof props.list === "string" && props.list in FV
-				/* @ts-expect-error: items has some kind of crazy error */
-				? <FormDataList id={props.list} items={FV[props.list as keyof typeof FV]} />
-				: ""
-			}
+			{ formDataList && Array.isArray(formDataList) ? <FormDataList id={props.list ?? ''} items={formDataList} /> : "" }
 			{ props.display != "vertical" ? formValidate : "" }
 		</div>
 	);

@@ -58,7 +58,6 @@
 	border-left: 2px solid var(--primary-color);
 }
 
-
 .menuItem a {
 	/* this is the button */
 	background-color: var(--accent1-color);

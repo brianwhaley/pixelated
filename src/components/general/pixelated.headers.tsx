@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes, {InferProps} from 'prop-types';
 import "./pixelated.headers.css";
 
-export type PageHeaderType = {
-	title: string,
-	url?: string
-};
+
+
+
 /* ========== CALLOUT HEADER ========== */
+PageHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string
+};
+export type PageHeaderType = InferProps<typeof PageHeader.propTypes>;
 export function PageHeader( { title , url }: PageHeaderType) {
 	const calloutTarget = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
@@ -19,11 +24,14 @@ export function PageHeader( { title , url }: PageHeaderType) {
 };
 
 
+
+
 /* ========== CALLOUT HEADER ========== */
-export type PageSectionHeaderType = {
-	title: string,
-	url?: string
+PageSectionHeader.propTypes = {
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string
 };
+export type PageSectionHeaderType = InferProps<typeof PageSectionHeader.propTypes>;
 export function PageSectionHeader( { title , url }: PageSectionHeaderType) {
 	const calloutTarget = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 	return (
