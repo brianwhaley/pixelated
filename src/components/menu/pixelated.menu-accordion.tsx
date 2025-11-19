@@ -46,7 +46,8 @@ function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 
 /* ========== MENU ========== */
 MenuAccordion.propTypes = {
-	menuItems: PropTypes.object.isRequired
+	menuItems: PropTypes.any.isRequired,
+	showHidden: PropTypes.bool,
 };
 export type MenuAccordionType = InferProps<typeof MenuAccordion.propTypes>;
 export function MenuAccordion(props: MenuAccordionType) {
@@ -55,6 +56,25 @@ export function MenuAccordion(props: MenuAccordionType) {
 	function setLeft(leftVal: number) { left.current = leftVal; };
 	const documentRef = useRef<Document | null>(null);
 	// const [ menuItems, setMenuItems ] = useState();
+
+	
+	// only works for 2 layers deep
+	const menuItems = props.menuItems.map((menuItem: any) => {
+		if (menuItem.routes ) {
+			const subMenuItems = menuItem.routes.map((subMenuItem: any) => {
+				if (props.showHidden === true && subMenuItem.hidden === true) {
+					delete subMenuItem.hidden;
+				}
+				return subMenuItem;
+			});
+			return { ...menuItem,  routes: subMenuItems  };
+		}
+		if (props.showHidden === true && menuItem.hidden === true) {
+			delete menuItem.hidden;
+		}
+		return menuItem;
+	});
+	
 	function moveMenu() {
 		if (debug) console.log("Moving Menu... Left: ", left);
 		const menu = documentRef.current ? documentRef.current.getElementById('accordionMenu') : null;
@@ -129,7 +149,7 @@ export function MenuAccordion(props: MenuAccordionType) {
 	return (
 		<div className="accordionMenuWrapper accordionUp">
 			<div className="accordionMenu" id="accordionMenu">
-				<MenuAccordionGroup key="accordionRoot" menuItems={props.menuItems} hidden={undefined} />
+				<MenuAccordionGroup key="accordionRoot" menuItems={menuItems} hidden={undefined} />
 			</div>
 		</div>
 	);

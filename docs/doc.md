@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "added page json save / load / edit / delete functionality to the pagebuilder"
+git commit -m "fullMenu admin-like QS for accordionmenu"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
