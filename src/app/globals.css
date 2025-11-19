@@ -70,7 +70,7 @@
 .accordionMenuWrapper,
 .accordionDown, 
 .accordionUp {
-	top: 100px !important;
+	top: 100px;
 }
 
 .panelMenuButton,
@@ -79,12 +79,13 @@
 }
 
 @media screen and (max-width: 480px) {
+    .accordionMenuWrapper,
+    .accordionDown, 
+    .accordionUp {
+        top: 60px;
+    }
     .panelMenuButton,
     #panelMenuButton {
         display: block;
     }
-    /* .accordionDown, 
-    .accordionUp {
-        top: 60px;
-    } */
 }

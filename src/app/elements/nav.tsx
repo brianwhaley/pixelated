@@ -25,15 +25,15 @@ export default function Nav() {
 		.panelMenuButton, #panelMenuButton {
     		display: block;
 		}`;
-	return (
-		<>
-			{fullMenu ? (
-				<><style dangerouslySetInnerHTML={{ __html: customCSS + fullMenuCSS }} />
-					<MenuAccordion menuItems={allRoutes} showHidden={fullMenu}/></>
-			) : (
-				<><style dangerouslySetInnerHTML={{ __html: customCSS }} />
-					<MenuAccordion menuItems={allRoutes} /></>
-			)}
-		</>
+	return fullMenu ? (
+		<div suppressHydrationWarning={true}>
+			<style dangerouslySetInnerHTML={{ __html: customCSS + fullMenuCSS }} />
+			<MenuAccordion menuItems={allRoutes} showHidden={fullMenu} />
+		</div>
+	) : (
+		<div suppressHydrationWarning={true}>
+			<style dangerouslySetInnerHTML={{ __html: customCSS }} />
+			<MenuAccordion menuItems={allRoutes} />
+		</div>
 	);
 }

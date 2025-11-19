@@ -133,6 +133,40 @@
 					"keywords": ""  
 				}
 			]
+		} , {
+			"name": "Admin",
+			"hidden": true,
+			"routes": [ 
+				{ 
+					"name": "404", 
+					"path": "/404", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Page Not Found",
+					"description": "The page you requested could not be found.",
+					"keywords": "pixelated, 404, page not found"  
+				} , { 
+					"name": "Sitemap", 
+					"path": "/sitemap.xml", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sitemap",
+					"description": "Pixelated Technologies sitemap.xml",
+					"keywords": "pixelated technologies, sitemap.xml"  
+				} , {
+					"name" : "Robots.txt",
+					"path" : "/robots.txt",
+					"hidden": true,
+					"title": "Pixelated Technologies - Robots.txt",
+					"description": "Pixelated Technologies robots.txt",
+					"keywords": "pixelated technologies, robots.txt"
+				} , {
+					"name": "Web Manifest",
+					"path": "/manifest.webmanifest",
+					"hidden": true,
+					"title": "Pixelated Technologies - Web Manifest",
+					"description": "Pixelated Technologies web manifest",
+					"keywords": "pixelated technologies, web manifest"
+				}
+			]
 		}
 	]
 }
