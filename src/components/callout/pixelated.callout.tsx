@@ -19,14 +19,23 @@ GRID is basic 1/2 GRID shape, needs enhanement
 BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
-// type ShapeType = 'square' | 'bevel' | 'squircle' | 'round';
-// type gridColumnsType = {left: number, right: number};
+// Define option arrays - used by both PropTypes and form generation
+export const calloutStyles = ['default', 'boxed', 'boxed grid', 'full', 'grid', 'overlay', 'split'] as const;
+export const shapes = ['square', 'bevel', 'squircle', 'round'] as const;
+export const layouts = ['horizontal', 'vertical'] as const;
+export const directions = ['left', 'right'] as const;
+
+// TypeScript types from the const arrays
+export type ShapeType = typeof shapes[number];
+export type CalloutStyleType = typeof calloutStyles[number];
+export type LayoutType = typeof layouts[number];
+export type DirectionType = typeof directions[number];
 
 Callout.propTypes = {
-	style: PropTypes.oneOf(['default', 'boxed', 'boxed grid', 'full', 'grid', 'overlay', 'split']),
-	boxShape: PropTypes.oneOf(['square', 'bevel', 'squircle', 'round']),
-	layout: PropTypes.oneOf(['horizontal', 'vertical']),
-	direction: PropTypes.oneOf(['left', 'right']),
+	style: PropTypes.oneOf([...calloutStyles]),
+	boxShape: PropTypes.oneOf([...shapes]),
+	layout: PropTypes.oneOf([...layouts]),
+	direction: PropTypes.oneOf([...directions]),
 	gridColumns: PropTypes.shape({
 		left: PropTypes.number,
 		right: PropTypes.number
@@ -34,7 +43,7 @@ Callout.propTypes = {
 	url: PropTypes.string,
 	img: PropTypes.string,
 	imgAlt: PropTypes.string,
-	imgShape: PropTypes.oneOf(['square', 'bevel', 'squircle', 'round']),
+	imgShape: PropTypes.oneOf([...shapes]),
 	imgClick: PropTypes.func,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,

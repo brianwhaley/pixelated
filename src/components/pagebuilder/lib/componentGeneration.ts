@@ -110,7 +110,7 @@ export function generateFieldJSON(
 			
 			const propType = componentPropTypes[prop as keyof typeof componentPropTypes];
 			const existingValue = existingProps ? existingProps[prop] : undefined;
-			const field = generateFormFieldFromPropType(prop, propType, existingValue);
+			const field = generateFormFieldFromPropType(prop, propType, existingValue, component);
 			form.fields.push(field);
 		}
 	}

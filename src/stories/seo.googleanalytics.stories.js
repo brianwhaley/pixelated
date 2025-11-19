@@ -1,8 +1,8 @@
-import { Analytics } from '../components/seo/pixelated.googleanalytics';
+import { GoogleAnalytics } from '../components/seo/pixelated.googleanalytics';
 
 export default {
 	title: 'SEO',
-	component: Analytics
+	component: GoogleAnalytics
 };
 
 export const Google_Analytics = {

@@ -1,10 +1,10 @@
-import { Search } from '../components/seo/pixelated.googlesearch';
+import { GoogleSearch } from '../components/seo/pixelated.googlesearch';
 import '../components/seo/pixelated.googlesearch.css';
 import '../css/pixelated.global.css';
 
 export default {
 	title: 'SEO',
-	component: Search
+	component: GoogleSearch
 };
 
 export const Google_Search = {

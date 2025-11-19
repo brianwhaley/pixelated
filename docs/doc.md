@@ -12,7 +12,7 @@ eslint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "import path fixes for new components"
+git commit -m "improved propType Introspection, select fields for pagebuilder, stories for pagebuilder and layout"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

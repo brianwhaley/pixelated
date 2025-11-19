@@ -10,13 +10,19 @@ These components can be used in the pagebuilder to create
 responsive, customizable page sections.
 ==================== ==================== */
 
-
-
+// Define option arrays - used by both PropTypes and form generation
+export const layoutTypes = ['grid', 'flex', 'none'] as const;
+export const autoFlowValues = ['row', 'column', 'dense', 'row dense', 'column dense'] as const;
+export const justifyItemsValues = ['start', 'center', 'end', 'stretch'] as const;
+export const flexDirections = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
+export const flexWraps = ['nowrap', 'wrap', 'wrap-reverse'] as const;
+export const justifyContentValues = ['start', 'center', 'end', 'space-between', 'space-around', 'space-evenly'] as const;
+export const alignItemsValues = ['start', 'center', 'end', 'stretch', 'baseline'] as const;
 
 // ========== PAGE SECTION ==========
 PageSection.propTypes = {
 	id: PropTypes.string,
-	layoutType: PropTypes.oneOf(['grid', 'flex', 'none']),
+	layoutType: PropTypes.oneOf([...layoutTypes]),
 	// Common props
 	gap: PropTypes.string,
 	maxWidth: PropTypes.string,
@@ -24,19 +30,19 @@ PageSection.propTypes = {
 	background: PropTypes.string,
 	// Grid-specific props
 	columns: PropTypes.number,
-	autoFlow: PropTypes.oneOf(['row', 'column', 'dense', 'row dense', 'column dense']),
-	justifyItems: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+	autoFlow: PropTypes.oneOf([...autoFlowValues]),
+	justifyItems: PropTypes.oneOf([...justifyItemsValues]),
 	responsive: PropTypes.shape({
 		mobile: PropTypes.number,
 		tablet: PropTypes.number,
 		desktop: PropTypes.number,
 	}),
 	// Flex-specific props
-	direction: PropTypes.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
-	wrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
-	justifyContent: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'space-around', 'space-evenly']),
+	direction: PropTypes.oneOf([...flexDirections]),
+	wrap: PropTypes.oneOf([...flexWraps]),
+	justifyContent: PropTypes.oneOf([...justifyContentValues]),
 	// Shared alignment
-	alignItems: PropTypes.oneOf(['start', 'center', 'end', 'stretch', 'baseline']),
+	alignItems: PropTypes.oneOf([...alignItemsValues]),
 	children: PropTypes.node,
 };
 export type PageSectionType = InferProps<typeof PageSection.propTypes>;

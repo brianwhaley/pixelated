@@ -1,32 +1,52 @@
 
 import type { PropTypeInfo, FormField } from './types';
+import { componentMetadata } from './componentMetadata';
 
 /**
  * PropTypes Introspection Utilities
  * Analyzes PropTypes to generate appropriate form fields
+ * 
+ * Strategy:
+ * 1. Components define const arrays for enum values (e.g., CALLOUT_STYLES)
+ * 2. These arrays are used in PropTypes: PropTypes.oneOf([...CALLOUT_STYLES])
+ * 3. InferProps generates TypeScript types from PropTypes
+ * 4. componentMetadata imports the same const arrays for form generation
+ * 
+ * This ensures single source of truth:
+ * - const array → PropTypes → InferProps → TypeScript types
+ * - const array → componentMetadata → form fields
  */
 
 /**
  * Analyzes PropTypes to determine the appropriate form field type
  */
-export function getPropTypeInfo(propType: any): PropTypeInfo {
+export function getPropTypeInfo(propType: any, componentName?: string, propName?: string): PropTypeInfo {
+	// Check our metadata (which imports const arrays from component files)
+	if (componentName && propName && componentMetadata[componentName]?.[propName]) {
+		const metadata = componentMetadata[componentName][propName];
+		return {
+			type: metadata.type,
+			options: metadata.options as string[],
+			isRequired: metadata.required || false,
+		};
+	}
 	if (!propType) return { type: 'text', isRequired: false };
 
 	// PropTypes logic is inverted:
 	// - Optional: PropTypes.string (HAS .isRequired property pointing to the required version)
 	// - Required: PropTypes.string.isRequired (NO .isRequired property - it IS the required version)
 	const isRequired = !('isRequired' in propType);
-	const basePropType = propType;
-
-	// Check for oneOf (enum/select)
-	if (basePropType._propType === 'oneOf' || (basePropType.type && basePropType.type._propType === 'oneOf')) {
-		const values = basePropType.values || basePropType.type?.values || [];
-		return { 
-			type: 'select', 
-			options: values,
-			isRequired 
-		};
-	}
+	
+	// Handle both optional and required PropTypes
+	// Optional: PropTypes.oneOf([...]) - has .isRequired property
+	// Required: PropTypes.oneOf([...]).isRequired - is the actual validator
+	let basePropType = propType;
+	
+	// If this is an optional PropType, it might have an isRequired property that points to the validator
+	// We need to check the current propType first, not the isRequired version
+	
+	// PropTypes don't include metadata at runtime, so oneOf detection won't work
+	// We rely on componentMetadata instead (checked above)
 
 	// Check for shape (object with defined props)
 	if (basePropType._propType === 'shape' || (basePropType.type && basePropType.type._propType === 'shape')) {
@@ -73,9 +93,10 @@ export function getPropTypeInfo(propType: any): PropTypeInfo {
 export function generateFormFieldFromPropType(
 	propName: string, 
 	propType: any,
-	value?: any
+	value?: any,
+	componentName?: string
 ): FormField {
-	const propInfo = getPropTypeInfo(propType);
+	const propInfo = getPropTypeInfo(propType, componentName, propName);
 	const baseProps: any = {
 		label: propName,
 		name: propName,
@@ -96,12 +117,16 @@ export function generateFormFieldFromPropType(
 	switch (propInfo.type) {
 	case 'select':
 		return {
-			component: 'FormInput',
+			component: 'FormSelect',
 			props: {
 				...baseProps,
-				type: 'text',
-				list: `${propName}-options`,
-				listItems: propInfo.options?.join(', ') || '',
+				options: [
+					{ value: '', text: '-- Select --' },
+					...(propInfo.options || []).map((opt: any) => ({
+						value: opt,
+						text: opt
+					}))
+				],
 			}
 		};
 
