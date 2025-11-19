@@ -43,7 +43,7 @@ export function PageBuilderUI() {
 
 	return (
 		<div className="row-2col" 
-			style={{ gridTemplateColumns: "1fr 3fr" }}>
+			style={{ gridTemplateColumns: "1fr 3fr", alignItems: "start" }}>
 			{/* Left Column: Component Selection and Properties */}
 			<div className="gridItem">
 				<PageSectionHeader title="Component Editor" />
