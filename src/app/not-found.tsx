@@ -1,7 +1,7 @@
 "use client";
 
 import { FourOhFour } from "@brianwhaley/pixelated-components";
-import imagesData from "../app/data/404-data.json";
+import imagesData from "@/app/data/404-data.json";
 const images = imagesData.images;
 
 export default function NotFound () {

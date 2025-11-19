@@ -53,7 +53,7 @@ export default function SamplePage2() {
 			formglow: true,
 			imgtwist: true,
 			grayscalehover: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
 		});
 	}, []);
 

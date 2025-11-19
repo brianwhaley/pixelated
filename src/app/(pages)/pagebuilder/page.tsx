@@ -1,28 +1,19 @@
- 
- 
+/**
+ * PageBuilder V2 - Enhanced page builder with nested components and PropTypes introspection
+ * 
+ * Features:
+ * - Nested component support - layout components can contain other components
+ * - PropTypes introspection - automatically generates form fields based on component PropTypes
+ * - Component tree viewer with edit/add child functionality
+ * - Live preview of components
+ * - Collapsible Page JSON viewer
+ */
+
 "use client";
 
 import React from "react";
-import { Callout } from "@brianwhaley/pixelated-components";
-
-const componentMap = {
-	"Callout": Callout,
-};
+import { PageBuilderUI } from '@brianwhaley/pixelated-components';
 
 export default function PageBuilder() {
-
-	async function getComponentProps(componentName: string) {
-		// const thisComponent = React.createElement(thisComponentType, {});
-		const thisComponent = componentMap[componentName as keyof typeof componentMap];
-		const thisComponentProps = thisComponent.propTypes;
-		console.log("this component", thisComponent);
-		console.log("this component props", thisComponentProps);
-		for (const prop of Object.keys(thisComponentProps) as Array<keyof typeof thisComponentProps>) {
-			console.log(`Prop: ${prop}, Type: ${thisComponentProps[prop]}`);
-		}
-		return null;
-	}
-	getComponentProps("Callout");
-
-	return ( <></> );
+	return <PageBuilderUI />;
 }

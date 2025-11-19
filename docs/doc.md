@@ -57,9 +57,9 @@ npm audit fix --force
 npm install @brianwhaley/pixelated-components@latest --force --save
 npm version patch --force
 git add * -v
-git commit -m "samples mobile fixes, by the way font page"
+git commit -m "pagebuilder v1 and v2"
 git push -u pixelated dev --tags
-git push -u pixelated dev:main
+git push pixelated dev:main
 
 ## ===== Hydration Error =====
 https://www.reddit.com/r/nextjs/comments/1gabiqn/hydration_error_when_installing_nextjs_15/?rdt=34262
