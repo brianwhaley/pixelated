@@ -14,12 +14,10 @@ export type MenuItem = {
 	name: string,
 	path: string,
 	target?: string,
-	hidden?: boolean,
 	routes?: MenuItem[],
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
+function generateMenuItems({menuData, state = "hide"}: {menuData: { [x: string]: any; }, state: string}) {
 	const myItems: React.ReactNode[] = [];
 	let index = 0;
 	for (const itemKey in menuData) {
@@ -27,17 +25,20 @@ function generateMenuItems(menuData: { [x: string]: any; }, hidden: boolean) {
 		const safeName = (myItem && myItem.name) ? String(myItem.name).replace(/\s+/g, '_') : 'item';
 		const keyBase = `${safeName}-${itemKey}-${index}`;
 		// if ( typeof myItem === 'object' && myItem !== null ){
-		if ( typeof myItem === 'object' && myItem.routes ) {
-			// MENU GROUP - push the toggle and the nested group separately with unique keys
-			myItems.push(
-				<MenuAccordionItem key={`${keyBase}-parent`} name={"▶ " + myItem.name} href={''} />,
-				<MenuAccordionGroup key={`${keyBase}-group`} menuItems={myItem} hidden={true} />
-			);
-		} else {
-			// INDIVIDUAL MENU ITEM
-			myItems.push(
-				<MenuAccordionItem key={`${keyBase}-item`} name={myItem.name} href={myItem.path} target={myItem.target} hidden={myItem.hidden} />
-			);
+		if (!myItem.hidden) {
+			// ITEM OR GROUP IS NOT HIDDEN
+			if ( typeof myItem === 'object' && myItem.routes ) {
+				// MENU GROUP - push the toggle and the nested group separately with unique keys
+				myItems.push(
+					<MenuAccordionItem key={`${keyBase}-parent`} name={"▶ " + myItem.name} href={''} />,
+					<MenuAccordionGroup key={`${keyBase}-group`} menuItems={myItem} state={state} />
+				);
+			} else {
+				// INDIVIDUAL MENU ITEM
+				myItems.push(
+					<MenuAccordionItem key={`${keyBase}-item`} name={myItem.name} href={myItem.path} target={myItem.target} />
+				);
+			}
 		}
 		index++;
 	}
@@ -60,6 +61,11 @@ export function MenuAccordion(props: MenuAccordionType) {
 	
 	// only works for 2 layers deep
 	const menuItems = props.menuItems.map((menuItem: any) => {
+		// MAIN MENU ITEMS
+		if (props.showHidden === true && menuItem.hidden === true) {
+			delete menuItem.hidden;
+		}
+		// SUB MENU ITEMS
 		if (menuItem.routes ) {
 			const subMenuItems = menuItem.routes.map((subMenuItem: any) => {
 				if (props.showHidden === true && subMenuItem.hidden === true) {
@@ -68,9 +74,6 @@ export function MenuAccordion(props: MenuAccordionType) {
 				return subMenuItem;
 			});
 			return { ...menuItem,  routes: subMenuItems  };
-		}
-		if (props.showHidden === true && menuItem.hidden === true) {
-			delete menuItem.hidden;
 		}
 		return menuItem;
 	});
@@ -149,7 +152,7 @@ export function MenuAccordion(props: MenuAccordionType) {
 	return (
 		<div className="accordionMenuWrapper accordionUp">
 			<div className="accordionMenu" id="accordionMenu">
-				<MenuAccordionGroup key="accordionRoot" menuItems={menuItems} hidden={undefined} />
+				<MenuAccordionGroup key="accordionRoot" menuItems={menuItems} state={undefined} />
 			</div>
 		</div>
 	);
@@ -162,14 +165,14 @@ export function MenuAccordion(props: MenuAccordionType) {
 /* ========== MENU GROUP ========== */
 MenuAccordionGroup.propTypes = {
 	menuItems: PropTypes.object.isRequired,
-	hidden: PropTypes.bool,
+	state: PropTypes.string,
 };
 export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTypes>;
 export function MenuAccordionGroup(props: MenuAccordionGroupType) {
 	const myMenuItems = ((props.menuItems as any).routes) ? (props.menuItems as any).routes : props.menuItems;
 	return (
-		<ul className={(props.hidden ? "menuHide" : "menuShow")} key={"menu-group-" + (props.menuItems as any).name}>
-			{ generateMenuItems( myMenuItems, props.hidden ?? false ) }
+		<ul className={(props.state === "hide" ? "menuHide" : "menuShow")} key={"menu-group-" + (props.menuItems as any).name}>
+			{ generateMenuItems( {menuData: myMenuItems, state: props.state ?? "hide"} ) }
 		</ul>
 	);
 }
@@ -182,11 +185,9 @@ MenuAccordionItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 	target: PropTypes.string,
-	hidden: PropTypes.bool,
 };
 export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
 export function MenuAccordionItem(props: MenuAccordionItemType) {
-	if (props.hidden) return null;
 	if(props.href && props.href.length > 0) {
 		if (props.target && props.target.length > 0) { 
 			return ( <li key={"menu-item-" + props.name}><a href={props.href} target={props.target}>{props.name}</a></li> );
