@@ -1,6 +1,6 @@
 "use client"; 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
@@ -102,7 +102,11 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 					<div id="fixed-header-nav-spacer"></div>
 					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
 				</header>
-				<nav><Nav /></nav>
+				<nav>
+					<Suspense fallback={<div>Loading menu...</div>}>
+						<Nav />
+					</Suspense>
+				</nav>
 				<main>{children}</main>
 				<footer><Footer /></footer>
 			</body>
