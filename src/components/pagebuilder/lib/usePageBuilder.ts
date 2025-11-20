@@ -167,6 +167,74 @@ export function usePageBuilder() {
 		}
 	}
 	
+	/**
+	 * Move component up in the array (swap with previous sibling)
+	 */
+	function handleMoveUp(path: string) {
+		const components = JSON.parse(JSON.stringify(pageJSON.components));
+		const pathParts = path.split(/[.[\]]/).filter(p => p);
+		let current: any = { components };
+		
+		// Navigate to parent array
+		for (let i = 0; i < pathParts.length - 1; i++) {
+			const part = pathParts[i];
+			if (part === 'root') {
+				current = current.components;
+			} else if (part === 'children') {
+				continue;
+			} else {
+				current = current[parseInt(part)];
+			}
+		}
+		
+		const lastPart = pathParts[pathParts.length - 1];
+		const index = parseInt(lastPart);
+		
+		// Get the array containing this component
+		const array = Array.isArray(current) ? current : current.children;
+		
+		// Can't move up if already first
+		if (index > 0 && array) {
+			// Swap with previous
+			[array[index - 1], array[index]] = [array[index], array[index - 1]];
+			setPageJSON({ components });
+		}
+	}
+	
+	/**
+	 * Move component down in the array (swap with next sibling)
+	 */
+	function handleMoveDown(path: string) {
+		const components = JSON.parse(JSON.stringify(pageJSON.components));
+		const pathParts = path.split(/[.[\]]/).filter(p => p);
+		let current: any = { components };
+		
+		// Navigate to parent array
+		for (let i = 0; i < pathParts.length - 1; i++) {
+			const part = pathParts[i];
+			if (part === 'root') {
+				current = current.components;
+			} else if (part === 'children') {
+				continue;
+			} else {
+				current = current[parseInt(part)];
+			}
+		}
+		
+		const lastPart = pathParts[pathParts.length - 1];
+		const index = parseInt(lastPart);
+		
+		// Get the array containing this component
+		const array = Array.isArray(current) ? current : current.children;
+		
+		// Can't move down if already last
+		if (array && index < array.length - 1) {
+			// Swap with next
+			[array[index], array[index + 1]] = [array[index + 1], array[index]];
+			setPageJSON({ components });
+		}
+	}
+
 	return {
 		// State
 		pageJSON,
@@ -187,5 +255,7 @@ export function usePageBuilder() {
 		clearSelection,
 		cancelEdit,
 		handleDeleteComponent,
+		handleMoveUp,
+		handleMoveDown,
 	};
 }

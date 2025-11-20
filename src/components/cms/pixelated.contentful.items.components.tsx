@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel/pixelated.carousel';
 import type { CarouselCardType } from "../carousel/pixelated.carousel";
-import { getContentfulEntriesByType, getContentfulEntryByEntryID } from "./pixelated.contentful";
+import { getContentfulEntriesByType, getContentfulEntryByEntryID } from "./pixelated.contentful.delivery";
 import { AddToShoppingCart  } from "../shoppingcart/pixelated.shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary";

@@ -31,6 +31,8 @@ export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoin
 		handleEditComponent,
 		cancelEdit,
 		handleDeleteComponent,
+		handleMoveUp,
+		handleMoveDown,
 	} = usePageBuilder();
 
 	// Handle loading a saved page
@@ -100,6 +102,8 @@ export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoin
 								onEditComponent={handleEditComponent}
 								onSelectComponent={handleSelectComponent}
 								onDeleteComponent={handleDeleteComponent}
+								onMoveUp={handleMoveUp}
+								onMoveDown={handleMoveDown}
 							/>
 						) : (
 							<p style={{ color: '#666', fontStyle: 'italic', padding: '2rem', textAlign: 'center' }}>

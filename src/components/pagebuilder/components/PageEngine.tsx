@@ -26,12 +26,14 @@ PageEngine.propTypes = {
 	onEditComponent: PropTypes.func,
 	onSelectComponent: PropTypes.func,
 	onDeleteComponent: PropTypes.func,
+	onMoveUp: PropTypes.func,
+	onMoveDown: PropTypes.func,
 };
 
 export type PageEngineType = InferProps<typeof PageEngine.propTypes>;
 
 export function PageEngine(props: PageEngineType) {
-	const { editMode = false, selectedPath, onEditComponent, onSelectComponent, onDeleteComponent } = props;
+	const { editMode = false, selectedPath, onEditComponent, onSelectComponent, onDeleteComponent, onMoveUp, onMoveDown } = props;
 	
 	// Recursive function to render components with children
 	function renderComponent(componentData: any, index: number, path: string = 'root'): React.JSX.Element {
@@ -76,6 +78,28 @@ export function PageEngine(props: PageEngineType) {
 				{element}
 				{/* Floating Action Menu */}
 				<div className="pagebuilder-actions">
+					<div className="move-buttons">
+						<button
+							className="move-btn move-up"
+							onClick={(e) => {
+								e.stopPropagation();
+								onMoveUp?.(currentPath);
+							}}
+							title="Move up"
+						>
+							▲
+						</button>
+						<button
+							className="move-btn move-down"
+							onClick={(e) => {
+								e.stopPropagation();
+								onMoveDown?.(currentPath);
+							}}
+							title="Move down"
+						>
+							▼
+						</button>
+					</div>
 					<button
 						className="edit-btn"
 						onClick={(e) => {

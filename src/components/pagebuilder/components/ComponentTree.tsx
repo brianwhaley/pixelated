@@ -13,6 +13,8 @@ ComponentTree.propTypes = {
 	onSelectComponent: PropTypes.func.isRequired,
 	onEditComponent: PropTypes.func.isRequired,
 	onDeleteComponent: PropTypes.func.isRequired,
+	onMoveUp: PropTypes.func.isRequired,
+	onMoveDown: PropTypes.func.isRequired,
 	selectedPath: PropTypes.string,
 	editPath: PropTypes.string,
 };
@@ -24,6 +26,8 @@ export function ComponentTree({
 	onSelectComponent, 
 	onEditComponent, 
 	onDeleteComponent,
+	onMoveUp,
+	onMoveDown,
 	selectedPath, 
 	editPath 
 }: ComponentTreeProps) {
@@ -54,7 +58,47 @@ export function ComponentTree({
 						{hasChildren && ` (${component.children.length} children)`}
 						{isLayout && ' 📦'}
 					</div>
-					<div style={{ display: 'flex', gap: '0.25rem' }}>
+					<div style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
+						<div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+							<button
+								onClick={(e) => {
+									e.stopPropagation();
+									onMoveUp(currentPath);
+								}}
+								style={{
+									padding: '2px 6px',
+									background: '#757575',
+									color: 'white',
+									border: 'none',
+									borderRadius: '2px',
+									cursor: 'pointer',
+									fontSize: '0.65rem',
+									lineHeight: '1',
+								}}
+								title="Move up"
+							>
+								▲
+							</button>
+							<button
+								onClick={(e) => {
+									e.stopPropagation();
+									onMoveDown(currentPath);
+								}}
+								style={{
+									padding: '2px 6px',
+									background: '#757575',
+									color: 'white',
+									border: 'none',
+									borderRadius: '2px',
+									cursor: 'pointer',
+									fontSize: '0.65rem',
+									lineHeight: '1',
+								}}
+								title="Move down"
+							>
+								▼
+							</button>
+						</div>
 						<button
 							onClick={(e) => {
 								e.stopPropagation();

@@ -58,12 +58,19 @@
 	right: 5px;
 	display: flex;
 	gap: 4px;
+	align-items: flex-start;
 	opacity: 0;
 	transition: opacity 0.2s ease;
 	z-index: 10;
 	
 	.pagebuilder-component-wrapper:hover & {
 		opacity: 1;
+	}
+	
+	.move-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
 	}
 	
 	button {
@@ -86,6 +93,14 @@
 		
 		&:active {
 			transform: scale(0.95);
+		}
+		
+		&.move-btn {
+			width: 14px;
+			height: 14px;
+			font-size: 8px;
+			background: #757575;
+			color: white;
 		}
 		
 		&.edit-btn {
