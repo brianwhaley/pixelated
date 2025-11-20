@@ -5,3 +5,6 @@
 /.next/
 .DS_Store
 /certificates
+
+# Local env files
+.env*.local

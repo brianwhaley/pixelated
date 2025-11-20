@@ -13,7 +13,7 @@ export default function DynamicPage({ params }: { params: Promise<{ pageID: stri
 	useEffect(() => {
 		async function fetchPage() {
 			try {
-				const url = `${window.location.origin}/api/pagebuilder/load?name=${resolvedParams.pageID}`;
+				const url = `${window.location.origin}/api/pagebuilder-contentful/load?name=${resolvedParams.pageID}`;
 				const response = await fetch(url);
 				const result = await response.json();
 				if (result.success && result.data) {

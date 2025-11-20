@@ -10,7 +10,7 @@ export default function PageIndex() {
 	useEffect(() => {
 		async function fetchPages() {
 			try {
-				const response = await fetch('/api/pagebuilder/list');
+				const response = await fetch('/api/pagebuilder-contentful/list');
 				const result = await response.json();
 				
 				if (result.success) {
