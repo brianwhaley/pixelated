@@ -35,12 +35,22 @@ export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoin
 		handleMoveDown,
 	} = usePageBuilder();
 
+	const [selectorKey, setSelectorKey] = React.useState(0);
+
 	// Handle loading a saved page
 	function handleLoadPage(data: any) {
 		setPageJSON(data);
 		setEditableComponent({});
 		setSelectedPath('');
 		setEditMode(null);
+		setSelectorKey(prev => prev + 1);
+	}
+
+	// Wrap handleAddNewComponent to reset selector after adding
+	function handleAddWithReset(component: any) {
+		handleAddNewComponent(component);
+		setSelectorKey(prev => prev + 1);
+		setEditableComponent({});
 	}
 
 	return (
@@ -55,6 +65,7 @@ export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoin
 					apiEndpoint={apiEndpoint}
 				/>
 				<ComponentSelector 
+					key={selectorKey}
 					setEditableComponent={setEditableComponent}
 					parentPath={selectedPath || undefined}
 					editMode={editMode ? { 
@@ -65,7 +76,7 @@ export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoin
 				<br />
 				<ComponentPropertiesForm 
 					editableComponent={editableComponent}
-					onSubmit={handleAddNewComponent}
+					onSubmit={handleAddWithReset}
 				/>
 				
 				{/* Action Buttons */}

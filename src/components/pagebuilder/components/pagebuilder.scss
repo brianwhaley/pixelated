@@ -10,26 +10,24 @@
 	border: 2px solid #ccc;
 	border-radius: 5px;
 	margin: 5px 0;
+	box-sizing: border-box;
 	
 	&.selected {
 		border-color: #4CAF50;
 		border-width: 3px;
 		background: rgba(76, 175, 80, 0.05);
 		box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-		padding: 9px; /* Adjust padding to prevent layout shift */
 	}
 	
-	&:hover {
+	/* Only apply hover to active hover state (set via JS) */
+	&.hover-active {
 		border-color: #2196F3;
-		border-width: 2px;
-		padding: 9px; /* Adjust padding to prevent layout shift */
 		cursor: pointer;
 		box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
-		transform: translateY(-1px);
 	}
 	
 	/* Smooth micro-interaction similar to button hover */
-	&:hover::after {
+	&.hover-active::after {
 		content: '';
 		position: absolute;
 		top: -2px;
@@ -62,8 +60,13 @@
 	opacity: 0;
 	transition: opacity 0.2s ease;
 	z-index: 10;
+	pointer-events: none;
 	
-	.pagebuilder-component-wrapper:hover & {
+	button {
+		pointer-events: auto;
+	}
+	
+	.pagebuilder-component-wrapper.hover-active > & {
 		opacity: 1;
 	}
 	

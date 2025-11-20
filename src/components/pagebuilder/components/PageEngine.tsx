@@ -70,10 +70,29 @@ export function PageEngine(props: PageEngineType) {
 		
 		// Edit mode: Wrap with hover effect and action buttons
 		const isSelected = selectedPath === currentPath;
+		
 		return (
 			<div 
 				key={`wrapper-${index}`} 
 				className={`pagebuilder-component-wrapper ${isSelected ? 'selected' : ''}`}
+				onMouseOver={(e) => {
+					if (e.target === e.currentTarget || !e.currentTarget.querySelector('.pagebuilder-component-wrapper:hover')) {
+						// Remove hover-active from all wrappers
+						document.querySelectorAll('.pagebuilder-component-wrapper.hover-active').forEach(el => {
+							el.classList.remove('hover-active');
+						});
+						// Add to current
+						e.currentTarget.classList.add('hover-active');
+					}
+					e.stopPropagation();
+				}}
+				onMouseOut={(e) => {
+					const relatedTarget = e.relatedTarget as HTMLElement;
+					// Only remove if leaving to somewhere outside this wrapper entirely
+					if (!e.currentTarget.contains(relatedTarget)) {
+						e.currentTarget.classList.remove('hover-active');
+					}
+				}}
 			>
 				{element}
 				{/* Floating Action Menu */}

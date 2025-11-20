@@ -25,6 +25,7 @@ type ComponentSelectorProps = InferProps<typeof ComponentSelector.propTypes>;
 export function ComponentSelector(props: ComponentSelectorProps) {
 	const { setEditableComponent, parentPath, editMode } = props;
 	const [lastEditMode, setLastEditMode] = useState<string>('');
+	const [selectedValue, setSelectedValue] = useState<string>('');
 	
 	// If in edit mode, auto-generate form on mount
 	useEffect(() => {
@@ -39,28 +40,18 @@ export function ComponentSelector(props: ComponentSelectorProps) {
 				);
 				setEditableComponent(componentJSON);
 				setLastEditMode(editKey);
+				setSelectedValue(editMode.component);
 			}
 		} else if (lastEditMode !== '') {
 			// Reset when exiting edit mode
 			setLastEditMode('');
+			setSelectedValue('');
 		}
 	}, [editMode, lastEditMode, setEditableComponent, parentPath]);
 
-	/* 
-    function handlePhaseOneSubmit(event: Event) {
-		const target = event.target as HTMLFormElement;
-		const myType = target.type.value;
-		const myComponent = componentMap[myType as keyof typeof componentMap] 
-			? myType 
-			: Object.keys(componentMap)[0];
-		const componentJSON = generateFieldJSON(myComponent, undefined, parentPath || undefined);
-		setEditableComponent(componentJSON);
-		return true;
-	}
-    */
-
 	function handleComponentChange(event: React.ChangeEvent<HTMLSelectElement>) {
 		const selectedComponent = event.target.value;
+		setSelectedValue(selectedComponent);
 		if (selectedComponent) {
 			const componentJSON = generateFieldJSON(selectedComponent, undefined, parentPath || undefined);
 			setEditableComponent(componentJSON);
@@ -95,7 +86,7 @@ export function ComponentSelector(props: ComponentSelectorProps) {
 			<select 
 				id="component-type-selector"
 				onChange={handleComponentChange}
-				defaultValue=""
+				value={selectedValue}
 				style={{
 					marginBottom: '1rem',
 					fontSize: '1rem',
