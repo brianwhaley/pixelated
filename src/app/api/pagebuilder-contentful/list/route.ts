@@ -9,6 +9,14 @@ export async function GET() {
 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 	};
 
+	console.log('Config:', {
+		spaceId: config.spaceId,
+		hasToken: !!config.accessToken,
+		tokenStart: config.accessToken?.substring(0, 10),
+		environment: config.environment
+	});
+
 	const result = await listPages(config);
+	console.log('Result:', result);
 	return NextResponse.json(result);
 }
