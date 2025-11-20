@@ -7,11 +7,12 @@ import type { PageData } from '../lib/types';
 SaveLoadSection.propTypes = {
 	pageData: PropTypes.object.isRequired,
 	onLoad: PropTypes.func.isRequired,
+	apiEndpoint: PropTypes.string,
 };
 
 type SaveLoadSectionProps = InferProps<typeof SaveLoadSection.propTypes>;
 
-export function SaveLoadSection({ pageData, onLoad }: SaveLoadSectionProps) {
+export function SaveLoadSection({ pageData, onLoad, apiEndpoint = '/api/pagebuilder' }: SaveLoadSectionProps) {
 	const [pageName, setPageName] = useState('');
 	const [savedPages, setSavedPages] = useState<string[]>([]);
 	const [message, setMessage] = useState('');
@@ -25,7 +26,7 @@ export function SaveLoadSection({ pageData, onLoad }: SaveLoadSectionProps) {
 
 	async function fetchPages() {
 		try {
-			const response = await fetch('/api/pagebuilder/list');
+			const response = await fetch(`${apiEndpoint}/list`);
 			const result = await response.json();
 			if (result.success) {
 				setSavedPages(result.pages);
@@ -45,7 +46,7 @@ export function SaveLoadSection({ pageData, onLoad }: SaveLoadSectionProps) {
 		setMessage('');
 
 		try {
-			const response = await fetch('/api/pagebuilder/save', {
+			const response = await fetch(`${apiEndpoint}/save`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ name: pageName, data: pageData })
@@ -72,7 +73,7 @@ export function SaveLoadSection({ pageData, onLoad }: SaveLoadSectionProps) {
 		setMessage('');
 
 		try {
-			const response = await fetch(`/api/pagebuilder/load?name=${encodeURIComponent(name)}`);
+			const response = await fetch(`${apiEndpoint}/load?name=${encodeURIComponent(name)}`);
 			const result = await response.json();
 			
 			if (result.success && result.data) {
@@ -100,7 +101,7 @@ export function SaveLoadSection({ pageData, onLoad }: SaveLoadSectionProps) {
 		setMessage('');
 
 		try {
-			const response = await fetch(`/api/pagebuilder/delete?name=${encodeURIComponent(name)}`, {
+			const response = await fetch(`${apiEndpoint}/delete?name=${encodeURIComponent(name)}`, {
 				method: 'DELETE'
 			});
 

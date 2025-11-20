@@ -16,7 +16,7 @@ import './pagebuilder.scss';
  * Composes all sub-components and manages layout with inline editing
  */
 
-export function PageBuilderUI() {
+export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoint?: string } = {}) {
 	const {
 		pageJSON,
 		setPageJSON,
@@ -50,6 +50,7 @@ export function PageBuilderUI() {
 				<SaveLoadSection 
 					pageData={pageJSON}
 					onLoad={handleLoadPage}
+					apiEndpoint={apiEndpoint}
 				/>
 				<ComponentSelector 
 					setEditableComponent={setEditableComponent}

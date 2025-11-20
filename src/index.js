@@ -53,6 +53,7 @@ export * from './components/pagebuilder/lib/componentGeneration';
 export * from './components/pagebuilder/lib/componentMap';
 export * from './components/pagebuilder/lib/componentMetadata';
 export * from './components/pagebuilder/lib/pageStorage';
+export * from './components/pagebuilder/lib/pageStorageContentful';
 export * from './components/pagebuilder/lib/pageStorageTypes';
 export * from './components/pagebuilder/lib/propTypeIntrospection';
 export * from './components/pagebuilder/lib/types';
