@@ -363,6 +363,7 @@ function buildCloudinaryUrl({ src, productEnv, cloudinaryDomain = CLOUDINARY_DOM
 /**
  * Hook to build Cloudinary URL for Next.js Image loader (useful for non-Image use cases)
  */
+/* 
 export function useCloudinaryUrl(
 	src: string,
 	productEnv: string,
@@ -374,10 +375,12 @@ export function useCloudinaryUrl(
 		[src, productEnv, quality, transforms]
 	);
 }
+*/
 
 /**
  * Utility function to get Cloudinary URL (non-React)
  */
+/* 
 export function getCloudinaryImageUrl(
 	src: string,
 	productEnv: string,
@@ -389,3 +392,4 @@ export function getCloudinaryImageUrl(
 
 // Default export
 export default SmartImage;
+*/
