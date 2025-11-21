@@ -13,8 +13,15 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { preload } from 'react-dom';
 import PropTypes, { InferProps } from 'prop-types';
+
+// Global counter to track image instances on the client.
+// This helps us automatically prioritize the first N images on the page.
+let imageRenderCount = 0;
+const AUTO_PRIORITY_IMAGE_LIMIT = 1; // Default: prioritize only the first image.
+const IS_SERVER = typeof window === 'undefined';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
 
@@ -25,7 +32,7 @@ SmartImage.propTypes = {
 	// Custom props
 	useNextImage: PropTypes.bool,
 	cloudinaryEnv: PropTypes.string,
-	cloudinaryDomain: PropTypes.string,
+	cloudinaryDomain: PropTypes.string,	
 	cloudinaryTransforms: PropTypes.string,
 	
 	// Required HTML img attributes
@@ -37,7 +44,7 @@ SmartImage.propTypes = {
 	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	loading: PropTypes.oneOf(['lazy', 'eager'] as const),
 	decoding: PropTypes.oneOf(['async', 'auto', 'sync'] as const),
-	fetchpriority: PropTypes.oneOf(['high', 'low', 'auto'] as const),
+	fetchPriority: PropTypes.oneOf(['high', 'low', 'auto'] as const),
 	crossOrigin: PropTypes.oneOf(['anonymous', 'use-credentials', ''] as const),
 	referrerPolicy: PropTypes.oneOf([
 		'no-referrer',
@@ -78,7 +85,6 @@ SmartImage.propTypes = {
 	
 	// Next.js specific (when useNextImage is true)
 	quality: PropTypes.number,
-	priority: PropTypes.bool,
 	placeholder: PropTypes.oneOf(['blur', 'empty'] as const),
 	blurDataURL: PropTypes.string,
 	fill: PropTypes.bool,
@@ -137,6 +143,17 @@ export function SmartImage({
 	height,
 	...imgProps
 }: SmartImageProps) {
+	// Determine if this image should be prioritized.
+	// We use useMemo to capture the instance count at the time of the first render.
+	const isPriority = useMemo(() => {
+		// On the server, we can't reliably track instances, so we don't prioritize.
+		// The first image rendered on the client will be prioritized.
+		if (!IS_SERVER && imageRenderCount < AUTO_PRIORITY_IMAGE_LIMIT) {
+			imageRenderCount++;
+			return true;
+		}
+		return false;
+	}, []);
 	// Use ref for potential future optimization
 	const imgRef = React.useRef<HTMLImageElement>(null);
 	
@@ -235,17 +252,39 @@ export function SmartImage({
 		...(semanticTitle && { title: semanticTitle }),
 	};
 	
+	// Determine loading strategy
+	const priority = imgProps.fetchPriority === 'high' || isPriority;
+	const loading = imgProps.loading || (priority ? 'eager' : 'lazy');
+
+	// Preload the image if it's a priority load and not using Next.js Image
+	// (Next.js's priority prop handles this automatically)
+	useEffect(() => {		
+		if (priority && !useNextImage && finalSrc) {
+			preload(finalSrc, {
+				as: 'image',
+				imageSrcSet: responsiveSrcSet || imgProps.srcSet || undefined,
+				imageSizes: imgProps.sizes || responsiveSizes || undefined,
+			});
+		}
+	// We only want this to run once on mount if the image is priority.
+	// Re-run if these dependencies change to ensure preload happens correctly.
+	}, [priority, useNextImage, finalSrc, responsiveSrcSet, imgProps.srcSet, imgProps.sizes, responsiveSizes]);
+	
 	// Try to use Next.js Image if requested
 	if (useNextImage) {
 		try {
 			// Use eval to prevent bundler from trying to resolve at build time
 			const NextImage = eval("require('next/image')").default;
 			return (
-				<NextImage 
+				<NextImage
 					src={finalSrc} 
 					alt={alt} 
-					width={width}
-					height={height}
+					// Next.js Image requires width/height to be numbers
+					width={typeof width === 'string' ? parseInt(width, 10) : width}
+					height={typeof height === 'string' ? parseInt(height, 10) : height}
+					priority={priority} // Pass priority status to Next.js Image
+					// Pass through responsive props if they exist on imgProps
+					sizes={imgProps.sizes || responsiveSizes}
 					{...semanticProps}
 					{...decorativeProps}
 					{...imgProps} 
@@ -269,8 +308,9 @@ export function SmartImage({
 			alt={alt} 
 			width={width ?? undefined}
 			height={height ?? undefined}
-			loading="lazy"
-			decoding="async"
+			loading={loading}
+			fetchPriority={imgProps.fetchPriority || (priority ? 'high' : 'auto')}
+			decoding={priority ? 'auto' : 'async'}
 			{...semanticProps}
 			{...decorativeProps}
 			{...imgProps} 
@@ -362,8 +402,8 @@ export function useCloudinaryUrl(
 	transforms?: string
 ): string {
 	return React.useMemo(
-		() => buildCloudinaryUrl({ src, productEnv, transforms }),
-		[src, productEnv, transforms]
+		() => buildCloudinaryUrl({ src, productEnv, quality, transforms }),
+		[src, productEnv, quality, transforms]
 	);
 }
 

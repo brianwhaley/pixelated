@@ -51,6 +51,8 @@ Callout.propTypes = {
 	cloudinaryEnv: PropTypes.string,
 	cloudinaryDomain: PropTypes.string,
 	cloudinaryTransforms: PropTypes.string,
+	loading: PropTypes.oneOf(['lazy', 'eager'] as const),
+	fetchpriority: PropTypes.oneOf(['high', 'low', 'auto'] as const),
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	content: PropTypes.string,
@@ -86,6 +88,8 @@ export function Callout({
 	cloudinaryEnv,
 	cloudinaryDomain,
 	cloudinaryTransforms,
+	loading,
+	fetchpriority,
 	title, subtitle, content, buttonText }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';

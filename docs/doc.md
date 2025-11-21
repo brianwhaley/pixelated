@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "simplemenu fix"
+git commit -m "smartimage pagespeed fixes"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
