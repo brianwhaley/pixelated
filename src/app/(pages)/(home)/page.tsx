@@ -23,12 +23,12 @@ export default function Home() {
 								cloudinaryEnv="dlbon7tpq"
 								title=''
 								subtitle='Pixelated Technologies is a Digital Services company that 
-								specializes in transforming small businesses through
-								custom IT solutions, including web development, social media marketing,
-								search engine optimization, content management, eCommerce solutions,
-								and small business modernization. Our mission is to empower small businesses
-								to thrive in the digital age by providing tailored technology services that
-								drive growth and efficiency.'/>
+							specializes in transforming small businesses through
+							custom IT solutions, including web development, social media marketing,
+							search engine optimization, content management, eCommerce solutions,
+							and small business modernization. Our mission is to empower small businesses
+							to thrive in the digital age by providing tailored technology services that
+							drive growth and efficiency.'/>
 						</div>
 					</div>
 				</div>
