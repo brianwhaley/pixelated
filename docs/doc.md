@@ -58,7 +58,7 @@ echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "pixelated-components bump for SmartImage performance fixes"
+git commit -m "more SmartImage + callout performance fixes"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
