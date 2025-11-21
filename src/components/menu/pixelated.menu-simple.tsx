@@ -69,8 +69,8 @@ export function MenuSimpleItem(props: MenuSimpleItemType) {
 	return (
 		<li className='menuItem'>
 			{props.target 
-				? <a href={props.path} target={props.target}>{props.name}</a>
-				: <a href={props.path}>{props.name}</a>}
+				? <a href={props.path || undefined} target={props.target}>{props.name}</a>
+				: <a href={props.path || undefined}>{props.name}</a>}
 		</li>
 	);
 }

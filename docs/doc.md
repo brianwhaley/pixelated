@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "srcset and name title id alt defaults for SmartImage component"
+git commit -m "simplemenu fix"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
