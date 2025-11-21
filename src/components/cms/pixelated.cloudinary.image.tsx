@@ -13,15 +13,8 @@
 
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
-import { preload } from 'react-dom';
+import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
-
-// Global counter to track image instances on the client.
-// This helps us automatically prioritize the first N images on the page.
-let imageRenderCount = 0;
-const AUTO_PRIORITY_IMAGE_LIMIT = 1; // Default: prioritize only the first image.
-const IS_SERVER = typeof window === 'undefined';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
 
@@ -134,7 +127,7 @@ export type SmartImageProps = InferProps<typeof SmartImage.propTypes> &
 export function SmartImage({
 	src,
 	alt,
-	useNextImage = false,
+	// useNextImage = false,
 	cloudinaryEnv,
 	cloudinaryDomain = CLOUDINARY_DOMAIN,
 	cloudinaryTransforms,
@@ -143,17 +136,6 @@ export function SmartImage({
 	height,
 	...imgProps
 }: SmartImageProps) {
-	// Determine if this image should be prioritized.
-	// We use useMemo to capture the instance count at the time of the first render.
-	const isPriority = useMemo(() => {
-		// On the server, we can't reliably track instances, so we don't prioritize.
-		// The first image rendered on the client will be prioritized.
-		if (!IS_SERVER && imageRenderCount < AUTO_PRIORITY_IMAGE_LIMIT) {
-			imageRenderCount++;
-			return true;
-		}
-		return false;
-	}, []);
 	// Use ref for potential future optimization
 	const imgRef = React.useRef<HTMLImageElement>(null);
 	
@@ -253,50 +235,36 @@ export function SmartImage({
 	};
 	
 	// Determine loading strategy
-	const priority = imgProps.fetchPriority === 'high' || isPriority;
+	const priority = imgProps.fetchPriority === 'high';
 	const loading = imgProps.loading || (priority ? 'eager' : 'lazy');
-
-	// Preload the image if it's a priority load and not using Next.js Image
-	// (Next.js's priority prop handles this automatically)
-	useEffect(() => {		
-		if (priority && !useNextImage && finalSrc) {
-			preload(finalSrc, {
-				as: 'image',
-				imageSrcSet: responsiveSrcSet || imgProps.srcSet || undefined,
-				imageSizes: imgProps.sizes || responsiveSizes || undefined,
-			});
-		}
-	// We only want this to run once on mount if the image is priority.
-	// Re-run if these dependencies change to ensure preload happens correctly.
-	}, [priority, useNextImage, finalSrc, responsiveSrcSet, imgProps.srcSet, imgProps.sizes, responsiveSizes]);
 	
 	// Try to use Next.js Image if requested
-	if (useNextImage) {
-		try {
-			// Use eval to prevent bundler from trying to resolve at build time
-			const NextImage = eval("require('next/image')").default;
-			return (
-				<NextImage
-					src={finalSrc} 
-					alt={alt} 
-					// Next.js Image requires width/height to be numbers
-					width={typeof width === 'string' ? parseInt(width, 10) : width}
-					height={typeof height === 'string' ? parseInt(height, 10) : height}
-					priority={priority} // Pass priority status to Next.js Image
-					// Pass through responsive props if they exist on imgProps
-					sizes={imgProps.sizes || responsiveSizes}
-					{...semanticProps}
-					{...decorativeProps}
-					{...imgProps} 
-				/>
-			);
-		} catch (error) {
-			if (typeof console !== 'undefined') {
-				console.warn('next/image not available, falling back to img tag', error);
-			}
-			// Fall through to regular img
+	// if (useNextImage) {
+	try {
+		// Use eval to prevent bundler from trying to resolve at build time
+		const NextImage = eval("require('next/image')").default;
+		return (
+			<NextImage
+				src={finalSrc} 
+				alt={alt} 
+				// Next.js Image requires width/height to be numbers
+				width={typeof width === 'string' ? parseInt(width, 10) : width}
+				height={typeof height === 'string' ? parseInt(height, 10) : height}
+				priority={priority} // Pass priority status to Next.js Image
+				// Pass through responsive props if they exist on imgProps
+				sizes={imgProps.sizes || responsiveSizes}
+				{...semanticProps}
+				{...decorativeProps}
+				{...imgProps} 
+			/>
+		);
+	} catch (error) {
+		if (typeof console !== 'undefined') {
+			console.warn('next/image not available, falling back to img tag', error);
 		}
+		// Fall through to regular img
 	}
+	// }
 	
 	// Default: regular img tag
 	return (

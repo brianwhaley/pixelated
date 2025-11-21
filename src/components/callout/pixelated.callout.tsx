@@ -51,29 +51,11 @@ Callout.propTypes = {
 	cloudinaryEnv: PropTypes.string,
 	cloudinaryDomain: PropTypes.string,
 	cloudinaryTransforms: PropTypes.string,
-	loading: PropTypes.oneOf(['lazy', 'eager'] as const),
-	fetchpriority: PropTypes.oneOf(['high', 'low', 'auto'] as const),
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	content: PropTypes.string,
 	buttonText: PropTypes.string,
 };
-/* export type CalloutType = {
-	style?: 'default' | 'boxed' | 'boxed grid' | 'full' | 'grid' | 'overlay' | 'split',
-	boxShape?: ShapeType,
-	layout?: 'horizontal' | 'vertical' ,
-	direction?: 'left' | 'right' ,
-	gridColumns?: gridColumnsType,
-	url?: string,
-	img?: string,
-	imgAlt?: string,
-	imgShape?: ShapeType,
-	imgClick?: (event: React.MouseEvent, url: string) => void,
-	title?: string,
-	subtitle?: string,
-	content?: string,
-	buttonText?: string,
-} */
 export type CalloutType = InferProps<typeof Callout.propTypes>;
 export function Callout({
 	style = 'default', 
@@ -88,8 +70,6 @@ export function Callout({
 	cloudinaryEnv,
 	cloudinaryDomain,
 	cloudinaryTransforms,
-	loading,
-	fetchpriority,
 	title, subtitle, content, buttonText }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
@@ -169,11 +149,6 @@ CalloutHeader.propTypes = {
 	target: PropTypes.string
 };
 export type CalloutHeaderType = InferProps<typeof CalloutHeader.propTypes>;
-/* export type CalloutHeaderType = {
-	title: string,
-	url?: string,
-	target?: string
-}; */
 export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 	return (
 		<div className="calloutHeader">
@@ -194,12 +169,7 @@ CalloutButton.propTypes = {
 	target: PropTypes.string
 };
 export type CalloutButtonType = InferProps<typeof CalloutButton.propTypes>;
-/* export type CalloutButtonType = {
-	title: string,
-	url?: string,
-	target?: string
-}; */
-export function CalloutButton( { title, url, target } : CalloutHeaderType) {
+export function CalloutButton( { title, url, target } : CalloutButtonType) {
 	return (
 		<div className="calloutButton">
 			{ (url) 

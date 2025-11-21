@@ -70,6 +70,31 @@ export function preloadImages(){
 	});
 }
 
+export function preloadImages_v2() {
+	if (typeof document === "undefined") return; // SSR guard
+
+	const images = document.querySelectorAll("img");
+	const preloaded = new Set<string>();
+
+	images.forEach((image) => {
+		const src = image.src;
+		if (!src || preloaded.has(src)) return; // Skip if no src or already preloaded
+
+		// Create preload link
+		const link = document.createElement("link");
+		link.rel = "preload";
+		link.as = "image";
+		link.href = src;
+		document.head.appendChild(link);
+
+		// Preload via JS
+		const img = new window.Image();
+		img.src = src;
+
+		preloaded.add(src);
+	});
+}
+
 
 
 function preloadImage(url: string) {
