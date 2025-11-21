@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createWordPressURLs, createImageURLs } from "@brianwhaley/pixelated-components/server";
+import { createPageURLs, createWordPressURLs, createImageURLs, createPageBuilderURLs } from "@brianwhaley/pixelated-components/server";
 // import type { SitemapEntry } from '@brianwhaley/pixelated-components/dist/types';
 import myRoutes from "@/app/data/routes.json";
 const wpSite = "blog.pixelated.tech";
@@ -33,6 +33,15 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		...(await createPageURLs(flatRoutes, origin)),
 		...(await createWordPressURLs({site: wpSite})),
 		...(await createImageURLs(origin)),
+		// ...(await createPageBuilderURLs({
+		// 	apiProps: {
+		// 		base_url: 'https://cdn.contentful.com',
+		// 		space_id: process.env.CONTENTFUL_SPACE_ID!,
+		// 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
+		// 		access_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN!,
+		// 	},
+		// 	origin,
+		// })),
 	];
 	console.log("Generated sitemap entries:", sitemap.length);
 	return sitemap;

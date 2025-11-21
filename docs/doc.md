@@ -58,7 +58,7 @@ echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "pagebuilderui bug fixes"
+git commit -m "fix for layout and not-found and samples, pageID in the root for pagebuilder pages, "
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

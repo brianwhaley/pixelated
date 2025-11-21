@@ -21,6 +21,18 @@ import "@/app/globals.css";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 	const pathname = usePathname();
+	
+	// Minimal layout for /samples routes - no CSS, no header/nav/footer
+	if (pathname.startsWith('/samples')) {
+		return (
+			<html lang="en">
+				<head></head>
+				<body>{children}</body>
+			</html>
+		);
+	}
+
+	// Full layout for all other routes
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
 
