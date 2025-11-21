@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
+// import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
 import { deferAllCSS } from "@brianwhaley/pixelated-components";
 import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
@@ -42,10 +42,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 		preloadImages();
 		deferAllCSS();
 		if (typeof window !== "undefined" ) setURL(window.location.href);
-		loadAllImagesFromCloudinary({ 
+		/* loadAllImagesFromCloudinary({ 
 			origin: window.location.origin,
 			product_env: "dlbon7tpq"
-		});
+		}); */
 	}, []);
 
 	useEffect(() => {

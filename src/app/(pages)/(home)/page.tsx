@@ -18,8 +18,9 @@ export default function Home() {
 							<Callout
 								style='boxed'
 								layout='horizontal' 
-								img='images/pix/pix-bg-512.png'
+								img='/images/pix/pix-bg-512.png'
 								imgShape="squircle" 
+								cloudinaryEnv="dlbon7tpq"
 								title=''
 								subtitle='Pixelated Technologies is a Digital Services company that 
 								specializes in transforming small businesses through
@@ -39,8 +40,9 @@ export default function Home() {
 					<div className="row-3col">
 						<Callout
 							layout='vertical' 
-							img='images/icons/webdev.png'
+							img='/images/icons/webdev.png'
 							imgShape="squircle" 
+							cloudinaryEnv="dlbon7tpq"
 							title='Web Development'
 							subtitle='Do you need a new website or web application for your business? 
 							Is your current website outdated or not mobile-friendly?
@@ -51,8 +53,9 @@ export default function Home() {
 							that help small businesses succeed online.'/>
 						<Callout
 							layout='vertical' 
-							img='images/icons/socialmedia.png'
+							img='/images/icons/socialmedia.png'
 							imgShape="squircle" 
+							cloudinaryEnv="dlbon7tpq"
 							title='Social Media Marketing'
 							subtitle='Are your social media accounts active and engaging?
 							Are they integrated with your website and other online platforms?
@@ -62,8 +65,9 @@ export default function Home() {
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
 						<Callout
 							layout='vertical' 
-							img='images/icons/seo-2.png'
+							img='/images/icons/seo-2.png'
 							imgShape="squircle" 
+							cloudinaryEnv="dlbon7tpq"
 							title='Search Engine Optimization'
 							subtitle='Is your website optimized for search engines?
 							Does it stand out from your competition, ranking well for relevant keywords and phrases?
@@ -73,8 +77,9 @@ export default function Home() {
 							and implement on-page and off-page SEO strategies to boost your search engine performance.' />
 						<Callout
 							layout='vertical'
-							img='images/icons/content.png'
+							img='/images/icons/content.png'
 							imgShape="squircle"
+							cloudinaryEnv="dlbon7tpq"
 							title='Content Management'
 							subtitle='Do you have to rely on a web developer to make updates to your website?
 							Would you like to be able to make updates yourself, without needing technical skills?
@@ -85,8 +90,9 @@ export default function Home() {
 							and provide training and support to ensure you can manage your website effectively.'  />
 						<Callout
 							layout='vertical' 
-							img='images/icons/ecommerce.png'
+							img='/images/icons/ecommerce.png'
 							imgShape="squircle" 
+							cloudinaryEnv="dlbon7tpq"
 							title='eCommerce Solutions'
 							subtitle='Do you want to move your business online to 
 							start selling your products or services digitally?
@@ -97,9 +103,10 @@ export default function Home() {
 							set it up, and provide ongoing support to ensure your online store runs smoothly.' />
 						<Callout
 							layout='vertical' 
-							img='images/icons/custom.png'
+							img='/images/icons/custom.png'
 							imgShape="squircle" 
-							title='Small Business Modernization' 
+							cloudinaryEnv="dlbon7tpq"
+							title='Small Business Modernization'
 							subtitle='Are you looking to integrate your site with other business systems,
 							such as marketing automation tools, billing and finance systems, 
 							scheduling or inventory systems, or other business applications?' 
@@ -134,6 +141,7 @@ export default function Home() {
 								url='portfolio'
 								img='/images/icons/portfolio.png'
 								imgShape='squircle'
+								cloudinaryEnv="dlbon7tpq"
 								title='Portfolio'
 								content='Explore our portfolio to see examples of the web development 
 								and design work delivered by our team members over the years. 
@@ -155,8 +163,9 @@ export default function Home() {
 							<Callout
 								style='boxed'
 								layout='horizontal' 
-								img='images/brianwhaley-headshot.jpg'
+								img='/images/brianwhaley-headshot.jpg'
 								imgShape='squircle'
+								cloudinaryEnv="dlbon7tpq"
 								title='Brian T. Whaley'
 								content='The owner of Pixelated Technologies.
 									Full Stack Developer, Passionate Technologist, 
