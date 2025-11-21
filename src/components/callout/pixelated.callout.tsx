@@ -2,7 +2,7 @@
 
 import React, { /* useState, useEffect */ } from "react";
 import PropTypes, { InferProps } from 'prop-types';
-import { SmartImage } from '../cms/pixelated.cloudinary.smartimage';
+import { SmartImage } from '../cms/pixelated.cloudinary.image';
 
 import "./pixelated.callout.scss";
 
