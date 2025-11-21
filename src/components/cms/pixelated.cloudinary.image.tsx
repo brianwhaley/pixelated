@@ -137,17 +137,45 @@ export function SmartImage({
 	height,
 	...imgProps
 }: SmartImageProps) {
-	// Build final src URL
-	const finalSrc = cloudinaryEnv
-		? buildCloudinaryUrl({
-			src,
-			productEnv: cloudinaryEnv,
-			cloudinaryDomain: cloudinaryDomain || undefined,
-			quality: quality ?? 75,
-			transforms: cloudinaryTransforms || undefined,
-			width: typeof width === 'number' ? width : undefined,
-		})
-		: src;
+	// Use ref to update src imperceptibly without re-render flash
+	const imgRef = React.useRef<HTMLImageElement>(null);
+	const [initialSrc] = React.useState(src);
+	
+	// Update src to Cloudinary URL after mount, before paint
+	React.useLayoutEffect(() => {
+		if (cloudinaryEnv && imgRef.current) {
+			// Measure actual rendered dimensions if width not provided
+			let measuredWidth: number;
+			if (typeof width === 'number') {
+				measuredWidth = width;
+			} else if (typeof width === 'string') {
+				measuredWidth = parseInt(width, 10) || imgRef.current.offsetWidth;
+			} else {
+				measuredWidth = imgRef.current.offsetWidth;
+			}
+			
+			// Only use measured width if it's meaningful (> 0) and account for DPR
+			const effectiveWidth = measuredWidth > 0 
+				? Math.ceil(measuredWidth * (typeof window !== 'undefined' ? window.devicePixelRatio : 1))
+				: undefined;
+			
+			const cloudinarySrc = buildCloudinaryUrl({
+				src,
+				productEnv: cloudinaryEnv,
+				cloudinaryDomain: cloudinaryDomain || undefined,
+				quality: quality ?? 75,
+				transforms: cloudinaryTransforms || undefined,
+				width: effectiveWidth,
+			});
+			// Only update if different and not localhost
+			if (cloudinarySrc !== src && !cloudinarySrc.includes('localhost') && !cloudinarySrc.includes('127.0.0.1')) {
+				imgRef.current.src = cloudinarySrc;
+			}
+		}
+	}, [src, cloudinaryEnv, cloudinaryDomain, cloudinaryTransforms, quality, width]);
+	
+	// Use original src for SSR and initial render
+	const finalSrc = initialSrc;
 	
 	// Ensure semantic HTML attributes with fallback chain
 	const sanitizeForId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -192,6 +220,7 @@ export function SmartImage({
 	// Default: regular img tag
 	return (
 		<img 
+			ref={imgRef}
 			src={finalSrc} 
 			alt={alt} 
 			width={width ?? undefined}
