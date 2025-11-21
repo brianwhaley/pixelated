@@ -137,52 +137,89 @@ export function SmartImage({
 	height,
 	...imgProps
 }: SmartImageProps) {
-	// Use ref to update src imperceptibly without re-render flash
+	// Use ref for potential future optimization
 	const imgRef = React.useRef<HTMLImageElement>(null);
-	const [initialSrc] = React.useState(src);
 	
-	// Update src to Cloudinary URL after mount, before paint
-	React.useLayoutEffect(() => {
-		if (cloudinaryEnv && imgRef.current) {
-			// Measure actual rendered dimensions if width not provided
-			let measuredWidth: number;
-			if (typeof width === 'number') {
-				measuredWidth = width;
-			} else if (typeof width === 'string') {
-				measuredWidth = parseInt(width, 10) || imgRef.current.offsetWidth;
-			} else {
-				measuredWidth = imgRef.current.offsetWidth;
-			}
-			
-			// Only use measured width if it's meaningful (> 0) and account for DPR
-			const effectiveWidth = measuredWidth > 0 
-				? Math.ceil(measuredWidth * (typeof window !== 'undefined' ? window.devicePixelRatio : 1))
-				: undefined;
-			
-			const cloudinarySrc = buildCloudinaryUrl({
-				src,
-				productEnv: cloudinaryEnv,
-				cloudinaryDomain: cloudinaryDomain || undefined,
-				quality: quality ?? 75,
-				transforms: cloudinaryTransforms || undefined,
-				width: effectiveWidth,
-			});
-			// Only update if different and not localhost
-			if (cloudinarySrc !== src && !cloudinarySrc.includes('localhost') && !cloudinarySrc.includes('127.0.0.1')) {
-				imgRef.current.src = cloudinarySrc;
-			}
+	// Calculate base width for Cloudinary
+	let baseWidth: number | undefined;
+	if (typeof width === 'number') {
+		baseWidth = width;
+	} else if (typeof width === 'string') {
+		const parsedWidth = parseInt(width, 10);
+		if (parsedWidth > 0) {
+			baseWidth = parsedWidth;
 		}
-	}, [src, cloudinaryEnv, cloudinaryDomain, cloudinaryTransforms, quality, width]);
+	}
 	
-	// Use original src for SSR and initial render
-	const finalSrc = initialSrc;
+	// Build Cloudinary URL if env provided
+	const finalSrc = cloudinaryEnv 
+		? buildCloudinaryUrl({
+			src,
+			productEnv: cloudinaryEnv,
+			cloudinaryDomain: cloudinaryDomain || undefined,
+			quality: quality ?? 75,
+			transforms: cloudinaryTransforms || undefined,
+			width: baseWidth,
+		})
+		: src;
+	
+	// Generate responsive srcset for Cloudinary images
+	let responsiveSrcSet: string | undefined;
+	let responsiveSizes: string | undefined;
+	
+	if (cloudinaryEnv) {
+		if (baseWidth) {
+			// If width provided, generate srcset based on that width
+			const widths = [
+				Math.ceil(baseWidth * 0.5),  // 0.5x
+				baseWidth,                     // 1x
+				Math.ceil(baseWidth * 1.5),  // 1.5x
+				Math.ceil(baseWidth * 2),    // 2x
+			];
+			responsiveSrcSet = widths.map(w => {
+				const url = buildCloudinaryUrl({
+					src,
+					productEnv: cloudinaryEnv,
+					cloudinaryDomain: cloudinaryDomain || undefined,
+					quality: quality ?? 75,
+					transforms: cloudinaryTransforms || undefined,
+					width: w,
+				});
+				return `${url} ${w}w`;
+			}).join(', ');
+			responsiveSizes = `${baseWidth}px`;
+		} else {
+			// No width provided - generate common responsive breakpoints
+			const breakpoints = [320, 640, 768, 1024, 1280, 1536];
+			responsiveSrcSet = breakpoints.map(w => {
+				const url = buildCloudinaryUrl({
+					src,
+					productEnv: cloudinaryEnv,
+					cloudinaryDomain: cloudinaryDomain || undefined,
+					quality: quality ?? 75,
+					transforms: cloudinaryTransforms || undefined,
+					width: w,
+				});
+				return `${url} ${w}w`;
+			}).join(', ');
+			// Default sizes: full width on mobile, constrained on larger screens
+			responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+		}
+	}
 	
 	// Ensure semantic HTML attributes with fallback chain
 	const sanitizeForId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 	
-	const semanticId = imgProps.id || imgProps.name || (imgProps.title ? sanitizeForId(imgProps.title) : sanitizeForId(alt));
-	const semanticName = imgProps.name || imgProps.id || (imgProps.title ? sanitizeForId(imgProps.title) : sanitizeForId(alt));
-	const semanticTitle = imgProps.title || alt;
+	// Extract filename from src as fallback
+	const getImageName = () => {
+		const filename = src.split('/').pop()?.split('?')[0] || '';
+		return filename.replace(/\.[^.]+$/, ''); // Remove extension
+	};
+	
+	const imageName = getImageName();
+	const semanticId = imgProps.id || imgProps.name || (imgProps.title && sanitizeForId(imgProps.title)) || (alt && sanitizeForId(alt)) || (imageName && sanitizeForId(imageName)) || undefined;
+	const semanticName = imgProps.name || imgProps.id || (imgProps.title && sanitizeForId(imgProps.title)) || (alt && sanitizeForId(alt)) || (imageName && sanitizeForId(imageName)) || undefined;
+	const semanticTitle = imgProps.title || alt || undefined;
 	
 	// Handle decorative images (empty alt text)
 	const isDecorative = alt === '';
@@ -190,6 +227,13 @@ export function SmartImage({
 		'aria-hidden': 'true' as const,
 		role: 'presentation' as const,
 	} : {};
+	
+	// Build semantic props object, only including defined values
+	const semanticProps = {
+		...(semanticId && { id: semanticId }),
+		...(semanticName && { name: semanticName }),
+		...(semanticTitle && { title: semanticTitle }),
+	};
 	
 	// Try to use Next.js Image if requested
 	if (useNextImage) {
@@ -202,9 +246,7 @@ export function SmartImage({
 					alt={alt} 
 					width={width}
 					height={height}
-					id={semanticId}
-					name={semanticName}
-					title={semanticTitle}
+					{...semanticProps}
 					{...decorativeProps}
 					{...imgProps} 
 				/>
@@ -222,14 +264,14 @@ export function SmartImage({
 		<img 
 			ref={imgRef}
 			src={finalSrc} 
+			srcSet={responsiveSrcSet || imgProps.srcSet}
+			sizes={imgProps.sizes || responsiveSizes}
 			alt={alt} 
 			width={width ?? undefined}
 			height={height ?? undefined}
 			loading="lazy"
 			decoding="async"
-			id={semanticId}
-			name={semanticName}
-			title={semanticTitle}
+			{...semanticProps}
 			{...decorativeProps}
 			{...imgProps} 
 		/>

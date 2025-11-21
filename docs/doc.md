@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "useLayoutEffect for SmartImage component - prevent flash and image size performance"
+git commit -m "srcset and name title id alt defaults for SmartImage component"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

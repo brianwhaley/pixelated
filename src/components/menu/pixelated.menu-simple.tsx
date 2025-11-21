@@ -58,7 +58,7 @@ export function MenuSimple(props: { menuItems: MenuSimpleItemType[] }) {
 
 MenuSimpleItem.propTypes = {
 	name: PropTypes.string.isRequired,
-	path: PropTypes.string.isRequired,
+	path: PropTypes.string,
 	target: PropTypes.string,
 	hidden: PropTypes.bool,
 	routes: PropTypes.array,
