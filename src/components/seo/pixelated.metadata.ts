@@ -82,15 +82,6 @@ export function getAllRoutes(routes: Route, key: string) {
 
 import fs from 'fs';
 import path from 'path';
-// import { Meta } from 'react-router-dom';
-
-/* interface ImageInfo {
-    loc: string;
-    title?: string,
-    caption?: string;
-    license?: string,
-    geo_location?: string,
-} */
 
 export function getAllImages() {
 	// const imagePaths: ImageInfo[] = [];
