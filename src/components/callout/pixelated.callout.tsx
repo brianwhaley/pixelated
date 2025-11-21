@@ -66,7 +66,6 @@ export function Callout({
 	url, img, imgAlt, 
 	imgShape = 'square', 
 	imgClick, 
-	useNextImage,
 	cloudinaryEnv,
 	cloudinaryDomain,
 	cloudinaryTransforms,
@@ -94,7 +93,6 @@ export function Callout({
 						src={img} 
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""} 
-						useNextImage={useNextImage}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
@@ -107,7 +105,6 @@ export function Callout({
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""} 
 						onClick={(event) => imgClick(event, url)}
-						useNextImage={useNextImage}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
@@ -117,7 +114,6 @@ export function Callout({
 						src={img} 
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""}
-						useNextImage={useNextImage}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
