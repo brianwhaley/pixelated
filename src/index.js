@@ -10,7 +10,7 @@ export * from './components/carousel/pixelated.carousel.drag';
 /* export * from './components/carousel/pixelated.carousel.instagram'; */
 
 export * from './components/cms/pixelated.cloudinary';
-export * from './components/cms/pixelated.cloudinary.smartimage';
+export * from './components/cms/pixelated.cloudinary.image';
 export * from './components/cms/pixelated.contentful.delivery';
 export * from './components/cms/pixelated.contentful.management';
 export * from './components/cms/pixelated.contentful.items.components';
