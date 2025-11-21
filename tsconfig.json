@@ -118,5 +118,9 @@
     
   },
   "include": [ "src" ],
-  "exclude": [ "dist", "node_modules", "src/components/pagebuilder/documentation/api-examples" ]
+  "exclude": [ 
+    "dist", 
+    "node_modules", 
+    "src/components/pagebuilder/documentation/**"
+  ]
 }

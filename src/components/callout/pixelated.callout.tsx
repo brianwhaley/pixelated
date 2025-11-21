@@ -2,6 +2,7 @@
 
 import React, { /* useState, useEffect */ } from "react";
 import PropTypes, { InferProps } from 'prop-types';
+import { SmartImage } from '../cms/pixelated.cloudinary.image';
 
 import "./pixelated.callout.scss";
 
@@ -45,6 +46,11 @@ Callout.propTypes = {
 	imgAlt: PropTypes.string,
 	imgShape: PropTypes.oneOf([...shapes]),
 	imgClick: PropTypes.func,
+	// SmartImage props
+	useNextImage: PropTypes.bool,
+	cloudinaryEnv: PropTypes.string,
+	cloudinaryDomain: PropTypes.string,
+	cloudinaryTransforms: PropTypes.string,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	content: PropTypes.string,
@@ -75,7 +81,12 @@ export function Callout({
 	gridColumns = {left: 1, right: 2},
 	url, img, imgAlt, 
 	imgShape = 'square', 
-	imgClick, title, subtitle, content, buttonText }: CalloutType) {
+	imgClick, 
+	useNextImage,
+	cloudinaryEnv,
+	cloudinaryDomain,
+	cloudinaryTransforms,
+	title, subtitle, content, buttonText }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -95,11 +106,39 @@ export function Callout({
 		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
 			{ (url && !imgClick)
 				? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
-					<img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
+					<SmartImage 
+						src={img} 
+						title={title ?? imgAlt ?? undefined} 
+						alt={imgAlt ?? title ?? ""} 
+						useNextImage={useNextImage}
+						cloudinaryEnv={cloudinaryEnv}
+						cloudinaryDomain={cloudinaryDomain}
+						cloudinaryTransforms={cloudinaryTransforms}
+					/>
+					{/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} /> */}
 				</a>
 				: (url && imgClick)
-					? <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} />
-					: <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} />
+					? <SmartImage 
+						src={img} 
+						title={title ?? imgAlt ?? undefined} 
+						alt={imgAlt ?? title ?? ""} 
+						onClick={(event) => imgClick(event, url)}
+						useNextImage={useNextImage}
+						cloudinaryEnv={cloudinaryEnv}
+						cloudinaryDomain={cloudinaryDomain}
+						cloudinaryTransforms={cloudinaryTransforms}
+					/>
+					/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} /> */
+					: <SmartImage 
+						src={img} 
+						title={title ?? imgAlt ?? undefined} 
+						alt={imgAlt ?? title ?? ""}
+						useNextImage={useNextImage}
+						cloudinaryEnv={cloudinaryEnv}
+						cloudinaryDomain={cloudinaryDomain}
+						cloudinaryTransforms={cloudinaryTransforms}
+					/>
+					/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} /> */
 			} 
 		</div> : null ;
 

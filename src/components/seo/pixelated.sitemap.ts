@@ -113,6 +113,36 @@ export async function createContentfulURLs(props: createContentfulURLsType){
 
 
 
+createContentfulPageBuilderURLs.propTypes = {
+	apiProps: PropTypes.shape({
+		base_url: PropTypes.string.isRequired,
+		space_id: PropTypes.string.isRequired,
+		environment: PropTypes.string.isRequired,
+		access_token: PropTypes.string.isRequired,
+	}).isRequired,
+	origin: PropTypes.string.isRequired,
+};
+export type createContentfulPageBuilderURLsType = InferProps<typeof createContentfulPageBuilderURLs.propTypes>;
+export async function createContentfulPageBuilderURLs(props: createContentfulPageBuilderURLsType){
+	const sitemap: SitemapEntry[] = [];
+	const contentType = "page"; 
+	const field = "pageName";
+	const pageNames = await getContentfulFieldValues({
+		apiProps: props.apiProps, contentType: contentType, field: field
+	});
+	for ( const pageName of pageNames ){
+		sitemap.push({
+			url: `${props.origin}/${encodeURIComponent(pageName)}` ,
+			lastModified: (new Date()).toISOString(),
+			changeFrequency: "hourly" as const,
+			priority: 1.0,
+		});			
+	}
+	return sitemap;
+}
+
+
+
 
 const defaultEbayProps = {
 	proxyURL: "https://proxy.pixelated.tech/prod/proxy?url=",

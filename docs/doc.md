@@ -15,10 +15,11 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "pagebuilderui bug fixes"
+git commit -m "created new smartimage component, added to callout component to test"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
+
 https://www.npmjs.com/package/@brianwhaley/pixelated-components
 
 
