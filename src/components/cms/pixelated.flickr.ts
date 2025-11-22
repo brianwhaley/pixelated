@@ -2,8 +2,8 @@
 import PropTypes, { InferProps } from 'prop-types';
 import { generateURL } from '../utilities/pixelated.api';
 import { mergeDeep } from '../utilities/pixelated.functions';
-import { getCloudinaryRemoteFetchURL } from "./pixelated.cloudinary.js";
-import type { CarouselCardType } from '../carousel/pixelated.carousel.js';
+import { getCloudinaryRemoteFetchURL } from "./pixelated.cloudinary";
+import type { CarouselCardType } from '../carousel/pixelated.carousel';
 
 type FlickrApiType = {
     baseURL: string;

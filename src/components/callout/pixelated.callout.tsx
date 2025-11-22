@@ -46,15 +46,15 @@ Callout.propTypes = {
 	imgAlt: PropTypes.string,
 	imgShape: PropTypes.oneOf([...shapes]),
 	imgClick: PropTypes.func,
-	// SmartImage props
-	useNextImage: PropTypes.bool,
-	cloudinaryEnv: PropTypes.string,
-	cloudinaryDomain: PropTypes.string,
-	cloudinaryTransforms: PropTypes.string,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
 	content: PropTypes.string,
 	buttonText: PropTypes.string,
+	// SmartImage props
+	aboveFold: PropTypes.bool,
+	cloudinaryEnv: PropTypes.string,
+	cloudinaryDomain: PropTypes.string,
+	cloudinaryTransforms: PropTypes.string,
 };
 export type CalloutType = InferProps<typeof Callout.propTypes>;
 export function Callout({
@@ -66,10 +66,11 @@ export function Callout({
 	url, img, imgAlt, 
 	imgShape = 'square', 
 	imgClick, 
+	title, subtitle, content, buttonText,
+	aboveFold,
 	cloudinaryEnv,
 	cloudinaryDomain,
-	cloudinaryTransforms,
-	title, subtitle, content, buttonText }: CalloutType) {
+	cloudinaryTransforms }: CalloutType) {
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
@@ -86,16 +87,18 @@ export function Callout({
 	</div> ;
 
 	const image =  ( img ) ?
-		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")}>
+		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")} >
 			{ (url && !imgClick)
 				? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
 					<SmartImage 
 						src={img} 
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""} 
+						aboveFold={aboveFold}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
+						suppressHydrationWarning 
 					/>
 					{/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} /> */}
 				</a>
@@ -105,18 +108,22 @@ export function Callout({
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""} 
 						onClick={(event) => imgClick(event, url)}
+						aboveFold={aboveFold}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
+						suppressHydrationWarning 
 					/>
 					/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} onClick={(event) => imgClick(event, url)} /> */
 					: <SmartImage 
 						src={img} 
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""}
+						aboveFold={aboveFold}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}
 						cloudinaryTransforms={cloudinaryTransforms}
+						suppressHydrationWarning 
 					/>
 					/* <img src={img} title={title ?? imgAlt ?? undefined} alt={imgAlt ?? title ?? undefined} /> */
 			} 

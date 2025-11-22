@@ -16,7 +16,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-}
+/* removed misplaced closing brace */
 
 @media screen and (max-width: 480px) {
 	.panelMenuButton {
@@ -24,9 +24,8 @@
 	}
 }
 
-.panelMenuHeader {
 	background-color: #336699;
-	background-image: url(/images/pix/pix-bg.gif);
+	    /* background-image: url(/images/pix/pix-bg.gif); */
 	color: #FFFFFF;
 	padding: 15px;
 
@@ -117,7 +116,7 @@
 	/* this is the button */
 	color: black;
 	background: #CCC;
-	background-image: url(/images/pix/pix-bg-lite.jpg);
+    /* background-image: url(/images/pix/pix-bg-lite.jpg); */
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
@@ -126,7 +125,7 @@
 
 .accordionMenu > ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/images/pix/pix-bg-sm-bw.gif);
+    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }
@@ -190,7 +189,7 @@
 	/* this is the button */
 	color: black;
 	background: #CCC;
-	background-image: url(/images/pix/pix-bg-lite.jpg);
+    /* background-image: url(/images/pix/pix-bg-lite.jpg); */
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
@@ -199,7 +198,7 @@
 
 .accordionMenu > ul > ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/images/pix/pix-bg-sm-bw.gif);
+    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }

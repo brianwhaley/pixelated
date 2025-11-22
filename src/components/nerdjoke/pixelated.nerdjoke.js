@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getXHRData, generateURL } from '../utilities/pixelated.api';
+import { getXHRData, generateURL } from '../utilities/pixelated.api.ts';
 import './pixelated.nerdjoke.css';
 import '../../css/pixelated.grid.scss';
 

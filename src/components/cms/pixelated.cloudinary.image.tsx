@@ -1,41 +1,27 @@
-/**
- * SmartImage - Adaptive image component with optional Cloudinary and Next.js support
- * 
- * Features:
- * - Optional Cloudinary CDN routing
- * - Optional Next.js Image optimization
- * - Graceful fallback to standard img tag
- * - Full HTML img attribute support
- * 
- * TODO: Consider adding console warning if width/height both missing (CLS risk)
- * Would help developers catch layout shift issues during development
- */
 
 'use client';
 
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
+import Image from 'next/image';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
+let smartImageInstanceCount = 0;
 
-/**
- * SmartImageProps - Props for SmartImage component
- */
 SmartImage.propTypes = {
 	// Custom props
-	useNextImage: PropTypes.bool,
 	cloudinaryEnv: PropTypes.string,
 	cloudinaryDomain: PropTypes.string,	
 	cloudinaryTransforms: PropTypes.string,
-	
 	// Required HTML img attributes
 	src: PropTypes.string.isRequired,
 	alt: PropTypes.string.isRequired,
-	
 	// Optional HTML img attributes
 	width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	aboveFold: PropTypes.bool,
 	loading: PropTypes.oneOf(['lazy', 'eager'] as const),
+	preload: PropTypes.bool,
 	decoding: PropTypes.oneOf(['async', 'auto', 'sync'] as const),
 	fetchPriority: PropTypes.oneOf(['high', 'low', 'auto'] as const),
 	crossOrigin: PropTypes.oneOf(['anonymous', 'use-credentials', ''] as const),
@@ -53,11 +39,9 @@ SmartImage.propTypes = {
 	srcSet: PropTypes.string,
 	useMap: PropTypes.string,
 	isMap: PropTypes.bool,
-	
 	// Styling
 	className: PropTypes.string,
 	style: PropTypes.object,
-	
 	// Event handlers
 	onLoad: PropTypes.func,
 	onError: PropTypes.func,
@@ -66,79 +50,54 @@ SmartImage.propTypes = {
 	onMouseLeave: PropTypes.func,
 	onMouseOver: PropTypes.func,
 	onMouseOut: PropTypes.func,
-	
 	// Accessibility
 	role: PropTypes.string,
 	tabIndex: PropTypes.number,
 	title: PropTypes.string,
-	
 	// Data attributes (common ones)
 	id: PropTypes.string,
 	name: PropTypes.string,
-	
 	// Next.js specific (when useNextImage is true)
 	quality: PropTypes.number,
 	placeholder: PropTypes.oneOf(['blur', 'empty'] as const),
 	blurDataURL: PropTypes.string,
-	fill: PropTypes.bool,
+	// fill: PropTypes.bool,
 };
 
 export type SmartImageProps = InferProps<typeof SmartImage.propTypes> & 
 	React.ImgHTMLAttributes<HTMLImageElement>;
 
-/**
- * SmartImage component - Adaptive image with optional Cloudinary and Next.js support
- * 
- * @param src - Image source URL (can be relative or absolute)
- * @param alt - Alt text for accessibility (required)
- * @param useNextImage - If true, attempts to use Next.js Image component (default: false)
- * @param cloudinaryEnv - Cloudinary product environment (e.g., 'dlbon7tpq'). If provided, routes through Cloudinary
- * @param cloudinaryDomain - Cloudinary domain (default: 'https://res.cloudinary.com/')
- * @param cloudinaryTransforms - Optional custom Cloudinary transformations (e.g., 'c_fill,g_auto')
- * @param quality - Image quality for Cloudinary (1-100, default: 75)
- * @param ...rest - All other HTML img attributes
- * 
- * @example
- * ```tsx
- * // Standard img tag
- * <SmartImage src="/photo.jpg" alt="Photo" width={800} height={600} />
- * 
- * // With Cloudinary
- * <SmartImage 
- *   src="/photo.jpg" 
- *   alt="Photo" 
- *   cloudinaryEnv="dlbon7tpq"
- *   cloudinaryTransforms="c_fill,g_auto"
- *   width={800} 
- *   height={600} 
- * />
- * 
- * // With Next.js Image + Cloudinary
- * <SmartImage 
- *   src="/photo.jpg" 
- *   alt="Photo" 
- *   useNextImage={true}
- *   cloudinaryEnv="dlbon7tpq"
- *   width={800} 
- *   height={600} 
- * />
- * ```
- */
 export function SmartImage({
 	src,
 	alt,
-	// useNextImage = false,
 	cloudinaryEnv,
 	cloudinaryDomain = CLOUDINARY_DOMAIN,
 	cloudinaryTransforms,
 	quality = 75,
-	width,
-	height,
+	width = 500,
+	height = 500,
+	aboveFold = false,
+	fetchPriority = 'auto',
+	loading = 'lazy',
+	decoding = 'async',
+	preload = false,
 	...imgProps
 }: SmartImageProps) {
+	// set LCP values for first image on the page
+	smartImageInstanceCount++;
+	fetchPriority = aboveFold || smartImageInstanceCount < 5 ? 'high' : 'auto';
+	loading = aboveFold || smartImageInstanceCount < 5 ? 'eager' : 'lazy';
+	decoding = aboveFold || smartImageInstanceCount < 5 ? 'sync' : 'async';
+	preload = aboveFold || smartImageInstanceCount < 5 ? true : false;
+
+	console.log('SmartImage props:', {
+		fetchPriority: fetchPriority,
+		loading: loading,
+		preload: preload
+	});
+
 	// Use ref for potential future optimization
 	const imgRef = React.useRef<HTMLImageElement>(null);
-	
 	// Calculate base width for Cloudinary
 	let baseWidth: number | undefined;
 	if (typeof width === 'number') {
@@ -149,7 +108,6 @@ export function SmartImage({
 			baseWidth = parsedWidth;
 		}
 	}
-	
 	// Build Cloudinary URL if env provided
 	const finalSrc = cloudinaryEnv 
 		? buildCloudinaryUrl({
@@ -161,11 +119,9 @@ export function SmartImage({
 			width: baseWidth,
 		})
 		: src;
-	
 	// Generate responsive srcset for Cloudinary images
 	let responsiveSrcSet: string | undefined;
 	let responsiveSizes: string | undefined;
-	
 	if (cloudinaryEnv) {
 		if (baseWidth) {
 			// If width provided, generate srcset based on that width
@@ -208,25 +164,21 @@ export function SmartImage({
 	
 	// Ensure semantic HTML attributes with fallback chain
 	const sanitizeForId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-	
 	// Extract filename from src as fallback
 	const getImageName = () => {
 		const filename = src.split('/').pop()?.split('?')[0] || '';
 		return filename.replace(/\.[^.]+$/, ''); // Remove extension
 	};
-	
 	const imageName = getImageName();
 	const semanticId = imgProps.id || imgProps.name || (imgProps.title && sanitizeForId(imgProps.title)) || (alt && sanitizeForId(alt)) || (imageName && sanitizeForId(imageName)) || undefined;
 	const semanticName = imgProps.name || imgProps.id || (imgProps.title && sanitizeForId(imgProps.title)) || (alt && sanitizeForId(alt)) || (imageName && sanitizeForId(imageName)) || undefined;
 	const semanticTitle = imgProps.title || alt || undefined;
-	
 	// Handle decorative images (empty alt text)
 	const isDecorative = alt === '';
 	const decorativeProps = isDecorative ? {
 		'aria-hidden': 'true' as const,
 		role: 'presentation' as const,
 	} : {};
-	
 	// Build semantic props object, only including defined values
 	const semanticProps = {
 		...(semanticId && { id: semanticId }),
@@ -234,29 +186,52 @@ export function SmartImage({
 		...(semanticTitle && { title: semanticTitle }),
 	};
 	
-	// Determine loading strategy
-	const priority = imgProps.fetchPriority === 'high';
-	const loading = imgProps.loading || (priority ? 'eager' : 'lazy');
-	
 	// Try to use Next.js Image if requested
-	// if (useNextImage) {
 	try {
-		// Use eval to prevent bundler from trying to resolve at build time
-		const NextImage = eval("require('next/image')").default;
 		return (
-			<NextImage
-				src={finalSrc} 
-				alt={alt} 
-				// Next.js Image requires width/height to be numbers
+			<Image
+				src={finalSrc}
+				alt={alt}
 				width={typeof width === 'string' ? parseInt(width, 10) : width}
 				height={typeof height === 'string' ? parseInt(height, 10) : height}
-				priority={priority} // Pass priority status to Next.js Image
-				// Pass through responsive props if they exist on imgProps
+				// fill={true}
+				// loader={customLoader} --- IGNORE ---
 				sizes={imgProps.sizes || responsiveSizes}
+				quality={quality ?? undefined}
 				{...semanticProps}
 				{...decorativeProps}
-				{...imgProps} 
+				fetchPriority={fetchPriority}
+				loading={loading}
+				decoding={decoding}
+				preload={preload}
+				className={imgProps.className}
+				style={imgProps.style}
+				onClick={imgProps.onClick}
+				// onLoadingComplete	onLoadingComplete={img => done())}	Function	Deprecated
+				// onLoad	onLoad={event => done())}	Function	-
+				// onError	onError(event => fail()}	Function	
+				// placeholder	placeholder="blur"	String	-
+				// blurDataURL	blurDataURL="data:image/jpeg..."	String	-
+				// unoptimized	unoptimized={true}	Boolean	-
+				// overrideSrc	overrideSrc="/seo.png"	String	-
+				/* 
+				// ===== NOT SUPPORTED BY NEXT IMAGE =====
+				crossOrigin={imgProps.crossOrigin}
+				referrerPolicy={imgProps.referrerPolicy}
+				useMap={imgProps.useMap}
+				isMap={imgProps.isMap}
+				srcSet={imgProps.srcSet}
+				onLoad={imgProps.onLoad}
+				onError={imgProps.onError}
+				onMouseEnter={imgProps.onMouseEnter}
+				onMouseLeave={imgProps.onMouseLeave}
+				onMouseOver={imgProps.onMouseOver}
+				onMouseOut={imgProps.onMouseOut}
+				decoding={imgProps.decoding}
+				*/
+				// {...imgProps}
 			/>
+
 		);
 	} catch (error) {
 		if (typeof console !== 'undefined') {
@@ -264,7 +239,6 @@ export function SmartImage({
 		}
 		// Fall through to regular img
 	}
-	// }
 	
 	// Default: regular img tag
 	return (
@@ -277,8 +251,8 @@ export function SmartImage({
 			width={width ?? undefined}
 			height={height ?? undefined}
 			loading={loading}
-			fetchPriority={imgProps.fetchPriority || (priority ? 'high' : 'auto')}
-			decoding={priority ? 'auto' : 'async'}
+			fetchPriority={fetchPriority}
+			decoding={decoding}
 			{...semanticProps}
 			{...decorativeProps}
 			{...imgProps} 
@@ -286,9 +260,7 @@ export function SmartImage({
 	);
 }
 
-/**
- * Builds a Cloudinary URL for the Next.js Image loader
- */
+
 interface BuildCloudinaryLoaderUrlParams {
 	src: string;
 	productEnv: string;
@@ -359,37 +331,3 @@ function buildCloudinaryUrl({ src, productEnv, cloudinaryDomain = CLOUDINARY_DOM
 
 	return buildCloudinaryLoaderUrl({ src, productEnv, cloudinaryDomain, transforms: allTransforms });
 }
-
-/**
- * Hook to build Cloudinary URL for Next.js Image loader (useful for non-Image use cases)
- */
-/* 
-export function useCloudinaryUrl(
-	src: string,
-	productEnv: string,
-	quality?: number,
-	transforms?: string
-): string {
-	return React.useMemo(
-		() => buildCloudinaryUrl({ src, productEnv, quality, transforms }),
-		[src, productEnv, quality, transforms]
-	);
-}
-*/
-
-/**
- * Utility function to get Cloudinary URL (non-React)
- */
-/* 
-export function getCloudinaryImageUrl(
-	src: string,
-	productEnv: string,
-	quality?: number,
-	transforms?: string
-): string {
-	return buildCloudinaryUrl({ src, productEnv, transforms });
-}
-
-// Default export
-export default SmartImage;
-*/

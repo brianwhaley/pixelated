@@ -8,7 +8,7 @@ import { getContentfulEntriesByType, getContentfulEntryByEntryID } from "./pixel
 import { AddToShoppingCart  } from "../shoppingcart/pixelated.shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/pixelated.shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/pixelated.cloudinary";
-import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart.functions.js";
+import type { ShoppingCartType } from "../shoppingcart/pixelated.shoppingcart.functions";
 // import { Loading, ToggleLoading } from "../general/pixelated.loading";	
 import "../../css/pixelated.grid.scss";
 import "./pixelated.contentful.items.css";

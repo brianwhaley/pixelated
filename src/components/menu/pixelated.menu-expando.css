@@ -16,7 +16,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-}
+/* removed misplaced closing brace */
 
 @media screen and (max-width: 480px) {
 	.menuExpandoButton {
@@ -24,9 +24,8 @@
 	}
 }
 
-.menuExpandoButtonHeader {
 	background-color: #336699;
-	background-image: url(/images/pix/pix-bg.gif);
+	/* background-image: url(/images/pix/pix-bg.gif); */
 	color: #FFFFFF;
 	padding: 15px;
 
@@ -110,18 +109,18 @@ details.menuExpandoWrapper > summary::-webkit-details-marker {
 	/* this is the button */
 	color: black;
 	background: #CCC;
-	background-image: url(/images/pix/pix-bg-lite.jpg);
+    /* background-image: url(/images/pix/pix-bg-lite.jpg); */
 	display: block;
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
-    text-decoration: none;
+	text-decoration: none;
 	text-indent: 10px;
 }
 
 .menuExpando ul > li > a:hover {
 	background: #EDD;
-	background-image: url(/images/pix/pix-bg-sm-bw.gif);
+    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
 	text-indent: 5px;
 	border-left: 5px #000 solid;
 }

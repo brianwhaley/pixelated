@@ -1,5 +1,5 @@
 
-import { getContentfulDiscountCodes } from "../cms/pixelated.contentful.delivery.js";
+import { getContentfulDiscountCodes } from "../cms/pixelated.contentful.delivery";
 
 const debug = false;
 /* ========== LOCALSTORAGE KEYS ========== */

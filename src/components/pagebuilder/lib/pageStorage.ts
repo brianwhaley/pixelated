@@ -44,8 +44,8 @@ export async function listPages(): Promise<ListPagesResponse> {
 		const dir = getPagesDir();
 		const files = fs.readdirSync(dir);
 		const jsonFiles = files
-			.filter(f => f.endsWith('.json'))
-			.map(f => f.replace('.json', ''));
+			.filter((f: string) => f.endsWith('.json'))
+			.map((f: string) => f.replace('.json', ''));
 		
 		return {
 			success: true,

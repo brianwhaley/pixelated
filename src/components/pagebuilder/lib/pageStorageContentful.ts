@@ -32,7 +32,7 @@ function validatePageName(name: string): boolean {
 /**
  * List all saved pages
  */
-export async function listPages(
+export async function listContentfulPages(
 	config: ContentfulConfig
 ): Promise<ListPagesResponse> {
 	const result = await listEntries(CONTENT_TYPE, config);
@@ -59,7 +59,7 @@ export async function listPages(
 /**
  * Load a page by name
  */
-export async function loadPage(
+export async function loadContentfulPage(
 	name: string,
 	config: ContentfulConfig
 ): Promise<LoadPageResponse> {
@@ -98,7 +98,7 @@ export async function loadPage(
 /**
  * Save a page (create or update)
  */
-export async function savePage(
+export async function saveContentfulPage(
 	name: string,
 	data: PageData,
 	config: ContentfulConfig
@@ -152,7 +152,7 @@ export async function savePage(
 /**
  * Delete a page by name
  */
-export async function deletePage(
+export async function deleteContentfulPage(
 	name: string,
 	config: ContentfulConfig
 ): Promise<DeletePageResponse> {

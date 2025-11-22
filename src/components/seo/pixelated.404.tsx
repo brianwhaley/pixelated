@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from 'prop-types';
-import { getCloudinaryRemoteFetchURL } from "@brianwhaley/pixelated-components";
+import { getCloudinaryRemoteFetchURL } from "../cms/pixelated.cloudinary";
 import "./pixelated.404.css";
 
 FourOhFour.propTypes = {
