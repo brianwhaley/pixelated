@@ -6,7 +6,7 @@ import PropTypes, { InferProps } from 'prop-types';
 import Image from 'next/image';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
-let smartImageInstanceCount = 0;
+// let smartImageInstanceCount = 0;
 
 SmartImage.propTypes = {
 	// Custom props
@@ -83,18 +83,26 @@ export function SmartImage({
 	preload = false,
 	...imgProps
 }: SmartImageProps) {
-	// set LCP values for first image on the page
+	/* set LCP values for first image on the page
 	smartImageInstanceCount++;
 	fetchPriority = aboveFold || smartImageInstanceCount < 5 ? 'high' : 'auto';
 	loading = aboveFold || smartImageInstanceCount < 5 ? 'eager' : 'lazy';
 	decoding = aboveFold || smartImageInstanceCount < 5 ? 'sync' : 'async';
-	preload = aboveFold || smartImageInstanceCount < 5 ? true : false;
+	preload = aboveFold || smartImageInstanceCount < 5 ? true : false; */
 
-	console.log('SmartImage props:', {
+	fetchPriority = aboveFold ? 'high' : 'auto';
+	loading = aboveFold ? 'eager' : 'lazy';
+	decoding = aboveFold ? 'sync' : 'async';
+	preload = aboveFold ? true : false;
+
+	/* console.log('SmartImage props:', {
+		src: src,
+		// count: smartImageInstanceCount,
+		aboveFold: aboveFold,
 		fetchPriority: fetchPriority,
 		loading: loading,
 		preload: preload
-	});
+	}); */
 
 	// Use ref for potential future optimization
 	const imgRef = React.useRef<HTMLImageElement>(null);
