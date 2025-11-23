@@ -18,6 +18,18 @@ const nextConfig: NextConfig = {
 		CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT,
 	},
 
+	// Allow Cloudinary remote images so Next Image optimizer can fetch/transform them
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'res.cloudinary.com',
+				port: '',
+				pathname: '/**',
+			},
+		],
+	},
+
 	async redirects() {
 		return [
 			{ source: '/buzzwordbingo', destination: '/', permanent: true, },
