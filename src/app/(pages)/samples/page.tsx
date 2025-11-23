@@ -78,7 +78,7 @@ export default function Samples() {
 					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
 				</header>
 				<nav>
-					<Suspense fallback={<div>Loading menu...</div>}>
+					<Suspense fallback={<></>}>
 						<Nav />
 					</Suspense>
 				</nav>

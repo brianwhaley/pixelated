@@ -2,7 +2,7 @@ export const runtime = 'nodejs';
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createWordPressURLs, createImageURLs, /* createPageBuilderURLs */ } from "@brianwhaley/pixelated-components/server";
+import { createPageURLs, createWordPressURLs, /* createImageURLs,*/ createImageURLsFromJSON /* createPageBuilderURLs */ } from "@brianwhaley/pixelated-components/server";
 // import type { SitemapEntry } from '@brianwhaley/pixelated-components/dist/types';
 import myRoutes from "@/app/data/routes.json";
 const wpSite = "blog.pixelated.tech";
@@ -33,7 +33,8 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 	const sitemap = [
 		...(await createPageURLs(flatRoutes, origin)),
 		...(await createWordPressURLs({site: wpSite})),
-		...(await createImageURLs(origin)),
+		// ...(await createImageURLs(origin)),
+		...(await createImageURLsFromJSON(origin /*, optional jsonPath */)),
 		// ...(await createPageBuilderURLs({
 		// 	apiProps: {
 		// 		base_url: 'https://cdn.contentful.com',
