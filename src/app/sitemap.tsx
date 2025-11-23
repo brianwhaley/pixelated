@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createWordPressURLs, createImageURLs, createPageBuilderURLs } from "@brianwhaley/pixelated-components/server";
+import { createPageURLs, createWordPressURLs, createImageURLs, /* createPageBuilderURLs */ } from "@brianwhaley/pixelated-components/server";
 // import type { SitemapEntry } from '@brianwhaley/pixelated-components/dist/types';
 import myRoutes from "@/app/data/routes.json";
 const wpSite = "blog.pixelated.tech";
