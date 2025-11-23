@@ -1,6 +1,6 @@
 {
   "name": "pixelatedtech",
-  "version": "4.2.20",
+  "version": "4.2.21",
   "private": true,
   "author": {
     "name": "Pixelated Technologies",
@@ -17,7 +17,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^2.6.15",
+    "@brianwhaley/pixelated-components": "^2.6.23",
     "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "globals": "^16.5.0",
