@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { loadPage } from '@brianwhaley/pixelated-components/server';
+import { loadContentfulPage } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
 export async function GET(request: Request) {

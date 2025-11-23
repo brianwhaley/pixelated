@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { deletePage } from '@brianwhaley/pixelated-components/server';
+import { deleteContentfulPage } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
 export async function DELETE(request: Request) {

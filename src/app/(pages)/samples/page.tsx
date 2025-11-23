@@ -3,7 +3,7 @@
 import React, { /* useState, */ useEffect, Suspense } from "react";
 import { Tiles } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
+import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components/server";
 import { deferAllCSS } from "@brianwhaley/pixelated-components";
 import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";

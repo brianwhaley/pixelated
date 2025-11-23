@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { savePage } from '@brianwhaley/pixelated-components/server';
+import { saveContentfulPage } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
 export async function POST(request: Request) {

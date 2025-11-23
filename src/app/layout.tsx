@@ -2,7 +2,7 @@
 
 import React, { useState, useLayoutEffect, /* useEffect, */ Suspense } from "react";
 import { usePathname } from 'next/navigation';
-import { getRouteByKey } from "@brianwhaley/pixelated-components";
+import { getRouteByKey } from "@brianwhaley/pixelated-components/server";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 // import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
 // import { deferAllCSS } from "@brianwhaley/pixelated-components";
