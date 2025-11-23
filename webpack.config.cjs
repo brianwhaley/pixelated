@@ -1,122 +1,110 @@
+
+// Fresh minimal webpack config: mimic tsc+rsync by producing per-file outputs and copying assets.
 const path = require('path');
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// Entry points for client and server bundles, plus global CSS/SCSS
-// Only JS entries for Webpack output
-// Only emit per-component files, no global index.js or index.css
-const entries = {};
-glob.sync('./src/components/**/*.{ts,tsx,js,jsx}', {
-  ignore: [
-    './src/components/pagebuilder/documentation/**',
-    './src/components/**/*.test.*',
-    './src/components/**/*.stories.*',
-    './src/components/**/*.d.ts'
-  ]
-}).forEach(file => {
-  const name = file.replace('./src/', '').replace(/\.[tj]sx?$/, '');
-  entries[name] = file;
-});
+// Build entries: include all JS/TS sources in components
+function makeEntries(pattern) {
+  const entries = {};
+  glob.sync(pattern, {
+    ignore: [
+      './src/components/pagebuilder/documentation/**',
+      './src/components/**/*.test.*',
+      './src/components/**/*.stories.*',
+      './src/components/**/*.d.ts'
+    ]
+  }).forEach(file => {
+    const name = file.replace('./src/components/', '').replace(/\.[^.]+$/, '');
+    entries[name] = file;
+  });
+  return entries;
+}
 
-const TerserPlugin = require('terser-webpack-plugin');
+const clientEntries = makeEntries('./src/components/**/*.{js,jsx,ts,tsx}');
+const serverEntries = makeEntries('./src/components/**/*.{ts,tsx}');
 
-module.exports = {
-  experiments: {
-    outputModule: true,
-  },
-  mode: 'development',
-  devtool: false, // Disable eval and source maps for readable output
-  entry: entries,
+const baseModuleRules = [
+  { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
+  { test: /\.(js|jsx)$/, exclude: /node_modules/, use: { loader: 'babel-loader', options: { presets: ['@babel/preset-env','@babel/preset-react'] } } }
+];
+
+const clientConfig = {
+  mode: 'production',
+  entry: clientEntries,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'components/[name].js',
     library: { type: 'module' },
     module: true,
     environment: { module: true },
-    chunkFormat: 'module', // Ensure ES module output
-    chunkLoading: false,   // No runtime chunk loading
+    chunkFormat: 'module',
+    chunkLoading: false,
   },
-  optimization: {
-    runtimeChunk: false,
-    splitChunks: false,
-    minimize: false,
-    moduleIds: 'named',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react'
-            ],
-          },
-        },
-      },
-      {
-        test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(bmp|gif|jpg|jpeg|png|svg|webp)$/,
-        use: 'null-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss'],
-    alias: {
-      '/images': path.resolve(__dirname, 'src/images'),
-      'images': path.resolve(__dirname, 'src/images'),
-    },
-    fallback: {
-      fs: false,
-      path: false,
-      process: false,
-    },
-  },
-  externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
-    next: 'next',
-  },
-  // No minification for now
+  experiments: { outputModule: true },
+  module: { rules: [
+    ...baseModuleRules,
+    { test: /\.css$/, use: ['style-loader','css-loader'] },
+    { test: /\.scss$/, use: ['style-loader','css-loader','sass-loader'] },
+    { test: /\.(bmp|gif|jpg|jpeg|png|svg|webp)$/, type: 'asset/resource' }
+  ] },
+  externals: { react: 'react', 'react-dom': 'react-dom', next: 'next' },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*'],
-    }),
-    // Removed MiniCssExtractPlugin; using style-loader for CSS injection
-    new CopyWebpackPlugin({
-      patterns: [
-        // Copy all JS/TS/CSS/SCSS files from components, preserving structure and formatting
-        { from: 'src/components/**/*.{js,jsx,ts,tsx,css,scss}', to: 'components/[path][name][ext]', context: 'src/components', transform(content, absoluteFrom) { return content.toString(); } },
-        // Copy global CSS/SCSS as before
-        { from: 'src/css/pixelated.global.css', to: 'css/pixelated.global.css' },
-        { from: 'src/css/pixelated.grid.scss', to: 'css/pixelated.grid.scss' },
-        // Copy index.js and index.server.js from src to dist, preserving formatting and ensuring no minification
-        { from: 'src/index.js', to: 'index.js', transform(content) { return content.toString(); } },
-        { from: 'src/index.server.js', to: 'index.server.js', transform(content) { return content.toString(); } },
-        // Ignore license files
-        { from: '**/LICENSE*', to: '', noErrorOnMissing: true, globOptions: { ignore: ['**/LICENSE*'] } },
-      ],
-    }),
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['components/**', 'index.js', 'css/**'] }),
+    new CopyWebpackPlugin({ patterns: [
+      { from: 'src/components/**/*.css', to: 'components/[path][name][ext]', context: 'src/components' },
+      { from: 'src/components/**/*.scss', to: 'components/[path][name][ext]', context: 'src/components' },
+      { from: 'src/css/pixelated.global.css', to: 'css/pixelated.global.css' },
+      { from: 'src/css/pixelated.grid.scss', to: 'css/pixelated.grid.scss' },
+      { from: 'src/index.js', to: 'index.js', transform(content) {
+        // rewrite re-exports to point at ./components/.. .js
+        const s = content.toString();
+        return Buffer.from(s.replace(/export\s*\*\s*from\s*(['"])(.+?)\1\s*;/g, (m,q,p)=>{
+          if (/\.(css|scss|json)$/.test(p)) return m;
+          if (p.startsWith('./')) return `export * from ${q}./${p.slice(2)}.js${q};`;
+          return `export * from ${q}./${p}.js${q};`;
+        }));
+      } }
+    ]})
   ],
+  resolve: { extensions: ['.ts','.tsx','.js','.jsx'] }
 };
+
+const serverConfig = {
+  mode: 'production',
+  entry: serverEntries,
+  target: 'node',
+  output: {
+    path: path.resolve(__dirname, 'dist/server'),
+    filename: 'components/[name].js',
+    library: { type: 'module' },
+    module: true,
+    environment: { module: true },
+    chunkFormat: 'module',
+    chunkLoading: false,
+  },
+  experiments: { outputModule: true },
+  module: { rules: [
+    ...baseModuleRules,
+    { test: /\.css$/, use: 'null-loader' },
+    { test: /\.scss$/, use: 'null-loader' },
+    { test: /\.(bmp|gif|jpg|jpeg|png|svg|webp)$/, use: 'null-loader' }
+  ] },
+  externals: { react: 'react', 'react-dom': 'react-dom', next: 'next' },
+  plugins: [
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['components/**'] }),
+    new CopyWebpackPlugin({ patterns: [
+      { from: 'src/index.server.js', to: '../index.server.js', transform(content){
+        const s = content.toString();
+        return Buffer.from(s.replace(/export\s*\*\s*from\s*(['"])(.+?)\1\s*;/g,(m,q,p)=>{
+          if (p.startsWith('./')) return `export * from ${q}./server/${p.slice(2)}.js${q};`;
+          return `export * from ${q}./server/${p}.js${q};`;
+        }));
+      } }
+    ]})
+  ],
+  resolve: { extensions: ['.ts','.tsx','.js','.jsx'] }
+};
+
+module.exports = [clientConfig, serverConfig];

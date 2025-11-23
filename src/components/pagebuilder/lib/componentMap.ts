@@ -1,6 +1,6 @@
 import { PageHeader, PageSectionHeader } from "../../general/pixelated.headers";
 import { Callout } from "../../callout/pixelated.callout";
-import { PageSection, GridItem, FlexItem } from '../../general/pixelated.layout';
+import { PageSection, GridItem, FlexItem } from "../../general/pixelated.layout";
 
 /**
  * Component registry and constants

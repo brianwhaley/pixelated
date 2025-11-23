@@ -4,7 +4,6 @@
 // Import those from the main package entry point: @brianwhaley/pixelated-components
 
 export * from './components/cms/pixelated.cloudinary';
-
 export * from './components/cms/pixelated.contentful.delivery';
 export * from './components/cms/pixelated.contentful.management';
 export * from './components/cms/pixelated.wordpress.functions';
@@ -17,7 +16,7 @@ export * from './components/form/pixelated.hubspot';
 export * from './components/pagebuilder/lib/componentGeneration';
 export * from './components/pagebuilder/lib/componentMap';
 export * from './components/pagebuilder/lib/componentMetadata';
-export * from './components/pagebuilder/lib/pageStorage';
+export * from './components/pagebuilder/lib/pageStorage'; // used for local storage
 export * from './components/pagebuilder/lib/pageStorageContentful';
 export * from './components/pagebuilder/lib/pageStorageTypes';
 export * from './components/pagebuilder/lib/propTypeIntrospection';

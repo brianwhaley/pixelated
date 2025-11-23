@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
 // let smartImageInstanceCount = 0;
@@ -192,6 +192,7 @@ export function SmartImage({
 	};
 	
 	// Try to use Next.js Image if requested
+	/* 
 	try {
 		return (
 			<Image
@@ -202,7 +203,7 @@ export function SmartImage({
 				// fill={true}
 				// loader={customLoader} --- IGNORE ---
 				sizes={imgProps.sizes || responsiveSizes}
-				quality={quality ?? undefined}
+				quality={quality ?? 75}
 				{...semanticProps}
 				{...decorativeProps}
 				fetchPriority={fetchPriority}
@@ -219,21 +220,19 @@ export function SmartImage({
 				// blurDataURL	blurDataURL="data:image/jpeg..."	String	-
 				// unoptimized	unoptimized={true}	Boolean	-
 				// overrideSrc	overrideSrc="/seo.png"	String	-
-				/* 
 				// ===== NOT SUPPORTED BY NEXT IMAGE =====
-				crossOrigin={imgProps.crossOrigin}
-				referrerPolicy={imgProps.referrerPolicy}
-				useMap={imgProps.useMap}
-				isMap={imgProps.isMap}
-				srcSet={imgProps.srcSet}
-				onLoad={imgProps.onLoad}
-				onError={imgProps.onError}
-				onMouseEnter={imgProps.onMouseEnter}
-				onMouseLeave={imgProps.onMouseLeave}
-				onMouseOver={imgProps.onMouseOver}
-				onMouseOut={imgProps.onMouseOut}
-				decoding={imgProps.decoding}
-				*/
+				// crossOrigin={imgProps.crossOrigin}
+				// referrerPolicy={imgProps.referrerPolicy}
+				// useMap={imgProps.useMap}
+				// isMap={imgProps.isMap}
+				// srcSet={imgProps.srcSet}
+				// onLoad={imgProps.onLoad}
+				// onError={imgProps.onError}
+				// onMouseEnter={imgProps.onMouseEnter}
+				// onMouseLeave={imgProps.onMouseLeave}
+				// onMouseOver={imgProps.onMouseOver}
+				// onMouseOut={imgProps.onMouseOut}
+				// decoding={imgProps.decoding}
 				// {...imgProps}
 			/>
 
@@ -244,6 +243,7 @@ export function SmartImage({
 		}
 		// Fall through to regular img
 	}
+	*/ 
 	
 	// Default: regular img tag
 	return (
@@ -255,8 +255,8 @@ export function SmartImage({
 			alt={alt} 
 			width={width ?? undefined}
 			height={height ?? undefined}
-			loading={loading}
 			fetchPriority={fetchPriority}
+			loading={loading}
 			decoding={decoding}
 			{...semanticProps}
 			{...decorativeProps}
