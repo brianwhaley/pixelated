@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
 // let smartImageInstanceCount = 0;
@@ -192,7 +192,7 @@ export function SmartImage({
 	};
 	
 	// Try to use Next.js Image if requested
-	/* 
+	
 	try {
 		return (
 			<Image
@@ -243,7 +243,7 @@ export function SmartImage({
 		}
 		// Fall through to regular img
 	}
-	*/ 
+
 	
 	// Default: regular img tag
 	return (
