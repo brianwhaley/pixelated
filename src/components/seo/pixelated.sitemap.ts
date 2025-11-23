@@ -178,40 +178,23 @@ export function jsonToSitemapEntries(entries: SitemapEntry[]){
 }
 
 
-/**
- * Read a JSON manifest of image paths and produce sitemap entries.
- *
- * Expected manifest format: an array of relative paths, e.g.
- * ["/images/foo.jpg", "images/bar.png"]
- *
- * @param origin full origin (protocol+host) to prefix image URLs
- * @param jsonPath optional path to manifest (default: `public/site-images.json`)
- */
+
+
 export async function createImageURLsFromJSON(origin: string, jsonPath = 'public/site-images.json'){
 	const sitemap: any[] = [];
 	try {
-		// only use fs on server side (dynamic import so bundlers don't include it for client)
-		const fs = await import('fs');
-		const path = await import('path');
-		const abs = path.resolve(process.cwd(), jsonPath);
-		if (!fs.existsSync(abs)) {
-			// fallback to getAllImages() (runtime discovery) if manifest missing
-			const images = getAllImages();
-			if (!images || images.length === 0) return sitemap;
-			const newImages = images.map(i => `${origin}${i.startsWith('/') ? i : `/${i}`}`);
-			sitemap.push({ url: `${origin}/images`, images: newImages });
-			return sitemap;
-		}
-		const raw = fs.readFileSync(abs, 'utf8');
-		const imgs = JSON.parse(raw) as string[];
+		let urlPath = jsonPath;
+		if (urlPath.startsWith('public/')) urlPath = urlPath.slice('public/'.length);
+		if (!urlPath.startsWith('/')) urlPath = `/${urlPath}`;
+		const resp = await fetch(`${origin}${urlPath}`);
+		if (!resp.ok) return sitemap;
+		const imgs = await resp.json();
 		if (!Array.isArray(imgs)) return sitemap;
-
+		// Use an array of URL strings so the sitemap serializer writes the URL text
 		const newImages = imgs.map(i => {
-			// ensure leading slash
 			const rel = i.startsWith('/') ? i : `/${i}`;
 			return `${origin}${rel}`;
 		});
-
 		sitemap.push({
 			url: `${origin}/images`,
 			images: newImages,
