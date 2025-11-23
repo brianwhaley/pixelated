@@ -1,6 +1,6 @@
 {
   "name": "pixelatedtech",
-  "version": "4.2.27",
+  "version": "4.2.28",
   "private": true,
   "author": {
     "name": "Pixelated Technologies",
@@ -10,6 +10,7 @@
     "dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3004 --experimental-https",
     "build": "npm run clean && NODE_ENV=production next build",
     "start": "npm run clean && next build && next start",
+    "generate-site-images": "node scripts/generate-site-images.js",
     "lint": "next lint",
     "clean": "rm -rf .next && rm -rf out"
   },
@@ -17,7 +18,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@brianwhaley/pixelated-components": "^2.6.26",
+    "@brianwhaley/pixelated-components": "^2.6.27",
     "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "globals": "^16.5.0",
