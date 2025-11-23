@@ -16,9 +16,11 @@ export default function Home() {
 					<div className="row-12col">
 						<div className="grid-s2-e10">
 							<Callout
+								aboveFold={true}
 								style='boxed'
 								layout='horizontal' 
 								img='/images/pix/pix-bg-512.png'
+								imgAlt='Pixelated Technologies'
 								imgShape="squircle" 
 								cloudinaryEnv="dlbon7tpq"
 								title=''
@@ -39,8 +41,10 @@ export default function Home() {
 					<PageSectionHeader title="Products and Services" />
 					<div className="row-3col">
 						<Callout
+							aboveFold={true}
 							layout='vertical' 
 							img='/images/icons/webdev.png'
+							imgAlt='Web Development'
 							imgShape="squircle" 
 							cloudinaryEnv="dlbon7tpq"
 							title='Web Development'
@@ -52,8 +56,10 @@ export default function Home() {
 							We specialize in creating responsive, user-friendly websites and web applications 
 							that help small businesses succeed online.'/>
 						<Callout
+							aboveFold={true}
 							layout='vertical' 
 							img='/images/icons/socialmedia.png'
+							imgAlt='Social Media Marketing'
 							imgShape="squircle" 
 							cloudinaryEnv="dlbon7tpq"
 							title='Social Media Marketing'
@@ -64,8 +70,10 @@ export default function Home() {
 							We can help you create and manage your social media accounts, 
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
 						<Callout
+							aboveFold={true}
 							layout='vertical' 
 							img='/images/icons/seo-2.png'
+							imgAlt='Search Engine Optimization'
 							imgShape="squircle" 
 							cloudinaryEnv="dlbon7tpq"
 							title='Search Engine Optimization'
@@ -78,6 +86,7 @@ export default function Home() {
 						<Callout
 							layout='vertical'
 							img='/images/icons/content.png'
+							imgAlt='Content Management'
 							imgShape="squircle"
 							cloudinaryEnv="dlbon7tpq"
 							title='Content Management'
@@ -91,6 +100,7 @@ export default function Home() {
 						<Callout
 							layout='vertical' 
 							img='/images/icons/ecommerce.png'
+							imgAlt='eCommerce Solutions'
 							imgShape="squircle" 
 							cloudinaryEnv="dlbon7tpq"
 							title='eCommerce Solutions'
@@ -104,6 +114,7 @@ export default function Home() {
 						<Callout
 							layout='vertical' 
 							img='/images/icons/custom.png'
+							imgAlt='Small Business Modernization'
 							imgShape="squircle" 
 							cloudinaryEnv="dlbon7tpq"
 							title='Small Business Modernization'
@@ -140,6 +151,7 @@ export default function Home() {
 								layout='vertical'
 								url='portfolio'
 								img='/images/icons/portfolio.png'
+								imgAlt='Portfolio'
 								imgShape='squircle'
 								cloudinaryEnv="dlbon7tpq"
 								title='Portfolio'
@@ -164,6 +176,7 @@ export default function Home() {
 								style='boxed'
 								layout='horizontal' 
 								img='/images/brianwhaley-headshot.jpg'
+								imgAlt='Brian T. Whaley'
 								imgShape='squircle'
 								cloudinaryEnv="dlbon7tpq"
 								title='Brian T. Whaley'

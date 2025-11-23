@@ -1,11 +1,12 @@
 "use client"; 
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useLayoutEffect, /* useEffect, */ Suspense } from "react";
 import { usePathname } from 'next/navigation';
 import { getRouteByKey } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 // import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
-import { deferAllCSS } from "@brianwhaley/pixelated-components";
+// import { deferAllCSS } from "@brianwhaley/pixelated-components";
+import { preloadAllCSS } from "@brianwhaley/pixelated-components";
 import { preloadImages } from "@brianwhaley/pixelated-components";
 import Header from "@/app/elements/header";
 import HeaderNav from "@/app/elements/headernav";
@@ -35,20 +36,17 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 	// Full layout for all other routes
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
-
 	const [ url, setURL ] = useState<string>();
-	useEffect(() => {
-		document.addEventListener('DOMContentLoaded', deferAllCSS);
-		preloadImages();
-		deferAllCSS();
+	useLayoutEffect(() => {
 		if (typeof window !== "undefined" ) setURL(window.location.href);
+		// document.addEventListener('DOMContentLoaded', deferAllCSS);
+		// deferAllCSS();
 		/* loadAllImagesFromCloudinary({ 
 			origin: window.location.origin,
 			product_env: "dlbon7tpq"
 		}); */
-	}, []);
-
-	useEffect(() => {
+		preloadAllCSS();
+		preloadImages();
 		MicroInteractions({ 
 			buttonring: true,
 			formglow: true,

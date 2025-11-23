@@ -19,6 +19,6 @@ export async function DELETE(request: Request) {
 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 	};
 
-	const result = await deletePage(name, config);
+	const result = await deleteContentfulPage(name, config);
 	return NextResponse.json(result);
 }

@@ -10,6 +10,10 @@
   --accent2-color: #EEE;	
 }
 
+#page-header {
+    background-image: url(/images/pix/pix-bg.gif);
+}
+
 #page-header-nav {
     color: white;
     z-index: 2000;
@@ -50,6 +54,11 @@
 
 #fixed-header-nav-spacer {
     height: 40px;
+}
+
+.button, 
+.centeredbutton {
+    background-image: url(/images/pix/pix-bg-sm-bw.gif);
 }
 
 @media screen and (max-width: 480px) {

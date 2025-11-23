@@ -19,6 +19,6 @@ export async function GET(request: Request) {
 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 	};
 
-	const result = await loadPage(name, config);
+	const result = await loadContentfulPage(name, config);
 	return NextResponse.json(result);
 }

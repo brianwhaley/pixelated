@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 			environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 		};
 
-		const result = await savePage(name, data, config);
+		const result = await saveContentfulPage(name, data, config);
 		return NextResponse.json(result);
 	} catch (error) {
 		return NextResponse.json({

@@ -9,6 +9,6 @@ export async function GET() {
 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 	};
 
-	const result = await listPages(config);
+	const result = await listContentfulPages(config);
 	return NextResponse.json(result);
 }
