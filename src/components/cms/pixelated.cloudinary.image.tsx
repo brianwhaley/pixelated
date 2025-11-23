@@ -1,6 +1,3 @@
-
-'use client';
-
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import Image from 'next/image';

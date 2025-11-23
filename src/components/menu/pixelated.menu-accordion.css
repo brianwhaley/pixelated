@@ -16,7 +16,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-/* removed misplaced closing brace */
+}
 
 @media screen and (max-width: 480px) {
 	.panelMenuButton {
@@ -24,6 +24,7 @@
 	}
 }
 
+.panelMenuHeader {
 	background-color: #336699;
 	    /* background-image: url(/images/pix/pix-bg.gif); */
 	color: #FFFFFF;

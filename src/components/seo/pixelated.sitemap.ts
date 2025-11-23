@@ -17,21 +17,6 @@ export type SitemapEntry = {
 };
 
 
-/* function getOrigin() {
-	return window.location.origin;
-} */
-
-	
-/* 
-import { headers } from 'next/headers';
-async function getOrigin(): Promise<string> {
-	const headerList = await headers();
-	const protocol = headerList.get('x-forwarded-proto') || 'http';
-	const host = headerList.get('host') || 'localhost:3000';
-	return `${protocol}://${host}`;
-}
-*/
-
 
 export async function createPageURLs(myRoutes: { path: string }[], origin: string) {
 	const sitemap: SitemapEntry[] = [];
@@ -158,19 +143,6 @@ const defaultEbayProps = {
 	sbxAppCertId: '',
 	globalId: 'EBAY-US',
 };
-/* export async function createEbayItemURLs(origin: string){
-	const sitemap: SitemapEntry[] = [];
-	const items: any = await getEbayItems({ apiProps: ebayProps });
-	for (const item of items) {
-		sitemap.push({
-			url: `${origin}/store/${item.legacyItemId}` ,
-			lastModified: item.itemCreationDate,
-			changeFrequency: "hourly" as const,
-			priority: 1.0,
-		});
-	}
-	return sitemap;
-} */
 export async function createEbayItemURLs(origin: string) {
 	const sitemap: SitemapEntry[] = [];
 	await getEbayAppToken({apiProps: defaultEbayProps})
@@ -204,54 +176,3 @@ export function jsonToSitemapEntries(entries: SitemapEntry[]){
 			</url>`
 	).join('');
 }
-
-
-
-/* 
-import React, { useEffect, useState } from 'react';
-export function SitemapXML(props: any) {
-	const [ sitemap , setSitemap ] = useState<SitemapEntry[]>([]);
-	const origin = getOrigin();
-	useEffect(() => {
-		async function makeSitemap() {
-			const sitemap = [];
-			const pageUrls = await createPageURLs(props.routes);
-			sitemap.push(...pageUrls);
-			// const imageUrls = await createImageURLs();
-			// sitemap.push(...imageUrls);
-			// const wpUrls = await createWordPressURLs();
-			// sitemap.push(...wpUrls);
-			// const contentfulUrls = await createContentfulURLs();
-			// sitemap.push(...contentfulUrls);
-			console.log(sitemap);
-			setSitemap(sitemap);
-		}
-		makeSitemap();
-	}, []);
-	return (
-		`<?xml version="1.0" encoding="UTF-8"?>
-		<?xml-stylesheet type="text/xsl" href=${origin}${props.xsl}?>
-		<urlset 
-			xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-			xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-		>
-			${ jsonToSitemapEntries(sitemap) }
-		</urlset>`
-	);
-}
-*/
-
-
-
-/* 
-export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
-	const origin = await getOrigin();
-	const sitemap = [
-		...(await createPageURLs(myRoutes.routes, origin)),
-		...(await createEbayItemURLs(origin)),
-		...(await createWordPressURLs()),
-		...(await createContentfulURLs(origin)),
-		...(await createImageURLs(origin)),
-	];
-	return sitemap;
-} */
