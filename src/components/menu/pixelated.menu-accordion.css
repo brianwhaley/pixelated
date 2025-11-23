@@ -26,10 +26,9 @@
 
 .panelMenuHeader {
 	background-color: #336699;
-	    /* background-image: url(/images/pix/pix-bg.gif); */
+	/* background-image: url(/images/pix/pix-bg.gif); */
 	color: #FFFFFF;
 	padding: 15px;
-
 	/* .rounded; */
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -121,14 +120,12 @@
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
-	text-indent: 10px;
+	padding-left: 10px;
 }
 
 .accordionMenu > ul > li > a:hover {
 	background: #EDD;
     /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
-	text-indent: 5px;
-	border-left: 5px #000 solid;
 }
 
 
@@ -194,12 +191,9 @@
 	font-weight: bold;
 	height: 30px;
 	line-height:30px;
-	text-indent: 10px;
 }
 
 .accordionMenu > ul > ul > li > a:hover {
 	background: #EDD;
     /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
-	text-indent: 5px;
-	border-left: 5px #000 solid;
 }

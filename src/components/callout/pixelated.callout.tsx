@@ -107,7 +107,7 @@ export function Callout({
 						src={img} 
 						title={title ?? imgAlt ?? undefined} 
 						alt={imgAlt ?? title ?? ""} 
-						onClick={(event) => imgClick(event, url)}
+						onClick={(event: React.MouseEvent<HTMLImageElement, MouseEvent>) => imgClick(event, url)}
 						aboveFold={aboveFold}
 						cloudinaryEnv={cloudinaryEnv}
 						cloudinaryDomain={cloudinaryDomain}

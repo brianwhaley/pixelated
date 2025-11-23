@@ -176,3 +176,48 @@ export function jsonToSitemapEntries(entries: SitemapEntry[]){
 			</url>`
 	).join('');
 }
+
+
+/**
+ * Read a JSON manifest of image paths and produce sitemap entries.
+ *
+ * Expected manifest format: an array of relative paths, e.g.
+ * ["/images/foo.jpg", "images/bar.png"]
+ *
+ * @param origin full origin (protocol+host) to prefix image URLs
+ * @param jsonPath optional path to manifest (default: `public/site-images.json`)
+ */
+export async function createImageURLsFromJSON(origin: string, jsonPath = 'public/site-images.json'){
+	const sitemap: any[] = [];
+	try {
+		// only use fs on server side (dynamic import so bundlers don't include it for client)
+		const fs = await import('fs');
+		const path = await import('path');
+		const abs = path.resolve(process.cwd(), jsonPath);
+		if (!fs.existsSync(abs)) {
+			// fallback to getAllImages() (runtime discovery) if manifest missing
+			const images = getAllImages();
+			if (!images || images.length === 0) return sitemap;
+			const newImages = images.map(i => `${origin}${i.startsWith('/') ? i : `/${i}`}`);
+			sitemap.push({ url: `${origin}/images`, images: newImages });
+			return sitemap;
+		}
+		const raw = fs.readFileSync(abs, 'utf8');
+		const imgs = JSON.parse(raw) as string[];
+		if (!Array.isArray(imgs)) return sitemap;
+
+		const newImages = imgs.map(i => {
+			// ensure leading slash
+			const rel = i.startsWith('/') ? i : `/${i}`;
+			return `${origin}${rel}`;
+		});
+
+		sitemap.push({
+			url: `${origin}/images`,
+			images: newImages,
+		});
+	} catch (e) {
+		if (typeof console !== 'undefined') console.warn('createImageURLsFromJSON failed', e);
+	}
+	return sitemap;
+}
