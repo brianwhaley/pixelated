@@ -12,15 +12,37 @@
 	.rowfix-#{$i}col { @include rowBase; grid-template-columns: repeat(#{$i}, 1fr); }
 }
 
+@media (max-width: 768px) {
+	.row-1col, .row-2col { grid-template-columns: repeat(1, 1fr); }
+	.row-3col, .row-4col { grid-template-columns: repeat(2, 1fr); }
+	.row-5col, .row-6col { grid-template-columns: repeat(3, 1fr); }
+	.row-7col, .row-8col { grid-template-columns: repeat(4, 1fr); }
+	.row-9col, .row-10col { grid-template-columns: repeat(5, 1fr); }
+	.row-11col, .row-12col { grid-template-columns: repeat(6, 1fr); }
+}
+
 @media (max-width: 480px) {
-	.row-2col, .row-3col, .row-4col { grid-template-columns: repeat(1, 1fr); }
+	.row-1col, .row-2col, .row-3col, .row-4col { grid-template-columns: repeat(1, 1fr); }
 	.row-5col, .row-6col, .row-7col, .row-8col { grid-template-columns: repeat(2, 1fr); }
 	.row-9col, .row-10col, .row-11col, .row-12col { grid-template-columns: repeat(3, 1fr); }
 }
 
+// GRID ITEM POSITIONING HELPERS
+// Start (S) and SPAN Width (W) position helpers for grid items
 @for $i from 1 through 12 {
 	@for $k from 1 through 12 {
-		.grid-s#{$i}-e#{$k} { display: grid ; grid-column: #{$i} / span #{$k}; }
+		.grid-s#{$i}-w#{$k} { display: grid ; grid-column: #{$i} / span #{$k}; }
+		@media screen and (max-width: 480px) {
+			.grid-s#{$i}-w#{$k} { grid-column: 1 / -1 ; }
+		}
+	}
+}
+
+// GRID ITEM POSITIONING HELPERS
+// Start (S) and END (E) position helpers for grid items
+@for $i from 1 through 12 {
+	@for $k from 1 through 12 {
+		.grid-s#{$i}-e#{$k} { display: grid ; grid-column: #{$i} / #{$k}; }
 		@media screen and (max-width: 480px) {
 			.grid-s#{$i}-e#{$k} { grid-column: 1 / -1 ; }
 		}
@@ -29,7 +51,6 @@
 
 .gridItem {
 	display: grid ;
-	/* border: 1px solid gray; */
 }
 
   /* 

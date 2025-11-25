@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "bg img to apgesection, imgscale to interactions, "
+git commit -m "improvement to pagesection, griditem = breakpoints and css"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

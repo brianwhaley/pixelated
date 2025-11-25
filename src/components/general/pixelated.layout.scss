@@ -28,6 +28,7 @@ section.page-section {
 // Grid item styles
 .grid-item {
 	box-sizing: border-box;
+	display: grid ;
 	min-width: 0; // Prevents grid blowout
 	min-height: 0;
 }
@@ -37,24 +38,3 @@ section.page-section {
 	box-sizing: border-box;
 	min-width: 0; // Prevents flex blowout
 }
-
-/* 
-// Responsive grid classes
-@media screen and (max-width: 768px) {
-    // Tablet breakpoint: ensure grid-responsive classes affect page content
-    [class*="grid-responsive"] .page-section-content {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    // Mobile breakpoint
-    [class*="grid-responsive"] .page-section-content {
-        grid-template-columns: 1fr !important;
-    }
-
-    .page-section-content {
-        padding: 0 10px !important;
-    }
-}
-*/

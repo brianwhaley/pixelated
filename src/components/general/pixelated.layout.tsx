@@ -2,6 +2,7 @@
 
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
+import "../../css/pixelated.grid.scss";
 import "./pixelated.layout.scss";
 
 /* ==================== LAYOUT COMPONENTS ====================
@@ -52,14 +53,14 @@ export function PageSection({
 	layoutType = 'grid',
 	gap = '10px',
 	maxWidth = '1024px',
-	padding = '0 20px',
+	padding = '0 20px', /* 5px */
 	background,
 	backgroundImage,
 	// Grid props
 	columns = 12,
 	autoFlow = 'row',
 	justifyItems = 'stretch',
-	responsive = { mobile: 1, tablet: 2, desktop: 3 },
+	// responsive = { mobile: 1, tablet: 2, desktop: 3 },
 	// Flex props
 	direction = 'row',
 	wrap = 'wrap',
@@ -78,16 +79,15 @@ export function PageSection({
 	};
 	// Add layout-specific styles
 	if (layoutType === 'grid') {
-		const responsiveClass = `grid-responsive-${responsive?.mobile || 1}-${responsive?.tablet || 2}-${responsive?.desktop || columns}`;
 		return (
-			<section id={id || undefined} className={`page-section page-section-grid ${responsiveClass}`} style={sectionStyle}>
+			<section id={id || undefined} 
+				className={`page-section `} 
+				style={sectionStyle}>
 				{backgroundImage && <SectionBackgroundImage backgroundImage={backgroundImage} id={id} />}
 				<div 
-					className="page-section-content"
+					className={"page-section-content" + " row-" + columns + "col"}
 					style={{
 						...contentStyle,
-						display: 'grid',
-						gridTemplateColumns: `repeat(${columns}, 1fr)`,
 						...(gap && { gap }),
 						...(autoFlow && { gridAutoFlow: autoFlow }),
 						...(alignItems && { alignItems }),
@@ -158,15 +158,22 @@ export function GridItem({
 	children,
 }: GridItemType) {
 	const itemStyle: React.CSSProperties = {
-		...(columnSpan && { gridColumn: ` span ${columnSpan}` }),
-		...(columnStart && columnEnd && { gridColumn: ` ${columnStart} / ${columnEnd}` }),
+		...(columnSpan && !columnStart && { gridColumn: ` span ${columnSpan}` }),
+		// columnStart && columnSpan = style grid-s##-w##
+		// columnStart && columnEnd = style grid-s##-e##
+		// ...(columnStart && columnEnd && { gridColumn: ` ${columnStart} / ${columnEnd}` }),
 		...(rowSpan && { gridRow: ` span ${rowSpan}` }),
 		...(rowStart && rowEnd && { gridRow: ` ${rowStart} / ${rowEnd}` }),
 		...(alignSelf && { alignSelf }),
 		...(justifySelf && { justifySelf }),
 	};
+	console.log('grid column start/span:', columnStart && columnSpan && !columnEnd);
+	console.log('grid column start/end:', columnStart && columnEnd && !columnSpan);
 	return (
-		<div className="grid-item" style={itemStyle}>
+		<div className={"grid-item" + 
+		(columnStart && columnSpan && !columnEnd ? ` grid-s${columnStart}-w${columnSpan}` : '') + 
+		(columnStart && columnEnd && !columnSpan ? ` grid-s${columnStart}-e${columnEnd}` : '')} 
+		style={itemStyle}>
 			{children}
 		</div>
 	);
