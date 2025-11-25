@@ -38,8 +38,8 @@ export default function Portfolio() {
 	return ( 
 		<>
 			<PageHeader title="Pixelated Technologies Portfolio" />
-			<PageSection columns={12} id="portfolio-intro-section">
-				<GridItem columnStart={3} columnEnd={11}> 
+			<PageSection columns={1} maxWidth="768px" id="portfolio-intro-section">
+				<GridItem> 
 					<p>
 					Here are some examples of websites and web applications we have 
 					developed for our clients over the last 30 years.

@@ -81,7 +81,7 @@ export default function SamplePage2() {
 
 				<section  id="header-callout-section">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -119,7 +119,7 @@ export default function SamplePage2() {
 
 				<section id="aboutus-callout-section">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -148,7 +148,7 @@ export default function SamplePage2() {
 					<img className="section-bg" src="https://katelynbradleyphotography.com/wp-content/uploads/2025/03/CarolineWillWeddingNorfolkCTKatelynBradleyPhotography918.jpg" />
 
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -173,7 +173,7 @@ export default function SamplePage2() {
 				<section id="footer-callout-section">
 
 					<div className="socialContainer row-12col">
-						<div className="grid-s3-e8">
+						<div className="grid-s3-e11">
 							<SocialTags />
 						</div>
 					</div>

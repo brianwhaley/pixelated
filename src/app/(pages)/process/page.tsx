@@ -65,8 +65,8 @@ export default function Process() {
 	return (
 		<>
 			<PageHeader title="The Pixelated Technologies Process" />
-			<PageSection columns={12} id="process-overview-section">
-				<GridItem columnStart={3} columnEnd={11}>
+			<PageSection columns={1} maxWidth="768px" id="process-overview-section">
+				<GridItem>
 					<p>
 					Pixelated Technologies offers a proven process
 					to get results for you and your customers - gather information,

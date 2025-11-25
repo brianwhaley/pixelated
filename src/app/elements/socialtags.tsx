@@ -9,12 +9,8 @@ import { PageSectionHeader } from "@brianwhaley/pixelated-components";
 export default function SocialTags() {
 	return (
 		<>
-			<PageSection columns={11} padding={"0px"}>
-
-				<GridItem columnStart={1} columnEnd={12}>
-					<PageSectionHeader url="" title="Follow us on Social Media" />
-				</GridItem>
-
+			<PageSectionHeader url="" title="Follow us on Social Media" />
+			<PageSection columns={11} responsive={{mobile:3,tablet:6,desktop:11}} padding={"0px"}>
 				<GridItem>
 					<Callout style='full' imgShape="squircle" cloudinaryEnv="dlbon7tpq" 
 						url="http://blog.pixelated.tech" 

@@ -26,8 +26,8 @@ export default function Schedule() {
 
 		<>
 			<PageHeader title="Schedule your free Digital Assessment with Pixelated" />
-			<PageSection columns={12} id="social-section">
-				<GridItem columnStart={3} columnEnd={11}>
+			<PageSection columns={1} maxWidth="768px" id="social-section">
+				<GridItem>
 					<div>
 						<p>
 						Our team of experts is here to help understand your

@@ -12,8 +12,8 @@ export default function Home() {
 	return (
 		<>
 			<PageHeader title="Pixelated Technologies" />
-			<PageSection id="pixelated-section" columns={12}>
-				<GridItem columnStart={2} columnEnd={12}>
+			<PageSection id="pixelated-section" responsive={{mobile: 1, tablet: 1, desktop: 1}} maxWidth="853px" columns={1}>
+				<GridItem>
 					<Callout
 						aboveFold={true}
 						style='boxed'
@@ -134,19 +134,17 @@ export default function Home() {
 				</GridItem>
 			</PageSection>
 
-			<PageSection id="social-section" columns={12} background="var(--secondary-color)" >
-				<GridItem columnStart={3} columnEnd={11}>
-					<SocialTags />
-				</GridItem>
+			<PageSection id="social-section" columns={1} maxWidth="768px" background="var(--secondary-color)" >
+				<SocialTags />
 			</PageSection>
 
 
 			<PageSectionHeader title="About Pixelated Technologies" />
-			<PageSection columns={12} id="spotlight-section">
-				<GridItem columnStart={3} columnEnd={7}>
+			<PageSection columns={2} maxWidth="768px"id="spotlight-section">
+				<GridItem>
 					<CalloutLibrary.scheduleAppointment />
 				</GridItem>
-				<GridItem columnStart={7} columnEnd={11}>
+				<GridItem>
 					<Callout
 						layout='vertical'
 						url='portfolio'
@@ -165,8 +163,8 @@ export default function Home() {
 				</GridItem>
 			</PageSection>
 
-			<PageSection columns={12} background="var(--accent1-color);" id="spotlight-section">
-				<GridItem columnStart={3} columnEnd={11}>
+			<PageSection columns={1} maxWidth="768px" background="var(--accent1-color)" id="spotlight-section">
+				<GridItem>
 					<Callout
 						style='boxed'
 						layout='horizontal' 

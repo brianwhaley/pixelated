@@ -56,7 +56,7 @@ export default function SamplePage1() {
 
 
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							
 							<div id="header-logo-row">
 								<div className="logo-image pull-left">
@@ -79,7 +79,7 @@ export default function SamplePage1() {
 
 					
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -95,7 +95,7 @@ export default function SamplePage1() {
 			<main>
 				<section id="landscape-callout-section">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -140,7 +140,7 @@ export default function SamplePage1() {
 
 				<section id="landscape-services-section">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								title="Our Comprehensive Lawn and Landscaping Services"
@@ -158,7 +158,7 @@ export default function SamplePage1() {
 							/>
 						</div>
 
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<div className="row-4col">
 								<div className="gridItem">
 									<Callout 
@@ -195,7 +195,7 @@ export default function SamplePage1() {
 							</div>
 						</div>
 
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<CalloutButton 
 								title="VIEW ALL SERVICES"
 								url="./"
@@ -211,7 +211,7 @@ export default function SamplePage1() {
 			<footer>
 				<section id="footer-callout-section">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								layout="vertical"
 								url='./'
@@ -222,7 +222,7 @@ export default function SamplePage1() {
 					</div>
 
 					<div className="socialContainer row-12col">
-						<div className="grid-s3-e8">
+						<div className="grid-s3-e11">
 							<SocialTags />
 						</div>
 					</div>

@@ -48,7 +48,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 		MicroInteractions({ 
 			buttonring: true,
 			formglow: true,
-			imgtwist: true,
+			imgscale: true,
 			scrollfadeElements: '.pageSectionHeader, .callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
 		});
 	}, []);

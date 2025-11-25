@@ -46,12 +46,12 @@ export default function Blog() {
 	return (
 		<>
 			<PageHeader title="Pixelated Technologies Blog Posts" />
-			<PageSection columns={12} id="portfolio-section">
-				<GridItem columnStart={2} columnEnd={12}>
+			<PageSection columns={1} maxWidth="1024px" id="blog-section">
+				<GridItem>
 					<BlogPostCategories categories={wpCategories} />
 				</GridItem>
 				{wpPosts.map((post, index) => (
-					<GridItem columnStart={2} columnEnd={12} key={index + "-" + post.id}>
+					<GridItem key={index + "-" + post.id}>
 						<BlogPostSummary
 							ID={post.id}
 							title={post.title}
