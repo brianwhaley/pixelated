@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "sitemap images fix to fetch site-images.json"
+git commit -m "bg img to apgesection, imgscale to interactions, "
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

@@ -9,6 +9,7 @@ MicroInteractions.propTypes = {
 	cartpulse: PropTypes.bool,
 	formglow: PropTypes.bool,
 	grayscalehover: PropTypes.bool,
+	imgscale: PropTypes.bool,
 	imgtwist: PropTypes.bool,
 	imghue: PropTypes.bool,
 	simplemenubutton: PropTypes.bool,

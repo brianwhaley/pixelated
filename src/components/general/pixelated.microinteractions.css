@@ -111,8 +111,24 @@ body.imghue img:hover {
 
 
 /* ========== IMG ZOOM AND ROTATE ON HOVER ========== */
-body.imgtwist {
+body.imgscale {
+	img:not(.imgContain, .imgCover) {
+		text-align: center;
+		max-width: 100%;
+		height: auto;
+		transition: transform 125ms linear;
+	}
+	img:hover:not(.imgContain, .imgCover) {
+		transform: scale(1.1) ;
+	}
+}
 
+
+
+
+
+/* ========== IMG ZOOM AND ROTATE ON HOVER ========== */
+body.imgtwist {
 	img:not(.imgContain, .imgCover) {
 		text-align: center;
 		max-width: 100%;

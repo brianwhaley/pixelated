@@ -28,6 +28,7 @@ PageSection.propTypes = {
 	maxWidth: PropTypes.string,
 	padding: PropTypes.string,
 	background: PropTypes.string,
+	backgroundImage: PropTypes.string,
 	// Grid-specific props
 	columns: PropTypes.number,
 	autoFlow: PropTypes.oneOf([...autoFlowValues]),
@@ -49,12 +50,13 @@ export type PageSectionType = InferProps<typeof PageSection.propTypes>;
 export function PageSection({
 	id,
 	layoutType = 'grid',
-	gap = '20px',
+	gap = '10px',
 	maxWidth = '1024px',
 	padding = '0 20px',
 	background,
+	backgroundImage,
 	// Grid props
-	columns = 3,
+	columns = 12,
 	autoFlow = 'row',
 	justifyItems = 'stretch',
 	responsive = { mobile: 1, tablet: 2, desktop: 3 },
@@ -79,8 +81,9 @@ export function PageSection({
 		const responsiveClass = `grid-responsive-${responsive?.mobile || 1}-${responsive?.tablet || 2}-${responsive?.desktop || columns}`;
 		return (
 			<section id={id || undefined} className={`page-section page-section-grid ${responsiveClass}`} style={sectionStyle}>
+				{backgroundImage && <SectionBackgroundImage backgroundImage={backgroundImage} id={id} />}
 				<div 
-					className="layout-content"
+					className="page-section-content"
 					style={{
 						...contentStyle,
 						display: 'grid',
@@ -99,8 +102,9 @@ export function PageSection({
 	if (layoutType === 'flex') {
 		return (
 			<section id={id || undefined} className="page-section page-section-flex" style={sectionStyle}>
+				{backgroundImage && <SectionBackgroundImage backgroundImage={backgroundImage} id={id} />}
 				<div 
-					className="layout-content"
+					className="page-section-content"
 					style={{
 						...contentStyle,
 						display: 'flex',
@@ -119,7 +123,8 @@ export function PageSection({
 	// layoutType === 'none'
 	return (
 		<section id={id || undefined} className="page-section page-section-none" style={sectionStyle}>
-			<div className="layout-content" style={contentStyle}>
+			{backgroundImage && <SectionBackgroundImage backgroundImage={backgroundImage} id={id} />}
+			<div className="page-section-content" style={contentStyle}>
 				{children}
 			</div>
 		</section>
@@ -153,10 +158,10 @@ export function GridItem({
 	children,
 }: GridItemType) {
 	const itemStyle: React.CSSProperties = {
-		...(columnSpan && { gridColumn: `span ${columnSpan}` }),
-		...(rowSpan && { gridRow: `span ${rowSpan}` }),
-		...(columnStart && columnEnd && { gridColumn: `${columnStart} / ${columnEnd}` }),
-		...(rowStart && rowEnd && { gridRow: `${rowStart} / ${rowEnd}` }),
+		...(columnSpan && { gridColumn: ` span ${columnSpan}` }),
+		...(columnStart && columnEnd && { gridColumn: ` ${columnStart} / ${columnEnd}` }),
+		...(rowSpan && { gridRow: ` span ${rowSpan}` }),
+		...(rowStart && rowEnd && { gridRow: ` ${rowStart} / ${rowEnd}` }),
 		...(alignSelf && { alignSelf }),
 		...(justifySelf && { justifySelf }),
 	};
@@ -192,5 +197,23 @@ export function FlexItem({
 		<div className="flex-item" style={itemStyle}>
 			{children}
 		</div>
+	);
+}
+
+
+// ========== SECTION BACKGROUND IMAGE ==========
+SectionBackgroundImage.propTypes = {
+	backgroundImage: PropTypes.string.isRequired,
+	id: PropTypes.string,
+};
+export type SectionBackgroundImageType = InferProps<typeof SectionBackgroundImage.propTypes>;
+export function SectionBackgroundImage(props: SectionBackgroundImageType) {
+	return (
+		<img src={props.backgroundImage} 
+			className="section-background-image" 
+			id={props.id ? `${props.id}-background-image` : undefined} 
+			// name={props.id ? `${props.id} background image` : undefined}
+			title={props.id ? `${props.id} background image` : undefined} 
+			alt={props.id ? `${props.id} background image` : undefined} />
 	);
 }
