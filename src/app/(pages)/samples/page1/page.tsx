@@ -44,7 +44,7 @@ export default function SamplePage1() {
 		MicroInteractions({ 
 			buttonring: true,
 			formglow: true,
-			imgtwist: true,
+			imgscale: true,
 			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
 		});
 	}, []);

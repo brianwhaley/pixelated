@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { PageHeader } from '@brianwhaley/pixelated-components';
+import { PageSection, GridItem } from '@brianwhaley/pixelated-components';
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 import { BlogPostSummary, BlogPostCategories } from '@brianwhaley/pixelated-components';
 import { getWordPressItems, getWordPressCategories } from '@brianwhaley/pixelated-components';
@@ -44,27 +45,23 @@ export default function Blog() {
 
 	return (
 		<>
-			<section id="portfolio-section">
-				<div className='section-container'>
-					<PageHeader title="Pixelated Technologies Blog Posts" />
-					<div className="row-12col">
-						<div className="gridItem grid-s2-e10">
-							<BlogPostCategories categories={wpCategories} />
-						</div>
-						{wpPosts.map((post, index) => (
-							<div className="gridItem grid-s2-e10" key={index + "-" + post.id}>
-								<BlogPostSummary
-									ID={post.id}
-									title={post.title}
-									date={post.date}
-									excerpt={post.excerpt}
-									URL={post.URL}
-									categories={post.categories} />
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			<PageHeader title="Pixelated Technologies Blog Posts" />
+			<PageSection columns={12} id="portfolio-section">
+				<GridItem columnStart={2} columnEnd={12}>
+					<BlogPostCategories categories={wpCategories} />
+				</GridItem>
+				{wpPosts.map((post, index) => (
+					<GridItem columnStart={2} columnEnd={12} key={index + "-" + post.id}>
+						<BlogPostSummary
+							ID={post.id}
+							title={post.title}
+							date={post.date}
+							excerpt={post.excerpt}
+							URL={post.URL}
+							categories={post.categories} />
+					</GridItem>
+				))}
+			</PageSection>
 			<Loading />
 		</>
 	);

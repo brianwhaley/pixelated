@@ -51,7 +51,7 @@ export default function SamplePage2() {
 		MicroInteractions({ 
 			buttonring: true,
 			formglow: true,
-			imgtwist: true,
+			imgscale: true,
 			grayscalehover: true,
 			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
 		});

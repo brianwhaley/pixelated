@@ -32,7 +32,7 @@ export default function SamplePage3() {
 		MicroInteractions({ 
 			buttonring: true,
 			formglow: true,
-			imgtwist: true,
+			imgscale: true,
 			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
 		});
 	}, []);

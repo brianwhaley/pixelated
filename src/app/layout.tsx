@@ -39,8 +39,6 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 	const [ url, setURL ] = useState<string>();
 	useLayoutEffect(() => {
 		if (typeof window !== "undefined" ) setURL(window.location.href);
-		// document.addEventListener('DOMContentLoaded', deferAllCSS);
-		// deferAllCSS();
 		/* loadAllImagesFromCloudinary({ 
 			origin: window.location.origin,
 			product_env: "dlbon7tpq"
@@ -51,7 +49,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 			buttonring: true,
 			formglow: true,
 			imgtwist: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.pageSectionHeader, .callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
 		});
 	}, []);
 
@@ -110,7 +108,9 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 					</div>
 					<div id="fixed-header-spacer"></div>
 					<div id="fixed-header-nav-spacer"></div>
-					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
+					<div id="page-search" className="noMobile">
+						<Search id="009500278966481927899:bcssp73qony" />
+					</div>
 				</header>
 				<nav>
 					<Suspense fallback={<></>}>

@@ -6,13 +6,6 @@ body {
     background-color: var(--primary-color);
 }
 
-
-body.imgtwist {
-	img:hover:not(.imgContain, .imgCover) {
-		transform: scale(1.1) rotate(0deg);
-	}
-}
-
 .negative-image {
     filter: invert(100%) grayscale(100%) sepia(50%); /* Adjust filters as needed */
     /* You can add more filters like brightness, contrast, etc. */

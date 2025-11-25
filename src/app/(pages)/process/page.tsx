@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
+import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
 import { Timeline } from "@brianwhaley/pixelated-components";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-
 
 export default function Process() {
     
@@ -63,47 +63,47 @@ export default function Process() {
 	];
 
 	return (
+		<>
+			<PageHeader title="The Pixelated Technologies Process" />
+			<PageSection columns={12} id="process-overview-section">
+				<GridItem columnStart={3} columnEnd={11}>
+					<p>
+					Pixelated Technologies offers a proven process
+					to get results for you and your customers - gather information,
+					build a strategy, implement, measure outcomes,
+					refine results, and support.
+					</p>
+					<p>
+					Our process is designed to ensure that every step is tailored to your unique needs.
+					We start by understanding your business challenges and goals, then craft a strategy
+					that aligns with your vision. By implementing this strategy with precision and measuring
+					the outcomes, we ensure that you see tangible results. Finally, we refine and support
+					your journey to ensure long-term success.
+					</p>
+					<p>
+					Whether you are looking to optimize your operations, enhance customer satisfaction,
+					or stay ahead of the competition, our proven process will guide you every step of the way.
+					Let us help you transform your business and achieve your goals with confidence.
+					</p>
+				</GridItem>
+			</PageSection>
 
-		<section id="products-section">
-			<div className="section-container">
-				<PageHeader title="The Pixelated Technologies Process" />
-				<div className="row-12col">
-					<div className="grid-s3-e8"> 
-						<p>
-							Pixelated Technologies offers a proven process 
-							to get results for you and your customers - gather information, 
-							build a strategy, implement, measure outcomes, 
-							refine results, and support.
-						</p>
-						<p>
-							Our process is designed to ensure that every step is tailored to your unique needs. 
-							We start by understanding your business challenges and goals, then craft a strategy 
-							that aligns with your vision. By implementing this strategy with precision and measuring 
-							the outcomes, we ensure that you see tangible results. Finally, we refine and support 
-							your journey to ensure long-term success.
-						</p>
-						<p>
-							Whether you are looking to optimize your operations, enhance customer satisfaction, 
-							or stay ahead of the competition, our proven process will guide you every step of the way. 
-							Let us help you transform your business and achieve your goals with confidence.
-						</p>
-					</div>
-				</div>
-				<br />
+
+
+			<PageSection columns={1} id="process-timeline-section">
 				<Timeline timelineData={timelineData} />
+			</PageSection>
 
-				<div className="row-12col">
-					<div className="grid-s2-e10">
-						<PageSectionHeader title="Let's Get Started!" />
-						<CalloutLibrary.scheduleAppointment
-							style='boxed grid'
-							gridColumns={{left:1,right:2}}
-							layout='horizontal' />
 
-					</div>
-				</div>
-
-			</div>
-		</section>
+			<PageSectionHeader title="Let's Get Started!" />
+			<PageSection columns={12} id="process-schedule-section">
+				<GridItem columnStart={2} columnEnd={12}>
+					<CalloutLibrary.scheduleAppointment
+						style='boxed grid'
+						gridColumns={{ left: 1, right: 2 }}
+						layout='horizontal' />
+				</GridItem>
+			</PageSection>
+		</>
 	);
 }

@@ -58,7 +58,7 @@ echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "sitemap image fixes - fetch vs fs"
+git commit -m "sample 4 - bike shop, use pagesection and grid item everywhere"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

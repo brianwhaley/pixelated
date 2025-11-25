@@ -34,6 +34,12 @@ const sampleTiles = [
 		image: "https://media.istockphoto.com/id/1198045184/photo/fine-dining-at-lunch.jpg?s=612x612&w=0&k=20&c=LS4QPJuFjbj1IveVKyV0NWC-BlabgyxFTy-dCCoJ35w=",
 		imageAlt: "Sample # 3: The Linen Table, Modern European Cuisine",
 	}, 
+	{
+		index: 3, cardIndex: 3, cardLength: 3,
+		link: "/samples/page4",
+		image: "https://media.istockphoto.com/id/1156464124/photo/bicycle-chain-gearshift-transmission.jpg?b=1&s=612x612&w=0&k=20&c=FV0ZpqjnpW68apt2GFEKQOj4x1uL6TIT3lPtTzguS1E=",
+		imageAlt: "Sample # 4: Velocity Cycling Shop",
+	}, 
 ];
 
 

@@ -9,12 +9,6 @@ body {
     color: var(--text-color);
 }
 
-body.imgtwist {
-	img:hover:not(.imgContain, .imgCover) {
-		transform: scale(1.1) rotate(0deg);
-	}
-}
-
 body.buttonring .callout button:hover {
     outline-color: var(--text-color) !important; 
 }

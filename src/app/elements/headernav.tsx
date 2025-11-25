@@ -10,7 +10,6 @@ const allRoutes = myroutes.routes;
 
 export default function HeaderNav() {
 	return (
-
 		<>
 			<MenuSimple menuItems={allRoutes} />
 		</>

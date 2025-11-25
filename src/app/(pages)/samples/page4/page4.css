@@ -1,0 +1,118 @@
+ :root {
+    --bg-color: rgb(255, 255, 255);
+    --text-color: #000;
+
+    --red: rgb(255,179,186);
+    --orange: rgb(255,223,186);
+    --yellow: rgb(255,255,186);
+    --green: rgb(186,255,201);
+    --blue: rgb(186,225,255);
+ }
+
+body {
+    background-color: var(--bg-color) !important;
+    /* font-family: Bodoni Moda, serif; */
+    color: var(--text-color);
+}
+
+body.buttonring .callout button:hover {
+    outline-color: var(--text-color) !important; 
+}
+
+body.buttonring .callout.overlay button:hover {
+    outline-color: var(--bg-color) !important; 
+}
+
+a, a:visited, a:hover, a:active {
+    color: var(--text-color);
+    text-decoration-color: var(--text-color);
+}
+
+header {
+    position: relative;
+}
+
+.page-section-header {
+    margin-bottom: 0px;
+}
+
+.section-background-image {
+    object-position: center center;
+	opacity: 0.5;
+}
+
+.panelMenuButton, #panelMenuButton {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+nav a {
+    color: var(--text-color);
+}
+
+nav hr {
+    border-color: var(--text-color);
+}
+
+.accordionMenuWrapper, .accordionDown, .accordionUp {
+    top: 40px;
+    background-color: lightblue;
+}
+.accordionMenu > ul > li > a {
+    background-blend-mode: normal;
+    background-color: #ffffff;
+    background-image: none;
+}
+
+.accordionMenu > ul > li > a:hover {
+	background: lightblue;
+}
+
+.menuItem a {
+    background-color: lightblue;
+}
+
+@media screen and (max-width: 768px) {
+    .menuWrapper {
+        display: none;
+    }
+    .panelMenuButton, #panelMenuButton {
+        display: block;
+    }
+}
+
+
+main {
+    margin-bottom: 30px;
+}
+
+.callout.overlay img {
+    filter: brightness(60%); /* Makes the image 50% darker */
+}
+
+.callout .calloutHeader {
+    margin: 0 auto !important;
+}
+
+.callout.overlay .calloutBody {
+    width: 75%;
+}
+
+#featured-section .callout.vertical .calloutImage {
+    width: 90%;
+    aspect-ratio: auto;
+}
+
+#featured-section .callout.vertical .calloutImage img {
+    object-fit: contain;
+}
+
+#reseller-section {
+    padding: 0 20px 30px 20px;
+}
+
+#reseller-section .page-section-content {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+}

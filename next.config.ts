@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
 	},
 
 	// Allow Cloudinary remote images so Next Image optimizer can fetch/transform them
+	/* 
 	images: {
 		remotePatterns: [
 			{
@@ -26,6 +27,18 @@ const nextConfig: NextConfig = {
 				hostname: 'res.cloudinary.com',
 				port: '',
 				pathname: '/**',
+			},
+		],
+	},
+	*/
+
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https', // Or 'http' if needed, but 'https' is recommended
+				hostname: '**', // Allows any hostname
+				port: '', // Optional: specify port if needed
+				pathname: '**', // Optional: allows any pathname
 			},
 		],
 	},
@@ -62,6 +75,7 @@ const nextConfig: NextConfig = {
 			{ source: '/resume.html', destination: '/resume', permanent: true, },
 			{ source: '/store', destination: '/', permanent: true, },
 			{ source: '/store/:slug', destination: '/', permanent: true, },
+			{ source: '/store/:slug*', destination: '/', permanent: true, },
 			{ source: '/socialmedia.html', destination: '/', permanent: true, },
 			{ source: '/subscribe', destination: '/schedule', permanent: true, },
 			{ source: '/stkr.html', destination: '/stkr', permanent: true, },

@@ -1,18 +1,14 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
+import { PageSection } from "@brianwhaley/pixelated-components";
 import Privacy from "@/app/elements/privacy";
 
 export default function TOS() {
 	return (
-		<Fragment>
-			
-			<section className="section" id="terms-section">
-				<div className="section-container">
-					<Privacy />
-				</div>
-			</section>
+		<PageSection columns={1} id="privacy-section">
+			<Privacy />
+		</PageSection>
 
-		</Fragment>
 	);
 }

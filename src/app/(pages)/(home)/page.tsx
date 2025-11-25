@@ -2,6 +2,7 @@
 
 import React, { /* useState, useEffect */ } from "react";
 import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
+import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
 import { Callout } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
@@ -10,186 +11,178 @@ export default function Home() {
 
 	return (
 		<>
-			<section id="pixelated-section">
-				<div className="section-container">
-					<PageHeader title="Pixelated Technologies" />
-					<div className="row-12col">
-						<div className="grid-s2-e10">
-							<Callout
-								aboveFold={true}
-								style='boxed'
-								layout='horizontal' 
-								img='/images/pix/pix-bg-512.png'
-								imgAlt='Pixelated Technologies'
-								imgShape="squircle" 
-								cloudinaryEnv="dlbon7tpq"
-								title=''
-								subtitle='Pixelated Technologies is a Digital Services company that 
+			<PageHeader title="Pixelated Technologies" />
+			<PageSection id="pixelated-section" columns={12}>
+				<GridItem columnStart={2} columnEnd={12}>
+					<Callout
+						aboveFold={true}
+						style='boxed'
+						layout='horizontal' 
+						img='/images/pix/pix-bg-512.png'
+						imgAlt='Pixelated Technologies'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title=''
+						subtitle='Pixelated Technologies is a Digital Services company that 
 							specializes in transforming small businesses through
 							custom IT solutions, including web development, social media marketing,
 							search engine optimization, content management, eCommerce solutions,
 							and small business modernization. Our mission is to empower small businesses
 							to thrive in the digital age by providing tailored technology services that
 							drive growth and efficiency.'/>
-						</div>
-					</div>
-				</div>
-			</section>
+				</GridItem>
+			</PageSection>
 
-			<section id="products-section">
-				<div className="section-container">
-					<PageSectionHeader title="Products and Services" />
-					<div className="row-3col">
-						<Callout
-							aboveFold={true}
-							layout='vertical' 
-							img='/images/icons/webdev.png'
-							imgAlt='Web Development'
-							imgShape="squircle" 
-							cloudinaryEnv="dlbon7tpq"
-							title='Web Development'
-							subtitle='Do you need a new website or web application for your business? 
+
+			<PageSectionHeader title="Products and Services" />
+			<PageSection id="products-section" columns={3}>
+				<GridItem >
+					<Callout
+						aboveFold={true}
+						layout='vertical' 
+						img='/images/icons/webdev.png'
+						imgAlt='Web Development'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title='Web Development'
+						subtitle='Do you need a new website or web application for your business? 
 							Is your current website outdated or not mobile-friendly?
 							Have you focused on other parts of your business and need help with your online presence?' 
-							content='Pixelated Technologies can be your Virtual Technology Department, 
+						content='Pixelated Technologies can be your Virtual Technology Department, 
 							providing custom web development solutions tailored to your business needs.
 							We specialize in creating responsive, user-friendly websites and web applications 
 							that help small businesses succeed online.'/>
-						<Callout
-							aboveFold={true}
-							layout='vertical' 
-							img='/images/icons/socialmedia.png'
-							imgAlt='Social Media Marketing'
-							imgShape="squircle" 
-							cloudinaryEnv="dlbon7tpq"
-							title='Social Media Marketing'
-							subtitle='Are your social media accounts active and engaging?
+				</GridItem>
+				<GridItem >
+					<Callout
+						aboveFold={true}
+						layout='vertical' 
+						img='/images/icons/socialmedia.png'
+						imgAlt='Social Media Marketing'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title='Social Media Marketing'
+						subtitle='Are your social media accounts active and engaging?
 							Are they integrated with your website and other online platforms?
 							Do they help convert prospective customers into current customers?' 
-							content='Let Pixelated Technologieshelp you develop a comprehensive social media strategy that aligns with your business goals.
+						content='Let Pixelated Technologieshelp you develop a comprehensive social media strategy that aligns with your business goals.
 							We can help you create and manage your social media accounts, 
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
-						<Callout
-							aboveFold={true}
-							layout='vertical' 
-							img='/images/icons/seo-2.png'
-							imgAlt='Search Engine Optimization'
-							imgShape="squircle" 
-							cloudinaryEnv="dlbon7tpq"
-							title='Search Engine Optimization'
-							subtitle='Is your website optimized for search engines?
+				</GridItem>
+				<GridItem >
+					<Callout
+						aboveFold={true}
+						layout='vertical' 
+						img='/images/icons/seo-2.png'
+						imgAlt='Search Engine Optimization'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title='Search Engine Optimization'
+						subtitle='Is your website optimized for search engines?
 							Does it stand out from your competition, ranking well for relevant keywords and phrases?
 							Do you have a plan to improve your search engine rankings over time?' 
-							content='Pixelated Technologiescan help you improve your websites visibility and ranking on popular search engines.
+						content='Pixelated Technologiescan help you improve your websites visibility and ranking on popular search engines.
 							We can conduct a thorough SEO audit of your website, identify areas for improvement,
 							and implement on-page and off-page SEO strategies to boost your search engine performance.' />
-						<Callout
-							layout='vertical'
-							img='/images/icons/content.png'
-							imgAlt='Content Management'
-							imgShape="squircle"
-							cloudinaryEnv="dlbon7tpq"
-							title='Content Management'
-							subtitle='Do you have to rely on a web developer to make updates to your website?
+				</GridItem>
+				<GridItem >
+					<Callout
+						layout='vertical'
+						img='/images/icons/content.png'
+						imgAlt='Content Management'
+						imgShape="squircle"
+						cloudinaryEnv="dlbon7tpq"
+						title='Content Management'
+						subtitle='Do you have to rely on a web developer to make updates to your website?
 							Would you like to be able to make updates yourself, without needing technical skills?
 							Do you need a content management system that is easy to use and maintain?' 
-							content='Pixelated Technologies can help you implement a content management system (CMS) 
+						content='Pixelated Technologies can help you implement a content management system (CMS) 
 							that allows you to easily update and manage your website content.
 							We can help you choose the right CMS at the right cost for your business needs, set it up, 
 							and provide training and support to ensure you can manage your website effectively.'  />
-						<Callout
-							layout='vertical' 
-							img='/images/icons/ecommerce.png'
-							imgAlt='eCommerce Solutions'
-							imgShape="squircle" 
-							cloudinaryEnv="dlbon7tpq"
-							title='eCommerce Solutions'
-							subtitle='Do you want to move your business online to 
+				</GridItem>
+				<GridItem >
+					<Callout
+						layout='vertical' 
+						img='/images/icons/ecommerce.png'
+						imgAlt='eCommerce Solutions'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title='eCommerce Solutions'
+						subtitle='Do you want to move your business online to 
 							start selling your products or services digitally?
 							Do you need a secure and reliable eCommerce platform that integrates with your existing systems?
 							Are you looking for ways to improve your online sales and customer experience?' 
-							content='Pixelated Technologies can help you set up and manage an eCommerce platform that meets your business needs.
+						content='Pixelated Technologies can help you set up and manage an eCommerce platform that meets your business needs.
 							We can help you choose the right eCommerce solution, 
 							set it up, and provide ongoing support to ensure your online store runs smoothly.' />
-						<Callout
-							layout='vertical' 
-							img='/images/icons/custom.png'
-							imgAlt='Small Business Modernization'
-							imgShape="squircle" 
-							cloudinaryEnv="dlbon7tpq"
-							title='Small Business Modernization'
-							subtitle='Are you looking to integrate your site with other business systems,
+				</GridItem>
+				<GridItem >
+					<Callout
+						layout='vertical' 
+						img='/images/icons/custom.png'
+						imgAlt='Small Business Modernization'
+						imgShape="squircle" 
+						cloudinaryEnv="dlbon7tpq"
+						title='Small Business Modernization'
+						subtitle='Are you looking to integrate your site with other business systems,
 							such as marketing automation tools, billing and finance systems, 
 							scheduling or inventory systems, or other business applications?' 
-							content='Pixelated Technologies can help you develop custom business solutions that streamline your operations 
+						content='Pixelated Technologies can help you develop custom business solutions that streamline your operations 
 							and improve your efficiency. We can work with you to understand your business processes,
 							identify areas for improvement, and develop custom software solutions that meet your specific needs.' />
-					</div>
-					
-				</div>
-			</section>
+				</GridItem>
+			</PageSection>
 
-			<section className="section-alt3" id="social-section">
-				<div className="section-container">
-					<div className="row-12col">
-						<div className="grid-s3-e8">
-							<SocialTags />
-						</div>
-					</div>
-				</div>
-			</section>
+			<PageSection id="social-section" columns={12} background="var(--secondary-color)" >
+				<GridItem columnStart={3} columnEnd={11}>
+					<SocialTags />
+				</GridItem>
+			</PageSection>
 
-			<section className="section-alt2" id="spotlight-section">
-				<div className="section-container">
-					<PageSectionHeader title="About Pixelated Technologies" />
-					<div className="row-12col">
-						<div className="grid-s3-e4">
-							<CalloutLibrary.scheduleAppointment />
-						</div>
-						<div className="grid-s7-e4">
-							<Callout
-								layout='vertical'
-								url='portfolio'
-								img='/images/icons/portfolio.png'
-								imgAlt='Portfolio'
-								imgShape='squircle'
-								cloudinaryEnv="dlbon7tpq"
-								title='Portfolio'
-								content='Explore our portfolio to see examples of the web development 
-								and design work delivered by our team members over the years. 
-								From responsive websites and custom web applications to branding 
-								and logo designs, our portfolio showcases the diverse range of 
-								projects we have successfully completed for small businesses. 
-								Discover how Pixelated Technologies can bring your vision to life 
-								with tailored solutions that meet your unique needs.'/>
-						</div>
-					</div>
-				</div>
-			</section>
 
-			<section className="section-alt" id="spotlight-section">
-				<div className="section-container">
+			<PageSectionHeader title="About Pixelated Technologies" />
+			<PageSection columns={12} id="spotlight-section">
+				<GridItem columnStart={3} columnEnd={7}>
+					<CalloutLibrary.scheduleAppointment />
+				</GridItem>
+				<GridItem columnStart={7} columnEnd={11}>
+					<Callout
+						layout='vertical'
+						url='portfolio'
+						img='/images/icons/portfolio.png'
+						imgAlt='Portfolio'
+						imgShape='squircle'
+						cloudinaryEnv="dlbon7tpq"
+						title='Portfolio'
+						content='Explore our portfolio to see examples of the web development 
+							and design work delivered by our team members over the years. 
+							From responsive websites and custom web applications to branding 
+							and logo designs, our portfolio showcases the diverse range of 
+							projects we have successfully completed for small businesses. 
+							Discover how Pixelated Technologies can bring your vision to life 
+							with tailored solutions that meet your unique needs.'/>
+				</GridItem>
+			</PageSection>
 
-					<div className="row-12col">
-						<div className="grid-s3-e8">
-							<Callout
-								style='boxed'
-								layout='horizontal' 
-								img='/images/brianwhaley-headshot.jpg'
-								imgAlt='Brian T. Whaley'
-								imgShape='squircle'
-								cloudinaryEnv="dlbon7tpq"
-								title='Brian T. Whaley'
-								content='The owner of Pixelated Technologies.
-									Full Stack Developer, Passionate Technologist, 
-									Digital Transformation Professional, 
-									User Experience Champion, SEO and Social Media Ninja, 
-									Landscape and Macro Photographer, Avid World Traveler,
-									Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food' />
-						</div>
-					</div>
-				</div>
-			</section>
+			<PageSection columns={12} background="var(--accent1-color);" id="spotlight-section">
+				<GridItem columnStart={3} columnEnd={11}>
+					<Callout
+						style='boxed'
+						layout='horizontal' 
+						img='/images/brianwhaley-headshot.jpg'
+						imgAlt='Brian T. Whaley'
+						imgShape='squircle'
+						cloudinaryEnv="dlbon7tpq"
+						title='Brian T. Whaley'
+						content='The owner of Pixelated Technologies.
+							Full Stack Developer, Passionate Technologist, 
+							Digital Transformation Professional, 
+							User Experience Champion, SEO and Social Media Ninja, 
+							Landscape and Macro Photographer, Avid World Traveler,
+							Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food' />
+				</GridItem>
+			</PageSection>
 			
 		</>
 	);
