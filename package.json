@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "2.6.28",
+  "version": "2.6.29",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -81,9 +81,9 @@
     "@storybook/react-webpack5": "^10.0.8",
     "@types/node": "^24.10.1",
     "@types/prop-types": "^15.7.15",
-    "@types/react": "^19.2.6",
+    "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.47.0",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "babel-loader": "^10.0.0",
@@ -100,7 +100,7 @@
     "file-loader": "^6.2.0",
     "less-loader": "^12.3.0",
     "mini-css-extract-plugin": "^2.9.4",
-    "next": "^16.0.3",
+    "next": "^16.0.4",
     "null-loader": "^4.0.1",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
