@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Callout } from "../components/callout/pixelated.callout";
+import { Callout } from "../components/callout/callout";
 const cloudinaryAPI = "https://res.cloudinary.com/pixelated-tech/image/fetch/w_600,h_600,c_fill,q_auto,f_auto/";
-import { MicroInteractions } from "../components/general/pixelated.microinteractions";
+import { MicroInteractions } from "../components/general/microinteractions";
 import "../css/pixelated.global.css";
 import "../css/pixelated.grid.scss";
-import "../components/general/pixelated.microinteractions.css";
+import "../components/general/microinteractions.css";
 
 export default {
 	title: 'General',
@@ -58,7 +58,7 @@ const PageMicroInteractions = () => {
 
 
 			<div className="row-3col">
-				<div className="grid-s2-e1">
+				<div className="grid-s2-e3">
 
 					<div>scrollfade : </div>
 					<div className="gridItem">

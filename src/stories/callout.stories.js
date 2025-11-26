@@ -1,5 +1,5 @@
-import { Callout } from '../components/callout/pixelated.callout';
-import '../components/callout/pixelated.callout.scss';
+import { Callout } from '../components/callout/callout';
+import '../components/callout/callout.scss';
 import '../css/pixelated.grid.scss';
 
 export default {

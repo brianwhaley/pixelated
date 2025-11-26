@@ -1,5 +1,5 @@
-import { EbayItemDetail } from '../components/ebay/pixelated.ebay.components';
-import '../components/ebay/pixelated.ebay.css';
+import { EbayItemDetail } from '../components/ebay/ebay.components';
+import '../components/ebay/ebay.css';
 import '../css/pixelated.global.css';
 
 export default {

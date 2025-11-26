@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Callout } from "../components/callout/pixelated.callout";
-import { Modal, handleModalOpen } from "../components/general/pixelated.modal";
+import { Callout } from "../components/callout/callout";
+import { Modal, handleModalOpen } from "../components/general/modal";
 
 export default {
 	title: 'General',

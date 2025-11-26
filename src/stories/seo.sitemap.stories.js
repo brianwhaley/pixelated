@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { createPageURLs, jsonToSitemapEntries } from '../components/seo/pixelated.sitemap';
+import { createPageURLs, jsonToSitemapEntries } from '../components/seo/sitemap';
 import myRoutes from "../data/routes.json";
 
 export default {

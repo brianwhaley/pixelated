@@ -1,5 +1,5 @@
-import { Markdown } from '../components/markdown/pixelated.markdown';
-import '../components/markdown/pixelated.markdown.css';
+import { Markdown } from '../components/markdown/markdown';
+import '../components/markdown/markdown.css';
 import markdowndata from '../data/readme.md';
 import '../css/pixelated.global.css';
 

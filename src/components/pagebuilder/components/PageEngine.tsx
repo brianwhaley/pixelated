@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
-import { generateKey } from '../../utilities/pixelated.functions';
+import { generateKey } from '../../utilities/functions';
 import { componentMap, layoutComponents } from '../lib/componentMap';
 import './pagebuilder.scss';
 

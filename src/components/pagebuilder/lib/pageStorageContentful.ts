@@ -11,7 +11,7 @@ import {
 	createEntry,
 	updateEntry,
 	deleteEntry,
-} from '../../cms/pixelated.contentful.management';
+} from '../../cms/contentful.management';
 import type { PageData } from './types';
 import type {
 	ListPagesResponse,

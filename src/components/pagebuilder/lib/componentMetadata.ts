@@ -7,7 +7,7 @@
  * runtime values for form generation.
  */
 
-import { calloutStyles, shapes, layouts, directions } from "../../callout/pixelated.callout";
+import { calloutStyles, shapes, layouts, directions } from "../../callout/callout";
 import { 
 	layoutTypes, 
 	autoFlowValues, 
@@ -15,7 +15,7 @@ import {
 	flexWraps, 
 	justifyContentValues, 
 	alignItemsValues 
-} from "../../general/pixelated.layout";
+} from "../../general/layout";
 
 export type PropMetadata = {
 	type: 'text' | 'number' | 'checkbox' | 'select' | 'object' | 'array' | 'function' | 'children';

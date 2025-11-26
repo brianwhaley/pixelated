@@ -626,7 +626,7 @@ return (
 				<pre>{JSON.stringify(pageJSON, null, 2)}</pre>
 			</div>
 
-			<div className="grid-s1-e2">
+			<div className="grid-s1-e3">
 				<PageSectionHeader title="Preview" />
 				<section id="preview-section">
 					<div className="section-container">

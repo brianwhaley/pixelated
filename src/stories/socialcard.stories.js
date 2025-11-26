@@ -1,5 +1,5 @@
-import { SocialCards } from '../components/socialcard/pixelated.socialcard';
-import '../components/socialcard/pixelated.socialcard.css';
+import { SocialCards } from '../components/socialcard/socialcard';
+import '../components/socialcard/socialcard.css';
 import '../css/pixelated.global.css';
 
 const mySources = {
@@ -39,7 +39,7 @@ export default {
 	component: SocialCards
 };
 
-export const Primary = {
+export const SocialCardStory = {
 	args: {
 		sources: mySources
 	}

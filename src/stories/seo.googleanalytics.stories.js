@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from '../components/seo/pixelated.googleanalytics';
+import { GoogleAnalytics } from '../components/seo/googleanalytics';
 
 export default {
 	title: 'SEO',

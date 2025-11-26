@@ -1,4 +1,4 @@
-import { Table } from "../components/general/pixelated.table";
+import { Table } from "../components/general/table";
 import requestData from "../data/requests.json";
 import '../css/pixelated.global.css';
 

@@ -1,5 +1,5 @@
-import { RecipeBook } from '../components/recipe/pixelated.recipe';
-import '../components/recipe/pixelated.recipe.css';
+import { RecipeBook } from '../components/recipe/recipe';
+import '../components/recipe/recipe.css';
 import RecipeData from '../data/recipes.json';
 import '../css/pixelated.global.css';
 

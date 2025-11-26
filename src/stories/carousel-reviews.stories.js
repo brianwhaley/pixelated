@@ -1,5 +1,5 @@
-import { Carousel } from '../components/carousel/pixelated.carousel';
-import '../components/carousel/pixelated.carousel.css';
+import { Carousel } from '../components/carousel/carousel';
+import '../components/carousel/carousel.css';
 import '../css/pixelated.global.css';
 import './carousel.stories.css';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Menu from '../components/menu/pixelated.menu-simple';
+import Menu from '../components/menu/menu-simple';
 
 const menuItems = {
 	Home: './index.html',

@@ -1,4 +1,4 @@
-import { getXHRData, generateURL } from '../components/utilities/pixelated.api';
+import { getXHRData, generateURL } from '../components/utilities/api';
 
 test('Flickr data returns properly', () => {
 	const flickrConfig = {

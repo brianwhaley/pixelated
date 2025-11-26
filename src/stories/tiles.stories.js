@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Tiles } from "../components/tiles/pixelated.tiles";
-import { FlickrWrapper } from "../components/cms/pixelated.flickr";
-import '../components/tiles/pixelated.tiles.css';
-
+import { Tiles } from "../components/tiles/tiles";
+import { FlickrWrapper } from "../components/cms/flickr";
+import '../components/tiles/tiles.css';
 import '../css/pixelated.global.css';
 
 export default {
@@ -66,4 +65,4 @@ const FlickrTiles = () => {
 	);
 };
 
-export const Primary = () => <FlickrTiles />;
+export const TilesStory = () => <FlickrTiles />;

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Callout, { CalloutHeader, CalloutSmall, CalloutHeaderSmall } from '../components/callout/pixelated.callout';
+import Callout, { CalloutHeader, CalloutSmall, CalloutHeaderSmall } from '../components/callout/callout';
 
 const calloutProps = {
 	url: 'gallery.html',

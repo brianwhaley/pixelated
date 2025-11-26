@@ -1,5 +1,5 @@
-import { NerdJoke } from '../components/nerdjoke/pixelated.nerdjoke';
-import '../components/nerdjoke/pixelated.nerdjoke.css';
+import { NerdJoke } from '../components/nerdjoke/nerdjoke';
+import '../components/nerdjoke/nerdjoke.css';
 import '../css/pixelated.global.css';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 	component: NerdJoke
 };
 
-export const Primary = {
+export const NerdJokeStory = {
 	args: {
 	}
 };

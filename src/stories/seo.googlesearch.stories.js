@@ -1,5 +1,5 @@
-import { GoogleSearch } from '../components/seo/pixelated.googlesearch';
-import '../components/seo/pixelated.googlesearch.css';
+import { GoogleSearch } from '../components/seo/googlesearch';
+import '../components/seo/googlesearch.css';
 import '../css/pixelated.global.css';
 
 export default {

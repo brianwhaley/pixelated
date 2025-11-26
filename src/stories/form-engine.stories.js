@@ -1,7 +1,7 @@
-import { FormEngine } from '../components/form/pixelated.form';
-import '../components/form/pixelated.form.css';
-import '../css/pixelated.global.css';
+import { FormEngine } from '../components/form/form';
 import data from '../data/form.json';
+import '../components/form/form.css';
+import '../css/pixelated.global.css';
 
 function onSubmit(){
 	alert("Hooray!  Submitted!");

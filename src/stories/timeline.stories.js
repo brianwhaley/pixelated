@@ -1,4 +1,4 @@
-import { Timeline } from "../components/timeline/pixelated.timeline";
+import { Timeline } from "../components/timeline/timeline";
 import '../css/pixelated.global.css';
 
 const timelineData = [
@@ -60,7 +60,7 @@ export default {
 	component: Timeline
 };
 
-export const Primary = {
+export const TimelineStory = {
 	args: {
 		timelineData: timelineData,
 	}

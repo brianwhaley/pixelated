@@ -1,5 +1,5 @@
-import { BuzzwordBingo } from '../components/buzzwordbingo/pixelated.buzzwordbingo';
-import '../components/buzzwordbingo/pixelated.buzzwordbingo.css';
+import { BuzzwordBingo } from '../components/buzzwordbingo/buzzwordbingo';
+import '../components/buzzwordbingo/buzzwordbingo.css';
 import '../css/pixelated.global.css';
 import { buzzwords } from "../data/buzzwords";
 
@@ -8,7 +8,7 @@ export default {
 	component: BuzzwordBingo
 };
 
-export const Primary = {
+export const BuzzwordBingoStory = {
 	args: {
 		buzzwords: buzzwords
 	}

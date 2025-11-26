@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageSection, GridItem, FlexItem } from '../components/general/pixelated.layout';
+import { PageSection, GridItem, FlexItem } from '../components/general/layout';
 
 export default {
 	title: 'Page Layout',

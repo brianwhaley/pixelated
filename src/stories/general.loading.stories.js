@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Loading, ToggleLoading } from '../components/general/pixelated.loading';
-import '../components/general/pixelated.loading.scss';
+import { Loading, ToggleLoading } from '../components/general/loading';
+import '../components/general/loading.scss';
 import '../css/pixelated.global.css';
 
 export default {

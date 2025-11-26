@@ -1,5 +1,5 @@
-import { ContentfulItems } from '../components/cms/pixelated.contentful.items.components';
-import '../components/cms/pixelated.contentful.items.css';
+import { ContentfulItems } from '../components/cms/contentful.items.components';
+import '../components/cms/contentful.items.css';
 import '../css/pixelated.global.css';
 
 export default {

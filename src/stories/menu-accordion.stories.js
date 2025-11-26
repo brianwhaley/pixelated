@@ -1,7 +1,7 @@
 import React from 'react';
-import { MenuAccordionButton, MenuAccordion } from '../components/menu/pixelated.menu-accordion';
-import { getAccordionMenuData } from "../components/seo/pixelated.metadata";
-import '../components/menu/pixelated.menu-accordion.css';
+import { MenuAccordionButton, MenuAccordion } from '../components/menu/menu-accordion';
+import { getAccordionMenuData } from "../components/seo/metadata";
+import '../components/menu/menu-accordion.css';
 import '../css/pixelated.global.css';
 import myRoutes from '../data/routes.json';
 const allRoutes = myRoutes.routes;

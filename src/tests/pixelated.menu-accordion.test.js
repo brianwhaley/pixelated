@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Menu from '../components/menu/pixelated.menu-accordion';
+import Menu from '../components/menu/menu-accordion';
 
 const menuItems = {
 	Home: './index.html',

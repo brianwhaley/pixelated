@@ -1,0 +1,90 @@
+// Types for Pixelated integration configuration
+
+export interface CloudinaryConfig {
+  product_env: string;
+  baseUrl?: string; // optional custom CDN base, e.g. https://res.cloudinary.com
+  secure?: boolean;
+  transforms?: string; // e.g. "f_auto,q_auto"
+}
+
+export interface ContentfulConfig {
+  proxyURL?: string;
+	base_url: string;
+	space_id: string;
+	environment: string;
+	delivery_access_token?: string;
+	management_access_token?: string;
+	preview_access_token?: string;
+}
+
+export interface EbayConfig {
+  proxyURL?: string,
+  appId: string;
+  appCertId: string;
+  sbxAppId: string;
+  sbxAppCertId: string;
+  globalId: string;
+  environment?: string;
+  tokenScope?: string;
+  baseTokenURL?: string,
+  baseSearchURL?: string,
+  qsSearchURL?: string,
+  baseItemURL?: string,
+  qsItemURL?: string,
+}
+
+export interface FlickrConfig {
+	baseURL: string; // e.g. 'https://api.flickr.com/services/rest/?'
+	urlProps: {
+		method?: string; // 'flickr.photos.search',
+		api_key: string; 
+		user_id: string; 
+		tags: string;
+		extras: string; // 'date_taken,description,owner_name',
+		sort: string; //'date-taken-desc',
+		per_page: number; // 500,
+		format: string; // 'json',
+		photoSize: string; // 'Medium',
+		nojsoncallback: string; // 'true'
+	}
+}
+
+export interface GoogleAnalyticsConfig {
+  id: string; // e.g. G-XXXXXXX
+  adId?: string; // e.g. AW-XXXXXXXXX
+}
+
+export interface GoogleSearchConsoleConfig {
+  id: string;
+}
+
+export interface HubspotConfig {
+  portalId?: string; // HubSpot portal/account id
+  formId?: string; // default contact form id to embed
+  trackingCode?: string; // optional tracking code snippet or id
+  endpoint?: string; // optional API endpoint for server use
+}
+
+export interface PaypalConfig {
+    sandboxPayPalApiKey: string;
+		sandboxPayPalSecret: string;
+		payPalApiKey: string;
+		payPalSecret: string;
+}
+
+export interface WordpressConfig {
+  endpoint: string; // REST API endpoint or GraphQL
+}
+
+export interface PixelatedConfig {
+  cloudinary?: CloudinaryConfig;
+  contentful?: ContentfulConfig;
+  ebay?: EbayConfig;
+  featureFlags?: Record<string, boolean>;
+  flickr?: FlickrConfig;
+  googleAnalytics?: GoogleAnalyticsConfig;
+  googleSearchConsole?: GoogleSearchConsoleConfig;
+  hubspot?: HubspotConfig;
+  paypal?: PaypalConfig;
+  wordpress?: WordpressConfig;
+}

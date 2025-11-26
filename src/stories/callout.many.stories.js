@@ -1,6 +1,6 @@
 import React from 'react';
-import { Callout } from '../components/callout/pixelated.callout';
-import '../components/callout/pixelated.callout.scss';
+import { Callout } from '../components/callout/callout';
+import '../components/callout/callout.scss';
 import '../css/pixelated.grid.scss';
 
 export default {
@@ -75,7 +75,7 @@ const ManyStories = () => {
 			<section className="section" id="nerdjoke-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								direction='left'
 								img='https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto/https://farm2.static.flickr.com/1819/43210108074_ed27304d0f_b.jpg'
@@ -93,7 +93,7 @@ const ManyStories = () => {
 			<section className="section" id="nerdjoke-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout 
 								direction='right'
 								img='https://res.cloudinary.com/dlbon7tpq/image/fetch/f_auto,q_auto/https://farm2.static.flickr.com/1819/43210108074_ed27304d0f_b.jpg'
@@ -187,7 +187,7 @@ const ManyStories = () => {
 			<section className="section" id="nerdjoke-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s1-e4">
+						<div className="grid-s1-e5">
 							<Callout 
 								style='boxed' 
 								layout='vertical'
@@ -198,7 +198,7 @@ const ManyStories = () => {
 								content='Pixelated Technologies can be your Virtual Technology Department, providing custom web development solutions tailored to your business needs. We specialize in creating responsive, user-friendly websites and web applications that help small businesses succeed online.'
 							/>
 						</div>
-						<div className="grid-s5-e4">
+						<div className="grid-s5-e9">
 							<Callout 
 								style='boxed' 
 								layout='vertical'
@@ -209,7 +209,7 @@ const ManyStories = () => {
 								content='Let Pixelated Technologieshelp you develop a comprehensive social media strategy that aligns with your business goals. We can help you create and manage your social media accounts, produce engaging content, and analyze performance metrics to optimize your social media presence.'
 							/>
 						</div>
-						<div className="grid-s9-e4">
+						<div className="grid-s9-e13">
 							<Callout 
 								style='boxed' 
 								layout='vertical'

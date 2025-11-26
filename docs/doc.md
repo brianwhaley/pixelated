@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "improvement to pagesection, griditem = breakpoints and css"
+git commit -m "renamed all component files, smartimage everywhere, css fix for row 13, grid breakpoint for 768px, timeline breakpoints, blog summary include featured image, imgscale microinteraction, initial use of global config with some contentful and some cloudinary - more to come"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish

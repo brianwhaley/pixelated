@@ -40,8 +40,11 @@
 
 // GRID ITEM POSITIONING HELPERS
 // Start (S) and END (E) position helpers for grid items
-@for $i from 1 through 12 {
-	@for $k from 1 through 12 {
+// END is an absolute position rather than a span
+// END position is exclusive, so grid-s1-e3 covers columns 1 and 2
+// END position of 13 is the same as span 12
+@for $i from 1 through 13 {
+	@for $k from 1 through 13 {
 		.grid-s#{$i}-e#{$k} { display: grid ; grid-column: #{$i} / #{$k}; }
 		@media screen and (max-width: 480px) {
 			.grid-s#{$i}-e#{$k} { grid-column: 1 / -1 ; }
