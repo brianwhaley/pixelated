@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Recipe from '../components/recipe/recipe';
+import Recipe from '../components/recipe/old.recipe';
 
 const recipeCategories = ['bread', 'appetizer', 'dinner', 'slow cooker', 'side dish', 'salad', 'dessert'];
 

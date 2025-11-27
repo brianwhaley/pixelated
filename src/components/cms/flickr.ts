@@ -2,7 +2,6 @@
 import PropTypes, { InferProps } from 'prop-types';
 import { generateURL } from '../utilities/api';
 import { mergeDeep } from '../utilities/functions';
-import { getCloudinaryRemoteFetchURL } from "./cloudinary";
 import type { CarouselCardType } from '../carousel/carousel';
 
 type FlickrApiType = {
@@ -183,7 +182,7 @@ export function FlickrWrapper (props: FlickrWrapperType) {
 					index: index,
 					cardIndex: index,
 					cardLength: myFlickrCards.length,
-					image: getCloudinaryRemoteFetchURL({url:obj.image, product_env:"dlbon7tpq"}),
+					image: obj.image,
 					imageAlt: obj.imageAlt,
 					subHeaderText: obj.subHeaderText
 				};

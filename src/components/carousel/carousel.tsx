@@ -164,7 +164,7 @@ function CarouselCard( props: CarouselCardType ) {
 		styles.transform = 'translateX(-100%)';
 	}
 	const imgFit = props.imgFit ? "img" + capitalize(props.imgFit) : 'imgFill';
-	const config = useOptionalPixelatedConfig();
+	const config = useOptionalPixelatedConfig();	
 	const cardBody = (
 		< div draggable='false'>
 			{ (props.link) ? <div draggable='false' className="carouselCardLink" /> : null }

@@ -68,62 +68,82 @@ export function SmartImage(props: SmartImageProps) {
 		...imgProps
 	} = props as SmartImageProps;
 
+	const newProps = { ...props };
+
 	// If the consumer app provided a global config via PixelatedClientConfigProvider or PixelatedServerConfigProvider, prefer that
 	// unless an explicit prop is passed.
-	const cfg = useOptionalPixelatedConfig();
-	const cloudCfg = cfg?.cloudinary;
-
+	const config = useOptionalPixelatedConfig();
+	const cloudCfg = config?.cloudinary
+	;
 	// merge cloudinary config and cloudinary props
-	const effectiveCloudinaryEnv = cloudinaryEnv ?? cloudCfg?.product_env;
-	const effectiveCloudinaryDomain = cloudCfg?.baseUrl ?? cloudinaryDomain;
-	const effectiveCloudinaryTransforms = cloudinaryTransforms ?? cloudCfg?.transforms;
-
-	// mutable copies
-	let fp = fetchPriority;
-	let ld = loading;
-	let dc = decoding;
-	let pl = preload;
-
-	fp = aboveFold ? 'high' : fp;
-	ld = aboveFold ? 'eager' : ld;
-	dc = aboveFold ? 'sync' : dc;
-	pl = aboveFold ? true : pl;
+	newProps.cloudinaryEnv = String(cloudinaryEnv ?? cloudCfg?.product_env);
+	newProps.cloudinaryDomain = String(cloudCfg?.baseUrl ?? cloudinaryDomain);
+	newProps.cloudinaryTransforms = String(cloudinaryTransforms ?? cloudCfg?.transforms);
+	newProps.fetchPriority = aboveFold ? 'high' : fetchPriority;
+	newProps.loading = aboveFold ? 'eager' : loading;
+	newProps.decoding = aboveFold ? 'sync' : decoding;
+	newProps.preload = aboveFold ? true : preload;
+	newProps.src = String(src);
+	newProps.title = String(imgProps.title);
+	newProps.name = String(imgProps.name);
+	newProps.id = String(imgProps.id);
+	newProps.alt = String(alt);
 
 	const imgRef = React.useRef<HTMLImageElement | null>(null);
 	const baseWidth = parseNumber(width);
 
-	const finalSrc = effectiveCloudinaryEnv
-		? buildCloudinaryUrl({ src: String(src), productEnv: String(effectiveCloudinaryEnv), cloudinaryDomain: effectiveCloudinaryDomain ?? CLOUDINARY_DOMAIN, quality, width: baseWidth ?? undefined, transforms: effectiveCloudinaryTransforms ?? undefined })
+	// if(Array.isArray(src))
+	const finalSrc = newProps.cloudinaryEnv
+		? buildCloudinaryUrl({ 
+			src: src, 
+			productEnv: newProps.cloudinaryEnv, 
+			cloudinaryDomain: newProps.cloudinaryDomain, 
+			quality, 
+			width: baseWidth ?? undefined, 
+			transforms: newProps.cloudinaryTransforms ?? undefined })
 		: String(src);
 
 	let responsiveSrcSet: string | undefined;
 	let responsiveSizes: string | undefined;
-	if (effectiveCloudinaryEnv) {
+	if (newProps.cloudinaryEnv) {
 		if (baseWidth) {
 			const widths = [Math.ceil(baseWidth * 0.5), baseWidth, Math.ceil(baseWidth * 1.5), Math.ceil(baseWidth * 2)];
-			responsiveSrcSet = generateSrcSet(String(src), String(effectiveCloudinaryEnv), widths, { quality, transforms: effectiveCloudinaryTransforms ?? undefined, cloudinaryDomain: effectiveCloudinaryDomain ?? CLOUDINARY_DOMAIN });
+			responsiveSrcSet = generateSrcSet(
+				String(src), 
+				newProps.cloudinaryEnv, 
+				widths, { 
+					quality, 
+					transforms: newProps.cloudinaryTransforms ?? undefined, 
+					cloudinaryDomain: newProps.cloudinaryDomain 
+				});
 			responsiveSizes = `${baseWidth}px`;
 		} else {
 			const breakpoints = [320, 640, 768, 1024, 1280, 1536];
-			responsiveSrcSet = generateSrcSet(String(src), String(effectiveCloudinaryEnv), breakpoints, { quality, transforms: effectiveCloudinaryTransforms ?? undefined, cloudinaryDomain: effectiveCloudinaryDomain ?? CLOUDINARY_DOMAIN });
+			responsiveSrcSet = generateSrcSet(
+				String(src), 
+				newProps.cloudinaryEnv, 
+				breakpoints, { 
+					quality, 
+					transforms: newProps.cloudinaryTransforms ?? undefined, 
+					cloudinaryDomain: newProps.cloudinaryDomain 
+				});
 			responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 		}
 	}
 
 	const sanitize = (s?: string) => s ? s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') : undefined;
-	const filename = (src as string).split('/').pop()?.split('?')[0] || '';
+	const filename = (newProps.src).split('/').pop()?.split('?')[0] || '';
 	const imageName = filename.replace(/\.[^.]+$/, '');
-	const semanticId = imgProps.id || imgProps.name || sanitize(imgProps.title) || sanitize(alt) || sanitize(imageName);
-	const semanticName = imgProps.name || imgProps.id || sanitize(imgProps.title) || sanitize(alt) || sanitize(imageName);
-	const semanticTitle = imgProps.title || alt;
-
-	const isDecorative = alt === '';
+	const semanticId = newProps.id || newProps.name || sanitize(newProps.title) || sanitize(newProps.alt) || sanitize(imageName);
+	const semanticName = newProps.name || newProps.id || sanitize(newProps.title) || sanitize(newProps.alt) || sanitize(imageName);
+	const semanticTitle = newProps.title || newProps.alt;
 
 	const semanticProps: Record<string, any> = {};
 	if (semanticId) semanticProps.id = semanticId;
 	if (semanticName) semanticProps.name = semanticName;
 	if (semanticTitle) semanticProps.title = semanticTitle;
 
+	const isDecorative = newProps.alt === '';
 	const decorativeProps = isDecorative ? ({ 'aria-hidden': true, role: 'presentation' } as any) : {};
 
 	try {
@@ -133,15 +153,15 @@ export function SmartImage(props: SmartImageProps) {
 				{...decorativeProps}
 				{...imgProps}
 				src={finalSrc}
-				alt={alt}
+				alt={newProps.alt}
 				width={typeof width === 'string' ? parseInt(width, 10) : (width as number)}
 				height={typeof height === 'string' ? parseInt(height, 10) : (height as number)}
 				sizes={imgProps.sizes || responsiveSizes}
 				quality={quality}
-				fetchPriority={fp}
-				loading={ld}
-				decoding={dc}
-				preload={pl}
+				fetchPriority={newProps.fetchPriority}
+				loading={newProps.loading}
+				decoding={newProps.decoding}
+				preload={newProps.preload}
 			/>
 		);
 	} catch (e) {
@@ -155,15 +175,14 @@ export function SmartImage(props: SmartImageProps) {
 			{...imgProps}
 			ref={imgRef}
 			src={finalSrc}
-			alt={alt}
+			alt={newProps.alt}
 			width={typeof width === 'string' ? parseInt(width, 10) : width}
 			height={typeof height === 'string' ? parseInt(height, 10) : height}
 			srcSet={responsiveSrcSet || imgProps.srcSet}
 			sizes={imgProps.sizes || responsiveSizes}
-			fetchPriority={fp}
-			loading={ld}
-			decoding={dc}
+			fetchPriority={newProps.fetchPriority}
+			loading={newProps.loading}
+			decoding={newProps.decoding}
 		/>
 	);
 }
-

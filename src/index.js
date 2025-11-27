@@ -59,7 +59,7 @@ export * from './components/pagebuilder/components/PageEngine';
 export * from './components/pagebuilder/lib/componentGeneration'; // server-side only
 export * from './components/pagebuilder/lib/componentMap'; // server-side only
 export * from './components/pagebuilder/lib/componentMetadata'; // server-side only
-export * from './components/pagebuilder/lib/pageStorage'; // server-side only
+export * from './components/pagebuilder/lib/pageStorageLocal'; // server-side only
 export * from './components/pagebuilder/lib/pageStorageContentful'; // server-side only
 export * from './components/pagebuilder/lib/pageStorageTypes'; // server-side only
 export * from './components/pagebuilder/lib/propTypeIntrospection'; // server-side only

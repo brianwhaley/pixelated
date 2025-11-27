@@ -61,11 +61,15 @@ const deleted = await deletePage('home');
    - Space ID: Settings → General Settings
    - Management Token: Settings → API keys → Content management tokens
 
-3. **Set Environment Variables:**
-   ```bash
-   CONTENTFUL_SPACE_ID=your_space_id
-   CONTENTFUL_MANAGEMENT_TOKEN=your_management_token
-   ```
+3. **Set Environment Variables (recommended unified blob):**
+  - Preferred: set the full pixelated config as a single environment variable. You can supply either:
+    - `PIXELATED_CONFIG_JSON` — a single-line JSON string, or
+    - `PIXELATED_CONFIG_B64` — the base64-encoded JSON string.
+
+  Example (base64):
+  ```bash
+  PIXELATED_CONFIG_B64=<base64-encoded-json-here>
+  ```
 
 ### Usage:
 
@@ -78,11 +82,11 @@ import {
 } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
-const config: ContentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-  accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN || '',
-  environment: 'master', // optional, defaults to 'master'
-};
+// When running on the server, read the unified pixelated config instead of
+// discrete CONTENTFUL_* env vars. Example using the package helper:
+// import { getFullConfig } from '@brianwhaley/pixelated-components/server';
+// const cfg = getFullConfig();
+// const config: ContentfulConfig = cfg.contentful;
 
 // List all pages
 const pages = await listPages(config);
@@ -155,12 +159,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const config: ContentfulConfig = {
-    spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-    accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN || '',
-  };
-
-  const result = await savePage(name, data, config);
+  // Server-side: prefer reading the unified `PIXELATED_CONFIG_JSON` / `PIXELATED_CONFIG_B64`.
+  // Example:
+  // import { getFullConfig } from '@brianwhaley/pixelated-components/server';
+  // const cfg = getFullConfig();
+  // const config: ContentfulConfig = cfg.contentful;
+  // const result = await savePage(name, data, config);
+  
+  // Fallback (file-based) example shown earlier remains available.
+  const result = await savePage(name, data);
   return NextResponse.json(result);
 }
 ```

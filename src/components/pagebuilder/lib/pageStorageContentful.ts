@@ -4,14 +4,9 @@
  * Uses generic Contentful management functions with PageBuilder-specific logic
  */
 
-import {
-	ContentfulConfig,
-	listEntries,
-	searchEntriesByField,
-	createEntry,
-	updateEntry,
-	deleteEntry,
-} from '../../cms/contentful.management';
+import type { ContentfulConfig } from '../../cms/contentful.management';
+import { createEntry, updateEntry, deleteEntry, searchEntriesByField } from '../../cms/contentful.management';
+import { getContentfulEntriesByType } from '../../cms/contentful.delivery';
 import type { PageData } from './types';
 import type {
 	ListPagesResponse,
@@ -35,25 +30,25 @@ function validatePageName(name: string): boolean {
 export async function listContentfulPages(
 	config: ContentfulConfig
 ): Promise<ListPagesResponse> {
-	const result = await listEntries(CONTENT_TYPE, config);
-	
-	if (!result.success) {
-		return {
-			success: false,
-			pages: [],
-			message: result.message,
-		};
+	// Map management-style config to delivery apiProps for the CDN-based read helper
+	const apiProps = {
+		base_url: 'https://cdn.contentful.com',
+		space_id: config.spaceId,
+		environment: config.environment || 'master',
+		delivery_access_token: config.accessToken,
+	} as any;
+
+	const result: any = await getContentfulEntriesByType({ apiProps, contentType: CONTENT_TYPE });
+	if (!result || !Array.isArray(result.items)) {
+		return { success: true, pages: [] };
 	}
 
-	const pages = result.entries
-		.map((entry: any) => entry.fields.pageName?.['en-US'])
-		.filter((name: any) => name !== undefined)
+	const pages = result.items
+		.map((entry: any) => (entry && entry.fields && entry.fields.pageName) ? (entry.fields.pageName['en-US'] || entry.fields.pageName) : undefined)
+		.filter((name: any) => typeof name === 'string')
 		.sort();
 
-	return {
-		success: true,
-		pages,
-	};
+	return { success: true, pages };
 }
 
 /**
@@ -70,29 +65,30 @@ export async function loadContentfulPage(
 		};
 	}
 
-	const result = await searchEntriesByField(CONTENT_TYPE, 'pageName', name, config);
-	
-	if (!result.success) {
-		return {
-			success: false,
-			message: result.message || 'Failed to load page.',
-		};
+	// Use delivery API for reads
+	const apiProps = {
+		base_url: 'https://cdn.contentful.com',
+		space_id: config.spaceId,
+		environment: config.environment || 'master',
+		delivery_access_token: config.accessToken,
+	} as any;
+
+	const result: any = await getContentfulEntriesByType({ apiProps, contentType: CONTENT_TYPE });
+	if (!result || !Array.isArray(result.items) || result.items.length === 0) {
+		return { success: false, message: `Page "${name}" not found.` };
 	}
 
-	if (result.entries.length === 0) {
-		return {
-			success: false,
-			message: `Page "${name}" not found.`,
-		};
-	}
+	const entry = result.items.find((item: any) => {
+		const val = item && item.fields && item.fields.pageName;
+		const pageName = Array.isArray(val) ? val[0] : val;
+		const nameStr = typeof pageName === 'object' ? pageName['en-US'] : pageName;
+		return nameStr === name;
+	});
 
-	const entry = result.entries[0];
-	const pageData = entry.fields.pageData?.['en-US'];
+	if (!entry) return { success: false, message: `Page "${name}" not found.` };
 
-	return {
-		success: true,
-		data: pageData,
-	};
+	const pageData = entry.fields.pageData?.['en-US'] || entry.fields.pageData;
+	return { success: true, data: pageData };
 }
 
 /**

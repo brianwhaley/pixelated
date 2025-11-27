@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import './recipe.css';
+import React, { useState, useEffect, JSX } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SmartImage } from '../cms/cloudinary.image';
 import { useOptionalPixelatedConfig } from '../config/config.client';
+import './recipe.css';
 
 /* 
 TODO #9 Recipe Component: Change URL so you can deep link to a specific recipe
@@ -13,25 +13,57 @@ TODO: #22 Recipe Component: Convert to TypeScript
 /* http://microformats.org/wiki/h-recipe */
 
 
-/* ========== RECIPE BOOK ========== */
-export function RecipeBook(props) {
-	RecipeBook.propTypes = {
-		recipeData: PropTypes.object.isRequired,
-		recipeCategories: PropTypes.array.isRequired
+type RecipeType = {
+	type: string;
+	properties: {
+		name: string;
+		summary: string;
+		author: string;
+		published: string;
+		yield: string;
+		duration: string;
+		ingredients: string[];
+		instructions: string[];
+		nutrition: string;
+		photo: string;
+		category: string;
+		license: string;
 	};
+};
 
+
+
+
+/* ========== RECIPE BOOK ========== */
+RecipeBook.propTypes = {
+	recipeData: PropTypes.shape({
+		items: PropTypes.array.isRequired
+	}).isRequired,
+	recipeCategories: PropTypes.array.isRequired
+};
+type RecipeDataType = {
+	items: RecipeType[];
+};
+export type RecipeBookType = {
+	recipeData: RecipeDataType;
+	recipeCategories: string[];
+};
+// export type RecipeBookType = InferProps<typeof RecipeBook.propTypes>;
+export function RecipeBook(props: RecipeBookType) {
+	
 	const [ recipeElems ] = useState( generateMyElems() );
-	const [ outputElems, setOutputElems ] = useState(  ); 
+	const [ outputElems, setOutputElems ] = useState<React.ReactElement[]>([]); 
 	const [ showOnlyCat, setShowOnlyCat ] = useState('');
 	const [ showOnlyRecipe, setShowOnlyRecipe ] = useState(''); 
 
 	function generateMyElems () {
-		const myElems = [];
+		const myElems: any[] = [];
+		const recipeBookItems = props.recipeData.items as RecipeType[];
 		for (const catKey in props.recipeCategories) {
-			const category = props.recipeCategories[catKey];
+			const category: any = props.recipeCategories[catKey];
 			myElems[category] = [];
-			for (const recipeKey in props.recipeData.items) {
-				const recipe = props.recipeData.items[recipeKey];
+			for (const recipeKey in recipeBookItems as RecipeType[]) {
+				const recipe = recipeBookItems[recipeKey] as RecipeType;
 				const cats = recipe.properties.category;
 				if (cats.includes(category)) {
 					myElems[category].push(recipe);
@@ -52,7 +84,7 @@ export function RecipeBook(props) {
 				const cats = recipe.properties.category;
 				const rID = cID + '-r' + (parseInt(recipeKey, 10) + 1);
 				if (cats.includes(category)) {
-					myElems.push(<Recipe key={rID} id={rID} recipeData={recipe} showOnly={showOnlyRecipe} />);
+					myElems.push(<RecipeBookItem key={rID} id={rID} recipeData={recipe} showOnly={showOnlyRecipe} />);
 				}
 			}
 			catKey += 1;
@@ -64,7 +96,7 @@ export function RecipeBook(props) {
 		setOutputElems( outputMyElems() );
 	}, [ showOnlyCat, showOnlyRecipe ]);
 
-	function onRecipePickListChange (optionVal) {
+	function onRecipePickListChange (optionVal: string) {
 		let cID, rID;
 		if (optionVal.includes('-')) {
 			cID = optionVal.substring(0, optionVal.indexOf('-'));
@@ -92,32 +124,40 @@ export function RecipeBook(props) {
 	);
 }
 
-/* ========== RECIPE CATEGORY ========== */
-export function RecipeCategory(props) {
-	RecipeCategory.propTypes = {
-		id: PropTypes.string.isRequired,
-		className: PropTypes.string.isRequired,
-		category: PropTypes.string.isRequired,
-		showOnly: PropTypes.string.isRequired
-	};
 
-	const isHidden = ((props.showOnly.length > 0) && (!(props.id.includes(props.showOnly))) ? { display: 'none' } : { display: 'initial' });
+
+/* ========== RECIPE CATEGORY ========== */
+RecipeCategory.propTypes = {
+	id: PropTypes.string.isRequired,
+	className: PropTypes.string.isRequired,
+	category: PropTypes.string.isRequired,
+	showOnly: PropTypes.string.isRequired
+};
+export type RecipeCategoryType = InferProps<typeof RecipeCategory.propTypes>;
+export function RecipeCategory(props: RecipeCategoryType) {
+	const isHidden = ((props.showOnly.length > 0) && (!(props.id.includes(props.showOnly))) 
+		? { display: 'none' } 
+		: { display: 'initial' });
 	return (
 		<h2 id={props.id} className={props.className} style={isHidden}>{props.category}</h2>
 	);
 }
 
-/* ========== RECIPE ========== */
-export function Recipe (props) {
-	Recipe.propTypes = {
-		recipeData: PropTypes.object.isRequired,
-		id: PropTypes.string.isRequired,
-		showOnly: PropTypes.string.isRequired
-	};
 
+
+/* ========== RECIPE ========== */
+RecipeBookItem.propTypes = {
+	recipeData: PropTypes.object.isRequired,
+	id: PropTypes.string.isRequired,
+	showOnly: PropTypes.string.isRequired
+};
+export type RecipeBookItemType = InferProps<typeof RecipeBookItem.propTypes>;
+export function RecipeBookItem (props: RecipeBookItemType) {
+	
 	const config = useOptionalPixelatedConfig();
 
-	const recipe = props.recipeData.properties;
+	const recipeData: RecipeType = props.recipeData as RecipeType;
+	const recipe = recipeData.properties;
 	const ingredients = recipe.ingredients.map((ingredient, iKey) =>
 		<li key={iKey} className="p-ingredient">{ingredient}</li>
 	);
@@ -137,7 +177,8 @@ export function Recipe (props) {
 	
 	return (
 		<article id={props.id} className="h-recipe" style={isHidden}>
-			<h3 className="p-name"><a name={props.id} href={`#${props.id}`} onClick={() => { return false; }}>{recipe.name}</a></h3>
+			{ /* name < - > id */ }
+			<h3 className="p-name"><a id={props.id} href={`#${props.id}`} onClick={() => { return false; }}>{recipe.name}</a></h3>
 			{ recipeImage }
 			<p className="p-summary">{recipe.summary}</p>
 			<p>&nbsp;</p>
@@ -157,15 +198,17 @@ export function Recipe (props) {
 	);
 }
 
-/* ========== RECIPE PICK LIST ========== */
-export function RecipePickList(props) {
-	RecipePickList.propTypes = {
-		recipeData: PropTypes.object.isRequired,
-		recipeCategories: PropTypes.array.isRequired,
-		handleRecipePickListChange: PropTypes.func.isRequired
-	};
 
-	const [recipeOptions, setRecipeOptions] = useState([]);
+/* ========== RECIPE PICK LIST ========== */
+RecipePickList.propTypes = {
+	recipeData: PropTypes.object.isRequired,
+	recipeCategories: PropTypes.array.isRequired,
+	handleRecipePickListChange: PropTypes.func.isRequired
+};
+export type RecipePickListType = InferProps<typeof RecipePickList.propTypes>;
+export function RecipePickList(props: RecipePickListType) {
+
+	const [recipeOptions, setRecipeOptions] = useState<JSX.Element[]>([]);
 
 	function generateMyOptions () {
 		const myOpts = [];
@@ -175,8 +218,10 @@ export function RecipePickList(props) {
 			const cID = 'c' + (parseInt(catKey, 10) + 1);
 			myOpts.push(<option key={cID} value={cID}>=== {category.toUpperCase()} ===</option>);
 			let rID = 1;
-			for (const recipeKey in props.recipeData.items) {
-				const recipe = props.recipeData.items[recipeKey];
+			const recipeData = props.recipeData as RecipeDataType;
+			const recipeDataItems = recipeData.items as RecipeType[];
+			for (const recipeKey in recipeDataItems) {
+				const recipe = recipeDataItems[recipeKey];
 				const cats = recipe.properties.category;
 				if (cats.includes(category)) {
 					myOpts.push(<option key={cID + '-r' + rID} value={cID + '-r' + rID}>{recipe.properties.name}</option>);
@@ -187,7 +232,7 @@ export function RecipePickList(props) {
 		return myOpts;
 	}
 
-	function recipeListChanged (e) {
+	function recipeListChanged (e: React.ChangeEvent<HTMLSelectElement>) {
 		if (e.target.value.length > 0) {
 			props.handleRecipePickListChange(e.target.value);
 		} else {

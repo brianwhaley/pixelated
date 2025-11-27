@@ -39,13 +39,15 @@ export interface FlickrConfig {
 		method?: string; // 'flickr.photos.search',
 		api_key: string; 
 		user_id: string; 
-		tags: string;
+		tags?: string; // e.g. 'pixelatedviewsgallery' or photoset_id
+    photoset_id?: string; // e.g. '72177720326903710', for photo albums, or use tags for search
 		extras: string; // 'date_taken,description,owner_name',
 		sort: string; //'date-taken-desc',
 		per_page: number; // 500,
 		format: string; // 'json',
 		photoSize: string; // 'Medium',
-		nojsoncallback: string; // 'true'
+    callback?: string; // function name for JSONP
+		nojsoncallback?: string; // 'true' if no callback function, else omit or set to 'false'
 	}
 }
 

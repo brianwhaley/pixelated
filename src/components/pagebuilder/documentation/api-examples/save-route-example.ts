@@ -24,12 +24,14 @@ export async function POST(request: Request) {
 		const result = await savePage(name, data);
 		
 		// ===== OPTION 2: Contentful storage =====
-		// const config: ContentfulConfig = {
-		// 	spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-		// 	accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN || '',
-		// 	environment: 'master', // or your environment name
-		// };
-		// const result = await savePage(name, data, config);
+		// ===== OPTION 2: Contentful storage (recommended when using the unified PIXELATED config blob) =====
+		// The app reads the unified config on the server via `getFullConfig()` which
+		// sources values from `PIXELATED_CONFIG_JSON` or `PIXELATED_CONFIG_B64`.
+		// Example (server-side):
+		// import { getFullConfig } from '@brianwhaley/pixelated-components/server';
+		// const cfg = getFullConfig();
+		// const contentfulConfig = cfg.contentful;
+		// const result = await savePage(name, data, contentfulConfig);
 
 		return NextResponse.json(result);
 	} catch (error) {
