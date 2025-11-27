@@ -19,7 +19,7 @@ function buildContentfulConfigFromFull(): ContentfulConfig {
 export async function GET() {
 	// Diagnostic logging for CI builds: show which env var is present and whether decoding/parsing succeeds.
 	try {
-		/* if (debug) */ console.log('DEBUG PIXELATED_CONFIG envs:', {
+		if (debug) console.log('DEBUG PIXELATED_CONFIG envs:', {
 			PIXELATED_CONFIG_JSON: !!process.env.PIXELATED_CONFIG_JSON,
 			PIXELATED_CONFIG_B64: !!process.env.PIXELATED_CONFIG_B64,
 		});
@@ -27,7 +27,7 @@ export async function GET() {
 			try {
 				const decoded = Buffer.from(process.env.PIXELATED_CONFIG_B64, 'base64').toString('utf8');
 				const parsed = JSON.parse(decoded);
-				console.info('DEBUG PIXELATED_CONFIG parsed: contentful.space_id=', parsed?.contentful?.space_id || '<none>', 'delivery_token_len=', parsed?.contentful?.delivery_access_token?.length || 0);
+				if (debug) console.info('DEBUG PIXELATED_CONFIG parsed: contentful.space_id=', parsed?.contentful?.space_id || '<none>', 'delivery_token_len=', parsed?.contentful?.delivery_access_token?.length || 0);
 			} catch (e) {
 				console.error('DEBUG PIXELATED_CONFIG_B64 parse error', e);
 			}
