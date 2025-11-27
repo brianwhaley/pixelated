@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
-import { saveContentfulPage } from '@brianwhaley/pixelated-components/server';
+import { saveContentfulPage, getFullConfig } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+
+function buildContentfulConfigFromFull(): ContentfulConfig {
+	const config = getFullConfig();
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const contentfulConfig = (config as any)?.contentful || {};
+	return {
+		spaceId: contentfulConfig.space_id || contentfulConfig.spaceId || '',
+		accessToken: contentfulConfig.management_access_token || contentfulConfig.preview_access_token || contentfulConfig.delivery_access_token || '',
+		environment: contentfulConfig.environment || contentfulConfig.env || 'master',
+	} as ContentfulConfig;
+}
 
 export async function POST(request: Request) {
 	try {
@@ -14,11 +25,11 @@ export async function POST(request: Request) {
 			}, { status: 400 });
 		}
 
-		const config: ContentfulConfig = {
-			spaceId: process.env.CONTENTFUL_SPACE_ID!,
-			accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN!,
-			environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-		};
+		const config: ContentfulConfig = buildContentfulConfigFromFull();
+		if (!config.spaceId || !config.accessToken) {
+			console.error('pagebuilder/save: missing contentful config', { spaceId: config.spaceId, accessTokenPresent: !!config.accessToken });
+			return NextResponse.json({ success: false, message: 'Missing Contentful configuration on server' }, { status: 500 });
+		}
 
 		const result = await saveContentfulPage(name, data, config);
 		return NextResponse.json(result);

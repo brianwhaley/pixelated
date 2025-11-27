@@ -147,7 +147,7 @@ export default function Stkr() {
 
 			</PageSection>
 
-			<PageSection columns={1} background={"var(--accent1-color);"} id="cust-support-section">
+			<PageSection columns={1} background={"var(--accent1-color)"} id="cust-support-section">
 				<GridItem>
 					<CalloutHeader title="Customer Support" />
 					<div className="callout-body">
@@ -163,7 +163,7 @@ export default function Stkr() {
 				</GridItem>
 			</PageSection>
 
-			<PageSection columns={1} background={"var(--accent1-color);"} id="privacy-policy-section">
+			<PageSection columns={1} background={"var(--accent1-color)"} id="privacy-policy-section">
 				<GridItem>
 					<Privacy />
 				</GridItem>

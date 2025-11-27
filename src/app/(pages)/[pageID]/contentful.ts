@@ -17,7 +17,7 @@ export function getContentfulDeliveryConfig(): ContentfulApiType {
 		base_url: 'https://cdn.contentful.com',
 		space_id: process.env.CONTENTFUL_SPACE_ID!,
 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-		access_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN!,
+		delivery_access_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN!,
 	};
 }
 

@@ -58,7 +58,8 @@ export default function Blog() {
 							date={post.date}
 							excerpt={post.excerpt}
 							URL={post.URL}
-							categories={post.categories} />
+							categories={post.categories}
+							featured_image={post.featured_image} />
 					</GridItem>
 				))}
 			</PageSection>

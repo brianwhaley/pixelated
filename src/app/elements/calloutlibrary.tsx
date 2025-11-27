@@ -17,7 +17,6 @@ export function scheduleAppointment(props: CalloutLibraryType) {
 			url='/schedule' 
 			img='/images/icons/calendar-icon.png'
 			imgShape='squircle'
-			cloudinaryEnv="dlbon7tpq"
 			title='Schedule Your Free Digital Assessment'
 			content='Sign up for your free personalized consultations to understand your 
 			current digital presence - web, social media, and search engine optimization - 

@@ -21,7 +21,6 @@ export default function Home() {
 						img='/images/pix/pix-bg-512.png'
 						imgAlt='Pixelated Technologies'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title=''
 						subtitle='Pixelated Technologies is a Digital Services company that 
 							specializes in transforming small businesses through
@@ -43,7 +42,6 @@ export default function Home() {
 						img='/images/icons/webdev.png'
 						imgAlt='Web Development'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title='Web Development'
 						subtitle='Do you need a new website or web application for your business? 
 							Is your current website outdated or not mobile-friendly?
@@ -60,7 +58,6 @@ export default function Home() {
 						img='/images/icons/socialmedia.png'
 						imgAlt='Social Media Marketing'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title='Social Media Marketing'
 						subtitle='Are your social media accounts active and engaging?
 							Are they integrated with your website and other online platforms?
@@ -76,7 +73,6 @@ export default function Home() {
 						img='/images/icons/seo-2.png'
 						imgAlt='Search Engine Optimization'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title='Search Engine Optimization'
 						subtitle='Is your website optimized for search engines?
 							Does it stand out from your competition, ranking well for relevant keywords and phrases?
@@ -91,7 +87,6 @@ export default function Home() {
 						img='/images/icons/content.png'
 						imgAlt='Content Management'
 						imgShape="squircle"
-						cloudinaryEnv="dlbon7tpq"
 						title='Content Management'
 						subtitle='Do you have to rely on a web developer to make updates to your website?
 							Would you like to be able to make updates yourself, without needing technical skills?
@@ -107,7 +102,6 @@ export default function Home() {
 						img='/images/icons/ecommerce.png'
 						imgAlt='eCommerce Solutions'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title='eCommerce Solutions'
 						subtitle='Do you want to move your business online to 
 							start selling your products or services digitally?
@@ -123,7 +117,6 @@ export default function Home() {
 						img='/images/icons/custom.png'
 						imgAlt='Small Business Modernization'
 						imgShape="squircle" 
-						cloudinaryEnv="dlbon7tpq"
 						title='Small Business Modernization'
 						subtitle='Are you looking to integrate your site with other business systems,
 							such as marketing automation tools, billing and finance systems, 
@@ -151,7 +144,6 @@ export default function Home() {
 						img='/images/icons/portfolio.png'
 						imgAlt='Portfolio'
 						imgShape='squircle'
-						cloudinaryEnv="dlbon7tpq"
 						title='Portfolio'
 						content='Explore our portfolio to see examples of the web development 
 							and design work delivered by our team members over the years. 
@@ -171,7 +163,6 @@ export default function Home() {
 						img='/images/brianwhaley-headshot.jpg'
 						imgAlt='Brian T. Whaley'
 						imgShape='squircle'
-						cloudinaryEnv="dlbon7tpq"
 						title='Brian T. Whaley'
 						content='The owner of Pixelated Technologies.
 							Full Stack Developer, Passionate Technologist, 
@@ -181,7 +172,6 @@ export default function Home() {
 							Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food' />
 				</GridItem>
 			</PageSection>
-			
 		</>
 	);
 }
