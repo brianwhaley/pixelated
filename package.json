@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -53,6 +53,7 @@
     "tscClean": "rm -r dist/{images,stories,tests} ",
     "rsync": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist",
     "build2pixelated": "npm run build && rm -rf ../pixelated/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../pixelated/node_modules/@brianwhaley/pixelated-components/",
+    "build2brianwhaley": "npm run build && rm -rf ../brianwhaley/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../brianwhaley/node_modules/@brianwhaley/pixelated-components/",
     "storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
     "buildStorybook": "rm -rf node_modules/.cache && storybook build",
     "test": "react-scripts test"
