@@ -4,7 +4,7 @@
  * Uses Delivery API for fast, cached reads of published content
  */
 
-import { getContentfulEntriesByType } from '@brianwhaley/pixelated-components/server';
+import { getContentfulEntriesByType, getFullConfig } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulApiType } from '@brianwhaley/pixelated-components/server';
 
 const CONTENT_TYPE = 'page';
@@ -13,12 +13,31 @@ const CONTENT_TYPE = 'page';
  * Get Contentful Delivery API config from environment variables
  */
 export function getContentfulDeliveryConfig(): ContentfulApiType {
-	return {
-		base_url: 'https://cdn.contentful.com',
-		space_id: process.env.CONTENTFUL_SPACE_ID!,
-		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-		delivery_access_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN!,
-	};
+	try {
+		const config = getFullConfig();
+		const contentful = (config as any)?.contentful || {};
+		const base_url = contentful.base_url ;
+		const space_id = contentful.space_id || contentful.spaceId || '';
+		const environment = contentful.environment || contentful.env || 'master';
+		const delivery_access_token = contentful.delivery_access_token || contentful.deliveryAccessToken || '';
+
+		return {
+			base_url,
+			space_id,
+			environment,
+			delivery_access_token,
+		} as ContentfulApiType;
+	} catch (_e) {
+		void _e;
+		// Fallback to environment variables if unified config not present
+		console.error('getContentfulDeliveryConfig: failed to read unified config');
+		return {
+			base_url : "",
+			space_id : "",
+			environment : "",
+			delivery_access_token : "",
+		} as ContentfulApiType;
+	}
 }
 
 /**
@@ -26,9 +45,11 @@ export function getContentfulDeliveryConfig(): ContentfulApiType {
  */
 export async function listContentfulPages(): Promise<string[]> {
 	const apiProps = getContentfulDeliveryConfig();
+	// If the config is missing critical fields, return empty list to avoid build-time crash
+	if (!apiProps.space_id || !apiProps.delivery_access_token) return [];
 	const result = await getContentfulEntriesByType({ apiProps, contentType: CONTENT_TYPE });
-	
-	if (!result || !result.items) {
+    
+	if (!result || !Array.isArray(result.items)) {
 		return [];
 	}
 
@@ -52,9 +73,10 @@ export async function listContentfulPages(): Promise<string[]> {
  */
 export async function loadContentfulPage(slug: string) {
 	const apiProps = getContentfulDeliveryConfig();
+	if (!apiProps.space_id || !apiProps.delivery_access_token) return null;
 	const result = await getContentfulEntriesByType({ apiProps, contentType: CONTENT_TYPE });
-	
-	if (!result || !result.items) {
+    
+	if (!result || !Array.isArray(result.items)) {
 		return null;
 	}
 
