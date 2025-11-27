@@ -58,7 +58,7 @@ echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "smartimage everywhere, initial use of configs for pixelated components, fix for wordpress, css fix for row 13, homepage social media fix, grid breakpoint for 768px, timeline breakpoints, blog summary include featured image, imgscale microinteraction, "
+git commit -m "fix for config + contentful + pagebuilder"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

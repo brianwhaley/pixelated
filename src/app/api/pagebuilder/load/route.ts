@@ -8,7 +8,8 @@ function buildContentfulConfigFromFull(): ContentfulConfig {
 	const contentfulConfig = (config as any)?.contentful || {};
 	return {
 		spaceId: contentfulConfig.space_id || contentfulConfig.spaceId || '',
-		accessToken: contentfulConfig.management_access_token || contentfulConfig.preview_access_token || contentfulConfig.delivery_access_token || '',
+		// For loading pages for rendering use the delivery token first (CDN)
+		accessToken: contentfulConfig.delivery_access_token || contentfulConfig.preview_access_token || contentfulConfig.management_access_token || '',
 		environment: contentfulConfig.environment || contentfulConfig.env || 'master',
 	} as ContentfulConfig;
 }

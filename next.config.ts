@@ -12,10 +12,9 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true,
 	},
 	env: {
-		CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-		CONTENTFUL_MANAGEMENT_ACCESS_TOKEN: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
-		CONTENTFUL_DELIVERY_ACCESS_TOKEN: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
-		CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT,
+		// Unified pixelated config: prefer supplying the full JSON or base64 blob
+		PIXELATED_CONFIG_JSON: process.env.PIXELATED_CONFIG_JSON,
+		PIXELATED_CONFIG_B64: process.env.PIXELATED_CONFIG_B64,
 	},
 
 	// Allow Cloudinary remote images so Next Image optimizer can fetch/transform them

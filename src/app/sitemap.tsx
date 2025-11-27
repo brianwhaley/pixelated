@@ -36,13 +36,13 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		// ...(await createImageURLs(origin)),
 		...(await createImageURLsFromJSON(origin /*, optional jsonPath */)),
 		// ...(await createPageBuilderURLs({
-		// 	apiProps: {
-		// 		base_url: 'https://cdn.contentful.com',
-		// 		space_id: process.env.CONTENTFUL_SPACE_ID!,
-		// 		environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-		// 		access_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN!,
-		// 	},
-		// 	origin,
+		// 	// Use the unified PIXELATED config blob (server-side) instead of individual CONTENTFUL_* env vars.
+		// 	// For example, on the server you can call `getFullConfig()` from the pixelated-components server
+		// 	// package and pass `cfg.contentful` to the PageBuilder URL helper.
+		// 	// Example (server-side):
+		// 	// const cfg = getFullConfig();
+		// 	// const apiProps = cfg.contentful;
+		// 	// ...(await createPageBuilderURLs({ apiProps, origin })),
 		// })),
 	];
 	console.log("Generated sitemap entries:", sitemap.length);

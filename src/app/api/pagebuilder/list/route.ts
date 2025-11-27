@@ -2,13 +2,16 @@ import { NextResponse } from 'next/server';
 import { listContentfulPages, getFullConfig } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
+const debug = false;
+
 function buildContentfulConfigFromFull(): ContentfulConfig {
 	const config = getFullConfig();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const contentfulConfig = (config as any)?.contentful || {};
 	return {
 		spaceId: contentfulConfig.space_id || contentfulConfig.spaceId || '',
-		accessToken: contentfulConfig.management_access_token || contentfulConfig.preview_access_token || contentfulConfig.delivery_access_token || '',
+		// For listing pages we need a delivery token (CDN) so prefer delivery_access_token first
+		accessToken: contentfulConfig.delivery_access_token || contentfulConfig.preview_access_token || contentfulConfig.management_access_token || '',
 		environment: contentfulConfig.environment || contentfulConfig.env || 'master',
 	} as ContentfulConfig;
 }
@@ -16,7 +19,7 @@ function buildContentfulConfigFromFull(): ContentfulConfig {
 export async function GET() {
 	// Diagnostic logging for CI builds: show which env var is present and whether decoding/parsing succeeds.
 	try {
-		console.info('DEBUG PIXELATED_CONFIG envs:', {
+		/* if (debug) */ console.log('DEBUG PIXELATED_CONFIG envs:', {
 			PIXELATED_CONFIG_JSON: !!process.env.PIXELATED_CONFIG_JSON,
 			PIXELATED_CONFIG_B64: !!process.env.PIXELATED_CONFIG_B64,
 		});
