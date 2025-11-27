@@ -6,15 +6,27 @@ import type { PixelatedConfig } from './config.types';
  */
 export function getFullConfig(): PixelatedConfig {
 	const raw = process.env.PIXELATED_CONFIG_JSON || (process.env.PIXELATED_CONFIG_B64 && Buffer.from(process.env.PIXELATED_CONFIG_B64, 'base64').toString('utf8'));
-	if (!raw) return {} as PixelatedConfig;
+	if (!raw) {
+		console.error('PIXELATED_CONFIG not found: neither PIXELATED_CONFIG_JSON nor PIXELATED_CONFIG_B64 is set in the environment.');
+		return {} as PixelatedConfig;
+	}
+	const source = process.env.PIXELATED_CONFIG_JSON ? 'PIXELATED_CONFIG_JSON' : 'PIXELATED_CONFIG_B64';
 	try {
 		const parsed = JSON.parse(raw);
+		// Log non-sensitive diagnostics so CI/build logs can show which env was used and the raw size.
+		try {
+			if (process.env.NODE_ENV === 'production') {
+				console.info(`PIXELATED_CONFIG loaded from ${source}; raw length=${raw.length}`);
+			} else {
+				console.debug(`PIXELATED_CONFIG loaded from ${source}; raw length=${raw.length}`);
+			}
+		} catch (_e) {
+			void _e;
+			/* ignore logging errors */
+		}
 		return parsed as PixelatedConfig;
 	} catch (err) {
-		// In server environments we prefer to fail loud in logs but return an empty config to avoid crashes
-		// Consumer apps should validate presence of required keys during startup.
-		 
-		console.error('Failed to parse PIXELATED_CONFIG JSON', err);
+		console.error('Failed to parse PIXELATED_CONFIG JSON; source=', source, 'rawLength=', raw.length, err);
 		return {} as PixelatedConfig;
 	}
 }
@@ -41,7 +53,12 @@ export function getClientOnlyConfig(full?: PixelatedConfig): PixelatedConfig {
 		return out;
 	}
 
-	return strip(src) as PixelatedConfig;
+	try {
+		return strip(src) as PixelatedConfig;
+	} catch (err) {
+		console.error('Failed to strip secrets from config', err);
+		return {} as PixelatedConfig;
+	}
 }
 
 export default getFullConfig;
