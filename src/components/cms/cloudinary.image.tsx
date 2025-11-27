@@ -17,11 +17,37 @@ function parseNumber(v?: string | number): number | undefined {
 	return undefined;
 }
 
-
-function generateSrcSet(src: string, productEnv: string | null | undefined, widths: number[], opts: { quality?: number | null; transforms?: string | null; cloudinaryDomain?: string }) {
-	if (!productEnv) return '';
-	return widths.map(w => `${buildCloudinaryUrl({ src, productEnv, width: w, quality: opts.quality ?? 75, transforms: opts.transforms ?? undefined, cloudinaryDomain: opts.cloudinaryDomain })} ${w}w`).join(', ');
+function safeString(str: any) {
+	return (str === undefined || str === null) 
+		? undefined 
+		: String(str);
 }
+
+function sanitizeString(str: any) {
+	return (str === undefined || str === null) 
+		? undefined 
+		: String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function generateSrcSet(
+	src: string, 
+	productEnv: string | null | undefined, 
+	widths: number[], 
+	opts: { 
+		quality?: number | null; 
+		transforms?: string | null; 
+		cloudinaryDomain?: string 
+	}) {
+	if (!productEnv) return '';
+	return widths.map(w => `${buildCloudinaryUrl({ 
+		src, productEnv, 
+		width: w, 
+		quality: opts.quality ?? 75, 
+		transforms: opts.transforms ?? undefined, 
+		cloudinaryDomain: opts.cloudinaryDomain })} ${w}w`).join(', ');
+}
+
+
 
 
 const SMARTIMAGE_PROP_TYPES = {
@@ -54,6 +80,7 @@ export function SmartImage(props: SmartImageProps) {
 	const {
 		src,
 		alt,
+		id, name, title,
 		cloudinaryEnv,
 		cloudinaryDomain = CLOUDINARY_DOMAIN,
 		cloudinaryTransforms = CLOUDINARY_TRANSFORMS,
@@ -69,28 +96,28 @@ export function SmartImage(props: SmartImageProps) {
 	} = props as SmartImageProps;
 
 	const newProps = { ...props };
-
-	// If the consumer app provided a global config via PixelatedClientConfigProvider or PixelatedServerConfigProvider, prefer that
-	// unless an explicit prop is passed.
 	const config = useOptionalPixelatedConfig();
-	const cloudCfg = config?.cloudinary
-	;
-	// merge cloudinary config and cloudinary props
-	newProps.cloudinaryEnv = String(cloudinaryEnv ?? cloudCfg?.product_env);
-	newProps.cloudinaryDomain = String(cloudCfg?.baseUrl ?? cloudinaryDomain);
-	newProps.cloudinaryTransforms = String(cloudinaryTransforms ?? cloudCfg?.transforms);
+	const cloudCfg = config?.cloudinary;
+	newProps.cloudinaryEnv = safeString(cloudinaryEnv ?? cloudCfg?.product_env);
+	newProps.cloudinaryDomain = safeString(cloudCfg?.baseUrl ?? cloudinaryDomain);
+	newProps.cloudinaryTransforms = safeString(cloudinaryTransforms ?? cloudCfg?.transforms);
 	newProps.fetchPriority = aboveFold ? 'high' : fetchPriority;
 	newProps.loading = aboveFold ? 'eager' : loading;
 	newProps.decoding = aboveFold ? 'sync' : decoding;
 	newProps.preload = aboveFold ? true : preload;
-	newProps.src = String(src);
-	newProps.title = String(imgProps.title);
-	newProps.name = String(imgProps.name);
-	newProps.id = String(imgProps.id);
-	newProps.alt = String(alt);
+	newProps.src = safeString(src) ?? (src as any) ?? undefined;
+	newProps.id = safeString(id);
+	newProps.name = safeString(name);
+	newProps.title = safeString(title);
+	newProps.alt = safeString(alt) ?? '';
+	newProps.width = parseNumber(width) || 500;
+	newProps.height = parseNumber(height) || 500;
 
-	const imgRef = React.useRef<HTMLImageElement | null>(null);
-	const baseWidth = parseNumber(width);
+	const filename = (newProps.src).split('/').pop()?.split('?')[0] || '';
+	const imageName = filename.replace(/\.[^.]+$/, '');
+	newProps.id = newProps.id || newProps.name || sanitizeString(newProps.title) || sanitizeString(newProps.alt) || sanitizeString(imageName);
+	newProps.name = newProps.name || newProps.id || sanitizeString(newProps.title) || sanitizeString(newProps.alt) || sanitizeString(imageName);
+	newProps.title = newProps.title || newProps.alt || sanitizeString(imageName);
 
 	// if(Array.isArray(src))
 	const finalSrc = newProps.cloudinaryEnv
@@ -99,15 +126,15 @@ export function SmartImage(props: SmartImageProps) {
 			productEnv: newProps.cloudinaryEnv, 
 			cloudinaryDomain: newProps.cloudinaryDomain, 
 			quality, 
-			width: baseWidth ?? undefined, 
+			width: newProps.width ?? undefined, 
 			transforms: newProps.cloudinaryTransforms ?? undefined })
 		: String(src);
 
 	let responsiveSrcSet: string | undefined;
 	let responsiveSizes: string | undefined;
 	if (newProps.cloudinaryEnv) {
-		if (baseWidth) {
-			const widths = [Math.ceil(baseWidth * 0.5), baseWidth, Math.ceil(baseWidth * 1.5), Math.ceil(baseWidth * 2)];
+		if (newProps.width) {
+			const widths = [Math.ceil(newProps.width * 0.5), newProps.width, Math.ceil(newProps.width * 1.5), Math.ceil(newProps.width * 2)];
 			responsiveSrcSet = generateSrcSet(
 				String(src), 
 				newProps.cloudinaryEnv, 
@@ -116,7 +143,7 @@ export function SmartImage(props: SmartImageProps) {
 					transforms: newProps.cloudinaryTransforms ?? undefined, 
 					cloudinaryDomain: newProps.cloudinaryDomain 
 				});
-			responsiveSizes = `${baseWidth}px`;
+			responsiveSizes = `${newProps.width}px`;
 		} else {
 			const breakpoints = [320, 640, 768, 1024, 1280, 1536];
 			responsiveSrcSet = generateSrcSet(
@@ -131,31 +158,21 @@ export function SmartImage(props: SmartImageProps) {
 		}
 	}
 
-	const sanitize = (s?: string) => s ? s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') : undefined;
-	const filename = (newProps.src).split('/').pop()?.split('?')[0] || '';
-	const imageName = filename.replace(/\.[^.]+$/, '');
-	const semanticId = newProps.id || newProps.name || sanitize(newProps.title) || sanitize(newProps.alt) || sanitize(imageName);
-	const semanticName = newProps.name || newProps.id || sanitize(newProps.title) || sanitize(newProps.alt) || sanitize(imageName);
-	const semanticTitle = newProps.title || newProps.alt;
-
-	const semanticProps: Record<string, any> = {};
-	if (semanticId) semanticProps.id = semanticId;
-	if (semanticName) semanticProps.name = semanticName;
-	if (semanticTitle) semanticProps.title = semanticTitle;
-
 	const isDecorative = newProps.alt === '';
 	const decorativeProps = isDecorative ? ({ 'aria-hidden': true, role: 'presentation' } as any) : {};
 
 	try {
 		return (
 			<Image
-				{...semanticProps}
-				{...decorativeProps}
 				{...imgProps}
+				{...decorativeProps}
 				src={finalSrc}
 				alt={newProps.alt}
-				width={typeof width === 'string' ? parseInt(width, 10) : (width as number)}
-				height={typeof height === 'string' ? parseInt(height, 10) : (height as number)}
+				id={newProps.id}
+				name={newProps.name}
+				title={newProps.title}
+				width={newProps.width}
+				height={newProps.height}
 				sizes={imgProps.sizes || responsiveSizes}
 				quality={quality}
 				fetchPriority={newProps.fetchPriority}
@@ -168,16 +185,20 @@ export function SmartImage(props: SmartImageProps) {
 		if (typeof console !== 'undefined') console.warn('next/image unavailable, falling back to <img>', e);
 	}
 
+	const imgRef = React.useRef<HTMLImageElement | null>(null);
+
 	return (
 		<img
-			{...semanticProps}
-			{...decorativeProps}
 			{...imgProps}
+			{...decorativeProps}
 			ref={imgRef}
 			src={finalSrc}
 			alt={newProps.alt}
-			width={typeof width === 'string' ? parseInt(width, 10) : width}
-			height={typeof height === 'string' ? parseInt(height, 10) : height}
+			id={newProps.id}
+			name={newProps.name}
+			title={newProps.title}
+			width={newProps.width}
+			height={newProps.height}
 			srcSet={responsiveSrcSet || imgProps.srcSet}
 			sizes={imgProps.sizes || responsiveSizes}
 			fetchPriority={newProps.fetchPriority}
