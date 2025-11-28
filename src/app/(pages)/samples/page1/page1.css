@@ -44,6 +44,10 @@ header {
     }
 }
 
+main > section:first-child {
+    padding-top: 30px;
+}
+
 @media screen and (max-width: 768px) {
     .header-nav {
         float: left;
@@ -81,25 +85,6 @@ nav {
 main {
     background-color: white;
 }
-
-footer {
-    width: 100%;
-    text-align: center;
-    background-color: white;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 0.5)), 
-        url(https://static.vecteezy.com/system/resources/previews/052/544/850/non_2x/fresh-green-lawn-grass-close-up-isolated-on-transparent-background-free-png.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-.socialContainer {
-    margin-bottom: 50px;
-}
-
 
 #header-callout-section,
 #landscape-callout-section,
@@ -199,16 +184,27 @@ footer {
     }
 } 
 
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.5), 
+        rgba(255, 255, 255, 0.5)), 
+        url(https://static.vecteezy.com/system/resources/previews/052/544/850/non_2x/fresh-green-lawn-grass-close-up-isolated-on-transparent-background-free-png.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 #footer-callout-section {
-    padding: 50px 0;
+    padding: 30px 0;
 
     .menuWrapper {
         margin-bottom: 20px;
     }
-    hr {
-        margin: 0px auto 20px auto;
-        width: 80%;
+    .menu {
+        padding: 0;
     }
 }
 

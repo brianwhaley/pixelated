@@ -1,0 +1,126 @@
+ :root {
+    --primary-color: #7CB342;
+    --secondary-color: #E91E63;
+    --accent-color: #FFC107;
+    --bg-color: #F5F5F5;
+    --text-color: #212121;
+    --headline-font: 'Shrikhand', Arial Black;
+    --body-font: 'Montserrat', sans-serif;
+ }
+
+body {
+    background-color: var(--bg-color) !important;
+    font-family: var(--body-font);
+    color: var(--text-color);
+}
+
+body.buttonring .callout button:hover,
+body.buttonring .callout.overlay button:hover {
+    outline-color: var(--primary-color) !important; 
+}
+
+a, a:visited, a:hover, a:active {
+    color: var(--primary-color);
+    text-decoration-color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--headline-font); 
+    -webkit-text-stroke: 0.1px var(--bg-color);
+}
+h1 { -webkit-text-stroke: 0px; font-size: 2.5em; }
+h2 { -webkit-text-stroke: 0px; font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.0em; }
+
+.pageHeader {
+    font-size: 3.25em;
+    background-color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.section-background-image {
+    object-position: center center;
+	opacity: 0.5;
+}
+
+.pageSectionHeader {
+    font-variant: small-caps;
+    font-size: 2.0em;;
+}
+
+.panelMenuButton, #panelMenuButton {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.panelMenuButton .hamburger {
+    font-family: Verdana;
+}
+
+.accordionMenuWrapper, .accordionDown, .accordionUp {
+    top: 40px;
+    background-color: var(--primary-color);
+}
+.accordionMenu > ul > li > a {
+    background-blend-mode: normal;
+    background-color: #ffffff;
+    background-image: none;
+}
+
+.accordionMenu > ul > li > a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.menuItem a {
+    background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .menuWrapper {
+        display: none;
+    }
+    .panelMenuButton, #panelMenuButton {
+        display: block;
+    }
+}
+
+main {
+    margin-bottom: 30px;
+}
+
+#hero-section  { 
+    margin-bottom: 0px;
+
+    .section-background-image {
+        object-position: center center;
+        opacity: 1.0;
+    }
+    h2 {
+        font-size: 64px;
+        -webkit-text-stroke: 0.3px var(--primary-color);
+        color: #fff;
+        text-shadow: 0 0 10px var(--text-color); /* Horizontal offset, vertical offset, blur radius, color of the shadow */
+    }
+    .calloutButton button {
+        background-color: var(--secondary-color);
+    }
+    .calloutButton button a {
+        color: #fff;
+    }
+}
+
+#review-section .pageSectionHeader {
+    margin-bottom: 0px;
+}
+
+#footer-copyright-section {
+    background-color: var(--primary-color);
+    color: #fff;
+}

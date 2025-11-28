@@ -1,0 +1,127 @@
+This brand brief captures the energy, flavor, and mobility of the "Holy Guacamole" food truck. The focus is on creating a fun, memorable identity that prioritizes fresh ingredients and the urgency of street food culture.
+
+1. Brand Overview & Persona
+Brand Name: Holy Guacamole
+
+Industry: Food Truck / Mexican Street Food
+
+Concept: Authentic Mexican street flavors served with a vibrant, modern, and slightly cheeky twist. We prioritize fresh, high-quality ingredients—especially our namesake avocados. We aren't just selling tacos; we're selling a spontaneous, delicious moment in your day.
+
+Brand Voice: Enthusiastic, flavor-obsessed, irreverent, fun, and welcoming. We take our food seriously, but never ourselves.
+
+Tagline Ideas:
+
+Bless Your Tastebuds.
+
+Worship the Taco.
+
+Fresh. Fast. Divine.
+
+2. Visual Identity: Color Scheme
+The palette is designed to be appetizing, high-energy, and easily spotted from down the street. It leans heavily on fresh ingredient colors with a pop of fiesta energy.
+
+Primary Color: "Avocado Smash" (Hex: #7CB342) - A vibrant, fresh green representing our core ingredient and freshness.
+
+Secondary Color: "Fiesta Pink" (Hex: #E91E63) - A hot, energetic pink often found in Mexican folk art. It provides striking contrast to the green and adds a sense of fun.
+
+Accent Color: "Street Corn Gold" (Hex: #FFC107) - A warm, inviting yellow representing masa, sunshine, and corn.
+
+Neutral/Background: "Crema" (Hex: #F5F5F5) - An off-white/light cream for website backgrounds and menus to ensure readability without the harshness of pure white.
+
+Text/Dark Accent: "Charcoal Grill" (Hex: #212121) - A deep, almost-black gray for primary text and logo outlines.
+
+3. Typography (Font Choice)
+The fonts need to balance a hand-painted street sign feel with high readability on mobile devices.
+
+Headline / Logo Font: Shrikhand
+
+Style: A bold, retro, expressive display script with curves that mimic sauces and satisfying fullness. It feels boisterous and friendly.
+
+Usage: Main logo, section headers on the website, menu item titles.
+
+Body / Utility Font: Montserrat
+
+Style: A geometric, highly legible sans-serif font. It is clean, modern, and works perfectly on small screens (crucial for customers looking up a food truck on their phone).
+
+Usage: Paragraph text, menu descriptions, location details, buttons.
+
+4. Logo Design Conceptualization
+Style: Illustrative badge style with a hand-drawn feel, laid out horizontally for versatile use on the side of a truck, website headers, and bumper stickers.
+
+Visual Description: On the far left, there is a stylized illustration of a halved avocado with the pit still in it. Hovering just above the avocado pit is a glowing golden halo (the "Holy" element).
+
+To the immediate right of the illustration is the brand name in the Shrikhand font, rendered in the "Charcoal Grill" color with a slight "Avocado Smash" green outline.
+
+The word "HOLY" is smaller, perched slightly above.
+
+The word "GUACAMOLE" is large and dominant below it.
+
+A subtle banner ribbon in "Fiesta Pink" runs beneath the text, perhaps containing the tagline "EST. 2024" or "STREET TACOS."
+
+5. Information Design Structure (Site Architecture)
+For a food truck, the website needs to be mobile-first and action-oriented. Customers usually have two immediate questions: "What do they have?" and "Where are they right now?"
+
+The structure is designed as a scrolling "One-Pager" for speed, with anchor links.
+
+Hero Section (The Hook): Immediate vibe setting and main call to action (CTA).
+
+The "Where At?" Bar (Crucial Utility): A dynamic, high-visibility section showing today's location.
+
+The Menu Highlights: Quick overview of core offerings.
+
+The Feed (Social Proof): Instagram integration showing current photos of the food.
+
+About/Our Vibe: Very brief story about freshness.
+
+Catering/Contact Footer: Secondary business goal.
+
+6. Home Page Website Design (Wireframe Concept)
+Layout Philosophy: Mobile-first, bold imagery, high contrast, easy to scan.
+
+HEADER (Sticky Navigation):
+
+Left: Horizontal "Holy Guacamole" logo.
+
+Right: Simple navigation links (Menu, Locations, Catering) and a "Find Us" button in Fiesta Pink.
+
+HERO SECTION (Above the Fold):
+
+Background: A high-resolution, close-up shot of three vibrant tacos and a side of chips dipped in guacamole. The focus is sharp on the food, slightly blurred background showing an outdoor setting.
+
+Headline (Shrikhand font, White text): HOLY SH*T THAT’S GOOD.
+
+Subhead (Montserrat font, White text): Authentic street tacos and the freshest guac on four wheels.
+
+Main CTA Button (Fiesta Pink background): SEE TODAY’S LOCATION.
+
+DYNAMIC LOCATION BAR (The most important strip):
+
+Style: A solid "Avocado Smash" green bar stretching across the screen right below the hero image.
+
+Content: "📍 TODAY: The Railyard Brewery (4pm - 9pm) | TOMORROW: Downtown Farmers Market."
+
+SECTION: THE GOODS (Menu Teaser):
+
+Headline: OUR HOLY TRINITY.
+
+Layout: Three column layout (stacks vertically on mobile). Each column features a circular photo of the food item, a bold name, and a short description.
+
+Item 1: The Al Pastor. (Marinated pork, pineapple fiery salsa).
+
+Item 2: The Sainted Guac. (Made fresh hourly. Lime, cilantro, serrano, magic).
+
+Item 3: Esquites Street Corn. (Cup of roasted corn, cotija, chili powder, crema).
+
+Button: VIEW FULL MENU.
+
+SECTION: THE VIBE (Instagram Feed):
+
+Headline: FRESH OFF THE GRID.
+
+Content: An embedded 4-grid display of the latest Instagram posts, showing lines of customers, close-ups of food being made, and the truck at sunset. This proves the truck is active and popular.
+
+FOOTER:
+
+Background: Charcoal Grill dark gray.
+
+Content: "Need Tacos at Your Party?" (Link to Catering inquiry form). Social media icons (large and tappable). Simple text: © Holy Guacamole 2024.

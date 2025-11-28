@@ -1,7 +1,9 @@
 "use client";
 
-import React, { /* useState, */ useEffect, Suspense } from "react";
-import { Tiles } from "@brianwhaley/pixelated-components";
+import React, { /* useState, */ useEffect } from "react";
+import { Callout, PageHeader } from "@brianwhaley/pixelated-components";
+import { PageSection } from "@brianwhaley/pixelated-components";
+// import { Tiles } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components/server";
 import { deferAllCSS } from "@brianwhaley/pixelated-components";
@@ -14,36 +16,40 @@ import Footer from '@/app/elements/footer';
 
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@/app/globals.css";
+import "./samples.css";
 
 const sampleTiles = [
 	{
 		index: 0, cardIndex: 0, cardLength: 3,
 		link: "/samples/page1",
 		image: "https://s3media.angieslist.com/s3fs-public/exterior-house-landscaped-garden.jpeg",
-		imageAlt: "Sample # 1: Tom's Landscape Services",
+		imageAlt: "Tom's Landscape Services",
 	},
 	{
 		index: 1, cardIndex: 1, cardLength: 3,
 		link: "/samples/page2",
 		image: "https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/08/wedding-photographers-instagram.jpg",
-		imageAlt: "Sample # 2: Momento Studios Photography",
+		imageAlt: "Momento Studios Photography",
 	},
 	{
 		index: 2, cardIndex: 2, cardLength: 3,
 		link: "/samples/page3",
 		image: "https://media.istockphoto.com/id/1198045184/photo/fine-dining-at-lunch.jpg?s=612x612&w=0&k=20&c=LS4QPJuFjbj1IveVKyV0NWC-BlabgyxFTy-dCCoJ35w=",
-		imageAlt: "Sample # 3: The Linen Table, Modern European Cuisine",
+		imageAlt: "The Linen Table, Modern European Cuisine",
 	}, 
 	{
 		index: 3, cardIndex: 3, cardLength: 3,
 		link: "/samples/page4",
 		image: "https://media.istockphoto.com/id/1156464124/photo/bicycle-chain-gearshift-transmission.jpg?b=1&s=612x612&w=0&k=20&c=FV0ZpqjnpW68apt2GFEKQOj4x1uL6TIT3lPtTzguS1E=",
-		imageAlt: "Sample # 4: Velocity Cycling Shop",
+		imageAlt: "Velocity Cycling Shop",
+	},
+	{
+		index: 4, cardIndex: 4, cardLength: 3,
+		link: "/samples/page5",
+		image: "https://img.freepik.com/free-photo/vegetarian-taco-with-beans-guacamole-wooden-table_123827-36208.jpg",
+		imageAlt: "Holy Guacamole Food Truck",
 	}, 
 ];
-
-
-
 
 export default function Samples() {
 	
@@ -84,16 +90,25 @@ export default function Samples() {
 					<div id="page-search" className="noMobile"><Search id="009500278966481927899:bcssp73qony" /></div>
 				</header>
 				<nav>
-					<Suspense fallback={<></>}>
-						<Nav />
-					</Suspense>
+					<Nav />
 				</nav>
 				<main>
-					<section id="landscape-tiles-section">
-						<div className="section-container">
-							<Tiles cards={sampleTiles} rowCount={3}/>
-						</div>
-					</section>
+					<PageHeader title="Sample Page Designs" />
+					<PageSection columns={2} maxWidth="1024px" id="samples-tiles-section">
+						{ /* <Tiles cards={sampleTiles} rowCount={3}/> */ }
+						{sampleTiles.map(tile => (
+							<Callout
+								key={tile.index}
+								style="overlay"
+								boxShape="squircle"
+								url={tile.link}
+								img={tile.image}
+								imgAlt={tile.imageAlt}
+								title={tile.imageAlt}
+								buttonText={"View Sample"}
+							/>
+						))}
+					</PageSection>
 				</main>
 				<footer><Footer /></footer>
 			</body>

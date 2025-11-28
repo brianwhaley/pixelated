@@ -76,6 +76,20 @@
 					"description": "Sample Page 3",
 					"keywords": "pixelated technologies, web design sample page 3" 
 				} , { 
+					"name": "Sample Page 4", 
+					"path": "/samples/page4", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sample Page 4",
+					"description": "Sample Page 4",
+					"keywords": "pixelated technologies, web design sample page 4" 
+				} , { 
+					"name": "Sample Page 5", 
+					"path": "/samples/page5", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Sample Page 5",
+					"description": "Sample Page 5",
+					"keywords": "pixelated technologies, web design sample page 5" 
+				} , { 
 					"name": "NerdJokes", 
 					"path": "/nerdjokes", 
 					"hidden": true,

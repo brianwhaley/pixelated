@@ -5,12 +5,14 @@
 // https://uxwing.com/wp-content/themes/uxwing/download/nature-and-environment/pine-trees-icon.png
 
 import React, { useEffect } from "react";
+import { GridItem, PageSection } from "@brianwhaley/pixelated-components";
 import { MenuSimple } from "@brianwhaley/pixelated-components";
 import { Callout, CalloutButton } from "@brianwhaley/pixelated-components";
 import { Tiles } from "@brianwhaley/pixelated-components";
 import { MicroInteractions } from "@brianwhaley/pixelated-components";
 import SocialTags from "@/app/elements/socialtags";
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 import "./page1.css";
 
 const menuItems = [
@@ -54,7 +56,6 @@ export default function SamplePage1() {
 			<header>
 				<section id="header-callout-section">
 
-
 					<div className="row-12col">
 						<div className="grid-s2-e12">
 							
@@ -75,9 +76,6 @@ export default function SamplePage1() {
 						</div>
 					</div>
 
-
-
-					
 					<div className="row-12col">
 						<div className="grid-s2-e12">
 							<Callout 
@@ -93,31 +91,30 @@ export default function SamplePage1() {
 			</header>
 
 			<main>
-				<section id="landscape-callout-section">
-					<div className="row-12col">
-						<div className="grid-s2-e12">
-							<Callout 
-								layout="vertical"
-								url='./'
-								title="Exceptional Lawn Maintenance and Landscape Designs"
-								content="Tom's Landscape Services offers professional landscaping 
-								throughout the entire state. We bring vivid displays of nature 
-								right to your doorstep through our comprehensive lawn and landscaping services. 
-								Our team of experienced landscapers is committed to embellishing your surroundings 
-								for enhanced aesthetics and functionality. We understand that every client has 
-								unique needs and preferences, which is why we offer tailored solutions that 
-								cater to your specific requirements. Our company serves all counties in the state."
-								buttonText="LEARN MORE"
-							/>
-						</div>
-					</div>
-				</section>
+				<PageSection columns={12} maxWidth="1024px" id="landscape-callout-section">
+					<GridItem columnStart={2} columnEnd={12}>
+						<Callout 
+							layout="vertical"
+							url='./'
+							title="Exceptional Lawn Maintenance and Landscape Designs"
+							content="Tom's Landscape Services offers professional landscaping 
+							throughout the entire state. We bring vivid displays of nature 
+							right to your doorstep through our comprehensive lawn and landscaping services. 
+							Our team of experienced landscapers is committed to embellishing your surroundings 
+							for enhanced aesthetics and functionality. We understand that every client has 
+							unique needs and preferences, which is why we offer tailored solutions that 
+							cater to your specific requirements. Our company serves all counties in the state."
+							buttonText="LEARN MORE"
+						/>
+					</GridItem>
+				</PageSection>
 
-				<section id="landscape-tiles-section">
+				<PageSection columns={1} maxWidth="1024px" id="landscape-tiles-section">
 					<Tiles cards={flickrCards} rowCount={3}/>
-				</section>
+				</PageSection>
 
-				<section id="schedule-callout-section">
+		
+				<PageSection columns={1} maxWidth="1024px" id="schedule-callout-section">
 					<Callout 
 						img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/bednar-portfolio-07.jpg"
 						layout="horizontal"
@@ -136,105 +133,100 @@ export default function SamplePage1() {
 							landscape reflects the customer's personal style."
 						buttonText="LEARN MORE"
 					/>
-				</section>
+				</PageSection>
 
-				<section id="landscape-services-section">
-					<div className="row-12col">
-						<div className="grid-s2-e12">
-							<Callout 
-								layout="vertical"
-								title="Our Comprehensive Lawn and Landscaping Services"
-								content="Our team of skilled craftsmen is committed to delivering exceptional results 
-								using the highest quality materials and techniques. We believe in creating 
-								landscapes that not only enhance the beauty of the surroundings but also 
-								stand the test of time. Our meticulous craftsmanship, combined with our 
-								unwavering commitment to customer satisfaction, sets us apart. 
-								When you choose our company, you can expect nothing less than the 
-								finest quality workmanship, personalized service, and breathtaking landscapes 
-								that will exceed your expectations. Experience the difference that 
-								our passion for landscaping can make, and let us transform 
-								your outdoor space into a true masterpiece."
-								buttonText="VIEW ALL SERVICES"
-							/>
-						</div>
-
-						<div className="grid-s2-e12">
-							<div className="row-4col">
-								<div className="gridItem">
-									<Callout 
-										layout="vertical"
-										img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_lawn-maintenance.png"
-										imgShape="round"
-										subtitle="Lawn Maintenance"
-									/>
-								</div>
-								<div className="gridItem">
-									<Callout 
-										layout="vertical"
-										img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_landscape-design.png"
-										imgShape="round"
-										subtitle="Landscape Design"
-									/>
-								</div>
-								<div className="gridItem">
-									<Callout 
-										layout="vertical"
-										img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_hardscaping.png"
-										imgShape="round"
-										subtitle="Masonry & Hardscaping"
-									/>
-								</div>
-								<div className="gridItem">
-									<Callout 
-										layout="vertical"
-										img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_snow-removal.png"
-										imgShape="round"
-										subtitle="Snow Removal"
-									/>
-								</div>
+				<PageSection columns={12} maxWidth="1024px" id="landscape-services-section">
+					<GridItem columnStart={2} columnEnd={12}>
+						<Callout 
+							layout="vertical"
+							title="Our Comprehensive Lawn and Landscaping Services"
+							content="Our team of skilled craftsmen is committed to delivering exceptional results 
+							using the highest quality materials and techniques. We believe in creating 
+							landscapes that not only enhance the beauty of the surroundings but also 
+							stand the test of time. Our meticulous craftsmanship, combined with our 
+							unwavering commitment to customer satisfaction, sets us apart. 
+							When you choose our company, you can expect nothing less than the 
+							finest quality workmanship, personalized service, and breathtaking landscapes 
+							that will exceed your expectations. Experience the difference that 
+							our passion for landscaping can make, and let us transform 
+							your outdoor space into a true masterpiece."
+							buttonText="VIEW ALL SERVICES"
+						/>
+					</GridItem>
+					<GridItem columnStart={2} columnEnd={12}>
+						<div className="row-4col">
+							<div className="gridItem">
+								<Callout 
+									layout="vertical"
+									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_lawn-maintenance.png"
+									imgShape="round"
+									subtitle="Lawn Maintenance"
+								/>
+							</div>
+							<div className="gridItem">
+								<Callout 
+									layout="vertical"
+									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_landscape-design.png"
+									imgShape="round"
+									subtitle="Landscape Design"
+								/>
+							</div>
+							<div className="gridItem">
+								<Callout 
+									layout="vertical"
+									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_hardscaping.png"
+									imgShape="round"
+									subtitle="Masonry & Hardscaping"
+								/>
+							</div>
+							<div className="gridItem">
+								<Callout 
+									layout="vertical"
+									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_snow-removal.png"
+									imgShape="round"
+									subtitle="Snow Removal"
+								/>
 							</div>
 						</div>
-
-						<div className="grid-s2-e12">
-							<CalloutButton 
-								title="VIEW ALL SERVICES"
-								url="./"
-							/>
-						</div>
-
-
-					</div>
-				</section>
-
+					</GridItem>
+					<GridItem columnStart={2} columnEnd={12}>
+						<CalloutButton 
+							title="VIEW ALL SERVICES"
+							url="./"
+						/>
+					</GridItem>
+				</PageSection>
 
 			</main>
+			
 			<footer>
-				<section id="footer-callout-section">
-					<div className="row-12col">
-						<div className="grid-s2-e12">
-							<Callout 
-								layout="vertical"
-								url='./'
-								title="Transform Your Outdoor Space"
-								buttonText="GET STARTED"
-							/>
-						</div>
-					</div>
+				<PageSection columns={12} id="footer-callout-section">
+					<GridItem columnStart={2} columnEnd={12}>
+						<Callout 
+							layout="vertical"
+							url='./'
+							title="Transform Your Outdoor Space"
+							buttonText="GET STARTED"
+						/>
+					</GridItem>
+					<GridItem columnStart={3} columnEnd={11}>
+						<SocialTags />
+					</GridItem>
+					<GridItem columnStart={2} columnEnd={12}>
+						<MenuSimple menuItems={menuItems} />
+					</GridItem>
+				</PageSection>
 
-					<div className="socialContainer row-12col">
-						<div className="grid-s3-e11">
-							<SocialTags />
+				<PageSection columns={12} id="footer-copyright-section">
+					<GridItem columnStart={2} columnEnd={12}>
+						<hr />
+						<br />
+						<div className="centered">
+							<p className="footer-text">&copy; {new Date().getFullYear()} Pixelatd Technologies. All rights reserved.</p>
 						</div>
-					</div>
+					</GridItem>
+				</PageSection>
 
-					<hr />
-					<MenuSimple menuItems={menuItems} />
-					<hr />
-					<div className="centered">
-						<p className="footer-text">&copy; {new Date().getFullYear()} Pixelatd Technologies. All rights reserved.</p>
-					</div>
-					
-				</section>
 			</footer>
 			
 		</>
