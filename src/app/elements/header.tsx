@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import { SmartImage } from "@brianwhaley/pixelated-components";
 import Social from "@/app/elements/social";
 import Nav from "@/app/elements/nav";
 
@@ -11,7 +12,11 @@ export default function Header() {
 
 			<div className="row-10col">
 				<div className="grid-s1-e3 headerLogo">
-					<a href="/"><img src="/images/palmetto-epoxy-logo.jpg" alt="Palmetto Epoxy Logo" fetchPriority="high" loading="eager" /></a>
+					<a href="/">
+						<SmartImage src="/images/palmetto-epoxy-logo.jpg" 
+							alt="Palmetto Epoxy Logo" aboveFold={true} 
+							fetchPriority="high" loading="eager" />
+					</a>
 				</div>
 				
 
