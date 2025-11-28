@@ -32,6 +32,6 @@ export const usePixelatedConfig = (): PixelatedConfig => {
 };
 
 /** Non-throwing hook — returns null when provider not present */
-export const useOptionalPixelatedConfig = (): PixelatedConfig | null => {
+/* export const useOptionalPixelatedConfig = (): PixelatedConfig | null => {
 	return React.useContext(PixelatedConfigContext);
-};
+}; */

@@ -3,7 +3,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { mergeDeep } from '../utilities/functions';
 import './socialcard.css';
 import { SmartImage } from '../cms/cloudinary.image';
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 
 /* ========== NOTES ==========
 TODO #24 SocialCard Component - Add Blurb FaceBook Github iStock LinkedIn SnapChat ShutterStock TickTock Google News Saved Articles
@@ -271,7 +271,7 @@ SocialCard.propTypes = {
 export type SocialCardType = InferProps<typeof SocialCard.propTypes>;
 /* ========== SOCIALCARD ========== */
 export function SocialCard(props: SocialCardType) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<div className="masonryItem" key={props.card.guid}>
 			<div className="card">

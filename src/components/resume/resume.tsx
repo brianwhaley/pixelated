@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { format } from "date-fns";
 import "./resume.css";
 import "../../css/pixelated.grid.scss";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from "../cms/cloudinary.image";
 
 /* 
@@ -144,7 +144,7 @@ ResumeEvents.propTypes = {
 };
 export type ResumeEventsType = InferProps<typeof ResumeEvents.propTypes>;
 export function ResumeEvents(props: ResumeEventsType) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const myElems = [];
 	const myEvents = props.data;
 	// SORT EVENTS DESCENDING BY END DATE
@@ -340,7 +340,7 @@ ResumeProjects.propTypes = {
 };
 export type ResumeProjectsType = InferProps<typeof ResumeProjects.propTypes>;
 export function ResumeProjects(props: ResumeProjectsType) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const myElems = [];
 	const myEvents = props.data;
 	for (const iKey in myEvents) {

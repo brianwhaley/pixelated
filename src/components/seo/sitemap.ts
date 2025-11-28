@@ -3,7 +3,7 @@ import { getAllRoutes, getAllImages } from "./metadata";
 import { getWordPressItems } from "../cms/wordpress.functions";
 import { getContentfulFieldValues } from "../cms/contentful.delivery";
 import { getEbayAppToken, getEbayItemsSearch } from "../ebay/ebay.functions";
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { getFullPixelatedConfig } from '../config/config';
 // import { getEbayItems } from "../ebay/pixelated.ebay.functions.js";
 // import { getContentfulFieldValues } from "@brianwhaley/pixelated-components";
 // import type { SitemapEntry } from "@brianwhaley/pixelated-components/dist/types";
@@ -84,8 +84,8 @@ export async function createContentfulURLs(props: createContentfulURLsType){
 	const contentType = "carouselCard"; 
 	const field = "title";
 
-	const providerContentfulApiProps = useOptionalPixelatedConfig()?.contentful;
-	const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps, };
+	const providerContentfulApiProps = getFullPixelatedConfig()?.contentful;
+	const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps };
 
 	const contentfulTitles = await getContentfulFieldValues({
 		apiProps: mergedApiProps, contentType: contentType, field: field

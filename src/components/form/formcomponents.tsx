@@ -4,7 +4,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { SmartImage } from "../cms/cloudinary.image";
 import * as FV from "./formvalidations";
 import "./form.css";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 
 
 /* 
@@ -97,7 +97,7 @@ function FormTooltip(props: FormTooltipType) {
 	// 				24BE		I IN CIRCLE
 	// {'\u2139'}
 	let thisID = "tooltip-" + props.id;
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	let tooltipImg = <SmartImage src="/images/icons/tooltip-icon-2.png" 
 		title={props.id + " - " + props.text} 
 		alt={props.id + " - " + props.text} 

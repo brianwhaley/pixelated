@@ -5,7 +5,7 @@ import PropTypes /* , { InferProps } */ from 'prop-types';
 import { DragHandler } from './carousel.drag';
 import './carousel.css';
 import { SmartImage } from '../cms/cloudinary.image';
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 
 /* 
 TODO: #20 Carousel bug conflict with drag and click
@@ -164,7 +164,7 @@ function CarouselCard( props: CarouselCardType ) {
 		styles.transform = 'translateX(-100%)';
 	}
 	const imgFit = props.imgFit ? "img" + capitalize(props.imgFit) : 'imgFill';
-	const config = useOptionalPixelatedConfig();	
+	const config = usePixelatedConfig();	
 	const cardBody = (
 		< div draggable='false'>
 			{ (props.link) ? <div draggable='false' className="carouselCardLink" /> : null }

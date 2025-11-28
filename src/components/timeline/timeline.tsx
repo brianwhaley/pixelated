@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import "./timeline.css";
 import "../../css/pixelated.grid.scss";
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 import { SmartImage } from '../cms/cloudinary.image';
 
 Timeline.propTypes = {
@@ -45,7 +45,7 @@ TimelineItem.propTypes = {
 };
 export type TimelineItemType = InferProps<typeof TimelineItem.propTypes> & { [key: string]: unknown };
 export default function TimelineItem(props: TimelineItemType) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<div className={"timelineContainer timeline" + props.direction }>
 			<div className="timelineContent">

@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { SmartImage } from "../cms/cloudinary.image";
 import "../../css/pixelated.grid.scss";
 import "./layout.scss";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 
 /* ==================== LAYOUT COMPONENTS ====================
 Reusable, scalable layout components for grid and flex layouts.
@@ -224,7 +224,7 @@ SectionBackgroundImage.propTypes = {
 };
 export type SectionBackgroundImageType = InferProps<typeof SectionBackgroundImage.propTypes>;
 export function SectionBackgroundImage(props: SectionBackgroundImageType) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<>
 			{/* <img src={props.backgroundImage} 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, JSX } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { SmartImage } from '../cms/cloudinary.image';
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 import './recipe.css';
 
 /* 
@@ -154,7 +154,7 @@ RecipeBookItem.propTypes = {
 export type RecipeBookItemType = InferProps<typeof RecipeBookItem.propTypes>;
 export function RecipeBookItem (props: RecipeBookItemType) {
 	
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 
 	const recipeData: RecipeType = props.recipeData as RecipeType;
 	const recipe = recipeData.properties;
@@ -263,7 +263,7 @@ export function BackToTop() {
 		});
 		return false;
 	}
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<div className="backToTop">
 			<a href="#top" onClick={scrollToTop}>

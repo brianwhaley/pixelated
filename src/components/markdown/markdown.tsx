@@ -4,7 +4,7 @@
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { SmartImage } from "../cms/cloudinary.image";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 import "./markdown.css";
 
 /* ========== MARKDOWN ========== */
@@ -14,7 +14,7 @@ Markdown.propTypes = {
 export type MarkdownType = InferProps<typeof Markdown.propTypes>;
 export function Markdown(props: { markdowndata: any; }) {	
 	function markdownParser (text: any) {
-		const config = useOptionalPixelatedConfig();
+		const config = usePixelatedConfig();
 		const toHTML = text
 			.replace(/^#{6}\s(.*$)/gim, '<h6>$1</h6>') // h6 tag
 			.replace(/^#{5}\s(.*$)/gim, '<h5>$1</h5>') // h5 tag

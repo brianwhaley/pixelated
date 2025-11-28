@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import Image from 'next/image';
 import { buildCloudinaryUrl } from './cloudinary';
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
 const CLOUDINARY_TRANSFORMS = 'f_auto,c_limit,q_auto,dpr_auto/';
@@ -96,7 +96,7 @@ export function SmartImage(props: SmartImageProps) {
 	} = props as SmartImageProps;
 
 	const newProps = { ...props };
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const cloudCfg = config?.cloudinary;
 	newProps.cloudinaryEnv = safeString(cloudinaryEnv ?? cloudCfg?.product_env);
 	newProps.cloudinaryDomain = safeString(cloudCfg?.baseUrl ?? cloudinaryDomain);

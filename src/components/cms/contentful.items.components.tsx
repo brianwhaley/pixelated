@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel/carousel';
 import type { CarouselCardType } from "../carousel/carousel";
 import { getContentfulEntriesByType, getContentfulEntryByEntryID } from "./contentful.delivery";
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 import { AddToShoppingCart  } from "../shoppingcart/shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "./cloudinary";
@@ -40,7 +40,7 @@ export function ContentfulItems(props: ContentfulItemsType) {
 	const [ assets, setAssets ] = useState<any[]>([]);
 
 	// Merge precedence: defaults < env vars < provider config < explicit props
-	// const providerContentful = useOptionalPixelatedConfig()?.contentful;
+	// const providerContentful = usePixelatedConfig()?.contentful;
 	// const localContentfulApiProps = { ...ContentfulApiProps };
 	/* if (providerContentful) {
 		if (providerContentful.space_id) localContentfulApiProps.space_id = providerContentful.space_id;
@@ -49,7 +49,7 @@ export function ContentfulItems(props: ContentfulItemsType) {
 		if (providerContentful.base_url) localContentfulApiProps.base_url = providerContentful.base_url;
 		if ((providerContentful as any).proxyURL) localContentfulApiProps.proxyURL = (providerContentful as any).proxyURL;
 	} */
-	const providerContentfulApiProps = useOptionalPixelatedConfig()?.contentful;
+	const providerContentfulApiProps = usePixelatedConfig()?.contentful;
 	const mergedApiProps = { ...ContentfulApiProps, ...providerContentfulApiProps, ...props.apiProps, };
 	const [ apiProps ] = useState(mergedApiProps);
 
@@ -163,7 +163,7 @@ export function ContentfulListItem(props: ContentfulListItemType) {
 		? getImg({url: "https://" + thisItem.fields.imageUrl, product_env: props.cloudinaryProductEnv}) 
 		: thisItem.fields.imageUrl;
 
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const imgComponent = <SmartImage src={itemImage} title={thisItem.fields.title} alt={thisItem.fields.title} 
 		cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
 		cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
@@ -250,7 +250,7 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 	const [ assets, setAssets ] = useState({});
 	const [ cards, setCards ] = useState<CarouselCardType[]>([]);
 
-	const providerContentfulApiProps = useOptionalPixelatedConfig()?.contentful;
+	const providerContentfulApiProps = usePixelatedConfig()?.contentful;
 	const [ apiProps ] = useState({ ...ContentfulApiProps, ...providerContentfulApiProps, ...props.apiProps });
 
 	useEffect(() => {

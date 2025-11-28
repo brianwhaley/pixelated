@@ -1,14 +1,16 @@
 // Types for Pixelated integration configuration
 
 export interface CloudinaryConfig {
-  product_env: string;
-  baseUrl?: string; // optional custom CDN base, e.g. https://res.cloudinary.com
-  secure?: boolean;
-  transforms?: string; // e.g. "f_auto,q_auto"
+	product_env: string;
+	baseUrl?: string; // optional custom CDN base, e.g. https://res.cloudinary.com
+	secure?: boolean;
+	transforms?: string; // e.g. "f_auto,q_auto"
+	api_key?: string;
+	api_secret?: string;
 }
 
 export interface ContentfulConfig {
-  proxyURL?: string;
+	proxyURL?: string;
 	base_url: string;
 	space_id: string;
 	environment: string;
@@ -18,75 +20,75 @@ export interface ContentfulConfig {
 }
 
 export interface EbayConfig {
-  proxyURL?: string,
-  appId: string;
-  appCertId: string;
-  sbxAppId: string;
-  sbxAppCertId: string;
-  globalId: string;
-  environment?: string;
-  tokenScope?: string;
-  baseTokenURL?: string,
-  baseSearchURL?: string,
-  qsSearchURL?: string,
-  baseItemURL?: string,
-  qsItemURL?: string,
+	proxyURL?: string,
+	appId: string;
+	appCertId: string;
+	sbxAppId: string;
+	sbxAppCertId: string;
+	globalId: string;
+	environment?: string;
+	tokenScope?: string;
+	baseTokenURL?: string,
+	baseSearchURL?: string,
+	qsSearchURL?: string,
+	baseItemURL?: string,
+	qsItemURL?: string,
 }
 
 export interface FlickrConfig {
 	baseURL: string; // e.g. 'https://api.flickr.com/services/rest/?'
 	urlProps: {
 		method?: string; // 'flickr.photos.search',
-		api_key: string; 
-		user_id: string; 
+		api_key: string;
+		user_id: string;
 		tags?: string; // e.g. 'pixelatedviewsgallery' or photoset_id
-    photoset_id?: string; // e.g. '72177720326903710', for photo albums, or use tags for search
+		photoset_id?: string; // e.g. '72177720326903710', for photo albums, or use tags for search
 		extras: string; // 'date_taken,description,owner_name',
 		sort: string; //'date-taken-desc',
 		per_page: number; // 500,
 		format: string; // 'json',
 		photoSize: string; // 'Medium',
-    callback?: string; // function name for JSONP
+		callback?: string; // function name for JSONP
 		nojsoncallback?: string; // 'true' if no callback function, else omit or set to 'false'
 	}
 }
 
 export interface GoogleAnalyticsConfig {
-  id: string; // e.g. G-XXXXXXX
-  adId?: string; // e.g. AW-XXXXXXXXX
+	id: string; // e.g. G-XXXXXXX
+	adId?: string; // e.g. AW-XXXXXXXXX
 }
 
 export interface GoogleSearchConsoleConfig {
-  id: string;
+	id: string;
 }
 
 export interface HubspotConfig {
-  portalId?: string; // HubSpot portal/account id
-  formId?: string; // default contact form id to embed
-  trackingCode?: string; // optional tracking code snippet or id
-  endpoint?: string; // optional API endpoint for server use
+	portalId?: string; // HubSpot portal/account id
+	formId?: string; // default contact form id to embed
+	trackingCode?: string; // optional tracking code snippet or id
+	endpoint?: string; // optional API endpoint for server use
 }
 
 export interface PaypalConfig {
-    sandboxPayPalApiKey: string;
-		sandboxPayPalSecret: string;
-		payPalApiKey: string;
-		payPalSecret: string;
+	sandboxPayPalApiKey: string;
+	sandboxPayPalSecret: string;
+	payPalApiKey: string;
+	payPalSecret: string;
 }
 
 export interface WordpressConfig {
-  endpoint: string; // REST API endpoint or GraphQL
+	endpoint: string; // REST API endpoint or GraphQL
 }
 
 export interface PixelatedConfig {
-  cloudinary?: CloudinaryConfig;
-  contentful?: ContentfulConfig;
-  ebay?: EbayConfig;
-  featureFlags?: Record<string, boolean>;
-  flickr?: FlickrConfig;
-  googleAnalytics?: GoogleAnalyticsConfig;
-  googleSearchConsole?: GoogleSearchConsoleConfig;
-  hubspot?: HubspotConfig;
-  paypal?: PaypalConfig;
-  wordpress?: WordpressConfig;
+	cloudinary?: CloudinaryConfig;
+	contentful?: ContentfulConfig;
+	ebay?: EbayConfig;
+	featureFlags?: Record<string, boolean>;
+	flickr?: FlickrConfig;
+	googleAnalytics?: GoogleAnalyticsConfig;
+	googleSearchConsole?: GoogleSearchConsoleConfig;
+	hubspot?: HubspotConfig;
+	paypal?: PaypalConfig;
+	wordpress?: WordpressConfig;
 }

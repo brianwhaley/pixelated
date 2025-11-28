@@ -2,7 +2,7 @@
 
 import React, { /* useState, useEffect */ } from "react";
 import PropTypes, { InferProps } from 'prop-types';
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from '../cms/cloudinary.image';
 
 import "./callout.scss";
@@ -87,7 +87,7 @@ export function Callout({
 		}
 	</div> ;
 
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const image =  ( img ) ?
 		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")} >
 			{ (url && !imgClick)

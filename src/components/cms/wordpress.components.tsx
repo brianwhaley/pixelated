@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from './cloudinary.image';
 import type { BlogPostType } from './wordpress.functions';
 import "./wordpress.css";
@@ -19,7 +19,7 @@ export function BlogPostSummary(props: BlogPostType) {
 	const myCategoryImages = Object.entries(props.categories).map(
 		([category, index]) => [category.trim().toLowerCase().replace(/[ /]+/g, '-'), index]
 	).sort();
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const myExcerpt = decodeString(props.excerpt).replace(/\[…\]/g, '<a href="' + props.URL + '" target="_blank" rel="noopener noreferrer">[…]</a>');
 	return (
 		<div className="blogPostSummary">
@@ -75,7 +75,7 @@ export function BlogPostCategories(props: { categories: string[] }) {
 			? category.trim().toLowerCase().replace(/[ /]+/g, '-') 
 			: undefined
 	).sort();
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<div className="blogPostCategories">
 			<div>Categories: </div>

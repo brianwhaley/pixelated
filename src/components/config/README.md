@@ -6,8 +6,8 @@ to components in `pixelated-components`.
 Files added:
 
 - `pixelatedConfigTypes.ts` — TypeScript interfaces describing the supported integrations.
-- `pixelated.config.ts` — helper functions to load/sanitize a master config blob (`getFullConfig`, `getClientOnlyConfig`).
-- `pixelated.config.client.tsx` — React context provider and hooks (`usePixelatedConfig`, `useOptionalPixelatedConfig`).
+- `pixelated.config.ts` — helper functions to load/sanitize a master config blob (`getFullPixelatedConfig`, `getClientOnlyConfig`).
+- `pixelated.config.client.tsx` — React context provider and hooks (`usePixelatedConfig`, `usePixelatedConfig`).
 - `index.ts` — barrel exports.
 - `example.pixelated.config.ts` — an example `pixelated.config.ts` you can copy into your app.
 

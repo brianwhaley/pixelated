@@ -14,7 +14,7 @@ import { Modal, handleModalOpen } from '../general/modal';
 import { Table } from "../general/table";
 import { getCart, getShippingInfo, SetShippingInfo, setDiscountCodes, getRemoteDiscountCodes, getCheckoutData, RemoveFromShoppingCart, ClearShoppingCart, formatAsUSD, getCartItemCount } from "./shoppingcart.functions";
 import type { ShoppingCartType, AddressType, CheckoutType } from "./shoppingcart.functions";
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 import { SmartImage } from '../cms/cloudinary.image';
 import shippingToData from "../../data/shipping.to.json";
 import "./shoppingcart.css";
@@ -221,7 +221,7 @@ ShoppingCartItem.PropTypes = {
 export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 	const thisItem = props.item;
 	const thisItemTarget = "_self"; // "_blank"
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	return (
 		<div className="pixCartItem row-12col">
 			<div className="pixCartItemPhoto grid-s1-e4">
@@ -317,7 +317,7 @@ export function CheckoutItems(props: { checkoutData: CheckoutType }) {
 
 
 export function CartButton(props: {href: string}) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const [ cartCount, setCartCount ] = useState(0);
 	useEffect(() => {
 		// UPDATE CARTCOUNT STATES IF LOCALSTORAGE CHANGES

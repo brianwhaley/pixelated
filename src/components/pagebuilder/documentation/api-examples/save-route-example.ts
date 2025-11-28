@@ -25,11 +25,11 @@ export async function POST(request: Request) {
 		
 		// ===== OPTION 2: Contentful storage =====
 		// ===== OPTION 2: Contentful storage (recommended when using the unified PIXELATED config blob) =====
-		// The app reads the unified config on the server via `getFullConfig()` which
+		// The app reads the unified config on the server via `getFullPixelatedConfig()` which
 		// sources values from `PIXELATED_CONFIG_JSON` or `PIXELATED_CONFIG_B64`.
 		// Example (server-side):
-		// import { getFullConfig } from '@brianwhaley/pixelated-components/server';
-		// const cfg = getFullConfig();
+		// import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+		// const cfg = getFullPixelatedConfig();
 		// const contentfulConfig = cfg.contentful;
 		// const result = await savePage(name, data, contentfulConfig);
 

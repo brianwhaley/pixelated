@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import type { CarouselCardType } from "../carousel/carousel";
 import { Loading } from "../general/loading";
 import { SmartImage } from "../cms/cloudinary.image";
-import { useOptionalPixelatedConfig } from '../config/config.client';
+import { usePixelatedConfig } from '../config/config.client';
 import "./tiles.css";
 import "../../css/pixelated.grid.scss";
 
@@ -59,7 +59,7 @@ Tile.propTypes = {
 };
 export type TileType = InferProps<typeof Tile.propTypes>;
 function Tile( props: TileType ) {
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const tileBody = <div className="tileImage">
 		<SmartImage src={props.image} title={props?.imageAlt ?? undefined} alt={props?.imageAlt ?? ""}
 			cloudinaryEnv={config?.cloudinary?.product_env ?? undefined} />

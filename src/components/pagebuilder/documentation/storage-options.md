@@ -84,8 +84,8 @@ import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server'
 
 // When running on the server, read the unified pixelated config instead of
 // discrete CONTENTFUL_* env vars. Example using the package helper:
-// import { getFullConfig } from '@brianwhaley/pixelated-components/server';
-// const cfg = getFullConfig();
+// import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+// const cfg = getFullPixelatedConfig();
 // const config: ContentfulConfig = cfg.contentful;
 
 // List all pages
@@ -161,8 +161,8 @@ export async function POST(request: Request) {
 
   // Server-side: prefer reading the unified `PIXELATED_CONFIG_JSON` / `PIXELATED_CONFIG_B64`.
   // Example:
-  // import { getFullConfig } from '@brianwhaley/pixelated-components/server';
-  // const cfg = getFullConfig();
+  // import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+  // const cfg = getFullPixelatedConfig();
   // const config: ContentfulConfig = cfg.contentful;
   // const result = await savePage(name, data, config);
   

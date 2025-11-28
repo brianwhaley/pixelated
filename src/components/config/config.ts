@@ -5,7 +5,7 @@ const debug = false;
  * Read the full master config blob from environment.
  * This function is intended for server-side use only.
  */
-export function getFullConfig(): PixelatedConfig {
+export function getFullPixelatedConfig(): PixelatedConfig {
 	const raw = process.env.PIXELATED_CONFIG_JSON || (process.env.PIXELATED_CONFIG_B64 && Buffer.from(process.env.PIXELATED_CONFIG_B64, 'base64').toString('utf8'));
 	if (!raw) {
 		console.error('PIXELATED_CONFIG not found: neither PIXELATED_CONFIG_JSON nor PIXELATED_CONFIG_B64 is set in the environment.');
@@ -26,8 +26,8 @@ export function getFullConfig(): PixelatedConfig {
  * Produce a client-safe copy of a full config by removing secret-like keys.
  * This will walk the object and drop any fields that match a secret pattern.
  */
-export function getClientOnlyConfig(full?: PixelatedConfig): PixelatedConfig {
-	const src = full ?? getFullConfig();
+export function getClientOnlyPixelatedConfig(full?: PixelatedConfig): PixelatedConfig {
+	const src = full ?? getFullPixelatedConfig();
 
 	function isSecretKey(key: string) {
 		return /token|secret|key|password|management|access/i.test(key);
@@ -52,4 +52,3 @@ export function getClientOnlyConfig(full?: PixelatedConfig): PixelatedConfig {
 	}
 }
 
-export default getFullConfig;

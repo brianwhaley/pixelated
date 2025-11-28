@@ -3,7 +3,7 @@ import PropTypes, { InferProps } from 'prop-types';
 // import { getCloudinaryRemoteFetchURL } from "../cms/cloudinary";
 import "./404.css";
 import { SmartImage } from "../cms/cloudinary.image";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 
 FourOhFour.propTypes = {
 	images: PropTypes.array.isRequired,
@@ -24,7 +24,7 @@ export function FourOhFour (props: FourOhFourType) {
 		setImageURL(images[randomIndex].img);
   	}, []);
 
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 
 	if (randomIndex !== null && imageURL /* cloudinaryURL */ !== '') {
 		return (

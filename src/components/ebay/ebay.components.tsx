@@ -9,7 +9,7 @@ import { AddToShoppingCart } from "../shoppingcart/shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/cloudinary";
 import { Loading , ToggleLoading } from "../general/loading";
-import { useOptionalPixelatedConfig } from "../config/config.client";
+import { usePixelatedConfig } from "../config/config.client";
 import "../../css/pixelated.grid.scss";
 import "./ebay.css";
 const debug = false;
@@ -202,7 +202,7 @@ export function EbayListItem(props: EbayListItemType) {
 	const shoppingCartItem = getShoppingCartItem({ thisItem: thisItem, cloudinaryProductEnv: props.cloudinaryProductEnv });
 	// CHANGE EBAY URL TO LOCAL EBAY ITEM DETAIL URL
 	shoppingCartItem.itemURL = itemURL;
-	const config = useOptionalPixelatedConfig();
+	const config = usePixelatedConfig();
 	const itemImageComponent = <SmartImage src={itemImage} title={thisItem.title} alt={thisItem.title} 
 		cloudinaryEnv={props.cloudinaryProductEnv ?? undefined}
 		cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
