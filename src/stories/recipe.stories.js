@@ -1,4 +1,4 @@
-import { RecipeBook } from '../components/recipe/old.recipe';
+import { RecipeBook } from '../components/recipe/recipe';
 import '../components/recipe/recipe.css';
 import RecipeData from '../data/recipes.json';
 import '../css/pixelated.global.css';

@@ -25,6 +25,7 @@ export const alignItemsValues = ['start', 'center', 'end', 'stretch', 'baseline'
 // ========== PAGE SECTION ==========
 PageSection.propTypes = {
 	id: PropTypes.string,
+	className: PropTypes.string,
 	layoutType: PropTypes.oneOf([...layoutTypes]),
 	// Common props
 	gap: PropTypes.string,
@@ -52,6 +53,7 @@ PageSection.propTypes = {
 export type PageSectionType = InferProps<typeof PageSection.propTypes>;
 export function PageSection({
 	id,
+	className,
 	layoutType = 'grid',
 	gap = '10px',
 	maxWidth = '1024px',
@@ -83,7 +85,7 @@ export function PageSection({
 	if (layoutType === 'grid') {
 		return (
 			<section id={id || undefined} 
-				className={`page-section `} 
+				className={"page-section" + (className ? ` ${className}` : '') } 
 				style={sectionStyle}>
 				{backgroundImage && <SectionBackgroundImage backgroundImage={backgroundImage} id={id} />}
 				<div 
@@ -137,6 +139,8 @@ export function PageSection({
 
 // ========== GRID ITEM ==========
 GridItem.propTypes = {
+	id: PropTypes.string,
+	className: PropTypes.string,
 	columnSpan: PropTypes.number,
 	rowSpan: PropTypes.number,
 	columnStart: PropTypes.number,
@@ -149,6 +153,8 @@ GridItem.propTypes = {
 };
 export type GridItemType = InferProps<typeof GridItem.propTypes>;
 export function GridItem({
+	id, 
+	className,
 	columnSpan,
 	rowSpan,
 	columnStart,
@@ -170,10 +176,13 @@ export function GridItem({
 		...(justifySelf && { justifySelf }),
 	};
 	return (
-		<div className={"grid-item" + 
+		/* THIS IS AN OLD STYLE */
+		/* <div className={"grid-item" + */
+ 		<div className={"gridItem" + 
+		(className ? ` ${className}` : '') +
 		(columnStart && columnSpan && !columnEnd ? ` grid-s${columnStart}-w${columnSpan}` : '') + 
 		(columnStart && columnEnd && !columnSpan ? ` grid-s${columnStart}-e${columnEnd}` : '')} 
-		style={itemStyle}>
+		id={(id) ? id : undefined} style={itemStyle}>
 			{children}
 		</div>
 	);

@@ -24,9 +24,9 @@ type RecipeType = {
 		duration: string;
 		ingredients: string[];
 		instructions: string[];
-		nutrition: string;
+		nutrition: any[];
 		photo: string;
-		category: string;
+		category: string[];
 		license: string;
 	};
 };
