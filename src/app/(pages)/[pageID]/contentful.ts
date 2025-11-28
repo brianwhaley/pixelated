@@ -4,7 +4,7 @@
  * Uses Delivery API for fast, cached reads of published content
  */
 
-import { getContentfulEntriesByType, getFullConfig } from '@brianwhaley/pixelated-components/server';
+import { getContentfulEntriesByType, getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulApiType } from '@brianwhaley/pixelated-components/server';
 
 const CONTENT_TYPE = 'page';
@@ -14,7 +14,7 @@ const CONTENT_TYPE = 'page';
  */
 export function getContentfulDeliveryConfig(): ContentfulApiType {
 	try {
-		const config = getFullConfig();
+		const config = getFullPixelatedConfig();
 		const contentful = (config as any)?.contentful || {};
 		const base_url = contentful.base_url ;
 		const space_id = contentful.space_id || contentful.spaceId || '';

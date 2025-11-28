@@ -53,7 +53,7 @@ export default function Schedule() {
 				</GridItem>
 			</PageSection>
 			
-			<PageSection columns={12} background={"var(--secondary-color);"} id="social-section">
+			<PageSection columns={12} background={"var(--secondary-color)"} id="social-section">
 				<GridItem columnStart={3} columnEnd={11}>
 					<SocialTags />
 				</GridItem>

@@ -24,8 +24,8 @@ export default function Blog() {
 			const posts = (await getWordPressItems({ site: wpSite })) ?? [];
 			if(posts) { 
 				const myPosts = posts.sort((a, b) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
-				setWpPosts(myPosts);
 	            ToggleLoading({show: false});
+				setWpPosts(myPosts);
 			}
 		}
 		fetchPosts();

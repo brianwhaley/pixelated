@@ -37,10 +37,10 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 		...(await createImageURLsFromJSON(origin /*, optional jsonPath */)),
 		// ...(await createPageBuilderURLs({
 		// 	// Use the unified PIXELATED config blob (server-side) instead of individual CONTENTFUL_* env vars.
-		// 	// For example, on the server you can call `getFullConfig()` from the pixelated-components server
+		// 	// For example, on the server you can call `getFullPixelatedConfig()` from the pixelated-components server
 		// 	// package and pass `cfg.contentful` to the PageBuilder URL helper.
 		// 	// Example (server-side):
-		// 	// const cfg = getFullConfig();
+		// 	// const cfg = getFullPixelatedConfig();
 		// 	// const apiProps = cfg.contentful;
 		// 	// ...(await createPageBuilderURLs({ apiProps, origin })),
 		// })),

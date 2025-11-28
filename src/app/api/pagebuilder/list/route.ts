@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import { listContentfulPages, getFullConfig } from '@brianwhaley/pixelated-components/server';
+import { listContentfulPages, getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
 import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
 
 const debug = false;
 
 function buildContentfulConfigFromFull(): ContentfulConfig {
-	const config = getFullConfig();
+	const config = getFullPixelatedConfig();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const contentfulConfig = (config as any)?.contentful || {};
 	return {

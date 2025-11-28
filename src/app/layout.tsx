@@ -87,28 +87,28 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					<link rel="preconnect" href="https://farm66.static.flickr.com" />
 				</head>
 				<body>
-					<header>
-						<div id="page-header" className="fixed-header"><Header /></div>
-						<div id="page-header-nav" className="fixed-header-nav">
-							<div className="section-container">
-								<HeaderNav />
-							</div>
-						</div>
-						<div id="fixed-header-spacer"></div>
-						<div id="fixed-header-nav-spacer"></div>
-						<div id="page-search" className="noMobile">
-							<Search id="009500278966481927899:bcssp73qony" />
-						</div>
-					</header>
-					<nav>
-						<Nav />
-					</nav>
 					<PixelatedServerConfigProvider>
+						<header>
+							<div id="page-header" className="fixed-header"><Header /></div>
+							<div id="page-header-nav" className="fixed-header-nav">
+								<div className="section-container">
+									<HeaderNav />
+								</div>
+							</div>
+							<div id="fixed-header-spacer"></div>
+							<div id="fixed-header-nav-spacer"></div>
+							<div id="page-search" className="noMobile">
+								<Search id="009500278966481927899:bcssp73qony" />
+							</div>
+						</header>
+						<nav>
+							<Nav />
+						</nav>
 						<main>{children}</main>
+						<footer>
+							<Footer />
+						</footer>
 					</PixelatedServerConfigProvider>
-					<footer>
-						<Footer />
-					</footer>
 				</body>
 			</html></>
 	);
