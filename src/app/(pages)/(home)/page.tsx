@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { Callout } from "@brianwhaley/pixelated-components";
+import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
@@ -12,11 +13,12 @@ export default function Home() {
 
 	const [ carouselCards , setCarouselCards ] = useState<CarouselCardType[]>([]);
 
+	const config = getFullPixelatedConfig();
 	const apiProps = {
-		base_url: "https://cdn.contentful.com",
-		space_id: "0b82pebh837v",
-		environment: "master",
-		access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+		base_url: config.contentful?.base_url ?? "",
+		space_id: config.contentful?.space_id ?? "",
+		environment: config.contentful?.environment ?? "",
+		delivery_access_token: config.contentful?.delivery_access_token ?? "",
 	};
 
 	useEffect(() => {
@@ -115,7 +117,7 @@ export default function Home() {
 			<section id="sponsor-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s2-e10">
+						<div className="grid-s2-e12">
 							<Callout
 								style='grid'
 								direction='right'

@@ -7,7 +7,7 @@ export default function Social() {
 	return (
 		<div className="section-container">
 			<div className="rowfix-10col">
-				<div className="grid-s1-e5">
+				<div className="grid-s1-e6">
 					<div className="rowfix-5col">
 						<div className="gridItem"><Callout style="full" layout="vertical" imgShape="squircle" url="https://www.facebook.com/palmettoepoxy/" img="/images/logos/facebook-logo.png" imgAlt="Facebook" /></div>
 						<div className="gridItem"><Callout style="full" layout="vertical" imgShape="squircle" url="https://www.instagram.com/palmetto_epoxy/" img="/images/logos/instagram-logo.jpg" imgAlt="Instagram" /></div>
@@ -16,7 +16,7 @@ export default function Social() {
 						<div className="gridItem"><Callout style="full" layout="vertical" imgShape="squircle" url="https://www.yelp.com/biz/palmetto-epoxy-bluffton" img="/images/logos/yelp-logo.png" imgAlt="Yelp" /></div>
 					</div>
 				</div>
-				<div className="grid-s6-e5">
+				<div className="grid-s6-e11">
 					<div className="rowfix-5col">
 						<div className="gridItem"><Callout style="full" layout="vertical" imgShape="squircle" url="https://www.reddit.com/user/palmettoepoxy/" img="/images/logos/reddit-logo.png" imgAlt="Reddit" /></div>
 						<div className="gridItem"><Callout style="full" layout="vertical" imgShape="squircle" url="https://nextdoor.com/pages/palmetto-epoxy-bluffton-sc/" img="/images/logos/nextdoor-logo.png" imgAlt="Nextdoor" /></div>

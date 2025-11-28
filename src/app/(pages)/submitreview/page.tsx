@@ -50,7 +50,7 @@ export default function SubmitReview() {
 			<section className="" id="submitreview-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s1-e12">
+						<div className="grid-s1-e13">
 							<h2 className="centered">
 								Share your experience with Palmetto Epoxy!<br />
 								We value your feedback and <br />

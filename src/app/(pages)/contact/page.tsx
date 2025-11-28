@@ -51,7 +51,7 @@ export default function Contact() {
 			<section className="" id="contactus-section">
 				<div className="section-container">
 					<div className="row-12col">
-						<div className="grid-s1-e5">
+						<div className="grid-s1-e6">
 							<div>
 								Please fill out the form below. 
 								We would LOVE to answer any questions or to setup 
@@ -66,7 +66,7 @@ export default function Contact() {
 								onSubmitHandler={handleSubmit} 
 							/>
 						</div>
-						<div className="grid-s7-e6">
+						<div className="grid-s7-e13">
 							<iframe src={`https://calendar.google.com/calendar/embed?src=${calendarID}&mode=WEEK`} style={{ border: 0 }} width="100%" height="600px" frameBorder="0" scrolling="no"></iframe>
 						</div>
 					</div>

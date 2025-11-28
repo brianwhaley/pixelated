@@ -31,7 +31,8 @@
 			"description": "Contact Palmetto Epoxy by filling out the form or by scheduling an appointment to answer any questions or set up an appointment to talk about Epoxy Flooring. ",
 			"keywords": "Palmetto Epoxy, epoxy floor coatings, contact us, schedule an appointment," 
 		} , { 
-			"name": "", 
+			"name": "Submit Review", 
+			"hidden": true,
 			"path": "/submitreview", 
 			"title": "Palmetto Epoxy - Submit your Review",
 			"description": "Share your experience with Palmetto Epoxy! We value your feedback and would love to hear about your epoxy flooring project. ",

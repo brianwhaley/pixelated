@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
-	images: {
+	/* images: {
 		remotePatterns: [
 			{
 				protocol: "https", 
@@ -18,7 +18,26 @@ const nextConfig: NextConfig = {
 				hostname: "images.ctfassets.net/", 
 			},
 		],
+	}, */
+
+
+	env: {
+		// Unified pixelated config: prefer supplying the full JSON or base64 blob
+		PIXELATED_CONFIG_JSON: process.env.PIXELATED_CONFIG_JSON,
+		PIXELATED_CONFIG_B64: process.env.PIXELATED_CONFIG_B64,
 	},
+
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https', // Or 'http' if needed, but 'https' is recommended
+				hostname: '**', // Allows any hostname
+				port: '', // Optional: specify port if needed
+				pathname: '**', // Optional: allows any pathname
+			},
+		],
+	},
+
 
 
 	async redirects() {

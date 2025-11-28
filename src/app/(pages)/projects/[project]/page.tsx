@@ -6,23 +6,8 @@ import { use, useState, useEffect, useRef } from 'react';
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
 import { setClientMetadata } from '@brianwhaley/pixelated-components';
+import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
-
-// const imageOrigin = "https://images.palmetto-epoxy.com";
-
-/* type Params = {
-  params: {
-    project: string;
-  };
-};
-
-export const generateMetadata = async ({params}: Params): Promise<Metadata> => {
-	// Fetch data or perform server-side logic
-	const title = "Palmetto Epoxy - Projects - " + params.project;
-	return {
-		title
-	};
-};*/
 
 export default function Project({params}: { params: Promise<{ project: string }> }){
 
@@ -36,11 +21,12 @@ export default function Project({params}: { params: Promise<{ project: string }>
 		};
 	}
 
+	const config = getFullPixelatedConfig();
 	const apiProps = {
-		base_url: "https://cdn.contentful.com",
-		space_id: "0b82pebh837v",
-		environment: "master",
-		access_token: "lA5uOeG6iPbrJ2J_R-ntwUdKQesrBNqrHi-qX52Bzh4",
+		base_url: config.contentful?.base_url ?? "",
+		space_id: config.contentful?.space_id ?? "",
+		environment: config.contentful?.environment ?? "",
+		delivery_access_token: config.contentful?.delivery_access_token ?? "",
 	};
 
 	const [ card , setCard ] = useState<Card | null>(null);
@@ -57,10 +43,13 @@ export default function Project({params}: { params: Promise<{ project: string }>
 				searchVal: project
 			});
 			setCard(card);
-			const images = await getContentfulImagesFromEntries({ images: card.fields.carouselImages, assets: cards.includes.Asset });
-			/* for (const img of images) {
-				img.image = img.image.replace("//images.ctfassets.net", imageOrigin);
-			} */
+			let images = await getContentfulImagesFromEntries({ images: card.fields.carouselImages, assets: cards.includes.Asset });
+			images = images.map(img => {
+				return {
+					image: img.image.replace("//images.ctfassets.net", "https://images.ctfassets.net"),
+					imageAlt: img.imageAlt
+				};
+			});
 			setCarouselCards(images);
 		}
 		getCarouselCards(project);

@@ -11,8 +11,8 @@ export default function About() {
 		
 			<section className="" id="aboutus-section">
 				<div className="section-container">
-					<div className="row-5col ">
-						<div className="grid-s2-e3">
+					<div className="row-5col">
+						<div className="grid-s2-e5">
 							<Callout
 								title="About Palmetto Epoxy" 
 								img='/images/dennis-and-martha-aberle.jpg' 

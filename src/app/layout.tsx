@@ -1,12 +1,7 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import { usePathname } from 'next/navigation';
-import { getRouteByKey } from "@brianwhaley/pixelated-components";
-import { MicroInteractions } from "@brianwhaley/pixelated-components"
-import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
-import { deferAllCSS } from "@brianwhaley/pixelated-components";
-import { preloadImages } from "@brianwhaley/pixelated-components";
+import { headers } from "next/headers";
+import { getRouteByKey } from "@brianwhaley/pixelated-components/server";
+import { PixelatedServerConfigProvider } from "@brianwhaley/pixelated-components/server";
+import { LayoutClient } from "./elements/layoutclient";
 import Header from "@/app/elements/header";
 import Footer from "@/app/elements/footer";
 import myRoutes from "@/app/data/routes.json";
@@ -14,32 +9,18 @@ import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 import "@/app/globals.css";
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-	const pathname = usePathname();
+export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+	
+	const reqHeaders: Headers = await (headers() as Promise<Headers>);
+	const path = reqHeaders.get("x-path") ?? "/";
+	const origin = reqHeaders.get("x-origin");
+	const url = reqHeaders.get("x-url") ?? `${origin}${path}`;
+	const pathname = path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
-	const [ url, setURL ] = useState<string>();
-	useEffect(() => {
-		document.addEventListener('DOMContentLoaded', deferAllCSS);
-		preloadImages();
-		deferAllCSS();
-		if (typeof window !== "undefined" ) setURL(window.location.href);
-		loadAllImagesFromCloudinary({ 
-			origin: window.location.origin,
-			product_env: "dlbon7tpq"
-		});
-	}, []);
-
-	useEffect(() => {
-		MicroInteractions({ 
-			buttonring: true,
-			formglow: true,
-			imgtwist: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer',
-		});
-	}, []);
-
 	return (
+		<>
+		<LayoutClient />
 		<html lang="en">
 			<head>
 				<title>{metadata?.title}</title>
@@ -69,10 +50,13 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
 				<link rel="preconnect" href="https://res.cloudinary.com/" />
 			</head>
 			<body>
+				<PixelatedServerConfigProvider>
 				<header><Header /></header>
 				<main>{children}</main>
 				<footer><Footer /></footer>
+				</PixelatedServerConfigProvider>
 			</body>
 		</html>
+		</>
 	);
 }

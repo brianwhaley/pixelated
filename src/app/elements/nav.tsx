@@ -6,6 +6,7 @@ import { MenuSimple } from "@brianwhaley/pixelated-components";
 import myRoutes from '@/app/data/routes.json';
 const allRoutes = myRoutes.routes;
 
+/* 
 const menuItems = allRoutes
 	.filter((thisRoute) => thisRoute.name)
 	.map((thisRoute) => (
@@ -28,11 +29,14 @@ const menuItems = allRoutes
 			return obj; 
 		}
 	});
+*/
 
 export default function Nav() {
 	return (
 		<div className="section-container">
-			<MenuSimple menuItems={menuItems} />
+			<hr />
+			<MenuSimple menuItems={allRoutes} />
+			<hr />
 		</div>
 	);
 }
