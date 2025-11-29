@@ -29,10 +29,17 @@ export function buildCloudinaryUrl(params: { src: string; productEnv: string | n
 	const q = typeof quality === 'number' ? quality : 75;
 	const parts: string[] = ['f_auto', 'c_limit', `q_${q}`, 'dpr_auto'];
 	if (typeof width === 'number' && Number.isFinite(width)) parts.push(`w_${width}`);
-	if (transforms) parts.push(transforms);
+	// if (transforms) parts.push(transforms);
+	const transformArray = transforms ? transforms.split(',') : [];
+	for (const transform of transformArray) {
+		if (!(parts.includes(transform))) {
+			parts.push(transform);
+		}
+	}
 	const t = parts.length ? parts.join(',') : '';
 	const domainAndCloud = productEnv ? joinWithSlash(cloudinaryDomain, productEnv) : cloudinaryDomain;
-	return `${domainAndCloud}/image/fetch/${t}/${url}`;
+	const encodedUrl = url.includes("?") ? encodeURIComponent(url) : url;
+	return `${domainAndCloud}/image/fetch/${t}/${encodedUrl}`;
 }
 
 
