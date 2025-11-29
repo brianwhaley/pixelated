@@ -22,6 +22,7 @@ let ContentfulApiProps = {
  	base_url: "https://cdn.contentful.com",
  	space_id: "soi9w77t7027",
  	environment: "master",
+	management_access_token: "",
  	delivery_access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
 	preview_access_token: "",
 };
@@ -282,12 +283,16 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 					const itemAsset = assetImages.filter( ( asset: any ) => (
 						asset.sys.id === img.sys.id
 					));
+					/* Contentful Asset URLs start with two slashes */
+					const absURL = (itemAsset[0].fields.file.url.startsWith("//")) 
+						? "https:" + itemAsset[0].fields.file.url
+						: itemAsset[0].fields.file.url;
 					if ( itemAsset.length > 0 ) {
 						imageCards.push({
 							index: Number(imgKey),
 							cardIndex: imageCards.length,
 							cardLength: itemImages.length,
-							image: itemAsset[0].fields.file.url,
+							image: absURL,
 							imageAlt: itemAsset[0].fields.title,
 							headerText: "",
 							bodyText: "",
