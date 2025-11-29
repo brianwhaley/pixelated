@@ -87,12 +87,14 @@
     display: none;
 }
 
-.accordionMenu > ul > li > a {
+.accordionMenu > ul > li > a,
+.accordionMenu > ul > ul > li > a {
     background-image: url(/images/pix/pix-bg-bw.gif);
     background-color: rgba(255, 255, 255, 0.5);
     background-blend-mode: overlay;
 }
-.accordionMenu > ul > li > a:hover {
+.accordionMenu > ul > li > a:hover,
+.accordionMenu > ul > ul > li > a:hover {
 	background: #96befab3;
 }
 

@@ -6,7 +6,7 @@
 
 
 import React, { useEffect } from "react";
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
+import { MicroInteractions, SmartImage } from "@brianwhaley/pixelated-components";
 import { MenuSimple, MenuAccordion, MenuAccordionButton } from "@brianwhaley/pixelated-components";
 import { PageSection } from "@brianwhaley/pixelated-components";
 import { Callout } from "@brianwhaley/pixelated-components";
@@ -41,7 +41,10 @@ export default function SamplePage4() {
 			<header>
 				<PageSection id="hero-section" columns={1}
 					backgroundImage="https://media.istockphoto.com/id/1156464124/photo/bicycle-chain-gearshift-transmission.jpg?b=1&s=612x612&w=0&k=20&c=FV0ZpqjnpW68apt2GFEKQOj4x1uL6TIT3lPtTzguS1E=" >
-					<img src="/images/samples/velocity-cycling.png" alt="Velocity Cycling Logo"/>
+					<SmartImage 
+						src="/images/samples/velocity-cycling.png" 
+						alt="Velocity Cycling Logo" 
+						aboveFold={true} />
 				</PageSection>
 
 				<MenuAccordionButton />
@@ -60,6 +63,7 @@ export default function SamplePage4() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout 
+								aboveFold={true}
 								layout="vertical"
 								img="https://www.sefiles.net/images/library/zoom/trek-domane-sl-7-etap-381964-17.jpg"
 								title="Trek Domane SL 7 eTap"
@@ -69,6 +73,7 @@ export default function SamplePage4() {
 						</div>
 						<div className="gridItem">
 							<Callout 
+								aboveFold={true}
 								layout="vertical"
 								img="https://flyridesusa.com/cdn/shop/products/Specialized_Turbo_Vado_SL_4_0_EQ_eMTB_Smoke_Black_Reflective.jpg?v=1665180033&width=1946"
 								title="Specialized Turbo Vado SL 4.0 EQ"
@@ -78,6 +83,7 @@ export default function SamplePage4() {
 						</div>
 						<div className="gridItem">
 							<Callout 
+								aboveFold={true}
 								layout="vertical"
 								img="https://images.cdn.europe-west1.gcp.commercetools.com/078b97e9-ed31-4c81-baae-cdd44f3bf3c1/85f1a0ef71173c496992-b2ki_voE.jpg"
 								title="Giant Trance X Advanced Pro 29"

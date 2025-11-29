@@ -25,15 +25,24 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	const origin = reqHeaders.get("x-origin");
 	const url = reqHeaders.get("x-url") ?? `${origin}${path}`;
 	const pathname = path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
-	const meta = getRouteByKey(myRoutes.routes, "path", pathname);
+	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
 	// Minimal layout for /samples routes - no CSS, no header/nav/footer
-	if (pathname.startsWith('/samples')) {
+	// if (pathname.startsWith('/samples/')) {
+	const regexPattern = /^\/samples\/.+$/;
+	if (regexPattern.test(pathname)) {
 		return (
-			<html lang="en">
-				<head></head>
-				<body>{children}</body>
-			</html>
+			<>
+				<LayoutClient />
+				<html lang="en">
+					<head></head>
+					<body>
+						<PixelatedServerConfigProvider>
+							{children}
+						</PixelatedServerConfigProvider>
+					</body>
+				</html>
+			</>
 		);
 	}
 
@@ -44,36 +53,36 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 			<LayoutClient />
 			<html lang="en">
 				<head>
-					<title>{meta?.title}</title>
+					<title>{metadata?.title}</title>
 
 					<meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
 
-					<meta name="description" content={meta?.description} />
-					<meta name="keywords" content={meta?.keywords} />
+					<meta name="description" content={metadata?.description} />
+					<meta name="keywords" content={metadata?.keywords} />
 					<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 
 					<meta property="og:site_name" content="Pixelated Technologies" />
-					<meta property="og:title" content={meta?.title} />
+					<meta property="og:title" content={metadata?.title} />
 					<meta property="og:url" content={url} />
 					<meta property="og:type" content="website" />
-					<meta property="og:description" content={meta?.description} />
+					<meta property="og:description" content={metadata?.description} />
 					<meta property="og:image" content="/images/pix/pix-bg-512.gif" />
 					<meta property="og:image:width" content="512" />
 					<meta property="og:image:height" content="512" />
 
 					<meta itemProp="name" content="Pixelated Technologies" />
 					<meta itemProp="url" content={url} />
-					<meta itemProp="description" content={meta?.description} />
+					<meta itemProp="description" content={metadata?.description} />
 					<meta itemProp="thumbnailUrl" content="/images/pix-bg-512.gif" />
 
 					<meta property="twitter:domain" content="pixelated.tech" />
 					<meta property="twitter:url" content={url} />
 					<meta name="twitter:card" content="summary_large_image" />
-					<meta name="twitter:description" content={meta?.description} />
+					<meta name="twitter:description" content={metadata?.description} />
 					<meta name="twitter:image" content="/images/pix/pix-bg-512.gif" />
-					<meta name="twitter:title" content={meta?.title} />
+					<meta name="twitter:title" content={metadata?.title} />
 
 					<link rel="canonical" href={url} />
 					{/* <link rel="alternate" href={url} hrefLang="en-us" /> */}
