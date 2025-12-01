@@ -4,13 +4,13 @@
     font-variant-caps: small-caps;
     font-variant: small-caps;
     text-align: center;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .pageSectionHeader {
     display: block;
     font-size: 1.65em;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
     margin: 20px;
 }

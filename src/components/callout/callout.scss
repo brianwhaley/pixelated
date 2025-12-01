@@ -136,7 +136,6 @@
     background-color: #DDD;
     text-align: center;
     font: inherit;
-    font-size: 14px;
     font-weight: 700;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -263,6 +262,7 @@
 .callout.overlay {
     position: relative;
     padding: 0;
+    overflow: hidden;
 }
 
 .callout.overlay .calloutImage {

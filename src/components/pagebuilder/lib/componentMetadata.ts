@@ -7,7 +7,7 @@
  * runtime values for form generation.
  */
 
-import { calloutStyles, shapes, layouts, directions } from "../../callout/callout";
+import { variants, shapes, layouts, directions } from "../../callout/callout";
 import { 
 	layoutTypes, 
 	autoFlowValues, 
@@ -31,9 +31,9 @@ export type ComponentMetadata = {
 
 export const componentMetadata: {[componentName: string]: ComponentMetadata} = {
 	'Callout': {
-		style: {
+		variant: {
 			type: 'select',
-			options: calloutStyles,
+			options: variants,
 			default: 'default',
 		},
 		boxShape: {

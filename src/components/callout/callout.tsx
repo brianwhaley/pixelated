@@ -22,19 +22,19 @@ BOXSHAPE has not been complete
 ==================== NOTES ==================== */
 
 // Define option arrays - used by both PropTypes and form generation
-export const calloutStyles = ['default', 'boxed', 'boxed grid', 'full', 'grid', 'overlay', 'split'] as const;
+export const variants = ['default', 'boxed', 'boxed grid', 'full', 'grid', 'overlay', 'split'] as const;
 export const shapes = ['square', 'bevel', 'squircle', 'round'] as const;
 export const layouts = ['horizontal', 'vertical'] as const;
 export const directions = ['left', 'right'] as const;
 
 // TypeScript types from the const arrays
 export type ShapeType = typeof shapes[number];
-export type CalloutStyleType = typeof calloutStyles[number];
+export type VariantType = typeof variants[number];
 export type LayoutType = typeof layouts[number];
 export type DirectionType = typeof directions[number];
 
 Callout.propTypes = {
-	style: PropTypes.oneOf([...calloutStyles]),
+	variant: PropTypes.oneOf([...variants]),
 	boxShape: PropTypes.oneOf([...shapes]),
 	layout: PropTypes.oneOf([...layouts]),
 	direction: PropTypes.oneOf([...directions]),
@@ -59,7 +59,7 @@ Callout.propTypes = {
 };
 export type CalloutType = InferProps<typeof Callout.propTypes>;
 export function Callout({
-	style = 'default', 
+	variant = 'default', 
 	boxShape = "squircle", 
 	layout = "horizontal", 
 	direction = 'left', 
@@ -134,11 +134,11 @@ export function Callout({
 	return (
 		<div 
 			className={"callout" + 
-			(style ? " " + style : "") + 
-			((style==='boxed' || style==='boxed grid') && boxShape ? " " + boxShape : "") + 
-			(layout && style!=='split' ? " " + layout : "") + 
+			(variant ? " " + variant : "") + 
+			((variant==='boxed' || variant==='boxed grid') && boxShape ? " " + boxShape : "") + 
+			(layout && variant!=='split' ? " " + layout : "") + 
 			(direction && layout!=='vertical' ? " " + direction : "") +
-			(style && (style==='boxed grid' || style==='grid') && gridColumns ? ` calloutGrid-${gridColumns.left}-${gridColumns.right}` : '')
+			(variant && (variant==='boxed grid' || variant==='grid') && gridColumns ? ` calloutGrid-${gridColumns.left}-${gridColumns.right}` : '')
 			} >
 			{ (direction === "right") ? <>{body}{image}</> : <>{image}{body}</> }
 		</div>

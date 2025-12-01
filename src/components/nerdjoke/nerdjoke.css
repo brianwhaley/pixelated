@@ -24,7 +24,6 @@
 	/* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
     border: 1px solid #999;
     display: inline-block;
-    font-size: 14px !important;
     font-weight: bold;
 	margin: 5px;
 	padding: 5px 20px !important;
@@ -41,14 +40,12 @@
 }
 
 .jokeButton:hover {
-	font-size: 16px ;
+	--do-nothing: true;
 }
 
 
 .jokeTimer {
     border: 1px solid #AAA;
-	font-size: 14px !important;
-	line-height: 14px !important;
 	position: relative;
 	/* height: 25px;
 	width: 100%; */
