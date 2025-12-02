@@ -20,8 +20,10 @@
     padding: 0px !important;
 }
 
-.callout.overlay .calloutTitle {
+.callout.overlay .calloutSubtitle {
     color: white;
+	text-align: center !important;
+	margin: 0 auto;
 	text-shadow:
 		-1px 1px 1px black,
 		1px 1px 1px black,

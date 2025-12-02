@@ -9,7 +9,7 @@ export default function Header() {
 	return (
 		<div className="section-container">
 			<MenuAccordionButton />
-			<h2 className="pull-left pad textOutline">Pixelated Technologies</h2>
+			<h2 className="pull-left textOutline">Pixelated Technologies</h2>
 		</div>
 	);
 }

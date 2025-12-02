@@ -100,7 +100,7 @@ export default function SamplePage2() {
 					<Callout 
 						img="https://i.pinimg.com/736x/dd/13/83/dd1383bd7db545d6ef29dbe078cf73b4.jpg"
 						layout="horizontal"
-						style='split'
+						variant='split'
 						direction="right"
 						url='./'
 						title="Wedding Photography for the Artful Soul"

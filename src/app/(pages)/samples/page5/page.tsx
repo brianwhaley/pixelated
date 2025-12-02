@@ -121,7 +121,7 @@ export default function SamplePage4() {
 					</GridItem>
 					<GridItem>
 						<Callout 
-							style="boxed"
+							variant="boxed"
 							layout="vertical"
 							title="Johnny from Bluffton"
 							content="When I lived in the area, I came here at least once a week. 
@@ -133,7 +133,7 @@ export default function SamplePage4() {
 
 					<GridItem>
 						<Callout 
-							style="boxed"
+							variant="boxed"
 							layout="vertical"
 							title="Vic from Beaufort"
 							content="Some of the best tacos in all of the Lowcountry. 
@@ -147,7 +147,7 @@ export default function SamplePage4() {
 
 					<GridItem>
 						<Callout 
-							style="boxed"
+							variant="boxed"
 							layout="vertical"
 							title="Esquites Street Corn"
 							content="Very good food, price and definitely the service and attention. 
@@ -162,7 +162,7 @@ export default function SamplePage4() {
 				<PageSection background="#E0E0E0" padding="20px" maxWidth="768px" id="catering-section" columns={1} >
 					<GridItem>
 						<Callout 
-							style="boxed grid"
+							variant="boxed grid"
 							gridColumns={{ left: 1, right: 2 }}
 							img="https://img.freepik.com/premium-photo/street-fish-tacos-with-cod-recycled-paper-food-tray_198639-63107.jpg?uid=R222425900&ga=GA1.1.140752640.1759855211&semt=ais_hybrid&w=740&q=80"
 							imgShape="round"

@@ -48,12 +48,12 @@ export default function Samples() {
 				{sampleTiles.map(tile => (
 					<Callout
 						key={tile.index}
-						style="overlay"
+						variant="overlay"
 						boxShape="squircle"
 						url={tile.link}
 						img={tile.image}
 						imgAlt={tile.imageAlt}
-						title={tile.imageAlt}
+						subtitle={tile.imageAlt}
 						buttonText={"View Sample"} />
 				))}
 			</PageSection>

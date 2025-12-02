@@ -12,17 +12,15 @@ export default function Home() {
 	return (
 		<>
 			<PageHeader title="Pixelated Technologies" />
-			<PageSection id="pixelated-section" responsive={{mobile: 1, tablet: 1, desktop: 1}} maxWidth="853px" columns={1}>
+			<PageSection id="pixelated-section" maxWidth="768px" columns={1}>
 				<GridItem>
 					<Callout
 						aboveFold={true}
-						style='boxed'
-						layout='horizontal' 
-						img='/images/pix/pix-bg-512.png'
+						layout='vertical' 
 						imgAlt='Pixelated Technologies'
 						imgShape="squircle" 
-						title=''
-						subtitle='Pixelated Technologies is a Digital Services company that 
+						subtitle="About Pixelated Technologies"
+						content='Pixelated Technologies is a Digital Services company that 
 							specializes in transforming small businesses through
 							custom IT solutions, including web development, social media marketing,
 							search engine optimization, content management, eCommerce solutions,
@@ -33,12 +31,61 @@ export default function Home() {
 			</PageSection>
 
 
-			<PageSectionHeader title="Products and Services" />
-			<PageSection id="products-section" columns={3}>
+			<PageSection columns={3} maxWidth="1024px"id="spotlight-section">
+
+				<GridItem>
+					<CalloutLibrary.scheduleAppointment />
+				</GridItem>
+
+				<GridItem>
+					<Callout
+						layout='vertical'
+						url='/portfolio'
+						img='/images/icons/portfolio.png'
+						imgAlt='Portfolio'
+						imgShape='bevel'
+						title='View Our Work Portfolio'
+						content='Explore our portfolio to see examples of the web development 
+							and design work delivered by our team members over the years. 
+							From responsive websites and custom web applications to branding 
+							and logo designs, our portfolio showcases the diverse range of 
+							projects we have successfully completed for small businesses. 
+							Discover how Pixelated Technologies can bring your vision to life 
+							with tailored solutions that meet your unique needs.'/>
+				</GridItem>
+
+
+				<GridItem>
+					<Callout
+						layout='vertical'
+						url='/samples'
+						img='/images/icons/mockup-icon.png'
+						imgAlt='Samples'
+						imgShape='bevel'
+						title='View Some Samples'
+						content="Take a look at some of the web design samples to get an idea of the quality and style we bring to our projects.
+						Examples include a landscape company website, a wedding photographer, a local restaurant menu, a bicycle shop, and a taco food truck.  
+						These samples are just a few examples of how we can create visually appealing and user-friendly websites tailored to your industry.
+						No matter your industry, we have experience creating custom web solutions that can help your business succeed online."/>
+				</GridItem>
+			</PageSection>
+
+
+			
+			<PageSection id="social-section" columns={1} maxWidth="768px" background="var(--secondary-color)" >
+				<SocialTags />
+			</PageSection>
+
+
+
+			<PageSectionHeader title="Our Value Proposition" />
+			<PageSection id="products-section" columns={1}>
 				<GridItem >
 					<Callout
 						aboveFold={true}
-						layout='vertical' 
+						variant="boxed"
+						layout='horizontal' 
+						direction="left"
 						img='/images/icons/webdev.png'
 						imgAlt='Web Development'
 						imgShape="squircle" 
@@ -54,7 +101,9 @@ export default function Home() {
 				<GridItem >
 					<Callout
 						aboveFold={true}
-						layout='vertical' 
+						variant="boxed"
+						layout='horizontal' 
+						direction="right"
 						img='/images/icons/socialmedia.png'
 						imgAlt='Social Media Marketing'
 						imgShape="squircle" 
@@ -62,14 +111,16 @@ export default function Home() {
 						subtitle='Are your social media accounts active and engaging?
 							Are they integrated with your website and other online platforms?
 							Do they help convert prospective customers into current customers?' 
-						content='Let Pixelated Technologieshelp you develop a comprehensive social media strategy that aligns with your business goals.
+						content='Let Pixelated Technologies help you develop a comprehensive social media strategy that aligns with your business goals.
 							We can help you create and manage your social media accounts, 
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
 				</GridItem>
 				<GridItem >
 					<Callout
 						aboveFold={true}
-						layout='vertical' 
+						variant="boxed"
+						layout='horizontal' 
+						direction="left"
 						img='/images/icons/seo-2.png'
 						imgAlt='Search Engine Optimization'
 						imgShape="squircle" 
@@ -77,13 +128,15 @@ export default function Home() {
 						subtitle='Is your website optimized for search engines?
 							Does it stand out from your competition, ranking well for relevant keywords and phrases?
 							Do you have a plan to improve your search engine rankings over time?' 
-						content='Pixelated Technologiescan help you improve your websites visibility and ranking on popular search engines.
+						content='Pixelated Technologies can help you improve your websites visibility and ranking on popular search engines.
 							We can conduct a thorough SEO audit of your website, identify areas for improvement,
 							and implement on-page and off-page SEO strategies to boost your search engine performance.' />
 				</GridItem>
 				<GridItem >
 					<Callout
-						layout='vertical'
+						variant="boxed"
+						layout='horizontal' 
+						direction="right"
 						img='/images/icons/content.png'
 						imgAlt='Content Management'
 						imgShape="squircle"
@@ -98,7 +151,9 @@ export default function Home() {
 				</GridItem>
 				<GridItem >
 					<Callout
-						layout='vertical' 
+						variant="boxed"
+						layout='horizontal' 
+						direction="left"
 						img='/images/icons/ecommerce.png'
 						imgAlt='eCommerce Solutions'
 						imgShape="squircle" 
@@ -113,7 +168,9 @@ export default function Home() {
 				</GridItem>
 				<GridItem >
 					<Callout
-						layout='vertical' 
+						variant="boxed"
+						layout='horizontal' 
+						direction="right"
 						img='/images/icons/custom.png'
 						imgAlt='Small Business Modernization'
 						imgShape="squircle" 
@@ -127,38 +184,12 @@ export default function Home() {
 				</GridItem>
 			</PageSection>
 
-			<PageSection id="social-section" columns={1} maxWidth="768px" background="var(--secondary-color)" >
-				<SocialTags />
-			</PageSection>
 
-
-			<PageSectionHeader title="About Pixelated Technologies" />
-			<PageSection columns={2} maxWidth="768px"id="spotlight-section">
-				<GridItem>
-					<CalloutLibrary.scheduleAppointment />
-				</GridItem>
-				<GridItem>
-					<Callout
-						layout='vertical'
-						url='portfolio'
-						img='/images/icons/portfolio.png'
-						imgAlt='Portfolio'
-						imgShape='squircle'
-						title='Portfolio'
-						content='Explore our portfolio to see examples of the web development 
-							and design work delivered by our team members over the years. 
-							From responsive websites and custom web applications to branding 
-							and logo designs, our portfolio showcases the diverse range of 
-							projects we have successfully completed for small businesses. 
-							Discover how Pixelated Technologies can bring your vision to life 
-							with tailored solutions that meet your unique needs.'/>
-				</GridItem>
-			</PageSection>
 
 			<PageSection columns={1} maxWidth="768px" background="var(--accent1-color)" id="spotlight-section">
 				<GridItem>
 					<Callout
-						style='boxed'
+						variant='boxed'
 						layout='horizontal' 
 						img='/images/brianwhaley-headshot.jpg'
 						imgAlt='Brian T. Whaley'

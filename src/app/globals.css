@@ -1,17 +1,20 @@
 
 /* ========================================
-    CUSTOM Pixelated  SIMPLE Menu Styles
+    CUSTOM Pixelated Styles
  ======================================== */
-
-:root {
-  --primary-color: #369;
-  --secondary-color: #BCD;
-  --accent1-color: #CCC;
-  --accent2-color: #EEE;	
-}
 
 #page-header {
     background-image: url(/images/pix/pix-bg.gif);
+}
+
+.panelMenuButton {
+	margin: 0;
+    padding: 0;
+}
+
+.panelMenuButton .hamburger {
+	font-size: unset;
+	margin: 10px 0;
 }
 
 #page-header-nav {
@@ -62,6 +65,11 @@
 }
 
 @media screen and (max-width: 480px) {
+	#page-header h2 {
+		--do-nothing: true;
+    	transform: scaleX(0.8);
+    	transform-origin: left;
+	}
     .fixed-header-nav {
         display: none;
     }

@@ -118,7 +118,7 @@ export default function SamplePage1() {
 					<Callout 
 						img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/bednar-portfolio-07.jpg"
 						layout="horizontal"
-						style='split'
+						variant='split'
 						url='./'
 						title="Outstanding Landscapes and Breathtaking Results"
 						content="With over 25 years of experience in the landscape industry, 

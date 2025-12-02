@@ -99,7 +99,7 @@ export default function SamplePage4() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								imgShape="bevel"
 								img="https://thebicyclestation.com/cdn/shop/files/IMG_6795.heic?v=1737135501&width=1800"
 								title="Visit Our Shop"
@@ -109,7 +109,7 @@ export default function SamplePage4() {
 						</div>
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								imgShape="bevel"
 								img="https://cdn.shopify.com/s/files/1/2318/5263/files/Frame2_2048x2048_1.jpg?8209230342697207847"
 								title="Build Your Bike"
@@ -119,7 +119,7 @@ export default function SamplePage4() {
 						</div>
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								imgShape="bevel"
 								img="https://tricoachgeorgia.com/wp-content/uploads/2024/04/triathilon-header.jpg"
 								title="Coaching & Training"
@@ -134,7 +134,7 @@ export default function SamplePage4() {
 				<PageSection id="about-section" columns={1} maxWidth="1024px" padding="0 20px">
 					<Callout 
 						layout="horizontal"
-						style="boxed"
+						variant="boxed"
 						imgShape="squircle"
 						img="https://media.istockphoto.com/id/578086382/photo/mountain-biker-silhouette.jpg?s=612x612&w=0&k=20&c=8oEfIudClsxrchJEFJX2ohq-YUcQxB4kKB0LuGsff3o="
 						title="About Us"

@@ -59,7 +59,7 @@ export default function SamplePage3() {
 
 				<section id="main-section" className="">
 					<Callout 
-						style="split"
+						variant="split"
 						layout="vertical"
 						direction="left"
 						url="./" 
@@ -75,7 +75,7 @@ export default function SamplePage3() {
 						buttonText="VIEW OUR MENU"
 					/>
 					<Callout 
-						style="split"
+						variant="split"
 						layout="vertical"
 						direction="right"
 						url="./" 
@@ -96,7 +96,7 @@ export default function SamplePage3() {
 					<div className="row-3col">
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								layout="vertical"
 								url="./" 
 								img="https://t4.ftcdn.net/jpg/01/27/31/55/360_F_127315507_mjZftjLMN89jUP0mo7YCDr4HymXCMqzy.jpg" 
@@ -106,7 +106,7 @@ export default function SamplePage3() {
 						</div>
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								layout="vertical"
 								url="./" 
 								img="https://media.istockphoto.com/id/868935172/photo/heres-to-tonight.jpg?s=612x612&w=0&k=20&c=v1ceJ9aZwI43rPaQeceEx5L6ODyWFVwqxqpadC2ljG0=" 
@@ -116,7 +116,7 @@ export default function SamplePage3() {
 						</div>
 						<div className="gridItem">
 							<Callout 
-								style="overlay"
+								variant="overlay"
 								layout="vertical"
 								url="./" 
 								img="https://media.istockphoto.com/id/1154232730/photo/wedding-decor-rustic-dining-table.jpg?s=612x612&w=0&k=20&c=5jkhCsCL5Jz6KapC_j4n9mOx2CoexcKQTjFVa1Td6-0=" 

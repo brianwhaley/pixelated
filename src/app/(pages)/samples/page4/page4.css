@@ -47,6 +47,11 @@ header {
     left: 5px;
 }
 
+.panelMenuButton .hamburger {
+    font-size: unset;
+    margin: 10px;
+}
+
 nav a {
     color: var(--text-color);
 }

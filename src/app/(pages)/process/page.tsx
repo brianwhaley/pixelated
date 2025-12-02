@@ -99,7 +99,7 @@ export default function Process() {
 			<PageSection columns={12} id="process-schedule-section">
 				<GridItem columnStart={2} columnEnd={12}>
 					<CalloutLibrary.scheduleAppointment
-						style='boxed grid'
+						variant='boxed grid'
 						gridColumns={{ left: 1, right: 2 }}
 						layout='horizontal' />
 				</GridItem>

@@ -1,0 +1,177 @@
+Pixelated Technologies – Brand Style Guide
+1. Brand Overview
+
+Pixelated Technologies builds modern, efficient websites and digital solutions for small businesses in New Jersey and South Carolina. Your brand should feel:
+
+Trustworthy
+
+Tech-forward
+
+Friendly and local
+
+Clean and efficient
+
+This guide proposes a full color system, typography recommendations, and usage guidelines.
+
+2. Color Palette
+
+Your primary color is #369 (hex shorthand for #336699). This is a strong, professional blue—excellent for trust and reliability.
+
+Here is a suggested expanded palette:
+
+Primary Color
+
+Primary Blue: #336699
+Use for brand identity, navigation, CTAs, headers, and key accents.
+
+Secondary Color
+
+Secondary Blue (light): #5FA8D3
+A lighter, friendly complement for backgrounds, highlight boxes, and illustrations.
+
+Accent Colors
+
+You want two accents that keep the palette balanced and modern:
+
+Accent 1 (Warm Contrast): #F2A900
+
+A warm golden-yellow for buttons, highlights, alerts, and conversion-oriented elements.
+
+Pairs well with the primary blue for energy.
+
+Accent 2 (Fresh Neutral): #6EC6A8
+
+A soft green-turquoise for secondary highlights, icons, or infographics.
+
+Adds freshness without overwhelming the palette.
+
+Neutral System
+
+Neutrals help maintain clean, readable layouts.
+
+Background Light: #F7F9FC
+
+Soft, modern off-white for content areas.
+
+Background Dark (for footers/contrast sections): #1F2A33
+
+Professional blue-black for dark-mode sections.
+
+Primary Text: #1A1A1A
+
+Deep neutral gray/black for high readability.
+
+Secondary Text: #4A4A4A
+
+For subtitles, labels, secondary information.
+
+3. Typography
+Is Tahoma a good choice?
+
+Tahoma is clean and readable, but it is:
+
+Slightly outdated
+
+Less branded
+
+Not as modern as typical web startup typography
+
+It works, but it doesn’t help Pixelated feel current or premium.
+
+Recommended Approach
+
+Use two fonts:
+
+One for headers (modern, strong branding)
+
+One for body text (clean, readable, neutral)
+
+Recommended Font Pairings
+
+These pairs are Google-Fonts-friendly, free, and versatile.
+
+Option A — Clean + Modern
+
+Header: Montserrat
+
+Body: Inter or Roboto
+
+This pair makes you look modern, tech-forward, and trustworthy.
+
+Option B — Friendly + Professional
+
+Header: Poppins
+
+Body: Source Sans Pro
+
+Great for small-business friendliness.
+
+Option C — Corporate + Clean
+
+Header: Open Sans SemiBold
+
+Body: Open Sans Regular
+
+Simple, unified, and professional.
+
+If you want to keep Tahoma:
+
+Keep Tahoma as the body font, and add a modern header font:
+
+Header: Montserrat or Poppins
+
+Body: Tahoma
+
+This keeps your brand familiar while modernizing your visual presence.
+
+Recommendation:
+➡️ Use Montserrat (headers) + Inter (body).
+
+4. Logo Usage
+
+(If you want, I can also create a logo usage guide.)
+
+Light background version uses primary blue.
+
+On dark backgrounds, use white or light secondary blue versions.
+
+Accent colors should never overpower the primary brand blue.
+
+5. UI/UX Guidelines
+Buttons
+
+Primary buttons → Primary Blue background, white text
+
+Hover → Slightly darker #2B547A or lighten for effect
+
+Secondary buttons → Accent 1 (gold)
+
+Links
+
+Use primary blue or accent 1
+
+Hover underline for accessibility
+
+Shadows + Depth
+
+Very light shadows (rgba(0,0,0,.08)) for cards
+
+Clean, modern, minimal
+
+6. Imagery Style
+
+Clean, bright, and minimal
+
+Include photos of small businesses, local towns, and the Lowcountry/NJ community
+
+Use illustrations in blues, golds, and greens to match accents
+
+7. Tone & Voice
+
+Approachable
+
+Local-focused
+
+Expert but not overly technical
+
+Always helpful, clear, and empowering

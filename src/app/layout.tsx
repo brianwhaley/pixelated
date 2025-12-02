@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 
 import { headers } from "next/headers";
 import { getRouteByKey } from "@brianwhaley/pixelated-components/server";
@@ -94,6 +95,11 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					<link rel="preconnect" href="https://farm6.static.flickr.com" />
 					<link rel="preconnect" href="https://farm8.static.flickr.com" />
 					<link rel="preconnect" href="https://farm66.static.flickr.com" />
+
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+					<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+					<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
 				</head>
 				<body>
 					<PixelatedServerConfigProvider>

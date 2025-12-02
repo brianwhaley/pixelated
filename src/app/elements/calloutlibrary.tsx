@@ -1,7 +1,7 @@
 import { Callout, CalloutType } from "@brianwhaley/pixelated-components";
 
 export type CalloutLibraryType = {
-	style?: CalloutType["style"];
+	variant?: CalloutType["variant"];
 	gridColumns?: CalloutType["gridColumns"];
 	layout?: CalloutType["layout"];
 	direction?: CalloutType["direction"];
@@ -10,7 +10,7 @@ export type CalloutLibraryType = {
 export function scheduleAppointment(props: CalloutLibraryType) {
 	return (
 		<Callout
-			style={props.style || undefined}
+			variant={props.variant || undefined}
 			gridColumns={props.gridColumns || undefined}
 			layout={props.layout || 'vertical'}
 			direction={props.direction || undefined}

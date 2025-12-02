@@ -4,7 +4,7 @@
     --accent-color: #FFC107;
     --bg-color: #F5F5F5;
     --text-color: #212121;
-    --headline-font: 'Shrikhand', Arial Black;
+    --header-font: 'Shrikhand', Arial Black;
     --body-font: 'Montserrat', sans-serif;
  }
 
@@ -25,7 +25,7 @@ a, a:visited, a:hover, a:active {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--headline-font); 
+    font-family: var(--header-font); 
     -webkit-text-stroke: 0.1px var(--bg-color);
 }
 h1 { -webkit-text-stroke: 0px; font-size: 2.5em; }
@@ -89,6 +89,10 @@ section {
     .panelMenuButton, #panelMenuButton {
         display: block;
     }
+	.panelMenuButton .hamburger {
+		font-size: unset;
+		margin: 5px 10px;
+	}
 }
 
 main {

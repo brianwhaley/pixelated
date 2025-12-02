@@ -17,7 +17,13 @@
 			"path": "/portfolio", 
 			"title": "Pixelated Technologies - Portfolio",
 			"description": "Examples of web development and design work delivered by our team members over the years.  ",
-			"keywords": "pixelated, web development, design, small business, delivery"  
+			"keywords": "pixelated, web development, design, small business, delivery, portfolio"  
+		} , { 
+			"name": "Samples", 
+			"path": "/samples", 
+			"title": "Pixelated Technologies - Samples",
+			"description": "Examples of web development and design work for different industries and styles.  ",
+			"keywords": "pixelated, web development, design, small business, delivery, samples, "  
 		} , { 
 			"name": "Blog", 
 			"path": "/blog", 
@@ -31,7 +37,63 @@
 			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
 			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
+			"name": "Samples",
+			"hidden": true,
+			"routes": [
+				{ 
+					"name": "Samples Home", 
+					"hidden": true,
+					"path": "/samples", 
+					"title": "Pixelated Technologies - Samples Home",
+					"description": "Samples Home",
+					"keywords": "pixelated technologies, web design samples home" 
+				} , { 
+					"name": "Sample Page 1", 
+					"hidden": true,
+					"path": "/samples/page1", 
+					"title": "Pixelated Technologies - Sample Page 1",
+					"description": "Sample Page 1",
+					"keywords": "pixelated technologies, web design sample page 1" 
+				} , { 
+					"name": "Sample Page 2", 
+					"hidden": true,
+					"path": "/samples/page2", 
+					"title": "Pixelated Technologies - Sample Page 2",
+					"description": "Sample Page 2",
+					"keywords": "pixelated technologies, web design sample page 2" 
+				} , { 
+					"name": "Sample Page 3", 
+					"hidden": true,
+					"path": "/samples/page3", 
+					"title": "Pixelated Technologies - Sample Page 3",
+					"description": "Sample Page 3",
+					"keywords": "pixelated technologies, web design sample page 3" 
+				} , { 
+					"name": "Sample Page 4", 
+					"hidden": true,
+					"path": "/samples/page4", 
+					"title": "Pixelated Technologies - Sample Page 4",
+					"description": "Sample Page 4",
+					"keywords": "pixelated technologies, web design sample page 4" 
+				} , { 
+					"name": "Sample Page 5", 
+					"hidden": true,
+					"path": "/samples/page5", 
+					"title": "Pixelated Technologies - Sample Page 5",
+					"description": "Sample Page 5",
+					"keywords": "pixelated technologies, web design sample page 5" 
+				} 
+			]
+		} , {
+			"name": "Legal", 
+			"path": "/legal", 
+			"title": "Pixelated Technologies - Legal",
+			"description": "Pixelated Technologies Terms of Service and Privacy Policy",
+			"keywords": "pixelated, terms of service, privacy policy" 
+				
+		} , {
 			"name": "Terms", 
+			"hidden": true,
 			"path": "/terms", 
 			"title": "Pixelated Technologies - Terms of Service",
 			"description": "Pixelated Technologies Terms of Service",
@@ -39,6 +101,7 @@
 				
 		} , { 
 			"name": "Privacy Policy", 
+			"hidden": true,
 			"path": "/privacy", 
 			"title": "Pixelated Technologies - Privacy Policy",
 			"description": "Pixelated Technologies Privacy Policy",
@@ -48,48 +111,6 @@
 			"hidden": true,
 			"routes": [
 				{ 
-					"name": "Samples", 
-					"path": "/samples", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Samples",
-					"description": "Samples",
-					"keywords": "pixelated technologies, web design samples" 
-				} , { 
-					"name": "Sample Page 1", 
-					"path": "/samples/page1", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Sample Page 1",
-					"description": "Sample Page 1",
-					"keywords": "pixelated technologies, web design sample page 1" 
-				} , { 
-					"name": "Sample Page 2", 
-					"path": "/samples/page2", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Sample Page 2",
-					"description": "Sample Page 2",
-					"keywords": "pixelated technologies, web design sample page 2" 
-				} , { 
-					"name": "Sample Page 3", 
-					"path": "/samples/page3", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Sample Page 3",
-					"description": "Sample Page 3",
-					"keywords": "pixelated technologies, web design sample page 3" 
-				} , { 
-					"name": "Sample Page 4", 
-					"path": "/samples/page4", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Sample Page 4",
-					"description": "Sample Page 4",
-					"keywords": "pixelated technologies, web design sample page 4" 
-				} , { 
-					"name": "Sample Page 5", 
-					"path": "/samples/page5", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Sample Page 5",
-					"description": "Sample Page 5",
-					"keywords": "pixelated technologies, web design sample page 5" 
-				} , { 
 					"name": "NerdJokes", 
 					"path": "/nerdjokes", 
 					"hidden": true,
