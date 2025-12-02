@@ -50,7 +50,7 @@ section {
 
 .pageSectionHeader {
     font-variant: small-caps;
-    font-size: 2.0em;;
+    font-size: 2.0em !important;
 }
 
 .panelMenuButton, #panelMenuButton {
@@ -107,7 +107,7 @@ main {
         opacity: 1.0;
     }
     h2 {
-        font-size: 64px;
+        font-size: 64px !important;
         -webkit-text-stroke: 0.3px var(--primary-color);
         color: #fff;
         text-shadow: 0 0 10px var(--text-color); /* Horizontal offset, vertical offset, blur radius, color of the shadow */
