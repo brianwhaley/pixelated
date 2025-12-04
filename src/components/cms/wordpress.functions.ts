@@ -3,7 +3,6 @@
 // const wpSite = "19824045";
 // const wpSite = "blog.pixelated.tech";
 const wpApiURL = "https://public-api.wordpress.com/rest/v1/sites/";
-const wpPostsPath = "/posts?number=100";
 const wpCategoriesPath = "/categories";
 
 export type BlogPostType = {
@@ -19,27 +18,32 @@ export type BlogPostType = {
 	featured_image?: string;
 };
 
-export async function getWordPressItems(props: { site: string }){
-	const wpPostsURL = wpApiURL + props.site + wpPostsPath ; 
+export async function getWordPressItems(props: { site: string; count?: number }){
+	const requested = props.count; // undefined means fetch all available
 	const posts: BlogPostType[] = [];
 	let page = 1;
-	let totalPages = 1;  // Initialize to 1 for the first request
-	while (page <= totalPages) {
+	while (true) {
+		const remaining = requested ? Math.max(requested - posts.length, 0) : 100;
+		const number = Math.min(remaining || 100, 100);
+		const wpPostsURL = `${wpApiURL}${props.site}/posts?number=${number}&page=${page}`;
 		try {
-			const response = await fetch(`${wpPostsURL}&page=${page}`);
+			const response = await fetch(wpPostsURL);
 			const data = await response.json();
-			// Check for total pages on the first page
-			if (page === 1) {
-				totalPages = Math.ceil(data.found / 100); // Assuming 100 posts per page
+			const batch: BlogPostType[] = Array.isArray(data.posts) ? data.posts : [];
+			if (batch.length === 0) {
+				break; // no more posts
 			}
-			posts.push(...data.posts);
-			page++; // Increment gets next page or breaks the while loop
+			posts.push(...batch);
+			if (requested && posts.length >= requested) {
+				break; // collected enough
+			}
+			page++;
 		} catch (error) {
 			console.error("Error fetching WP posts:", error);
 			return;
 		}
 	}
-	return posts; // Return the complete list of posts
+	return posts;
 }
 
 

@@ -94,6 +94,26 @@ Components to help build websites quicker:
 1. Table Components
 1. Other Utilities
 
+### Google Reviews (server-side)
+- Requires: `GOOGLE_MAPS_API_KEY` (or use the built-in hard-coded key during testing).
+- Import: `import { getGoogleReviewsByCompanyName } from 'pixelated-components';`
+- Example:
+
+```
+const { place, reviews } = await getGoogleReviewsByCompanyName({
+  companyName: 'PixelVivid',
+  language: 'en',
+  near: { lat: 32.2163, lng: -80.7526 },
+  radiusMeters: 50000,
+  region: 'us',
+  type: 'point_of_interest',
+  maxReviews: 5,
+});
+```
+
+- Tips:
+  - Prefer `near` + `radiusMeters` for better disambiguation.
+  - If results return 0, try adjusting `region` or `type`, or use the exact business name.
 
 
 

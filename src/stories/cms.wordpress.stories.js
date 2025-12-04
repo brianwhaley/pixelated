@@ -1,9 +1,26 @@
 import React from 'react';
 import { BlogPostSummary } from '../components/cms/wordpress.components';
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
+
+const mockConfig = {
+	cloudinary: {
+		product_env: 'dlbon7tpq',
+		baseUrl: 'https://res.cloudinary.com',
+		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
+	},
+};
 
 export default {
     title: 'CMS',
     component: BlogPostSummary,
+	decorators: [
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(Story) => (
+			<PixelatedClientConfigProvider config={mockConfig}>
+				<Story />
+			</PixelatedClientConfigProvider>
+		),
+	],
 };
 
 const samplePost = {

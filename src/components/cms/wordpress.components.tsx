@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from './cloudinary.image';
+import { GridItem } from '../general/layout';
 import type { BlogPostType } from './wordpress.functions';
+import { getWordPressItems } from './wordpress.functions';
+import { Loading, ToggleLoading } from '@brianwhaley/pixelated-components';
+
 import "./wordpress.css";
 
 // https://microformats.org/wiki/h-entry
@@ -15,6 +19,42 @@ function decodeString(s: string){
 }
 
 
+export function BlogPostList(props: { site: string; count?: number }) {
+	
+	const { site, count } = props;
+	const [posts, setPosts] = useState<BlogPostType[]>([]);
+
+	useEffect(() => {
+		ToggleLoading({show: true});
+		(async () => {
+			const data = (await getWordPressItems({ site, count })) ?? [];
+			const sorted = data.sort((a: BlogPostType, b: BlogPostType) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
+			setPosts(sorted);
+			ToggleLoading({show: false});
+		})();
+	}, [site, count]);
+
+	return (
+		<>
+			<Loading />
+			{posts.map((post: BlogPostType) => (
+				<GridItem key={post.ID}>
+					<BlogPostSummary
+						ID={post.ID}
+						title={post.title}
+						date={post.date}
+						excerpt={post.excerpt}
+						URL={post.URL}
+						categories={post.categories}
+						featured_image={post.featured_image}
+					/>
+				</GridItem>
+			))}
+		</>
+	);
+}
+
+
 export function BlogPostSummary(props: BlogPostType) {
 	const myCategoryImages = Object.entries(props.categories).map(
 		([category, index]) => [category.trim().toLowerCase().replace(/[ /]+/g, '-'), index]
@@ -22,7 +62,7 @@ export function BlogPostSummary(props: BlogPostType) {
 	const config = usePixelatedConfig();
 	const myExcerpt = decodeString(props.excerpt).replace(/\[…\]/g, '<a href="' + props.URL + '" target="_blank" rel="noopener noreferrer">[…]</a>');
 	return (
-		<div className="blogPostSummary">
+		<div className="blogPostSummary" key={props.ID}>
 			<article className="h-entry">
 				<h2 className="p-name">
 					<a className="u-url blog-post-url" href={props.URL} target="_blank" rel="noopener noreferrer">

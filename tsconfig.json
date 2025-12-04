@@ -118,6 +118,10 @@
     
   },
   "include": [ "src" ],
+      // "moduleResolution": "bundler",
+      // "module": "esnext",
+      // "target": "es2020",
+      // "jsx": "react-jsx",
   "exclude": [ 
     "dist", 
     "node_modules", 

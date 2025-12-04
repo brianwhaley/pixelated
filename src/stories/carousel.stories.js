@@ -1,12 +1,30 @@
+import React from 'react';
 import { Carousel } from '../components/carousel/carousel';
 import { GetFlickrData, GenerateFlickrCards } from '../components/cms/flickr';
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
 import '../components/carousel/carousel.css';
 import '../css/pixelated.global.css';
 import './carousel.stories.css';
 
+const mockConfig = {
+	cloudinary: {
+		product_env: 'dlbon7tpq',
+		baseUrl: 'https://res.cloudinary.com',
+		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
+	},
+};
+
 export default {
 	title: 'Carousel',
-	component: Carousel
+	component: Carousel,
+	decorators: [
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(Story) => (
+			<PixelatedClientConfigProvider config={mockConfig}>
+				<Story />
+			</PixelatedClientConfigProvider>
+		),
+	],
 };
 
 /* ========== FLICKR HANDLER ========== */

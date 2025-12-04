@@ -7,7 +7,8 @@ https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
 
 const cloudinary_domain = "https://res.cloudinary.com";
 // const cloudinary_product_env = "dlbon7tpq";
-const cloudinary_props = "/image/fetch/f_auto,c_limit,q_auto,dpr_auto/";
+// const cloudinary_props = "/image/fetch/f_auto,c_limit,q_auto,dpr_auto/";
+const cloudinary_props = "/image/fetch/f_auto,c_limit,dpr_auto/";
 
 
 function joinWithSlash(a: string, b: string) {
@@ -16,25 +17,41 @@ function joinWithSlash(a: string, b: string) {
 
 export function buildCloudinaryUrl(params: { src: string; productEnv: string | null | undefined; cloudinaryDomain?: string; quality?: number | null; width?: number | null; transforms?: string | null; }) {
 	const { src, productEnv, cloudinaryDomain = cloudinary_domain, quality = 75, width, transforms } = params;
+	if (typeof window === 'undefined') return src; // SSR - leave as-is
+	const origin = window.location.origin;
+	// Don't fetch from cloudinary during local dev
+	if (origin.includes("localhost") || origin.includes("127.0.0.1") || origin.includes("192.168")) return src;
+	// Must have cloudinary product env to build URL
 	if (!productEnv) return src;
 	// Resolve non-absolute src to absolute URL in client runtime. Leave alone during SSR.
 	let url = src;
 	if (!/^https?:\/\//i.test(src)) {
-		if (typeof window === 'undefined') return src; // SSR - leave as-is
-		const origin = window.location.origin;
 		url = src.startsWith('/') ? `${origin}${src}` : `${origin}/${src}`;
 	}
-	// Don't fetch from cloudinary during local dev pointing at localhost
-	if (url.includes('localhost') || url.includes('127.0.0.1')) return src;
+	// Don't fetch from cloudinary during local dev
+	// if (url.includes('localhost') || url.includes('127.0.0.1') || url.includes('192.168')) return src;
 	const q = typeof quality === 'number' ? quality : 75;
 	const parts: string[] = ['f_auto', 'c_limit', `q_${q}`, 'dpr_auto'];
 	if (typeof width === 'number' && Number.isFinite(width)) parts.push(`w_${width}`);
-	// if (transforms) parts.push(transforms);
-	const transformArray = transforms ? transforms.split(',') : [];
+	// split transforms by comma and clean empty and whitespace
+	const transformArray = transforms ? transforms.split(',').map(s => s.trim()).filter(Boolean) : [];
 	for (const transform of transformArray) {
-		if (!(parts.includes(transform))) {
-			parts.push(transform);
+		if (!transform) continue;
+		// If the exact transform already exists, nothing to do.
+		if (parts.includes(transform)) continue;
+		// Check for a prefix match (anything before and including the first underscore).
+		const underscoreIndex = transform.indexOf('_');
+		if (underscoreIndex !== -1) {
+			const prefix = transform.slice(0, underscoreIndex + 1); // e.g. 'q_' or 'w_'
+			const prefixIdx = parts.findIndex(p => p.startsWith(prefix));
+			if (prefixIdx !== -1) {
+				// Replace the existing part that shares the same prefix.
+				parts[prefixIdx] = transform;
+				continue;
+			}
 		}
+		// No exact or prefix match found — append.
+		parts.push(transform);
 	}
 	const t = parts.length ? parts.join(',') : '';
 	const domainAndCloud = productEnv ? joinWithSlash(cloudinaryDomain, productEnv) : cloudinaryDomain;

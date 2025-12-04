@@ -6,6 +6,8 @@ import "../../css/pixelated.grid.scss";
 import { usePixelatedConfig } from '../config/config.client';
 import { SmartImage } from '../cms/cloudinary.image';
 
+// https://www.w3schools.com/howto/howto_css_timeline.asp
+
 Timeline.propTypes = {
 	timelineData: PropTypes.arrayOf(
 		PropTypes.shape({

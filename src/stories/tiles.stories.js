@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Tiles } from "../components/tiles/tiles";
 import { FlickrWrapper } from "../components/cms/flickr";
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
 import '../components/tiles/tiles.css';
 import '../css/pixelated.global.css';
 
+const mockConfig = {
+	cloudinary: {
+		product_env: 'dlbon7tpq',
+		baseUrl: 'https://res.cloudinary.com',
+		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
+	},
+};
+
 export default {
 	title: 'Tiles',
-	component: Tiles
+	component: Tiles,
+	decorators: [
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(Story) => (
+			<PixelatedClientConfigProvider config={mockConfig}>
+				<Story />
+			</PixelatedClientConfigProvider>
+		),
+	],
 };
 
 const sampleTiles = [

@@ -25,20 +25,10 @@ body{
 	--header-font: "Montserrat", Verdana, sans-serif;
 	--body-font: "Roboto", Arial, sans-serif;
 }
-h1 { font-size: clamp(2.0rem, calc(1.9rem + 1.25vw), 3.0rem) !important; }
-	/* --h2-font-size: clamp(1.5rem, calc(1.4rem + 0.7vw), 2.0rem); */
-h2 { font-size: clamp(1.35rem, calc(1.3rem + 0.7vw), 1.75rem) !important; }
-	/* --h3-font-size: clamp(1.17rem, calc(1.15rem + 0.25vw), 1.375rem); */
-h3 { font-size: clamp(1.15rem, calc(1.1rem + 0.25vw), 1.35rem) !important; }
-h4 { font-size: clamp(1.0rem, calc(0.9rem + 0.25vw), 1.25rem) !important; }
-h5 { font-size: clamp(0.83rem, calc(0.8rem + 0.15vw), 1.0rem) !important; }
-h6 { font-size: clamp(0.67rem, calc(0.65rem + 0.15vw), 0.85rem) !important; }
 body { 
 	font-family: var(--body-font); 
-	font-size: clamp(1.0rem, calc(0.9rem + 0.25vw), 1.25rem) !important; 
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: var(--header-font); 
 	line-height: 1.1;
 }
 html { font-size: 1.0rem; /* 16px; */ }
@@ -148,24 +138,6 @@ section {
 	padding: 30px 0;
 }
 
-section.section-alt {
-	/* margin-bottom: 50px; */
-	padding: 30px 0;
-    background-color: var(--accent1-color);
-}
-
-section.section-alt2 {
-	/* margin-bottom: 50px; */
-	padding: 30px 0;
-    background-color: var(--accent2-color);
-}
-
-section.section-alt3 {
-	/* margin-bottom: 50px; */
-	padding: 30px 0;
-    background-color: var(--secondary-color);
-}
-
 .section-container {
 	margin: 0px auto;
 	padding: 0px 5px;
@@ -197,8 +169,18 @@ section.section-alt3 {
     /* background-image: url(/images/pix/pix-bg.gif); */
 	color: white;
 	height: 60px;
-	padding: 10px 15px;
+	padding: 10px 20px;
 	z-index: 2000;
+}
+
+#page-header .section-container {
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: left;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #page-hero {

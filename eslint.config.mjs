@@ -48,6 +48,7 @@ export default [
 			".storybook/",
 			"dist/", 
 			"node_modules/", 
+			"scripts/",
 			"/*", 
 			"!/src",
 			"src/stories/",

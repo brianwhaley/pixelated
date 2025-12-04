@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Carousel } from "@brianwhaley/pixelated-components";
-import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
+import { Carousel } from "../components/carousel/carousel";
+import { getContentfulEntriesByType } from "../components/cms/contentful.delivery";
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
 import '../css/pixelated.global.css';
+
+const mockConfig = {
+	cloudinary: {
+		product_env: 'dlbon7tpq',
+		baseUrl: 'https://res.cloudinary.com',
+		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
+	},
+};
 
 export default {
 	title: 'CMS',
-	component: Carousel
+	component: Carousel,
+	decorators: [
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(Story) => (
+			<PixelatedClientConfigProvider config={mockConfig}>
+				<Story />
+			</PixelatedClientConfigProvider>
+		),
+	],
 };
 
 
@@ -15,7 +32,7 @@ const FeedbackGallery = () => {
 		base_url: "https://cdn.contentful.com",
 		space_id: "soi9w77t7027",
 		environment: "master",
-		access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
+		delivery_access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
 	};
 	useEffect(() => {
 		async function getFeedbackCards() {
@@ -38,7 +55,7 @@ const FeedbackGallery = () => {
 	}, []);
 	
 	return (
-		<>
+		<PixelatedClientConfigProvider config={mockConfig}>
 			<section className="section-alt" id="feedback-section">
 				<div className="section-container">
 					<Carousel 
@@ -47,7 +64,7 @@ const FeedbackGallery = () => {
 						imgFit='contain' />
 				</div>
 			</section>
-		</>
+		</PixelatedClientConfigProvider>
 	);
 };
 

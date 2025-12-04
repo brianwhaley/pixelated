@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "fix - callout style to callout variant, css fixes, added css font and color variables to globals"
+git commit -m "v1 of fluid font scss, validate exports, calendly, google reviews, gravatar, instagram.  (mostly css) fixes for wordpress, headers, layout, accordion menu, timeline, fix all stories for configprovider"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
