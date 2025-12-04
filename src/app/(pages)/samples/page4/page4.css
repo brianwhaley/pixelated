@@ -103,6 +103,10 @@ main {
     width: 75%;
 }
 
+#hero-section #velocity-cycling-logo {
+    margin: 0 auto;
+}
+
 #featured-section .callout.vertical .calloutImage {
     width: 90%;
     aspect-ratio: auto;

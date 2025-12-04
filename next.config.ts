@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
 	*/
 
 	images: {
+    	minimumCacheTTL: 86400, // 1 day 15552000, // 6 months
 		remotePatterns: [
 			{
 				protocol: 'https', // Or 'http' if needed, but 'https' is recommended

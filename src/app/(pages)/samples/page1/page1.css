@@ -13,6 +13,11 @@ button {
     font-size: inherit;
 }
 
+
+h2 { font-size: clamp(2.5rem, calc(2.3rem + 1.0vw), 3.5rem) !important; }
+	/* --h3-font-size: clamp(1.17rem, calc(1.15rem + 0.25vw), 1.375rem); */
+h3 { font-size: clamp(1.15rem, calc(1.15rem + 0.25vw), 1.5rem) !important; }
+
 header {
     width: 100%;
     height: auto;
@@ -35,6 +40,7 @@ header {
         text-align: left;
         color: var(--primary-color);
         display: inline-block;
+		font-size: 2rem;
     }
     img {
         height: 100px;

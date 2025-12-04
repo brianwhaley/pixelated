@@ -24,20 +24,8 @@
 			"title": "Pixelated Technologies - Samples",
 			"description": "Examples of web development and design work for different industries and styles.  ",
 			"keywords": "pixelated, web development, design, small business, delivery, samples, "  
-		} , { 
-			"name": "Blog", 
-			"path": "/blog", 
-			"title": "Pixelated Technologies - Blog Posts",
-			"description": "Read the latest blog posts from Pixelated Technologies.",
-			"keywords": "pixelated, blog, web development, small business"  
-		} , { 
-			"name": "Schedule Assessment", 
-			"path": "/schedule", 
-			"title": "Pixelated Technologies - Schedule your free Digital Assessment",
-			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
-			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
-			"name": "Samples",
+			"name": "Samples Pages",
 			"hidden": true,
 			"routes": [
 				{ 
@@ -84,13 +72,24 @@
 					"keywords": "pixelated technologies, web design sample page 5" 
 				} 
 			]
+		} , { 
+			"name": "Blog", 
+			"path": "/blog", 
+			"title": "Pixelated Technologies - Blog Posts",
+			"description": "Read the latest blog posts from Pixelated Technologies.",
+			"keywords": "pixelated, blog, web development, small business"  
+		} , { 
+			"name": "Schedule Assessment", 
+			"path": "/schedule", 
+			"title": "Pixelated Technologies - Schedule your free Digital Assessment",
+			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
+			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
 			"name": "Legal", 
 			"path": "/legal", 
 			"title": "Pixelated Technologies - Legal",
 			"description": "Pixelated Technologies Terms of Service and Privacy Policy",
 			"keywords": "pixelated, terms of service, privacy policy" 
-				
 		} , {
 			"name": "Terms", 
 			"hidden": true,
@@ -98,7 +97,6 @@
 			"title": "Pixelated Technologies - Terms of Service",
 			"description": "Pixelated Technologies Terms of Service",
 			"keywords": "pixelated, terms of service" 
-				
 		} , { 
 			"name": "Privacy Policy", 
 			"hidden": true,
@@ -124,13 +122,6 @@
 					"title": "Pixelated Technologies - Stkr",
 					"description": "Stkr Slack Bot - How To, Customer Support, Terms, and Privacy Policy",
 					"keywords": "" 
-				} , { 
-					"name": "By The Way Font", 
-					"path": "/bytheway", 
-					"hidden": true,
-					"title": "Pixelated Technologies - By The Way Font",
-					"description": "By The Way Font",
-					"keywords": "pixelated technologies, custom font, by the way, by the way font" 
 				} , {
 					"name": "Page Builder", 
 					"path": "/pagebuilder", 
@@ -200,7 +191,21 @@
 					"title": "Pixelated Technologies - Web Manifest",
 					"description": "Pixelated Technologies web manifest",
 					"keywords": "pixelated technologies, web manifest"
-				}
+				} , { 
+					"name": "Style Guide", 
+					"path": "/styleguide", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Style Guide",
+					"description": "Style Guide",
+					"keywords": "pixelated technologies, style guide" 
+				} , { 
+					"name": "By The Way Font", 
+					"path": "/bytheway", 
+					"hidden": true,
+					"title": "Pixelated Technologies - By The Way Font",
+					"description": "By The Way Font",
+					"keywords": "pixelated technologies, custom font, by the way, by the way font" 
+				} 
 			]
 		}
 	]

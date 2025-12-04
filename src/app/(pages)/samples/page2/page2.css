@@ -1,10 +1,28 @@
 :root {
     --primary-color: #F3EAD9; /* linen white */
+	--header-font: "Great Vibes", Verdana, sans-serif;
 }
 
 body {
     background-color: var(--primary-color);
 }
+
+
+body { 
+	font-family: var(--body-font); 
+	font-size: clamp(1.0rem, calc(0.9rem + 0.25vw), 1.25rem) !important; 
+}
+h1 { font-size: clamp(4.0rem, calc(3.8rem + 1.5vw), 5.0rem) !important; }
+	/* --h2-font-size: clamp(1.5rem, calc(1.4rem + 0.7vw), 2.0rem); */
+h2 { font-size: clamp(2.5rem, calc(2.3rem + 1.0vw), 3.5rem) !important; }
+	/* --h3-font-size: clamp(1.17rem, calc(1.15rem + 0.25vw), 1.375rem); */
+h3 { font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 2.5rem) !important; }
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--header-font); 
+	line-height: 1.1;
+}
+
+
 
 .negative-image {
     filter: invert(100%) grayscale(100%) sepia(50%); /* Adjust filters as needed */
@@ -64,7 +82,7 @@ nav {
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 300px;
     max-height: 100px;
     margin: 5px;
 }

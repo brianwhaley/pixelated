@@ -14,7 +14,7 @@
 
 .panelMenuButton .hamburger {
 	font-size: unset;
-	margin: 10px 0;
+	letter-spacing: 2px;
 }
 
 #page-header-nav {
@@ -66,8 +66,7 @@
 
 @media screen and (max-width: 480px) {
 	#page-header h2 {
-		--do-nothing: true;
-    	transform: scaleX(0.8);
+    	transform: scaleX(0.9);
     	transform-origin: left;
 	}
     .fixed-header-nav {

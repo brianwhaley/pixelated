@@ -13,10 +13,10 @@ import Footer from '@/app/elements/footer';
 import { LayoutClient } from "@/app/elements/layoutclient";
 
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@brianwhaley/pixelated-components/css/pixelated.font.scss";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
 // LOAD THIS AS LAST CSS FILE
 import "@/app/globals.css";
-
 
 
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
@@ -35,7 +35,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 		return (
 			<>
 				<LayoutClient />
-				<html lang="en">
+				<html lang="en" className="pixelated">
 					<head></head>
 					<body>
 						<PixelatedServerConfigProvider>
