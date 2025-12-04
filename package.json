@@ -1,6 +1,6 @@
 {
   "name": "@brianwhaley/pixelated-components",
-  "version": "3.0.9",
+  "version": "3.1.0",
   "private": false,
   "author": {
     "name": "Pixelated Technologies",
@@ -46,12 +46,13 @@
     "path": false
   },
   "scripts": {
+    "build": "npm run validate-exports && npm run buildClean && npm run tsc && npm run rsync && npm run tscClean ",
     "build-webpack": "webpack --config webpack.config.cjs && tsc --emitDeclarationOnly --outDir dist/types",
-    "build": "npm run buildClean && npm run tsc && npm run rsync && npm run tscClean ",
     "buildClean": "rm -r dist ",
     "tsc": "npx tsc --project tsconfig.json",
     "tscClean": "rm -r dist/{images,stories,tests} ",
     "rsync": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist",
+    "validate-exports": "node scripts/validate-exports.cjs",
     "build2brianwhaley": "npm run build && rm -rf ../brianwhaley/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../brianwhaley/node_modules/@brianwhaley/pixelated-components/",
     "build2informationfocus": "npm run build && rm -rf ../informationfocus/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../informationfocus/node_modules/@brianwhaley/pixelated-components/",
     "build2oaktreelandscaping": "npm run build && rm -rf ../oaktreelandscaping/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../oaktreelandscaping/node_modules/@brianwhaley/pixelated-components/",
@@ -83,12 +84,13 @@
     "@eslint/markdown": "^7.5.1",
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react-webpack5": "^10.1.2",
+    "@storybook/react-webpack5": "^10.1.4",
+    "@types/md5": "^2.3.6",
     "@types/node": "^24.10.1",
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "babel-loader": "^10.0.0",
@@ -101,18 +103,18 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-storybook": "^10.1.2",
+    "eslint-plugin-storybook": "^10.1.4",
     "file-loader": "^6.2.0",
     "less-loader": "^12.3.0",
     "mini-css-extract-plugin": "^2.9.4",
     "next": "^16.0.6",
     "null-loader": "^4.0.1",
     "prop-types": "^15.8.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "sass": "^1.94.2",
     "sass-loader": "^16.0.6",
-    "storybook": "^10.1.2",
+    "storybook": "^10.1.4",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
@@ -126,6 +128,9 @@
     "next": "^16.0.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
+  },
+  "optionalDependencies": {
+    "md5": "^2.3.0"
   },
   "type": "module"
 }
