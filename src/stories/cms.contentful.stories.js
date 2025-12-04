@@ -56,7 +56,7 @@ const FeedbackGallery = () => {
 	
 	return (
 		<PixelatedClientConfigProvider config={mockConfig}>
-			<section className="section-alt" id="feedback-section">
+			<section style={{backgroundColor: "var(--accent1-color)"}} id="feedback-section">
 				<div className="section-container">
 					<Carousel 
 						cards={feedbackCards} 
