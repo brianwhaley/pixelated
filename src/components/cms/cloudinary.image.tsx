@@ -5,7 +5,7 @@ import { buildCloudinaryUrl } from './cloudinary';
 import { usePixelatedConfig } from '../config/config.client';
 
 const CLOUDINARY_DOMAIN = 'https://res.cloudinary.com/';
-const CLOUDINARY_TRANSFORMS = 'f_auto,c_limit,q_auto,dpr_auto/';
+const CLOUDINARY_TRANSFORMS = 'f_auto,c_limit,q_auto,dpr_auto';
 
 
 function parseNumber(v?: string | number): number | undefined {

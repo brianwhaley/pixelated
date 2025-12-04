@@ -7,8 +7,8 @@ https://cloudinary.com/blog/delivering_all_your_websites_images_through_a_cdn
 
 const cloudinary_domain = "https://res.cloudinary.com";
 // const cloudinary_product_env = "dlbon7tpq";
-// const cloudinary_props = "/image/fetch/f_auto,c_limit,q_auto,dpr_auto/";
-const cloudinary_props = "/image/fetch/f_auto,c_limit,dpr_auto/";
+// const cloudinary_props = "/image/fetch/f_auto,c_limit,q_auto,dpr_auto";
+const cloudinary_props = "/image/fetch/f_auto,c_limit,dpr_auto";
 
 
 function joinWithSlash(a: string, b: string) {
