@@ -7,6 +7,7 @@ import Footer from "@/app/elements/footer";
 import myRoutes from "@/app/data/routes.json";
 import "@brianwhaley/pixelated-components/css/pixelated.global.css";
 import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
+import "@brianwhaley/pixelated-components/css/pixelated.font.scss";
 import "@/app/globals.css";
 
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {

@@ -50,6 +50,33 @@ h1 {
 }
 
 
+/* ===== BUTTON STYLES ===== */
+
+button:hover, 
+.button:hover {
+	background-image: url('/images/splatter.jpg'); 
+	background-position: center;
+  	background-size: cover; 
+    background-repeat: no-repeat  !important;
+}
+button:hover, 
+button:hover a, 
+.button:hover,
+.button:hover a {
+	color: #fff !important;
+    text-shadow: 
+		-1px 1px 1px #000, 
+		1px 1px 1px #000, 
+		1px -1px 1px #000, 
+		-1px -1px 1px #000, 
+		-1px 1px 5px #000, 
+		1px 1px 5px #000, 
+		1px -1px 5px #000, 
+		-1px -1px 5px #000;
+}
+
+
+
 /* ===== CAROUSEL STYLES ===== */
 
 .carouselContainer {
@@ -71,15 +98,20 @@ a:has(.carouselCardBody):hover {
 
 body {
     font-size: 16px;
-    /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;  */
 }
 
 main .section-container {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+#homeCTA-section {
+	padding: 30px 0;
+}
+
+.section-alt {
+    background-color: #DDD;
+	padding: 30px 0 !important;
 }
 
 .section-bluechip {
@@ -89,6 +121,7 @@ main .section-container {
         url('https://images.ctfassets.net/0b82pebh837v/72Ctu7oGaGNja5gHpTz4Fd/50984bad832c63d7845e3c6d511a1735/BluChips.jpg?fm=webp');
     background-position: center;
     background-size: cover;
+	padding: 30px 0 !important;
 }
 
 .section-bwchip {
@@ -98,6 +131,7 @@ main .section-container {
         url('https://images.ctfassets.net/0b82pebh837v/10u8y8Qcv6hkLnp1stjZZx/b9b6be999291a643f2c1cb1c22e5fc58/IMG_5559.jpg?fm=webp');
     background-position: center;
     background-size: cover;
+	padding: 30px 0 !important;
 }
 
 .section-pavers {
@@ -107,6 +141,7 @@ main .section-container {
         url('https://images.ctfassets.net/0b82pebh837v/4vT6cKz1jGZNVnrLM8cNHG/6520f512d7dacd00224d13e87ae8084b/IMG_6229.jpg?fm=webp');
     background-position: center;
     background-size: cover;
+	padding: 30px 0 !important;
 }
 
 
@@ -123,36 +158,6 @@ main .section-container {
 
 .menuWrapper {
     text-align: center;
-}
-
-.contactCTA {
-    font-size: 1.5em;
-    color: white;
-    display: flex;
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center (optional) */
-    text-align: center;
-}
-
-.contactCTA button {
-    border: 1px solid #999;
-	/* .rounded; */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-    font-size: 0.8em;
-    font-weight: bold;
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-}
-
-.contactCTA button:hover {
-    cursor: pointer; 
-    text-decoration: underline;
-    color: #369;
-    /* background-color: #DDD; */
-    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg");
 }
 
 footer {
@@ -176,36 +181,38 @@ footer {
     border: 0px  !important;
     width: 20%  !important; /* 5 MENU ITEMS */
     text-indent: 0px  !important;
-    font-size: small  !important;
 }
 
 .menuItem:not(:first-child) {
 	border-left: 0px transparent !important;
 }
 
+.menuItem:hover {
+    background-color: unset;
+}
+
 .menuItem a {
     background: none  !important;
     text-align: center  !important;
     text-indent: 0px  !important;
-    font-size: small  !important;
     height: 25px  !important;
 }
 
 .menuItem a:hover {
 	/* background: #FFF; */
-    font-size: medium  !important;
+	font-size: 1.05em;
+	font-weight: bold !important;
 	border-left: none  !important;
     text-indent: 0px  !important;
-    /* background-image: url('/images/splatter.jpg'); */
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("/images/splatter.jpg")  !important;
     background-repeat: no-repeat  !important;
-    /* background-attachment: fixed; */
     background-position: center  !important;
-    background-size: cover  !important; /* Resize the background image to cover the entire container */
+    background-size: cover  !important; 
 }
 
 
 /* ===== FORM STYLES ===== */
+
 .displayVertical {
     display: block;
     margin: 5px 5px 20px 5px !important;
@@ -227,17 +234,22 @@ footer {
 /* ===== HOME PAGE ===== */
 
 #homeCTA-section .homeCTA ,
-#reviewCTA-section .homeCTA {
+#reviewCTA-section .homeCTA,
+#contact-section .contactCTA {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.0em;
     margin-bottom: 30px;
 }
 #homeCTA-section .homeCTA button ,
-#reviewCTA-section .homeCTA button {
+#reviewCTA-section .homeCTA button,
+#contact-section .contactCTA button {
     border: 1px solid #999;
+    cursor: pointer; 
+    text-decoration: underline;
+    color: #369;
     /* .rounded; */
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -249,6 +261,11 @@ footer {
     padding: 10px;
 }
 
+.contactCTA {
+    color: white;
+}
+
+
 #home-callouts-section {
      .calloutImageVert {
         width: 90%;
@@ -256,6 +273,8 @@ footer {
 }
 
 #home-reviews-section {
+	padding: 30px 0;
+	
     .carouselContainer {
         height: 400px;
     }

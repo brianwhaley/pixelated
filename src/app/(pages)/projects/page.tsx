@@ -31,11 +31,13 @@ export default function Projects() {
 			for (const card of typeCards.items) {
 				if ( card.sys.contentType.sys.id == contentType ) {
 					let images = await getContentfulImagesFromEntries({ images: [card.fields.image], assets: typeCards.includes.Asset });
+					/* Contentful images start with two slashes */
 					images = images.map(img => {
-						return {
-							image: img.image.replace("//images.ctfassets.net", "https://images.ctfassets.net"),
-							imageAlt: img.imageAlt
-						};
+						return img.image.startsWith("//images.ctfassets.net")
+						? { image: img.image.replace("//images.ctfassets.net", "https://images.ctfassets.net"),
+							imageAlt: img.imageAlt }
+						: { image: img.image,
+							imageAlt: img.imageAlt };
 					});
 					console.log(images);
 					reviewCards.push({

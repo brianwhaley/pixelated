@@ -8,6 +8,7 @@ import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
 import { Carousel } from "@brianwhaley/pixelated-components";
 import type { CarouselCardType } from "@brianwhaley/pixelated-components";
 import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
+import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
 
 export default function Home() {
 
@@ -45,8 +46,8 @@ export default function Home() {
 		<>
 			<CalloutLibrary.PageTitle title="Palmetto Epoxy" />
 
-      		<section id="homeCTA-section">
-				<div className="section-container">
+      		<PageSection columns={1} id="homeCTA-section">
+				<GridItem>
 					<div className="homeCTA">
 						<div className="">
 							Elevate your space with a solution 
@@ -56,59 +57,51 @@ export default function Home() {
 							<button type="button" onClick={() => { window.location.href = '/contact'; }}>Schedule an Estimate</button>
 						</div>
 					</div>
-				</div>
-			</section>
+				</GridItem>
+			</PageSection>
 
-      		<section className="section-alt" id="home-callouts-section">
-				<div className="section-container">
-					<div className="row-3col">
-						<div className="gridItem">
-							<Callout
-								layout='vertical'
-								img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
-								imgShape='bevel'  
-								title="Floors You'll Adore" />
-						</div>
-						<div className="gridItem">
-							<Callout
-								layout='vertical' 
-								img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg?fm=webp'
-								imgShape='bevel'  
-								title='Epoxy Excellence' />
-						</div>
-						<div className="gridItem">
-							<Callout
-								layout='vertical' 
-								img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
-								imgShape='bevel'  
-								title='Shine On...' />
-						</div>
-					</div>
-				</div>
-			</section>
+      		<PageSection columns={3} className="section-alt" id="home-callouts-section">
+				<GridItem>
+					<Callout
+						layout='vertical'
+						img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
+						imgShape='bevel'  
+						title="Floors You'll Adore" />
+				</GridItem>
+				<GridItem>
+					<Callout
+						layout='vertical' 
+						img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg?fm=webp'
+						imgShape='bevel'  
+						title='Epoxy Excellence' />
+				</GridItem>
+				<GridItem>
+					<Callout
+						layout='vertical' 
+						img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
+						imgShape='bevel'  
+						title='Shine On...' />
+				</GridItem>
+			</PageSection>
 
-			<section id="home-reviews-section">
-				<div className="section-container">
+			<PageSection columns={1} id="home-reviews-section">
 					<Carousel 
 						cards={carouselCards} 
 						draggable={true}
 						imgFit='contain' />
-				</div>
-			</section>
+			</PageSection>
 
-			<section  className="section-pavers textOutline" id="reviewCTA-section">
-				<div className="section-container">
-					<div className="homeCTA">
-						<div className="">
-							Voice your opinion and  
-							<br />
-							share your experience with us.
-							<br />
-							<button type="button" onClick={() => { window.location.href = '/submitreview'; }}>Submit your Review</button>
-						</div>
+			<PageSection  columns={1} className="section-pavers textOutline" id="reviewCTA-section">
+				<div className="homeCTA">
+					<div className="">
+						Voice your opinion and  
+						<br />
+						share your experience with us.
+						<br />
+						<button type="button" onClick={() => { window.location.href = '/submitreview'; }}>Submit your Review</button>
 					</div>
 				</div>
-			</section>
+			</PageSection>
 
 			<section className="section-alt" id="lowcountrysbest-section">
 				<CalloutLibrary.LowCountrysBest />
@@ -119,7 +112,7 @@ export default function Home() {
 					<div className="row-12col">
 						<div className="grid-s2-e12">
 							<Callout
-								style='grid'
+								variant='grid'
 								direction='right'
 								layout='horizontal'
 								img='https://images.ctfassets.net/0b82pebh837v/5AiTNJSyca5JJ9ZycxXJ2W/814eac82c120b5fa87505011cfe10609/MR_Sharks_2.jpg?fm=webp'

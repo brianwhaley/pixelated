@@ -47,7 +47,7 @@ export function LowCountrysBest() {
 				<div className="row-12col ">
 					<div className="grid-s2-e12">
 						<Callout
-							style='boxed grid'
+							variant='boxed grid'
 							url='https://www.votedlowcountrysbest.com/listing/palmetto-epoxy.html'
 							title="Lowcountrys Best 2025"
 							img='/images/logos/lowcountrysbest-logo.jpg'
