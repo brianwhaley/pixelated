@@ -65,7 +65,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Install NPM packages
    ```sh
-   npm install @brianwhaley/pixelated-components@latest
+   npm install @pixelated-tech/components@latest
    ```
 
 

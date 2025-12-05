@@ -13,7 +13,7 @@ import {
   loadPage, 
   savePage, 
   deletePage 
-} from '@brianwhaley/pixelated-components/server';
+} from '@pixelated-tech/components/server';
 
 // List all pages
 const pages = await listPages();
@@ -79,12 +79,12 @@ import {
   loadPage, 
   savePage, 
   deletePage 
-} from '@brianwhaley/pixelated-components/server';
-import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+} from '@pixelated-tech/components/server';
+import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 // When running on the server, read the unified pixelated config instead of
 // discrete CONTENTFUL_* env vars. Example using the package helper:
-// import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+// import { getFullPixelatedConfig } from '@pixelated-tech/components/server';
 // const cfg = getFullPixelatedConfig();
 // const config: ContentfulConfig = cfg.contentful;
 
@@ -124,7 +124,7 @@ const deleted = await deletePage('home', config);
 ```typescript
 // src/app/api/pagebuilder/save/route.ts
 import { NextResponse } from 'next/server';
-import { savePage } from '@brianwhaley/pixelated-components/server';
+import { savePage } from '@pixelated-tech/components/server';
 
 export async function POST(request: Request) {
   const { name, data } = await request.json();
@@ -146,8 +146,8 @@ export async function POST(request: Request) {
 ```typescript
 // src/app/api/pagebuilder/save/route.ts
 import { NextResponse } from 'next/server';
-import { savePage } from '@brianwhaley/pixelated-components/server';
-import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+import { savePage } from '@pixelated-tech/components/server';
+import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 export async function POST(request: Request) {
   const { name, data } = await request.json();
@@ -161,7 +161,7 @@ export async function POST(request: Request) {
 
   // Server-side: prefer reading the unified `PIXELATED_CONFIG_JSON` / `PIXELATED_CONFIG_B64`.
   // Example:
-  // import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+  // import { getFullPixelatedConfig } from '@pixelated-tech/components/server';
   // const cfg = getFullPixelatedConfig();
   // const config: ContentfulConfig = cfg.contentful;
   // const result = await savePage(name, data, config);

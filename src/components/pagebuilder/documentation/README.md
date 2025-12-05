@@ -10,7 +10,7 @@ The PageBuilder is a visual page construction tool that allows you to create pag
 
 ```typescript
 // src/app/pagebuilder/page.tsx
-import { PageBuilderUI } from '@brianwhaley/pixelated-components';
+import { PageBuilderUI } from '@pixelated-tech/components';
 
 export default function PageBuilderPage() {
   return <PageBuilderUI />;
@@ -21,7 +21,7 @@ export default function PageBuilderPage() {
 
 ```typescript
 // src/app/my-page/page.tsx
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import pageData from '@/../../public/data/pages/my-page.json';
 
 export default function MyPage() {
@@ -126,7 +126,7 @@ The `usePageBuilder` hook manages all state:
 
 1. **Install package**:
    ```bash
-   npm install @brianwhaley/pixelated-components
+   npm install @pixelated-tech/components
    ```
 
 2. **Create PageBuilder page** (see Quick Start above)

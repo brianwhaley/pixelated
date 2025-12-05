@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 // Choose ONE of these imports:
 
 // Option 1: File-based storage
-import { savePage } from '@brianwhaley/pixelated-components/server';
+import { savePage } from '@pixelated-tech/components/server';
 
 // Option 2: Contentful storage
-// import { savePage } from '@brianwhaley/pixelated-components/server';
-// import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+// import { savePage } from '@pixelated-tech/components/server';
+// import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 export async function POST(request: Request) {
 	try {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 		// The app reads the unified config on the server via `getFullPixelatedConfig()` which
 		// sources values from `PIXELATED_CONFIG_JSON` or `PIXELATED_CONFIG_B64`.
 		// Example (server-side):
-		// import { getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
+		// import { getFullPixelatedConfig } from '@pixelated-tech/components/server';
 		// const cfg = getFullPixelatedConfig();
 		// const contentfulConfig = cfg.contentful;
 		// const result = await savePage(name, data, contentfulConfig);

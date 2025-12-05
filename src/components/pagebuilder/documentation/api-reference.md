@@ -8,7 +8,7 @@ Main orchestrator component that composes all PageBuilder functionality.
 
 **Import:**
 ```typescript
-import { PageBuilderUI } from '@brianwhaley/pixelated-components';
+import { PageBuilderUI } from '@pixelated-tech/components';
 ```
 
 **Usage:**
@@ -28,7 +28,7 @@ Renders components from JSON with optional edit UI.
 
 **Import:**
 ```typescript
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 ```
 
 **Props:**
@@ -67,7 +67,7 @@ UI for saving, loading, and deleting pages.
 
 **Import:**
 ```typescript
-import { SaveLoadSection } from '@brianwhaley/pixelated-components/pagebuilder/components/SaveLoadSection';
+import { SaveLoadSection } from '@pixelated-tech/components/pagebuilder/components/SaveLoadSection';
 ```
 
 **Props:**
@@ -96,7 +96,7 @@ State management hook for PageBuilder functionality.
 
 **Import:**
 ```typescript
-import { usePageBuilder } from '@brianwhaley/pixelated-components/pagebuilder/usePageBuilder';
+import { usePageBuilder } from '@pixelated-tech/components/pagebuilder/usePageBuilder';
 ```
 
 **Returns:**
@@ -152,7 +152,7 @@ import {
   savePage, 
   deletePage,
   validatePageName 
-} from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+} from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 ```
 
 #### `listPages()`
@@ -325,7 +325,7 @@ PAGES_DIR=public/data/pages
 
 Import in your component:
 ```typescript
-import '@brianwhaley/pixelated-components/pagebuilder/components/pagebuilder.scss';
+import '@pixelated-tech/components/pagebuilder/components/pagebuilder.scss';
 ```
 
 **Available classes:**

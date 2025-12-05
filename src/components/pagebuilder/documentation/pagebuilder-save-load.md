@@ -558,7 +558,7 @@ touch public/data/pages/.gitkeep
 
 ```typescript
 import { NextResponse } from 'next/server';
-import { listPages } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { listPages } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export async function GET() {
   const result = await listPages();
@@ -570,7 +570,7 @@ export async function GET() {
 
 ```typescript
 import { NextResponse } from 'next/server';
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -592,7 +592,7 @@ export async function GET(request: Request) {
 
 ```typescript
 import { NextResponse } from 'next/server';
-import { savePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { savePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export async function POST(request: Request) {
   try {
@@ -621,7 +621,7 @@ export async function POST(request: Request) {
 
 ```typescript
 import { NextResponse } from 'next/server';
-import { deletePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { deletePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -664,7 +664,7 @@ npm version patch
 
 ```bash
 cd ../brianwhaley  # or pixelated, palmetto-epoxy
-npm install @brianwhaley/pixelated-components@latest
+npm install @pixelated-tech/components@latest
 ```
 
 #### 3.3 Test
@@ -700,7 +700,7 @@ npm install @brianwhaley/pixelated-components@latest
 
 ```typescript
 // src/app/landing/page.tsx
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import pageData from '@/../../public/data/pages/landing-page.json';
 
 export default function LandingPage() {
@@ -725,7 +725,7 @@ export default function LandingPage() {
 // src/app/landing/page.tsx
 "use client";
 
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import { useState, useEffect } from 'react';
 
 export default function LandingPage() {
@@ -763,8 +763,8 @@ export default function LandingPage() {
 
 ```typescript
 // src/app/landing/page.tsx
-import { PageEngine } from '@brianwhaley/pixelated-components';
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { PageEngine } from '@pixelated-tech/components';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export default async function LandingPage() {
   const result = await loadPage('landing-page');
@@ -793,8 +793,8 @@ export default async function LandingPage() {
 
 ```typescript
 // src/app/pages/[slug]/page.tsx
-import { PageEngine } from '@brianwhaley/pixelated-components';
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { PageEngine } from '@pixelated-tech/components';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export default async function DynamicPage({ params }: { params: { slug: string } }) {
   const result = await loadPage(params.slug);
@@ -808,7 +808,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
 // Generate static params at build time
 export async function generateStaticParams() {
-  const { listPages } = await import('@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage');
+  const { listPages } = await import('@pixelated-tech/components/pagebuilder/lib/pageStorage');
   const result = await listPages();
   
   return result.pages.map((page) => ({

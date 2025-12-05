@@ -1,26 +1,35 @@
 
+## SETUP INFORMATION
 git remote add pixelated-components https://github.com/brianwhaley/pixelated-components.git
 npm config set registry https://registry.npmjs.org
 npm login --scope=@brianwhaley --registry=https://registry.npmjs.org
 
-npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
-npm audit fix --force
+https://www.npmjs.com/package/@pixelated-tech/components
+
+https://www.npmjs.com/package/@pixelated-tech/components
 
 eslint --fix --ext .js,.jsx .
-
 eslint --fix
 
+
+
+## MIGRATION SCRIPT
+npm uninstall @pixelated-tech/components
+npm install @pixelated-tech/components --save --force 
+
+
+
+## DEPLOYMENT SCRIPT
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "move package to @pixelated-tech/components"
+git commit -m "update all old references to @brianwhaley/pixelated-components"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
-npm publish
+npm publish --access public
 
-https://www.npmjs.com/package/@brianwhaley/pixelated-components
 
 
 https://www.dhiwise.com/post/how-to-structure-and-organize-react-css-modules

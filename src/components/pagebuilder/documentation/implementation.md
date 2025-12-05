@@ -15,7 +15,7 @@ Complete setup guide for integrating PageBuilder into your Next.js project.
 ## Installation
 
 ```bash
-npm install @brianwhaley/pixelated-components
+npm install @pixelated-tech/components
 ```
 
 ---
@@ -27,8 +27,8 @@ Create a page to host the PageBuilder UI.
 **File:** `src/app/pagebuilder/page.tsx`
 
 ```typescript
-import { PageBuilderUI } from '@brianwhaley/pixelated-components';
-import '@brianwhaley/pixelated-components/pagebuilder/components/pagebuilder.scss';
+import { PageBuilderUI } from '@pixelated-tech/components';
+import '@pixelated-tech/components/pagebuilder/components/pagebuilder.scss';
 
 export default function PageBuilderPage() {
   return (
@@ -69,7 +69,7 @@ Create API endpoints for save/load functionality.
 **File:** `src/app/api/pagebuilder/list/route.ts`
 
 ```typescript
-import { listPages } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { listPages } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -83,7 +83,7 @@ export async function GET() {
 **File:** `src/app/api/pagebuilder/load/route.ts`
 
 ```typescript
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -107,7 +107,7 @@ export async function GET(request: Request) {
 **File:** `src/app/api/pagebuilder/save/route.ts`
 
 ```typescript
-import { savePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { savePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -131,7 +131,7 @@ export async function POST(request: Request) {
 **File:** `src/app/api/pagebuilder/delete/route.ts`
 
 ```typescript
-import { deletePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { deletePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 import { NextResponse } from 'next/server';
 
 export async function DELETE(request: Request) {
@@ -191,7 +191,7 @@ Best for: Static pages that rarely change.
 **File:** `src/app/page.tsx`
 
 ```typescript
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import pageData from '../../public/data/pages/home.json';
 
 export default function HomePage() {
@@ -213,7 +213,7 @@ Best for: Dynamic content, preview mode.
 ```typescript
 'use client';
 
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
@@ -250,8 +250,8 @@ Best for: SEO-critical pages with dynamic content.
 **File:** `src/app/page.tsx`
 
 ```typescript
-import { PageEngine } from '@brianwhaley/pixelated-components';
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { PageEngine } from '@pixelated-tech/components';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export default async function HomePage() {
   const result = await loadPage('home');
@@ -276,8 +276,8 @@ Best for: Multiple pages with same template, optimized performance.
 **File:** `src/app/[slug]/page.tsx`
 
 ```typescript
-import { PageEngine } from '@brianwhaley/pixelated-components';
-import { loadPage, listPages } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { PageEngine } from '@pixelated-tech/components';
+import { loadPage, listPages } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 // Generate static params at build time
 export async function generateStaticParams() {
@@ -415,7 +415,7 @@ cd pixelated-components
 npm run build
 
 cd ../your-next-app
-npm install @brianwhaley/pixelated-components@latest
+npm install @pixelated-tech/components@latest
 npm run dev
 ```
 
@@ -483,7 +483,7 @@ PAGES_DIR=src/app/data/pages
 **Cause:** TypeScript can't find types  
 **Fix:** Ensure proper import:
 ```typescript
-import type { PageData } from '@brianwhaley/pixelated-components/pagebuilder/lib/types';
+import type { PageData } from '@pixelated-tech/components/pagebuilder/lib/types';
 ```
 
 ### Build Errors in pixelated-components
@@ -506,7 +506,7 @@ npm version patch
 npm run build
 
 # In your app
-npm install @brianwhaley/pixelated-components@latest
+npm install @pixelated-tech/components@latest
 ```
 
 ---
@@ -606,8 +606,8 @@ For issues or questions:
 
 ```typescript
 // src/app/pagebuilder/page.tsx
-import { PageBuilderUI } from '@brianwhaley/pixelated-components';
-import '@brianwhaley/pixelated-components/pagebuilder/components/pagebuilder.scss';
+import { PageBuilderUI } from '@pixelated-tech/components';
+import '@pixelated-tech/components/pagebuilder/components/pagebuilder.scss';
 
 export default function PageBuilderPage() {
   return <PageBuilderUI />;
@@ -616,8 +616,8 @@ export default function PageBuilderPage() {
 
 ```typescript
 // src/app/page.tsx (Server Component)
-import { PageEngine } from '@brianwhaley/pixelated-components';
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { PageEngine } from '@pixelated-tech/components';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export default async function HomePage() {
   const result = await loadPage('home');
@@ -632,7 +632,7 @@ export default async function HomePage() {
 
 ```typescript
 // src/app/api/pagebuilder/save/route.ts
-import { savePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { savePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {

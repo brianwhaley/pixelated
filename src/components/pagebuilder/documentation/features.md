@@ -343,7 +343,7 @@ Each API route is a thin wrapper calling library functions:
 ```typescript
 // /api/pagebuilder/save/route.ts
 import { NextResponse } from 'next/server';
-import { savePage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { savePage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -457,7 +457,7 @@ useEffect(() => {
 
 **Method 3: Server Component** (SSR)
 ```typescript
-import { loadPage } from '@brianwhaley/pixelated-components/pagebuilder/lib/pageStorage';
+import { loadPage } from '@pixelated-tech/components/pagebuilder/lib/pageStorage';
 const result = await loadPage('home');
 <PageEngine pageData={result.data} />
 ```

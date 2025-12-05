@@ -1,1 +1,1 @@
-declare module '@brianwhaley/pixelated-components';
+declare module '@pixelated-tech/components';

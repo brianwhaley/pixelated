@@ -1,7 +1,7 @@
 // Server-safe exports only - no client components, no CSS imports, no browser APIs
 // Use this entry point for Next.js server components, API routes, and build-time code
 // Note: Client components (with JSX, CSS imports, browser APIs) are NOT exported here.
-// Import those from the main package entry point: @brianwhaley/pixelated-components
+// Import those from the main package entry point: @pixelated-tech/components
 
 export * from './components/cms/cloudinary';
 export * from './components/cms/contentful.delivery';

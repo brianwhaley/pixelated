@@ -18,7 +18,7 @@ Usage (Next.js app router example):
 2. Wrap your app root with the provider (in `app/layout.tsx`):
 
 ```tsx
-import { PixelatedClientConfigProvider } from '@brianwhaley/pixelated-components';
+import { PixelatedClientConfigProvider } from '@pixelated-tech/components';
 import pixelatedConfig from '../pixelated.config';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
