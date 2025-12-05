@@ -1,136 +1,137 @@
 {
-  "name": "@pixelated-tech/components",
-  "version": "3.1.4",
-  "private": false,
-  "author": {
-    "name": "Pixelated Technologies",
-    "url": "https://www.pixelated.tech/"
-  },
-  "description": "Pixelated UI Components",
-  "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "directories": {
-    "doc": "docs"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    },
-    "./server": {
-      "types": "./dist/types/index.server.d.ts",
-      "import": "./dist/index.server.js",
-      "default": "./dist/index.server.js"
-    },
-    "./css/*": "./dist/css/*"
-  },
-  "homepage": "https://github.com/brianwhaley/pixelated-components#readme",
-  "bugs": {
-    "url": "https://github.com/brianwhaley/pixelated-components/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/brianwhaley/pixelated-components.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
-  "browser": {
-    "fs": false,
-    "path": false
-  },
-  "scripts": {
-    "build": "npm run validate-exports && npm run buildClean && npm run tsc && npm run rsync && npm run tscClean ",
-    "build-webpack": "webpack --config webpack.config.cjs && tsc --emitDeclarationOnly --outDir dist/types",
-    "buildClean": "rm -r dist ",
-    "tsc": "npx tsc --project tsconfig.json",
-    "tscClean": "rm -r dist/{images,stories,tests} ",
-    "rsync": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist",
-    "validate-exports": "node scripts/validate-exports.cjs",
-    "build2brianwhaley": "npm run build && rm -rf ../brianwhaley/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../brianwhaley/node_modules/@brianwhaley/pixelated-components/",
-    "build2informationfocus": "npm run build && rm -rf ../informationfocus/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../informationfocus/node_modules/@brianwhaley/pixelated-components/",
-    "build2oaktreelandscaping": "npm run build && rm -rf ../oaktreelandscaping/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../oaktreelandscaping/node_modules/@brianwhaley/pixelated-components/",
-    "build2palmettoepoxy": "npm run build && rm -rf ../palmetto-epoxy/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../palmetto-epoxy/node_modules/@brianwhaley/pixelated-components/",
-    "build2pixelated": "npm run build && rm -rf ../pixelated/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../pixelated/node_modules/@brianwhaley/pixelated-components/",
-    "build2pixelvivid": "npm run build && rm -rf ../pixelvivid/node_modules/@brianwhaley/pixelated-components/dist && cp -r dist ../pixelvivid/node_modules/@brianwhaley/pixelated-components/",
-    "storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
-    "buildStorybook": "rm -rf node_modules/.cache && storybook build",
-    "test": "react-scripts test"
-  },
-  "scripts-old": {
-    "buildBabel": "npm run buildClean && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "build-webpack": "rm -rf dist && npx tsc --project tsconfig.json && webpack --config webpack.config.js && npm run build-webpack-rsync",
-    "build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css"
-  },
-  "dependencies": {
-    "date-fns": "^4.1.0",
-    "globals": "^16.5.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.5",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.28.5",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
-    "@eslint/json": "^0.14.0",
-    "@eslint/markdown": "^7.5.1",
-    "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
-    "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react-webpack5": "^10.1.4",
-    "@types/md5": "^2.3.6",
-    "@types/node": "^24.10.1",
-    "@types/prop-types": "^15.7.15",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "ajv": "^8.17.1",
-    "ajv-keywords": "^5.1.0",
-    "babel-loader": "^10.0.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^13.0.1",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.39.1",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.23.1",
-    "eslint-plugin-promise": "^7.2.1",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-storybook": "^10.1.4",
-    "file-loader": "^6.2.0",
-    "less-loader": "^12.3.0",
-    "mini-css-extract-plugin": "^2.9.4",
-    "next": "^16.0.6",
-    "null-loader": "^4.0.1",
-    "prop-types": "^15.8.1",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "sass": "^1.94.2",
-    "sass-loader": "^16.0.6",
-    "storybook": "^10.1.4",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.103.0",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "peerDependencies": {
-    "next": "^16.0.3",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "optionalDependencies": {
-    "md5": "^2.3.0"
-  },
-  "type": "module"
+	"name": "@pixelated-tech/components",
+	"version": "3.1.5",
+	"private": false,
+	"author": {
+		"name": "Pixelated Technologies",
+		"url": "https://www.pixelated.tech/"
+	},
+	"description": "Pixelated UI Components",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/types/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"directories": {
+		"doc": "docs"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./server": {
+			"types": "./dist/types/index.server.d.ts",
+			"import": "./dist/index.server.js",
+			"default": "./dist/index.server.js"
+		},
+		"./css/*": "./dist/css/*"
+	},
+	"homepage": "https://github.com/brianwhaley/pixelated-components#readme",
+	"bugs": {
+		"url": "https://github.com/brianwhaley/pixelated-components/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/brianwhaley/pixelated-components.git"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	},
+	"browser": {
+		"fs": false,
+		"path": false
+	},
+	"scripts": {
+		"build": "npm run validate-exports && npm run buildClean && npm run tsc && npm run rsync && npm run tscClean ",
+		"build-webpack": "webpack --config webpack.config.cjs && tsc --emitDeclarationOnly --outDir dist/types",
+		"buildClean": "rm -r dist ",
+		"tsc": "npx tsc --project tsconfig.json",
+		"tscClean": "rm -r dist/{images,stories,tests} ",
+		"rsync": "rsync -a --include='*.css' --include='*.scss' --include='*/' --exclude='*' src/ dist",
+		"validate-exports": "node scripts/validate-exports.cjs",
+		"build2brianwhaley": "npm run build && rm -rf ../brianwhaley/node_modules/@pixelated-tech/components/dist && cp -r dist ../brianwhaley/node_modules/@pixelated-tech/components/",
+		"build2informationfocus": "npm run build && rm -rf ../informationfocus/node_modules/@pixelated-tech/components/dist && cp -r dist ../informationfocus/node_modules/@pixelated-tech/components/",
+		"build2oaktreelandscaping": "npm run build && rm -rf ../oaktreelandscaping/node_modules/@pixelated-tech/components/dist && cp -r dist ../oaktreelandscaping/node_modules/@pixelated-tech/components/",
+		"build2palmettoepoxy": "npm run build && rm -rf ../palmetto-epoxy/node_modules/@pixelated-tech/components/dist && cp -r dist ../palmetto-epoxy/node_modules/@pixelated-tech/components/",
+		"build2pixelated": "npm run build && rm -rf ../pixelated/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated/node_modules/@pixelated-tech/components/",
+		"build2pixelvivid": "npm run build && rm -rf ../pixelvivid/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelvivid/node_modules/@pixelated-tech/components/",
+		"storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
+		"buildStorybook": "rm -rf node_modules/.cache && storybook build",
+		"test": "react-scripts test"
+	},
+	"scripts-old": {
+		"buildBabel": "npm run buildClean && NODE_ENV=production babel src --out-dir dist --copy-files",
+		"build-webpack": "rm -rf dist && npx tsc --project tsconfig.json && webpack --config webpack.config.js && npm run build-webpack-rsync",
+		"build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css"
+	},
+	"dependencies": {
+		"date-fns": "^4.1.0",
+		"globals": "^16.5.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.28.3",
+		"@babel/core": "^7.28.5",
+		"@babel/plugin-proposal-class-properties": "^7.18.6",
+		"@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+		"@babel/preset-env": "^7.28.5",
+		"@babel/preset-react": "^7.28.5",
+		"@babel/preset-typescript": "^7.28.5",
+		"@eslint/json": "^0.14.0",
+		"@eslint/markdown": "^7.5.1",
+		"@storybook/addon-webpack5-compiler-babel": "^4.0.0",
+		"@storybook/preset-scss": "^1.0.3",
+		"@storybook/react-webpack5": "^10.1.4",
+		"@types/md5": "^2.3.6",
+		"@types/node": "^24.10.1",
+		"@types/prop-types": "^15.7.15",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"@typescript-eslint/eslint-plugin": "^8.48.1",
+		"ajv": "^8.17.1",
+		"ajv-keywords": "^5.1.0",
+		"babel-loader": "^10.0.0",
+		"clean-webpack-plugin": "^4.0.0",
+		"copy-webpack-plugin": "^13.0.1",
+		"css-loader": "^7.1.2",
+		"eslint": "^9.39.1",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-n": "^17.23.1",
+		"eslint-plugin-promise": "^7.2.1",
+		"eslint-plugin-react": "^7.37.4",
+		"eslint-plugin-storybook": "^10.1.4",
+		"file-loader": "^6.2.0",
+		"less-loader": "^12.3.0",
+		"mini-css-extract-plugin": "^2.9.4",
+		"next": "^16.0.6",
+		"null-loader": "^4.0.1",
+		"prop-types": "^15.8.1",
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1",
+		"sass": "^1.94.2",
+		"sass-loader": "^16.0.6",
+		"storybook": "^10.1.4",
+		"style-loader": "^4.0.0",
+		"ts-loader": "^9.5.4",
+		"typescript": "^5.9.3",
+		"url-loader": "^4.1.1",
+		"webpack": "^5.103.0",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.2",
+		"webpack-node-externals": "^3.0.0"
+	},
+	"peerDependencies": {
+		"next": "^16.0.3",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0"
+	},
+	"optionalDependencies": {
+		"md5": "^2.3.0"
+	},
+	"type": "module"
 }
