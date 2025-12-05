@@ -7,11 +7,11 @@
 // https://cassandraladru.com/
 
 import React, { useEffect } from "react";
-import { MenuSimple } from "@brianwhaley/pixelated-components";
-import { Callout } from "@brianwhaley/pixelated-components";
-import { Tiles } from "@brianwhaley/pixelated-components";
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import { MenuSimple } from "@pixelated-tech/components";
+import { Callout } from "@pixelated-tech/components";
+import { Tiles } from "@pixelated-tech/components";
+import { MicroInteractions } from "@pixelated-tech/components";
+import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page2.css";
 import SocialTags from "@/app/elements/socialtags";
 

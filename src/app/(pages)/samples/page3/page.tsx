@@ -6,12 +6,12 @@
 // https://lapastaria.org/
 
 import React, { useEffect } from "react";
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import { MenuSimple } from "@brianwhaley/pixelated-components";
-import { Callout } from "@brianwhaley/pixelated-components";
-import { PageSectionHeader } from "@brianwhaley/pixelated-components";
+import { MicroInteractions } from "@pixelated-tech/components";
+import { MenuSimple } from "@pixelated-tech/components";
+import { Callout } from "@pixelated-tech/components";
+import { PageSectionHeader } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page3.css";
 
 const menuItems = [

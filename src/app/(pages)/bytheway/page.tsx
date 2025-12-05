@@ -3,8 +3,8 @@
 "use client";
 
 import React from 'react';
-import { PageHeader } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
 import "./page.css";
 
 export default function ByTheWay() {

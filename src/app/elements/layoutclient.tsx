@@ -2,11 +2,11 @@
 
 import { useLayoutEffect } from "react";
 
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
-// import { loadAllImagesFromCloudinary } from "@brianwhaley/pixelated-components";
-// import { deferAllCSS } from "@brianwhaley/pixelated-components";
-import { preloadAllCSS } from "@brianwhaley/pixelated-components";
-import { preloadImages } from "@brianwhaley/pixelated-components";
+import { MicroInteractions } from "@pixelated-tech/components";
+// import { loadAllImagesFromCloudinary } from "@pixelated-tech/components";
+// import { deferAllCSS } from "@pixelated-tech/components";
+import { preloadAllCSS } from "@pixelated-tech/components";
+import { preloadImages } from "@pixelated-tech/components";
 
 export function LayoutClient() {
 	useLayoutEffect(() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { PageEngine } from '@brianwhaley/pixelated-components';
+import { PageEngine } from '@pixelated-tech/components';
 import { useEffect, useState } from 'react';
 import { use } from 'react';
 

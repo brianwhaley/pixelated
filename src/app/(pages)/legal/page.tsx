@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { PageSection } from '@brianwhaley/pixelated-components';
+import { PageSection } from '@pixelated-tech/components';
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
 

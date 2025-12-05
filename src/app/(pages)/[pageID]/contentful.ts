@@ -4,8 +4,8 @@
  * Uses Delivery API for fast, cached reads of published content
  */
 
-import { getContentfulEntriesByType, getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
-import type { ContentfulApiType } from '@brianwhaley/pixelated-components/server';
+import { getContentfulEntriesByType, getFullPixelatedConfig } from '@pixelated-tech/components/server';
+import type { ContentfulApiType } from '@pixelated-tech/components/server';
 
 const CONTENT_TYPE = 'page';
 

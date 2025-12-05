@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { listContentfulPages, getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
-import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+import { listContentfulPages, getFullPixelatedConfig } from '@pixelated-tech/components/server';
+import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 const debug = false;
 

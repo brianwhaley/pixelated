@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { deleteContentfulPage, getFullPixelatedConfig } from '@brianwhaley/pixelated-components/server';
-import type { ContentfulConfig } from '@brianwhaley/pixelated-components/server';
+import { deleteContentfulPage, getFullPixelatedConfig } from '@pixelated-tech/components/server';
+import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 function buildContentfulConfigFromFull(): ContentfulConfig {
 	const config = getFullPixelatedConfig();

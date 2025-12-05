@@ -5,14 +5,14 @@
 // https://uxwing.com/wp-content/themes/uxwing/download/nature-and-environment/pine-trees-icon.png
 
 import React, { useEffect } from "react";
-import { GridItem, PageSection } from "@brianwhaley/pixelated-components";
-import { MenuSimple } from "@brianwhaley/pixelated-components";
-import { Callout, CalloutButton } from "@brianwhaley/pixelated-components";
-import { Tiles } from "@brianwhaley/pixelated-components";
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
+import { GridItem, PageSection } from "@pixelated-tech/components";
+import { MenuSimple } from "@pixelated-tech/components";
+import { Callout, CalloutButton } from "@pixelated-tech/components";
+import { Tiles } from "@pixelated-tech/components";
+import { MicroInteractions } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
-import "@brianwhaley/pixelated-components/css/pixelated.grid.scss";
+import "@pixelated-tech/components/css/pixelated.global.css";
+import "@pixelated-tech/components/css/pixelated.grid.scss";
 import "./page1.css";
 
 const menuItems = [

@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { PageHeader } from '@brianwhaley/pixelated-components';
-import { PageSection, GridItem } from '@brianwhaley/pixelated-components';
-import { MicroInteractions } from "@brianwhaley/pixelated-components";
-import { BlogPostCategories, BlogPostList } from '@brianwhaley/pixelated-components';
-import { getWordPressCategories } from '@brianwhaley/pixelated-components';
+import { PageHeader } from '@pixelated-tech/components';
+import { PageSection, GridItem } from '@pixelated-tech/components';
+import { MicroInteractions } from "@pixelated-tech/components";
+import { BlogPostCategories, BlogPostList } from '@pixelated-tech/components';
+import { getWordPressCategories } from '@pixelated-tech/components';
 
 const wpSite = "blog.pixelated.tech";
 

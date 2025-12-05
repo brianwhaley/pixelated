@@ -2,10 +2,10 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { GridItem, PageHeader } from "@brianwhaley/pixelated-components";
-import { PageSection } from "@brianwhaley/pixelated-components";
-import { CalloutHeader } from "@brianwhaley/pixelated-components";
-import { NerdJoke } from "@brianwhaley/pixelated-components";
+import { GridItem, PageHeader } from "@pixelated-tech/components";
+import { PageSection } from "@pixelated-tech/components";
+import { CalloutHeader } from "@pixelated-tech/components";
+import { NerdJoke } from "@pixelated-tech/components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
 

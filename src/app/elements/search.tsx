@@ -2,7 +2,7 @@
 
 import React from "react";
 import PropTypes from 'prop-types';
-import { GoogleSearch } from "@brianwhaley/pixelated-components";
+import { GoogleSearch } from "@pixelated-tech/components";
 
 interface SearchProps {
 	id: string;

@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 	experimental: {
     	optimizeCss: true,
   	},
-	transpilePackages: ['@brianwhaley/pixelated-components'],
+	transpilePackages: ['@pixelated-tech/components'],
 	trailingSlash: false,
 	typescript: {
 		ignoreBuildErrors: true,

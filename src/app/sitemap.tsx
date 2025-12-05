@@ -2,8 +2,8 @@ export const runtime = 'nodejs';
 
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { createPageURLs, createWordPressURLs, /* createImageURLs,*/ createImageURLsFromJSON /* createPageBuilderURLs */ } from "@brianwhaley/pixelated-components/server";
-// import type { SitemapEntry } from '@brianwhaley/pixelated-components/dist/types';
+import { createPageURLs, createWordPressURLs, /* createImageURLs,*/ createImageURLsFromJSON /* createPageBuilderURLs */ } from "@pixelated-tech/components/server";
+// import type { SitemapEntry } from '@pixelated-tech/components/dist/types';
 import myRoutes from "@/app/data/routes.json";
 const wpSite = "blog.pixelated.tech";
 

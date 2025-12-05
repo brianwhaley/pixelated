@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Callout, PageHeader } from "@brianwhaley/pixelated-components";
-import { PageSection } from "@brianwhaley/pixelated-components";
-// import { Tiles } from "@brianwhaley/pixelated-components";
+import { Callout, PageHeader } from "@pixelated-tech/components";
+import { PageSection } from "@pixelated-tech/components";
+// import { Tiles } from "@pixelated-tech/components";
 import "./samples.css";
 
 const sampleTiles = [

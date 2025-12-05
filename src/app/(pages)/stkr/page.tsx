@@ -2,9 +2,9 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { PageHeader } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
-import { CalloutHeader } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
+import { CalloutHeader } from "@pixelated-tech/components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
 

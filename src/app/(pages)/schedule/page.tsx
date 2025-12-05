@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
+import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
 import SocialTags from '@/app/elements/socialtags';
 
 export default function Schedule() {

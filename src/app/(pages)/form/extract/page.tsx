@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { PageHeader } from "@brianwhaley/pixelated-components";
-import { FormExtractor } from "@brianwhaley/pixelated-components";
+import { PageHeader } from "@pixelated-tech/components";
+import { FormExtractor } from "@pixelated-tech/components";
 
 export default function FormExtract() {
 	return (

@@ -31,7 +31,7 @@ npm audit fix --force
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
-npm install @brianwhaley/pixelated-components@latest --force --save
+npm install @pixelated-tech/components@latest --force --save
 
 rm -rf node_modules && rm -rf package-lock.json && npm install --force
 
@@ -43,8 +43,6 @@ git config --global remote.informationfocus.url https://github.com/brianwhaley/i
 git config --global core.editor "code --wait"
 git fetch
 
-## ===== BUILD PIXELATED APP =====
-
 eslint --fix --ext .jsx --ext .js .
 [//]: # npm --no-git-tag-version version patch
 npm version major
@@ -54,11 +52,15 @@ eslint --fix
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs -n1 -I {} sh -c 'echo "Installing {}..." && npm install --force --save {}'
 
+
+
+## ===== BUILD PIXELATED APP =====
+
 echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while read pkg; do echo "$pkg" >> /tmp/npm-updates.log && printf "." && npm install --force --save "$pkg" > /dev/null 2>&1; done && echo "\n\n✓ Updated packages:" && cat /tmp/npm-updates.log && rm /tmp/npm-updates.log
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "bump components - fix for cloudinary transforms trailing slash"
+git commit -m "migrate components from @brianwhaley to @pixelated-tech"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

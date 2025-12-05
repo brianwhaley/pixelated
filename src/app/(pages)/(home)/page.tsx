@@ -1,11 +1,14 @@
 "use client";
 
 import React, { /* useState, useEffect */ } from "react";
-import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
-import { Callout } from "@brianwhaley/pixelated-components";
+import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
+import { Callout } from "@pixelated-tech/components";
+import { BlogPostList } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
+
+const wpSite = "blog.pixelated.tech";
 
 export default function Home() {
 
@@ -74,6 +77,8 @@ export default function Home() {
 			
 			<PageSection id="social-section" columns={1} maxWidth="768px" background="var(--secondary-color)" >
 				<SocialTags />
+				<PageSectionHeader title="Read Our Most Recent Blog Post" />
+				<BlogPostList site={wpSite} count={1} />
 			</PageSection>
 
 

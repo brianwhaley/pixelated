@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import { PageHeader, PageSectionHeader } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
-import { Timeline } from "@brianwhaley/pixelated-components";
+import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
+import { Timeline } from "@pixelated-tech/components";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 
 export default function Process() {

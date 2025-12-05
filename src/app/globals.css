@@ -116,3 +116,15 @@
         display: block;
     }
 }
+
+
+
+/* ========================================
+    PAGE SPECIFIC Pixelated Styles
+ ======================================== */
+
+/* ===== HOME PAGE ===== */
+
+#social-section .blogPostSummary { 
+	border: 1px solid #999; 
+}

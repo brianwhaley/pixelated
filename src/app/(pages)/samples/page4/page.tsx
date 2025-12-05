@@ -6,13 +6,13 @@
 
 
 import React, { useEffect } from "react";
-import { MicroInteractions, SmartImage } from "@brianwhaley/pixelated-components";
-import { MenuSimple, MenuAccordion, MenuAccordionButton } from "@brianwhaley/pixelated-components";
-import { PageSection } from "@brianwhaley/pixelated-components";
-import { Callout } from "@brianwhaley/pixelated-components";
-import { PageSectionHeader } from "@brianwhaley/pixelated-components";
+import { MicroInteractions, SmartImage } from "@pixelated-tech/components";
+import { MenuSimple, MenuAccordion, MenuAccordionButton } from "@pixelated-tech/components";
+import { PageSection } from "@pixelated-tech/components";
+import { Callout } from "@pixelated-tech/components";
+import { PageSectionHeader } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
-import "@brianwhaley/pixelated-components/css/pixelated.global.css";
+import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page4.css";
 
 const menuItems = [

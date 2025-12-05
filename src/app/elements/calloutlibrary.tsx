@@ -1,4 +1,4 @@
-import { Callout, CalloutType } from "@brianwhaley/pixelated-components";
+import { Callout, CalloutType } from "@pixelated-tech/components";
 
 export type CalloutLibraryType = {
 	variant?: CalloutType["variant"];
