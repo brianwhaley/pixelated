@@ -14,22 +14,24 @@ git remote add palmetto-epoxy https://github.com/brianwhaley/palmetto-epoxy.git
 
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
-npm install @brianwhaley/pixelated-components@latest --force --save
+npm install @pixelated-tech/components@latest --force --save
 
 rm -rf node_modules && rm -rf package-lock.json && npm install --force
-
-## ===== BUILD PALMETTO-EPOXY APP =====
 
 npm version major
 npm version minor
 
 eslint --fix
 
+
+
+## ===== BUILD PALMETTO-EPOXY APP =====
+
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "header logo image performance fix"
+git commit -m "migrate pixelated-components from @brianwhaley to @pixelated-tech "
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

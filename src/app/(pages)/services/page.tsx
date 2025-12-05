@@ -2,7 +2,7 @@
 
 import React from "react";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-import { Callout } from "@brianwhaley/pixelated-components";
+import { Callout } from "@pixelated-tech/components";
 
 
 export default function Services() {

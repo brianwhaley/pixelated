@@ -2,7 +2,7 @@
 
 import React from "react";
 import Nav from "@/app/elements/nav";
-// import { Analytics } from "@brianwhaley/pixelated-components";
+// import { Analytics } from "@pixelated-tech/components";
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 

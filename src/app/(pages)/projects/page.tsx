@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-import { Carousel } from "@brianwhaley/pixelated-components";
-import type { CarouselCardType } from "@brianwhaley/pixelated-components";
-import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
-import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
+import { Carousel } from "@pixelated-tech/components";
+import type { CarouselCardType } from "@pixelated-tech/components";
+import { getFullPixelatedConfig } from "@pixelated-tech/components";
+import { getContentfulEntriesByType, getContentfulImagesFromEntries } from "@pixelated-tech/components";
 
 // const imageOrigin = "https://images.palmetto-epoxy.com";
 

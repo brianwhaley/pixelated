@@ -4,10 +4,10 @@
 import { use, useState, useEffect, useRef } from 'react';
 // import { Metadata } from 'next';
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@brianwhaley/pixelated-components";
-import { setClientMetadata } from '@brianwhaley/pixelated-components';
-import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
-import { Carousel } from "@brianwhaley/pixelated-components";
+import { getContentfulEntriesByType, getContentfulEntryByField, getContentfulImagesFromEntries } from "@pixelated-tech/components";
+import { setClientMetadata } from '@pixelated-tech/components';
+import { getFullPixelatedConfig } from "@pixelated-tech/components";
+import { Carousel } from "@pixelated-tech/components";
 
 export default function Project({params}: { params: Promise<{ project: string }> }){
 

@@ -3,12 +3,12 @@
 
 import React, { useState, useEffect } from "react";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-import { Callout } from "@brianwhaley/pixelated-components";
-import { getFullPixelatedConfig } from "@brianwhaley/pixelated-components";
-import { Carousel } from "@brianwhaley/pixelated-components";
-import type { CarouselCardType } from "@brianwhaley/pixelated-components";
-import { getContentfulEntriesByType } from "@brianwhaley/pixelated-components";
-import { PageSection, GridItem } from "@brianwhaley/pixelated-components";
+import { Callout } from "@pixelated-tech/components";
+import { getFullPixelatedConfig } from "@pixelated-tech/components";
+import { Carousel } from "@pixelated-tech/components";
+import type { CarouselCardType } from "@pixelated-tech/components";
+import { getContentfulEntriesByType } from "@pixelated-tech/components";
+import { PageSection, GridItem } from "@pixelated-tech/components";
 
 export default function Home() {
 
@@ -103,7 +103,7 @@ export default function Home() {
 				</div>
 			</PageSection>
 
-			<section className="section-alt" id="lowcountrysbest-section">
+			<section style={{backgroundColor: "var(--accent1-color)"}} id="lowcountrysbest-section">
 				<CalloutLibrary.LowCountrysBest />
 			</section>
 

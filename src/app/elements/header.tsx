@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { SmartImage } from "@brianwhaley/pixelated-components";
+import { SmartImage } from "@pixelated-tech/components";
 import Social from "@/app/elements/social";
 import Nav from "@/app/elements/nav";
 

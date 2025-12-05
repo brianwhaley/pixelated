@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Callout } from "@brianwhaley/pixelated-components";
-import { PageHeader } from "@brianwhaley/pixelated-components";
+import { Callout } from "@pixelated-tech/components";
+import { PageHeader } from "@pixelated-tech/components";
 
 
 

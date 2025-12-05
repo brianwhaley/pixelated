@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Callout } from "@brianwhaley/pixelated-components";
+import { Callout } from "@pixelated-tech/components";
 
 export default function Social() {
 	return (

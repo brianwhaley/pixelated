@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
-import { FormEngine } from "@brianwhaley/pixelated-components";
-import { emailFormData } from "@brianwhaley/pixelated-components";
-import { Loading, ToggleLoading } from "@brianwhaley/pixelated-components";
-import { Modal, handleModalOpen } from "@brianwhaley/pixelated-components";
+import { FormEngine } from "@pixelated-tech/components";
+import { emailFormData } from "@pixelated-tech/components";
+import { Loading, ToggleLoading } from "@pixelated-tech/components";
+import { Modal, handleModalOpen } from "@pixelated-tech/components";
 
 import formData from "@/app/data/contactform.json";
 
