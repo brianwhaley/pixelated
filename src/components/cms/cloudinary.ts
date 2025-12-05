@@ -69,7 +69,8 @@ export type getCloudinaryRemoteFetchURLType = InferProps<typeof getCloudinaryRem
 export function getCloudinaryRemoteFetchURL(props: getCloudinaryRemoteFetchURLType) {
  	const domainAndCloud = joinWithSlash(cloudinary_domain, props.product_env);
  	const cloudinary_prefix = domainAndCloud + cloudinary_props;
- 	return cloudinary_prefix + props.url ;
+ 	const result = cloudinary_prefix + '/' + props.url;
+ 	return result;
 }
 
 

@@ -17,6 +17,7 @@ export * from './components/cms/google.reviews.components';
 export * from './components/cms/google.reviews.functions'; // server-side
 export * from './components/cms/gravatar.functions'; // server-side 
 export * from './components/cms/gravatar.components';
+export * from './components/cms/hubspot.components';
 export * from './components/cms/instagram.functions'; // server-side 
 export * from './components/cms/instagram.components';
 export * from './components/cms/wordpress.components';

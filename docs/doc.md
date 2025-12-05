@@ -15,7 +15,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "bug fix for cloudinary transforms trailing slash"
+git commit -m "hubspot components, cloudinary image fixes for shopping cart items"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish
