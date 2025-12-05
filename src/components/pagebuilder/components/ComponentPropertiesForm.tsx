@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 // import { PageSectionHeader } from '../../general/pixelated.headers';
-import { FormEngine } from '../../form/form';
+import { FormEngine } from '../form/form';
 
 /**
  * ComponentPropertiesForm - Displays the component properties form

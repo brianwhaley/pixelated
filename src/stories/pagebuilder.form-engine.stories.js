@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormEngine } from '../components/form/form';
+import { FormEngine } from '../components/pagebuilder/form/form';
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 import data from '../data/form.json';
-import '../components/form/form.css';
+import '../components/pagebuilder/form/form.css';
 import '../css/pixelated.global.css';
 
 const mockConfig = {
@@ -18,7 +18,7 @@ function onSubmit(){
 }
 
 export default {
-	title: 'Form',
+	title: 'PageBuilder',
 	component: FormEngine,
 	decorators: [
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any

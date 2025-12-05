@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import * as FC from './formcomponents';
 import * as FV from './formvalidations';
-import { generateKey, capitalize, attributeMap } from '../utilities/functions';
+import { generateKey, capitalize, attributeMap } from '../../utilities/functions';
 import './form.css';
 
 const debug = false ;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GravatarCard } from '../components/cms/gravatar.components';
+import { GravatarCard, type GravatarCardProps } from '../components/cms/gravatar.components';
 import { getGravatarProfile, type GravatarProfile } from '../components/cms/gravatar.functions';
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
@@ -9,6 +9,30 @@ const mockConfig = {
 		baseUrl: 'https://res.cloudinary.com',
 		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
 	},
+};
+
+// Wrapper to handle async data fetching for the story
+const GravatarStoryWrapper = (args: GravatarCardProps & { email?: string }) => {
+	const { email, ...componentProps } = args;
+	const [fetchedProfile, setFetchedProfile] = useState<GravatarProfile | null>(null);
+	const [loading, setLoading] = useState(!!email);
+
+	useEffect(() => {
+		if (email) {
+			setLoading(true);
+			getGravatarProfile(email).then((data) => {
+				setFetchedProfile(data);
+				setLoading(false);
+			});
+		} else {
+			setFetchedProfile(null);
+			setLoading(false);
+		}
+	}, [email]);
+
+	if (loading) return <div style={{ padding: 16 }}>Loading profile for {email}...</div>;
+
+	return <GravatarCard profile={fetchedProfile} {...componentProps} />;
 };
 
 export default {
@@ -21,117 +45,64 @@ export default {
 			</PixelatedClientConfigProvider>
 		),
 	],
+	argTypes: {
+		layout: {
+			control: 'radio',
+			options: ['horizontal', 'vertical'],
+			description: 'Layout orientation of the card',
+		},
+		direction: {
+			control: 'radio',
+			options: ['left', 'right'],
+			description: 'Position of the photo (only for horizontal layout)',
+			if: { arg: 'layout', eq: 'horizontal' },
+		},
+		avatarSize: {
+			control: { type: 'range', min: 40, max: 300, step: 10 },
+			description: 'Size of the avatar image in pixels',
+		},
+		compact: {
+			control: 'boolean',
+			description: 'Whether to use the compact variant',
+		},
+		displayName: { control: 'text' },
+		job_title: { control: 'text' },
+		company: { control: 'text' },
+		currentLocation: { control: 'text' },
+		aboutMe: { control: 'text' },
+		// Custom arg for the wrapper
+		email: {
+			control: 'text',
+			description: 'Email to fetch Gravatar profile for (clearing this uses manual data)',
+			table: { category: 'Data Fetching' },
+		},
+	},
 };
 
-// Helper component to fetch and display Gravatar data
-function GravatarCardWithData({ email, ...props }: { email: string; [key: string]: any }) {
-	const [profile, setProfile] = useState<GravatarProfile | null>(null);
-	const [loading, setLoading] = useState(true);
+export const Gravatar_Playground = (args: any) => <GravatarStoryWrapper {...args} />;
+Gravatar_Playground.args = {
+	email: 'brian@pixelated.tech',
+	layout: 'horizontal',
+	direction: 'left',
+	avatarSize: 120,
+	compact: false,
+};
 
-	useEffect(() => {
-		getGravatarProfile(email).then((data) => {
-			setProfile(data);
-			setLoading(false);
-		});
-	}, [email]);
+export const Gravatar_ManualData = (args: any) => <GravatarStoryWrapper {...args} />;
+Gravatar_ManualData.args = {
+	email: '',
+	displayName: 'Brian Whaley',
+	job_title: 'Founder & Designer',
+	company: 'PixelVivid',
+	currentLocation: 'Denville, NJ',
+	aboutMe: 'Building beautiful web experiences for over a decade.',
+	socialLinks: {
+		github: 'https://github.com/btwhaley',
+		linkedin: 'https://linkedin.com/in/brianwhaley',
+		website: 'https://pixelvivid.com',
+	},
+	layout: 'horizontal',
+	direction: 'left',
+	avatarSize: 120,
+};
 
-	if (loading) return <div style={{ padding: 16 }}>Loading profile...</div>;
-
-	return <GravatarCard profile={profile} {...props} />;
-}
-
-// Story 1: Fetch from Gravatar API (real user with profile)
-export const FromGravatarAPI = () => (
-	<GravatarCardWithData
-		email="brian@pixelated.tech"
-		layout="horizontal"
-		direction="left"
-		avatarSize={120}
-	/>
-);
-FromGravatarAPI.storyName = 'Gravatar - API Fetch';
-
-// Story 2: Prop overrides (custom data)
-export const PropOverrides = () => (
-	<GravatarCard
-		profile={null}
-		displayName="Brian Whaley"
-		job_title="Founder & Designer"
-		company="PixelVivid"
-		currentLocation="Denville, NJ"
-		aboutMe="Building beautiful web experiences for over a decade. Specializing in responsive design, brand identity, and user-centered solutions."
-		socialLinks={{
-			github: 'https://github.com/btwhaley',
-			linkedin: 'https://linkedin.com/in/brianwhaley',
-			website: 'https://pixelvivid.com',
-		}}
-		layout="horizontal"
-		direction="left"
-	/>
-);
-PropOverrides.storyName = 'Gravatar - Custom Data';
-
-// Story 3: Hybrid (Gravatar + custom social links)
-export const HybridData = () => (
-	<GravatarCardWithData
-		email="brian@pixelated.tech"
-		customRole="Creative Technologist"
-		socialLinks={{
-			website: 'https://pixelvivid.com',
-		}}
-		layout="horizontal"
-		direction="left"
-	/>
-);
-HybridData.storyName = 'Gravatar - Hybrid Data';
-
-// Story 4: Vertical layout
-export const VerticalLayout = () => (
-	<GravatarCardWithData
-		email="brian@pixelated.tech"
-		layout="vertical"
-		avatarSize={150}
-	/>
-);
-VerticalLayout.storyName = 'Gravatar - Vertical';
-
-// Story 5: Photo on right
-export const PhotoRight = () => (
-	<GravatarCardWithData
-		email="brian@pixelated.tech"
-		layout="horizontal"
-		direction="right"
-		avatarSize={100}
-	/>
-);
-PhotoRight.storyName = 'Gravatar - Right';
-
-// Story 6: Compact variant
-export const CompactVariant = () => (
-	<GravatarCardWithData
-		email="brian@pixelated.tech"
-		layout="horizontal"
-		direction="left"
-		avatarSize={80}
-		compact={true}
-	/>
-);
-CompactVariant.storyName = 'Gravatar - Compact Variant';
-
-// Story 7: No Gravatar profile (fallback to default avatar)
-export const NoGravatarProfile = () => (
-	<GravatarCard
-		profile={null}
-		displayName="Jane Doe"
-		job_title="Software Engineer"
-		company="Tech Corp"
-		aboutMe="Passionate about building scalable systems and clean code."
-		socialLinks={{
-			github: 'https://github.com/janedoe',
-			linkedin: 'https://linkedin.com/in/janedoe',
-		}}
-		layout="horizontal"
-		direction="left"
-	/>
-);
-NoGravatarProfile.storyName = 'Gravatar - No Profile';

@@ -1,5 +1,5 @@
 import PropTypes, { InferProps } from "prop-types";
-import type { ShoppingCartType } from "../shoppingcart/shoppingcart.functions";
+import type { ShoppingCartType } from "./shoppingcart.functions";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/cloudinary";
 const debug = false;
 

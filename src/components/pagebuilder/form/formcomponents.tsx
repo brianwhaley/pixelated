@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
 import PropTypes, { InferProps } from "prop-types";
-import { SmartImage } from "../cms/cloudinary.image";
+import { SmartImage } from "../../cms/cloudinary.image";
+import { usePixelatedConfig } from "../../config/config.client";
 import * as FV from "./formvalidations";
 import "./form.css";
-import { usePixelatedConfig } from "../config/config.client";
 
 
 /* 

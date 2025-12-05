@@ -1,7 +1,7 @@
 import React from 'react';
-import { EbayItems } from '../components/ebay/ebay.components';
+import { EbayItemDetail } from '../components/shoppingcart/ebay.components';
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
-import '../components/ebay/ebay.css';
+import '../components/shoppingcart/ebay.css';
 import '../css/pixelated.global.css';
 
 const mockConfig = {
@@ -13,8 +13,8 @@ const mockConfig = {
 };
 
 export default {
-	title: 'Ebay',
-	component: EbayItems,
+	title: 'ShoppingCart',
+	component: EbayItemDetail,
 	decorators: [
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(Story) => (
@@ -25,11 +25,11 @@ export default {
 	],
 };
 
-export const EbayItemsGrid = {
+export const EbayItemDetailPage = {
 	args: {
 		apiProps: {
 			proxyURL: "https://proxy.pixelated.tech/prod/proxy?url=",
-			qsSearchURL: '?q=sunglasses&fieldgroups=FULL&category_ids=79720&aspect_filter=categoryId:79720&filter=sellers:{pixelatedtech}&sort=newlyListed&limit=200',
+			qsItemURL: '/v1|295959752403|0?fieldgroups=PRODUCT,ADDITIONAL_SELLER_DETAILS',
 			appId: 'BrianWha-Pixelate-PRD-1fb4458de-1a8431fe', // clientId
 			appCertId: 'PRD-fb4458deef01-0d54-496a-b572-a04b', // clientSecret
 			tokenScope: 'https://api.ebay.com/oauth/api_scope',

@@ -1,5 +1,5 @@
-import { FormExtractor } from '../components/form/form';
-import '../components/form/form.css';
+import { FormExtractor } from '../components/pagebuilder/form/form';
+import '../components/pagebuilder/form/form.css';
 import '../css/pixelated.global.css';
 
 export default {

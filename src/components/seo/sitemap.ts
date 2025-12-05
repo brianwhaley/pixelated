@@ -2,7 +2,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { getAllRoutes, getAllImages } from "./metadata";
 import { getWordPressItems } from "../cms/wordpress.functions";
 import { getContentfulFieldValues } from "../cms/contentful.delivery";
-import { getEbayAppToken, getEbayItemsSearch } from "../ebay/ebay.functions";
+import { getEbayAppToken, getEbayItemsSearch } from "../shoppingcart/ebay.functions";
 import { getFullPixelatedConfig } from '../config/config';
 // import { getEbayItems } from "../ebay/pixelated.ebay.functions.js";
 // import { getContentfulFieldValues } from "@brianwhaley/pixelated-components";

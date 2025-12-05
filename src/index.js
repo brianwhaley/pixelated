@@ -18,6 +18,7 @@ export * from './components/cms/google.reviews.functions'; // server-side
 export * from './components/cms/gravatar.functions'; // server-side 
 export * from './components/cms/gravatar.components';
 export * from './components/cms/hubspot.components';
+export * from './components/cms/hubspot'; // server-side 
 export * from './components/cms/instagram.functions'; // server-side 
 export * from './components/cms/instagram.components';
 export * from './components/cms/wordpress.components';
@@ -27,15 +28,6 @@ export * from './components/config/config.client';
 export * from './components/config/config.server';
 export * from './components/config/config';
 export * from './components/config/config.types';
-
-export * from './components/ebay/ebay.components';
-export * from './components/ebay/ebay.functions'; // server-side 
-
-export * from './components/form/form';
-export * from './components/form/form.submit';
-export * from './components/form/formcomponents';
-export * from './components/form/formvalidations'; // server-side 
-export * from './components/form/hubspot'; // server-side 
 
 export * from './components/general/css';
 export * from './components/general/headers';
@@ -62,6 +54,10 @@ export * from './components/pagebuilder/components/ComponentTree';
 export * from './components/pagebuilder/components/PageBuilderUI';
 export * from './components/pagebuilder/components/PageEngine';
 export * from './components/pagebuilder/components/SaveLoadSection';
+export * from './components/pagebuilder/form/form';
+export * from './components/pagebuilder/form/form.submit';
+export * from './components/pagebuilder/form/formcomponents';
+export * from './components/pagebuilder/form/formvalidations'; // server-side 
 export * from './components/pagebuilder/lib/componentGeneration'; // server-side 
 export * from './components/pagebuilder/lib/componentMap'; // server-side 
 export * from './components/pagebuilder/lib/componentMetadata'; // server-side 
@@ -83,9 +79,13 @@ export * from './components/seo/googlesearch';
 export * from './components/seo/metadata'; // server-side 
 export * from './components/seo/sitemap'; // server-side 
 
+export * from './components/shoppingcart/ebay.components';
+export * from './components/shoppingcart/ebay.functions'; // server-side 
 export * from './components/shoppingcart/paypal';
 export * from './components/shoppingcart/shoppingcart.components';
 export * from './components/shoppingcart/shoppingcart.functions'; // server-side 
+
+export * from './components/sidepanel/sidepanel';
 
 export * from './components/socialcard/socialcard';
 

@@ -4,7 +4,7 @@ import { SmartImage } from './cloudinary.image';
 import { GridItem } from '../general/layout';
 import type { BlogPostType } from './wordpress.functions';
 import { getWordPressItems } from './wordpress.functions';
-import { Loading, ToggleLoading } from '@brianwhaley/pixelated-components';
+import { Loading, ToggleLoading } from '../general/loading';
 
 import "./wordpress.css";
 

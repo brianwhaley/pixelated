@@ -8,6 +8,7 @@ export * from './components/cms/contentful.delivery';
 export * from './components/cms/contentful.management';
 export * from './components/cms/flickr';
 export * from './components/cms/google.reviews.functions';
+export * from './components/cms/hubspot';
 export * from './components/cms/gravatar.functions'; 
 export * from './components/cms/instagram.functions';
 export * from './components/cms/wordpress.functions';
@@ -15,12 +16,8 @@ export * from './components/cms/wordpress.functions';
 export * from './components/config/config';
 export * from './components/config/config.types';
 
-export * from './components/ebay/ebay.functions';
-
-export * from './components/form/form.submit';
-export * from './components/form/formvalidations';
-export * from './components/form/hubspot';
-
+export * from './components/pagebuilder/form/form.submit';
+export * from './components/pagebuilder/form/formvalidations';
 export * from './components/pagebuilder/lib/componentGeneration';
 export * from './components/pagebuilder/lib/componentMap';
 export * from './components/pagebuilder/lib/componentMetadata';
@@ -34,6 +31,7 @@ export * from './components/pagebuilder/lib/usePageBuilder';
 export * from './components/seo/metadata';
 export * from './components/seo/sitemap';
 
+export * from './components/shoppingcart/ebay.functions';
 export * from './components/shoppingcart/shoppingcart.functions';
 
 export * from './components/utilities/api';

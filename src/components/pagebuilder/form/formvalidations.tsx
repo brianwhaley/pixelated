@@ -1,4 +1,4 @@
-import { validateDiscountCode } from '../shoppingcart/shoppingcart.functions';
+import { validateDiscountCode } from '../../shoppingcart/shoppingcart.functions';
 
 export const inputTypes = [
 	'button', 'checkbox', 'color', 'date', 'datetime-local', 'email',
