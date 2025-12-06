@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.1.5",
+	"version": "3.1.6",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -60,6 +60,7 @@
 		"build2palmettoepoxy": "npm run build && rm -rf ../palmetto-epoxy/node_modules/@pixelated-tech/components/dist && cp -r dist ../palmetto-epoxy/node_modules/@pixelated-tech/components/",
 		"build2pixelated": "npm run build && rm -rf ../pixelated/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated/node_modules/@pixelated-tech/components/",
 		"build2pixelvivid": "npm run build && rm -rf ../pixelvivid/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelvivid/node_modules/@pixelated-tech/components/",
+		"build2template": "npm run build && rm -rf ../pixelated-template/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated-template/node_modules/@pixelated-tech/components/",
 		"storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
 		"buildStorybook": "rm -rf node_modules/.cache && storybook build",
 		"test": "react-scripts test"
