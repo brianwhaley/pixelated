@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/brianwhaley/pixelated-components">
-    <img src="images/bg6.gif" alt="Logo" width="80" height="80">
+    <img src="https://www.pixelated.tech/images/pix/pix-bg-512.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Pixelated Components</h3>
@@ -45,11 +45,17 @@ This is a library of components I have found useful to build web sites quickly.
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Storybook][Storybook.js]][Storybook-url]
+* [![Calendly][Calendly.com]][Calendly-url]
 * [![Contentful][Contentful.com]][Contentful-url]
+* [![Cloudinary][Cloudinary.com]][Cloudinary-url]
+* [![Flickr][Flickr.com]][Flickr-url]
+* [![Gravatar][Gravatar.com]][Gravatar-url]
+* [![Hubspot][Hubspot.com]][Hubspot-url]
+* [![Instagram][Instagram.com]][Instagram-url]
+* [![PayPal][PayPal.com]][PayPal-url]
 * [![Wordpress][Wordpress.com]][Wordpress-url]
 * [![Github][Github.com]][Github-url]
 * [![npm][npm.org]][npm-url]
-
 
 
 
@@ -75,46 +81,43 @@ To get a local copy up and running follow these simple example steps.
 ## Usage
 
 Components to help build websites quicker:
+1. Centralized 404 Error Page
 1. Buzzword Bingo Cards
-1. Page Callouts - Large and Small
+1. Page Callouts
 1. Image Carousel - Page, Header, and Simple
+1. Calendly Scheduling Integration
+1. Cloudinary Remote Fetch Optimization Integration
+1. SmartImage Component with Cloudianry and Next Imgegration
+1. Centralized Configuration Management
 1. Contentful CMS Integration
+1. CSS Preload for Page Performance
 1. eBay Store Listings
+1. Flickr Image API Integration
 1. Form Components and Form Builder
-1. Google Search and Google Analytics Integration
-1. Markdown to HTMl Engine
+1. Google Analytics, Map, and Search Integration
+1. Gravatar Card Integration
+1. Page and Page Section Header Components
+1. Hubspot Calendar and Form Integration
+1. Instagram Image Fetch Integration
+1. Loading and ToggleLoading Component
+1. Markdown to HTML Engine
 1. Menu Components - Simple and Accordion
 1. Metadata Injection from Route JSON file
+1. Centralized MicroInteractions
 1. Modal Dialogs
 1. NerdJokes Integration
+1. PageBuilder and PageNegine with JSON, integration with Contentful
+1. Page Section and Page Section Grid / Flex Item Layout Components
+1. panel Component, also usable with Accordion Menu
 1. Recipe XML MicroFormat Engine
 1. Resume MicroFormat Engine
+1. Shopping Cart functionality with eBay and PayPal Integration
 1. Sitemap.XML dynamic generation from Route JSON file
 1. Social Card Engine
 1. Table Components
+1. Image Tiles Component
+1. Wordpress Blog Post Integration
 1. Other Utilities
-
-### Google Reviews (server-side)
-- Requires: `GOOGLE_MAPS_API_KEY` (or use the built-in hard-coded key during testing).
-- Import: `import { getGoogleReviewsByCompanyName } from 'pixelated-components';`
-- Example:
-
-```
-const { place, reviews } = await getGoogleReviewsByCompanyName({
-  companyName: 'PixelVivid',
-  language: 'en',
-  near: { lat: 32.2163, lng: -80.7526 },
-  radiusMeters: 50000,
-  region: 'us',
-  type: 'point_of_interest',
-  maxReviews: 5,
-});
-```
-
-- Tips:
-  - Prefer `near` + `radiusMeters` for better disambiguation.
-  - If results return 0, try adjusting `region` or `type`, or use the exact business name.
-
 
 
 
@@ -124,10 +127,7 @@ const { place, reviews } = await getGoogleReviewsByCompanyName({
 - [ ] LinkedIn Recommendations Integration
 - [ ] eBay Feedback Integration
 - [ ] Yelp Recommendations integration
-- [ ] Calendly Integration
 - [ ] Instagram Image Integration for Carousels
-- [ ] Expanding menu based on 
-- [ ] eCommerce Features + Paypal ( or Stripe, Square)
 - [ ] Shopify Integration
 - [ ] Quickbooks Integration
 - [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
@@ -209,8 +209,38 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 [product-screenshot]: images/screenshot.png
 
+[Calendly.com]: https://img.shields.io/badge/Calendly-006bff
+[Calendly-url]: https://cloudinary.com
+
+[Cloudinary.com]: https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white
+[Cloudinary-url]: https://cloudinary.com
+
+[Contentful.com]: https://img.shields.io/badge/Contentful-2478CC?logo=contentful&logoColor=fff
+[Contentful-url]: https://contentful.com
+
+[Flickr.com]: https://img.shields.io/static/v1?style=for-the-badge&message=Flickr&color=0063DC&logo=Flickr&logoColor=FFFFFF
+[Flickr-url]: https://flickr.com
+
+[GitHub.com]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
+[Github-url]: https://www.github.com
+
+[Gravatar.com]: https://img.shields.io/badge/Gravatar-1d4fc4
+[Gravatar-url]: https://www.github.com
+
+[Hubspot.com]: https://img.shields.io/badge/HubSpot-YES-brightgreen?style=plastic&logo=hubspot
+[Hubspot-url]: https://www.github.com
+
+[Instagram.com]: https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white
+[Instagram-url]: https://www.github.com
+
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
+
+[npm.org]: https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff
+[npm-url]: https://www.npmjs.org
+
+[PayPal.js]: https://img.shields.io/badge/PayPal-Support_Us-003087?logo=paypal&logoColor=fff
+[PayPal-url]: https://reactjs.org/
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
@@ -218,14 +248,5 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 [Storybook.js]: https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white
 [Storybook-url]: https://storybook.js.org
 
-[Contentful.com]: https://img.shields.io/badge/Contentful-2478CC?logo=contentful&logoColor=fff
-[Contentful-url]: https://contentful.com
-
 [WordPress.com]: https://img.shields.io/badge/WordPress-%2321759B.svg?logo=wordpress&logoColor=white
 [Wordpress-url]: http://www.wordpress.com
-
-[npm.org]: https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff
-[npm-url]: https://www.npmjs.org
-
-[GitHub.com]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white
-[Github-url]: https://www.github.com

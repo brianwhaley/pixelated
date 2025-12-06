@@ -40,3 +40,4 @@ export * from './components/utilities/functions';
 // Server-only wrapper exports
 // DO I REALLY NEED THIS?
 export * from './components/config/config.server';
+export * from './components/seo/metadata.components';

@@ -17,6 +17,10 @@ eslint --fix
 npm uninstall @pixelated-tech/components
 npm install @pixelated-tech/components --save --force 
 
+npm deprecate "@brianwhaley/pixelated-components@*" "DEPRECATED: Package renamed to @pixelated-tech/components; migrate to @pixelated-tech/components (see https://github.com/brianwhaley/pixelated-components)"
+
+npm unpublish @brianwhaley/pixelated-components --force
+
 
 
 ## DEPLOYMENT SCRIPT
@@ -25,7 +29,7 @@ npm audit fix --force
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "update all old references to @brianwhaley/pixelated-components"
+git commit -m "v1 sitetmap generator, v1 metatag generator"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish --access public

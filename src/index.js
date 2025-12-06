@@ -77,6 +77,7 @@ export * from './components/seo/googleanalytics';
 export * from './components/seo/googlemap';
 export * from './components/seo/googlesearch';
 export * from './components/seo/metadata'; // server-side 
+export * from './components/seo/metadata.components';
 export * from './components/seo/sitemap'; // server-side 
 
 export * from './components/shoppingcart/ebay.components';

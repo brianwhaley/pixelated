@@ -97,7 +97,7 @@ const config = {
             "/images": path.resolve(__dirname, "../src/images"),
             images: path.resolve(__dirname, "../src/images"),
             // Resolve the package import to the package's compiled dist folder
-            "@brianwhaley/pixelated-components": path.resolve(
+            "@pixelated-tech/components": path.resolve(
                 __dirname,
                 "../dist"
             ),
