@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { getRouteByKey } from "@pixelated-tech/components/server";
+import { generateMetaTags } from "@pixelated-tech/components/server";
 import { PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
 import { LayoutClient } from "./elements/layoutclient";
 import Header from "@/app/elements/header";
@@ -24,31 +25,21 @@ export default async function RootLayout({children,}: Readonly<{children: React.
 		<LayoutClient />
 		<html lang="en">
 			<head>
-				<title>{metadata?.title}</title>
-				<meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
-				<meta name="description" content={metadata?.description} />
-				<meta name="keywords" content={metadata?.keywords} />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-				<meta property="og:site_name" content="Palmetto Epoxy" />
-				<meta property="og:title" content={metadata?.title} />
-				<meta property="og:url" content={url} />
-				<meta property="og:type" content="website" />
-				<meta property="og:description" content={metadata?.description} />
-				<meta property="og:image" content="/images/palmetto-epoxy-logo.jpg" />
-				<meta property="og:image:width" content="1375" />
-				<meta property="og:image:height" content="851" />
-				<meta itemProp="name" content="Palmetto Epoxy" />
-				<meta itemProp="url" content={url} />
-				<meta itemProp="description" content={metadata?.description} />
-				<meta itemProp="thumbnailUrl" content="/images/palmetto-epoxy-logo.jpg" />
-				<link rel="canonical" href={url} />
-				{ /* <link rel="alternate" href={url} hrefLang="en-us" /> */ }
-				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-				<link rel="preload" fetchPriority="high" as="image" href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" type="image/webp"></link>
-				<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-				<link rel="manifest" href="/manifest.webmanifest" />
-				<link rel="preconnect" href="https://images.ctfassets.net/" />
-				<link rel="preconnect" href="https://res.cloudinary.com/" />
+				{ generateMetaTags({
+					title: metadata?.title ?? "",
+					description: metadata?.description ?? "",
+					keywords: metadata?.keywords ?? "",
+					site_name: "Palmetto Epoxy",
+					email: "palmettoepoxy@gmail.com",
+					origin: origin ?? "",
+					url: url ?? "",
+					image: "/images/palmetto-epoxy-logo.jpg",
+					image_height: "1375",
+					image_width: "851",
+					favicon: "/images/favicon.ico"
+				}) }
+				<link rel="preload" fetchPriority="high" as="image" type="image/webp" 
+					href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" ></link>
 			</head>
 			<body>
 				<PixelatedServerConfigProvider>
