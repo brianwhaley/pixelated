@@ -5,10 +5,25 @@ import globals from "globals";
 import eslint from "@eslint/js";
 import pluginNext from "@next/eslint-plugin-next";
 import tseslint from "typescript-eslint";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 import parser from '@typescript-eslint/parser';
 
 export default defineConfig([
+	...nextVitals,
+  	...nextTs,
+	// Add TypeScript import resolver to handle `@/*` paths defined in tsconfig
+	{
+		settings: {
+		'import/resolver': {
+			typescript: {
+			alwaysTryTypes: true,
+			project: './tsconfig.json',
+			},
+		},
+		},
+	},
 	{ 
 		files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
 		languageOptions: { 
