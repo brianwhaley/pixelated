@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { Timeline } from "@pixelated-tech/components";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 
@@ -64,9 +64,9 @@ export default function Process() {
 
 	return (
 		<>
-			<PageHeader title="The Pixelated Technologies Process" />
+			<PageTitleHeader title="The Pixelated Technologies Process" />
 			<PageSection columns={1} maxWidth="768px" id="process-overview-section">
-				<GridItem>
+				<PageGridItem>
 					<p>
 					Pixelated Technologies offers a proven process
 					to get results for you and your customers - gather information,
@@ -85,7 +85,7 @@ export default function Process() {
 					or stay ahead of the competition, our proven process will guide you every step of the way.
 					Let us help you transform your business and achieve your goals with confidence.
 					</p>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 
@@ -97,12 +97,12 @@ export default function Process() {
 
 			<PageSectionHeader title="Let's Get Started!" />
 			<PageSection columns={12} id="process-schedule-section">
-				<GridItem columnStart={2} columnEnd={12}>
+				<PageGridItem columnStart={2} columnEnd={12}>
 					<CalloutLibrary.scheduleAppointment
 						variant='boxed grid'
 						gridColumns={{ left: 1, right: 2 }}
 						layout='horizontal' />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 		</>
 	);

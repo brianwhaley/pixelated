@@ -3,7 +3,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { GridItem, MicroInteractions, PageHeader } from "@pixelated-tech/components";
+import { PageGridItem, MicroInteractions, PageTitleHeader } from "@pixelated-tech/components";
 import { MenuSimple, MenuAccordion, MenuAccordionButton } from "@pixelated-tech/components";
 import { PageSection } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
@@ -38,7 +38,7 @@ export default function SamplePage4() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile-container, .tile',
 		});
 	}, []);
 
@@ -75,11 +75,11 @@ export default function SamplePage4() {
 					<br /><br /><br /><br />
 				</PageSection>
 
-				<PageHeader title="Holy Guacamole - Fresh, Fast, Fantastic!" />
+				<PageTitleHeader title="Holy Guacamole - Fresh, Fast, Fantastic!" />
 
 				<PageSectionHeader title="OUR HOLY TRINITY" />
 				<PageSection maxWidth="100%" id="menu-section" columns={3} >
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							img="https://img.freepik.com/free-photo/delicious-tacos-table_23-2150770479.jpg?uid=R222425900&ga=GA1.1.140752640.1759855211&semt=ais_hybrid&w=740&q=80"
 							imgShape="round"
@@ -87,9 +87,9 @@ export default function SamplePage4() {
 							title="The Al Pastor"
 							content="Marinated pork, pineapple fiery salsa"
 						/>
-					</GridItem>
+					</PageGridItem>
 
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							img="https://cdn.pixabay.com/photo/2015/07/02/12/41/avocado-829092_1280.jpg"
 							imgShape="round"
@@ -97,9 +97,9 @@ export default function SamplePage4() {
 							title="The Sainted Guac"
 							content="Made fresh hourly. Lime, cilantro, serrano, magic"
 						/>
-					</GridItem>
+					</PageGridItem>
 
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							img="https://img.freepik.com/free-photo/tasty-esquites-with-spices-cups_23-2149891146.jpg?uid=R222425900&ga=GA1.1.140752640.1759855211&semt=ais_hybrid&w=740&q=80"
 							imgShape="round"
@@ -108,7 +108,7 @@ export default function SamplePage4() {
 							content="Cup of roasted corn, cotija, chili powder, crema"
 						/>
 						{ /* https://img.freepik.com/free-photo/tasty-esquites-with-spices-high-angle_23-2149891122.jpg?uid=R222425900&ga=GA1.1.140752640.1759855211&semt=ais_hybrid&w=740&q=80 */ }
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 				<PageSection background="var(--accent-color)" maxWidth="100%" id="menu-section" columns={1} >
@@ -116,10 +116,10 @@ export default function SamplePage4() {
 				</PageSection>
 
 				<PageSection maxWidth="100%" id="review-section" columns={3} >
-					<GridItem columnStart={1} columnEnd={-1}>
+					<PageGridItem columnStart={1} columnEnd={-1}>
 						<PageSectionHeader title="Reviews" />
-					</GridItem>
-					<GridItem>
+					</PageGridItem>
+					<PageGridItem>
 						<Callout 
 							variant="boxed"
 							layout="vertical"
@@ -129,9 +129,9 @@ export default function SamplePage4() {
 							The prices are very reasonable. 
 							The staff are always super friendly to everyone and the tacos come out quick!"
 						/>
-					</GridItem>
+					</PageGridItem>
 
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							variant="boxed"
 							layout="vertical"
@@ -143,9 +143,9 @@ export default function SamplePage4() {
 							the flavor of the meat.
 							I always go back if I find myself in that area."
 						/>
-					</GridItem>
+					</PageGridItem>
 
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							variant="boxed"
 							layout="vertical"
@@ -156,11 +156,11 @@ export default function SamplePage4() {
 							THE BEST TACOS 🌮 🌮 🌮 !"
 						/>
 						{ /* https://img.freepik.com/free-photo/tasty-esquites-with-spices-high-angle_23-2149891122.jpg?uid=R222425900&ga=GA1.1.140752640.1759855211&semt=ais_hybrid&w=740&q=80 */ }
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 				<PageSection background="#E0E0E0" padding="20px" maxWidth="768px" id="catering-section" columns={1} >
-					<GridItem>
+					<PageGridItem>
 						<Callout 
 							variant="boxed grid"
 							gridColumns={{ left: 1, right: 2 }}
@@ -176,7 +176,7 @@ export default function SamplePage4() {
 							You handle the margaritas; we'll handle the holy trinity 
 							of tacos, corn, and guac."
 						/>
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 			</main>

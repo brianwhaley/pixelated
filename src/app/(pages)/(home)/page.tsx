@@ -1,8 +1,8 @@
 "use client";
 
 import React, { /* useState, useEffect */ } from "react";
-import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
 import { BlogPostList } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
@@ -14,9 +14,9 @@ export default function Home() {
 
 	return (
 		<>
-			<PageHeader title="Pixelated Technologies" />
+			<PageTitleHeader title="Pixelated Technologies" />
 			<PageSection id="pixelated-section" maxWidth="768px" columns={1}>
-				<GridItem>
+				<PageGridItem>
 					<Callout
 						aboveFold={true}
 						layout='vertical' 
@@ -30,17 +30,17 @@ export default function Home() {
 							and small business modernization. Our mission is to empower small businesses
 							to thrive in the digital age by providing tailored technology services that
 							drive growth and efficiency.'/>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 
 			<PageSection columns={3} maxWidth="1024px"id="spotlight-section">
 
-				<GridItem>
+				<PageGridItem>
 					<CalloutLibrary.scheduleAppointment />
-				</GridItem>
+				</PageGridItem>
 
-				<GridItem>
+				<PageGridItem>
 					<Callout
 						layout='vertical'
 						url='/portfolio'
@@ -55,10 +55,10 @@ export default function Home() {
 							projects we have successfully completed for small businesses. 
 							Discover how Pixelated Technologies can bring your vision to life 
 							with tailored solutions that meet your unique needs.'/>
-				</GridItem>
+				</PageGridItem>
 
 
-				<GridItem>
+				<PageGridItem>
 					<Callout
 						layout='vertical'
 						url='/samples'
@@ -70,7 +70,7 @@ export default function Home() {
 						Examples include a landscape company website, a wedding photographer, a local restaurant menu, a bicycle shop, and a taco food truck.  
 						These samples are just a few examples of how we can create visually appealing and user-friendly websites tailored to your industry.
 						No matter your industry, we have experience creating custom web solutions that can help your business succeed online."/>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 
@@ -85,7 +85,7 @@ export default function Home() {
 
 			<PageSectionHeader title="Our Value Proposition" />
 			<PageSection id="products-section" columns={1}>
-				<GridItem >
+				<PageGridItem >
 					<Callout
 						aboveFold={true}
 						variant="boxed"
@@ -102,8 +102,8 @@ export default function Home() {
 							providing custom web development solutions tailored to your business needs.
 							We specialize in creating responsive, user-friendly websites and web applications 
 							that help small businesses succeed online.'/>
-				</GridItem>
-				<GridItem >
+				</PageGridItem>
+				<PageGridItem >
 					<Callout
 						aboveFold={true}
 						variant="boxed"
@@ -119,8 +119,8 @@ export default function Home() {
 						content='Let Pixelated Technologies help you develop a comprehensive social media strategy that aligns with your business goals.
 							We can help you create and manage your social media accounts, 
 							produce engaging content, and analyze performance metrics to optimize your social media presence.' />
-				</GridItem>
-				<GridItem >
+				</PageGridItem>
+				<PageGridItem >
 					<Callout
 						aboveFold={true}
 						variant="boxed"
@@ -136,8 +136,8 @@ export default function Home() {
 						content='Pixelated Technologies can help you improve your websites visibility and ranking on popular search engines.
 							We can conduct a thorough SEO audit of your website, identify areas for improvement,
 							and implement on-page and off-page SEO strategies to boost your search engine performance.' />
-				</GridItem>
-				<GridItem >
+				</PageGridItem>
+				<PageGridItem >
 					<Callout
 						variant="boxed"
 						layout='horizontal' 
@@ -153,8 +153,8 @@ export default function Home() {
 							that allows you to easily update and manage your website content.
 							We can help you choose the right CMS at the right cost for your business needs, set it up, 
 							and provide training and support to ensure you can manage your website effectively.'  />
-				</GridItem>
-				<GridItem >
+				</PageGridItem>
+				<PageGridItem >
 					<Callout
 						variant="boxed"
 						layout='horizontal' 
@@ -170,8 +170,8 @@ export default function Home() {
 						content='Pixelated Technologies can help you set up and manage an eCommerce platform that meets your business needs.
 							We can help you choose the right eCommerce solution, 
 							set it up, and provide ongoing support to ensure your online store runs smoothly.' />
-				</GridItem>
-				<GridItem >
+				</PageGridItem>
+				<PageGridItem >
 					<Callout
 						variant="boxed"
 						layout='horizontal' 
@@ -186,13 +186,13 @@ export default function Home() {
 						content='Pixelated Technologies can help you develop custom business solutions that streamline your operations 
 							and improve your efficiency. We can work with you to understand your business processes,
 							identify areas for improvement, and develop custom software solutions that meet your specific needs.' />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 
 
 			<PageSection columns={1} maxWidth="768px" background="var(--accent1-color)" id="spotlight-section">
-				<GridItem>
+				<PageGridItem>
 					<Callout
 						variant='boxed'
 						layout='horizontal' 
@@ -206,7 +206,7 @@ export default function Home() {
 							User Experience Champion, SEO and Social Media Ninja, 
 							Landscape and Macro Photographer, Avid World Traveler,
 							Advanced Open Water Scuba Diver, Enthusiast of Home-Cooked Food' />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 		</>
 	);

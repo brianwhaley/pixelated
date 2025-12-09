@@ -45,57 +45,57 @@ nav hr {
     margin: 10px;
 }
 
-.menuItem a {
+.menu-item a {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
 .callout {
-    .calloutTitle {
+    .callout-title {
         font-size: 48px;
         color: var(--text-color);
     }
-    .calloutSubtitle {
+    .callout-subtitle {
         font-size: 36px;
     }
-    .calloutContent {
+    .callout-content {
         font-size: 18px;
     }
-    .calloutButton button {
+    .callout-button button {
         background-color: var(--text-color);
     }
-    .calloutButton button a {
+    .callout-button button a {
         color: var(--bg-color);
     }
 }
 
 .callout.overlay {
-    .calloutTitle {
+    .callout-title {
         font-size: 36px;
         color: var(--bg-color);
     }
     img {
         filter: brightness(50%);
     }
-    .calloutButton button {
+    .callout-button button {
         background-color: var(--bg-color);
     }
-    .calloutButton button a {
+    .callout-button button a {
         color: var(--text-color);
     }
  }
 
-.callout.split .calloutImage {
+.callout.split .callout-image {
     --do-nothing: true;
     flex-flow: column; /* FIX */
 }
 
-.callout.split .calloutImage,
-.callout.split .calloutImage a {
+.callout.split .callout-image,
+.callout.split .callout-image a {
     flex-grow: 1; /* FIX */
 }
 
-.callout.split .calloutBody {
+.callout.split .callout-body {
     border: 1px solid #333;
 }
 
@@ -108,8 +108,8 @@ nav hr {
 }
 
 @media screen and (max-width: 768px) {
-    .menuWrapper,
-    .menuWrapper * {
+    .menu-wrapper,
+    .menu-wrapper * {
         flex-wrap: wrap;
     }
     .details-container iframe {

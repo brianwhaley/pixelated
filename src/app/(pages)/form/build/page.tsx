@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { PageHeader } from "@pixelated-tech/components";
+import { PageTitleHeader } from "@pixelated-tech/components";
 import { FormBuilder } from "@pixelated-tech/components";
 
 export default function FormBuild() {
 	return (
 		<>
-			<PageHeader title="Form Builer" />
+			<PageTitleHeader title="Form Builer" />
 			<FormBuilder />
 		</>
 		

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Callout, PageHeader } from "@pixelated-tech/components";
+import { Callout, PageTitleHeader } from "@pixelated-tech/components";
 import { PageSection } from "@pixelated-tech/components";
 // import { Tiles } from "@pixelated-tech/components";
 import "./samples.css";
@@ -43,7 +43,7 @@ export default function Samples() {
 	
 	return (
 		<>
-			<PageHeader title="Sample Page Designs" /><PageSection columns={2} maxWidth="1024px" id="samples-tiles-section">
+			<PageTitleHeader title="Sample Page Designs" /><PageSection columns={2} maxWidth="1024px" id="samples-tiles-section">
 				{/* <Tiles cards={sampleTiles} rowCount={3}/> */}
 				{sampleTiles.map(tile => (
 					<Callout

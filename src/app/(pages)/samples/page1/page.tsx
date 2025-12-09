@@ -5,7 +5,7 @@
 // https://uxwing.com/wp-content/themes/uxwing/download/nature-and-environment/pine-trees-icon.png
 
 import React, { useEffect } from "react";
-import { GridItem, PageSection } from "@pixelated-tech/components";
+import { PageGridItem, PageSection } from "@pixelated-tech/components";
 import { MenuSimple } from "@pixelated-tech/components";
 import { Callout, CalloutButton } from "@pixelated-tech/components";
 import { Tiles } from "@pixelated-tech/components";
@@ -47,7 +47,7 @@ export default function SamplePage1() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile',
 		});
 	}, []);
 
@@ -92,7 +92,7 @@ export default function SamplePage1() {
 
 			<main>
 				<PageSection columns={12} maxWidth="1024px" id="landscape-callout-section">
-					<GridItem columnStart={2} columnEnd={12}>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<Callout 
 							layout="vertical"
 							url='./'
@@ -106,7 +106,7 @@ export default function SamplePage1() {
 							cater to your specific requirements. Our company serves all counties in the state."
 							buttonText="LEARN MORE"
 						/>
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 				<PageSection columns={1} maxWidth="1024px" id="landscape-tiles-section">
@@ -136,7 +136,7 @@ export default function SamplePage1() {
 				</PageSection>
 
 				<PageSection columns={12} maxWidth="1024px" id="landscape-services-section">
-					<GridItem columnStart={2} columnEnd={12}>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<Callout 
 							layout="vertical"
 							title="Our Comprehensive Lawn and Landscaping Services"
@@ -152,8 +152,8 @@ export default function SamplePage1() {
 							your outdoor space into a true masterpiece."
 							buttonText="VIEW ALL SERVICES"
 						/>
-					</GridItem>
-					<GridItem columnStart={2} columnEnd={12}>
+					</PageGridItem>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<div className="row-4col">
 							<div className="gridItem">
 								<Callout 
@@ -188,43 +188,43 @@ export default function SamplePage1() {
 								/>
 							</div>
 						</div>
-					</GridItem>
-					<GridItem columnStart={2} columnEnd={12}>
+					</PageGridItem>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<CalloutButton 
 							title="VIEW ALL SERVICES"
 							url="./"
 						/>
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 			</main>
 			
 			<footer>
 				<PageSection columns={12} id="footer-callout-section">
-					<GridItem columnStart={2} columnEnd={12}>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<Callout 
 							layout="vertical"
 							url='./'
 							title="Transform Your Outdoor Space"
 							buttonText="GET STARTED"
 						/>
-					</GridItem>
-					<GridItem columnStart={3} columnEnd={11}>
+					</PageGridItem>
+					<PageGridItem columnStart={3} columnEnd={11}>
 						<SocialTags />
-					</GridItem>
-					<GridItem columnStart={2} columnEnd={12}>
+					</PageGridItem>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<MenuSimple menuItems={menuItems} />
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 				<PageSection columns={12} id="footer-copyright-section">
-					<GridItem columnStart={2} columnEnd={12}>
+					<PageGridItem columnStart={2} columnEnd={12}>
 						<hr />
 						<br />
 						<div className="centered">
 							<p className="footer-text">&copy; {new Date().getFullYear()} Pixelatd Technologies. All rights reserved.</p>
 						</div>
-					</GridItem>
+					</PageGridItem>
 				</PageSection>
 
 			</footer>

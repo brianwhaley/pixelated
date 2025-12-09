@@ -2,8 +2,8 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { PageHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { FlickrWrapper } from "@pixelated-tech/components";
 import type { CarouselCardType } from "@pixelated-tech/components";
 import { MicroInteractions } from "@pixelated-tech/components";
@@ -37,9 +37,9 @@ export default function Portfolio() {
 	}, [flickrCards]); 
 	return ( 
 		<>
-			<PageHeader title="Pixelated Technologies Portfolio" />
+			<PageTitleHeader title="Pixelated Technologies Portfolio" />
 			<PageSection columns={1} maxWidth="768px" id="portfolio-intro-section">
-				<GridItem> 
+				<PageGridItem> 
 					<p>
 					Here are some examples of websites and web applications we have 
 					developed for our clients over the last 30 years.
@@ -53,7 +53,7 @@ export default function Portfolio() {
 					Each project highlights our commitment to innovation, attention to detail, and dedication 
 					to creating exceptional digital experiences. Explore the gallery below to see our work in action.
 					</p>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 

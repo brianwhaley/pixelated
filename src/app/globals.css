@@ -35,20 +35,20 @@
     top: 60px;
     left: 0;
 
-    .menuItem {
+    .menu-item {
         background: none;
     }
-    .menuItem:hover {
+    .menu-item:hover {
         background-color: var(--accent1-color);
     }
-    .menuItem a {
+    .menu-item a {
         font-size: unset;
         background: none;
     }
-    .menuItem a.selected {
+    .menu-item a.selected {
         background-color: var(--secondary-color);
     }
-    .menuItem a:hover {
+    .menu-item a:hover {
         background: none;
         border: none;
     }
@@ -60,7 +60,7 @@
 }
 
 .button, 
-.centeredbutton {
+.centered-button {
     background-image: url(/images/pix/pix-bg-sm-bw.gif);
 }
 
@@ -125,6 +125,6 @@
 
 /* ===== HOME PAGE ===== */
 
-#social-section .blogPostSummary { 
+#social-section .blog-post-summary { 
 	border: 1px solid #999; 
 }

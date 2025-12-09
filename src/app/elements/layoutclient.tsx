@@ -16,7 +16,7 @@ export function LayoutClient() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.pageSectionHeader, .callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.page-section-header, .callout , .calloutSmall , .carousel-container, .timeline-container, .tile-container, .tile',
 		});
 	}, []);
 

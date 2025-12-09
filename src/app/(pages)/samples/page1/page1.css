@@ -61,20 +61,20 @@ main > section:first-child {
     }
 }
 
-.menuWrapper { 
-    .menuItem {
+.menu-wrapper { 
+    .menu-item {
         border: none;
     }
-    .menuItem:not(:first-child) {
+    .menu-item:not(:first-child) {
         border-left: 2px solid var(--primary-color);
     }
-    .menuItem a {
+    .menu-item a {
         background: none;
         color: var(--primary-color);
         font-size: 16px;
         border: none;
     }
-    .menuItem a:hover {
+    .menu-item a:hover {
         background: var(--accent-color);
         color: white;
         border: none;
@@ -97,20 +97,20 @@ main {
 #schedule-callout-section,
 #landscape-services-section,
 #footer-callout-section {
-    .calloutHeader,
-    .calloutHeader a {
+    .callout-header,
+    .callout-header a {
         text-align: center;
         font-size: 32px;
         color: var(--primary-color);
     }
-    .calloutContent {
+    .callout-content {
         font-size: 18px;
         color: var(--primary-color);
         font-style: normal;
         line-height: 1.6;
         letter-spacing: 0em;
     }
-    .calloutButton button {
+    .callout-button button {
         background-color: var(--primary-color);
         font-size: 18px;
         font-weight: bold;
@@ -119,24 +119,24 @@ main {
         border-radius: 20px;
         cursor: pointer;
     }
-    .calloutButton button a {
+    .callout-button button a {
         color: white;
     }
 }
 
 #header-callout-section {
-    .calloutTitle, 
-    .calloutSubtitle, 
-    .calloutSubtitle h3, 
-    .calloutButton,
-    .calloutButton button {
+    .callout-title, 
+    .callout-subtitle, 
+    .callout-subtitle h3, 
+    .callout-button,
+    .callout-button button {
         text-align: left;
         margin: 0 !important;
     }
-    .calloutHeader a { 
+    .callout-header a { 
         font-size: 26px;
     }
-    .calloutSubtitle { 
+    .callout-subtitle { 
         font-size: 24px;
         color: var(--primary-color);
     }
@@ -147,16 +147,16 @@ main {
     .callout {
         padding: 30px 100px;
     }
-    .calloutImage a {
+    .callout-image a {
         width: 100%;
         height: auto;
     }
-    .calloutTitle {
+    .callout-title {
         text-align: left;
     }
 }
 
-.tileImageOverlay {
+.tile-image-overlay {
     background: rgba(0, 102, 0, .7);
 }
 
@@ -168,24 +168,24 @@ main {
 }
 
 #landscape-services-section {
-    .calloutImage.round {
+    .callout-image.round {
         background-color: var(--secondary-color);
         border: 1px solid black;
     }
-    .calloutHeader,
-    .calloutHeader a {
+    .callout-header,
+    .callout-header a {
         color: white;
     }
-    .calloutSubtitle {
+    .callout-subtitle {
         color: white;
     }
-    .calloutContent {
+    .callout-content {
         color: white;
     }
-    .calloutButton {
+    .callout-button {
         text-align: center;
     }
-    .calloutButton button {
+    .callout-button button {
         background-color: var(--secondary-color);
     }
 } 
@@ -206,7 +206,7 @@ footer {
 #footer-callout-section {
     padding: 30px 0;
 
-    .menuWrapper {
+    .menu-wrapper {
         margin-bottom: 20px;
     }
     .menu {
@@ -221,20 +221,20 @@ footer {
     #landscape-services-section,
     #schedule-callout-section,
     #footer-callout-section {
-        .calloutHeader,
-        .calloutHeader a { 
+        .callout-header,
+        .callout-header a { 
             font-size: 20px;
         }
-        .calloutSubtitle { 
+        .callout-subtitle { 
             font-size: 16px;
             color: var(--primary-color);
         }
-        .calloutContent {
+        .callout-content {
             font-size: 14px;
         }
     }
     #landscape-services-section {
-        .calloutSubtitle {
+        .callout-subtitle {
             color: white;
         }
     }

@@ -3,8 +3,8 @@
 "use client";
 
 import React from 'react';
-import { PageHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import "./page.css";
 
 export default function ByTheWay() {
@@ -13,9 +13,9 @@ export default function ByTheWay() {
 		<>
 			<link rel="stylesheet" href="/fonts/bytheway/bytheway.css" />
 
-			<PageHeader title="By The Way - Font Sample" />
+			<PageTitleHeader title="By The Way - Font Sample" />
 			<PageSection columns={12} id="portfolio-section">
-				<GridItem columnStart={3} columnEnd={11}>
+				<PageGridItem columnStart={3} columnEnd={11}>
 					<p className="btw">By The Way Regular<br />The quick brown fox jumps over the lazy dog.</p>
 					<p className="btw-bd">By The Way Bold<br />The quick brown fox jumps over the lazy dog.</p>
 					<p className="btw-bd-smcp">By The Way Bold SmallCaps<br />The quick brown fox jumps over the lazy dog.</p>
@@ -25,7 +25,7 @@ export default function ByTheWay() {
 					<p className="btw-nw-bd">By The Way Narrow Bold<br />The quick brown fox jumps over the lazy dog.</p>
 					<p className="btw-nw-bd-smcp">By The Way Narrow Bold SmallCaps<br />The quick brown fox jumps over the lazy dog.</p>
 					<p className="btw-nw-smcp">By The Way Narrow SmallCaps<br />The quick brown fox jumps over the lazy dog.</p>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 		</>
 	);

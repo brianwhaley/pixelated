@@ -32,7 +32,7 @@ export default function SamplePage4() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer, .timelineContainer, .tileContainer, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile-container, .tile',
 		});
 	}, []);
 

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { PageHeader, PageSectionHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import SocialTags from '@/app/elements/socialtags';
 
 export default function Schedule() {
@@ -25,9 +25,9 @@ export default function Schedule() {
 	return (
 
 		<>
-			<PageHeader title="Schedule your free Digital Assessment with Pixelated" />
+			<PageTitleHeader title="Schedule your free Digital Assessment with Pixelated" />
 			<PageSection columns={1} maxWidth="768px" id="social-section">
-				<GridItem>
+				<PageGridItem>
 					<div>
 						<p>
 						Our team of experts is here to help understand your
@@ -45,18 +45,18 @@ export default function Schedule() {
 						<h3>Email: <a href="mailto:info@pixelated.tech">info@pixelated.tech</a></h3>
 						<h3>Phone: (973) 710-8008</h3>
 					</div>
-				</GridItem>
-				<GridItem columnStart={1} columnEnd={13}>
+				</PageGridItem>
+				<PageGridItem columnStart={1} columnEnd={13}>
 					<div suppressHydrationWarning={true}>
 						{bodyContent}
 					</div>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 			
 			<PageSection columns={12} background={"var(--secondary-color)"} id="social-section">
-				<GridItem columnStart={3} columnEnd={11}>
+				<PageGridItem columnStart={3} columnEnd={11}>
 					<SocialTags />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 			<br />
 		</>

@@ -98,20 +98,20 @@ nav {
     font-weight: bold;
 }
 
-.menuWrapper { 
+.menu-wrapper { 
     margin: 5px;
 
-    .menuItem {
+    .menu-item {
         border: none;
     }
-    .menuItem a {
+    .menu-item a {
         background: none;
         font-size: 16px;
         border: none;
         color: black;
         padding: 0 10px;
     }
-    .menuItem a:hover {
+    .menu-item a:hover {
         background: black;
         color: var(--primary-color);
         border: none;
@@ -144,24 +144,24 @@ section {
         z-index: 1;
     }
 
-    .calloutHeader,
-    .calloutHeader a {
+    .callout-header,
+    .callout-header a {
         color: black;
         text-align: center;
         font-family: 'Great Vibes', cursive;
         font-size: 32px;
     }
-    .calloutSubtitle { 
+    .callout-subtitle { 
         font-size: 24px;
         font-weight: normal;
     }
-    .calloutContent {
+    .callout-content {
         font-size: 16px;
         font-style: normal;
         line-height: 1.6;
         letter-spacing: 0em;
     }
-    .callout .calloutButton button {
+    .callout .callout-button button {
         background-color: black;
         font-size: 18px;
         font-weight: bold;
@@ -170,7 +170,7 @@ section {
         border-radius: 20px;
         cursor: pointer;
     }
-    .calloutButton button a {
+    .callout-button button a {
         color: var(--primary-color);
     }
 }
@@ -186,16 +186,16 @@ section {
     .callout {
         padding: 30px 15%;
     }
-    .calloutImage {
+    .callout-image {
         border: 10px solid black;
     }
-    .calloutImage a {
+    .callout-image a {
         width: 100%;
         height: auto;
     }
-    .calloutTitle,
-    .calloutSubtitle,
-    .calloutContent {
+    .callout-title,
+    .callout-subtitle,
+    .callout-content {
         text-align: right;
     }
 }
@@ -206,17 +206,17 @@ section {
     }
 }
 
-.tileImageOverlay {
+.tile-image-overlay {
     background: rgba(250, 240, 230, .5);
 }
-.tileImageOverlayText {
+.tile-image-overlay-text {
     color: black;
 }
 
 #footer-callout-section {
     padding: 50px 0;
 
-    .menuWrapper {
+    .menu-wrapper {
         margin-bottom: 20px;
     }
     hr {
@@ -245,18 +245,18 @@ section {
             margin: 0;
             padding: 5px;
         }
-        .calloutHeader,
-        .calloutHeader a { 
+        .callout-header,
+        .callout-header a { 
             font-size: 28px;
             text-align: center;
         }
-        .calloutTitle { 
+        .callout-title { 
             text-align: center;
         }
-        .calloutSubtitle { 
+        .callout-subtitle { 
             font-size: 20px;
         }
-        .calloutContent {
+        .callout-content {
             font-size: 16px;
         }
     }

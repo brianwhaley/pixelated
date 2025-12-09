@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { GridItem, PageHeader } from "@pixelated-tech/components";
+import { PageGridItem, PageTitleHeader } from "@pixelated-tech/components";
 import { PageSection } from "@pixelated-tech/components";
 import { CalloutHeader } from "@pixelated-tech/components";
 import { NerdJoke } from "@pixelated-tech/components";
@@ -31,7 +31,8 @@ function UseQuery() {
 export default function NerdJokes() {
 	return (
 		<>
-			<PageHeader title="NerdJokes" />
+			<style jsx>{`.bigpad { padding: 20px; }`}</style>
+			<PageTitleHeader title="NerdJokes" />
 			<PageSection columns={1} id="nerdjoke-section">
 				<div className="callout-body">
 					<div className="centered">
@@ -118,25 +119,25 @@ export default function NerdJokes() {
 			</PageSection>
 
 			<PageSection columns={1} background={"var(--accent1-color)"} id="cust-support-section">
-				<GridItem>
+				<PageGridItem>
 					<CalloutHeader title="Customer Support" />
 					<div className="callout-body">
 						For Customer Support, please contact <a href="mailto:nerdjokes@pixelated.tech?subject=NerdJokes Customer Support">nerdjokes@pixelated.tech</a> or join the <a href="https://pixelated-tech.slack.com/archives/C013LBYFK9U">#nerdjokes-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Technologies Slack Workspace</a>.
 						<br/>
 					</div>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 			<PageSection columns={1} id="terms-section">
-				<GridItem>
+				<PageGridItem>
 					<Terms />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 			<PageSection columns={1} background={"var(--accent1-color)"} id="privacy-policy-section">
-				<GridItem>
+				<PageGridItem>
 					<Privacy />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 		</>

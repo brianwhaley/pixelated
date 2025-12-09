@@ -2,8 +2,8 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { PageHeader } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageTitleHeader } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { CalloutHeader } from "@pixelated-tech/components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
@@ -30,7 +30,8 @@ function UseQuery() {
 export default function Stkr() {
 	return (
 		<>
-			<PageHeader title="Stkr" />
+			<style jsx>{`.bigpad { padding: 20px; }`}</style>
+			<PageTitleHeader title="Stkr" />
 			<PageSection columns={1} id="stkr-section">
 				<div className="callout-body">
 					<Suspense>
@@ -148,25 +149,25 @@ export default function Stkr() {
 			</PageSection>
 
 			<PageSection columns={1} background={"var(--accent1-color)"} id="cust-support-section">
-				<GridItem>
+				<PageGridItem>
 					<CalloutHeader title="Customer Support" />
 					<div className="callout-body">
 						For Customer Support, please contact <a href="mailto:stkr@pixelated.tech?subject=Stkr Customer Support">stkr@pixelated.tech</a> or join the <a href="https://app.slack.com/client/T011Q2H2HQ8/C0126L1UHK4">#stkr-support</a> channel in the <a href="https://pixelated-tech.slack.com">Pixelated Technologies Slack Workspace</a>.
 						<br/>
 					</div>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 			<PageSection columns={1} id="terms-section">
-				<GridItem>
+				<PageGridItem>
 					<Terms />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 			<PageSection columns={1} background={"var(--accent1-color)"} id="privacy-policy-section">
-				<GridItem>
+				<PageGridItem>
 					<Privacy />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 		</>

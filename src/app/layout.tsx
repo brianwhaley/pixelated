@@ -87,7 +87,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 							</div>
 							<div id="fixed-header-spacer"></div>
 							<div id="fixed-header-nav-spacer"></div>
-							<div id="page-search" className="noMobile">
+							<div id="page-search" className="no-mobile">
 								<Search id="009500278966481927899:bcssp73qony" />
 							</div>
 						</header>

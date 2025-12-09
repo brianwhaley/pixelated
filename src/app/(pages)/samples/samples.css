@@ -1,4 +1,4 @@
-.callout.overlay .calloutBody {
+.callout.overlay .callout-body {
     position: absolute;
     top: unset;
     left: unset;
@@ -7,20 +7,20 @@
     bottom: 5px;
 }
 
-.callout.overlay .calloutBody,
-.callout.overlay .calloutHeader,
-.callout.overlay .calloutHeader *,
-.callout.overlay .calloutButton {
+.callout.overlay .callout-body,
+.callout.overlay .callout-header,
+.callout.overlay .callout-header *,
+.callout.overlay .callout-button {
     width: 100% !important;
     justify-content: center !important;
 }
 
-.callout.overlay .calloutHeader {
+.callout.overlay .callout-header {
     margin: 0px !important;
     padding: 0px !important;
 }
 
-.callout.overlay .calloutSubtitle {
+.callout.overlay .callout-subtitle {
     color: white;
 	text-align: center !important;
 	margin: 0 auto;
@@ -36,7 +36,7 @@
     /* -webkit-text-stroke: 1px black; */
 }
 
-.callout.overlay .calloutButton button {
+.callout.overlay .callout-button button {
     width: auto !important;
     padding: 5px 30px;
     margin: 0px !important;

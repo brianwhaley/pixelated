@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { PageHeader } from '@pixelated-tech/components';
-import { PageSection, GridItem } from '@pixelated-tech/components';
+import { PageTitleHeader } from '@pixelated-tech/components';
+import { PageSection, PageGridItem } from '@pixelated-tech/components';
 import { MicroInteractions } from "@pixelated-tech/components";
 import { BlogPostCategories, BlogPostList } from '@pixelated-tech/components';
 import { getWordPressCategories } from '@pixelated-tech/components';
@@ -22,17 +22,17 @@ export default function Blog() {
 	}, []); 
 	useEffect(() => {
 		MicroInteractions({ 
-			scrollfadeElements: '.tile , .blogPostSummary',
+			scrollfadeElements: '.tile , .blog-post-summary',
 		});
 	}, []); 
 
 	return (
 		<>
-			<PageHeader title="Pixelated Technologies Blog Posts" />
+			<PageTitleHeader title="Pixelated Technologies Blog Posts" />
 			<PageSection columns={1} maxWidth="1024px" id="blog-section">
-				<GridItem>
+				<PageGridItem>
 					<BlogPostCategories categories={wpCategories} />
-				</GridItem>
+				</PageGridItem>
 				<BlogPostList site={wpSite} />
 			</PageSection>
 		</>

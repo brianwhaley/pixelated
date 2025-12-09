@@ -33,7 +33,7 @@ h2 { -webkit-text-stroke: 0px; font-size: 1.5em; }
 h3 { font-size: 1.17em; }
 h4 { font-size: 1.0em; }
 
-.pageHeader {
+.page-title-header {
     font-size: 3.25em;
     background-color: var(--primary-color);
     margin-bottom: 30px;
@@ -49,7 +49,7 @@ section {
 	opacity: 0.5;
 }
 
-.pageSectionHeader {
+.page-section-header {
     font-variant: small-caps;
     font-size: 2.0em !important;
 }
@@ -80,12 +80,12 @@ section {
     color: #fff;
 }
 
-.menuItem a {
+.menu-item a {
     background-color: transparent;
 }
 
 @media screen and (max-width: 768px) {
-    .menuWrapper {
+    .menu-wrapper {
         display: none;
     }
     .panelMenuButton, #panelMenuButton {
@@ -114,15 +114,15 @@ main {
         color: #fff;
         text-shadow: 0 0 10px var(--text-color); /* Horizontal offset, vertical offset, blur radius, color of the shadow */
     }
-    .calloutButton button {
+    .callout-button button {
         background-color: var(--secondary-color);
     }
-    .calloutButton button a {
+    .callout-button button a {
         color: #fff;
     }
 }
 
-#review-section .pageSectionHeader {
+#review-section .page-section-header {
     margin-bottom: 0px;
 }
 

@@ -57,10 +57,11 @@ npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs -n1 -I {} sh -c 'echo "Install
 ## ===== BUILD PIXELATED APP =====
 
 echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while read pkg; do echo "$pkg" >> /tmp/npm-updates.log && printf "." && npm install --force --save "$pkg" > /dev/null 2>&1; done && echo "\n\n✓ Updated packages:" && cat /tmp/npm-updates.log && rm /tmp/npm-updates.log
+npm run lint
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "new sitemap and metatag generators"
+git commit -m "kebab case for css, bump components"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
