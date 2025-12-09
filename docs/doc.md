@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "reorganize css styles to kebab case; v1 of new semantic components - pageheader, pagefooter, pagenav, pagemain; v1 of sidepanel component; pageheader to pagetitleheader, griditem to pagegriditem, flexitem to pageflexitem, reorganize components internally"
+git commit -m "css fix leak for resume grid items"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish --access public

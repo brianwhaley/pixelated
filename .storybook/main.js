@@ -96,6 +96,7 @@ const config = {
         config.resolve.alias = {
             "/images": path.resolve(__dirname, "../src/images"),
             images: path.resolve(__dirname, "../src/images"),
+            "@": path.resolve(__dirname, "../src"),
             // Resolve the package import to the package's compiled dist folder
             "@pixelated-tech/components": path.resolve(
                 __dirname,
