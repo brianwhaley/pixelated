@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Callout } from "@pixelated-tech/components";
-import { PageHeader } from "@pixelated-tech/components";
+import { PageTitleHeader } from "@pixelated-tech/components";
 
 
 
@@ -13,8 +13,8 @@ export function PageTitle({title}: PageTitleType ) {
 	return (
 		<>
 			<br />
-			<section className="section-bwchip textOutline" id="page-title-section">
-				<PageHeader title={title} />
+			<section className="section-bwchip text-outline" id="page-title-section">
+				<PageTitleHeader title={title} />
 			</section>
 		</>
 	)
@@ -26,7 +26,7 @@ export function ContactCTA() {
 	return (
 		<div className="section-container">
 			<div className="contactCTA">
-				<div className="textOutline">
+				<div className="text-outline">
                     Discover the transformative power of epoxy flooring
 					<br />
                     Where durability meets modern elegance

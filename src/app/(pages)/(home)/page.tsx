@@ -8,7 +8,7 @@ import { getFullPixelatedConfig } from "@pixelated-tech/components";
 import { Carousel } from "@pixelated-tech/components";
 import type { CarouselCardType } from "@pixelated-tech/components";
 import { getContentfulEntriesByType } from "@pixelated-tech/components";
-import { PageSection, GridItem } from "@pixelated-tech/components";
+import { PageSection, PageGridItem } from "@pixelated-tech/components";
 
 export default function Home() {
 
@@ -47,7 +47,7 @@ export default function Home() {
 			<CalloutLibrary.PageTitle title="Palmetto Epoxy" />
 
       		<PageSection columns={1} id="homeCTA-section">
-				<GridItem>
+				<PageGridItem>
 					<div className="homeCTA">
 						<div className="">
 							Elevate your space with a solution 
@@ -57,31 +57,31 @@ export default function Home() {
 							<button type="button" onClick={() => { window.location.href = '/contact'; }}>Schedule an Estimate</button>
 						</div>
 					</div>
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
       		<PageSection columns={3} className="section-alt" id="home-callouts-section">
-				<GridItem>
+				<PageGridItem>
 					<Callout
 						layout='vertical'
 						img='https://images.ctfassets.net/0b82pebh837v/VEoiv9Mi9OsB4cSSUritM/835dcfa45b98453fdaeb7b19394b1164/Blue.jpg?fm=webp'
 						imgShape='bevel'  
 						title="Floors You'll Adore" />
-				</GridItem>
-				<GridItem>
+				</PageGridItem>
+				<PageGridItem>
 					<Callout
 						layout='vertical' 
 						img='https://images.ctfassets.net/0b82pebh837v/6oA0GDDEJSkZRPy0PhCBSl/44c7989017c8f08c9fe7abc7bd732486/Epoxy_Floor_4.jpg?fm=webp'
 						imgShape='bevel'  
 						title='Epoxy Excellence' />
-				</GridItem>
-				<GridItem>
+				</PageGridItem>
+				<PageGridItem>
 					<Callout
 						layout='vertical' 
 						img='https://images.ctfassets.net/0b82pebh837v/5wDiaYXOaLMx2AO1w78SJG/9b65f0e67a515c59e126c952c0d41003/Grey_Bowling-Ball-Floor.jpg?fm=webp'
 						imgShape='bevel'  
 						title='Shine On...' />
-				</GridItem>
+				</PageGridItem>
 			</PageSection>
 
 			<PageSection columns={1} id="home-reviews-section">
@@ -91,7 +91,7 @@ export default function Home() {
 						imgFit='contain' />
 			</PageSection>
 
-			<PageSection  columns={1} className="section-pavers textOutline" id="reviewCTA-section">
+			<PageSection  columns={1} className="section-pavers text-outline" id="reviewCTA-section">
 				<div className="homeCTA">
 					<div className="">
 						Voice your opinion and  

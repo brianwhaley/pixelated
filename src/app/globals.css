@@ -79,16 +79,16 @@ button:hover a,
 
 /* ===== CAROUSEL STYLES ===== */
 
-.carouselContainer {
+.carousel-container {
     background: none !important;
     /* border: none !important; */
 }
 
-.carouselCard a {
+.carousel-card a {
     color: black;
 }
 
-a:has(.carouselCardBody):hover {
+a:has(.carousel-card-body):hover {
     text-decoration: none;
     color: #369;
 }
@@ -156,7 +156,7 @@ main .section-container {
     gap: 0px;
 }
 
-.menuWrapper {
+.menu-wrapper {
     text-align: center;
 }
 
@@ -167,7 +167,7 @@ footer {
 
 /* ===== SIMPLE MENU STYLES ===== */
 
-.menuWrapper {
+.menu-wrapper {
     width: 100% !important;
 }
 
@@ -177,28 +177,28 @@ footer {
     padding: 0px !important;
 }
 
-.menuItem {
+.menu-item {
     border: 0px  !important;
     width: 20%  !important; /* 5 MENU ITEMS */
     text-indent: 0px  !important;
 }
 
-.menuItem:not(:first-child) {
+.menu-item:not(:first-child) {
 	border-left: 0px transparent !important;
 }
 
-.menuItem:hover {
+.menu-item:hover {
     background-color: unset;
 }
 
-.menuItem a {
+.menu-item a {
     background: none  !important;
     text-align: center  !important;
     text-indent: 0px  !important;
     height: 25px  !important;
 }
 
-.menuItem a:hover {
+.menu-item a:hover {
 	/* background: #FFF; */
 	font-size: 1.05em;
 	font-weight: bold !important;
@@ -267,7 +267,7 @@ footer {
 
 
 #home-callouts-section {
-     .calloutImageVert {
+     .callout-image-vert {
         width: 90%;
     }
 }
@@ -275,24 +275,24 @@ footer {
 #home-reviews-section {
 	padding: 30px 0;
 	
-    .carouselContainer {
+    .carousel-container {
         height: 400px;
     }
-    .carouselCardsContainer {
+    .carousel-cards-container {
         width: 60%;
         height: 350px;
         margin: 0 auto;
     }
-    .carouselCardBody {
+    .carousel-card-body {
         text-align: center;
         padding-top: 40px;
     }
     @media screen and (max-width: 480px) {
-        .carouselCardsContainer {
+        .carousel-cards-container {
             width: 90%;
         }
     }
-    .carouselCardHeader {
+    .carousel-card-header {
         font-size: 1.2em;
     }
 }
@@ -302,7 +302,7 @@ footer {
 /* ===== PROJECTS PAGE ===== */
 
 #projects-section {
-    .carouselContainer {
+    .carousel-container {
         border: none
     }
 }
@@ -310,11 +310,11 @@ footer {
 /* ===== PROJECT PAGE ===== */
 
 #project-carousel-section {
-    .carouselContainer {
+    .carousel-container {
         height: 450px;
         border: none
     }
-    .carouselCardsContainer {
+    .carousel-cards-container {
         height: 400px;
     }
 }

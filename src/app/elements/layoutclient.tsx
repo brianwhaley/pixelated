@@ -22,7 +22,7 @@ export function LayoutClient() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carouselContainer',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container',
 		});
 	}, []);
 
