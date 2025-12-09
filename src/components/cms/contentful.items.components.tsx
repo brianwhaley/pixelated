@@ -11,9 +11,9 @@ import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppi
 import { getCloudinaryRemoteFetchURL as getImg} from "./cloudinary";
 import type { ShoppingCartType } from "../shoppingcart/shoppingcart.functions";
 // import { Loading, ToggleLoading } from "../general/pixelated.loading";	
+import { SmartImage } from "./cloudinary.image";
 import "../../css/pixelated.grid.scss";
 import "./contentful.items.css";
-import { SmartImage } from "./cloudinary.image";
 const debug = false;
 
 
@@ -114,20 +114,20 @@ export function ContentfulItems(props: ContentfulItemsType) {
     	return (
     		<>
     			{ /* <Loading /> */ }
-    			<div className="contentfulItemsHeader">
+    			<div className="contentful-items-header">
     				{ items.length === 1
     					? <ContentfulItemHeader title={`${items.length} Featured Item`} />
     					: <ContentfulItemHeader title={`${items.length} Featured Items`} />
     				}
     			</div>
-    			<div id="contentfulItems" className="contentfulItems">
+    			<div id="contentful-items" className="contentful-items">
     				{ paintItems({ items: items, assets: assets, cloudinaryProductEnv: props.cloudinaryProductEnv }) }
     			</div>
     		</>
     	);
     } else {
     	return (
-    		<div id="contentfulItems" className="contentfulItems">
+    		<div id="contentful-items" className="contentful-items">
     			{ /* <Loading /> */ }
     		</div>
     	);
@@ -172,35 +172,35 @@ export function ContentfulListItem(props: ContentfulListItemType) {
 	// <img src={itemImage} title={thisItem.fields.title} alt={thisItem.fields.title} />
 	
 	return (
-		<div className="contentfulItem row-12col">
-			<div className="contentfulItemPhoto grid-s1-e5">
+		<div className="contentful-item row-12col">
+			<div className="contentful-item-photo grid-s1-e5">
 				{ itemURL
 					? <a href={itemURL} target={itemURLTarget} rel="noopener noreferrer">{ imgComponent }</a>
 					: ( imgComponent )
 				}
 			</div>
-			<div className="contentfulItemBody grid-s5-e13">
-				<div className="contentfulItemHeader">
+			<div className="contentful-item-body grid-s5-e13">
+				<div className="contentful-item-header">
 					{ itemURL
 						? <ContentfulItemHeader url={itemURL} target={itemURLTarget} title={thisItem.fields.title} />
 						: <ContentfulItemHeader title={thisItem.fields.title} />
 					}
 				</div>
-				<div className="contentfulItemDetails grid12">
+				<div className="contentful-item-details grid12">
 					<div><b>Item ID: </b>{thisItem.sys.id}</div>
 					<div><b>UPC ID: </b>{thisItem.fields.id}</div>
 					<div><b>Quantity: </b>{thisItem.fields.quantity}</div>
 					<div><b>Brand / Model: </b>{thisItem.fields.brand} {thisItem.fields.model}</div>
 					<div><b>Listing Date: </b>{thisItem.fields.date}</div>
 				</div>
-				<div className="contentfulItemPrice">
+				<div className="contentful-item-price">
 					{ itemURL
 						? <a href={itemURL} target={itemURLTarget} rel="noreferrer">${thisItem.fields.price} USD</a>
 						: "$" + thisItem.fields.price + " USD"
 					}
 				</div>
 				<br />
-				<div className="contentfulItemAddToCart">
+				<div className="contentful-itemAddToCart">
 					<ViewItemDetails href={"/store"} itemID={thisItem.sys.id} />
 					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 					{ /* <GoToCartButton href={"/cart"} itemID={thisItem.sys.id} /> */}
@@ -329,15 +329,15 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 		shoppingCartItem.itemURL = itemURL;
 		return (
 			<>
-				<div className="contentfulItem row-12col">
-					<div className="contentfulItemHeader grid-s1-e13">
+				<div className="contentful-item row-12col">
+					<div className="contentful-item-header grid-s1-e13">
 						{ itemURL
 							? <ContentfulItemHeader url={itemURL} title={thisItem.fields.title} />
 							: <ContentfulItemHeader title={thisItem.fields.title} />
 						}
 					</div>
 					<br />
-					<div className="contentfulItemPhotoCarousel grid-s1-e7">
+					<div className="contentful-item-photo-carousel grid-s1-e7">
 						<Carousel 
 							cards={cards} 
 							draggable={true} 
@@ -345,11 +345,11 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 						/>
 					</div>
 					<div className="grid-s7-e13">
-						<div className="contentfulItemDetails grid12">
+						<div className="contentful-item-details grid12">
 							<div dangerouslySetInnerHTML={{ __html: thisItem.fields.description.replace(/(<br\s*\/?>\s*){2,}/gi, '') }} />
 						</div>
 						<br />
-						<div className="contentfulItemDetails grid12">
+						<div className="contentful-item-details grid12">
 							<div><b>Item ID: </b>{thisItem.sys.id}</div>
 							<div><b>UPC ID: </b>{thisItem.fields.id}</div>
 							<div><b>Quantity: </b>{thisItem.fields.quantity}</div>
@@ -357,14 +357,14 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 							<div><b>Listing Date: </b>{thisItem.fields.date}</div>
 							<br />
 						</div>
-						<div className="contentfulItemPrice">
+						<div className="contentful-item-price">
 							{ itemURL
 								? <a href={itemURL} target={itemURLTarget} rel="noreferrer">${thisItem.fields.price} USD</a>
 								: "$" + thisItem.fields.price + " USD"
 							}
 						</div>
 						<br />
-						<div className="contentfulItemAddToCart">
+						<div className="contentful-itemAddToCart">
 							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 						</div>
 
@@ -375,7 +375,7 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 	} else {
 		return (
 			<>
-				<div id="contentfulItems" className="contentfulItems">
+				<div id="contentful-items" className="contentful-items">
 					<div className="centered">Loading...</div>
 				</div>
 			</>

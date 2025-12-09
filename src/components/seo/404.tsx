@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from 'prop-types';
 // import { getCloudinaryRemoteFetchURL } from "../cms/cloudinary";
-import "./404.css";
 import { SmartImage } from "../cms/cloudinary.image";
 import { usePixelatedConfig } from "../config/config.client";
+import "./404.css";
 
 FourOhFour.propTypes = {
 	images: PropTypes.array.isRequired,
@@ -29,12 +29,12 @@ export function FourOhFour (props: FourOhFourType) {
 	if (randomIndex !== null && imageURL /* cloudinaryURL */ !== '') {
 		return (
 			<>
-				<div className="fofBodyContainer">
-					<h1 className="centered textOutline">404 - {images[randomIndex].text}</h1>
-					<div className="centeredbutton"><a href="/" target="_self" rel="noopener noreferrer">Go Home</a></div>
+				<div className="fof-body-container">
+					<h1 className="centered text-outline">404 - {images[randomIndex].text}</h1>
+					<div className="centered-button"><a href="/" target="_self" rel="noopener noreferrer">Go Home</a></div>
 				</div>	
-				<div className="fofImageContainer">
-					<div className="fofImageWrapper">
+				<div className="fof-image-container">
+					<div className="fof-image-wrapper">
 						<SmartImage src={imageURL} 
 							// src={cloudinaryURL} 
 							title={"Page Not Found - " + images[randomIndex].description} 

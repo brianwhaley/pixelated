@@ -102,7 +102,7 @@ export const componentMap = {
   // ...
 };
 
-export const layoutComponents = ['PageSection', 'GridItem', 'FlexItem'];
+export const layoutComponents = ['PageSection', 'PageGridItem', 'PageFlexItem'];
 ```
 
 **To Add New Components:**

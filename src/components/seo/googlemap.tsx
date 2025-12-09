@@ -5,6 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 
 
 GoogleMaps.propTypes = {
+	title: PropTypes.string,
 	width: PropTypes.string,
 	height: PropTypes.string,
 	frameBorder: PropTypes.string,
@@ -18,6 +19,7 @@ export function GoogleMaps(props: GoogleMapsType) {
 	return (
 		<div className="gmap" suppressHydrationWarning>
 			<iframe
+				title={props.title || "Google Map"}
 				width={props.width || "600"}
 				height={props.height || "400"}
 				frameBorder={props.frameBorder || "0"}

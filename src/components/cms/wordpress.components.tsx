@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from './cloudinary.image';
-import { GridItem } from '../general/layout';
+import {PageGridItem } from '../general/semantic';
 import type { BlogPostType } from './wordpress.functions';
 import { getWordPressItems } from './wordpress.functions';
 import { Loading, ToggleLoading } from '../general/loading';
@@ -38,7 +38,7 @@ export function BlogPostList(props: { site: string; count?: number }) {
 		<>
 			<Loading />
 			{posts.map((post: BlogPostType) => (
-				<GridItem key={post.ID}>
+				<PageGridItem key={post.ID}>
 					<BlogPostSummary
 						ID={post.ID}
 						title={post.title}
@@ -48,7 +48,7 @@ export function BlogPostList(props: { site: string; count?: number }) {
 						categories={post.categories}
 						featured_image={post.featured_image}
 					/>
-				</GridItem>
+				</PageGridItem>
 			))}
 		</>
 	);
@@ -62,7 +62,7 @@ export function BlogPostSummary(props: BlogPostType) {
 	const config = usePixelatedConfig();
 	const myExcerpt = decodeString(props.excerpt).replace(/\[…\]/g, '<a href="' + props.URL + '" target="_blank" rel="noopener noreferrer">[…]</a>');
 	return (
-		<div className="blogPostSummary" key={props.ID}>
+		<div className="blog-post-summary" key={props.ID}>
 			<article className="h-entry">
 				<h2 className="p-name">
 					<a className="u-url blog-post-url" href={props.URL} target="_blank" rel="noopener noreferrer">

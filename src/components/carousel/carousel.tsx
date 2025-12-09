@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes /* , { InferProps } */ from 'prop-types';
-import { DragHandler } from './carousel.drag';
-import './carousel.css';
 import { SmartImage } from '../cms/cloudinary.image';
 import { usePixelatedConfig } from '../config/config.client';
+import { DragHandler } from './carousel.drag';
+import './carousel.css';
 
 /* 
 TODO: #20 Carousel bug conflict with drag and click
@@ -93,7 +93,7 @@ export function Carousel(
 		if (debug) console.log('CarouselSimple: Dragging enabled');
 		DragHandler({
 			activeIndex: cardIndex, 
-			targetDiv: 'carouselCardWrapper', 
+			targetDiv: 'carousel-card-wrapper', 
 			nextImage: nextCard, 
 			previousImage: previousCard
 		});
@@ -103,8 +103,8 @@ export function Carousel(
 
 	if (props.cards && props.cards.length > 0) {
 		return (
-			<div className="carouselContainer">
-				<div className="carouselCardsContainer">
+			<div className="carousel-container">
+				<div className="carousel-cards-container">
 					{ props.cards.map((card: CarouselCardType, i: number) => (
 						<CarouselCard
 							key={i}
@@ -122,7 +122,7 @@ export function Carousel(
 						/>
 					))}
 				</div>
-				<div className="carouselButtons">
+				<div className="carousel-buttons">
 					<CarouselButton
 						clickFunction={ previousCard }
 						glyph='&#9664;' />
@@ -139,7 +139,7 @@ export function Carousel(
 	} else {
 		return (
 			<div className='section-container'>
-				<div className="carouselContainer">
+				<div className="carousel-container">
 					<CarouselLoading />
 				</div>
 			</div>
@@ -167,8 +167,8 @@ function CarouselCard( props: CarouselCardType ) {
 	const config = usePixelatedConfig();	
 	const cardBody = (
 		< div draggable='false'>
-			{ (props.link) ? <div draggable='false' className="carouselCardLink" /> : null }
-			{ (props.image) ? <div draggable='false' className="carouselCardImage">
+			{ (props.link) ? <div draggable='false' className="carousel-card-link" /> : null }
+			{ (props.image) ? <div draggable='false' className="carousel-card-image">
 				{ /* <img draggable='false' src={props.image} title={props?.imageAlt} alt={props?.imageAlt} className={imgFit} /> */ }
 				<SmartImage draggable={false} src={props.image} title={props?.imageAlt} 
 					alt={props?.imageAlt || ""} className={imgFit} 
@@ -176,18 +176,18 @@ function CarouselCard( props: CarouselCardType ) {
 					cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
 					cloudinaryTransforms={config?.cloudinary?.transforms ?? undefined} />
 			</div> : null }
-			{ (props.headerText) ? <div draggable='false' className="carouselCardHeader">
+			{ (props.headerText) ? <div draggable='false' className="carousel-card-header">
 				<h3 draggable='false'>{props.headerText}</h3>
 			</div> : null  }
-			{ (props.subHeaderText) ? <div draggable='false' className="carouselCardSubHeader">
+			{ (props.subHeaderText) ? <div draggable='false' className="carousel-card-subheader">
 				<h4 draggable='false'>{props.subHeaderText}</h4>
 			</div> : null  }
-			{ (props.bodyText) ? <div draggable='false' className="carouselCardBody">{props.bodyText}</div> : null  }
+			{ (props.bodyText) ? <div draggable='false' className="carousel-card-body">{props.bodyText}</div> : null  }
 		</div>
 	);
 	return (
-		<div draggable='true' id={'c-' + props.index} className="carouselCardWrapper" style={styles}>
-			<div draggable='false' className="carouselCard">
+		<div draggable='true' id={'c-' + props.index} className="carousel-card-wrapper" style={styles}>
+			<div draggable='false' className="carousel-card">
 				{ (props.link) ? <a draggable='false' href={props.link} target={props.linkTarget}>{ cardBody }</a> : cardBody }
 			</div>
 		</div>
@@ -203,12 +203,12 @@ CarouselButton.propTypes = {
 	clickFunction: PropTypes.func.isRequired,
 	glyph: PropTypes.string.isRequired
 };
-function CarouselButton(props: { clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
+function CarouselButton(props: { clickFunction: React.MouseEventHandler<HTMLButtonElement>; glyph: string; }) {
 	return (
-		<div className={`carouselButton textOutline`}
+		<button className={`carousel-button text-outline`}
 			onClick={ props.clickFunction }>
 			{ props.glyph }
-		</div>
+		</button>
 	);
 }
 
@@ -219,12 +219,12 @@ CarouselArrow.propTypes = {
 	clickFunction: PropTypes.func.isRequired,
 	glyph: PropTypes.string.isRequired
 };
-function CarouselArrow(props: { direction: string; clickFunction: React.MouseEventHandler<HTMLDivElement> | undefined; glyph: string; }) {
+function CarouselArrow(props: { direction: string; clickFunction: React.MouseEventHandler<HTMLButtonElement>; glyph: string; }) {
 	return (
-		<div className={`carouselButton${capitalize(props.direction)} textOutline`}
+		<button className={`carousel-button${capitalize(props.direction)} text-outline`}
 			onClick={ props.clickFunction }>
 			{ props.glyph }
-		</div>
+		</button>
 	);
 }
 
@@ -233,7 +233,7 @@ function CarouselArrow(props: { direction: string; clickFunction: React.MouseEve
 /* ========== CAROUSEL LOADING ========== */
 function CarouselLoading() {
 	return (
-		<div className="carouselLoading horizontal-centered vertical-centered centered">
+		<div className="carousel-loading horizontal-centered vertical-centered centered">
 			<div>Loading...</div>
 		</div>
 	);

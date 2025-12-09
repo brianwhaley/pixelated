@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from 'prop-types';
 /* 
     if (props.draggable && props.draggable === true) {
         if (debug) console.log('CarouselSimple: Dragging enabled');
-        DragHandler(cardIndex, 'carouselCardWrapper', nextCard, previousCard);
+        DragHandler(cardIndex, 'carousel-card-wrapper', nextCard, previousCard);
     } else {
         if (debug) console.log('CarouselSimple: Dragging disabled');
     }

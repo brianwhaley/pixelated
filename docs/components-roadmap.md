@@ -9,6 +9,7 @@ Requested next components to accelerate development:
 - Tabs Control: accessible tabs/pills with keyboard support.
 - **DONE** - Blog Post Summary: add `count` prop to limit items.
 - Team Member Card: vertical/horizontal variants with avatar, role, socials.
+- LinkedIn Recommendation fetcher: finish OAuth flow, stabilize recommendations component (current JS helper needs migration + validation).
 
 Notes:
 - Align typography to `--font-sizeN` clamp variables.

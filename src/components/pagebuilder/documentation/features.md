@@ -258,7 +258,7 @@ function renderComponent(componentData: any, index: number, path: string) {
 7. Preview updates immediately
 
 **Adding a Child Component:**
-1. Hover over layout component (PageSection, GridItem, etc.)
+1. Hover over layout component (PageSection, PageGridItem, etc.)
 2. Click ➕ add child button
 3. Component gets green highlight
 4. "Adding child component" info box appears

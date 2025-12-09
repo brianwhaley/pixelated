@@ -2,29 +2,29 @@
 =========    CONTENTFUL ITEMS     =========
 ======================================== */
 
-.contentfulItems {
+.contentful-items {
     text-align: center;
 }
 
 @media screen and (max-width: 480px) {
-	.contentfulItems {
+	.contentful-items {
 		padding: 20px;
 	}
 }
 
-.contentfulItemsHeader {
+.contentful-items-header {
     font-size: 1.25em;
     font-weight: bold;
     text-align: center;
 }
 
-#contentfulItemsFilter {
+#contentful-items-filter {
     font-size: 0.8em;
     margin: 20px auto;
 }
 
 @media screen and (max-width: 480px) {
-    #contentfulItemsFilter {
+    #contentful-items-filter {
         text-align: left;
     }
 	.filterInput { 
@@ -32,90 +32,90 @@
     }
 }
 
-.contentfulItem {
+.contentful-item {
     border: 1px solid #DDD;
     text-align: left;
     padding: 20px 5px !important;
 }
 
 @media screen and (max-width: 480px) {
-	.contentfulItem {
+	.contentful-item {
 		text-align: center;
 	}
 }
 
-.contentfulItemBody {
+.contentful-item-body {
     grid-auto-rows: min-content;
     margin: 10px 0;
 }
 
-.contentfulItemHeader {
+.contentful-item-header {
     margin: 0 auto;
 }
 
-.contentfulItemHeader h2 {
+.contentful-item-header h2 {
     font-size: 1.25em;
     font-weight: bold;
 }
 
 /* ===== PHOTO CAROUSEL ON CONTENTFUL ITEM DETAIL PAGE ===== */
-.contentfulItemPhotoCarousel {
+.contentful-item-photo-carousel {
     width: 100%;
     height: 400px;
 }
 
-.contentfulItemPhotoCarousel { 
+.contentful-item-photo-carousel { 
 
-    .carouselContainer {
+    .carousel-container {
         background: none;
         border: none;
         height: 400px;
     }
 
-    .carouselCardsContainer {
+    .carousel-cards-container {
         height: 100%;
     }
 
-    .carouselButtons,
-    .carouselButton {
+    .carousel-buttons,
+    .carousel-button {
         display: inline-block;
     }
 
 }
 
 @media screen and (max-width: 480px) {
-	.contentfulItemPhotoCarousel {
+	.contentful-item-photo-carousel {
         height: 350px;
     }
-    .contentfulItemPhotoCarousel .carouselContainer {
+    .contentful-item-photo-carousel .carousel-container {
         height: 300px;
     }
 }
 
-.contentfulItemPhoto {
+.contentful-item-photo {
     overflow: hidden;
 }
 
-.contentfulItemPhoto img {
+.contentful-item-photo img {
     padding: 10px 0;
     width: 100%;
 }
 
-.contentfulItems .contentfulItemDetails {
+.contentful-items .contentful-item-details {
     display: none;
 }
 
-.contentfulItemDetails {
+.contentful-item-details {
     padding-bottom: 10px;
 }
 
 @media screen and (max-width: 480px) {
-	.contentfulItemDetails {
+	.contentful-item-details {
         text-align: left;
     }
 }
 
-.contentfulItemPrice{
+.contentful-item-price {
     font-size: 1.5em;
     font-weight: bold;
     /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */

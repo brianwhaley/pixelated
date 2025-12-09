@@ -403,14 +403,14 @@ Add layout components to the component map:
 
 ```typescript
 const componentMap = {
-  "Page Header": PageHeader,
+  "Page Header": PageTitleHeader,
   "Page Section Header": PageSectionHeader,
   "Callout": Callout,
   "Section Container": SectionContainer,
   "Grid Section": GridSection,
   "Flex Section": FlexSection,
-  "Grid Item": GridItem,
-  "Flex Item": FlexItem,
+  "Grid Item": PageGridItem,
+  "Flex Item": PageFlexItem,
 };
 
 const layoutComponents = [

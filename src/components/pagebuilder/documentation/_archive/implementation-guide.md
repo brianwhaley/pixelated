@@ -35,7 +35,7 @@ Component registry and helper functions.
 
 ```typescript
 export const componentMap = {
-  "Page Header": PageHeader,
+  "Page Header": PageTitleHeader,
   "Grid Section": GridSection,
   // ... more components
 };
@@ -286,8 +286,8 @@ import {
 	SectionContainer, 
 	GridSection, 
 	FlexSection, 
-	GridItem, 
-	FlexItem 
+	PageGridItem, 
+	PageFlexItem 
 } from '@/app/elements/layout/pixelated.layout';
 ```
 
@@ -295,14 +295,14 @@ import {
 
 ```typescript
 const componentMap = {
-	"Page Header": PageHeader,
+	"Page Header": PageTitleHeader,
 	"Page Section Header": PageSectionHeader,
 	"Callout": Callout,
 	"Section Container": SectionContainer,
 	"Grid Section": GridSection,
 	"Flex Section": FlexSection,
-	"Grid Item": GridItem,
-	"Flex Item": FlexItem,
+	"Grid Item": PageGridItem,
+	"Flex Item": PageFlexItem,
 };
 
 // Track which components can have children

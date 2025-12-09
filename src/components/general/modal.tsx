@@ -39,8 +39,8 @@ export function Modal(props: { modalContent: React.ReactNode, modalID?: string }
 
 	return (
 		<div id={myModalID} className="modal" style={{display: 'none'}}>
-			<div className="modalContent">
-				<span id={myModalCloseID} className="modalClose" aria-hidden="true">&times;</span>
+			<div className="modal-content">
+				<span id={myModalCloseID} className="modal-close" aria-hidden="true">&times;</span>
 				{ props.modalContent }
 			</div>
 		</div>

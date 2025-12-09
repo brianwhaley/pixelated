@@ -75,10 +75,12 @@ export function Callout({
 
 	const target = url && url.substring(0, 4).toLowerCase() === 'http' ? '_blank' : '_self';
 
-	const body = <div className="calloutBody" >
+	const friendlyTitle = title ? title.toLowerCase().replace(/\s+/g, '-') : undefined;
+	
+	const body = <div className="callout-body" >
 		{ (title) ? <CalloutHeader title={title} url={url} target={target} /> : null }
-		{ (subtitle) ? <div className="calloutSubtitle"><h3>{subtitle}</h3></div> : null }
-		{ content ? <div className="calloutContent"><>{content}</></div> : null }
+		{ (subtitle) ? <div className="callout-subtitle"><h3>{subtitle}</h3></div> : null }
+		{ content ? <div className="callout-content"><>{content}</></div> : null }
 		{ url && buttonText 
 			? <CalloutButton title={buttonText} url={url} target={target} />
 			: url && title 
@@ -89,7 +91,7 @@ export function Callout({
 
 	const config = usePixelatedConfig();
 	const image =  ( img ) ?
-		<div className={"calloutImage" + (imgShape ? " " + imgShape : "")} >
+		<div className={"callout-image" + (imgShape ? " " + imgShape : "")} >
 			{ (url && !imgClick)
 				? <a href={url} target={target} rel={target=="_blank" ? "noopener noreferrer" : ""}>
 					<SmartImage 
@@ -133,12 +135,13 @@ export function Callout({
 
 	return (
 		<div 
+			id={friendlyTitle ? "callout-" + friendlyTitle : undefined}
 			className={"callout" + 
 			(variant ? " " + variant : "") + 
 			((variant==='boxed' || variant==='boxed grid') && boxShape ? " " + boxShape : "") + 
 			(layout && variant!=='split' ? " " + layout : "") + 
 			(direction && layout!=='vertical' ? " " + direction : "") +
-			(variant && (variant==='boxed grid' || variant==='grid') && gridColumns ? ` calloutGrid-${gridColumns.left}-${gridColumns.right}` : '')
+			(variant && (variant==='boxed grid' || variant==='grid') && gridColumns ? ` callout-grid-${gridColumns.left}-${gridColumns.right}` : '')
 			} >
 			{ (direction === "right") ? <>{body}{image}</> : <>{image}{body}</> }
 		</div>
@@ -156,10 +159,10 @@ CalloutHeader.propTypes = {
 export type CalloutHeaderType = InferProps<typeof CalloutHeader.propTypes>;
 export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 	return (
-		<div className="calloutHeader">
+		<div className="callout-header">
 			{ (url)
-				? <a href={url} target={target ? target : ""} rel={target=="_blank" ? "noopener noreferrer" : ""}><h2 className="calloutTitle">{title}</h2></a>
-				: <h2 className="calloutTitle">{title}</h2>
+				? <a href={url} target={target ? target : ""} rel={target=="_blank" ? "noopener noreferrer" : ""}><h2 className="callout-title">{title}</h2></a>
+				: <h2 className="callout-title">{title}</h2>
 			}
 		</div>
 	);
@@ -176,9 +179,9 @@ CalloutButton.propTypes = {
 export type CalloutButtonType = InferProps<typeof CalloutButton.propTypes>;
 export function CalloutButton( { title, url, target } : CalloutButtonType) {
 	return (
-		<div className="calloutButton">
+		<div className="callout-button">
 			{ (url) 
-				? <button type="button" className="calloutButton"><a href={url || ""} target={target || ""} rel={target=="_blank" ? "noopener noreferrer" : ""}>{title}</a></button>
+				? <button type="button" className="callout-button"><a href={url || ""} target={target || ""} rel={target=="_blank" ? "noopener noreferrer" : ""}>{title}</a></button>
 				: null
 			}
 		</div>

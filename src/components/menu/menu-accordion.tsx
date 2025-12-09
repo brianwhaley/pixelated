@@ -215,10 +215,10 @@ export function MenuAccordionButton() {
 		window.moveMenu();
 	} 
 	return (
-		<div className="panelMenuButton" id="panelMenuButton" onClick={slideMobilePanel}>
-			<span className="hamburger textOutline">|||</span>
+		<button className="panelMenuButton" id="panelMenuButton" onClick={slideMobilePanel}>
+			<span className="hamburger text-outline">|||</span>
 			{ /* <img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/> */ }
-		</div>
+		</button>
 
 	);
 }

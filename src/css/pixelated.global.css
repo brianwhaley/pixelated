@@ -131,96 +131,8 @@ pre {
 ===========  PAGE SCAFFOLDING   ===========
 ======================================== */
 
-section {
-    position: relative;
-    overflow: hidden;
-	/* margin-bottom: 50px; */
-	padding: 30px 0;
-}
-
-.section-container {
-	margin: 0px auto;
-	padding: 0px 5px;
-	/* max-width: 1280px; */
-	max-width: 1024px;
-}
-
-@media screen and (max-width: 480px) {
-    .section-container {
-        padding: 0px 20px;
-    }
-}
-
-
-.fixed-header {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
-}
-
-#fixed-header-spacer {
-	margin-top: 60px;
-}
-
-#page-header {
-	background-color: var(--primary-color);
-    /* background-image: url(/images/pix/pix-bg.gif); */
-	color: white;
-	height: 60px;
-	padding: 10px 20px;
-	z-index: 2000;
-}
-
-#page-header .section-container {
-	display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-items: left;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#page-hero {
-	background-color: var(--accent2-color);
-    border: 1px solid #AAA;
-	height: 150px;
-	overflow: hidden;
-	position: relative;
-	z-index: 5;
-}
-
-@media screen and (max-width: 480px) {
-    #page-hero {
-		height: 125px;
-    }
-}
-
-#page-hero-overlay {
-	background: rgba(240,240,240,0.5);
-	font-size: 1.2em;
-	padding: 10px 0;
-	position: absolute;
-	text-align: center;
-	top: 15px;
-	z-index: 10;
-}
-
-@media screen and (max-width: 480px) {
-    #page-hero-overlay {
-		font-size: 1.0em;
-    }
-}
-
-#page-search {
-	min-height: 50px;
-}
-
-nav {
-	--do-nothing: true;
-}
+/* THESE ARE DUPLICATED FROM SEMANTIC TSX FILES 
+TEMPORARILY UNTIL FULL ADOPTION */
 
 main {
 	min-height: 400px;
@@ -250,7 +162,7 @@ footer {
 ======================================== */
 
 .button, 
-.centeredbutton {
+.centered-button {
     /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
 	border: 1px solid #999;
 	display: inline-block;
@@ -264,7 +176,7 @@ footer {
 	border-radius: 5px;
 }
 
-.centeredbutton {
+.centered-button {
 	display: block;
 	margin: 10px auto;
     text-align: center;
@@ -272,7 +184,7 @@ footer {
 	transition: all .2s ease ;
 }
 
-.centeredbutton:hover {
+.centered-button:hover {
 	font-size: 16px;
 }
 
@@ -286,7 +198,7 @@ footer {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, var(--accent2-color)), color-stop(1, var(--accent1-color)));
 }
 
-.textOutline {
+.text-outline {
 	color: white;
 	text-shadow:
 		-1px 1px 1px black,
@@ -299,7 +211,7 @@ footer {
 		-1px -1px 5px black;
 }
 
-.textHalo {
+.text-halo {
 	color: black;
 	text-shadow:
 		-1px 1px 1px white,
@@ -333,22 +245,6 @@ footer {
 	text-align: right;
 }
 
-.margin {
-	margin: 5px;
-}
-
-.margin-horiz {
-	margin: 5px 0px;
-}
-
-.pad {
-	padding: 5px;
-}
-
-.bigpad {
-	padding: 10px;
-}
-
 .centered, .center {
 	float: none !important;
 	margin-left: auto !important;
@@ -372,7 +268,7 @@ footer {
     transform: translateY(-50%);
 }
 
-.noSelect {
+.no-select {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -386,13 +282,13 @@ footer {
    ======================================== */
 
 @media screen and (min-width: 480px) {
-    .mobileOnly {
+    .mobile-only {
         display: none;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .noMobile {
+    .no-mobile {
         display: none;
     }
 }
@@ -417,46 +313,11 @@ footer {
     }
 
     /* THIS IS DONE TO MAINTAIN PAGE STRUCTURE AND LAYOUT */
-    .noPrint {
+    .no-print {
         visibility: hidden;
     }
 
 }
-
-
-
-
-/* ========================================
-============  GOOGLE SEARCH    ============
-======================================== */
-
-.gsib_a {
-    padding: 1px 8px !important;
-}
-
-.gsc-tabsArea {
-    border-color: var(--primary-color);
-}
-
-.gsc-tabHeader.gsc-tabhActive {
-    border-color: var(--primary-color);
-}
-
-input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
-    box-sizing: content-box;
-}
-
-input.gsc-input {
-	font-size: 1.0em !important;
-	background: none !important;
-}
-
-.gsc-control-cse {
-    border-color: transparent !important;
-    background-color: transparent !important;
-	padding: .5em !important;
-}
-
 
 
 
@@ -468,31 +329,31 @@ input.gsc-input {
 #gallery-section {
 	--do-nothing: true;
 }
-#gallery-section .carouselContainer {
+#gallery-section .carousel-container {
 	background: none;
 	border: none;
 }
-#gallery-section .carouselCardImage {
+#gallery-section .carousel-card-image {
     height: 550px !important;
 	margin-top: 5px !important;
 }
-#gallery-section .carouselCardImage .imgContain {
+#gallery-section .carousel-card-image .imgContain {
 	--do-nothing: true;
 }
 @media screen and (max-width: 480px) {
-    #gallery-section .carouselCardImage {
+    #gallery-section .carousel-card-image {
         height: 300px !important;
     }
 }
-#gallery-section .carouselCardHeader { 
+#gallery-section .carousel-card-header { 
     display: none;
 }
-#gallery-section .carouselCardSubHeader { 
+#gallery-section .carousel-card-subheader { 
     position: absolute;
     bottom: 5px;
     width: 100%;
 }
-#gallery-section .carouselCardSubHeader h4 {
+#gallery-section .carousel-card-subheader h4 {
     text-align: center;
     font-size: 11px !important;
     font-weight: normal !important;
@@ -515,34 +376,34 @@ input.gsc-input {
 #feedback-section {
 	margin-bottom: 50px;
 }
-#feedback-section .carouselContainer {
+#feedback-section .carousel-container {
 	background: none;
 	border: none;
 	height: 300px;
 }
-#feedback-section .carouselCardsContainer {
+#feedback-section .carousel-cards-container {
 	width: 60%;
 	height: 300px;
 	margin: 0 auto;
 }
-#feedback-section .carouselCardWrapper {
+#feedback-section .carousel-card-wrapper {
 	background-color: var(--accent1-color); /* white */
 	padding: 10px;
 }
-#feedback-section .carouselCardBody {
+#feedback-section .carousel-card-body {
 	text-align: center;
 	padding-top: 40px;
 }
 @media screen and (max-width: 480px) {
-	#feedback-section .carouselCardsContainer {
+	#feedback-section .carousel-cards-container {
 		width: 90%;
 		font-size: 0.9em;
 	}
 }
-#feedback-section .carouselCardHeader {
+#feedback-section .carousel-card-header {
 	display: inline;
 	font-size: 1.2em;
 }
-#feedback-section .carouselButtons {
+#feedback-section .carousel-buttons {
 	display: none;
 }

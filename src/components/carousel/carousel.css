@@ -2,26 +2,26 @@
 ===============  CAROUSEL   ===============
 ======================================== */
 
-.carouselContainer {
+.carousel-container {
 	height: 600px;
     background: #FFF;
     border: 1px solid #AAA;
 }
-.carouselCardsContainer {
+.carousel-cards-container {
 	height: 550px;
 	position: relative;
     overflow: hidden;
 }
 @media screen and (max-width: 480px) {
-    .carouselContainer {
+    .carousel-container {
 		height: 350px;
 	}
-	.carouselCardsContainer {
+	.carousel-cards-container {
         height: 300px;
     }
 }
 
-#carouselCardsContainer {
+#carousel-cards-container {
 	--do-nothing: true;
 }
 
@@ -36,7 +36,7 @@
 	user-select: none;
 } */
 
-.carouselCardWrapper {
+.carousel-card-wrapper {
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -49,19 +49,19 @@
 	overflow: hidden;
 }
 
-.carouselCard {
+.carousel-card {
 	width: 100%;
 	margin: 0 auto;
 	
 }
 
-/* .carouselCard {
+/* .carousel-card {
 	width: 100%;
 	height: 100%;
     margin: 0 auto;
 } */
 
-.carouselCardHeader {
+.carousel-card-header {
 	font-size: 1.5em;
 	font-weight: bold;
 	text-align: center;
@@ -69,7 +69,7 @@
 	width: 100%;
 }
 
-.carouselCardSubHeader {
+.carousel-card-subheader {
 	font-size: 1.1em;
 	font-weight: bold;
 	text-align: center;
@@ -77,12 +77,12 @@
 	width: 100%;
 }
 
-.carouselCardBody {
+.carousel-card-body {
 	margin: 5px auto;
 	width: 90%;
 }
 
-.carouselCardImage {
+.carousel-card-image {
 	margin: 0 auto;
 	max-width: 100%;
 	max-height: 100%;
@@ -93,7 +93,7 @@
 	overflow: clip;
 }
 
-.carouselCardImage { 
+.carousel-card-image { 
 	img {
 		/* max-height: auto; 
 		max-width: 100%;
@@ -131,22 +131,24 @@
 
 }
 
-.carouselButtons {
+.carousel-buttons {
 	width: 100%;
 	height: 50px;
 	text-align: center;
 }
 
-.carouselButton {
+.carousel-button {
     font-size: 24px;
 	z-index: 900;
     padding: 5px;
 	display: inline-block;
+	border: none;
+    background-color: transparent;
 }
 
-.carouselArrow,
-.carouselArrowLeft, 
-.carouselArrowRight {
+.carousel-arrow,
+.carousel-arrow-left, 
+.carousel-arrow-right {
 	position: absolute;
     font-size: 24px;
 	top: 50%;
@@ -155,15 +157,15 @@
     padding: 5px;
 }
 
-.carouselArrowLeft {
+.carousel-arrow-left {
 	left: 0; 
 }
 
-.carouselArrowRight {
+.carousel-arrow-right {
 	right: 0;
 } 
 
-.carouselDetails {
+.carousel-details {
 	position: absolute;
 	bottom: 20px;
 	z-index: 1000;
@@ -172,7 +174,7 @@
 	text-align: center;
 }
 
-.carouselLoading {
+.carousel-loading {
     column-span: all;
 	text-align: center;
 }

@@ -1,0 +1,162 @@
+"use client";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import PropTypes, { InferProps } from "prop-types";
+import { getXHRData, generateURL } from "../utilities/api";
+import "../../css/pixelated.grid.scss";
+import "./nerdjoke.css";
+
+const debug = false;
+
+const TIME_LIMIT = 15;
+
+NerdJoke.propTypes = {};
+export type NerdJokeType = InferProps<typeof NerdJoke.propTypes>;
+export function NerdJoke( /* props: NerdJokeType */ ) {
+	const [joke, setJoke] = useState({ question: "", answer: "" });
+	const timerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+	const jokeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+	const timePassedRef = useRef(0);
+	const timePausedRef = useRef(false);
+	const timeLeftRef = useRef(TIME_LIMIT);
+
+	const formatTimeLeft = useCallback((time: number) => {
+		if (debug) console.log("Formatting Time Left");
+		const minutes = Math.floor(time / 60);
+		const seconds = time % 60;
+		const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+		return `${minutes}:${formattedSeconds}`;
+	}, []);
+
+	const updateTimerDisplay = useCallback(() => {
+		if (debug) console.log("Updating Timer Display");
+		const label = document.getElementById("jokeTimerLabel");
+		if (label) {
+			label.innerHTML = formatTimeLeft(timeLeftRef.current);
+		}
+		const elapsedPath = document.getElementById("jokeTimerPathElapsed");
+		if (elapsedPath) {
+			const myWidth = (((1 / TIME_LIMIT) * timeLeftRef.current) * 100) + "%";
+			elapsedPath.style.width = myWidth;
+		}
+	}, [formatTimeLeft]);
+
+	const loadJoke = useCallback(() => {
+		if (debug) console.log("Loading Joke");
+		timePassedRef.current = 0;
+		timeLeftRef.current = TIME_LIMIT;
+		timerIntervalRef.current = null;
+
+		if (jokeIntervalRef.current) {
+			clearInterval(jokeIntervalRef.current);
+		}
+		jokeIntervalRef.current = setInterval(() => {
+			if (!timePausedRef.current) {
+				loadJoke();
+			}
+		}, TIME_LIMIT * 1000);
+
+		const myURL = "https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?";
+		const myURLProps = { command: "%2Fnerdjokes", text: "getjokejson" };
+		const myMethod = "GET";
+		getXHRData(generateURL(myURL, myURLProps), myMethod, (jokeData: any) => {
+			const myJokeData = jokeData;
+			setJoke(myJokeData);
+		});
+	}, []);
+
+	const startTimer = useCallback(() => {
+		if (debug) console.log("Starting Timer");
+		if (timerIntervalRef.current) {
+			clearInterval(timerIntervalRef.current);
+		}
+		timerIntervalRef.current = setInterval(() => {
+			if (!timePausedRef.current) {
+				timePassedRef.current += 1;
+				timeLeftRef.current = TIME_LIMIT - timePassedRef.current + 1;
+				updateTimerDisplay();
+			}
+		}, 1000);
+	}, [updateTimerDisplay]);
+
+	const pauseTimer = () => {
+		if (debug) console.log("Pausing Timer");
+		timePausedRef.current = !timePausedRef.current;
+	};
+
+	useEffect(() => {
+		loadJoke();
+		startTimer();
+		return () => {
+			if (timerIntervalRef.current) {
+				clearInterval(timerIntervalRef.current);
+			}
+			if (jokeIntervalRef.current) {
+				clearInterval(jokeIntervalRef.current);
+			}
+		};
+	}, [loadJoke, startTimer]);
+
+	return (
+		<div className="nerdJoke">
+			<div className="row-12col">
+				<div className="grid-s1-e5">
+					<div className="left">
+						<JokeButton
+							clickFunction={pauseTimer}
+							buttonText="Pause ||  / Play >"
+						/>
+					</div>
+				</div>
+				<div className="grid-s9-e13">
+					<div className="right">
+						<JokeButton
+							clickFunction={loadJoke}
+							buttonText="Next Joke ->"
+						/>
+					</div>
+				</div>
+				<div className="jokeTimer grid-s1-e13">
+					<div className="row-12col">
+						<div className="grid-s1-e11">
+							<svg className="jokeTimerSvg" xmlns="http://www.w3.org/2000/svg">
+								<rect id="jokeTimerPathElapsed" />
+							</svg>
+						</div>
+						<div className="grid-s11-e13 center" id="jokeTimerLabel">
+							{formatTimeLeft(timeLeftRef.current)}
+						</div>
+					</div>
+				</div>
+				<div className="jokeText grid-s1-e13">
+					<div>
+						<span className="label">Q: </span>
+						<span className="question"> {joke.question} </span>
+					</div>
+					<div>
+						<span className="label">A: </span>
+						<span className="answer"> {joke.answer} </span>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+
+
+JokeButton.propTypes = {
+	clickFunction: PropTypes.func.isRequired,
+	buttonText: PropTypes.string.isRequired,
+};
+export type JokeButtonType = InferProps<typeof JokeButton.propTypes>;
+function JokeButton(props: JokeButtonType) {
+	/* <div className="jokeButton" onClick={props.clickFunction}>
+			{props.buttonText}
+		</div> */
+	return (
+		<button className="jokeButton" onClick={props.clickFunction}>
+			{props.buttonText}
+		</button>
+	);
+}

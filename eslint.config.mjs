@@ -5,10 +5,12 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import reactPlugin from 'eslint-plugin-react';
 // import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
+import a11yPlugin from 'eslint-plugin-jsx-a11y';
 
 export default [
 	{
-		files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
+		// files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
+		files: ['**/*.*{js,jsx,ts,tsx}'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
@@ -22,19 +24,18 @@ export default [
 		plugins: {
 			'@typescript-eslint': tsPlugin,
 			react: reactPlugin,
-			// 'react-hooks': reactHooksPlugin,
 			import: importPlugin,
+			'jsx-a11y': a11yPlugin,
 		},
 		rules: {
 			...js.configs.recommended.rules,
-          	...tsPlugin.configs.recommended.rules,
-          	...reactPlugin.configs.recommended.rules,
-          	// ...reactHooksPlugin.configs.recommended.rules,
+			...tsPlugin.configs.recommended.rules,
+			...reactPlugin.configs.recommended.rules,
+			...a11yPlugin.configs.recommended.rules,
 			"indent": ["error", "tab"],
-			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
 			"semi": ["error", "always"],
-          	// '@typescript-eslint/explicit-function-return-type': 'off',
-          	'@typescript-eslint/no-explicit-any': 'off',
+			// '@typescript-eslint/explicit-function-return-type': 'off',
+			'@typescript-eslint/no-explicit-any': 'off',
 
 		},
 		settings: {
@@ -53,8 +54,10 @@ export default [
 			"!/src",
 			"src/stories/",
 			"src/tests/",
-			"eslint.config.mjs",
-			"webpack.config.js",
+			"eslint.config.*",
+			"webpack.config.*",
+			"**/*example*",
+			"**/*Example*",
 		],
 	}
 ];

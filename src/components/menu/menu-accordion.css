@@ -7,6 +7,10 @@
 	/* background-color: rgba(255,255,255,0.7); */
 	/* display: none; */
 	/* display: inline; */
+
+	background-color: transparent;
+    border: none;
+
 	margin: 0px 10px 0px 0px;
 	padding: 5px;
 	text-align: center;
@@ -17,6 +21,29 @@
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
+
+
+.panelMenuButton .hamburger{
+    /* the tricks */
+	/* display: block; */
+	/* display inline-block is fine too */
+   	-webkit-transform: scaleX(1.5);
+   	-moz-transform: scaleX(1.5);
+   	-o-transform: caleX(1.5); 
+   	transform: scaleX(1.5);
+	writing-mode: vertical-lr;
+    /* optional */
+    font-size: 8pt;
+    cursor: pointer;
+    font-weight: 900;
+    color: #CCC;
+	padding-top: 5px;
+
+}
+/* hamburger hover style */
+/* .accordionMenu .hamburger:hover {
+    color: #FFC75F;
+} */
 
 @media screen and (max-width: 480px) {
 	.panelMenuButton {
@@ -127,27 +154,6 @@
 	background: #EDD;
     /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
 }
-
-
-.panelMenuButton .hamburger{
-    /* the tricks */
-	display: block;
-   	-webkit-transform: scaleX(1.75);
-   	-moz-transform: scaleX(1.75);
-   	-o-transform: caleX(1.75); 
-   	transform: scaleX(1.75);
-	writing-mode: vertical-lr;
-	transform: scaleX(1.75);
-    /* optional */
-    font-size: 8pt;
-    cursor: pointer;
-    font-weight: 900;
-    color: #CCC;
-}
-/* hamburger hover style */
-/* .accordionMenu .hamburger:hover {
-    color: #FFC75F;
-} */
 
 /* ===== LEVEL 2 ===== */
 

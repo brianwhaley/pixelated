@@ -10,11 +10,11 @@
 	--accent2-color: #EEE;	
 }
 
-.menuWrapper {
+.menu-wrapper {
 	height: 100%;
 }
 
-.menuWrapper, .menuWrapper * {
+.menu-wrapper, .menu-wrapper * {
 	display: flex;
 	flex-direction: row;
 	flex-basis: 100%;
@@ -39,7 +39,7 @@
 	text-decoration: none;
 }
 
-.menuItem {
+.menu-item {
 	border: 1px solid white;
 	background: none;
 	width: auto;
@@ -50,15 +50,15 @@
 	flex-basis: content; /* each item is its own size instead of auto */
 }
 
-.menuItem:hover {
+.menu-item:hover {
 	background-color: var(--accent1-color);
 }
 
-.menuItem:not(:first-child) {
+.menu-item:not(:first-child) {
 	border-left: 2px solid var(--primary-color);
 }
 
-.menuItem a {
+.menu-item a {
 	/* this is the button */
 	background-color: var(--accent1-color);
 	font-weight: bold;
@@ -67,10 +67,10 @@
 	text-align: center;
 }
 
-.menuItem a.selected {
+.menu-item a.selected {
 	background-color: var(--secondary-color);
 }
 
-.menuItem a:hover {
+.menu-item a:hover {
 	background-color: var(--accent2-color);
 }

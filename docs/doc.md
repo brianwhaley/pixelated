@@ -8,9 +8,6 @@ https://www.npmjs.com/package/@pixelated-tech/components
 
 https://www.npmjs.com/package/@pixelated-tech/components
 
-eslint --fix --ext .js,.jsx .
-eslint --fix
-
 
 
 ## MIGRATION SCRIPT
@@ -26,10 +23,11 @@ npm unpublish @brianwhaley/pixelated-components --force
 ## DEPLOYMENT SCRIPT
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
+npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "v1 sitetmap generator, v1 metatag generator"
+git commit -m "reorganize css styles to kebab case; v1 of new semantic components - pageheader, pagefooter, pagenav, pagemain; v1 of sidepanel component; pageheader to pagetitleheader, griditem to pagegriditem, flexitem to pageflexitem, reorganize components internally"
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish --access public

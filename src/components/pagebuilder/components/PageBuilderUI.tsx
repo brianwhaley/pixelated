@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { PageSectionHeader } from '../../general/headers';
+import { PageSectionHeader } from '../../general/semantic';
 import { usePageBuilder } from '../lib/usePageBuilder';
 import { ComponentSelector } from '../components/ComponentSelector';
 import { ComponentPropertiesForm } from '../components/ComponentPropertiesForm';

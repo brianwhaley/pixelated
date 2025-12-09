@@ -1,6 +1,5 @@
-import { NerdJoke } from '../components/nerdjoke/nerdjoke';
-import '../components/nerdjoke/nerdjoke.css';
-import '../css/pixelated.global.css';
+import { NerdJoke } from '@/components/nerdjoke/nerdjoke';
+import '@/css/pixelated.global.css';
 
 export default {
 	title: 'NerdJoke',

@@ -15,7 +15,7 @@ import {
 	flexWraps, 
 	justifyContentValues, 
 	alignItemsValues 
-} from "../../general/layout";
+} from "../../general/semantic";
 
 export type PropMetadata = {
 	type: 'text' | 'number' | 'checkbox' | 'select' | 'object' | 'array' | 'function' | 'children';

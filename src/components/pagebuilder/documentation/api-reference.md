@@ -430,8 +430,8 @@ export const componentMap = {
 ```typescript
 export const layoutComponents = [
   'PageSection',
-  'GridItem',
-  'FlexItem',
+  'PageGridItem',
+  'PageFlexItem',
   'MyComponent',  // If it accepts children
 ];
 ```

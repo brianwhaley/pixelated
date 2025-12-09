@@ -66,18 +66,18 @@
 
 .ebayItemPhotoCarousel { 
 
-    .carouselContainer {
+    .carousel-container {
         background: none;
         border: none;
         height: 400px;
     }
 
-    .carouselCardsContainer {
+    .carousel-cards-container {
         height: 100%;
     }
 
-    .carouselButtons,
-    .carouselButton {
+    .carousel-buttons,
+    .carousel-button {
         display: inline-block;
     }
 
@@ -87,7 +87,7 @@
 	.ebayItemPhotoCarousel {
         height: 350px;
     }
-    .ebayItemPhotoCarousel .carouselContainer {
+    .ebayItemPhotoCarousel .carousel-container {
         height: 300px;
     }
 }

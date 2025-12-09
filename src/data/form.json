@@ -1,10 +1,10 @@
 {
-    "fields" : [
+	"fields" : [
 		{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "title",
-                "name" : "title",
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "title",
+				"name" : "title",
 				"defaultValue" : "",
 				"autoComplete" : "honorific-prefix",
 				"multiple" : null,
@@ -19,70 +19,70 @@
 					{ "value" : "ms", "text" : "Ms." },
 					{ "value" : "miss", "text" : "Miss" }
 				]
-            }
+			}
 		},	
-        {
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "firstname",
-                "name" : "firstname",
-                "defaultValue" : null,
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "firstname",
+				"name" : "firstname",
+				"defaultValue" : null,
 				"autoComplete" : "given-name",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "First Name : ",
 				"tooltip" : "Please type in your First Name"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "lastname",
-                "name" : "lastname",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "lastname",
+				"name" : "lastname",
+				"defaultValue" : null,
 				"autoComplete" : "family-name",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Last Name : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "address",
-                "name" : "address",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "address",
+				"name" : "address",
+				"defaultValue" : null,
 				"autoComplete" : "street-address",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Street Address : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "city",
-                "name" : "city",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "city",
+				"name" : "city",
+				"defaultValue" : null,
 				"autoComplete" : "address-level2",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "City : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "state",
-                "name" : "state",
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "state",
+				"name" : "state",
 				"size" : "5",
 				"defaultValue" : ["NJ","SC"],
 				"autoComplete" : "address-level1",
@@ -144,58 +144,58 @@
 					{ "value" : "WI", "text" : "Wisconsin" },
 					{ "value" : "WY", "text" : "Wyoming" }
 				]
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "zipcode",
-                "name" : "zipcode",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "zipcode",
+				"name" : "zipcode",
+				"defaultValue" : null,
 				"autoComplete" : "postal-code",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Zip Code : ",
 				"validate" : "isValidUSZipCode"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "tel",
-                "id" : "phone",
-                "name" : "phone",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "tel",
+				"id" : "phone",
+				"name" : "phone",
+				"defaultValue" : null,
 				"autoComplete" : "tel",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Phone Number : ",
 				"validate" : "isValidUSPhoneNumber"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "date",
-                "id" : "birthday",
-                "name" : "birthday",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "date",
+				"id" : "birthday",
+				"name" : "birthday",
+				"defaultValue" : null,
 				"autoComplete" : "bday",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Birthday : ",
 				"validate" : "isValidDate"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "age",
-                "name" : "age",
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "age",
+				"name" : "age",
 				"defaultValue" : "",
 				"multiple" : null,
 				"required" : "required",
@@ -214,13 +214,13 @@
 					{ "value" : "91-100", "text" : "91 to 100" },
 					{ "value" : "+100", "text" : "Above 100" }
 				]
-            }
+			}
 		},
 		{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "generation",
-                "name" : "generation",
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "generation",
+				"name" : "generation",
 				"defaultValue" : null,
 				"multiple" : null,
 				"required" : "required",
@@ -236,28 +236,28 @@
 					{ "value" : "genz", "text" : "Generation Z – born 1995-2012" },
 					{ "value" : "gena", "text" : "Gen Alpha – born 2013 – 2025" }
 				]
-            }
+			}
 		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "email",
-                "id" : "email",
-                "name" : "email",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "email",
+				"id" : "email",
+				"name" : "email",
+				"defaultValue" : null,
 				"autoComplete" : "email",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Email Address : ",
 				"validate" : "isValidEmailAddress"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormRadio",
-            "props" : {
-                "id" : "gender",
-                "name" : "gender",
+			"component" : "FormRadio",
+			"props" : {
+				"id" : "gender",
+				"name" : "gender",
 				"autoComplete" : "sex",
 				"label" : "Gender : ",
 				"display" : "horizontal",
@@ -268,11 +268,11 @@
 					{ "value" : "male", "text" : "Male", "checked" : "" },
 					{ "value" : "female", "text" : "Female", "checked" : "" }
 				]
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormCheckbox",
-            "props" : {
+			"component" : "FormCheckbox",
+			"props" : {
 				"id" : "children",
 				"name" : "children",
 				"label" : "Children : ",
@@ -284,43 +284,43 @@
 					{ "value" : "n", "text" : "No", "selected" : "" },
 					{ "value" : "m", "text" : "Maybe" }
 				]
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "jobtitle",
-                "name" : "jobtitle",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "jobtitle",
+				"name" : "jobtitle",
+				"defaultValue" : null,
 				"autoComplete" : "organization-title",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Job Title : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "company",
-                "name" : "company",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "company",
+				"name" : "company",
+				"defaultValue" : null,
 				"autoComplete" : "organization",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Company : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "range",
-                "id" : "salary",
-                "name" : "salary",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "range",
+				"id" : "salary",
+				"name" : "salary",
+				"defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
 				"min" : "10000",
@@ -328,43 +328,43 @@
 				"step" : "1000",
 				"required" : "required",
 				"label" : "Salary : "
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "url",
-                "id" : "linkedin",
-                "name" : "linkedin",
-                "defaultValue" : null,
+			"component" : "FormInput",
+			"props" : {
+				"type" : "url",
+				"id" : "linkedin",
+				"name" : "linkedin",
+				"defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "LinkedIn URL : ",
 				"validate" : "isValidUrl"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormTextarea",
-            "props" : {
-                "id" : "comments",
-                "name" : "comments",
-                "rows" : "5",
-                "cols" : "40",
-                "defaultValue" : null,
+			"component" : "FormTextarea",
+			"props" : {
+				"id" : "comments",
+				"name" : "comments",
+				"rows" : "5",
+				"cols" : "40",
+				"defaultValue" : null,
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Comments : ",
 				"tooltip": "Please enter your comments"
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormButton",
-            "props" : {
+			"component" : "FormButton",
+			"props" : {
 				"type" : "submit",
-                "id" : "submit",
-                "text" : "Submit"
-            }
-        }
-    ]
+				"id" : "submit",
+				"text" : "Submit"
+			}
+		}
+	]
 }

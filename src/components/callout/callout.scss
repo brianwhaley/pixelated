@@ -22,7 +22,7 @@
     padding: 0;
 }
 
-.callout .calloutImage {
+.callout .callout-image {
     overflow: hidden;
     width: 100%;
     background-color: white;
@@ -32,41 +32,41 @@
     /* aspect-ratio: 1/1;  */
 }
 
-.callout.vertical .calloutImage {
+.callout.vertical .callout-image {
     width: 70%;
     margin: 0 auto;
     aspect-ratio: 1;
 }
 
-.callout .calloutImage a,
-.callout .calloutImage img {
+.callout .callout-image a,
+.callout .callout-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
 }
 
-.callout .calloutImage.square {
+.callout .callout-image.square {
     border-radius: 0%;
 }
 
-.callout .calloutImage.bevel {
+.callout .callout-image.bevel {
     clip-path: rect(1% 98% 98% 1% round 5%);
 }
 
-.callout .calloutImage.squircle {
+.callout .callout-image.squircle {
     clip-path: rect(1% 98% 98% 1% round 25%);
 }
 
-.callout .calloutImage.round {
+.callout .callout-image.round {
     clip-path: rect(1% 98% 98% 1% round 100%);
 }
 
-.callout .calloutBody {
+.callout .callout-body {
     flex-flow: column;
 }
 
-.callout .calloutBody > * {
+.callout .callout-body > * {
     padding: 5px 20px;
 }
 
@@ -75,58 +75,58 @@
     float: unset !important; /* OVERRIDE pixelated.global.css */
 }
 
-.callout.left .calloutBody > * {
+.callout.left .callout-body > * {
     text-align: left;
     margin-left: 0;
     margin-right: auto;
 }
 
-.callout.right .calloutBody > * {
+.callout.right .callout-body > * {
     text-align: right;
     margin-right: 0;
     margin-left: auto;
 }
 
-.callout .calloutHeader {
+.callout .callout-header {
     text-align: center;
     margin: 0 auto;
 }
 
-.callout .calloutHeader a {
+.callout .callout-header a {
     --do-nothing: true;
 }
 
-.callout .calloutHeader h2 {
+.callout .callout-header h2 {
     --do-nothing: true;
 }
 
-.callout .calloutTitle {
+.callout .callout-title {
     text-align: center;
 }
 
-.callout .calloutSubtitle {
+.callout .callout-subtitle {
     text-align: left;
 }
 
-.callout.vertical .calloutSubtitle {
+.callout.vertical .callout-subtitle {
     text-align: center;
     margin: 0 auto;
 }
 
-.callout .calloutSubtitle h3 {
+.callout .callout-subtitle h3 {
     padding: 0;
     --do-nothing: true;
 }
 
-.callout .calloutContent {
+.callout .callout-content {
     --do-nothing: true;
 }
 
-.callout .calloutButton { 
+.callout .callout-button { 
     --do-nothing: true;
 }
 
-.callout .calloutButton button { 
+.callout .callout-button button { 
     display: inline-block;
     max-width: 250px;
     margin: 10px auto !important;
@@ -142,7 +142,7 @@
     /* cursor: pointer */
 }
 
-.callout .calloutButton a {
+.callout .callout-button a {
     display: inline-block;
 }
 
@@ -174,19 +174,19 @@
     border-radius: 100%;
 }
 
-.callout.boxed .calloutImage {
+.callout.boxed .callout-image {
 	clip-path: none;
     aspect-ratio: 1/1;
     background-color: white;
     width: 100% !important;
 }
 
-.callout.boxed .calloutBody { 
+.callout.boxed .callout-body { 
     --do-nothing: true;
     padding: 5px 20px;
 }
 
-.callout.boxed.vertical .calloutBody { 
+.callout.boxed.vertical .callout-body { 
     --do-nothing: true;
     padding: 20px 0px;
 }
@@ -199,11 +199,11 @@
     padding: 0px;
 }
 
-.callout.full.vertical .calloutImage {
+.callout.full.vertical .callout-image {
     width: 100%;
 }
 
-.callout.full .calloutBody > * {
+.callout.full .callout-body > * {
     padding: 5px 5px;
 }
 
@@ -218,9 +218,9 @@
 
 @for $i from 1 through 11 {
     @for $k from 1 through 11 {
-        .calloutGrid-#{$i}-#{$k} { grid-template-columns: #{$i}fr #{$k}fr; }
+        .callout-grid-#{$i}-#{$k} { grid-template-columns: #{$i}fr #{$k}fr; }
         @media screen and (max-width: 480px) {
-			.calloutGrid-#{$i}-#{$k} { grid-template-columns: 1fr; }
+			.callout-grid-#{$i}-#{$k} { grid-template-columns: 1fr; }
 		}
     }
 }
@@ -242,15 +242,15 @@
 
 }
 
-.callout.grid .calloutImage img {
-    /* duplicate of .callout .calloutImage img */
+.callout.grid .callout-image img {
+    /* duplicate of .callout .callout-image img */
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
 }
 
-.callout.grid .calloutBody {
+.callout.grid .callout-body {
 	grid-auto-rows: min-content;
 }
 
@@ -264,12 +264,12 @@
     overflow: hidden;
 }
 
-.callout.overlay .calloutImage {
+.callout.overlay .callout-image {
     width: 100%;
     height: 100%;
 }
 
-.callout.overlay .calloutBody {
+.callout.overlay .callout-body {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -287,12 +287,12 @@
     padding: 0px;
 }
 
-.callout.split .calloutImage,
-.callout.split .calloutBody {
+.callout.split .callout-image,
+.callout.split .callout-body {
     flex: 1;
 }
 
-.callout.split .calloutBody > * {
+.callout.split .callout-body > * {
     padding: 5px 20px;
 }
 
@@ -312,20 +312,20 @@
     .callout.grid {
 	    grid-template-columns: 1fr;
     }
-    .callout .calloutImage { 
+    .callout .callout-image { 
         width: 70%;
         margin: 0 auto;
     }
-    .callout.full .calloutImage,
-    .callout.split .calloutImage { 
+    .callout.full .callout-image,
+    .callout.split .callout-image { 
         width: 100%;
         margin: 0 auto;
     }
-    .callout .calloutBody > * { 
+    .callout .callout-body > * { 
         margin: 0 auto !important;
         text-align: center !important;
     }
-    .callout .calloutContent  { 
+    .callout .callout-content  { 
         text-align: left !important;
     }
 } 

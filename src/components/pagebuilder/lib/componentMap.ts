@@ -1,18 +1,18 @@
-import { PageHeader, PageSectionHeader } from "../../general/headers";
+import { PageTitleHeader, PageSectionHeader } from "../../general/semantic";
 import { Callout } from "../../callout/callout";
-import { PageSection, GridItem, FlexItem } from "../../general/layout";
+import { PageSection, PageGridItem, PageFlexItem } from "../../general/semantic";
 
 /**
  * Component registry and constants
  */
 
 export const componentMap = {
-	"Page Header": PageHeader,
+	"Page Title Header": PageTitleHeader,
 	"Page Section Header": PageSectionHeader,
 	"Callout": Callout,
 	"Page Section": PageSection,
-	"Grid Item": GridItem,
-	"Flex Item": FlexItem,
+	"Grid Item": PageGridItem,
+	"Flex Item": PageFlexItem,
 };
 
 export const layoutComponents = [

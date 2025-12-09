@@ -540,8 +540,8 @@ src/components/
 │   └── TextBlock.tsx
 ├── layout/
 │   ├── PageSection.tsx
-│   ├── GridItem.tsx
-│   └── FlexItem.tsx
+│   ├── PageGridItem.tsx
+│   └── PageFlexItem.tsx
 └── interactive/
     ├── ContactForm.tsx
     └── Newsletter.tsx

@@ -31,7 +31,7 @@ export function MenuSimple(props: { menuItems: MenuSimpleItemType[] }) {
 		return myItems;
 	}
 	function styleSelectedMenuItem() {
-		const menuitems = document.querySelectorAll('.menuItem a');
+		const menuitems = document.querySelectorAll('.menu-item a');
 		const currentURL = window.location.href;
 		menuitems.forEach( (menuitem) => {
 			if ((menuitem as HTMLAnchorElement).href === currentURL) {
@@ -43,7 +43,7 @@ export function MenuSimple(props: { menuItems: MenuSimpleItemType[] }) {
 		styleSelectedMenuItem();
 	}, []);
 	return (
-		<div className="menuWrapper">
+		<div className="menu-wrapper">
 			{ /* <hr /> */ }
 			<div className="menu" id="menu">
 				<ul>{ generateMenuItems() }</ul>
@@ -67,7 +67,7 @@ export type MenuSimpleItemType = InferProps<typeof MenuSimpleItem.propTypes>;
 export function MenuSimpleItem(props: MenuSimpleItemType) {
 	if( props.hidden ) return null;
 	return (
-		<li className='menuItem'>
+		<li className='menu-item'>
 			{props.target 
 				? <a href={props.path || undefined} target={props.target}>{props.name}</a>
 				: <a href={props.path || undefined}>{props.name}</a>}

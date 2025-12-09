@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 /* import { shallow, mount, render } from 'enzyme'; */
 import { mount } from 'enzyme';
-import SocialCards, { SocialCard } from '../components/socialcard/socialcard';
+import SocialCards, { SocialCard } from '../components/structured/socialcard';
 
 const card = {
 	title: 'Vintage 1960’s AMERICAN EXPRESS Credit Cards Sign by MoonshineMantiques',

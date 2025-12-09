@@ -1,10 +1,9 @@
 
-export * from './components/buzzwordbingo/buzzwordbingo';
-
 export * from './components/callout/callout';
 
 export * from './components/carousel/carousel';
 export * from './components/carousel/carousel.drag';
+export * from './components/carousel/tiles';
 
 export * from './components/cms/calendly';
 export * from './components/cms/cloudinary'; // server-side 
@@ -21,8 +20,10 @@ export * from './components/cms/hubspot.components';
 export * from './components/cms/hubspot'; // server-side 
 export * from './components/cms/instagram.functions'; // server-side 
 export * from './components/cms/instagram.components';
+/* export * from './components/linkedin/linkedin'; */
 export * from './components/cms/wordpress.components';
 export * from './components/cms/wordpress.functions'; // server-side 
+/* export * from './components/cms/yelp'; */
 
 export * from './components/config/config.client';
 export * from './components/config/config.server';
@@ -30,17 +31,13 @@ export * from './components/config/config';
 export * from './components/config/config.types';
 
 export * from './components/general/css';
-export * from './components/general/headers';
 export * from './components/general/image';
-export * from './components/general/layout';
 export * from './components/general/loading';
 export * from './components/general/microinteractions';
 export * from './components/general/modal';
+export * from './components/general/semantic';
+export * from './components/general/sidepanel';
 export * from './components/general/table';
-
-/* export * from './components/linkedin/linkedin'; */
-
-export * from './components/markdown/markdown';
 
 export * from './components/menu/menu-accordion';
 /* export * from './components/menu/menu-expando'; */
@@ -68,10 +65,6 @@ export * from './components/pagebuilder/lib/propTypeIntrospection'; // server-si
 export * from './components/pagebuilder/lib/types'; // server-side 
 export * from './components/pagebuilder/lib/usePageBuilder'; // server-side 
 
-export * from './components/recipe/recipe';	
-
-export * from './components/resume/resume';
-
 export * from './components/seo/404';
 export * from './components/seo/googleanalytics';
 export * from './components/seo/googlemap';
@@ -86,15 +79,13 @@ export * from './components/shoppingcart/paypal';
 export * from './components/shoppingcart/shoppingcart.components';
 export * from './components/shoppingcart/shoppingcart.functions'; // server-side 
 
-export * from './components/sidepanel/sidepanel';
-
-export * from './components/socialcard/socialcard';
-
-export * from './components/tiles/tiles';
-
-export * from './components/timeline/timeline';
+export * from './components/structured/buzzwordbingo';
+export * from './components/structured/markdown';
+export * from './components/structured/recipe';	
+export * from './components/structured/resume';
+export * from './components/structured/socialcard';
+export * from './components/structured/timeline';
 
 export * from './components/utilities/api'; // server-side 
 export * from './components/utilities/functions'; // server-side 
 
-/* export * from './components/yelp/yelp'; */

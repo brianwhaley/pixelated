@@ -71,27 +71,38 @@ export function PageEngine(props: PageEngineType) {
 		// Edit mode: Wrap with hover effect and action buttons
 		const isSelected = selectedPath === currentPath;
 		
+		const handleMouseEnter = (currentTarget: HTMLDivElement, event: React.SyntheticEvent<HTMLDivElement>) => {
+			if (event.target === event.currentTarget || !currentTarget.querySelector('.pagebuilder-component-wrapper:hover')) {
+				document.querySelectorAll('.pagebuilder-component-wrapper.hover-active').forEach(el => {
+					el.classList.remove('hover-active');
+				});
+				currentTarget.classList.add('hover-active');
+			}
+			event.stopPropagation();
+		};
+
+		const handleMouseLeave = (currentTarget: HTMLDivElement, event: React.SyntheticEvent<HTMLDivElement>) => {
+			const relatedTarget = ((event as React.MouseEvent<HTMLDivElement>).relatedTarget || (event as React.FocusEvent<HTMLDivElement>).relatedTarget) as HTMLElement | null;
+			if (!relatedTarget || !currentTarget.contains(relatedTarget)) {
+				currentTarget.classList.remove('hover-active');
+			}
+		};
+		
 		return (
 			<div 
 				key={`wrapper-${index}`} 
 				className={`pagebuilder-component-wrapper ${isSelected ? 'selected' : ''}`}
 				onMouseOver={(e) => {
-					if (e.target === e.currentTarget || !e.currentTarget.querySelector('.pagebuilder-component-wrapper:hover')) {
-						// Remove hover-active from all wrappers
-						document.querySelectorAll('.pagebuilder-component-wrapper.hover-active').forEach(el => {
-							el.classList.remove('hover-active');
-						});
-						// Add to current
-						e.currentTarget.classList.add('hover-active');
-					}
-					e.stopPropagation();
+					handleMouseEnter(e.currentTarget, e);
 				}}
 				onMouseOut={(e) => {
-					const relatedTarget = e.relatedTarget as HTMLElement;
-					// Only remove if leaving to somewhere outside this wrapper entirely
-					if (!e.currentTarget.contains(relatedTarget)) {
-						e.currentTarget.classList.remove('hover-active');
-					}
+					handleMouseLeave(e.currentTarget, e as React.MouseEvent<HTMLDivElement>);
+				}}
+				onFocus={(e) => {
+					handleMouseEnter(e.currentTarget, e);
+				}}
+				onBlur={(e) => {
+					handleMouseLeave(e.currentTarget, e as React.FocusEvent<HTMLDivElement>);
 				}}
 			>
 				{element}

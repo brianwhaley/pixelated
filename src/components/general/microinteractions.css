@@ -10,7 +10,7 @@
 body.buttonring {
   button,
   .button,
-  .centeredbutton {
+  .centered-button {
     /* ALSO USE CLASS = BUTTON */
     outline: 0px solid transparent !important; /* Initial transparent outline */
     outline-offset: 3px; /* Optional: Adjusts the distance of the outline from the border */
@@ -19,7 +19,7 @@ body.buttonring {
   }
   button:hover,
   .button:hover,
-  .centeredbutton:hover {
+  .centered-button:hover {
     outline-width: 5px !important; /* Outline animates out 5px */
     outline-color: #369 !important; /* Or a different color for the outline */
   }
@@ -146,7 +146,7 @@ body.imgtwist {
 
 /* 
 /* ========== SIMPLE MENU BUTTON LEFT FILL HOVER ==========
-.menuItem a:before {
+.menu-item a:before {
   position: absolute;
   content: "";
   top: 0;
@@ -157,12 +157,12 @@ body.imgtwist {
   transition: all .25s;
   z-index: -1;
 }
-.menuItem a:hover {
+.menu-item a:hover {
   border-left: 0px solid transparent !important;
   text-indent: 0px !important;
   color: #fff;
 }
-.menuItem a:hover:before {
+.menu-item a:hover:before {
   width: 100%;
 }
 */
@@ -171,10 +171,10 @@ body.imgtwist {
 
 
 /* ========== SIMPLE MENU BUTTON CENTER FILL HOVER ========== */
-body.simplemenubutton .menu .menuItem {
+body.simplemenubutton .menu .menu-item {
   	--do-nothing: true;
 }
-body.simplemenubutton .menu .menuItem {
+body.simplemenubutton .menu .menu-item {
 	a {
 		text-align: center;
 		position: relative;

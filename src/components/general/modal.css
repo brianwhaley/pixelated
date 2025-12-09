@@ -14,7 +14,7 @@
   }
   
   /* Modal Content/Box */
-  .modalContent {
+  .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
@@ -24,12 +24,12 @@
     position: relative;
   }
 
-  .modalContent img {
+  .modal-content img {
     border: 2px solid #aaa;
   }
   
   /* The Close Button */
-  .modalClose {
+  .modal-close {
     color: #aaa;
     font-size: 28px;
     line-height: 26px;
@@ -49,8 +49,8 @@
     z-index: 10;
   }
   
-  .modalClose:hover,
-  .modalClose:focus {
+  .modal-close:hover,
+  .modal-close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

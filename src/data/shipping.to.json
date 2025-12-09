@@ -1,58 +1,58 @@
 {
-    "fields" : [
-        {
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "name",
-                "name" : "name",
-                "defaultValue" : null,
-                "placeholder": "Full Name",
+	"fields" : [
+		{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "name",
+				"name" : "name",
+				"defaultValue" : null,
+				"placeholder": "Full Name",
 				"autoComplete" : "name",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Name : ",
 				"tooltip" : "Please enter your First and Last Name"
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "street1",
-                "name" : "street1",
-                "defaultValue" : null,
-                "placeholder": "Street Address",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "street1",
+				"name" : "street1",
+				"defaultValue" : null,
+				"placeholder": "Street Address",
 				"autoComplete" : "street-address",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "Street Address : ",
 				"tooltip" : "Please enter your Street Address"
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "city",
-                "name" : "city",
-                "defaultValue" : null,
-                "placeholder": "City",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "city",
+				"name" : "city",
+				"defaultValue" : null,
+				"placeholder": "City",
 				"autoComplete" : "address-level2",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : "required",
 				"label" : "City : ",
 				"tooltip" : "Please enter your City"
-            }
-        },{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "state",
-                "name" : "state",
+			}
+		},{
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "state",
+				"name" : "state",
 				"size" : null,
 				"defaultValue" : "",
-                "placeholder": "State",
+				"placeholder": "State",
 				"autoComplete" : "address-level1",
 				"multiple" : null,
 				"required" : "required",
@@ -112,15 +112,15 @@
 					{ "value" : "WI", "text" : "Wisconsin" },
 					{ "value" : "WY", "text" : "Wyoming" }
 				]
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "zip",
-                "name" : "zip",
-                "defaultValue" : null,
-                "placeholder": "Zip Code",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "zip",
+				"name" : "zip",
+				"defaultValue" : null,
+				"placeholder": "Zip Code",
 				"autoComplete" : "postal-code",
 				"size" : "40",
 				"display" : "horizontal",
@@ -128,15 +128,15 @@
 				"label" : "Zip Code : ",
 				"tooltip" : "Please enter your Zip Code",
 				"validate" : "isValidUSZipCode"
-            }
-        },{
-            "component" : "FormSelect",
-            "props" : {
-                "id" : "country",
-                "name" : "country",
+			}
+		},{
+			"component" : "FormSelect",
+			"props" : {
+				"id" : "country",
+				"name" : "country",
 				"size" : null,
 				"defaultValue" : "",
-                "placeholder": "Country",
+				"placeholder": "Country",
 				"autoComplete" : "country",
 				"multiple" : null,
 				"required" : "required",
@@ -341,15 +341,15 @@
 					{ "text": "Zambia", "value": "ZM" },
 					{ "text": "Zimbabwe", "value": "ZW" }
 				]
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "tel",
-                "id" : "phone",
-                "name" : "phone",
-                "defaultValue" : null,
-                "placeholder": "Phone Number",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "tel",
+				"id" : "phone",
+				"name" : "phone",
+				"defaultValue" : null,
+				"placeholder": "Phone Number",
 				"autoComplete" : "tel",
 				"size" : "40",
 				"display" : "horizontal",
@@ -357,15 +357,15 @@
 				"label" : "Phone Number : ",
 				"tooltip" : "Please enter your Phone Number",
 				"validate" : "isValidUSPhoneNumber"
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "email",
-                "id" : "email",
-                "name" : "email",
-                "defaultValue" : null,
-                "placeholder": "Email Address",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "email",
+				"id" : "email",
+				"name" : "email",
+				"defaultValue" : null,
+				"placeholder": "Email Address",
 				"autoComplete" : "email",
 				"size" : "40",
 				"display" : "horizontal",
@@ -373,28 +373,28 @@
 				"label" : "Email Address : ",
 				"tooltip" : "Please enter your Email Address",
 				"validate" : "isValidEmailAddress"
-            }
-        },{
-            "component" : "FormInput",
-            "props" : {
-                "type" : "text",
-                "id" : "discountCode",
-                "name" : "discountCode",
-                "defaultValue" : null,
-                "placeholder": "Discount Code",
+			}
+		},{
+			"component" : "FormInput",
+			"props" : {
+				"type" : "text",
+				"id" : "discountCode",
+				"name" : "discountCode",
+				"defaultValue" : null,
+				"placeholder": "Discount Code",
 				"size" : "40",
 				"display" : "horizontal",
 				"required" : null,
 				"label" : "Discount Code : ",
 				"tooltip" : "Please enter any discount code you have received",
 				"validate" : "isValidDiscountCode"
-            }
-        } ,
+			}
+		} ,
 		{
-            "component" : "FormRadio",
-            "props" : {
-                "id" : "shippingMethod",
-                "name" : "shippingMethod",
+			"component" : "FormRadio",
+			"props" : {
+				"id" : "shippingMethod",
+				"name" : "shippingMethod",
 				"label" : "Shipping Method : ",
 				"display" : "vertical",
 				"required" : "required",
@@ -408,15 +408,15 @@
 					{ "value" : "USPS-PM-I", "text" : "USPS Priority Mail International ( 6 - 10 days ) $39.99", "checked" : "" },
 					{ "value" : "USPS-PMX-I", "text" : "USPS Priority Mail Express International ( 3 - 5 days ) $69.99", "checked" : "" }
 				]
-            }
-        },
+			}
+		},
 		{
-            "component" : "FormButton",
-            "props" : {
+			"component" : "FormButton",
+			"props" : {
 				"type" : "submit",
-                "id" : "submit",
-                "text" : "Checkout"
-            }
-        }
-    ]
+				"id" : "submit",
+				"text" : "Checkout"
+			}
+		}
+	]
 }
