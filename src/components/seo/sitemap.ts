@@ -1,7 +1,7 @@
 import PropTypes, { InferProps } from "prop-types";
 import type { MetadataRoute } from 'next';
 import { getAllRoutes } from "./metadata";
-import { getWordPressItems } from "../cms/wordpress.functions";
+import { getWordPressItems, getWordPressItemImages } from "../cms/wordpress.functions";
 import { getContentfulFieldValues, getContentfulAssetURLs } from "../cms/contentful.delivery";
 import { getEbayAppToken, getEbayItemsSearch } from "../shoppingcart/ebay.functions";
 import { getFullPixelatedConfig } from '../config/config';
@@ -21,6 +21,7 @@ export type SitemapEntry = MetadataRoute.Sitemap[number];
 export type SitemapConfig = {
 	createPageURLs?: boolean;
 	createWordPressURLs?: boolean;
+	createWordPressImageURLs?: boolean;
 	createImageURLs?: boolean;
 	createImageURLsFromJSON?: boolean;
 	createContentfulURLs?: boolean;
@@ -106,6 +107,7 @@ export async function generateSitemap(cfg: SitemapConfig = {}, originInput?: str
 	// Defaults: pages true, image json true, others false
 	const usePages = cfg.createPageURLs ?? true;
 	const useWP = cfg.createWordPressURLs ?? false;
+	const useWPImages = cfg.createWordPressImageURLs ?? false;
 	const useImageJSON = cfg.createImageURLsFromJSON ?? true;
 	const useContentful = cfg.createContentfulURLs ?? false;
 	const useContentfulImages = cfg.createContentfulImageURLs ?? false;
@@ -125,7 +127,7 @@ export async function generateSitemap(cfg: SitemapConfig = {}, originInput?: str
 	}
 	// WordPress
 	if (useWP && cfg.wordpress?.site) {
-		sitemapEntries.push(...(await createWordPressURLs({ site: cfg.wordpress.site })));
+		sitemapEntries.push(...(await createWordPressURLs({ site: cfg.wordpress.site, includeImages: useWPImages })));
 	}
 	// Contentful (pages)
 	if (useContentful && cfg.contentful) {
@@ -199,8 +201,16 @@ export async function createImageURLsFromJSON(origin: string, jsonPath = 'public
 		if (!urlPath.startsWith('/')) urlPath = `/${urlPath}`;
 		const resp = await fetch(`${origin}${urlPath}`);
 		if (!resp.ok) return sitemap;
-		const imgs = await resp.json();
-		if (!Array.isArray(imgs)) return sitemap;
+		const json = await resp.json();
+		let imgs: string[] = [];
+		if (Array.isArray(json)) {
+			imgs = json;
+		} else if (json && Array.isArray(json.images)) {
+			imgs = json.images;
+		} else {
+			return sitemap;
+		}
+
 		// Use an array of URL strings so the sitemap serializer writes the URL text
 		const newImages = imgs.map(i => {
 			const rel = i.startsWith('/') ? i : `/${i}`;
@@ -219,19 +229,23 @@ export async function createImageURLsFromJSON(origin: string, jsonPath = 'public
 
 
 
-export async function createWordPressURLs(props: {site: string}){
+export async function createWordPressURLs(props: {site: string, includeImages?: boolean}){
 	const sitemap: SitemapEntry[] = [];
 	const blogPosts = await getWordPressItems({site: props.site});
 	for await (const post of blogPosts ?? []) {
+		// Next.js sitemap only supports string URLs for images, so we map to .url
+		const images = props.includeImages ? getWordPressItemImages(post).map(img => img.url) : [];
 		sitemap.push({
 			url: post.URL ,
 			lastModified: post.modified ? new Date(post.modified) : new Date(),
 			changeFrequency: "hourly" as const,
 			priority: 1.0,
+			images: images.length > 0 ? images : undefined
 		});
 	}
 	return sitemap;
 }
+
 
 
 

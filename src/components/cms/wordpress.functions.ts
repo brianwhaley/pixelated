@@ -1,9 +1,14 @@
 
+import PropTypes, { InferProps } from "prop-types";
+
 // const wpSite = "pixelatedviews.wordpress.com";
 // const wpSite = "19824045";
 // const wpSite = "blog.pixelated.tech";
 const wpApiURL = "https://public-api.wordpress.com/rest/v1/sites/";
 const wpCategoriesPath = "/categories";
+
+
+
 
 export type BlogPostType = {
     ID: string;
@@ -16,8 +21,16 @@ export type BlogPostType = {
     URL: string;
     categories: string[];
 	featured_image?: string;
+	post_thumbnail?: {
+		URL: string;
+	}
+	attachments?: Record<string, any>;
 };
-
+getWordPressItems.propTypes = {
+	site: PropTypes.string.isRequired,
+	count: PropTypes.number,
+};
+export type getWordPressItemsType = InferProps<typeof getWordPressItems.propTypes>;
 export async function getWordPressItems(props: { site: string; count?: number }){
 	const requested = props.count; // undefined means fetch all available
 	const posts: BlogPostType[] = [];
@@ -47,6 +60,65 @@ export async function getWordPressItems(props: { site: string; count?: number })
 }
 
 
+
+
+
+export type WordPressSitemapImage = {
+	url: string;
+	title?: string;
+	caption?: string;
+	thumbnail_loc?: string;
+};
+getWordPressItemImages.propTypes = {
+	item: PropTypes.object.isRequired,
+};
+export type getWordPressItemImagesType = InferProps<typeof getWordPressItemImages.propTypes>;
+export function getWordPressItemImages(item: BlogPostType): WordPressSitemapImage[] {
+	const images: WordPressSitemapImage[] = [];
+	const seen = new Set<string>();
+	// Helper to swap image origin with post origin
+	const swapOrigin = (url: string) => {
+		try {
+			const postOrigin = new URL(item.URL).origin;
+			const urlObj = new URL(url);
+			return `${postOrigin}${urlObj.pathname}`;
+		} catch (error) {
+			console.log("Error: ", error);
+			return url;
+		}
+	};
+	// Featured image
+	if (item.featured_image && !seen.has(item.featured_image)) {
+		seen.add(item.featured_image);
+		images.push({
+			url: swapOrigin(item.featured_image),
+			title: item.title,
+			caption: item.excerpt,
+			thumbnail_loc: item.post_thumbnail?.URL,
+		});
+	}
+	// Attachments
+	if (item.attachments) {
+		for (const key in item.attachments) {
+			const att = item.attachments[key];
+			if (att.URL && !seen.has(att.URL)) {
+				seen.add(att.URL);
+				images.push({
+					url: swapOrigin(att.URL),
+					title: att.title,
+					caption: att.caption || att.description,
+				});
+			}
+		}
+	}
+	return images;
+}
+
+
+
+
+
+
 export type BlogPostCategoryType = {
 	id: number;
 	name: string;
@@ -55,7 +127,10 @@ export type BlogPostCategoryType = {
 	post_count: number;
 	feed_url: string;
 };
-
+getWordPressCategories.propTypes = {
+	site: PropTypes.string.isRequired,
+};
+export type getWordPressCategoriesType = InferProps<typeof getWordPressCategories.propTypes>;
 export async function getWordPressCategories(props: { site: string }){
 	const wpCategoriesURL = wpApiURL + props.site + wpCategoriesPath ;
 	const categories = [];
@@ -71,4 +146,3 @@ export async function getWordPressCategories(props: { site: string }){
 	}
 	return categories; // Return the complete list of categories
 }
-

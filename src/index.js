@@ -17,7 +17,6 @@ export * from './components/cms/google.reviews.functions'; // server-side
 export * from './components/cms/gravatar.functions'; // server-side 
 export * from './components/cms/gravatar.components';
 export * from './components/cms/hubspot.components';
-export * from './components/cms/hubspot'; // server-side 
 export * from './components/cms/instagram.functions'; // server-side 
 export * from './components/cms/instagram.components';
 /* export * from './components/linkedin/linkedin'; */
@@ -40,7 +39,7 @@ export * from './components/general/sidepanel';
 export * from './components/general/table';
 
 export * from './components/menu/menu-accordion';
-/* export * from './components/menu/menu-expando'; */
+export * from './components/menu/menu-expando';
 export * from './components/menu/menu-simple';
 
 export * from './components/nerdjoke/nerdjoke';

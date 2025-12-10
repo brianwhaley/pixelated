@@ -1,127 +1,134 @@
 
-/* ========================================
-=====      SLIDING PANEL MENU         =====
-======================================== */
-
-.menuExpandoButton {
-	/* background-color: rgba(255,255,255,0.7); */
-	/* display: none; */
-	/* display: inline; */
-	margin: 0px 10px 0px 0px;
-	padding: 5px;
-	text-align: center;
-	width: 35px;
-
-	/* .rounded; */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-}
-
-@media screen and (max-width: 480px) {
-	.menuExpandoButton {
-		display: inline;
-	}
-}
-
-.menuExpandoButtonHeader {
-	background-color: #336699;
-	/* background-image: url(/images/pix/pix-bg.gif); */
-	color: #FFFFFF;
-	padding: 15px;
-
-	/* .rounded; */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-}
-
 
 /* ========================================
-============  ACCORDION MENU   ============
+=====    MENU EXPANDO COMPONENT       =====
 ======================================== */
+
+.menuExpando {
+	display: inline-block;
+}
 
 details.menuExpandoWrapper {
-	/* background: #FFF; */
-	background: rgba(150, 190, 250, 0.7);
-	border-right: 1px solid #ccc;
-	/* height: auto; */
-	position: fixed;
-	left: 0px;
-	top: 60px;
-	/* height: 100%; */
-	width: 220px;
-	z-index: 1000;
-    /* padding: 5px; */
+	display: inline-block;
 }
 
 details.menuExpandoWrapper > summary {
-    /* display: none; */
-    list-style: none;
-    height: 0px;
-    width: 0px;
-}
-
-details.menuExpandoWrapper[open] > summary {
-    --do-nothing: true;
-}
-
-details.menuExpandoWrapper:not([open]) { 
-    --do-nothing: true;
-}
-
-details.menuExpandoWrapper > *,
-details.menuExpandoWrapper[open] > *,
-details.menuExpandoWrapper:not([open]) > * {
-    animation: sweep 1s ease-out;
-}
-
-@keyframes sweep {
-    0% { opacity: 0; margin-left: -220px }
-    100% { opacity: 1; margin-left: 0px }
-}
-
-details.menuExpandoWrapper > summary::marker, 
-details.menuExpandoWrapper > summary::-webkit-details-marker {
-    display:none;
-}
-
-.menuExpando,
-.menuExpando ul {
-	/* ALL LIST LEVELS */
-	display: inline-block;
-	list-style-type: none;
-	padding: 0;
-	width: 200px;
-    margin: 10px;
-}
-
-.menuExpando ul > li {
-	/* ALL LIST ITEM LEVELS */
-	border-bottom: 1px solid #FFF;
-}
-
-.menuExpando ul > li:first-child {
-	/* ALL LIST ITEM LEVELS */
-	border-top: 1px solid #FFF;
-}
-
-.menuExpando ul > li > a {
-	/* this is the button */
-	color: black;
-	background: #CCC;
-    /* background-image: url(/images/pix/pix-bg-lite.jpg); */
-	display: block;
+	cursor: pointer;
+	user-select: none;
+	background: #336699;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 4px;
 	font-weight: bold;
-	height: 30px;
-	line-height:30px;
-	text-decoration: none;
-	text-indent: 10px;
+	display: inline-block;
+	transition: background 0.3s ease;
 }
 
-.menuExpando ul > li > a:hover {
-	background: #EDD;
-    /* background-image: url(/images/pix/pix-bg-sm-bw.gif); */
-	text-indent: 5px;
-	border-left: 5px #000 solid;
+details.menuExpandoWrapper > summary:hover {
+	background: #2d5a8a;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
+details.menuExpandoWrapper > summary::marker,
+details.menuExpandoWrapper > summary::-webkit-details-marker {
+	display: none;
+}
+
+details.menuExpandoWrapper > summary::before {
+	content: '▼';
+	display: inline-block;
+}
+
+details.menuExpandoWrapper[open] > summary::before {
+	content: '▲';
+}
+
+details.menuExpandoWrapper ul {
+	margin-top: 10px;
+	padding-left: 20px;
+	list-style: none;
+	overflow: visible;
+	max-height: 1000px;
+}
+
+details.menuExpandoWrapper li {
+	margin: 5px 0;
+}
+
+details.menuExpandoWrapper a {
+	color: #333;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+details.menuExpandoWrapper a:hover {
+	color: #336699;
+	text-decoration: underline;
+}
+
+/* ========== NESTED MENU STYLING ========== */
+details.menuExpandoNested {
+	display: block;
+}
+
+details.menuExpandoNested > summary {
+	cursor: pointer;
+	user-select: none;
+	padding: 5px 0;
+	font-weight: 500;
+	display: list-item;
+	color: #333;
+	transition: color 0.2s ease;
+}
+
+details.menuExpandoNested > summary:hover {
+	color: #336699;
+}
+
+details.menuExpandoNested > summary a {
+	color: inherit;
+	text-decoration: none;
+}
+
+details.menuExpandoNested > summary a:hover {
+	text-decoration: underline;
+}
+
+details.menuExpandoNested > summary::marker,
+details.menuExpandoNested > summary::-webkit-details-marker {
+	color: #666;
+}
+
+details.menuExpandoNested > ul {
+    margin: 0px;
+	padding-left: 20px;
+	list-style: none;
+	max-height: 0px;
+	opacity: 0;
+	overflow: hidden;
+}
+
+details.menuExpandoNested li {
+	margin: 3px 0;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes menuExpandoSlideDown {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes menuExpandoSlideUp {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+

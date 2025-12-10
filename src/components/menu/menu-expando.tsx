@@ -1,66 +1,192 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './menu-expando.css';
 
-
-/* 
-NOTE : 
-Stopped development on details / summary for now.
-Not enough css control for animation.
-*/
-
-
-/* ========== MENU ========== */
 export function MenuExpando(props: any) {
-	// const debug = false;
+	const detailsRef = useRef<HTMLDetailsElement>(null);
+	const ulRef = useRef<HTMLUListElement>(null);
+
+	useEffect(() => {
+		const details = detailsRef.current;
+		const ul = ulRef.current;
+		if (!details || !ul) return;
+
+		const summary = details.querySelector('summary');
+		if (!summary) return;
+
+		// Initialize nested menus to be closed
+		const nestedDetails = details.querySelectorAll('details.menuExpandoNested');
+		nestedDetails.forEach((nested: any) => {
+			const nestedUl = nested.querySelector('ul');
+			if (nestedUl) {
+				nestedUl.style.maxHeight = '0px';
+				nestedUl.style.opacity = '0';
+				nestedUl.style.overflow = 'hidden';
+			}
+		});
+
+		let isAnimating = false;
+
+		summary.addEventListener('click', (e) => {
+			if (isAnimating) {
+				e.preventDefault();
+				return;
+			}
+
+			e.preventDefault();
+			isAnimating = true;
+
+			if (details.open) {
+				// Closing animation
+				ul.style.animation = 'menuExpandoSlideUp 0.3s ease-out forwards';
+				setTimeout(() => {
+					details.open = false;
+					ul.style.animation = '';
+					isAnimating = false;
+				}, 300);
+			} else {
+				// Opening animation
+				details.open = true;
+				ul.style.animation = 'menuExpandoSlideDown 0.3s ease-out forwards';
+				setTimeout(() => {
+					ul.style.animation = '';
+					isAnimating = false;
+				}, 300);
+			}
+		});
+
+		// Handle nested menu animations
+		const nestedDetailsForAnimation = details.querySelectorAll('details.menuExpandoNested');
+		nestedDetailsForAnimation.forEach((nested: any) => {
+			nested.addEventListener('toggle', (e: any) => {
+				const nestedUl = nested.querySelector('ul');
+				if (nestedUl) {
+					if (nested.open) {
+						nestedUl.style.maxHeight = '0px';
+						nestedUl.style.opacity = '0';
+						nestedUl.style.overflow = 'hidden';
+						// Force reflow
+						void nestedUl.offsetHeight;
+						nestedUl.style.transition = 'max-height 0.3s ease-out, opacity 0.3s ease-out';
+						nestedUl.style.maxHeight = '500px';
+						nestedUl.style.opacity = '1';
+						setTimeout(() => {
+							nestedUl.style.overflow = 'visible';
+							nestedUl.style.transition = '';
+						}, 300);
+					} else {
+						nestedUl.style.overflow = 'hidden';
+						nestedUl.style.transition = 'max-height 0.3s ease-out, opacity 0.3s ease-out';
+						nestedUl.style.maxHeight = '0px';
+						nestedUl.style.opacity = '0';
+						setTimeout(() => {
+							nestedUl.style.transition = '';
+						}, 300);
+					}
+				}
+			});
+		});
+	}, []);
 
 	function generateMenuItems() {
 		const myItems = [];
-		for (const itemKey in props.menuItems) {
-			myItems.push(<MenuExpandoItem key={itemKey} name={itemKey} href={props.menuItems[itemKey]} />);
+		
+		console.log('MenuExpando props.menuItems:', props.menuItems);
+		console.log('Is array?', Array.isArray(props.menuItems));
+		
+		// Handle both object format (name: href) and array format (with name/path properties)
+		if (Array.isArray(props.menuItems)) {
+			// Array format like MenuAccordion
+			console.log('Processing as array, length:', props.menuItems.length);
+			for (const item of props.menuItems) {
+				console.log('Item:', item);
+				if (item.routes && item.routes.length > 0) {
+					// Item has nested routes - create expandable submenu
+					myItems.push(
+						<li key={item.name}>
+							<details className="menuExpandoNested">
+								<summary><a href={item.path}>{item.name}</a></summary>
+								<ul>
+									{item.routes.map((route: any) => (
+										<MenuExpandoItem 
+											key={route.name} 
+											name={route.name} 
+											href={route.path} 
+										/>
+									))}
+								</ul>
+							</details>
+						</li>
+					);
+				} else {
+					// Regular item without nested routes
+					myItems.push(
+						<MenuExpandoItem 
+							key={item.name} 
+							name={item.name} 
+							href={item.path} 
+						/>
+					);
+				}
+			}
+		} else {
+			// Object format
+			console.log('Processing as object');
+			for (const itemKey in props.menuItems) {
+				myItems.push(
+					<MenuExpandoItem 
+						key={itemKey} 
+						name={itemKey} 
+						href={props.menuItems[itemKey]} 
+					/>
+				);
+			}
 		}
+		
+		console.log('Generated items count:', myItems.length);
 		return myItems;
 	}
 
 	return (
 		<div className="menuExpando" id="menuExpando">
-			<details className="menuExpandoWrapper" id="menuExpandoWrapper">
+			<details className="menuExpandoWrapper" id="menuExpandoWrapper" ref={detailsRef}>
 				<summary></summary>
-				<ul>
-					{ generateMenuItems() }
+				<ul ref={ulRef}>
+					{generateMenuItems()}
 				</ul>
 			</details>
 		</div>
 	);
 }
+
 MenuExpando.propTypes = {
-	menuItems: PropTypes.object.isRequired
+	menuItems: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.arrayOf(PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			path: PropTypes.string.isRequired,
+			routes: PropTypes.array,
+		}))
+	]).isRequired
 };
 
-
-/* ========== MENU ITEM ========== */
 export function MenuExpandoItem(props: any) {
 	return (
 		<li><a href={props.href}>{props.name}</a></li>
 	);
 }
+
 MenuExpandoItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired
 };
 
-
-/* ========== MENU BUTTON ========== */
 export function MenuExpandoButton() {
-
-	function handleMenuExpandoButtonClick(event: React.MouseEvent<HTMLDivElement>){
-		const debug = false; 
-		if (debug) console.log("MenuExpandoButton clicked");
+	function handleMenuExpandoButtonClick(event: React.MouseEvent<HTMLDivElement>) {
 		event.preventDefault();
 		event.stopPropagation();
-		// const button = document.getElementById('menuExpandoButton');
 		const details = document.getElementById('menuExpandoWrapper') as HTMLDetailsElement;
 		if (details) details.open = !details.open;
 	}
@@ -71,5 +197,5 @@ export function MenuExpandoButton() {
 		</div>
 	);
 }
-MenuExpandoButton.propTypes = {
-};
+
+MenuExpandoButton.propTypes = {};

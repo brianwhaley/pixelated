@@ -1,8 +1,19 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { getGoogleReviewsByPlaceId, GoogleReview, GooglePlaceSummary } from './google.reviews.functions';
 
+
+
+
+GoogleReviewsCard.propTypes = {
+	placeID: PropTypes.string.isRequired,
+	language: PropTypes.string,
+	maxReviews: PropTypes.number,
+	proxyBase: PropTypes.string,
+};
+export type GoogleReviewsCardType = InferProps<typeof GoogleReviewsCard.propTypes>;
 export function GoogleReviewsCard(props: {
 	placeId: string;
 	language?: string;

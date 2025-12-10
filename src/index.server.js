@@ -8,7 +8,6 @@ export * from './components/cms/contentful.delivery';
 export * from './components/cms/contentful.management';
 export * from './components/cms/flickr';
 export * from './components/cms/google.reviews.functions';
-export * from './components/cms/hubspot';
 export * from './components/cms/gravatar.functions'; 
 export * from './components/cms/instagram.functions';
 export * from './components/cms/wordpress.functions';

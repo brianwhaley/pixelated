@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "css fix leak for resume grid items"
+git commit -m "lint fixes, proptypes and inferprops, menu-expando, images for wordpress sitemap, consolidate hubspot components "
 git push pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm publish --access public
