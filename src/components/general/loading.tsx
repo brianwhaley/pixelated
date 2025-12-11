@@ -1,4 +1,5 @@
- 
+'use client';
+
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
 import "./loading.scss";
@@ -38,15 +39,21 @@ ToggleLoading.propTypes = {
 };
 export type ToggleLoadingType = InferProps<typeof ToggleLoading.propTypes>;
 export function ToggleLoading(props: ToggleLoadingType) {
-	if ( typeof window !== "undefined" && typeof document !== "undefined") {
-		const loadingElem = document.getElementById("loadingSpinner") as HTMLDivElement;
-		if(!loadingElem) return;
-		if(props.show && props.show === true) { loadingElem!.style.display = "inline-block"; return; } // Show content
-		if(props.show && props.show === false) { loadingElem!.style.display = "none"; return; } // Hide content
-		if (loadingElem && loadingElem.style.display === "none") {
-			loadingElem.style.display = "inline-block"; // Show content
+	if (typeof window === 'undefined' || typeof document === 'undefined') return;
+	
+	const loadingElem = document.getElementById("loadingSpinner") as HTMLDivElement;
+	if (!loadingElem) return;
+	
+	if (props.show === true) {
+		loadingElem.style.display = "inline-block";
+	} else if (props.show === false) {
+		loadingElem.style.display = "none";
+	} else {
+		// Toggle behavior
+		if (loadingElem.style.display === "none" || !loadingElem.style.display) {
+			loadingElem.style.display = "inline-block";
 		} else {
-			if (loadingElem) loadingElem.style.display = "none"; // Hide content
+			loadingElem.style.display = "none";
 		}
 	}
 }

@@ -22,7 +22,7 @@ export function SaveLoadSection({ pageData, onLoad, apiEndpoint = '/api/pagebuil
 	// Fetch list of saved pages on mount
 	useEffect(() => {
 		fetchPages();
-	}, []);
+	}, [apiEndpoint]);
 
 	async function fetchPages() {
 		try {

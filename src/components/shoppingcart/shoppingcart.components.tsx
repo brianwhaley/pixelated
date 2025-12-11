@@ -369,7 +369,7 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 	useEffect(() => {
 		const myContent = <div className="centered"><br /><br />Item {props.itemID} has been added to your cart.<br /><br />{GoToCartButton({href: "/cart", itemID: props.itemID})}<br /><br /></div>;
 		setModalContent(myContent);
-	}, []);
+	}, [props.itemID]);
 	function handleClick(e: React.MouseEvent<HTMLButtonElement>){
 		props.handler(props.item);
 		handleModalOpen(e.nativeEvent, "-" + props.itemID);

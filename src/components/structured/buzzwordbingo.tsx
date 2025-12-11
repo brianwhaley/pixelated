@@ -20,7 +20,7 @@ export function BuzzwordBingo(props: BuzzwordBingoType){
 	const [bingoWords, setBingoWords] = useState <string[]> ([]);
 	useEffect(() => { 
 		setBingoWords(getBingoWords(buzzwords, 24));
-	}, []);
+	}, [buzzwords]);
 	return (
 		<div className="bingoCard rowfix-5col">
 			{ myBingoHeaders.map((word) => (

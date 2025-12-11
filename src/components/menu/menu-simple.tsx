@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import './menu-simple.css';
@@ -31,6 +33,7 @@ export function MenuSimple(props: { menuItems: MenuSimpleItemType[] }) {
 		return myItems;
 	}
 	function styleSelectedMenuItem() {
+		if (typeof window === 'undefined') return;
 		const menuitems = document.querySelectorAll('.menu-item a');
 		const currentURL = window.location.href;
 		menuitems.forEach( (menuitem) => {
@@ -65,9 +68,13 @@ MenuSimpleItem.propTypes = {
 };
 export type MenuSimpleItemType = InferProps<typeof MenuSimpleItem.propTypes>;
 export function MenuSimpleItem(props: MenuSimpleItemType) {
-	if( props.hidden ) return null;
+	const classNames = ['menu-item'];
+	if (props.hidden) {
+		classNames.push('menu-item-hidden');
+	}
+	
 	return (
-		<li className='menu-item'>
+		<li className={classNames.join(' ')}>
 			{props.target 
 				? <a href={props.path || undefined} target={props.target}>{props.name}</a>
 				: <a href={props.path || undefined}>{props.name}</a>}

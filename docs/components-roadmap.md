@@ -23,6 +23,35 @@ Notes:
 	- Add unit tests to validate all `generate*` sitemap helpers (createPageURLs, createImageURLsFromJSON, createWordPressURLs, createContentfulURLs, createContentfulImageURLs).
 	- Validate `SitemapEntry`/`MetadataRoute.Sitemap` type compatibility across components and project consumers.
 
+## Recommended Component Improvements (from testing)
+
+### High Priority
+- **Recipe Component** (`src/components/structured/recipe.tsx`):
+  - TODO #9: Implement deep linking to specific recipes (currently not supported).
+  - TODO #22: Convert component to full TypeScript (currently mixing type definitions).
+  - FIX: `recipeElems` initialized in `useState` doesn't track prop changes. Add `useEffect` to regenerate when `props.recipeData` or `props.recipeCategories` change.
+
+- **Resume Component** (`src/components/structured/resume.tsx`):
+  - FIX: Add defensive prop access with optional chaining. Currently accesses `props.data.items[0].properties` directly without null checks. Can crash if data is missing.
+  - Pattern: Use `props.data?.items?.[0]?.properties?.name || 'No Name Provided'` throughout component.
+
+### Medium Priority
+- **SocialCards Component** (`src/components/structured/socialcard.tsx`):
+  - FIX: Uses `mergeDeep` to initialize state from props but this prevents tracking prop changes. Consider using `useCallback` or extracting merge logic for consistency.
+
+- **Modal Component** (`src/components/general/modal.tsx`):
+  - CLARIFY: Component accepts both `props.modalContent` and `children`. Define single content source pattern.
+
+- **All Form Components** (`src/components/pagebuilder/form/*.tsx`):
+  - FIX: Validation state doesn't reset when input props change. Add `useEffect` to reset validation when input `props` change.
+
+- **Carousel Component** (`src/components/carousel/carousel.tsx`):
+  - FIX: Carousel doesn't reset active card state when `props.cards` changes. Add state reset logic or track card changes in `useEffect`.
+
+### Low Priority (Documentation)
+- **NerdJoke Component** (`src/components/structured/nerdjoke.tsx`):
+  - Add `props` to useEffect dependencies if endpoint becomes configurable via props (currently hardcoded).
+
 ## Sitemap & SEO Enhancements
 - Centralize sitemap generator in `components/seo/sitemap.ts` and export `generateSitemap` for use by Next.js sites.
 - Ensure `generateSitemap` and helper functions return `MetadataRoute.Sitemap` typed entries so site routes don't need extra normalization.

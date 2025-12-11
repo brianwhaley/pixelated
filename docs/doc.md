@@ -27,10 +27,10 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "lint fixes, proptypes and inferprops, menu-expando, images for wordpress sitemap, consolidate hubspot components "
-git push pixelated-components dev --tags --force
-git push pixelated-components dev:main -f
-npm publish --access public
+git commit -m "omg 1916 test cases! 7 empty useeffect dependency arrays"
+git push -u pixelated-components dev --tags --force
+git push -u pixelated-components dev:main -f
+npm publish --access public --otp=000000
 
 
 

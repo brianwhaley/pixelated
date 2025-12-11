@@ -308,7 +308,7 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 			}
 		}
 		fetchStuff();
-	}, []);
+	}, [props.entry_id, apiProps]);
 
 	if ( item && Object.keys(item) && Object.keys(item).length > 0 ) {
 		const thisItem = { ...item } as any;

@@ -50,6 +50,10 @@
 	flex-basis: content; /* each item is its own size instead of auto */
 }
 
+.menu-item-hidden {
+	display: none;
+}
+
 .menu-item:hover {
 	background-color: var(--accent1-color);
 }

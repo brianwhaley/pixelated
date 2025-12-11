@@ -150,7 +150,7 @@ export function MenuAccordion(props: MenuAccordionType) {
 	}, [] );
 
 	return (
-		<div className="accordionMenuWrapper accordionUp">
+		<div className="accordionMenuWrapper accordionUp" suppressHydrationWarning>
 			<div className="accordionMenu" id="accordionMenu">
 				<MenuAccordionGroup key="accordionRoot" menuItems={menuItems} state={undefined} />
 			</div>
@@ -188,15 +188,13 @@ MenuAccordionItem.propTypes = {
 };
 export type MenuAccordionItemType = InferProps<typeof MenuAccordionItem.propTypes>;
 export function MenuAccordionItem(props: MenuAccordionItemType) {
-	if(props.href && props.href.length > 0) {
-		if (props.target && props.target.length > 0) { 
-			return ( <li key={"menu-item-" + props.name}><a href={props.href} target={props.target}>{props.name}</a></li> );
-		} else {
-			return ( <li key={"menu-item-" + props.name}><a href={props.href}>{props.name}</a></li> );
-		}
-	} else {
-		return ( <li key={"menu-item-" + props.name}><a>{props.name}</a></li> );
-	} 
+	// Always render the same JSX structure to avoid hydration mismatch
+	// href will be undefined or an empty string, target might be undefined
+	return ( 
+		<li key={"menu-item-" + props.name}>
+			<a href={props.href || undefined} target={props.target || undefined}>{props.name}</a>
+		</li>
+	);
 }
 
 
@@ -212,13 +210,21 @@ MenuAccordionButton.propTypes = {
 export type MenuAccordionButtonType = InferProps<typeof MenuAccordionButton.propTypes>;
 export function MenuAccordionButton() {
 	function slideMobilePanel() {
-		window.moveMenu();
+		if (typeof window !== 'undefined' && window.moveMenu) {
+			window.moveMenu();
+		}
 	} 
+
+	// suppressHydrationWarning suppresses hydration mismatch warnings for this button
 	return (
-		<button className="panelMenuButton" id="panelMenuButton" onClick={slideMobilePanel}>
+		<button 
+			className="panelMenuButton" 
+			id="panelMenuButton" 
+			onClick={slideMobilePanel}
+			suppressHydrationWarning
+		>
 			<span className="hamburger text-outline">|||</span>
 			{ /* <img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/> */ }
 		</button>
-
 	);
 }

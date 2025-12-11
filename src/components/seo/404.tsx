@@ -22,7 +22,7 @@ export function FourOhFour (props: FourOhFourType) {
 		// const cloudinaryURL = getCloudinaryRemoteFetchURL({ url: images[randomIndex].img, product_env:"dlbon7tpq" });
 		// setCloudinaryURL(cloudinaryURL);
 		setImageURL(images[randomIndex].img);
-  	}, []);
+  	}, [images]);
 
 	const config = usePixelatedConfig();
 

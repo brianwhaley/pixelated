@@ -242,7 +242,7 @@ export function RecipePickList(props: RecipePickListType) {
 
 	useEffect(() => {
 		setRecipeOptions( generateMyOptions() );
-	}, []);
+	}, [props.recipeData, props.recipeCategories]);
 
 	return (
 		<form>

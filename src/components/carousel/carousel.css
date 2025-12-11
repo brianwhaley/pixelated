@@ -146,6 +146,11 @@
     background-color: transparent;
 }
 
+.carousel-container .carousel-buttons button.carousel-button {
+	/* fix for buttonring microinteraction */
+	outline: none !important;
+}
+
 .carousel-arrow,
 .carousel-arrow-left, 
 .carousel-arrow-right {

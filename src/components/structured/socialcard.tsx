@@ -253,7 +253,7 @@ export function SocialCards(props: SocialCardsType) {
 			}
 		};
 		generateSocialCards();
-	}, []);
+	}, [props.sources]);
 
 	if (state.loading) {
 		return (<SocialCardsLoading />);
