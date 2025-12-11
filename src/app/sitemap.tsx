@@ -12,6 +12,7 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 	const config: SitemapConfig = {
 		createPageURLs: true,
 		createWordPressURLs: true,
+		createWordPressImageURLs: true,
 		createImageURLsFromJSON: true,
 		createContentfulURLs: false,
 		wordpress: { site: wpSite },

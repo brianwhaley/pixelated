@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 /**
  * Contentful PageBuilder utilities for server-side rendering
  * Uses Delivery API for fast, cached reads of published content

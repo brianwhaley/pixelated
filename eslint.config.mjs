@@ -1,57 +1,46 @@
-import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
-// import pluginJs from "@eslint/js";
-// import pluginReact from "eslint-plugin-react";
 import eslint from "@eslint/js";
 import pluginNext from "@next/eslint-plugin-next";
 import tseslint from "typescript-eslint";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import parser from "@typescript-eslint/parser";
 
-import parser from '@typescript-eslint/parser';
-
-export default defineConfig([
-	...nextVitals,
-  	...nextTs,
-	// Add TypeScript import resolver to handle `@/*` paths defined in tsconfig
+export default [
 	{
-		settings: {
-		'import/resolver': {
-			typescript: {
-			alwaysTryTypes: true,
-			project: './tsconfig.json',
+		ignores: [
+			".next/",
+			"certificates/",
+			"node_modules/**",
+			"dist/",
+		],
+	},
+	{
+		files: ["**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}"],
+		languageOptions: {
+			parser,
+			globals: {
+				...globals.browser,
+				...globals.node,
+			},
+			parserOptions: {
+				ecmaVersion: "latest",
+				sourceType: "module",
+				jsx: true,
 			},
 		},
-		},
-	},
-	{ 
-		files: ['**/*.{js,jsx,mjs,mjsx,cjs,cjsx,ts,tsx,mts,mtsx,cts,ctsx}'],
-		languageOptions: { 
-			globals: globals.browser 
-		}, 
 		plugins: {
-			'@next/next': pluginNext,
+			"@next/next": pluginNext,
+			"@typescript-eslint": tseslint.plugin,
 		},
-		extends: [
-			eslint.configs.recommended,
-			tseslint.configs.recommended,
-		],
 		rules: {
+			...eslint.configs.recommended.rules,
+			...tseslint.configs.recommended[0].rules,
+			...tseslint.configs.recommended[1].rules,
 			...pluginNext.configs.recommended.rules,
-			'indent': ['error', 'tab'],
-			'no-tabs': 'off', // Optional: If you strictly want to allow only tabs
+			"indent": ["error", "tab"],
+			"no-tabs": "off",
 			"semi": ["error", "always"],
 			"@next/next/no-img-element": "off",
 			"@next/next/no-html-link-for-pages": "off",
 		},
 	},
-	globalIgnores([
-		".next/",
-		"certificates/",
-		"node-modules/*", 
-		"/*", 
-		"!/src",
-		"src/tests/",
-		"eslint.config.mjs",
-  	]),
-]);
+];

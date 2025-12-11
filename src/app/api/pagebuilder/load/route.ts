@@ -4,7 +4,7 @@ import type { ContentfulConfig } from '@pixelated-tech/components/server';
 
 function buildContentfulConfigFromFull(): ContentfulConfig {
 	const config = getFullPixelatedConfig();
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	 
 	const contentfulConfig = (config as any)?.contentful || {};
 	return {
 		spaceId: contentfulConfig.space_id || contentfulConfig.spaceId || '',

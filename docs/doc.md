@@ -61,7 +61,7 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "kebab case for css, bump components"
+git commit -m "bump components, fix linting"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
