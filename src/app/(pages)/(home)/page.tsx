@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -85,10 +85,10 @@ export default function Home() {
 			</PageSection>
 
 			<PageSection columns={1} id="home-reviews-section">
-					<Carousel 
-						cards={carouselCards} 
-						draggable={true}
-						imgFit='contain' />
+				<Carousel 
+					cards={carouselCards} 
+					draggable={true}
+					imgFit='contain' />
 			</PageSection>
 
 			<PageSection  columns={1} className="section-pavers text-outline" id="reviewCTA-section">

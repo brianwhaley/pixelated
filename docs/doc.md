@@ -32,7 +32,7 @@ npm audit fix --force
 npm run lint
 npm version patch --force
 git add * -v
-git commit -m "css leak fix from resume component"
+git commit -m "bump components, fix linting"
 git push palmetto-epoxy dev --tags
 git push palmetto-epoxy dev:main
 

@@ -24,8 +24,8 @@ export default function SubmitReview() {
 	}
 
 	const myContent = <div className="centered"><br /><br />Thank you for your review! <br />We appreciate your feedback.<br /><br /><br /></div>;
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [modalContent, setModalContent] = useState<React.ReactNode>(myContent);
+	 
+	const [modalContent /* , setModalContent */] = useState<React.ReactNode>(myContent);
 	useEffect(() => {
 		const form = document.getElementById("submitReviewForm") as HTMLFormElement;
 		if (form) {

@@ -22,33 +22,33 @@ export default async function RootLayout({children,}: Readonly<{children: React.
 
 	return (
 		<>
-		<LayoutClient />
-		<html lang="en">
-			<head>
-				{ generateMetaTags({
-					title: metadata?.title ?? "",
-					description: metadata?.description ?? "",
-					keywords: metadata?.keywords ?? "",
-					site_name: "Palmetto Epoxy",
-					email: "palmettoepoxy@gmail.com",
-					origin: origin ?? "",
-					url: url ?? "",
-					image: "/images/palmetto-epoxy-logo.jpg",
-					image_height: "1375",
-					image_width: "851",
-					favicon: "/images/favicon.ico"
-				}) }
-				<link rel="preload" fetchPriority="high" as="image" type="image/webp" 
-					href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" ></link>
-			</head>
-			<body>
-				<PixelatedServerConfigProvider>
-				<header><Header /></header>
-				<main>{children}</main>
-				<footer><Footer /></footer>
-				</PixelatedServerConfigProvider>
-			</body>
-		</html>
+			<LayoutClient />
+			<html lang="en">
+				<head>
+					{ generateMetaTags({
+						title: metadata?.title ?? "",
+						description: metadata?.description ?? "",
+						keywords: metadata?.keywords ?? "",
+						site_name: "Palmetto Epoxy",
+						email: "palmettoepoxy@gmail.com",
+						origin: origin ?? "",
+						url: url ?? "",
+						image: "/images/palmetto-epoxy-logo.jpg",
+						image_height: "1375",
+						image_width: "851",
+						favicon: "/images/favicon.ico"
+					}) }
+					<link rel="preload" fetchPriority="high" as="image" type="image/webp" 
+						href="https://www.palmetto-epoxy.com/images/palmetto-epoxy-logo.jpg" ></link>
+				</head>
+				<body>
+					<PixelatedServerConfigProvider>
+						<header><Header /></header>
+						<main>{children}</main>
+						<footer><Footer /></footer>
+					</PixelatedServerConfigProvider>
+				</body>
+			</html>
 		</>
 	);
 }

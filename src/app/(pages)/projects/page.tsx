@@ -34,10 +34,10 @@ export default function Projects() {
 					/* Contentful images start with two slashes */
 					images = images.map(img => {
 						return img.image.startsWith("//images.ctfassets.net")
-						? { image: img.image.replace("//images.ctfassets.net", "https://images.ctfassets.net"),
-							imageAlt: img.imageAlt }
-						: { image: img.image,
-							imageAlt: img.imageAlt };
+							? { image: img.image.replace("//images.ctfassets.net", "https://images.ctfassets.net"),
+								imageAlt: img.imageAlt }
+							: { image: img.image,
+								imageAlt: img.imageAlt };
 					});
 					console.log(images);
 					reviewCards.push({
