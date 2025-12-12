@@ -6,11 +6,14 @@ import { PageSection, PageGridItem } from '@pixelated-tech/components';
 import { MicroInteractions } from "@pixelated-tech/components";
 import { BlogPostCategories, BlogPostList } from '@pixelated-tech/components';
 import { getWordPressCategories } from '@pixelated-tech/components';
+import { useBlogPosts } from '@/app/providers/blog-posts-provider';
 
 const wpSite = "blog.pixelated.tech";
 
 export default function Blog() {
+	const cachedPosts = useBlogPosts();
 	const [ wpCategories, setWpCategories ] = useState<string[]>([]);
+
 	useEffect(() => {
 		async function fetchCategories() {
 			const categories = (await getWordPressCategories({ site: wpSite })) ?? [];
@@ -20,6 +23,7 @@ export default function Blog() {
 		}
 		fetchCategories();
 	}, []); 
+
 	useEffect(() => {
 		MicroInteractions({ 
 			scrollfadeElements: '.tile , .blog-post-summary',
@@ -33,10 +37,8 @@ export default function Blog() {
 				<PageGridItem>
 					<BlogPostCategories categories={wpCategories} />
 				</PageGridItem>
-				<BlogPostList site={wpSite} />
+				<BlogPostList site={wpSite} posts={cachedPosts} />
 			</PageSection>
 		</>
 	);
-    
 }
-
