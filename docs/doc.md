@@ -61,7 +61,7 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "bump components, fix linting"
+git commit -m "schema.org localbusiness"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
