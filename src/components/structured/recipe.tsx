@@ -13,22 +13,107 @@ TODO: #22 Recipe Component: Convert to TypeScript
 /* http://microformats.org/wiki/h-recipe */
 
 
-type RecipeType = {
-	type: string;
-	properties: {
-		name: string;
-		summary: string;
-		author: string;
-		published: string;
-		yield: string;
-		duration: string;
-		ingredients: string[];
-		instructions: string[];
-		nutrition: any[];
-		photo: string;
-		category: string[];
-		license: string;
+/* ========== RECIPE HELPERS ========== */
+/* Maps schema.org Recipe format to component display format */
+
+
+export type RecipeOutputType = {
+	name: string;
+	photo: string;
+	summary: string;
+	author: string;
+	published: string;
+	duration: string;
+	yield: string;
+	ingredients: string[];
+	instructions: string[];
+	category: string[];
+	license: string;
+};
+
+export function mapSchemaRecipeToDisplay(schemaRecipe: any): RecipeOutputType {
+	// Parse ISO 8601 duration and convert to readable format
+	function parseDuration(iso8601: string): string {
+		if (!iso8601 || iso8601 === 'PT0M') return '';
+		
+		const regex = /PT(?:(\d+)H)?(?:(\d+)M)?/;
+		const match = iso8601.match(regex);
+		
+		if (!match) return iso8601;
+		
+		const hours = match[1] ? parseInt(match[1]) : 0;
+		const minutes = match[2] ? parseInt(match[2]) : 0;
+		
+		if (hours > 0 && minutes > 0) {
+			return `${hours} hour${hours > 1 ? 's' : ''} ${minutes} minutes`;
+		} else if (hours > 0) {
+			return `${hours} hour${hours > 1 ? 's' : ''}`;
+		} else if (minutes > 0) {
+			return `${minutes} minutes`;
+		}
+		
+		return '';
+	}
+	
+	// Extract author name
+	const authorName = typeof schemaRecipe.author === 'string'
+		? schemaRecipe.author
+		: schemaRecipe.author?.name || '';
+	
+	// Convert instructions from HowToStep format to plain text
+	const instructions = Array.isArray(schemaRecipe.recipeInstructions)
+		? schemaRecipe.recipeInstructions.map((instruction: any) =>
+			typeof instruction === 'string' ? instruction : instruction.text || ''
+		)
+		: [];
+	
+	// Combine cook and prep times for display
+	let displayDuration = '';
+	if (schemaRecipe.totalTime) {
+		displayDuration = parseDuration(schemaRecipe.totalTime);
+	}
+	
+	return {
+		name: schemaRecipe.name || '',
+		photo: schemaRecipe.image || '',
+		summary: schemaRecipe.description || '',
+		author: authorName,
+		published: schemaRecipe.datePublished || '',
+		duration: displayDuration,
+		yield: schemaRecipe.recipeYield || '',
+		ingredients: schemaRecipe.recipeIngredient || [],
+		instructions,
+		category: schemaRecipe.recipeCategory ? [schemaRecipe.recipeCategory] : [],
+		license: schemaRecipe.license || ''
 	};
+}
+
+/* ========== RECIPE TYPES ========== */
+
+
+type RecipeType = {
+	'@context': string;
+	'@type': string;
+	name: string;
+	description: string;
+	author: {
+		'@type': string;
+		name: string;
+	};
+	recipeYield: string;
+	prepTime: string;
+	cookTime: string;
+	totalTime: string;
+	recipeCategory: string;
+	recipeCuisine: string;
+	recipeIngredient: string[];
+	recipeInstructions: Array<{
+		'@type': string;
+		text: string;
+	}>;
+	license?: string;
+	image?: string;
+	datePublished?: string;
 };
 
 
@@ -64,9 +149,10 @@ export function RecipeBook(props: RecipeBookType) {
 			myElems[category] = [];
 			for (const recipeKey in recipeBookItems as RecipeType[]) {
 				const recipe = recipeBookItems[recipeKey] as RecipeType;
-				const cats = recipe.properties.category;
-				if (cats.includes(category)) {
-					myElems[category].push(recipe);
+				const outputRecipe = mapSchemaRecipeToDisplay(recipe);
+				const recipeCat = outputRecipe.category;
+				if (recipeCat.includes(category)) {
+					myElems[category].push(outputRecipe);
 				}
 			}
 		}
@@ -80,8 +166,8 @@ export function RecipeBook(props: RecipeBookType) {
 			const cID = 'c' + (catKey);
 			myElems.push(<RecipeCategory key={cID} id={cID} className='h-recipe-category' category={category} showOnly={showOnlyCat} />);
 			for (const recipeKey in recipeElems[category]) {
-				const recipe = recipeElems[category][recipeKey];
-				const cats = recipe.properties.category;
+				const recipe = recipeElems[category][recipeKey] as RecipeOutputType;
+				const cats = recipe.category;
 				const rID = cID + '-r' + (parseInt(recipeKey, 10) + 1);
 				if (cats.includes(category)) {
 					myElems.push(<RecipeBookItem key={rID} id={rID} recipeData={recipe} showOnly={showOnlyRecipe} />);
@@ -156,12 +242,11 @@ export function RecipeBookItem (props: RecipeBookItemType) {
 	
 	const config = usePixelatedConfig();
 
-	const recipeData: RecipeType = props.recipeData as RecipeType;
-	const recipe = recipeData.properties;
-	const ingredients = recipe.ingredients.map((ingredient, iKey) =>
+	const recipe: RecipeOutputType = props.recipeData as RecipeOutputType;
+	const ingredients = recipe.ingredients.map((ingredient: string, iKey: number) =>
 		<li key={iKey} className="p-ingredient">{ingredient}</li>
 	);
-	const instructions = recipe.instructions.map((instruction, iKey) =>
+	const instructions = recipe.instructions.map((instruction: string, iKey: number) =>
 		<li key={iKey} className="p-instruction">{instruction}</li>
 	);
 	/* ? <img className='u-photo' src={recipe.photo} title={recipe.name} alt={recipe.name} /> */
@@ -222,9 +307,10 @@ export function RecipePickList(props: RecipePickListType) {
 			const recipeDataItems = recipeData.items as RecipeType[];
 			for (const recipeKey in recipeDataItems) {
 				const recipe = recipeDataItems[recipeKey];
-				const cats = recipe.properties.category;
+				const outputRecipe = mapSchemaRecipeToDisplay(recipe);
+				const cats = outputRecipe.category;
 				if (cats.includes(category)) {
-					myOpts.push(<option key={cID + '-r' + rID} value={cID + '-r' + rID}>{recipe.properties.name}</option>);
+					myOpts.push(<option key={cID + '-r' + rID} value={cID + '-r' + rID}>{outputRecipe.name}</option>);
 					rID += 1;
 				}
 			}

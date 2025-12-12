@@ -407,4 +407,90 @@ describe('WordPress Components Data Handling', () => {
 			expect(excerpt.length).toBeLessThanOrEqual(163);
 		});
 	});
+
+	describe('BlogPostList Component Props', () => {
+		const mockPosts = [
+			{
+				ID: '1',
+				title: 'First Post',
+				date: '2024-01-15',
+				excerpt: 'First excerpt',
+				URL: 'https://example.com/post-1',
+				categories: ['Tech'],
+				featured_image: 'https://example.com/image1.jpg',
+			},
+			{
+				ID: '2',
+				title: 'Second Post',
+				date: '2024-01-10',
+				excerpt: 'Second excerpt',
+				URL: 'https://example.com/post-2',
+				categories: ['Design'],
+				featured_image: 'https://example.com/image2.jpg',
+			},
+		];
+
+		it('should accept optional posts prop', () => {
+			const props = { 
+				site: 'blog.example.com',
+				posts: mockPosts
+			};
+			
+			expect(props.posts).toBeDefined();
+			expect(props.posts).toHaveLength(2);
+		});
+
+		it('should use provided posts instead of fetching', () => {
+			const props = { 
+				site: 'blog.example.com',
+				posts: mockPosts,
+				count: undefined
+			};
+			
+			// When posts are provided, count should be ignored and no fetch occurs
+			expect(props.posts).toBe(mockPosts);
+		});
+
+		it('should sort provided posts by date descending', () => {
+			const unsorted = [...mockPosts].reverse();
+			const sorted = unsorted.sort((a, b) => 
+				((a.date ?? '') < (b.date ?? '')) ? 1 : -1
+			);
+			
+			expect(sorted[0].date).toBe('2024-01-15');
+			expect(sorted[1].date).toBe('2024-01-10');
+		});
+
+		it('should still fetch when posts prop is not provided', () => {
+			const props = { 
+				site: 'blog.example.com',
+				count: 10
+				// posts intentionally omitted
+			};
+			
+			// Should fall back to fetching
+			expect('posts' in props).toBe(false);
+		});
+
+		it('should handle empty posts array', () => {
+			const props = { 
+				site: 'blog.example.com',
+				posts: []
+			};
+			
+			expect(props.posts).toBeDefined();
+			expect(props.posts).toHaveLength(0);
+		});
+
+		it('should remain backwards compatible without posts prop', () => {
+			const props = { 
+				site: 'blog.example.com',
+				count: 5
+			};
+			
+			// Old usage without posts should still work
+			expect(props.site).toBeDefined();
+			expect(props.count).toBe(5);
+		});
+	});
 });

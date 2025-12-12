@@ -27,7 +27,7 @@
 
 /* https://microformats.org/wiki/h-recipe */
 
-.h-recipe { font-size: 12px; }
+.h-recipe { --do-nothing: true; }
 .h-recipe p { margin: 0px !important; }
 .h-recipe.p-name {
     background-color: #F9F9F9;

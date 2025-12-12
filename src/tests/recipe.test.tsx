@@ -7,6 +7,7 @@ import {
   RecipeBookItem,
   RecipePickList,
   BackToTop,
+  mapSchemaRecipeToDisplay,
 } from '../components/structured/recipe';
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
@@ -46,58 +47,66 @@ const renderWithConfig = (component: React.ReactElement, config = mockConfig) =>
 const sampleRecipeData = {
   items: [
     {
-      type: 'h-recipe',
-      properties: {
-        name: 'Chocolate Chip Cookies',
-        summary: 'Delicious homemade cookies',
-        author: 'Jane Doe',
-        published: '2023-01-15',
-        yield: '24 cookies',
-        duration: 'PT30M',
-        ingredients: [
-          '2 cups flour',
-          '1 cup butter',
-          '1 cup chocolate chips',
-          '2 eggs'
-        ],
-        instructions: [
-          'Mix butter and sugar',
-          'Add eggs and vanilla',
-          'Stir in flour and chocolate chips',
-          'Bake at 350°F for 12 minutes'
-        ],
-        nutrition: [],
-        photo: '/cookies.jpg',
-        category: ['Desserts'],
-        license: 'CC-BY-4.0'
-      }
+      '@context': 'https://schema.org',
+      '@type': 'Recipe',
+      name: 'Chocolate Chip Cookies',
+      description: 'Delicious homemade cookies',
+      author: {
+        '@type': 'Person',
+        name: 'Jane Doe'
+      },
+      datePublished: '2023-01-15',
+      recipeYield: '24 cookies',
+      prepTime: 'PT10M',
+      cookTime: 'PT12M',
+      totalTime: 'PT30M',
+      recipeIngredient: [
+        '2 cups flour',
+        '1 cup butter',
+        '1 cup chocolate chips',
+        '2 eggs'
+      ],
+      recipeInstructions: [
+        { '@type': 'HowToStep', text: 'Mix butter and sugar' },
+        { '@type': 'HowToStep', text: 'Add eggs and vanilla' },
+        { '@type': 'HowToStep', text: 'Stir in flour and chocolate chips' },
+        { '@type': 'HowToStep', text: 'Bake at 350°F for 12 minutes' }
+      ],
+      image: '/cookies.jpg',
+      recipeCategory: 'Desserts',
+      recipeCuisine: 'American',
+      license: 'http://creativecommons.org/licenses/by/2.0/'
     },
     {
-      type: 'h-recipe',
-      properties: {
-        name: 'Pasta Carbonara',
-        summary: 'Classic Italian pasta',
-        author: 'Mario Rossi',
-        published: '2023-02-10',
-        yield: '4 servings',
-        duration: 'PT20M',
-        ingredients: [
-          '400g pasta',
-          '200g bacon',
-          '3 eggs',
-          'Salt and pepper'
-        ],
-        instructions: [
-          'Cook pasta',
-          'Fry bacon until crispy',
-          'Mix eggs with cheese',
-          'Combine all ingredients'
-        ],
-        nutrition: [],
-        photo: '/pasta.jpg',
-        category: ['Main Courses'],
-        license: 'CC-BY-4.0'
-      }
+      '@context': 'https://schema.org',
+      '@type': 'Recipe',
+      name: 'Pasta Carbonara',
+      description: 'Classic Italian pasta',
+      author: {
+        '@type': 'Person',
+        name: 'Mario Rossi'
+      },
+      datePublished: '2023-02-10',
+      recipeYield: '4 servings',
+      prepTime: 'PT5M',
+      cookTime: 'PT15M',
+      totalTime: 'PT20M',
+      recipeIngredient: [
+        '400g pasta',
+        '200g bacon',
+        '3 eggs',
+        'Salt and pepper'
+      ],
+      recipeInstructions: [
+        { '@type': 'HowToStep', text: 'Cook pasta' },
+        { '@type': 'HowToStep', text: 'Fry bacon until crispy' },
+        { '@type': 'HowToStep', text: 'Mix eggs with cheese' },
+        { '@type': 'HowToStep', text: 'Combine all ingredients' }
+      ],
+      image: '/pasta.jpg',
+      recipeCategory: 'Main Courses',
+      recipeCuisine: 'Italian',
+      license: 'http://creativecommons.org/licenses/by/2.0/'
     }
   ]
 };
@@ -197,7 +206,7 @@ describe('Recipe Components', () => {
   });
 
   describe('RecipeBookItem Component', () => {
-    const testRecipe = sampleRecipeData.items[0];
+    const testRecipe = mapSchemaRecipeToDisplay(sampleRecipeData.items[0]);
 
     it('should render recipe article element', () => {
       const { container } = renderWithConfig(
@@ -264,7 +273,7 @@ describe('Recipe Components', () => {
           showOnly=""
         />
       );
-      expect(screen.getByText(/Duration: PT30M/)).toBeInTheDocument();
+      expect(screen.getByText(/Duration: 30 minutes/)).toBeInTheDocument();
     });
 
     it('should render yield', () => {
@@ -348,10 +357,7 @@ describe('Recipe Components', () => {
     it('should not render image when photo is empty', () => {
       const recipeNoPhoto = {
         ...testRecipe,
-        properties: {
-          ...testRecipe.properties,
-          photo: ''
-        }
+        photo: ''
       };
       const { container } = renderWithConfig(
         <RecipeBookItem 
@@ -659,13 +665,10 @@ describe('Recipe Components', () => {
     });
 
     it('should handle empty ingredients', () => {
-      const recipeNoIngredients = {
+      const recipeNoIngredients = mapSchemaRecipeToDisplay({
         ...sampleRecipeData.items[0],
-        properties: {
-          ...sampleRecipeData.items[0].properties,
-          ingredients: []
-        }
-      };
+        recipeIngredient: []
+      });
       const { container } = renderWithConfig(
         <RecipeBookItem 
           recipeData={recipeNoIngredients} 
@@ -678,13 +681,10 @@ describe('Recipe Components', () => {
     });
 
     it('should handle empty instructions', () => {
-      const recipeNoInstructions = {
+      const recipeNoInstructions = mapSchemaRecipeToDisplay({
         ...sampleRecipeData.items[0],
-        properties: {
-          ...sampleRecipeData.items[0].properties,
-          instructions: []
-        }
-      };
+        recipeInstructions: []
+      });
       const { container } = renderWithConfig(
         <RecipeBookItem 
           recipeData={recipeNoInstructions} 
@@ -697,13 +697,10 @@ describe('Recipe Components', () => {
     });
 
     it('should handle special characters in recipe name', () => {
-      const specialRecipe = {
+      const specialRecipe = mapSchemaRecipeToDisplay({
         ...sampleRecipeData.items[0],
-        properties: {
-          ...sampleRecipeData.items[0].properties,
-          name: 'Crème Brûlée & Cookies'
-        }
-      };
+        name: 'Crème Brûlée & Cookies'
+      });
       renderWithConfig(
         <RecipeBookItem 
           recipeData={specialRecipe} 
@@ -716,13 +713,10 @@ describe('Recipe Components', () => {
 
     it('should handle long ingredient lists', () => {
       const longIngredients = Array.from({ length: 50 }, (_, i) => `Ingredient ${i + 1}`);
-      const recipeWithManyIngredients = {
+      const recipeWithManyIngredients = mapSchemaRecipeToDisplay({
         ...sampleRecipeData.items[0],
-        properties: {
-          ...sampleRecipeData.items[0].properties,
-          ingredients: longIngredients
-        }
-      };
+        recipeIngredient: longIngredients
+      });
       const { container } = renderWithConfig(
         <RecipeBookItem 
           recipeData={recipeWithManyIngredients} 
@@ -737,10 +731,7 @@ describe('Recipe Components', () => {
     it('should handle multiple categories', () => {
       const multiCategoryRecipe = {
         ...sampleRecipeData.items[0],
-        properties: {
-          ...sampleRecipeData.items[0].properties,
-          category: ['Desserts', 'Vegetarian', 'Quick']
-        }
+        recipeCategory: 'Desserts'
       };
       const { container } = renderWithConfig(
         <RecipeBook 
@@ -753,10 +744,12 @@ describe('Recipe Components', () => {
   });
 
   describe('Recipe - Semantic HTML', () => {
+    const convertedRecipe = mapSchemaRecipeToDisplay(sampleRecipeData.items[0]);
+
     it('should have proper h-recipe microformat class', () => {
       const { container } = renderWithConfig(
         <RecipeBookItem 
-          recipeData={sampleRecipeData.items[0]} 
+          recipeData={convertedRecipe} 
           id="c1-r1" 
           showOnly=""
         />
@@ -767,7 +760,7 @@ describe('Recipe Components', () => {
     it('should use semantic ingredient classes (p-ingredient)', () => {
       const { container } = renderWithConfig(
         <RecipeBookItem 
-          recipeData={sampleRecipeData.items[0]} 
+          recipeData={convertedRecipe} 
           id="c1-r1" 
           showOnly=""
         />
@@ -781,7 +774,7 @@ describe('Recipe Components', () => {
     it('should use semantic instruction classes (p-instruction)', () => {
       const { container } = renderWithConfig(
         <RecipeBookItem 
-          recipeData={sampleRecipeData.items[0]} 
+          recipeData={convertedRecipe} 
           id="c1-r1" 
           showOnly=""
         />
@@ -795,7 +788,7 @@ describe('Recipe Components', () => {
     it('should use ordered list for instructions', () => {
       const { container } = renderWithConfig(
         <RecipeBookItem 
-          recipeData={sampleRecipeData.items[0]} 
+          recipeData={convertedRecipe} 
           id="c1-r1" 
           showOnly=""
         />
@@ -808,7 +801,7 @@ describe('Recipe Components', () => {
     it('should use unordered list for ingredients', () => {
       const { container } = renderWithConfig(
         <RecipeBookItem 
-          recipeData={sampleRecipeData.items[0]} 
+          recipeData={convertedRecipe} 
           id="c1-r1" 
           showOnly=""
         />

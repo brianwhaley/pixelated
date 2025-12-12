@@ -96,6 +96,11 @@ Components to help build websites quicker:
 1. Form Components and Form Builder
 1. Google Analytics, Map, and Search Integration
 1. Gravatar Card Integration
+1. Local Business JSON-LD Schema for SEO
+1. Website JSON-LD Schema for SEO
+1. Services JSON-LD Schema for SEO
+1. Recipe JSON-LD Schema for SEO
+1. BlogPosting JSON-LD Schema for SEO
 1. Page and Page Section Header Components
 1. Hubspot Calendar and Form Integration
 1. Instagram Image Fetch Integration

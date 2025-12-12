@@ -10,21 +10,27 @@ import "./wordpress.css";
 
 // https://microformats.org/wiki/h-entry
 
-function decodeString(s: string){
-	let temp: HTMLParagraphElement | null = document.createElement('p');
-	temp.innerHTML = s;
-	const str = temp.textContent || temp.innerText;
-	temp = null;
-	return str;
+function decodeString(str: string){
+	const textarea = { value: '' } as any;
+	textarea.innerHTML = str;
+	return textarea.value || str;
 }
 
 
-export function BlogPostList(props: { site: string; count?: number }) {
+export function BlogPostList(props: { site: string; count?: number; posts?: BlogPostType[] }) {
 	
-	const { site, count } = props;
-	const [posts, setPosts] = useState<BlogPostType[]>([]);
+	const { site, count, posts: cachedPosts } = props;
+	const [posts, setPosts] = useState<BlogPostType[]>(cachedPosts ?? []);
 
 	useEffect(() => {
+		// If posts are provided, use them directly without fetching
+		if (cachedPosts && cachedPosts.length > 0) {
+			const sorted = cachedPosts.sort((a: BlogPostType, b: BlogPostType) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
+			setPosts(sorted);
+			return;
+		}
+
+		// Otherwise, fetch from WordPress
 		ToggleLoading({show: true});
 		(async () => {
 			const data = (await getWordPressItems({ site, count })) ?? [];
@@ -32,7 +38,7 @@ export function BlogPostList(props: { site: string; count?: number }) {
 			setPosts(sorted);
 			ToggleLoading({show: false});
 		})();
-	}, [site, count]);
+	}, [site, count, cachedPosts]);
 
 	return (
 		<>

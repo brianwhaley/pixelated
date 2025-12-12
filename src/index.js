@@ -68,6 +68,11 @@ export * from './components/seo/404';
 export * from './components/seo/googleanalytics';
 export * from './components/seo/googlemap';
 export * from './components/seo/googlesearch';
+export * from './components/seo/schema-localbusiness';
+export * from './components/seo/schema-recipe';
+export * from './components/seo/schema-services';
+export * from './components/seo/schema-website';
+export * from './components/seo/schema-blogposting';
 export * from './components/seo/metadata'; // server-side 
 export * from './components/seo/metadata.components';
 export * from './components/seo/sitemap'; // server-side 
@@ -80,7 +85,7 @@ export * from './components/shoppingcart/shoppingcart.functions'; // server-side
 
 export * from './components/structured/buzzwordbingo';
 export * from './components/structured/markdown';
-export * from './components/structured/recipe';	
+export * from './components/structured/recipe';
 export * from './components/structured/resume';
 export * from './components/structured/socialcard';
 export * from './components/structured/timeline';
