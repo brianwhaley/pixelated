@@ -106,17 +106,27 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						addressLocality="Bluffton"
 						addressRegion="SC"
 						postalCode="29909"
+						addressCountry="US"
 						telephone="+1-843-699-6611"
 						url="https://pixelated.tech"
 						logo="https://pixelated.tech/images/pix/pix-bg-512.gif"
 						image="https://pixelated.tech/images/pix/pix-bg-512.gif"
+						priceRange="$"
 						description="Custom web development and digital design agency specializing in React, Next.js, and modern web technologies"
 						openingHours="Mo-Fr 09:00-18:00"
 						email="info@pixelated.tech"
 						sameAs={[
-							'https://github.com/brianwhaley',
-							'https://linkedin.com/company/pixelated',
-							'https://twitter.com/pixelated'
+							'https://blog.pixelated.tech',
+							'https://share.google/an1Yqe6CTFA946zZV',
+							'https://www.linkedin.com/company/106825397/',
+							'https://www.reddit.com/r/PixelatedTech/',
+							'https://www.facebook.com/profile.php?id=61577216017129',
+							'https://www.instagram.com/_pixelatedtech_',
+							'http://twitter.com/pixelatedviews',
+							'https://www.yelp.com/user_details?userid=SUFlzBCRMR0OIc3D3nN5pg',
+							'https://www.tumblr.com/pixelatedtech',
+							'https://patch.com/new-jersey/denville-nj/business/listing/558828/pixelated-technologies',
+							'https://www.eventbrite.com/o/brian-whaley-120645314676',
 						]}
 					/>
 					<WebsiteSchema
