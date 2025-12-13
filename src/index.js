@@ -30,6 +30,7 @@ export * from './components/config/config';
 export * from './components/config/config.types';
 
 export * from './components/general/css';
+export * from './components/general/accordion';
 export * from './components/general/image';
 export * from './components/general/loading';
 export * from './components/general/microinteractions';

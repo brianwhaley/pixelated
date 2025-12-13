@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "add seo schema JSON-LD components - blogposting, localbusiness, recipe, services, website; rewrite recipe and recipe json to use schema.org structure + microformats style names"
+git commit -m "v1 accordion component, callout button fix, wordpress decode fix"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

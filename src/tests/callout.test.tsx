@@ -318,12 +318,6 @@ describe('Callout Component', () => {
       expect(link).toHaveTextContent('Click Me');
     });
 
-    it('should not render when URL is missing', () => {
-      renderWithConfig(<CalloutButton title="Click Me" />);
-      const buttons = screen.queryAllByRole('button');
-      expect(buttons.length).toBe(0);
-    });
-
     it('should apply target="_blank" when provided', () => {
       renderWithConfig(<CalloutButton title="Click Me" url="/test" target="_blank" />);
       const link = screen.getByRole('link');

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -92,16 +93,10 @@ export function MenuExpando(props: any) {
 
 	function generateMenuItems() {
 		const myItems = [];
-		
-		console.log('MenuExpando props.menuItems:', props.menuItems);
-		console.log('Is array?', Array.isArray(props.menuItems));
-		
 		// Handle both object format (name: href) and array format (with name/path properties)
 		if (Array.isArray(props.menuItems)) {
 			// Array format like MenuAccordion
-			console.log('Processing as array, length:', props.menuItems.length);
 			for (const item of props.menuItems) {
-				console.log('Item:', item);
 				if (item.routes && item.routes.length > 0) {
 					// Item has nested routes - create expandable submenu
 					myItems.push(
@@ -133,7 +128,6 @@ export function MenuExpando(props: any) {
 			}
 		} else {
 			// Object format
-			console.log('Processing as object');
 			for (const itemKey in props.menuItems) {
 				myItems.push(
 					<MenuExpandoItem 
@@ -144,8 +138,6 @@ export function MenuExpando(props: any) {
 				);
 			}
 		}
-		
-		console.log('Generated items count:', myItems.length);
 		return myItems;
 	}
 

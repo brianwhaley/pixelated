@@ -82,6 +82,7 @@ To get a local copy up and running follow these simple example steps.
 
 Components to help build websites quicker:
 1. Centralized 404 Error Page
+1. Accordion Component
 1. Buzzword Bingo Cards
 1. Page Callouts
 1. Image Carousel - Page, Header, and Simple

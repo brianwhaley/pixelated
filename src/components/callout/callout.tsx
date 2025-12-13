@@ -173,15 +173,32 @@ export function CalloutHeader( {title, url, target}: CalloutHeaderType) {
 /* ========== CALLOUT BUTTON ========== */
 CalloutButton.propTypes = {
 	title: PropTypes.string.isRequired,
-	url: PropTypes.string,
+	url: PropTypes.string.isRequired,
 	target: PropTypes.string
 };
 export type CalloutButtonType = InferProps<typeof CalloutButton.propTypes>;
-export function CalloutButton( { title, url, target } : CalloutButtonType) {
+/* export function CalloutButton( { title, url, target } : CalloutButtonType) {
 	return (
 		<div className="callout-button">
 			{ (url) 
 				? <button type="button" className="callout-button"><a href={url || ""} target={target || ""} rel={target=="_blank" ? "noopener noreferrer" : ""}>{title}</a></button>
+				: null
+			}
+		</div>
+	);
+} */
+export function CalloutButton( { title, url, target } : CalloutButtonType) {
+	const handleClick = () => {
+		if (target === '_blank') {
+			window.open(url, '_blank', 'noopener,noreferrer');
+		} else {
+			window.location.href = url;
+		}
+	};
+	return (
+		<div className="callout-button">
+			{ (url) 
+				? <button type="button" className="callout-button" onClick={handleClick}>{title}</button>
 				: null
 			}
 		</div>

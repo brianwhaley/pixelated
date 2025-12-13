@@ -11,9 +11,9 @@ import "./wordpress.css";
 // https://microformats.org/wiki/h-entry
 
 function decodeString(str: string){
-	const textarea = { value: '' } as any;
+	const textarea = document.createElement('textarea');
 	textarea.innerHTML = str;
-	return textarea.value || str;
+	return textarea.value;
 }
 
 

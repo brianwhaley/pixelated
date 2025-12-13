@@ -142,9 +142,16 @@
     /* cursor: pointer */
 }
 
-.callout .callout-button a {
-    display: inline-block;
+.callout .callout-button button:hover { 
+	color: #369;
+	text-decoration: underline;
+	cursor: pointer;
 }
+
+
+/* .callout .callout-button a {
+    display: inline-block;
+} */
 
 /* ========================================
 =============  BOXED CALLOUT  =============

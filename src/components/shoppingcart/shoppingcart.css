@@ -104,6 +104,14 @@
     height: auto;
     margin: 5px auto;
 }
+
+.pixCartButton:hover,
+.pixCart .pixCartButton:hover,
+#pixCartButton.pixCartButton:hover {
+    color: #369;
+	text-decoration: underline;
+}
+
 #pixCartButton.pixCartButton {
     width: 80px;
     min-width: 80px;
@@ -112,6 +120,8 @@
 #pixCartButton.pixCartButton img {
     width: 20px;
 }
+
+
 
 
 

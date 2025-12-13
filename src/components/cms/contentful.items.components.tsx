@@ -200,7 +200,7 @@ export function ContentfulListItem(props: ContentfulListItemType) {
 					}
 				</div>
 				<br />
-				<div className="contentful-itemAddToCart">
+				<div className="contentful-item-addtocart">
 					<ViewItemDetails href={"/store"} itemID={thisItem.sys.id} />
 					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 					{ /* <GoToCartButton href={"/cart"} itemID={thisItem.sys.id} /> */}
@@ -364,7 +364,7 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 							}
 						</div>
 						<br />
-						<div className="contentful-itemAddToCart">
+						<div className="contentful-item-addtocart">
 							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 						</div>
 
