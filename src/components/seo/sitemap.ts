@@ -266,7 +266,9 @@ export async function createContentfulURLs(props: createContentfulURLsType){
 	const field = "title";
 
 	const providerContentfulApiProps = getFullPixelatedConfig()?.contentful;
-	const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps };
+	// Changed order: provider config overrides apiProps for security (tokens)
+	const mergedApiProps = { ...props.apiProps, ...providerContentfulApiProps };
+	// const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps }; // Old: apiProps overrode provider
 
 	const contentfulTitles = await getContentfulFieldValues({
 		apiProps: mergedApiProps, contentType: contentType, field: field
@@ -330,14 +332,18 @@ export type createContentfulImageURLsType = InferProps<typeof createContentfulIm
 export async function createContentfulImageURLs(props: createContentfulImageURLsType): Promise<SitemapEntry[]> {
 	const sitemap: SitemapEntry[] = [];
 	const providerContentfulApiProps = getFullPixelatedConfig()?.contentful;
-	const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps };
+	// Changed order: provider config overrides apiProps for security (tokens)
+	const mergedApiProps = { ...props.apiProps, ...providerContentfulApiProps };
+	// const mergedApiProps = { ...providerContentfulApiProps, ...props.apiProps }; // Old: apiProps overrode provider
 	try {
 		const assets = await getContentfulAssetURLs({ apiProps: mergedApiProps });
 		if (!Array.isArray(assets) || assets.length === 0) return sitemap;
 		const newImages = assets.map((a: any) => {
 			let i = a.image || '';
+			if (!i) return ''; // Filter out empty images before processing
 			if (i.startsWith('//')) i = `https:${i}`;
 			else if (i.startsWith('/')) i = `${props.origin}${i}`;
+			else if (!i.startsWith('http://') && !i.startsWith('https://')) i = `${props.origin}/${i}`; // Handle relative URLs
 			return i;
 		}).filter(Boolean);
 		sitemap.push({

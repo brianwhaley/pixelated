@@ -182,6 +182,14 @@ export function RecipeBook(props: RecipeBookType) {
 		setOutputElems( outputMyElems() );
 	}, [ showOnlyCat, showOnlyRecipe ]);
 
+	// Deep linking: read URL hash on mount and select recipe if present
+	useEffect(() => {
+		const hash = window.location.hash.replace('#', '');
+		if (hash && hash.length > 0) {
+			onRecipePickListChange(hash);
+		}
+	}, []); // Empty dependency array - only run on mount
+
 	function onRecipePickListChange (optionVal: string) {
 		let cID, rID;
 		if (optionVal.includes('-')) {

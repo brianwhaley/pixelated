@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "v1 accordion component, callout button fix, wordpress decode fix"
+git commit -m "recipe deep linking, resume content safety fix, storybook subdomain, readme consolidation and expansion, callout button with anchor fix, components documentation"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

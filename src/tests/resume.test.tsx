@@ -766,6 +766,60 @@ describe('Resume Components', () => {
       expect(container.querySelector('.p-resume')).toBeInTheDocument();
     });
 
+    it('should handle null data prop gracefully', () => {
+      const { container } = renderWithConfig(<Resume data={null as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      // Should render empty sections without crashing
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+    });
+
+    it('should handle undefined data prop gracefully', () => {
+      const { container } = renderWithConfig(<Resume data={undefined as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+    });
+
+    it('should handle missing items array', () => {
+      const dataWithoutItems = { items: null };
+      const { container } = renderWithConfig(<Resume data={dataWithoutItems as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+    });
+
+    it('should handle empty items array', () => {
+      const dataWithEmptyItems = { items: [] };
+      const { container } = renderWithConfig(<Resume data={dataWithEmptyItems as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+    });
+
+    it('should handle missing properties object', () => {
+      const dataWithoutProperties = {
+        items: [{
+          properties: null
+        }]
+      };
+      const { container } = renderWithConfig(<Resume data={dataWithoutProperties as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+    });
+
+    it('should handle missing individual properties', () => {
+      const dataWithMissingProps = {
+        items: [{
+          properties: {
+            // Missing name, contact, education, skills, summary, etc.
+          }
+        }]
+      };
+      const { container } = renderWithConfig(<Resume data={dataWithMissingProps as any} />);
+      expect(container.querySelector('.p-resume')).toBeInTheDocument();
+      // Should render all sections even with missing data
+      expect(container.querySelector('.p-name')).toBeInTheDocument();
+      expect(container.querySelector('.p-contact')).toBeInTheDocument();
+      expect(container.querySelector('.p-education')).toBeInTheDocument();
+    });
+
     it('should handle multiple references', () => {
       const dataWithMultipleReferences = {
         ...sampleResumeData,

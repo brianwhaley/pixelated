@@ -47,50 +47,50 @@ export function Resume (props: ResumeType) {
 			<div className="section-container">
 				<div className="row-12col">
 					<div className="p-name grid-s1-e13">
-						<ResumeName data={props.data.items[0].properties.name} />
+						<ResumeName data={props.data?.items?.[0]?.properties?.name || ''} />
 					</div>
 					<div className="divider grid-s1-e4">
 						<div className="p-contact">
-							<ResumeContact title="Contact Information" data={props.data.items[0].properties.contact} />
+							<ResumeContact title="Contact Information" data={props.data?.items?.[0]?.properties?.contact || []} />
 						</div>
 						<div className="p-education">
-							<ResumeEvents title="Education" data={props.data.items[0].properties.education} dateFormat="MM/yyyy" collapsible={false} />
+							<ResumeEvents title="Education" data={props.data?.items?.[0]?.properties?.education || []} dateFormat="MM/yyyy" collapsible={false} />
 						</div>
 						<div className="p-skills">
-							<ResumeSkills title="Skills" data={props.data.items[0].properties.skills} />
+							<ResumeSkills title="Skills" data={props.data?.items?.[0]?.properties?.skills || []} />
 						</div>
 					</div>
 					<div className="grid-s4-e13">
 						<div className="p-summary">
-							<ResumeSummary title="Professional Summary" data={props.data.items[0].properties.summary} />
+							<ResumeSummary title="Professional Summary" data={props.data?.items?.[0]?.properties?.summary || ''} />
 						</div>
 						<div className="p-qualifications">
-							<ResumeQualifications title="Professional Qualifications" data={props.data.items[0].properties.qualifications} />
+							<ResumeQualifications title="Professional Qualifications" data={props.data?.items?.[0]?.properties?.qualifications || []} />
 						</div>
 						<div className="p-experience">
-							<ResumeEvents title="Work History" data={props.data.items[0].properties.experience} dateFormat="MM/yyyy" collapsible={false} />
+							<ResumeEvents title="Work History" data={props.data?.items?.[0]?.properties?.experience || []} dateFormat="MM/yyyy" collapsible={false} />
 						</div>
 						<div className="p-projects">
-							<ResumeProjects title="Projects" data={props.data.items[0].properties.experience} collapsible={true} />
+							<ResumeProjects title="Projects" data={props.data?.items?.[0]?.properties?.experience || []} collapsible={true} />
 						</div>
 
 						<div className="p-volunteer">
-							<ResumeEvents title="Volunteer Work" data={props.data.items[0].properties.volunteer} dateFormat="MM/yyyy" collapsible={true} />
+							<ResumeEvents title="Volunteer Work" data={props.data?.items?.[0]?.properties?.volunteer || []} dateFormat="MM/yyyy" collapsible={true} />
 						</div>
 
 						<div className="p-certifications">
-							<ResumeEvents title="Certifications" data={props.data.items[0].properties.certifications} dateFormat="MM/yyyy" collapsible={true} />
+							<ResumeEvents title="Certifications" data={props.data?.items?.[0]?.properties?.certifications || []} dateFormat="MM/yyyy" collapsible={true} />
 						</div>
 						<div className="p-awards">
-							<ResumeEvents title="Honors & Awards" data={props.data.items[0].properties.awards} dateFormat="MM/yyyy" collapsible={true} />
+							<ResumeEvents title="Honors & Awards" data={props.data?.items?.[0]?.properties?.awards || []} dateFormat="MM/yyyy" collapsible={true} />
 						</div>
 
 						<div className="p-training">
-							<ResumeEvents title="Training & Conferences" data={props.data.items[0].properties.training} dateFormat="MM/dd/yyyy" collapsible={true} />
+							<ResumeEvents title="Training & Conferences" data={props.data?.items?.[0]?.properties?.training || []} dateFormat="MM/dd/yyyy" collapsible={true} />
 						</div>
 
 						<div className="p-references">
-							<ResumeReferences title="References" data={props.data.items[0].properties.references} collapsible={true} />
+							<ResumeReferences title="References" data={props.data?.items?.[0]?.properties?.references || []} collapsible={true} />
 						</div>
 
 					</div>

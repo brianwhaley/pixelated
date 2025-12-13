@@ -21,11 +21,11 @@ const mockItems = [
   }
 ];
 
-export const Default = () => (
+export const AccordionDefault = () => (
   <Accordion items={mockItems} />
 );
 
-export const WithHTMLContent = () => (
+export const AccordionWithHTMLContent = () => (
   <Accordion items={[
     {
       title: 'Rich Content Example',
@@ -42,7 +42,7 @@ export const WithHTMLContent = () => (
   ]} />
 );
 
-export const SingleItem = () => (
+export const AccordionSingleItem = () => (
   <Accordion items={[
     {
       title: 'Single FAQ',

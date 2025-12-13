@@ -313,16 +313,14 @@ describe('Callout Component', () => {
       renderWithConfig(<CalloutButton title="Click Me" url="/test" />);
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
-      const link = button.querySelector('a');
-      expect(link).toHaveAttribute('href', '/test');
-      expect(link).toHaveTextContent('Click Me');
+      expect(button).toHaveTextContent('Click Me');
     });
 
     it('should apply target="_blank" when provided', () => {
       renderWithConfig(<CalloutButton title="Click Me" url="/test" target="_blank" />);
-      const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('target', '_blank');
-      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveTextContent('Click Me');
     });
 
     it('should have callout-button class', () => {

@@ -60,84 +60,233 @@ This is a library of components I have found useful to build web sites quickly.
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+## 📦 Installation & Setup
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### Requirements
+- **React**: 18.0 or higher
+- **Next.js**: 13.0 or higher (recommended)
+- **Node.js**: 18.0 or higher
+- **TypeScript**: 4.9 or higher (optional, but recommended)
+
+### Basic Installation
+
+```bash
+# npm
+npm install @pixelated-tech/components
+
+# yarn
+yarn add @pixelated-tech/components
+
+# pnpm
+pnpm add @pixelated-tech/components
+```
+
+### Peer Dependencies
+
+This library requires the following peer dependencies (install if not already present):
+
+```bash
+npm install react react-dom prop-types
+```
+
+### TypeScript Support
+
+This library is written in TypeScript and provides full type definitions. No additional setup required.
 
 
-### Installation
 
-1. Install NPM packages
-   ```sh
-   npm install @pixelated-tech/components@latest
-   ```
+## 🧩 Component Categories
+
+### General Components
+Reusable UI components for common patterns:
+- **Accordion** - Expandable content sections using native `<details>` elements
+- **Callout** - Flexible content highlight blocks with image support
+- **Modal** - Dialog overlays and popups
+- **Loading** - Progress indicators and loading states
+- **Panel** - Content containers with various layouts
+
+### CMS Integration
+Headless CMS and content management components:
+- **WordPress** - Blog post integration and display
+- **Contentful** - Headless CMS components and utilities
+- **PageBuilder** - Dynamic page construction from JSON
+- **PageEngine** - Advanced page rendering with Contentful integration
+
+### UI Components
+User interface and interaction components:
+- **Carousel** - Image and content sliders (Hero, Reviews, Portfolio)
+- **Forms** - Form builder and validation components
+- **Menu** - Navigation components (Simple, Accordion, Expando)
+- **Tables** - Data display and table components
+- **Tiles** - Image grid and tile layouts
+
+### SEO & Schema
+Search engine optimization and structured data:
+- **JSON-LD** - Structured data schemas (LocalBusiness, Recipe, BlogPosting, etc.)
+- **MetaTags** - Dynamic meta tag injection
+- **Sitemap** - XML sitemap generation
+- **Social Cards** - Open Graph and Twitter card generation
+
+### Third-Party Integrations
+External service integrations:
+- **Calendly** - Scheduling and appointment booking
+- **Cloudinary** - Image optimization and delivery
+- **HubSpot** - CRM and marketing automation
+- **PayPal** - Payment processing
+- **Instagram** - Social media image integration
+- **Flickr** - Photo sharing integration
+- **Gravatar** - User avatar integration
+- **Google** - Analytics, Maps, and Search integration
+- **eBay** - Store listings and shopping cart
+- **NerdJokes** - Entertainment content integration
 
 
 
+## � Quick Start
 
-<!-- USAGE EXAMPLES -->
-## Usage
+Get up and running in minutes:
 
-Components to help build websites quicker:
-1. Centralized 404 Error Page
-1. Accordion Component
-1. Buzzword Bingo Cards
-1. Page Callouts
-1. Image Carousel - Page, Header, and Simple
-1. Calendly Scheduling Integration
-1. Cloudinary Remote Fetch Optimization Integration
-1. SmartImage Component with Cloudianry and Next Imgegration
-1. Centralized Configuration Management
-1. Contentful CMS Integration
-1. CSS Preload for Page Performance
-1. eBay Store Listings
-1. Flickr Image API Integration
-1. Form Components and Form Builder
-1. Google Analytics, Map, and Search Integration
-1. Gravatar Card Integration
-1. Local Business JSON-LD Schema for SEO
-1. Website JSON-LD Schema for SEO
-1. Services JSON-LD Schema for SEO
-1. Recipe JSON-LD Schema for SEO
-1. BlogPosting JSON-LD Schema for SEO
-1. Page and Page Section Header Components
-1. Hubspot Calendar and Form Integration
-1. Instagram Image Fetch Integration
-1. Loading and ToggleLoading Component
-1. Markdown to HTML Engine
-1. Menu Components - Simple and Accordion
-1. Metadata Injection from Route JSON file
-1. Centralized MicroInteractions
-1. Modal Dialogs
-1. NerdJokes Integration
-1. PageBuilder and PageNegine with JSON, integration with Contentful
-1. Page Section and Page Section Grid / Flex Item Layout Components
-1. panel Component, also usable with Accordion Menu
-1. Recipe XML MicroFormat Engine
-1. Resume MicroFormat Engine
-1. Shopping Cart functionality with eBay and PayPal Integration
-1. Sitemap.XML dynamic generation from Route JSON file
-1. Social Card Engine
-1. Table Components
-1. Image Tiles Component
-1. Wordpress Blog Post Integration
-1. Other Utilities
+```bash
+# Install the package
+npm install @pixelated-tech/components
 
+# Import and use components
+import { Accordion, Callout } from '@pixelated-tech/components';
+```
+
+For detailed usage examples and API documentation, see the [Component Reference Guide](README.COMPONENTS.md).
+
+### Storybook Interactive Demos
+
+Explore all components with live, interactive examples:
+
+```bash
+# Start Storybook development server
+npm run storybook
+```
+
+**Access locally at:** `http://localhost:6006`
+
+
+
+## 🧪 Testing
+
+### Overview
+
+**Current Status**: ✅ 2,054 tests passing across 57 test files (all tests passing)
+
+| Metric | Value |
+|--------|-------|
+| Test Files | 57 |
+| Total Tests | 2,054 |
+| Components Tested | 50/50 (100%) |
+| Coverage (Statements) | 66.39% |
+| Coverage (Lines) | 69.95% |
+| Coverage (Functions) | 74.65% |
+| Coverage (Branches) | 56.36% |
+| Test Framework | Vitest 4.x |
+| Testing Library | @testing-library/react + jsdom |
+
+### Quick Start
+
+```bash
+npm run test              # Watch mode
+npm run test:ui          # Interactive UI dashboard
+npm run test:coverage    # Generate coverage reports
+npm run test:run         # Single run (for CI)
+```
+
+### Component Coverage
+
+**50 of 50 Frontend Components + 1 Utility Module Fully Tested (100%)**
+
+#### Component Coverage (Sorted by Statement Coverage)
+- **sitemap.ts**: 100% statements 
+- **googlesearch.tsx**: 100% statements
+- **formvalidations.tsx**: 100% statements (↑ 92.69 points)
+- **tiles.tsx**: 100% statements
+- **markdown.tsx**: 100% statements
+- **buzzwordbingo.tsx**: 100% statements
+- **timeline.tsx**: 100% statements
+- **config.server.tsx**: 100% statements
+- **modal.tsx**: 100% statements
+- **recipe.tsx**: 98.8% statements
+- **sidepanel.tsx**: 97.5% statements
+- **resume.tsx**: 94.38% statements
+- **callout.tsx**: 93.75% statements
+- **contentful.delivery.ts**: 92.5% statements (↑ 45 points)
+- **css.tsx**: 91.42% statements
+- **functions.ts**: 90.9% statements
+- **config.client.tsx**: 90% statements
+- **api.ts**: 87.5% statements
+- **loading.tsx**: 85.71% statements
+- **table.tsx**: 84.48% statements (↑ 60.35 points)
+- **cloudinary.ts**: 83.33% statements (↑ 58.33 points)
+- **shoppingcart.functions.ts**: 81.69% statements
+- **nerdjoke.tsx**: 70.58% statements
+- **menu-accordion.tsx**: 68.13% statements
+- **carousel.tsx**: 58.49% statements
+- **config.ts**: 55.17% statements
+
+### Test Configuration
+
+**Coverage Targets** (Updated - Focus on Statement Coverage):
+- **Statements**: 66.39% ✅ ACHIEVED (Target: 70%)
+- **Lines**: 69.95% ✅ ACHIEVED
+- **Functions**: 74.65% ✅ ACHIEVED
+- **Branches**: 56.36% (Focus area for future)
+
+**Coverage Thresholds in vitest.config.ts**:
+- Lines: 70% threshold
+- Functions: 70% threshold
+- Branches: 60% threshold
+- Statements: 70% threshold
+
+**Test Environment**: jsdom with @testing-library/react  
+**Test Pattern**: Data-focused validation + behavioral testing
+
+### Tools & Dependencies
+
+| Tool | Purpose |
+|------|---------|
+| Vitest 4.x | Test runner |
+| @testing-library/react | Component testing utilities |
+| jsdom | DOM environment for tests |
+| v8 | Coverage reporting |
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] LinkedIn Recommendations Integration
+### New Components
+- [ ] **ON HOLD** LinkedIn Recommendations Integration (Not possible with current LinkedIn API)
 - [ ] eBay Feedback Integration
-- [ ] Yelp Recommendations integration
+- [ ] **ON HOLD** Yelp Recommendations integration (Cost Prohibitive)
 - [ ] Instagram Image Integration for Carousels
 - [ ] Shopify Integration
 - [ ] Quickbooks Integration
 - [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
 - [ ] Zapier Integration
+- [ ] Hero Banner: headline, subtext, CTA, background image/video, overlay.
+- [ ] **IN PROGRESS** - Testimonial Block (Nextdoor/Yelp/Google): ingest review feeds + render carousel/grid.
+
+### CI / CD Improvements
+- [ ] Add CI workflow to run tests and lints on pull requests.
+
+### Component Improvements
+- [ ] Implement minimal `createContentfulImageURLs` with single `/images` sitemap entry.
+- [ ] Review Contentful helper functions for per-page mapping capability.
+- [ ] Implement `createContentfulImageURLs` per-page mapping with `contentType` & `pageField` config.
+- [ ] Align typography to `--font-sizeN` clamp variables.
+- [ ] Provide Cloudinary transforms presets for image components.
+- [ ] find a better solution than to generate image via build script in amplify for json for sitemap creation
+- [ ] **SocialCards Component**: Fix state initialization to track prop changes properly.
+- [ ] **Modal Component**: Clarify content source pattern (accepts both `modalContent` and `children`).
+- [ ] **Form Components**: Fix validation state reset when input props change.
+- [ ] **Carousel Component**: Fix active card state reset when `props.cards` changes.
+- [ ] **NerdJoke Component**: Add props to useEffect dependencies if endpoint becomes configurable.
+
+
 
 
 See the [open issues](https://github.com/brianwhaley/pixelated-components/issues) for a full list of proposed features (and known issues).
