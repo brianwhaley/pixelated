@@ -61,7 +61,7 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add * -v
-git commit -m "blog decode fix"
+git commit -m "https://www.cve.org/CVERecord?id=CVE-2025-55184"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
