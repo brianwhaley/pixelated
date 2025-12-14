@@ -1,6 +1,6 @@
 {
   "name": "pixelatedtech",
-  "version": "4.3.19",
+  "version": "4.3.20",
   "private": true,
   "author": {
     "name": "Pixelated Technologies",
@@ -18,7 +18,7 @@
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@pixelated-tech/components": "^3.2.6",
+    "@pixelated-tech/components": "^3.2.8",
     "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "globals": "^16.5.0",
@@ -34,7 +34,7 @@
     "@next/eslint-plugin-next": "^16.0.10",
     "@next/third-parties": "^16.0.10",
     "@tailwindcss/postcss": "^4.1.18",
-    "@types/node": "^25.0.1",
+    "@types/node": "^25.0.2",
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
