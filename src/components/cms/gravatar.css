@@ -108,3 +108,11 @@
 .gravatar-card-compact .gravatar-about {
 	display: none;
 }
+
+/* Responsive: Stack horizontal layout vertically on small screens */
+@media (max-width: 480px) {
+	.gravatar-card-horizontal {
+		flex-direction: column;
+		align-items: center;
+	}
+}

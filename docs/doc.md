@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "integrate wordpress, hubspot, ga, flickr to use config provider, gravatar styles to css file, "
+git commit -m "showcategories to blogpostlist, gravatar css media query"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

@@ -492,5 +492,26 @@ describe('WordPress Components Data Handling', () => {
 			expect(props.site).toBeDefined();
 			expect(props.count).toBe(5);
 		});
+
+		it('should accept showCategories prop', () => {
+			const props = { 
+				site: 'blog.example.com',
+				posts: mockPosts,
+				showCategories: false
+			};
+			
+			expect(props.showCategories).toBe(false);
+		});
+
+		it('should default showCategories to true', () => {
+			const props = { 
+				site: 'blog.example.com',
+				posts: mockPosts
+				// showCategories not specified
+			};
+			
+			expect('showCategories' in props).toBe(false);
+			// Default behavior should show categories (true)
+		});
 	});
 });

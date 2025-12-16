@@ -17,9 +17,9 @@ function decodeString(str: string){
 }
 
 
-export function BlogPostList(props: { site?: string; baseURL?: string; count?: number; posts?: BlogPostType[] }) {
+export function BlogPostList(props: { site?: string; baseURL?: string; count?: number; posts?: BlogPostType[]; showCategories?: boolean }) {
 	
-	const { site: propSite, baseURL: propBaseURL, count, posts: cachedPosts } = props;
+	const { site: propSite, baseURL: propBaseURL, count, posts: cachedPosts, showCategories = true } = props;
 	const config = usePixelatedConfig();
 	const site = propSite ?? config?.wordpress?.site;
 	const baseURL = propBaseURL ?? config?.wordpress?.baseURL;
@@ -62,6 +62,7 @@ export function BlogPostList(props: { site?: string; baseURL?: string; count?: n
 						URL={post.URL}
 						categories={post.categories}
 						featured_image={post.featured_image}
+						showCategories={showCategories}
 					/>
 				</PageGridItem>
 			))}
@@ -70,7 +71,7 @@ export function BlogPostList(props: { site?: string; baseURL?: string; count?: n
 }
 
 
-export function BlogPostSummary(props: BlogPostType) {
+export function BlogPostSummary(props: BlogPostType & { showCategories?: boolean }) {
 	const myCategoryImages = Object.entries(props.categories).map(
 		([category, index]) => [category.trim().toLowerCase().replace(/[ /]+/g, '-'), index]
 	).sort();
@@ -103,17 +104,19 @@ export function BlogPostSummary(props: BlogPostType) {
 						<div className="p-summary" dangerouslySetInnerHTML={{ __html: myExcerpt }} />
 					</div>
 				}
-				<div>Categories: 
-					{ myCategoryImages.map(([categoryImg, index]) => (
-						<span className="p-category" key={categoryImg + "-" + index}>
-							{ /* <img src={`/images/icons/${categoryImg}.png`} title={String(categoryImg)} alt={String(categoryImg)} /> */ }
-							<SmartImage src={`/images/icons/${categoryImg}.png`} title={String(categoryImg)} alt={String(categoryImg)} 
-								cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
-								cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
-								cloudinaryTransforms={config?.cloudinary?.transforms ?? undefined} />
-						</span>
-					))}
-				</div>
+				{props.showCategories !== false && (
+					<div>Categories: 
+						{ myCategoryImages.map(([categoryImg, index]) => (
+							<span className="p-category" key={categoryImg + "-" + index}>
+								{ /* <img src={`/images/icons/${categoryImg}.png`} title={String(categoryImg)} alt={String(categoryImg)} /> */ }
+								<SmartImage src={`/images/icons/${categoryImg}.png`} title={String(categoryImg)} alt={String(categoryImg)} 
+									cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
+									cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
+									cloudinaryTransforms={config?.cloudinary?.transforms ?? undefined} />
+							</span>
+						))}
+					</div>
+				)}
 			</article>
 		</div>
 	);

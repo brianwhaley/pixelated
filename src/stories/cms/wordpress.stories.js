@@ -73,3 +73,9 @@ export function WordpressBlogPostList() {
 }
 
 WordpressBlogPostList.storyName = 'WordPress Blog Post List (Config-based)';
+
+export function WordpressBlogPostListNoCategories() {
+	return <BlogPostList count={3} showCategories={false} />;
+}
+
+WordpressBlogPostListNoCategories.storyName = 'WordPress Blog Post List (No Categories)';

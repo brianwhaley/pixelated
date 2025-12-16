@@ -332,9 +332,10 @@ import { BlogPostList } from '@pixelated-tech/components';
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `site` | `string` | - | WordPress site URL or API endpoint |
+| `site` | `string` | - | WordPress site identifier (e.g., 'your-blog.wordpress.com') |
 | `count` | `number` | - | Number of posts to fetch (undefined = all) |
 | `posts` | `BlogPostType[]` | - | Pre-fetched posts array |
+| `showCategories` | `boolean` | `true` | Whether to display post categories |
 
 #### BlogPostSummary
 
