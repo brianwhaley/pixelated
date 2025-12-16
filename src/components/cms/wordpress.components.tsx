@@ -17,9 +17,12 @@ function decodeString(str: string){
 }
 
 
-export function BlogPostList(props: { site: string; count?: number; posts?: BlogPostType[] }) {
+export function BlogPostList(props: { site?: string; baseURL?: string; count?: number; posts?: BlogPostType[] }) {
 	
-	const { site, count, posts: cachedPosts } = props;
+	const { site: propSite, baseURL: propBaseURL, count, posts: cachedPosts } = props;
+	const config = usePixelatedConfig();
+	const site = propSite ?? config?.wordpress?.site;
+	const baseURL = propBaseURL ?? config?.wordpress?.baseURL;
 	const [posts, setPosts] = useState<BlogPostType[]>(cachedPosts ?? []);
 
 	useEffect(() => {
@@ -30,15 +33,21 @@ export function BlogPostList(props: { site: string; count?: number; posts?: Blog
 			return;
 		}
 
+		// If no site is configured, don't fetch
+		if (!site) {
+			console.warn('WordPress site not configured. Provide site prop or wordpress.site in config.');
+			return;
+		}
+
 		// Otherwise, fetch from WordPress
 		ToggleLoading({show: true});
 		(async () => {
-			const data = (await getWordPressItems({ site, count })) ?? [];
+			const data = (await getWordPressItems({ site, count, baseURL })) ?? [];
 			const sorted = data.sort((a: BlogPostType, b: BlogPostType) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
 			setPosts(sorted);
 			ToggleLoading({show: false});
 		})();
-	}, [site, count, cachedPosts]);
+	}, [site, baseURL, count, cachedPosts]);
 
 	return (
 		<>

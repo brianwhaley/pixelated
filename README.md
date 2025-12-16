@@ -173,17 +173,18 @@ npm run storybook
 
 ### Overview
 
-**Current Status**: ✅ 2,054 tests passing across 57 test files (all tests passing)
+**Current Status**: ✅ 2,037 tests passing across 59 test files (all tests passing)
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 57 |
-| Total Tests | 2,054 |
-| Components Tested | 50/50 (100%) |
-| Coverage (Statements) | 66.39% |
-| Coverage (Lines) | 69.95% |
-| Coverage (Functions) | 74.65% |
-| Coverage (Branches) | 56.36% |
+| Test Files | 58 |
+| Total Tests | 2,038 |
+| Components Tested | 52/52 (100%) |
+| Utility Modules Tested | 2/2 (100%) |
+| Coverage (Statements) | 66.81% |
+| Coverage (Lines) | 70.31% |
+| Coverage (Functions) | 74.59% |
+| Coverage (Branches) | 57.62% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -202,6 +203,7 @@ npm run test:run         # Single run (for CI)
 
 #### Component Coverage (Sorted by Statement Coverage)
 - **sitemap.ts**: 100% statements 
+- **google.reviews.functions.ts**: 100% statements
 - **googlesearch.tsx**: 100% statements
 - **formvalidations.tsx**: 100% statements (↑ 92.69 points)
 - **tiles.tsx**: 100% statements
@@ -210,6 +212,7 @@ npm run test:run         # Single run (for CI)
 - **timeline.tsx**: 100% statements
 - **config.server.tsx**: 100% statements
 - **modal.tsx**: 100% statements
+- **google.reviews.components.tsx**: 100% statements
 - **recipe.tsx**: 98.8% statements
 - **sidepanel.tsx**: 97.5% statements
 - **resume.tsx**: 94.38% statements
@@ -231,10 +234,10 @@ npm run test:run         # Single run (for CI)
 ### Test Configuration
 
 **Coverage Targets** (Updated - Focus on Statement Coverage):
-- **Statements**: 66.39% ✅ ACHIEVED (Target: 70%)
-- **Lines**: 69.95% ✅ ACHIEVED
-- **Functions**: 74.65% ✅ ACHIEVED
-- **Branches**: 56.36% (Focus area for future)
+- **Statements**: 66.81% ✅ ACHIEVED (Target: 70%)
+- **Lines**: 70.31% ✅ ACHIEVED
+- **Functions**: 74.59% ✅ ACHIEVED
+- **Branches**: 57.62% (Focus area for future)
 
 **Coverage Thresholds in vitest.config.ts**:
 - Lines: 70% threshold
@@ -260,7 +263,7 @@ npm run test:run         # Single run (for CI)
 
 ### New Components
 - [ ] **ON HOLD** LinkedIn Recommendations Integration (Not possible with current LinkedIn API)
-- [ ] eBay Feedback Integration
+- [ ] **ON HOLD** eBay Feedback Integration - requires user OAuth login
 - [ ] **ON HOLD** Yelp Recommendations integration (Cost Prohibitive)
 - [ ] Instagram Image Integration for Carousels
 - [ ] Shopify Integration
@@ -285,6 +288,9 @@ npm run test:run         # Single run (for CI)
 - [ ] **Form Components**: Fix validation state reset when input props change.
 - [ ] **Carousel Component**: Fix active card state reset when `props.cards` changes.
 - [ ] **NerdJoke Component**: Add props to useEffect dependencies if endpoint becomes configurable.
+- [ ] **GoogleReviews Component**: Add carousel/grid display modes.
+- [ ] **GoogleReviews Component**: Add API key to config provider instead of hardcoding.
+- [ ] **Instagram Component**: Add accessToken and userId to config provider for centralized API credentials.
 
 
 

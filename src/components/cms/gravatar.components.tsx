@@ -5,6 +5,7 @@ import PropTypes, { InferProps } from 'prop-types';
 // import { type GravatarProfile } from './gravatar.functions';
 import { SmartImage } from './cloudinary.image';
 import { usePixelatedConfig } from '../config/config.client';
+import './gravatar.css';
 
 /* export type GravatarCardProps = {
 	// Gravatar profile data (fetched server-side)
@@ -125,18 +126,15 @@ export function GravatarCard(props: GravatarCardType) {
 	const config = usePixelatedConfig();
 
 	const avatarElement = (
-		<div style={{ flexShrink: 0 }}>
+		<div className="gravatar-avatar-container">
 			<SmartImage
 				src={avatarUrl}
 				alt={displayName}
 				title={displayName}
 				width={avatarSize ?? 120}
 				height={avatarSize ?? 120}
-				style={{
-					borderRadius: '50%',
-					objectFit: 'cover',
-					display: 'block',
-				}}
+				quality={100}
+				className="gravatar-avatar"
 				cloudinaryEnv={config?.cloudinary?.product_env}
 				cloudinaryDomain={config?.cloudinary?.baseUrl}
 				cloudinaryTransforms={config?.cloudinary?.transforms}
@@ -145,22 +143,22 @@ export function GravatarCard(props: GravatarCardType) {
 	);
 
 	const contentElement = (
-		<div style={{ flex: 1, minWidth: 0 }}>
-			<div style={{ marginBottom: 8 }}>
-				<h3 style={{ margin: 0, fontSize: compact ? '1.1em' : '1.4em' }}>
+		<div className="gravatar-content">
+			<div className="gravatar-header">
+				<h3 className="gravatar-name">
 					{profileLink ? (
-						<a href={profileLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+						<a href={profileLink} target="_blank" rel="noopener noreferrer" className="gravatar-name-link">
 							{displayName}
 						</a>
 					) : (
 						displayName
 					)}
 				</h3>
-				{pronouns && <span style={{ fontSize: '0.9em', color: '#666', marginLeft: 8 }}>({pronouns})</span>}
+				{pronouns && <span className="gravatar-pronouns">({pronouns})</span>}
 			</div>
 
 			{(jobTitle || company) && (
-				<div style={{ fontSize: '0.95em', color: '#555', marginBottom: 8 }}>
+				<div className="gravatar-job-company">
 					{jobTitle && <strong>{jobTitle}</strong>}
 					{jobTitle && company && <span> at </span>}
 					{company && <span>{company}</span>}
@@ -168,41 +166,41 @@ export function GravatarCard(props: GravatarCardType) {
 			)}
 
 			{location && (
-				<div style={{ fontSize: '0.9em', color: '#777', marginBottom: 8 }}>
+				<div className="gravatar-location">
 					📍 {location}
 				</div>
 			)}
 
 			{aboutMe && !compact && (
-				<p style={{ margin: '12px 0', fontSize: '0.95em', lineHeight: 1.5, color: '#333' }}>
+				<p className="gravatar-about">
 					{aboutMe}
 				</p>
 			)}
 
 			{(githubUrl || linkedinUrl || twitterUrl || instagramUrl || websiteUrl) && (
-				<div style={{ display: 'flex', gap: 12, marginTop: 12, flexWrap: 'wrap' }}>
+				<div className="gravatar-social-links">
 					{githubUrl && (
-						<a href={githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#333', textDecoration: 'none', fontSize: '1.2em' }}>
+						<a href={githubUrl} target="_blank" rel="noopener noreferrer" className="gravatar-social-link">
 							GitHub
 						</a>
 					)}
 					{linkedinUrl && (
-						<a href={linkedinUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#0077b5', textDecoration: 'none', fontSize: '1.2em' }}>
+						<a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="gravatar-social-link gravatar-social-link-linkedin">
 							LinkedIn
 						</a>
 					)}
 					{twitterUrl && (
-						<a href={twitterUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#1da1f2', textDecoration: 'none', fontSize: '1.2em' }}>
+						<a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="gravatar-social-link gravatar-social-link-twitter">
 							X
 						</a>
 					)}
 					{instagramUrl && (
-						<a href={instagramUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#e4405f', textDecoration: 'none', fontSize: '1.2em' }}>
+						<a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="gravatar-social-link gravatar-social-link-instagram">
 							Instagram
 						</a>
 					)}
 					{websiteUrl && (
-						<a href={websiteUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#666', textDecoration: 'none', fontSize: '1.2em' }}>
+						<a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="gravatar-social-link gravatar-social-link-website">
 							Website
 						</a>
 					)}
@@ -213,16 +211,7 @@ export function GravatarCard(props: GravatarCardType) {
 
 	return (
 		<div
-			style={{
-				display: 'flex',
-				flexDirection: isHorizontal ? 'row' : 'column',
-				alignItems: isHorizontal ? 'flex-start' : 'center',
-				gap: 16,
-				padding: 16,
-				border: '1px solid #e0e0e0',
-				borderRadius: 8,
-				maxWidth: isHorizontal ? 600 : 400,
-			}}
+			className={`gravatar-card ${isHorizontal ? 'gravatar-card-horizontal' : ''} ${compact ? 'gravatar-card-compact' : ''}`}
 		>
 			{isHorizontal && photoOnRight ? (
 				<>

@@ -29,16 +29,18 @@ export type BlogPostType = {
 getWordPressItems.propTypes = {
 	site: PropTypes.string.isRequired,
 	count: PropTypes.number,
+	baseURL: PropTypes.string,
 };
 export type getWordPressItemsType = InferProps<typeof getWordPressItems.propTypes>;
-export async function getWordPressItems(props: { site: string; count?: number }){
+export async function getWordPressItems(props: { site: string; count?: number; baseURL?: string }){
+	const { baseURL = wpApiURL } = props;
 	const requested = props.count; // undefined means fetch all available
 	const posts: BlogPostType[] = [];
 	let page = 1;
 	while (true) {
 		const remaining = requested ? Math.max(requested - posts.length, 0) : 100;
 		const number = Math.min(remaining || 100, 100);
-		const wpPostsURL = `${wpApiURL}${props.site}/posts?number=${number}&page=${page}`;
+		const wpPostsURL = `${baseURL}${props.site}/posts?number=${number}&page=${page}`;
 		try {
 			const response = await fetch(wpPostsURL);
 			const data = await response.json();
@@ -129,10 +131,12 @@ export type BlogPostCategoryType = {
 };
 getWordPressCategories.propTypes = {
 	site: PropTypes.string.isRequired,
+	baseURL: PropTypes.string,
 };
 export type getWordPressCategoriesType = InferProps<typeof getWordPressCategories.propTypes>;
-export async function getWordPressCategories(props: { site: string }){
-	const wpCategoriesURL = wpApiURL + props.site + wpCategoriesPath ;
+export async function getWordPressCategories(props: { site: string; baseURL?: string }){
+	const { baseURL = wpApiURL } = props;
+	const wpCategoriesURL = baseURL + props.site + wpCategoriesPath ;
 	const categories = [];
 	try {
 		const response = await fetch(wpCategoriesURL);

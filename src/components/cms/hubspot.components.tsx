@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
+import { usePixelatedConfig } from '../config/config.client';
 
 
 
@@ -19,9 +20,9 @@ export function initializeHubSpotScript(region: string, portalId: string) {
 }
 
 HubSpotForm.propTypes = {
-	region: PropTypes.string.isRequired,
-	portalId: PropTypes.string.isRequired,
-	formId: PropTypes.string.isRequired,
+	region: PropTypes.string,
+	portalId: PropTypes.string,
+	formId: PropTypes.string,
 	target: PropTypes.string,
 	containerId: PropTypes.string,
 };
@@ -29,15 +30,21 @@ type HubSpotFormType = InferProps<typeof HubSpotForm.propTypes>;
 export function HubSpotForm({
 	region, portalId, formId, target, containerId = 'hubspot-form-container'
 }: HubSpotFormType) {
+	const config = usePixelatedConfig();
+	
+	const finalRegion = region || config.hubspot?.region || 'na1';
+	const finalPortalId = portalId || config.hubspot?.portalId || '';
+	const finalFormId = formId || config.hubspot?.formId || '';
+	
 	const formTarget = target || `#${containerId}`;
 	useEffect(() => {
 		const createHubspotForm = () => {
 			const win = window as any;
 			if (win.hbspt && win.hbspt.forms) {
 				win.hbspt.forms.create({
-					region,
-					portalId,
-					formId,
+					region: finalRegion,
+					portalId: finalPortalId,
+					formId: finalFormId,
 					target: formTarget
 				});
 			} else {
@@ -45,13 +52,13 @@ export function HubSpotForm({
 			}
 		};
 		createHubspotForm();
-	}, [region, portalId, formId, formTarget]);
+	}, [finalRegion, finalPortalId, finalFormId, formTarget]);
 
 	return <div 
 		className="hs-form-frame" 
-		data-region={region} 
-		data-form-id={formId}
-		data-portal-id={portalId} 
+		data-region={finalRegion} 
+		data-form-id={finalFormId}
+		data-portal-id={finalPortalId} 
 	/>;
 }
 

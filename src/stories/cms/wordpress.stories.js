@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BlogPostSummary } from '@/components/cms/wordpress.components';
+import { BlogPostSummary, BlogPostList } from '@/components/cms/wordpress.components';
 import { PixelatedClientConfigProvider } from '@/components/config/config.client';
 import { getWordPressItems } from '@/components/cms/wordpress.functions';
 
@@ -8,6 +8,10 @@ const mockConfig = {
 		product_env: 'dlbon7tpq',
 		baseUrl: 'https://res.cloudinary.com',
 		transforms: 'f_auto,c_limit,q_auto,dpr_auto',
+	},
+	wordpress: {
+		baseURL: 'https://public-api.wordpress.com/rest/v1/sites/',
+		site: 'blog.pixelated.tech',
 	},
 };
 
@@ -63,3 +67,9 @@ export function WordpressBlogPostSummary() {
 
 	return <BlogPostSummary {...post} />;
 }
+
+export function WordpressBlogPostList() {
+	return <BlogPostList count={3} />;
+}
+
+WordpressBlogPostList.storyName = 'WordPress Blog Post List (Config-based)';

@@ -118,7 +118,7 @@ describe('PixelatedServerConfigProvider', () => {
       const config = {
         cloudinary: { product_env: 'production' },
         contentful: { base_url: 'https://example.com', space_id: 'test', environment: 'master' },
-        wordpress: { endpoint: 'https://blog.example.com' }
+        wordpress: { baseURL: 'https://blog.example.com', site: 'example.com' }
       };
 
       const children = <div>Content</div>;

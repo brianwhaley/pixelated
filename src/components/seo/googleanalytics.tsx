@@ -3,6 +3,7 @@
 import React from "react";
 // import { useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
+import { usePixelatedConfig } from "../config/config.client";
 
 
 /* 
@@ -34,14 +35,23 @@ function isGA() {
 
 
 GoogleAnalytics.propTypes = {
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 };
 export type GoogleAnalyticsType = InferProps<typeof GoogleAnalytics.propTypes>;
 export function GoogleAnalytics( props: GoogleAnalyticsType ) {
+	const config = usePixelatedConfig();
+	const id = props.id || config?.googleAnalytics?.id;
+	const adId = config?.googleAnalytics?.adId;
+	
+	if (!id) {
+		console.warn('Google Analytics ID not provided. Set id prop or googleAnalytics.id in config.');
+		return null;
+	}
+	
 	if(typeof window === 'undefined'){ return; }
 	if(typeof document === 'undefined'){ return; }
 	if(isGA()){ return; }
-	const gaSRC = "https://www.googletagmanager.com/gtag/js?id=" + props.id;
+	const gaSRC = "https://www.googletagmanager.com/gtag/js?id=" + id;
 	// useEffect(() => {
 	// INIT GA TAG TO PAGE
 	const gaInit = document.createElement("script");
@@ -52,7 +62,8 @@ export function GoogleAnalytics( props: GoogleAnalyticsType ) {
 window.dataLayer = window.dataLayer || [];
 window.gtag = function gtag(){ window.dataLayer.push(arguments); }
 window.gtag('js', new Date());
-window.gtag('config', '${props.id}');
+window.gtag('config', '${id}');
+${adId ? `window.gtag('config', '${adId}');` : ''}
 `;
 	document.head.appendChild(gaInit);
 	// INSTALL GA SCRIPT

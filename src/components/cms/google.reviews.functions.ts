@@ -24,12 +24,9 @@ export async function getGoogleReviewsByPlaceId(params: {
 	language?: string;
 	maxReviews?: number;
 	proxyBase?: string; // e.g. 'https://proxy.pixelated.tech/prod/proxy?url='
+	apiKey: string;
 }): Promise<{ place?: GooglePlaceSummary; reviews: GoogleReview[] }> {
-	const apiKey = 'AIzaSyBtknq7LHzN0xb0lIN3K0CXXf0swVp6ReA';
-	if (!apiKey) {
-		throw new Error('GOOGLE_MAPS_API_KEY is required');
-	}
-	const { placeId, language, maxReviews, proxyBase } = params;
+	const { placeId, language, maxReviews, proxyBase, apiKey } = params;
 
 	const detailsBase = 'https://maps.googleapis.com/maps/api/place/details/json';
 	const fields = encodeURIComponent('reviews,name,place_id,formatted_address');

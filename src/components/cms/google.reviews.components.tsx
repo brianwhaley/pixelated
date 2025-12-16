@@ -3,15 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { getGoogleReviewsByPlaceId, GoogleReview, GooglePlaceSummary } from './google.reviews.functions';
+import './google.reviews.css';
 
-
-
+const GOOGLE_MAPS_API_KEY = 'AIzaSyBtknq7LHzN0xb0lIN3K0CXXf0swVp6ReA';
 
 GoogleReviewsCard.propTypes = {
-	placeID: PropTypes.string.isRequired,
+	placeId: PropTypes.string.isRequired,
 	language: PropTypes.string,
 	maxReviews: PropTypes.number,
 	proxyBase: PropTypes.string,
+	apiKey: PropTypes.string,
 };
 export type GoogleReviewsCardType = InferProps<typeof GoogleReviewsCard.propTypes>;
 export function GoogleReviewsCard(props: {
@@ -19,6 +20,7 @@ export function GoogleReviewsCard(props: {
 	language?: string;
 	maxReviews?: number;
 	proxyBase?: string;
+	apiKey?: string;
 }) {
 	const [place, setPlace] = useState<GooglePlaceSummary | undefined>();
 	const [reviews, setReviews] = useState<GoogleReview[]>([]);
@@ -33,12 +35,19 @@ export function GoogleReviewsCard(props: {
 					language: props.language,
 					maxReviews: props.maxReviews,
 					proxyBase: props.proxyBase,
+					apiKey: props.apiKey || GOOGLE_MAPS_API_KEY,
 				});
 				setPlace(result.place);
 				setReviews(result.reviews);
 				setLoading(false);
 			} catch (e: any) {
-				setError(e?.message || 'Failed to fetch reviews');
+				const errorMessage = e?.message || 'Failed to fetch reviews';
+				// Check for common CORS/network issues
+				if (errorMessage.includes('Failed to fetch') || errorMessage.includes('CORS')) {
+					setError('Unable to load reviews. This may be due to CORS restrictions in the browser. Try using a proxy server or server-side rendering.');
+				} else {
+					setError(errorMessage);
+				}
 				setLoading(false);
 			}
 		})();
@@ -46,51 +55,51 @@ export function GoogleReviewsCard(props: {
 
 	if (loading) {
 		return (
-			<div style={{ padding: 16 }}>
-				<p>Loading reviews...</p>
+			<div className="google-reviews-card">
+				<p className="loading">Loading reviews...</p>
 			</div>
 		);
 	}
 
 	if (error) {
 		return (
-			<div style={{ padding: 16 }}>
-				<p style={{ color: 'tomato' }}>Error: {error}</p>
+			<div className="google-reviews-card">
+				<p className="error">Error: {error}</p>
 			</div>
 		);
 	}
 
 	return (
-		<div style={{ padding: 16 }}>
+		<div className="google-reviews-card">
 			<h3>{place?.name || 'Reviews'}</h3>
 			{place?.formatted_address && (
-				<p style={{ fontSize: '0.9em', color: '#666', marginBottom: 16 }}>
+				<p className="address">
 					{place.formatted_address}
 				</p>
 			)}
 			{reviews.length === 0 ? (
-				<p>No reviews found.</p>
+				<p className="no-reviews">No reviews found.</p>
 			) : (
-				<ul style={{ listStyle: 'none', padding: 0 }}>
+				<ul>
 					{reviews.map((r, i) => (
-						<li key={i} style={{ marginBottom: 16, borderBottom: '1px solid #eee', paddingBottom: 12 }}>
-							<div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+						<li key={i}>
+							<div className="review-header">
 								{r.profile_photo_url && (
 									<img
 										src={r.profile_photo_url}
 										alt={r.author_name}
-										style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 12 }}
+										className="profile-photo"
 									/>
 								)}
 								<div>
-									<strong>{r.author_name}</strong>
-									<div style={{ fontSize: '0.9em', color: '#666' }}>
+									<div className="author-name">{r.author_name}</div>
+									<div className="rating">
 										{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)} {r.rating}/5
 										{r.relative_time_description && <span> · {r.relative_time_description}</span>}
 									</div>
 								</div>
 							</div>
-							{r.text && <div style={{ marginTop: 8, lineHeight: 1.5 }}>{r.text}</div>}
+							{r.text && <div className="review-text">{r.text}</div>}
 						</li>
 					))}
 				</ul>
@@ -100,7 +109,7 @@ export function GoogleReviewsCard(props: {
 					href={`https://search.google.com/local/writereview?placeid=${place.place_id}`}
 					target="_blank"
 					rel="noopener noreferrer"
-					style={{ display: 'inline-block', marginTop: 16, color: '#1a73e8', textDecoration: 'none' }}
+					className="write-review"
 				>
 					Write a review on Google →
 				</a>

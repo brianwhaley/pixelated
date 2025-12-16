@@ -63,6 +63,7 @@ export interface GoogleSearchConsoleConfig {
 }
 
 export interface HubspotConfig {
+	region?: string; // HubSpot region, e.g. 'na1', 'eu1', 'ap1'
 	portalId?: string; // HubSpot portal/account id
 	formId?: string; // default contact form id to embed
 	trackingCode?: string; // optional tracking code snippet or id
@@ -76,8 +77,13 @@ export interface PaypalConfig {
 	payPalSecret: string;
 }
 
+export interface ProxyConfig {
+	proxyURL: string; // e.g. 'https://proxy.pixelated.tech/prod/proxy?url='
+}
+
 export interface WordpressConfig {
-	endpoint: string; // REST API endpoint or GraphQL
+	baseURL: string; // REST API base URL, e.g. 'https://public-api.wordpress.com/rest/v1/sites/'
+	site: string; // WordPress site identifier (e.g., 'pixelatedviews.wordpress.com')
 }
 
 export interface PixelatedConfig {
@@ -90,5 +96,6 @@ export interface PixelatedConfig {
 	googleSearchConsole?: GoogleSearchConsoleConfig;
 	hubspot?: HubspotConfig;
 	paypal?: PaypalConfig;
+	proxy?: ProxyConfig;
 	wordpress?: WordpressConfig;
 }

@@ -18,9 +18,6 @@ const pixelatedConfig: PixelatedConfig = {
 		management_access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
 		preview_access_token: "muY9LfpCt4qoXosDsnRkkoH3DAVVuUFEuB0WRKRdBUM",
 	},
-	featureFlags: {
-		enableNewGrid: true,
-	},
 	ebay: {
 		proxyURL: 'https://proxy.provier.com/proxy?url=',
 		appId: 'your-ebay-client-id',
@@ -35,6 +32,9 @@ const pixelatedConfig: PixelatedConfig = {
 		qsSearchURL: '?q=sunglasses&fieldgroups=full&category_ids=79720&aspect_filter=categoryId:79720&filter=sellers:{pixelatedtech}&sort=newlyListed&limit=200',
 		baseItemURL: 'https://api.ebay.com/buy/browse/v1/item',
 		qsItemURL: '/v1|295959752403|0?fieldgroups=PRODUCT,ADDITIONAL_SELLER_DETAILS',
+	},
+	featureFlags: {
+		enableNewGrid: true,
 	},
 	flickr: {
 		baseURL: 'https://api.flickr.com/services/rest/?',
@@ -59,6 +59,7 @@ const pixelatedConfig: PixelatedConfig = {
 		"id": "G-XXXXXXX"
 	},
 	hubspot: {
+		region: 'na1',
 		portalId: 'your-hubspot-portal-id',
 		formId: 'your-default-form-id',
 		trackingCode: 'UA-XXXXXXXXX-X',
@@ -68,6 +69,13 @@ const pixelatedConfig: PixelatedConfig = {
 		sandboxPayPalSecret: "your-sandbox-paypal-client-secret",
 		payPalApiKey: "your-paypal-client-id",
 		payPalSecret: "your-paypal-client-secret"
+	},
+	proxy: {
+		proxyURL: 'https://proxy.pixelated.tech/prod/proxy?url='
+	},
+	wordpress: {
+		baseURL: 'https://public-api.wordpress.com/rest/v1/sites/',
+		site: 'your-blog.wordpress.com'
 	},
 };
 

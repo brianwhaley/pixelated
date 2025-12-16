@@ -93,7 +93,7 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
     it('should return config from context when provider present', () => {
       const config = {
         cloudinary: { product_env: 'staging' },
-        wordpress: { endpoint: 'https://test.com' }
+        wordpress: { baseURL: 'https://test.com', site: 'test.com' }
       };
 
       render(
@@ -243,7 +243,7 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
       const config = {
         cloudinary: { product_env: 'prod' },
         contentful: { base_url: 'https://example.com', space_id: 'test', environment: 'master' },
-        wordpress: { endpoint: 'https://blog.example.com/api' }
+        wordpress: { baseURL: 'https://blog.example.com/api', site: 'example.com' }
       };
 
       render(
