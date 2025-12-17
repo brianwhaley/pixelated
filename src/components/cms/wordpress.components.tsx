@@ -90,7 +90,7 @@ export function BlogPostSummary(props: BlogPostType & { showCategories?: boolean
 					<div className="article-body row-12col">
 						<div className="article-featured-image grid-s1-e4">
 							<SmartImage className="u-photo" src={props.featured_image} alt={decodeString(props.title)} title={decodeString(props.title)}
-								style={{borderRadius: '20px'}}
+								style={{}}
 								cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
 								cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
 								cloudinaryTransforms={config?.cloudinary?.transforms ?? undefined} />

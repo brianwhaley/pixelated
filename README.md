@@ -168,106 +168,11 @@ npm run storybook
 **Access locally at:** `http://localhost:6006`
 
 
-
-## 🧪 Testing
-
-### Overview
-
-**Current Status**: ✅ 2,184 tests passing across 59 test files (7 skipped)
-
-| Metric | Value |
-|--------|-------|
-| Test Files | 59 |
-| Total Tests | 2,184 |
-| Skipped Tests | 7 |
-| Coverage (Statements) | 79.26% |
-| Coverage (Lines) | 82.73% |
-| Coverage (Functions) | 84.73% |
-| Coverage (Branches) | 67.19% |
-| Test Framework | Vitest 4.x |
-| Testing Library | @testing-library/react + jsdom |
-
-### Quick Start
-
-```bash
-npm run test              # Watch mode
-npm run test:ui          # Interactive UI dashboard
-npm run test:coverage    # Generate coverage reports
-npm run test:run         # Single run (for CI)
-```
-
-### Component Coverage
-
-**52 of 52 Frontend Components + 2 Utility Modules Fully Tested (100%)**
-
-#### Component Coverage (Sorted by Statement Coverage)
-- **sitemap.ts**: 100% statements 
-- **google.reviews.functions.ts**: 100% statements
-- **googlesearch.tsx**: 100% statements
-- **formvalidations.tsx**: 100% statements
-- **tiles.tsx**: 100% statements
-- **markdown.tsx**: 100% statements
-- **buzzwordbingo.tsx**: 100% statements
-- **timeline.tsx**: 100% statements
-- **config.server.tsx**: 100% statements
-- **modal.tsx**: 100% statements
-- **google.reviews.components.tsx**: 100% statements
-- **recipe.tsx**: 98.8% statements
-- **sidepanel.tsx**: 97.5% statements
-- **resume.tsx**: 94.38% statements
-- **callout.tsx**: 93.75% statements
-- **contentful.delivery.ts**: 92.5% statements
-- **css.tsx**: 91.42% statements
-- **functions.ts**: 90.9% statements
-- **config.client.tsx**: 90% statements
-- **api.ts**: 87.5% statements
-- **loading.tsx**: 85.71% statements
-- **table.tsx**: 84.48% statements
-- **cloudinary.ts**: 83.33% statements
-- **shoppingcart.functions.ts**: 81.69% statements
-- **carousel.tsx**: 76.19% statements
-- **nerdjoke.tsx**: 70.58% statements
-- **menu-accordion.tsx**: 68.13% statements
-- **carousel.tsx**: 58.49% statements
-- **config.ts**: 55.17% statements
-
-### Test Configuration
-
-**Coverage Summary (latest run)**:
-- **Statements**: 79.26%
-- **Lines**: 82.73%
-- **Functions**: 84.73%
-- **Branches**: 67.19%
-
-**Coverage Targets** (configured in `vitest.config.ts`):
-- **Statements**: 70% threshold
-- **Lines**: 70% threshold
-- **Functions**: 70% threshold
-- **Branches**: 60% threshold
-
-**Coverage Thresholds in vitest.config.ts**:
-- Lines: 70% threshold
-- Functions: 70% threshold
-- Branches: 60% threshold
-- Statements: 70% threshold
-
-**Test Environment**: jsdom with @testing-library/react  
-**Test Pattern**: Data-focused validation + behavioral testing
-
-### Tools & Dependencies
-
-| Tool | Purpose |
-|------|---------|
-| Vitest 4.x | Test runner |
-| @testing-library/react | Component testing utilities |
-| jsdom | DOM environment for tests |
-| v8 | Coverage reporting |
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
 ### New Components
+- [ ] **IN PROGRESS** - Testimonial Block (Nextdoor/Yelp/Google): ingest review feeds + render carousel/grid.
 - [ ] **ON HOLD** LinkedIn Recommendations Integration (Not possible with current LinkedIn API)
 - [ ] **ON HOLD** eBay Feedback Integration - requires user OAuth login
 - [ ] **ON HOLD** Yelp Recommendations integration (Cost Prohibitive)
@@ -277,7 +182,6 @@ npm run test:run         # Single run (for CI)
 - [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
 - [ ] Zapier Integration
 - [ ] Hero Banner: headline, subtext, CTA, background image/video, overlay.
-- [ ] **IN PROGRESS** - Testimonial Block (Nextdoor/Yelp/Google): ingest review feeds + render carousel/grid.
 
 ### CI / CD Improvements
 - [ ] Add CI workflow to run tests and lints on pull requests.
@@ -344,11 +248,118 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@brianwhaley](https://twitter.com/@brianwhaley) - brian.whaley@gmail.com
+Brian Whaley - [@brianwhaley](https://twitter.com/@brianwhaley) - brian.whaley@gmail.com
 
 Project Link: [https://github.com/brianwhaley/pixelated-components](https://github.com/brianwhaley/pixelated-components)
 
 
+
+
+
+
+## 🧪 Testing
+
+### Overview
+
+**Current Status**: ✅ 2,184 tests passing across 59 test files
+
+| Metric | Value |
+|--------|-------|
+| Test Files | 59 |
+| Total Tests | 2,184 |
+| Coverage (Statements) | 79.27% |
+| Coverage (Lines) | 82.74% |
+| Coverage (Functions) | 84.74% |
+| Coverage (Branches) | 67.19% |
+| Test Framework | Vitest 4.x |
+| Testing Library | @testing-library/react + jsdom |
+
+### Quick Start
+
+```bash
+npm run test              # Watch mode
+npm run test:ui          # Interactive UI dashboard
+npm run test:coverage    # Generate coverage reports
+npm run test:run         # Single run (for CI)
+```
+
+### Component Coverage
+
+**Component Coverage Summary**
+
+#### Component Coverage (Sorted by Statement Coverage)
+- **google.reviews.functions.ts**: 100% statements
+- **googlesearch.tsx**: 100% statements
+- **formvalidations.tsx**: 100% statements
+- **tiles.tsx**: 100% statements
+- **markdown.tsx**: 100% statements
+- **buzzwordbingo.tsx**: 100% statements
+- **timeline.tsx**: 100% statements
+- **config.server.tsx**: 100% statements
+- **modal.tsx**: 100% statements
+- **recipe.tsx**: 98.8% statements
+- **sidepanel.tsx**: 97.5% statements
+- **google.reviews.components.tsx**: 95.83% statements
+- **resume.tsx**: 94.38% statements
+- **contentful.delivery.ts**: 92.5% statements
+- **css.tsx**: 91.42% statements
+- **functions.ts**: 90.9% statements
+- **config.client.tsx**: 90% statements
+- **api.ts**: 87.5% statements
+- **loading.tsx**: 85.71% statements
+- **table.tsx**: 84.48% statements
+- **cloudinary.ts**: 83.33% statements
+- **shoppingcart.functions.ts**: 81.69% statements
+- **callout.tsx**: 80.00% statements
+- **sitemap.ts**: 76.38% statements
+- **carousel.tsx**: 71.70% statements
+- **nerdjoke.tsx**: 70.58% statements
+- **menu-accordion.tsx**: 68.13% statements
+- **semantic.tsx**: 60.81% statements
+- **config.ts**: 55.17% statements
+- **socialcard.tsx**: 29.5% statements
+- **ComponentPropertiesForm.tsx**: 0% statements (no tests)
+- **ComponentSelector.tsx**: 0% statements (no tests)
+- **ComponentTree.tsx**: 0% statements (no tests)
+- **PageBuilderUI.tsx**: 0% statements (no tests)
+- **PageEngine.tsx**: 0% statements (no tests)
+- **SaveLoadSection.tsx**: 0% statements (no tests)
+
+### Testing Next Steps
+
+#### Integration Testing Gaps
+- [ ] **Cross-component interactions** - Test how components work together (e.g., forms with validation, carousels with loading states)
+- [ ] **Form validation edge cases** - Test URL validation, required fields, and complex validation rules under various conditions
+- [ ] **CMS API integrations** - Test API failures, rate limiting, authentication errors, and network timeouts
+- [ ] **Responsive design breakpoints** - Test component behavior across different screen sizes and device types
+- [ ] **Accessibility (a11y) compliance** - Test keyboard navigation, screen reader compatibility, and ARIA attributes
+
+### Test Configuration
+
+
+**Coverage Targets** (configured in `vitest.config.ts`):
+- **Statements**: 70% threshold
+- **Lines**: 70% threshold
+- **Functions**: 70% threshold
+- **Branches**: 60% threshold
+
+**Coverage Thresholds in vitest.config.ts**:
+- Lines: 70% threshold
+- Functions: 70% threshold
+- Branches: 60% threshold
+- Statements: 70% threshold
+
+**Test Environment**: jsdom with @testing-library/react  
+**Test Pattern**: Data-focused validation + behavioral testing
+
+### Tools & Dependencies
+
+| Tool | Purpose |
+|------|---------|
+| Vitest 4.x | Test runner |
+| @testing-library/react | Component testing utilities |
+| jsdom | DOM environment for tests |
+| v8 | Coverage reporting |
 
 
 

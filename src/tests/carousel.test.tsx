@@ -407,60 +407,42 @@ describe('Carousel Timer and Auto-Advance', () => {
 		expect(screen.getByText('Card 1')).toBeInTheDocument();
 	});
 
-	it.skip('should reset timer when manually navigating', async () => {
-		const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
-		render(<Carousel cards={mockCards} />);
-		
-		// Click next button
-		const nextButton = screen.getAllByRole('button')[1]; // Next button (pause is first)
-		await user.click(nextButton);
-		
-		// Should show second card immediately
-		expect(screen.getByText('Card 2')).toBeInTheDocument();
-		
-		// Advance timer by less than 5 seconds
-		vi.advanceTimersByTime(3000);
-		
-		// Should still show Card 2 (timer was reset)
-		expect(screen.getByText('Card 2')).toBeInTheDocument();
-	});
+	// it.skip('should stop auto-advance when pause button is clicked', async () => {
+	// 	const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	// Click pause button
+	// 	const pauseButton = screen.getAllByRole('button')[0];
+	// 	await user.click(pauseButton);
+	// 	
+	// 	// Advance timer
+	// 	vi.advanceTimersByTime(5000);
+	// 	
+	// 	// Should still show first card
+	// 	expect(screen.getByText('Card 1')).toBeInTheDocument();
+	// });
 
-	it.skip('should stop auto-advance when pause button is clicked', async () => {
-		const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
-		render(<Carousel cards={mockCards} />);
-		
-		// Click pause button
-		const pauseButton = screen.getAllByRole('button')[0];
-		await user.click(pauseButton);
-		
-		// Advance timer
-		vi.advanceTimersByTime(5000);
-		
-		// Should still show first card
-		expect(screen.getByText('Card 1')).toBeInTheDocument();
-	});
-
-	it.skip('should resume auto-advance after pause when navigation occurs', async () => {
-		const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
-		render(<Carousel cards={mockCards} />);
-		
-		// Click pause
-		const pauseButton = screen.getAllByRole('button')[0];
-		await user.click(pauseButton);
-		
-		// Advance timer (should not change)
-		vi.advanceTimersByTime(5000);
-		expect(screen.getByText('Card 1')).toBeInTheDocument();
-		
-		// Click next
-		const nextButton = screen.getAllByRole('button')[1];
-		await user.click(nextButton);
-		expect(screen.getByText('Card 2')).toBeInTheDocument();
-		
-		// Now timer should work again
-		vi.advanceTimersByTime(5000);
-		expect(screen.getByText('Card 3')).toBeInTheDocument();
-	});
+	// it.skip('should resume auto-advance after pause when navigation occurs', async () => {
+	// 	const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	// Click pause
+	// 	const pauseButton = screen.getAllByRole('button')[0];
+	// 	await user.click(pauseButton);
+	// 	
+	// 	// Advance timer (should not change)
+	// 	vi.advanceTimersByTime(5000);
+	// 	expect(screen.getByText('Card 1')).toBeInTheDocument();
+	// 	
+	// 	// Click next
+	// 	const nextButton = screen.getAllByRole('button')[1];
+	// 	await user.click(nextButton);
+	// 	expect(screen.getByText('Card 2')).toBeInTheDocument();
+	// 	
+	// 	// Now timer should work again
+	// 	vi.advanceTimersByTime(5000);
+	// 	expect(screen.getByText('Card 3')).toBeInTheDocument();
+	// });
 });
 
 describe('Carousel Draggable Functionality', () => {
@@ -508,34 +490,34 @@ describe('Carousel Card Positioning', () => {
 		expect(wrappers[2]).toHaveStyle({ transform: 'translateX(100%)' }); // Next
 	});
 
-	it.skip('should update card positions when navigating', async () => {
-		const user = userEvent.setup();
-		render(<Carousel cards={mockCards} />);
-		
-		// Click next
-		const nextButton = screen.getAllByRole('button')[1];
-		await user.click(nextButton);
-		
-		const wrappers = document.querySelectorAll('.carousel-card-wrapper');
-		expect(wrappers[0]).toHaveStyle({ transform: 'translateX(-100%)' }); // Previous
-		expect(wrappers[1]).toHaveStyle({ transform: 'translateX(0%)' }); // Current
-		expect(wrappers[2]).toHaveStyle({ transform: 'translateX(100%)' }); // Next
-	});
+	// it.skip('should update card positions when navigating', async () => {
+	// 	const user = userEvent.setup();
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	// Click next
+	// 	const nextButton = screen.getAllByRole('button')[1];
+	// 	await user.click(nextButton);
+	// 	
+	// 	const wrappers = document.querySelectorAll('.carousel-card-wrapper');
+	// 	expect(wrappers[0]).toHaveStyle({ transform: 'translateX(-100%)' }); // Previous
+	// 	expect(wrappers[1]).toHaveStyle({ transform: 'translateX(0%)' }); // Current
+	// 	expect(wrappers[2]).toHaveStyle({ transform: 'translateX(100%)' }); // Next
+	// });
 
-	it.skip('should handle wraparound positioning correctly', async () => {
-		const user = userEvent.setup();
-		render(<Carousel cards={mockCards} />);
-		
-		// Navigate to last card
-		const nextButton = screen.getAllByRole('button')[1];
-		await user.click(nextButton); // Card 2
-		await user.click(nextButton); // Card 3
-		
-		const wrappers = document.querySelectorAll('.carousel-card-wrapper');
-		expect(wrappers[0]).toHaveStyle({ transform: 'translateX(100%)' }); // Next (wrapped)
-		expect(wrappers[1]).toHaveStyle({ transform: 'translateX(100%)' }); // Next
-		expect(wrappers[2]).toHaveStyle({ transform: 'translateX(0%)' }); // Current
-	});
+	// it.skip('should handle wraparound positioning correctly', async () => {
+	// 	const user = userEvent.setup();
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	// Navigate to last card
+	// 	const nextButton = screen.getAllByRole('button')[1];
+	// 	await user.click(nextButton); // Card 2
+	// 	await user.click(nextButton); // Card 3
+	// 	
+	// 	const wrappers = document.querySelectorAll('.carousel-card-wrapper');
+	// 	expect(wrappers[0]).toHaveStyle({ transform: 'translateX(100%)' }); // Next (wrapped)
+	// 	expect(wrappers[1]).toHaveStyle({ transform: 'translateX(100%)' }); // Next
+	// 	expect(wrappers[2]).toHaveStyle({ transform: 'translateX(0%)' }); // Current
+	// });
 });
 
 describe('Carousel Loading State', () => {
@@ -566,30 +548,30 @@ describe('Carousel Accessibility', () => {
 		expect(buttons[2]).toHaveTextContent('▶'); // Next
 	});
 
-	it.skip('should maintain focus management during navigation', async () => {
-		const user = userEvent.setup();
-		render(<Carousel cards={mockCards} />);
-		
-		const nextButton = screen.getAllByRole('button')[1];
-		
-		nextButton.focus();
-		expect(document.activeElement).toBe(nextButton);
-		
-		await user.click(nextButton);
-		// Focus should remain on the button
-		expect(document.activeElement).toBe(nextButton);
-	});
+	// it.skip('should maintain focus management during navigation', async () => {
+	// 	const user = userEvent.setup();
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	const nextButton = screen.getAllByRole('button')[1];
+	// 	
+	// 	nextButton.focus();
+	// 	expect(document.activeElement).toBe(nextButton);
+	// 	
+	// 	await user.click(nextButton);
+	// 	// Focus should remain on the button
+	// 	expect(document.activeElement).toBe(nextButton);
+	// });
 
-	it.skip('should support keyboard navigation', async () => {
-		const user = userEvent.setup();
-		render(<Carousel cards={mockCards} />);
-		
-		const nextButton = screen.getAllByRole('button')[1];
-		
-		nextButton.focus();
-		await user.keyboard('{Enter}');
-		
-		// Should navigate to next card
-		expect(screen.getByText('Card 2')).toBeInTheDocument();
-	});
+	// it.skip('should support keyboard navigation', async () => {
+	// 	const user = userEvent.setup();
+	// 	render(<Carousel cards={mockCards} />);
+	// 	
+	// 	const nextButton = screen.getAllByRole('button')[1];
+	// 	
+	// 	nextButton.focus();
+	// 	await user.keyboard('{Enter}');
+	// 	
+	// 	// Should navigate to next card
+	// 	expect(screen.getByText('Card 2')).toBeInTheDocument();
+	// });
 });

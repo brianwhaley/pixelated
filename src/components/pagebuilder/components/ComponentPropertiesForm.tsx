@@ -10,7 +10,7 @@ import { FormEngine } from '../form/form';
  */
 
 ComponentPropertiesForm.propTypes = {
-	editableComponent: PropTypes.object.isRequired,
+	editableComponent: PropTypes.object,
 	onSubmit: PropTypes.func.isRequired,
 };
 

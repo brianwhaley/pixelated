@@ -39,6 +39,7 @@ export * from './components/general/semantic';
 export * from './components/general/sidepanel';
 export * from './components/general/table';
 
+
 export * from './components/menu/menu-accordion';
 export * from './components/menu/menu-expando';
 export * from './components/menu/menu-simple';

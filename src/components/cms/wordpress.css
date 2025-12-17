@@ -44,6 +44,13 @@
         hyphens: auto;
     }
 
+	.article-featured-image img {
+		/* border-radius: 20px; */
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
 }
 
     .blog-post-summary .p-category img,
