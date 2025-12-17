@@ -315,9 +315,11 @@ import { SmartImage } from '@pixelated-tech/components';
 
 ### WordPress Components
 
+WordPress integration components with automatic Photon CDN URL processing for optimized image delivery.
+
 #### BlogPostList
 
-Displays a list of WordPress blog posts with pagination support.
+Displays a list of WordPress blog posts with pagination support. Automatically converts WordPress Photon CDN URLs to direct image URLs for better Next.js optimization.
 
 ```tsx
 import { BlogPostList } from '@pixelated-tech/components';
@@ -332,7 +334,7 @@ import { BlogPostList } from '@pixelated-tech/components';
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `site` | `string` | - | WordPress site identifier (e.g., 'your-blog.wordpress.com') |
+| `site` | `string` | - | WordPress site identifier (e.g., 'blog.pixelated.tech' or 'your-blog.wordpress.com') |
 | `count` | `number` | - | Number of posts to fetch (undefined = all) |
 | `posts` | `BlogPostType[]` | - | Pre-fetched posts array |
 | `showCategories` | `boolean` | `true` | Whether to display post categories |
@@ -1427,4 +1429,4 @@ When adding new components, please:
 
 ---
 
-*This documentation is automatically updated when components are modified. Last updated: $(date)*
+*This documentation is automatically updated when components are modified. Last updated: December 17, 2025*

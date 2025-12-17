@@ -8,11 +8,11 @@
 	display: inline-block;
 }
 
-details.menuExpandoWrapper {
+details.menu-expando-wrapper {
 	display: inline-block;
 }
 
-details.menuExpandoWrapper > summary {
+details.menu-expando-wrapper > summary {
 	cursor: pointer;
 	user-select: none;
 	background: #336699;
@@ -24,26 +24,31 @@ details.menuExpandoWrapper > summary {
 	transition: background 0.3s ease;
 }
 
-details.menuExpandoWrapper > summary:hover {
+
+details.menu-expando-wrapper > summary:hover {
 	background: #2d5a8a;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-details.menuExpandoWrapper > summary::marker,
-details.menuExpandoWrapper > summary::-webkit-details-marker {
+
+details.menu-expando-wrapper > summary::marker,
+details.menu-expando-wrapper > summary::-webkit-details-marker {
 	display: none;
 }
 
-details.menuExpandoWrapper > summary::before {
+
+details.menu-expando-wrapper > summary::before {
 	content: '▼';
 	display: inline-block;
 }
 
-details.menuExpandoWrapper[open] > summary::before {
+
+details.menu-expando-wrapper[open] > summary::before {
 	content: '▲';
 }
 
-details.menuExpandoWrapper ul {
+
+details.menu-expando-wrapper ul {
 	margin-top: 10px;
 	padding-left: 20px;
 	list-style: none;
@@ -51,17 +56,17 @@ details.menuExpandoWrapper ul {
 	max-height: 1000px;
 }
 
-details.menuExpandoWrapper li {
+details.menu-expando-wrapper li {
 	margin: 5px 0;
 }
 
-details.menuExpandoWrapper a {
+details.menu-expando-wrapper a {
 	color: #333;
 	text-decoration: none;
 	transition: color 0.2s ease;
 }
 
-details.menuExpandoWrapper a:hover {
+details.menu-expando-wrapper a:hover {
 	color: #336699;
 	text-decoration: underline;
 }

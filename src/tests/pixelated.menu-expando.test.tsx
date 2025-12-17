@@ -79,13 +79,13 @@ describe('MenuExpando Component', () => {
 	describe('Structure', () => {
 		it('should have details wrapper element', () => {
 			const { container } = render(<MenuExpando menuItems={mockMenuItems} />);
-			const details = container.querySelector('details.menuExpandoWrapper');
+			const details = container.querySelector('details.menu-expando-wrapper');
 			expect(details).toBeInTheDocument();
 		});
 
 		it('should have ul element for main menu items', () => {
 			const { container } = render(<MenuExpando menuItems={mockMenuItems} />);
-			const ul = container.querySelector('details.menuExpandoWrapper > ul');
+			const ul = container.querySelector('details.menu-expando-wrapper > ul');
 			expect(ul).toBeInTheDocument();
 		});
 
@@ -123,7 +123,7 @@ describe('MenuExpando Component', () => {
 		it('should apply correct CSS classes', () => {
 			const { container } = render(<MenuExpando menuItems={mockMenuItems} />);
 			expect(container.querySelector('.menuExpando')).toBeInTheDocument();
-			expect(container.querySelector('.menuExpandoWrapper')).toBeInTheDocument();
+			expect(container.querySelector('.menu-expando-wrapper')).toBeInTheDocument();
 		});
 
 		it('should have nested menu specific classes', () => {

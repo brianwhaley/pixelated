@@ -215,7 +215,8 @@ export function FormBuild(props: FormBuildType) {
 	function handlePhaseOneSubmit(event: Event){
 		// GENERATE THE JSON TO DISPLAY A FORM TO ADD A FIELD - EXTERNAL
 		const target = event.target as HTMLFormElement;
-		const myType = target.type.value;
+		const typeElement = target.elements.namedItem('type') as HTMLInputElement;
+		const myType = typeElement ? typeElement.value : '';
 		const myComponent = mapTypeToComponent(myType);
 		const fieldJSON = generateFieldJSON(myComponent, myType);
 		props.setFormData(fieldJSON);

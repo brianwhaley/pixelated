@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { MicroInteractions } from '../components/general/microinteractions';
 
 describe('MicroInteractions Component', () => {
@@ -326,5 +326,193 @@ describe('MicroInteractions Component', () => {
       expect(document.body.classList.contains('imghue')).toBe(false);
       expect(document.body.classList.contains('simplemenubutton')).toBe(false);
     });
+  });
+});
+
+describe('MicroInteractions ScrollFade Functionality', () => {
+  let mockIntersectionObserver: any;
+  let observeMock: any;
+  let unobserveMock: any;
+
+  beforeEach(() => {
+    // Mock IntersectionObserver as a spy constructor
+    observeMock = vi.fn();
+    unobserveMock = vi.fn();
+    
+    const MockIntersectionObserver: any = vi.fn(function(this: any, callback: any, options: any) {
+      // Store callback and options for testing
+      this.callback = callback;
+      this.options = options;
+      this.observe = observeMock;
+      this.unobserve = unobserveMock;
+      this.disconnect = vi.fn();
+    });
+
+    // Replace the global IntersectionObserver
+    (global as any).IntersectionObserver = MockIntersectionObserver;
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should initialize ScrollFade when scrollfadeElements is provided', () => {
+    // Create test elements
+    const testElement = document.createElement('div');
+    testElement.className = 'test-element';
+    document.body.appendChild(testElement);
+
+    // Mock querySelectorAll to return our test element
+    const querySelectorAllMock = vi.spyOn(document, 'querySelectorAll');
+    querySelectorAllMock.mockReturnValue([testElement] as any);
+
+    MicroInteractions({ scrollfadeElements: '.test-element' });
+
+    // Should create IntersectionObserver
+    expect(global.IntersectionObserver).toHaveBeenCalledWith(expect.any(Function), {
+      root: null,
+      rootMargin: "0px 0px -100px 0px",
+      threshold: 0
+    });
+
+    // Should observe the element
+    expect(observeMock).toHaveBeenCalledWith(testElement);
+
+    // Cleanup
+    querySelectorAllMock.mockRestore();
+    document.body.removeChild(testElement);
+  });
+
+  it('should add scrollfade class and remove hidden class when element intersects', () => {
+    const testElement = document.createElement('div');
+    testElement.className = 'test-element hidden';
+    document.body.appendChild(testElement);
+
+    const querySelectorAllMock = vi.spyOn(document, 'querySelectorAll');
+    querySelectorAllMock.mockReturnValue([testElement] as any);
+
+    MicroInteractions({ scrollfadeElements: '.test-element' });
+
+    // Get the callback function passed to IntersectionObserver
+    const callback = (global.IntersectionObserver as any).mock.calls[0][0];
+
+    // Simulate intersection
+    callback([{ isIntersecting: true, target: testElement }]);
+
+    expect(testElement.classList.contains('scrollfade')).toBe(true);
+    expect(testElement.classList.contains('hidden')).toBe(false);
+    expect(unobserveMock).toHaveBeenCalledWith(testElement);
+
+    // Cleanup
+    querySelectorAllMock.mockRestore();
+    document.body.removeChild(testElement);
+  });
+
+  it('should handle empty scrollfadeElements string', () => {
+    MicroInteractions({ scrollfadeElements: '' });
+
+    // Should not create IntersectionObserver for empty selector
+    expect(global.IntersectionObserver).not.toHaveBeenCalled();
+  });
+
+  it('should handle no matching elements', () => {
+    const querySelectorAllMock = vi.spyOn(document, 'querySelectorAll');
+    querySelectorAllMock.mockReturnValue([] as any);
+
+    MicroInteractions({ scrollfadeElements: '.non-existent' });
+
+    expect(global.IntersectionObserver).toHaveBeenCalled();
+    expect(observeMock).not.toHaveBeenCalled();
+
+    // Cleanup
+    querySelectorAllMock.mockRestore();
+  });
+});
+
+describe('MicroInteractions Edge Cases', () => {
+  it('should handle multiple true props simultaneously', () => {
+    MicroInteractions({ 
+      buttonring: true, 
+      cartpulse: true, 
+      formglow: true 
+    });
+
+    expect(document.body.classList.contains('buttonring')).toBe(true);
+    expect(document.body.classList.contains('cartpulse')).toBe(true);
+    expect(document.body.classList.contains('formglow')).toBe(true);
+  });
+
+  it('should handle undefined props gracefully', () => {
+    // First set buttonring to true
+    MicroInteractions({ buttonring: true });
+    expect(document.body.classList.contains('buttonring')).toBe(true);
+    
+    // Setting to undefined should not remove the class (only false does)
+    MicroInteractions({ 
+      buttonring: undefined as any,
+      cartpulse: true 
+    });
+
+    expect(document.body.classList.contains('cartpulse')).toBe(true);
+    expect(document.body.classList.contains('buttonring')).toBe(true); // Should remain true
+  });
+
+  it('should handle null props gracefully', () => {
+    // First set buttonring to true
+    MicroInteractions({ buttonring: true });
+    expect(document.body.classList.contains('buttonring')).toBe(true);
+    
+    // Setting to null should not remove the class (only false does)
+    MicroInteractions({ 
+      buttonring: null as any,
+      cartpulse: true 
+    });
+
+    expect(document.body.classList.contains('cartpulse')).toBe(true);
+    expect(document.body.classList.contains('buttonring')).toBe(true); // Should remain true
+  });
+
+  it('should handle empty object', () => {
+    // First clear any existing classes
+    document.body.className = '';
+    
+    MicroInteractions({});
+
+    // No classes should be added
+    expect(document.body.className).toBe('');
+  });
+
+  it('should handle props with non-boolean values', () => {
+    MicroInteractions({ 
+      buttonring: 'true' as any,
+      cartpulse: 1 as any,
+      formglow: {} as any
+    });
+
+    // Only boolean true should add classes, non-boolean values are ignored
+    expect(document.body.classList.contains('buttonring')).toBe(false);
+    expect(document.body.classList.contains('cartpulse')).toBe(false);
+    expect(document.body.classList.contains('formglow')).toBe(false);
+  });
+
+  it('should toggle classes when called multiple times', () => {
+    MicroInteractions({ buttonring: true });
+    expect(document.body.classList.contains('buttonring')).toBe(true);
+
+    MicroInteractions({ buttonring: false });
+    expect(document.body.classList.contains('buttonring')).toBe(false);
+
+    MicroInteractions({ buttonring: true });
+    expect(document.body.classList.contains('buttonring')).toBe(true);
+  });
+
+  it('should handle unknown prop names gracefully', () => {
+    MicroInteractions({ 
+      unknownProp: true as any,
+      buttonring: true 
+    });
+
+    expect(document.body.classList.contains('unknownProp')).toBe(true);
+    expect(document.body.classList.contains('buttonring')).toBe(true);
   });
 });

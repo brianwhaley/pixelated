@@ -1,7 +1,8 @@
 import React from 'react';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { PixelatedClientConfigProvider, usePixelatedConfig } from '../components/config/config.client';
+import { getFullPixelatedConfig, getClientOnlyPixelatedConfig } from '../components/config/config';
 
 // Test component that uses the hook
 function TestComponent() {
@@ -315,6 +316,160 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
       const elements = screen.getAllByTestId('config-check');
       expect(elements).toHaveLength(2);
       elements.forEach(el => expect(el).toBeInTheDocument());
+    });
+  });
+});
+
+describe('Config Utility Functions', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    // Reset environment variables
+    process.env = { ...originalEnv };
+    delete process.env.PIXELATED_CONFIG_JSON;
+    delete process.env.PIXELATED_CONFIG_B64;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  describe('getFullPixelatedConfig', () => {
+    it('should return empty config when no environment variables are set', () => {
+      const config = getFullPixelatedConfig();
+      expect(config).toEqual({});
+    });
+
+    it('should parse PIXELATED_CONFIG_JSON correctly', () => {
+      const testConfig = { cloudinary: { product_env: 'test' } };
+      process.env.PIXELATED_CONFIG_JSON = JSON.stringify(testConfig);
+
+      const config = getFullPixelatedConfig();
+      expect(config).toEqual(testConfig);
+    });
+
+    it('should parse PIXELATED_CONFIG_B64 correctly', () => {
+      const testConfig = { cloudinary: { product_env: 'test' } };
+      const encoded = Buffer.from(JSON.stringify(testConfig)).toString('base64');
+      process.env.PIXELATED_CONFIG_B64 = encoded;
+
+      const config = getFullPixelatedConfig();
+      expect(config).toEqual(testConfig);
+    });
+
+    it('should handle invalid JSON in PIXELATED_CONFIG_JSON', () => {
+      process.env.PIXELATED_CONFIG_JSON = 'invalid json';
+
+      const config = getFullPixelatedConfig();
+      expect(config).toEqual({});
+    });
+
+    it('should handle invalid base64 in PIXELATED_CONFIG_B64', () => {
+      process.env.PIXELATED_CONFIG_B64 = 'invalid base64';
+
+      const config = getFullPixelatedConfig();
+      expect(config).toEqual({});
+    });
+  });
+
+  describe('getClientOnlyPixelatedConfig', () => {
+    it('should strip secret keys from config', () => {
+      const fullConfig = {
+        cloudinary: { product_env: 'test' },
+        apiKey: 'secret-key',
+        token: 'secret-token',
+        password: 'secret-password',
+        management: { key: 'secret' },
+        access_token: 'secret-access',
+        normalKey: 'normal-value'
+      };
+
+      const clientConfig = getClientOnlyPixelatedConfig(fullConfig as any);
+      
+      expect(clientConfig).toEqual({
+        cloudinary: { product_env: 'test' }
+      });
+    });
+
+    it('should handle nested objects with secrets', () => {
+      const fullConfig = {
+        level1: {
+          level2: {
+            secretKey: 'secret',
+            normalKey: 'normal'
+          },
+          normalKey: 'normal'
+        }
+      };
+
+      const clientConfig = getClientOnlyPixelatedConfig(fullConfig as any);
+      
+      expect(clientConfig).toEqual({
+        level1: {
+          level2: {},
+        }
+      });
+    });
+
+    it('should handle arrays correctly', () => {
+      const fullConfig = {
+        items: [
+          { secret: 'secret1', normal: 'normal1' },
+          { secret: 'secret2', normal: 'normal2' }
+        ]
+      };
+
+      const clientConfig = getClientOnlyPixelatedConfig(fullConfig as any);
+      
+      expect(clientConfig).toEqual({
+        items: [
+          { normal: 'normal1' },
+          { normal: 'normal2' }
+        ]
+      });
+    });
+
+    it('should handle primitive values', () => {
+      const fullConfig = 'string value';
+
+      const clientConfig = getClientOnlyPixelatedConfig(fullConfig as any);
+      expect(clientConfig).toBe('string value');
+    });
+
+    it('should handle null and undefined values', () => {
+      const clientConfig = getClientOnlyPixelatedConfig(null as any);
+      expect(clientConfig).toEqual({});
+
+      const clientConfig2 = getClientOnlyPixelatedConfig(undefined);
+      expect(clientConfig2).toEqual({});
+    });
+
+    it('should handle complex secret key patterns', () => {
+      const fullConfig = {
+        'api_key': 'secret1',
+        'API_KEY': 'secret2',
+        'ApiKey': 'secret3',
+        'accessToken': 'secret4',
+        'ACCESS_TOKEN': 'secret5',
+        'password_field': 'secret6',
+        'management_url': 'secret7',
+        normal: 'normal'
+      };
+
+      const clientConfig = getClientOnlyPixelatedConfig(fullConfig as any);
+      
+      expect(clientConfig).toEqual({
+        normal: 'normal'
+      });
+    });
+
+    it('should handle errors during stripping', () => {
+      // Create a circular reference that will cause JSON operations to fail
+      const circular: any = { self: null };
+      circular.self = circular;
+
+      const clientConfig = getClientOnlyPixelatedConfig(circular);
+      expect(clientConfig).toEqual({});
     });
   });
 });

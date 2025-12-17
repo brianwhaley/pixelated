@@ -143,7 +143,7 @@ export function MenuExpando(props: any) {
 
 	return (
 		<div className="menuExpando" id="menuExpando">
-			<details className="menuExpandoWrapper" id="menuExpandoWrapper" ref={detailsRef}>
+			<details className="menu-expando-wrapper" id="menu-expando-wrapper" ref={detailsRef}>
 				<summary></summary>
 				<ul ref={ulRef}>
 					{generateMenuItems()}
@@ -179,7 +179,7 @@ export function MenuExpandoButton() {
 	function handleMenuExpandoButtonClick(event: React.MouseEvent<HTMLDivElement>) {
 		event.preventDefault();
 		event.stopPropagation();
-		const details = document.getElementById('menuExpandoWrapper') as HTMLDetailsElement;
+		const details = document.getElementById('menu-expando-wrapper') as HTMLDetailsElement;
 		if (details) details.open = !details.open;
 	}
 

@@ -122,13 +122,13 @@ export function SmartImage(props: SmartImageProps) {
 	// if(Array.isArray(src))
 	const finalSrc = newProps.cloudinaryEnv
 		? buildCloudinaryUrl({ 
-			src: src, 
+			src: newProps.src, 
 			productEnv: newProps.cloudinaryEnv, 
 			cloudinaryDomain: newProps.cloudinaryDomain, 
 			quality, 
 			width: newProps.width ?? undefined, 
 			transforms: newProps.cloudinaryTransforms ?? undefined })
-		: String(src);
+		: String(newProps.src);
 
 	let responsiveSrcSet: string | undefined;
 	let responsiveSizes: string | undefined;
@@ -136,7 +136,7 @@ export function SmartImage(props: SmartImageProps) {
 		if (newProps.width) {
 			const widths = [Math.ceil(newProps.width * 0.5), newProps.width, Math.ceil(newProps.width * 1.5), Math.ceil(newProps.width * 2)];
 			responsiveSrcSet = generateSrcSet(
-				String(src), 
+				String(newProps.src), 
 				newProps.cloudinaryEnv, 
 				widths, { 
 					quality, 
@@ -147,7 +147,7 @@ export function SmartImage(props: SmartImageProps) {
 		} else {
 			const breakpoints = [320, 640, 768, 1024, 1280, 1536];
 			responsiveSrcSet = generateSrcSet(
-				String(src), 
+				String(newProps.src), 
 				newProps.cloudinaryEnv, 
 				breakpoints, { 
 					quality, 

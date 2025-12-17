@@ -18,7 +18,7 @@
 <h3 align="center">Pixelated Components</h3>
 
   <p align="center">
-    project_description
+    A comprehensive React component library for modern web development, featuring CMS integrations, UI components, and SEO optimization tools.
     <br />
     <a href="https://github.com/brianwhaley/pixelated-components"><strong>Explore the docs »</strong></a>
     <br />
@@ -107,7 +107,7 @@ Reusable UI components for common patterns:
 
 ### CMS Integration
 Headless CMS and content management components:
-- **WordPress** - Blog post integration and display
+- **WordPress** - Blog post integration and display with automatic Photon CDN URL processing
 - **Contentful** - Headless CMS components and utilities
 - **PageBuilder** - Dynamic page construction from JSON
 - **PageEngine** - Advanced page rendering with Contentful integration
@@ -173,18 +173,17 @@ npm run storybook
 
 ### Overview
 
-**Current Status**: ✅ 2,037 tests passing across 59 test files (all tests passing)
+**Current Status**: ✅ 2,184 tests passing across 59 test files (7 skipped)
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 58 |
-| Total Tests | 2,038 |
-| Components Tested | 52/52 (100%) |
-| Utility Modules Tested | 2/2 (100%) |
-| Coverage (Statements) | 66.81% |
-| Coverage (Lines) | 70.31% |
-| Coverage (Functions) | 74.59% |
-| Coverage (Branches) | 57.62% |
+| Test Files | 59 |
+| Total Tests | 2,184 |
+| Skipped Tests | 7 |
+| Coverage (Statements) | 79.26% |
+| Coverage (Lines) | 82.73% |
+| Coverage (Functions) | 84.73% |
+| Coverage (Branches) | 67.19% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -199,13 +198,13 @@ npm run test:run         # Single run (for CI)
 
 ### Component Coverage
 
-**50 of 50 Frontend Components + 1 Utility Module Fully Tested (100%)**
+**52 of 52 Frontend Components + 2 Utility Modules Fully Tested (100%)**
 
 #### Component Coverage (Sorted by Statement Coverage)
 - **sitemap.ts**: 100% statements 
 - **google.reviews.functions.ts**: 100% statements
 - **googlesearch.tsx**: 100% statements
-- **formvalidations.tsx**: 100% statements (↑ 92.69 points)
+- **formvalidations.tsx**: 100% statements
 - **tiles.tsx**: 100% statements
 - **markdown.tsx**: 100% statements
 - **buzzwordbingo.tsx**: 100% statements
@@ -217,15 +216,16 @@ npm run test:run         # Single run (for CI)
 - **sidepanel.tsx**: 97.5% statements
 - **resume.tsx**: 94.38% statements
 - **callout.tsx**: 93.75% statements
-- **contentful.delivery.ts**: 92.5% statements (↑ 45 points)
+- **contentful.delivery.ts**: 92.5% statements
 - **css.tsx**: 91.42% statements
 - **functions.ts**: 90.9% statements
 - **config.client.tsx**: 90% statements
 - **api.ts**: 87.5% statements
 - **loading.tsx**: 85.71% statements
-- **table.tsx**: 84.48% statements (↑ 60.35 points)
-- **cloudinary.ts**: 83.33% statements (↑ 58.33 points)
+- **table.tsx**: 84.48% statements
+- **cloudinary.ts**: 83.33% statements
 - **shoppingcart.functions.ts**: 81.69% statements
+- **carousel.tsx**: 76.19% statements
 - **nerdjoke.tsx**: 70.58% statements
 - **menu-accordion.tsx**: 68.13% statements
 - **carousel.tsx**: 58.49% statements
@@ -233,11 +233,17 @@ npm run test:run         # Single run (for CI)
 
 ### Test Configuration
 
-**Coverage Targets** (Updated - Focus on Statement Coverage):
-- **Statements**: 66.81% ✅ ACHIEVED (Target: 70%)
-- **Lines**: 70.31% ✅ ACHIEVED
-- **Functions**: 74.59% ✅ ACHIEVED
-- **Branches**: 57.62% (Focus area for future)
+**Coverage Summary (latest run)**:
+- **Statements**: 79.26%
+- **Lines**: 82.73%
+- **Functions**: 84.73%
+- **Branches**: 67.19%
+
+**Coverage Targets** (configured in `vitest.config.ts`):
+- **Statements**: 70% threshold
+- **Lines**: 70% threshold
+- **Functions**: 70% threshold
+- **Branches**: 60% threshold
 
 **Coverage Thresholds in vitest.config.ts**:
 - Lines: 70% threshold

@@ -1,14 +1,18 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { PageTitleHeader, PageSection, PageNav, PageFooter } from '../components/general/semantic';
+import { PageTitleHeader, PageSection, PageNav, PageFooter, PageSectionBackgroundImage } from '../components/general/semantic';
 
 // Mock SmartImage component
 vi.mock('../components/cms/cloudinary.image', () => ({
   SmartImage: (props: any) => React.createElement('img', {
     src: props.src,
     alt: props.alt,
-    'data-testid': 'smart-image'
+    className: props.className,
+    id: props.id,
+    title: props.title,
+    'data-testid': 'smart-image',
+    ...props
   })
 }));
 
@@ -605,5 +609,318 @@ describe('Semantic Components', () => {
       );
       expect(getByText('External')).toHaveAttribute('rel', 'noopener noreferrer');
     });
+  });
+});
+
+describe('PageSection Component', () => {
+  describe('Grid Layout', () => {
+    it('should render grid layout with default props', () => {
+      const { container } = render(<PageSection layoutType="grid">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      const content = container.querySelector('.page-section-content');
+      
+      expect(section).toBeInTheDocument();
+      expect(content).toHaveClass('row-12col');
+      expect(content).toHaveStyle({ gridAutoFlow: 'row' });
+    });
+
+    it('should apply custom grid columns', () => {
+      const { container } = render(<PageSection layoutType="grid" columns={6}>Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveClass('row-6col');
+    });
+
+    it('should apply grid auto flow', () => {
+      const { container } = render(<PageSection layoutType="grid" autoFlow="column">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ gridAutoFlow: 'column' });
+    });
+
+    it('should apply justify items', () => {
+      const { container } = render(<PageSection layoutType="grid" justifyItems="center">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ justifyItems: 'center' });
+    });
+
+    it('should apply align items', () => {
+      const { container } = render(<PageSection layoutType="grid" alignItems="center">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ alignItems: 'center' });
+    });
+  });
+
+  describe('Flex Layout', () => {
+    it('should render flex layout', () => {
+      const { container } = render(<PageSection layoutType="flex">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      const content = container.querySelector('.page-section-content');
+      
+      expect(section).toHaveClass('page-section-flex');
+      expect(content).toHaveStyle({ display: 'flex' });
+    });
+
+    it('should apply flex direction', () => {
+      const { container } = render(<PageSection layoutType="flex" direction="column">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ flexDirection: 'column' });
+    });
+
+    it('should apply flex wrap', () => {
+      const { container } = render(<PageSection layoutType="flex" wrap="nowrap">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ flexWrap: 'nowrap' });
+    });
+
+    it('should apply justify content', () => {
+      const { container } = render(<PageSection layoutType="flex" justifyContent="center">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ justifyContent: 'center' });
+    });
+  });
+
+  describe('None Layout', () => {
+    it('should render none layout', () => {
+      const { container } = render(<PageSection layoutType="none">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      expect(section).toHaveClass('page-section-none');
+    });
+  });
+
+  describe('Styling Props', () => {
+    it('should apply background color', () => {
+      const { container } = render(<PageSection background="red">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      expect(section).toHaveStyle({ background: 'red' });
+    });
+
+    it('should apply max width', () => {
+      const { container } = render(<PageSection maxWidth="800px">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ maxWidth: '800px' });
+    });
+
+    it('should apply padding', () => {
+      const { container } = render(<PageSection padding="20px">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ padding: '20px' });
+    });
+
+    it('should apply gap', () => {
+      const { container } = render(<PageSection gap="10px">Content</PageSection>);
+      const content = container.querySelector('.page-section-content');
+      expect(content).toHaveStyle({ gap: '10px' });
+    });
+  });
+
+  describe('Background Image', () => {
+    it('should render background image when provided', () => {
+      render(<PageSection backgroundImage="test.jpg">Content</PageSection>);
+      expect(screen.getByTestId('smart-image')).toBeInTheDocument();
+    });
+
+    it('should not render background image when not provided', () => {
+      const { container } = render(<PageSection>Content</PageSection>);
+      const images = container.querySelectorAll('img');
+      expect(images.length).toBe(0);
+    });
+  });
+
+  describe('ID and ClassName', () => {
+    it('should apply id to section', () => {
+      const { container } = render(<PageSection id="test-section">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      expect(section).toHaveAttribute('id', 'test-section');
+    });
+
+    it('should apply className to section', () => {
+      const { container } = render(<PageSection className="custom-class">Content</PageSection>);
+      const section = container.querySelector('.page-section');
+      expect(section).toHaveClass('page-section', 'custom-class');
+    });
+  });
+});
+
+describe('PageSectionBackgroundImage Component', () => {
+  it('should render SmartImage with correct props', () => {
+    render(<PageSectionBackgroundImage backgroundImage="test.jpg" />);
+    const image = screen.getByTestId('smart-image');
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', 'test.jpg');
+    expect(image).toHaveClass('section-background-image');
+  });
+
+  it('should apply id when provided', () => {
+    render(<PageSectionBackgroundImage backgroundImage="test.jpg" id="section1" />);
+    const image = screen.getByTestId('smart-image');
+    expect(image).toHaveAttribute('id', 'section1-background-image');
+  });
+
+  it('should apply title when id is provided', () => {
+    render(<PageSectionBackgroundImage backgroundImage="test.jpg" id="section1" />);
+    const image = screen.getByTestId('smart-image');
+    expect(image).toHaveAttribute('title', 'section1 background image');
+  });
+
+  it('should apply alt text when id is provided', () => {
+    render(<PageSectionBackgroundImage backgroundImage="test.jpg" id="section1" />);
+    const image = screen.getByTestId('smart-image');
+    expect(image).toHaveAttribute('alt', 'section1 background image');
+  });
+
+  it('should handle missing id gracefully', () => {
+    render(<PageSectionBackgroundImage backgroundImage="test.jpg" />);
+    const image = screen.getByTestId('smart-image');
+    expect(image).not.toHaveAttribute('id');
+    expect(image).not.toHaveAttribute('title');
+    expect(image).toHaveAttribute('alt', '');
+  });
+});
+
+describe('PageNav Component', () => {
+  const mockLinks = [
+    { href: '/home', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: 'https://external.com', label: 'External' }
+  ];
+
+  it('should render horizontal navigation by default', () => {
+    const { container } = render(<PageNav links={mockLinks} />);
+    const nav = container.querySelector('.page-nav');
+    expect(nav).toHaveClass('page-nav-horizontal');
+  });
+
+  it('should render vertical navigation', () => {
+    const { container } = render(<PageNav links={mockLinks} orientation="vertical" />);
+    const nav = container.querySelector('.page-nav');
+    expect(nav).toHaveClass('page-nav-vertical');
+  });
+
+  it('should render all links', () => {
+    render(<PageNav links={mockLinks} />);
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getByText('External')).toBeInTheDocument();
+  });
+
+  it('should apply correct href attributes', () => {
+    render(<PageNav links={mockLinks} />);
+    expect(screen.getByText('Home')).toHaveAttribute('href', '/home');
+    expect(screen.getByText('About')).toHaveAttribute('href', '/about');
+  });
+
+  it('should set target _blank for external links', () => {
+    render(<PageNav links={mockLinks} />);
+    const externalLink = screen.getByText('External');
+    expect(externalLink).toHaveAttribute('target', '_blank');
+    expect(externalLink).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('should set target _self for internal links', () => {
+    render(<PageNav links={mockLinks} />);
+    const homeLink = screen.getByText('Home');
+    expect(homeLink).toHaveAttribute('target', '_self');
+    expect(homeLink).not.toHaveAttribute('rel');
+  });
+
+  it('should respect explicit target attribute', () => {
+    const linksWithTarget = [
+      { href: '/home', label: 'Home', target: '_blank' as const }
+    ];
+    render(<PageNav links={linksWithTarget} />);
+    const link = screen.getByText('Home');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('should apply custom className', () => {
+    const { container } = render(<PageNav links={mockLinks} className="custom-nav" />);
+    const nav = container.querySelector('.page-nav');
+    expect(nav).toHaveClass('page-nav-horizontal', 'custom-nav');
+  });
+
+  it('should filter out null/undefined links', () => {
+    const linksWithNulls = [
+      { href: '/home', label: 'Home' },
+      null,
+      { href: '/about', label: 'About' },
+      undefined
+    ] as any;
+    render(<PageNav links={linksWithNulls} />);
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
+  });
+
+  it('should return null when no links provided', () => {
+    const { container } = render(<PageNav links={[]} />);
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('should return null when links is undefined', () => {
+    const { container } = render(<PageNav links={undefined as any} />);
+    expect(container.firstChild).toBeNull();
+  });
+});
+
+describe('PageFooter Component', () => {
+  it('should render footer with text', () => {
+    render(<PageFooter text="Copyright 2023" />);
+    expect(screen.getByText('Copyright 2023')).toBeInTheDocument();
+  });
+
+  it('should render footer with links', () => {
+    const links = [
+      { href: '/privacy', label: 'Privacy' },
+      { href: '/terms', label: 'Terms' }
+    ];
+    render(<PageFooter links={links} />);
+    expect(screen.getByText('Privacy')).toBeInTheDocument();
+    expect(screen.getByText('Terms')).toBeInTheDocument();
+  });
+
+  it('should render footer with children', () => {
+    render(<PageFooter><div>Custom content</div></PageFooter>);
+    expect(screen.getByText('Custom content')).toBeInTheDocument();
+  });
+
+  it('should apply custom className', () => {
+    const { container } = render(<PageFooter className="custom-footer" text="Test" />);
+    const footer = container.querySelector('.page-footer');
+    expect(footer).toHaveClass('page-footer', 'custom-footer');
+  });
+
+  it('should filter out null/undefined links', () => {
+    const linksWithNulls = [
+      { href: '/privacy', label: 'Privacy' },
+      null,
+      { href: '/terms', label: 'Terms' }
+    ] as any;
+    render(<PageFooter links={linksWithNulls} />);
+    expect(screen.getByText('Privacy')).toBeInTheDocument();
+    expect(screen.getByText('Terms')).toBeInTheDocument();
+  });
+
+  it('should return null when no content provided', () => {
+    const { container } = render(<PageFooter />);
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('should handle external links in footer', () => {
+    const externalLinks = [
+      { href: 'https://external.com', label: 'External' }
+    ];
+    render(<PageFooter links={externalLinks} />);
+    const link = screen.getByText('External');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('should handle internal links in footer', () => {
+    const internalLinks = [
+      { href: '/contact', label: 'Contact' }
+    ];
+    render(<PageFooter links={internalLinks} />);
+    const link = screen.getByText('Contact');
+    expect(link).toHaveAttribute('target', '_self');
+    expect(link).not.toHaveAttribute('rel');
   });
 });

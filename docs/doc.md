@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "showcategories to blogpostlist, gravatar css media query"
+git commit -m "fix photon image wordpress issue, increase tests"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

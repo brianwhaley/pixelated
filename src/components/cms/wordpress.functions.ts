@@ -48,7 +48,14 @@ export async function getWordPressItems(props: { site: string; count?: number; b
 			if (batch.length === 0) {
 				break; // no more posts
 			}
-			posts.push(...batch);
+			
+			// Process Photon URLs in featured images
+			const processedBatch = batch.map(post => ({
+				...post,
+				featured_image: post.featured_image ? photonToOriginalUrl(post.featured_image) : post.featured_image
+			}));
+			
+			posts.push(...processedBatch);
 			if (requested && posts.length >= requested) {
 				break; // collected enough
 			}
@@ -149,4 +156,29 @@ export async function getWordPressCategories(props: { site: string; baseURL?: st
 		return;
 	}
 	return categories; // Return the complete list of categories
+}
+
+/**
+ * Convert a WordPress Photon CDN URL to the original direct image URL
+ * @param photonUrl - The Photon CDN URL (e.g., https://i0.wp.com/domain.com/path)
+ * @returns The original direct image URL (e.g., https://domain.com/path)
+ */
+export function photonToOriginalUrl(photonUrl: string): string {
+	if (typeof photonUrl !== 'string' || !photonUrl.includes('i0.wp.com/')) {
+		return photonUrl; // Return unchanged if not a Photon URL
+	}
+
+	try {
+		// Photon URL format: https://i0.wp.com/domain.com/path/to/image.jpg?params
+		// Extract original: https://domain.com/path/to/image.jpg
+		const photonUrlObj = new URL(photonUrl);
+		const pathWithoutLeadingSlash = photonUrlObj.pathname.slice(1); // Remove leading /
+		const firstSlashIndex = pathWithoutLeadingSlash.indexOf('/');
+		const domain = pathWithoutLeadingSlash.slice(0, firstSlashIndex);
+		const path = pathWithoutLeadingSlash.slice(firstSlashIndex);
+		return `https://${domain}${path}`;
+	} catch (e) {
+		console.warn('Failed to parse Photon URL:', photonUrl, e);
+		return photonUrl; // Return original on error
+	}
 }
