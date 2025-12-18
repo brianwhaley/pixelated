@@ -1,9 +1,10 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render } from '@testing-library/react';
-import { LocalBusinessSchema, type LocalBusinessSchemaProps } from '../components/seo/schema-localbusiness';
+import { LocalBusinessSchema, type LocalBusinessSchemaType } from '../components/seo/schema-localbusiness';
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
 describe('LocalBusinessSchema', () => {
-	const defaultProps: LocalBusinessSchemaProps = {
+	const defaultProps: LocalBusinessSchemaType = {
 		name: 'Test Business',
 		streetAddress: '123 Main St',
 		addressLocality: 'Springfield',
@@ -16,18 +17,54 @@ describe('LocalBusinessSchema', () => {
 		image: 'https://testbusiness.com/image.png'
 	};
 
+	const mockConfig = {
+		siteInfo: {
+			name: 'Pixelated Technologies',
+			description: 'Custom web development and digital design agency',
+			url: 'https://pixelated.tech',
+			email: 'info@pixelated.tech',
+			image: '/images/pix/pix-bg-512.gif',
+			telephone: '+1-973-710-8008',
+			address: {
+				streetAddress: '10 Jade Circle',
+				addressLocality: 'Denville',
+				addressRegion: 'NJ',
+				postalCode: '07834',
+				addressCountry: 'United States'
+			},
+			priceRange: '$$',
+			sameAs: ['https://linkedin.com/in/brianwhaley']
+		}
+	};
+
 	beforeEach(() => {
 		vi.clearAllMocks();
 	});
 
+	const renderWithProvider = (component: React.ReactElement) => {
+		return render(
+			<PixelatedClientConfigProvider config={mockConfig}>
+				{component}
+			</PixelatedClientConfigProvider>
+		);
+	};
+
+	const renderWithEmptyConfig = (component: React.ReactElement) => {
+		return render(
+			<PixelatedClientConfigProvider config={{}}>
+				{component}
+			</PixelatedClientConfigProvider>
+		);
+	};
+
 	it('should render script tag with application/ld+json type', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		expect(scriptTag).toBeTruthy();
 	});
 
 	it('should include required schema.org context', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -36,7 +73,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should include all required business information', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -46,7 +83,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should include properly formatted address', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -60,7 +97,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should include logo and image when provided', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -70,7 +107,7 @@ describe('LocalBusinessSchema', () => {
 
 	it('should exclude logo when not provided', () => {
 		const { logo, ...propsWithoutLogo } = defaultProps;
-		const { container } = render(<LocalBusinessSchema {...propsWithoutLogo} />);
+		const { container } = renderWithEmptyConfig(<LocalBusinessSchema {...propsWithoutLogo} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -79,7 +116,7 @@ describe('LocalBusinessSchema', () => {
 
 	it('should exclude image when not provided', () => {
 		const { image, ...propsWithoutImage } = defaultProps;
-		const { container } = render(<LocalBusinessSchema {...propsWithoutImage} />);
+		const { container } = renderWithEmptyConfig(<LocalBusinessSchema {...propsWithoutImage} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -91,7 +128,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			openingHours: 'Mo-Fr 09:00-17:00'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -104,7 +141,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			openingHours
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -116,7 +153,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			description: 'A great local business'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -124,7 +161,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should exclude description when not provided', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithEmptyConfig(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -136,7 +173,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			email: 'info@testbusiness.com'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -148,7 +185,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			priceRange: '$$'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -165,7 +202,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			sameAs
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -177,7 +214,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			sameAs: []
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -186,7 +223,7 @@ describe('LocalBusinessSchema', () => {
 
 	it('should default addressCountry to United States when not provided', () => {
 		const { addressCountry, ...propsWithoutCountry } = defaultProps;
-		const { container } = render(<LocalBusinessSchema {...propsWithoutCountry} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...propsWithoutCountry} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -198,7 +235,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			addressCountry: 'Canada'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -206,7 +243,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should generate valid JSON', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		
 		expect(() => {
@@ -219,7 +256,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			name: "O'Brien's Coffee & Bakery"
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -231,7 +268,7 @@ describe('LocalBusinessSchema', () => {
 			...defaultProps,
 			telephone: '+44-20-7946-0958'
 		};
-		const { container } = render(<LocalBusinessSchema {...props} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		
@@ -239,7 +276,7 @@ describe('LocalBusinessSchema', () => {
 	});
 
 	it('should render without crashing with minimal required props', () => {
-		const minimalProps: LocalBusinessSchemaProps = {
+		const minimalProps: LocalBusinessSchemaType = {
 			name: 'Business',
 			streetAddress: '123 St',
 			addressLocality: 'City',
@@ -250,12 +287,12 @@ describe('LocalBusinessSchema', () => {
 		};
 		
 		expect(() => {
-			render(<LocalBusinessSchema {...minimalProps} />);
+			renderWithProvider(<LocalBusinessSchema {...minimalProps} />);
 		}).not.toThrow();
 	});
 
 	it('should not include undefined optional fields in JSON output', () => {
-		const { container } = render(<LocalBusinessSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<LocalBusinessSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 		

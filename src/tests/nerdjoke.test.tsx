@@ -8,20 +8,13 @@ const mockJokeData = {
   answer: 'Because he didn\'t get arrays.'
 };
 
-// Mock the API utilities
-vi.mock('../components/utilities/api', () => ({
-  getXHRData: vi.fn((url, method, callback) => {
-    // Call immediately in tests
-    callback(mockJokeData);
-  }),
-  generateURL: vi.fn((baseUrl, params) => {
-    let url = baseUrl;
-    for (const key in params) {
-      url += `${key}=${params[key]}&`;
-    }
-    return url;
-  }),
-}));
+// Mock fetch
+global.fetch = vi.fn(() =>
+  Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve(mockJokeData),
+  })
+) as any;
 
 describe('NerdJoke Component', () => {
   describe('Basic Rendering', () => {

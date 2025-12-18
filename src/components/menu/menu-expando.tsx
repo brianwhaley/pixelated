@@ -183,8 +183,23 @@ export function MenuExpandoButton() {
 		if (details) details.open = !details.open;
 	}
 
+	function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			handleMenuExpandoButtonClick(event as any);
+		}
+	}
+
 	return (
-		<div className="menuExpandoButton" id="menuExpandoButton" onClick={handleMenuExpandoButtonClick}>
+		<div 
+			className="menuExpandoButton" 
+			id="menuExpandoButton" 
+			onClick={handleMenuExpandoButtonClick}
+			onKeyDown={handleKeyDown}
+			tabIndex={0}
+			role="button"
+			aria-label="Toggle mobile menu"
+		>
 			<img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/>
 		</div>
 	);

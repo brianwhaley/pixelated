@@ -44,6 +44,7 @@ This guide provides detailed API documentation and usage examples for all Pixela
 - [GoogleMap](#googlemap)
 - [GoogleSearch](#googlesearch)
 - [JSON-LD Schemas](#json-ld-schemas)
+- [Manifest](#manifest)
 - [MetadataComponents](#metadatacomponents)
 
 ### Shopping Cart
@@ -881,11 +882,16 @@ import { SaveLoadSection } from '@pixelated-tech/components';
 
 Structured data components for SEO.
 
+**Configuration**: The LocalBusiness and Website schema components can use `siteInfo` data from the routes JSON file as fallback values when props are not explicitly provided. This allows for centralized site-wide configuration of business/website information.
+
 #### LocalBusiness
+
+Generates LocalBusiness JSON-LD structured data. When props are not provided, falls back to `siteInfo` configuration from routes JSON.
 
 ```tsx
 import { LocalBusinessSchema } from '@pixelated-tech/components';
 
+// With explicit props
 <LocalBusinessSchema
   name="My Business"
   address={{
@@ -896,6 +902,19 @@ import { LocalBusinessSchema } from '@pixelated-tech/components';
   }}
   telephone="(555) 123-4567"
 />
+
+// Or with siteinfo object (recommended)
+<LocalBusinessSchema
+  siteInfo={siteInfoData}
+  streetAddress="123 Main St"
+  addressLocality="City"
+  addressRegion="State"
+  postalCode="12345"
+/>
+
+// Or with minimal props (uses siteInfo fallbacks)
+<LocalBusinessSchema />
+```
 ```
 
 #### Recipe
@@ -941,9 +960,12 @@ import { ServicesSchema } from '@pixelated-tech/components';
 
 #### Website
 
+Generates Website JSON-LD structured data. When props are not provided, falls back to `siteInfo` configuration from routes JSON.
+
 ```tsx
 import { WebsiteSchema } from '@pixelated-tech/components';
 
+// With explicit props
 <WebsiteSchema
   name="My Website"
   url="https://example.com"
@@ -953,6 +975,22 @@ import { WebsiteSchema } from '@pixelated-tech/components';
     logo: "https://example.com/logo.png"
   }}
 />
+
+// Or with siteinfo object (recommended)
+<WebsiteSchema
+  siteInfo={siteInfoData}
+  potentialAction={{
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://example.com/search?q={search_term}'
+    }
+  }}
+/>
+
+// Or with minimal props (uses siteInfo fallbacks)
+<WebsiteSchema />
+```
 ```
 
 #### BlogPosting
@@ -1056,6 +1094,52 @@ import { GoogleSearch } from '@pixelated-tech/components';
 | `searchEngineId` | `string` | - | Google Custom Search Engine ID |
 | `apiKey` | `string` | - | Google API key |
 | `placeholder` | `string` | `'Search...'` | Search input placeholder |
+
+### Manifest
+
+Generates a complete PWA manifest from siteinfo configuration. This component centralizes PWA manifest generation and ensures consistency across sites.
+
+```tsx
+import { Manifest } from '@pixelated-tech/components';
+
+// Basic usage with siteinfo
+export default function manifest() {
+  return Manifest({ siteInfo: myRoutes.siteInfo });
+}
+
+// With custom properties for site-specific overrides
+export default function manifest() {
+  return Manifest({ 
+    siteInfo: myRoutes.siteInfo,
+    customProperties: {
+      orientation: 'portrait',
+      categories: ['business', 'productivity'],
+      lang: 'en-US'
+    }
+  });
+}
+```
+
+#### Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `siteInfo` | `SiteInfo` | - | Site configuration object from routes.json |
+| `customProperties` | `Partial<MetadataRoute.Manifest>` | `{}` | Optional custom manifest properties to override defaults |
+
+#### Generated Properties
+
+The component automatically generates these manifest properties from `siteInfo`:
+
+- `name` & `short_name`: From `siteInfo.name`
+- `description`: From `siteInfo.description`
+- `theme_color`: From `siteInfo.theme_color`
+- `background_color`: From `siteInfo.background_color`
+- `display`: From `siteInfo.display`
+- `homepage_url`: From `siteInfo.url`
+- `developer`: Object with `name` and `url` from siteInfo
+- `icons`: Array with favicon configuration
+- `author`: From `siteInfo.author` (non-standard property)
+- `default_locale`: From `siteInfo.default_locale`
 
 ### MetadataComponents
 
@@ -1312,7 +1396,19 @@ import { NerdJoke } from '@pixelated-tech/components';
 
 ### PixelatedClientConfigProvider Setup
 
-For components that use external services, wrap your app with the configuration provider:
+The PixelatedClientConfigProvider enables components to access centralized configuration data. Configuration can be loaded from environment variables or a `routes.json` file in your project.
+
+**Config Consumers:**
+- **LocalBusinessSchema & WebsiteSchema**: Use `siteInfo` for fallback business/website data
+- **CloudinaryImage & SmartImage**: Use `cloudinary` for image optimization settings
+- **WordPress**: Use `wordpress` for API connections
+- **ContentfulItems**: Use `contentful` for CMS integration
+- **eBay**: Use `ebay` for store integration
+- **Flickr**: Use `flickr` for photo gallery integration
+- **GoogleAnalytics**: Use `googleAnalytics` for tracking
+- **HubSpot**: Use `hubspot` for CRM integration
+- **PayPal**: Use `paypal` for payment processing
+- **Proxy**: Use `proxy` for API proxy settings
 
 ```tsx
 // app/layout.tsx (Next.js 13+ App Router)
@@ -1327,15 +1423,63 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PixelatedClientConfigProvider config={{
+          // Site-wide business/website information (used by schema components)
+          siteInfo: {
+            name: 'Your Business Name',
+            description: 'Your business description',
+            url: 'https://yourwebsite.com',
+            email: 'contact@yourwebsite.com',
+            telephone: '(555) 123-4567',
+            address: {
+              streetAddress: '123 Main St',
+              addressLocality: 'City',
+              addressRegion: 'State',
+              postalCode: '12345',
+              addressCountry: 'United States'
+            },
+            openingHours: 'Mo-Fr 09:00-18:00'
+          },
+          // Image optimization
           cloudinary: {
             product_env: 'production',
             baseUrl: 'https://res.cloudinary.com/your-account',
             transforms: 'f_auto,q_auto,w_auto'
           },
+          // CMS integrations
           wordpress: {
             site: 'your-blog.wordpress.com'
           },
-          // Add other service configurations as needed
+          contentful: {
+            spaceId: 'your-space-id',
+            accessToken: 'your-access-token',
+            environment: 'master'
+          },
+          // E-commerce
+          ebay: {
+            appId: 'your-app-id',
+            globalId: 'EBAY-US'
+          },
+          paypal: {
+            sandboxPayPalApiKey: 'your-sandbox-key',
+            payPalApiKey: 'your-production-key'
+          },
+          // Analytics & CRM
+          googleAnalytics: {
+            id: 'GA-XXXXXXXXX'
+          },
+          hubspot: {
+            portalId: 'your-portal-id',
+            formId: 'your-form-id'
+          },
+          // Media services
+          flickr: {
+            api_key: 'your-flickr-api-key',
+            user_id: 'your-user-id'
+          },
+          // API proxy
+          proxy: {
+            proxyURL: 'https://proxy.pixelated.tech/prod/proxy?url='
+          }
         }}>
           {children}
         </PixelatedClientConfigProvider>
@@ -1343,52 +1487,6 @@ export default function RootLayout({
     </html>
   );
 }
-```
-
-### Cloudinary Configuration
-
-```tsx
-const cloudinaryConfig = {
-  product_env: 'production',           // Environment identifier
-  baseUrl: 'https://res.cloudinary.com/your-account',  // Your Cloudinary URL
-  transforms: 'f_auto,q_auto,w_auto'   // Default transformations
-};
-```
-
-### WordPress Configuration
-
-```tsx
-const wordpressConfig = {
-  site: 'your-blog.wordpress.com',     // WordPress site URL
-  apiVersion: '1.1'                    // API version (optional)
-};
-```
-
-### Contentful Configuration
-
-```tsx
-const contentfulConfig = {
-  spaceId: 'your-space-id',            // Contentful space ID
-  accessToken: 'your-access-token',    // Contentful access token
-  environment: 'master'                // Contentful environment
-};
-```
-
-### Other Service Configurations
-
-```tsx
-const config = {
-  calendly: {
-    username: 'your-calendly-username'
-  },
-  hubspot: {
-    portalId: 'your-portal-id',
-    formId: 'your-form-id'
-  },
-  instagram: {
-    accessToken: 'your-access-token'
-  }
-};
 ```
 
 ---

@@ -51,6 +51,7 @@ export default [
 			"node_modules/", 
 			"scripts/",
 			"coverage/",
+			"storybook-static/",
 			"/*", 
 			"!/src",
 			"src/stories/",

@@ -1,6 +1,5 @@
 
 import PropTypes, { InferProps } from 'prop-types';
-import { generateURL } from '../utilities/api';
 import { mergeDeep } from '../utilities/functions';
 import type { CarouselCardType } from '../carousel/carousel';
 import type { FlickrConfig } from '../config/config.types';
@@ -90,7 +89,15 @@ export function GetFlickrData( props: { flickr?: any, config?: FlickrConfig } ) 
 	
 	const flickr = flickrConfig as FlickrApiType;
 
-	const myURL = generateURL(flickr.baseURL, flickr.urlProps);
+	// Build URL with query parameters
+	let myURL = flickr.baseURL;
+	let queryParams = '';
+	Object.keys(flickr.urlProps).forEach((prop) => {
+		const value = flickr.urlProps[prop as keyof typeof flickr.urlProps];
+		queryParams += (queryParams.length === 0) ? prop + '=' + value : '&' + prop + '=' + value;
+	});
+	myURL += queryParams;
+
 	const fetchFlickrData = async () => {
 		try {
 			const response = await fetch(myURL);

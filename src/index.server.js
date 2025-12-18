@@ -33,7 +33,6 @@ export * from './components/seo/sitemap';
 export * from './components/shoppingcart/ebay.functions';
 export * from './components/shoppingcart/shoppingcart.functions';
 
-export * from './components/utilities/api';
 export * from './components/utilities/functions';
 
 // Server-only wrapper exports

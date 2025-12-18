@@ -86,6 +86,37 @@ export interface WordpressConfig {
 	site: string; // WordPress site identifier (e.g., 'pixelatedviews.wordpress.com')
 }
 
+export interface SiteInfo {
+	name: string;
+	description: string;
+	url: string;
+	email?: string;
+	image?: string;
+	image_height?: string;
+	image_width?: string;
+	favicon?: string;
+	telephone?: string;
+	address?: {
+		streetAddress: string;
+		addressLocality: string;
+		addressRegion: string;
+		postalCode: string;
+		addressCountry: string;
+	};
+	openingHours?: string;
+	priceRange?: string;
+	sameAs?: string[];
+	keywords?: string;
+	// PWA Manifest properties
+	author?: string;
+	theme_color?: string;
+	background_color?: string;
+	default_locale?: string;
+	display?: "standalone" | "fullscreen" | "minimal-ui" | "browser";
+	favicon_sizes?: string;
+	favicon_type?: string;
+}
+
 export interface PixelatedConfig {
 	cloudinary?: CloudinaryConfig;
 	contentful?: ContentfulConfig;
@@ -97,5 +128,6 @@ export interface PixelatedConfig {
 	hubspot?: HubspotConfig;
 	paypal?: PaypalConfig;
 	proxy?: ProxyConfig;
+	siteInfo?: SiteInfo;
 	wordpress?: WordpressConfig;
 }

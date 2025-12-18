@@ -1,3 +1,4 @@
+import React from 'react';
 import { GoogleAnalytics } from '@/components/seo/googleanalytics';
 import { PixelatedClientConfigProvider } from '@/components/config/config.client';
 

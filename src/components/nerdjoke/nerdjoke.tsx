@@ -2,7 +2,6 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes, { InferProps } from "prop-types";
-import { getXHRData, generateURL } from "../utilities/api";
 import "../../css/pixelated.grid.scss";
 import "./nerdjoke.css";
 
@@ -41,7 +40,7 @@ export function NerdJoke( /* props: NerdJokeType */ ) {
 		}
 	}, [formatTimeLeft]);
 
-	const loadJoke = useCallback(() => {
+	const loadJoke = useCallback(async () => {
 		if (debug) console.log("Loading Joke");
 		timePassedRef.current = 0;
 		timeLeftRef.current = TIME_LIMIT;
@@ -58,11 +57,16 @@ export function NerdJoke( /* props: NerdJokeType */ ) {
 
 		const myURL = "https://vvqyc1xpw6.execute-api.us-east-2.amazonaws.com/prod/nerdjokes?";
 		const myURLProps = { command: "%2Fnerdjokes", text: "getjokejson" };
-		const myMethod = "GET";
-		getXHRData(generateURL(myURL, myURLProps), myMethod, (jokeData: any) => {
-			const myJokeData = jokeData;
-			setJoke(myJokeData);
-		});
+		try {
+			const url = myURL + "command=" + myURLProps.command + "&text=" + myURLProps.text;
+			const response = await fetch(url);
+			if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+			const jokeData = await response.json();
+			setJoke(jokeData);
+		} catch (error) {
+			console.error('Failed to fetch joke:', error);
+			// Optionally set a fallback joke or handle error
+		}
 	}, []);
 
 	const startTimer = useCallback(() => {

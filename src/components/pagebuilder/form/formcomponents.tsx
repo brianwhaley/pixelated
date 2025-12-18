@@ -79,9 +79,9 @@ FormTooltip.defaultProps = {
 };
 export type FormTooltipType = InferProps<typeof FormTooltip.propTypes>;
 function FormTooltip(props: FormTooltipType) {
-	function toggleTooltip(e: React.MouseEvent<HTMLAnchorElement>) {
+	function toggleTooltip(e: React.MouseEvent<HTMLButtonElement>) {
 		e.preventDefault();
-		const target = e.currentTarget as HTMLAnchorElement;
+		const target = e.currentTarget as HTMLButtonElement;
 		const nextSibling = target.nextSibling as HTMLElement | null;
 		if (nextSibling) {
 			if (nextSibling.style.display === "block") {
@@ -112,9 +112,9 @@ function FormTooltip(props: FormTooltipType) {
 			{ props.text && props.id 
 				? <>
 					<div id={thisID} className={`tooltip ${props.className || ''}`}>
-						<a href="#" className="tooltipIcon" onClick={toggleTooltip}>
+						<button type="button" className="tooltipIcon" onClick={toggleTooltip} aria-label="Toggle tooltip">
 							{tooltipImg}
-						</a>
+						</button>
 						<div className="tooltipText">{props.text}</div>
 					</div>
 				</>

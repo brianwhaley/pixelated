@@ -55,7 +55,7 @@ describe('SaveLoadSection', () => {
 		});
 	});
 
-	it('should show error message when page name is empty on save', async () => {
+	it('should disable save button when page name is empty', async () => {
 		const user = userEvent.setup();
 
 		render(
@@ -66,9 +66,7 @@ describe('SaveLoadSection', () => {
 		);
 
 		const saveButton = screen.getByText('💾 Save Page');
-		await user.click(saveButton);
-
-		expect(screen.getByText('Please enter a page name')).toBeInTheDocument();
+		expect(saveButton).toBeDisabled();
 	});
 
 	it('should save page successfully', async () => {

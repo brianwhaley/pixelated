@@ -75,9 +75,10 @@ export * from './components/seo/schema-recipe';
 export * from './components/seo/schema-services';
 export * from './components/seo/schema-website';
 export * from './components/seo/schema-blogposting';
+export * from './components/seo/manifest';
 export * from './components/seo/metadata'; // server-side 
 export * from './components/seo/metadata.components';
-export * from './components/seo/sitemap'; // server-side 
+export * from './components/seo/sitemap'; // server-side
 
 export * from './components/shoppingcart/ebay.components';
 export * from './components/shoppingcart/ebay.functions'; // server-side 
@@ -92,6 +93,5 @@ export * from './components/structured/resume';
 export * from './components/structured/socialcard';
 export * from './components/structured/timeline';
 
-export * from './components/utilities/api'; // server-side 
 export * from './components/utilities/functions'; // server-side 
 

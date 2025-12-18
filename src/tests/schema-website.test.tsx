@@ -1,21 +1,46 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { WebsiteSchema, type WebsiteSchemaProps } from '../components/seo/schema-website';
+import { WebsiteSchema, type WebsiteSchemaType } from '../components/seo/schema-website';
+import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
 describe('WebsiteSchema', () => {
-	const defaultProps: WebsiteSchemaProps = {
+	const defaultProps: WebsiteSchemaType = {
 		name: 'Test Website',
 		url: 'https://example.com'
 	};
 
+	const mockConfig = {
+		siteInfo: {
+			name: 'Pixelated Technologies',
+			description: 'Custom web development and digital design agency',
+			url: 'https://pixelated.tech'
+		}
+	};
+
+	const renderWithProvider = (component: React.ReactElement) => {
+		return render(
+			<PixelatedClientConfigProvider config={mockConfig}>
+				{component}
+			</PixelatedClientConfigProvider>
+		);
+	};
+
+	const renderWithEmptyConfig = (component: React.ReactElement) => {
+		return render(
+			<PixelatedClientConfigProvider config={{}}>
+				{component}
+			</PixelatedClientConfigProvider>
+		);
+	};
+
 	it('should render script tag with application/ld+json type', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		expect(scriptTag).toBeTruthy();
 	});
 
 	it('should include schema.org context and WebSite type', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -24,7 +49,7 @@ describe('WebsiteSchema', () => {
 	});
 
 	it('should include name and url', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -37,7 +62,7 @@ describe('WebsiteSchema', () => {
 			...defaultProps,
 			description: 'A great website'
 		};
-		const { container } = render(<WebsiteSchema {...props} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -45,7 +70,7 @@ describe('WebsiteSchema', () => {
 	});
 
 	it('should exclude description when not provided', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithEmptyConfig(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -53,7 +78,7 @@ describe('WebsiteSchema', () => {
 	});
 
 	it('should include potentialAction for search when provided', () => {
-		const props: WebsiteSchemaProps = {
+		const props: WebsiteSchemaType = {
 			...defaultProps,
 			potentialAction: {
 				'@type': 'SearchAction',
@@ -64,7 +89,7 @@ describe('WebsiteSchema', () => {
 				query: 'required name=search_term'
 			}
 		};
-		const { container } = render(<WebsiteSchema {...props} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -76,7 +101,7 @@ describe('WebsiteSchema', () => {
 	});
 
 	it('should exclude potentialAction when not provided', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -84,7 +109,7 @@ describe('WebsiteSchema', () => {
 	});
 
 	it('should generate valid JSON', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 
 		expect(() => {
@@ -97,7 +122,7 @@ describe('WebsiteSchema', () => {
 			...defaultProps,
 			name: "O'Brien's Technology & Design"
 		};
-		const { container } = render(<WebsiteSchema {...props} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -109,7 +134,7 @@ describe('WebsiteSchema', () => {
 			...defaultProps,
 			url: 'https://secure.example.com'
 		};
-		const { container } = render(<WebsiteSchema {...props} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...props} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 
@@ -118,12 +143,12 @@ describe('WebsiteSchema', () => {
 
 	it('should render without crashing with minimal required props', () => {
 		expect(() => {
-			render(<WebsiteSchema {...defaultProps} />);
+			renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		}).not.toThrow();
 	});
 
 	it('should not include undefined optional fields in JSON output', () => {
-		const { container } = render(<WebsiteSchema {...defaultProps} />);
+		const { container } = renderWithProvider(<WebsiteSchema {...defaultProps} />);
 		const scriptTag = container.querySelector('script[type="application/ld+json"]');
 		const schemaData = JSON.parse(scriptTag?.textContent || '{}');
 

@@ -72,11 +72,15 @@ form span {
     border-radius: 20px;
     padding: 0 3px; */
     vertical-align: middle;
+	padding: 5px;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
 }
 
 .tooltipIcon img {
   	width: 20px;
-	margin: 5px 0 0 -10px;
+	/* margin: 5px 0 0 -10px; */
 	background-color: #DDD;
     border-radius: 5px;
 }

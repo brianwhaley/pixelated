@@ -1,4 +1,29 @@
 {
+	"siteInfo": {
+		"name": "Pixelated Technologies",
+		"description": "Custom web development and digital design agency specializing in React, Next.js, and modern web technologies",
+		"url": "https://pixelated.tech",
+		"email": "info@pixelated.tech",
+		"image": "/images/pix/pix-bg-512.gif",
+		"image_height": "512",
+		"image_width": "512",
+		"favicon": "/favicon.ico",
+		"telephone": "+1-973-710-8008",
+		"address": {
+			"streetAddress": "10 Jade Circle",
+			"addressLocality": "Denville",
+			"addressRegion": "NJ",
+			"postalCode": "07834",
+			"addressCountry": "US"
+		},
+		"priceRange": "$$",
+		"sameAs": [
+			"https://www.linkedin.com/in/brianwhaley",
+			"https://github.com/brianwhaley",
+			"https://twitter.com/brianwhaley"
+		],
+		"keywords": "pixelated, web development, react, next.js, custom websites, digital design, small business"
+	},
 	"routes": [
 		{ 
 			"name": "Home", 

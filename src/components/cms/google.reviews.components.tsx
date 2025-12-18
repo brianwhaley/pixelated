@@ -85,11 +85,13 @@ export function GoogleReviewsCard(props: {
 						<li key={i}>
 							<div className="review-header">
 								{r.profile_photo_url && (
-									<img
-										src={r.profile_photo_url}
-										alt={r.author_name}
-										className="profile-photo"
-									/>
+									<div className="profile-photo-container">
+										<img
+											src={r.profile_photo_url}
+											alt={r.author_name}
+											className="profile-photo"
+										/>
+									</div>
 								)}
 								<div>
 									<div className="author-name">{r.author_name}</div>

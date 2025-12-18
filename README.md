@@ -182,6 +182,8 @@ npm run storybook
 - [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
 - [ ] Zapier Integration
 - [ ] Hero Banner: headline, subtext, CTA, background image/video, overlay.
+- [ ] Accessibility Enhancer: wrapper component that automatically improves accessibility across Pixelated sites by adding ARIA labels, roles, and states to existing components. Includes color contrast checking, keyboard navigation helpers, and alt-text suggestions for images.
+- [ ] SEO Dashboard with AI Integration: component that analyzes site content, suggests optimizations, integrates with AI for meta descriptions and keyword research.
 
 ### CI / CD Improvements
 - [ ] Add CI workflow to run tests and lints on pull requests.
@@ -202,8 +204,15 @@ npm run storybook
 - [ ] **GoogleReviews Component**: Add API key to config provider instead of hardcoding.
 - [ ] **Instagram Component**: Add accessToken and userId to config provider for centralized API credentials.
 
-
-
+### SSR Fixes
+- [ ] **cloudinary.image.tsx** (`SmartImage`): Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **wordpress.components.tsx** (`BlogPostList`, etc.): Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts  
+- [ ] **pagebuilder/form/formcomponents.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **cms/hubspot.components.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **cms/gravatar.components.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **structured/recipe.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **structured/timeline.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+- [ ] **structured/markdown.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
 
 See the [open issues](https://github.com/brianwhaley/pixelated-components/issues) for a full list of proposed features (and known issues).
 
@@ -261,16 +270,16 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 ### Overview
 
-**Current Status**: ✅ 2,184 tests passing across 59 test files
+**Current Status**: ✅ 2,210 tests passing across 65 test files
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 59 |
-| Total Tests | 2,184 |
-| Coverage (Statements) | 79.27% |
-| Coverage (Lines) | 82.74% |
-| Coverage (Functions) | 84.74% |
-| Coverage (Branches) | 67.19% |
+| Test Files | 65 |
+| Total Tests | 2,210 |
+| Coverage (Statements) | 77.92% |
+| Coverage (Lines) | 81.09% |
+| Coverage (Functions) | 81.27% |
+| Coverage (Branches) | 67.31% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -288,42 +297,52 @@ npm run test:run         # Single run (for CI)
 **Component Coverage Summary**
 
 #### Component Coverage (Sorted by Statement Coverage)
-- **google.reviews.functions.ts**: 100% statements
-- **googlesearch.tsx**: 100% statements
-- **formvalidations.tsx**: 100% statements
-- **tiles.tsx**: 100% statements
-- **markdown.tsx**: 100% statements
-- **buzzwordbingo.tsx**: 100% statements
-- **timeline.tsx**: 100% statements
 - **config.server.tsx**: 100% statements
 - **modal.tsx**: 100% statements
-- **recipe.tsx**: 98.8% statements
+- **accordion.tsx**: 100% statements
+- **tiles.tsx**: 100% statements
+- **googlesearch.tsx**: 100% statements
+- **formvalidations.tsx**: 100% statements
+- **buzzwordbingo.tsx**: 100% statements
+- **timeline.tsx**: 100% statements
+- **markdown.tsx**: 100% statements
+- **ComponentPropertiesForm.tsx**: 100% statements
+- **ComponentSelector.tsx**: 100% statements
+- **ComponentTree.tsx**: 100% statements
+- **schema-localbusiness.tsx**: 100% statements
+- **schema-recipe.tsx**: 100% statements
+- **schema-services.tsx**: 100% statements
+- **schema-website.tsx**: 100% statements
+- **google.reviews.functions.ts**: 100% statements
 - **sidepanel.tsx**: 97.5% statements
+- **config.ts**: 96.55% statements
 - **google.reviews.components.tsx**: 95.83% statements
+- **schema-blogposting.tsx**: 95.23% statements
+- **recipe.tsx**: 94.59% statements
 - **resume.tsx**: 94.38% statements
 - **contentful.delivery.ts**: 92.5% statements
 - **css.tsx**: 91.42% statements
 - **functions.ts**: 90.9% statements
 - **config.client.tsx**: 90% statements
-- **api.ts**: 87.5% statements
-- **loading.tsx**: 85.71% statements
-- **table.tsx**: 84.48% statements
+- **menu-expando.tsx**: 90.12% statements
 - **cloudinary.ts**: 83.33% statements
+- **form.tsx**: 83.2% statements
 - **shoppingcart.functions.ts**: 81.69% statements
-- **callout.tsx**: 80.00% statements
-- **sitemap.ts**: 76.38% statements
-- **carousel.tsx**: 71.70% statements
-- **nerdjoke.tsx**: 70.58% statements
+- **callout.tsx**: 80% statements
+- **microinteractions.tsx**: 80% statements
+- **sitemap.ts**: 76.05% statements
+- **manifest.tsx**: 75% statements
+- **carousel.tsx**: 71.69% statements
+- **nerdjoke.tsx**: 69.44% statements
 - **menu-accordion.tsx**: 68.13% statements
-- **semantic.tsx**: 60.81% statements
-- **config.ts**: 55.17% statements
+- **semantic.tsx**: 63.51% statements
+- **flickr.ts**: 51.42% statements
+- **PageEngine.tsx**: 48% statements
+- **SaveLoadSection.tsx**: 84.84% statements
+- **table.tsx**: 84.48% statements
+- **loading.tsx**: 85.71% statements
 - **socialcard.tsx**: 29.5% statements
-- **ComponentPropertiesForm.tsx**: 0% statements (no tests)
-- **ComponentSelector.tsx**: 0% statements (no tests)
-- **ComponentTree.tsx**: 0% statements (no tests)
-- **PageBuilderUI.tsx**: 0% statements (no tests)
-- **PageEngine.tsx**: 0% statements (no tests)
-- **SaveLoadSection.tsx**: 0% statements (no tests)
+- **PageBuilderUI.tsx**: 26.66% statements
 
 ### Testing Next Steps
 

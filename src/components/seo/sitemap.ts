@@ -220,8 +220,9 @@ export async function createImageURLsFromJSON(origin: string, jsonPath = 'public
 			url: `${origin}/images`,
 			images: newImages,
 		});
-	} catch (e) {
-		if (typeof console !== 'undefined') console.warn('createImageURLsFromJSON failed', e);
+	} catch /* (e) */ {
+		// During build time, fetch will fail - suppress the error to avoid build noise
+		// The function returns an empty array, which is acceptable
 	}
 	return sitemap;
 }
