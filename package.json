@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.2.13",
+	"version": "3.2.14",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -137,7 +137,7 @@
 		"typescript": "^5.9.3",
 		"url-loader": "^4.1.1",
 		"vitest": "^4.0.16",
-		"webpack": "^5.104.0",
+		"webpack": "^5.104.1",
 		"webpack-cli": "^6.0.1",
 		"webpack-dev-server": "^5.2.2",
 		"webpack-node-externals": "^3.0.0"
