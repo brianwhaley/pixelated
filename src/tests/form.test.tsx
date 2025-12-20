@@ -1,7 +1,9 @@
 import React from 'react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { FormEngine, FormBuilder, FormExtractor, FormBuild } from '../components/pagebuilder/form/form';
+import { FormEngine } from '../components/sitebuilder/form/formengine';
+import { FormBuilder, FormBuild } from '../components/sitebuilder/form/formbuilder';
+import { FormExtractor } from '../components/sitebuilder/form/formextractor';
 
 describe('Form Component', () => {
   const mockOnSubmitHandler = vi.fn();
@@ -16,7 +18,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} onSubmitHandler={mockOnSubmitHandler} />
+        <FormEngine formData={formData as any} onSubmitHandler={mockOnSubmitHandler} />
       );
       expect(container.querySelector('form')).toBeInTheDocument();
     });
@@ -26,7 +28,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('form')).toBeInTheDocument();
     });
@@ -36,7 +38,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} name="test-form" />
+        <FormEngine formData={formData as any} name="test-form" />
       );
       expect(container.querySelector('form')).toHaveAttribute('name', 'test-form');
     });
@@ -46,7 +48,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} id="my-form" />
+        <FormEngine formData={formData as any} id="my-form" />
       );
       expect(container.querySelector('form')).toHaveAttribute('id', 'my-form');
     });
@@ -56,7 +58,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} method="post" />
+        <FormEngine formData={formData as any} method="post" />
       );
       expect(container.querySelector('form')).toHaveAttribute('method', 'post');
     });
@@ -66,7 +68,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('form')).toBeInTheDocument();
     });
@@ -78,7 +80,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const form = container.querySelector('form');
       expect(form?.children.length).toBe(0);
@@ -91,6 +93,7 @@ describe('Form Component', () => {
             component: 'FormInput',
             props: {
               type: 'text',
+              id: 'username',
               name: 'username',
               placeholder: 'Enter username'
             }
@@ -98,7 +101,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[name="username"]');
       expect(input).toBeInTheDocument();
@@ -109,16 +112,16 @@ describe('Form Component', () => {
         fields: [
           {
             component: 'FormInput',
-            props: { type: 'text', name: 'name' }
+            props: { type: 'text', id: 'name', name: 'name' }
           },
           {
             component: 'FormInput',
-            props: { type: 'email', name: 'email' }
+            props: { type: 'email', id: 'email', name: 'email' }
           }
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('input[name="name"]')).toBeInTheDocument();
       expect(container.querySelector('input[name="email"]')).toBeInTheDocument();
@@ -138,7 +141,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[name="test"]') as HTMLInputElement;
       expect(input.maxLength).toBe(100);
@@ -158,7 +161,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[name="text"]') as HTMLInputElement;
       expect(input.maxLength).toBe(50);
@@ -178,7 +181,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[name="text"]') as HTMLInputElement;
       expect(input.minLength).toBe(5);
@@ -197,7 +200,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const textarea = container.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
       expect(textarea.rows).toBe(10);
@@ -217,7 +220,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[name="number"]') as HTMLInputElement;
       expect(input.maxLength).toBe(25);
@@ -237,7 +240,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('input[name="text"]')).toBeInTheDocument();
     });
@@ -256,7 +259,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('input[name="text"]')).toBeInTheDocument();
     });
@@ -273,7 +276,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} onSubmitHandler={mockOnSubmitHandler} />
+        <FormEngine formData={formData as any} onSubmitHandler={mockOnSubmitHandler} />
       );
       const form = container.querySelector('form') as HTMLFormElement;
       fireEvent.submit(form);
@@ -285,7 +288,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} onSubmitHandler={mockOnSubmitHandler} />
+        <FormEngine formData={formData as any} onSubmitHandler={mockOnSubmitHandler} />
       );
       const form = container.querySelector('form') as HTMLFormElement;
       const event = new Event('submit', { bubbles: true, cancelable: true });
@@ -299,7 +302,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const form = container.querySelector('form') as HTMLFormElement;
       expect(() => fireEvent.submit(form)).not.toThrow();
@@ -313,7 +316,7 @@ describe('Form Component', () => {
       };
       const { container } = render(
         <FormEngine 
-          formData={formData} 
+          formData={formData as any} 
           name="custom-form" 
           id="form-1" 
           method="post"
@@ -330,7 +333,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const form = container.querySelector('form');
       expect(form?.getAttribute('formData')).toBeNull();
@@ -341,7 +344,7 @@ describe('Form Component', () => {
         fields: []
       };
       const { container } = render(
-        <FormEngine formData={formData} onSubmitHandler={mockOnSubmitHandler} />
+        <FormEngine formData={formData as any} onSubmitHandler={mockOnSubmitHandler} />
       );
       const form = container.querySelector('form');
       expect(form?.getAttribute('onSubmitHandler')).toBeNull();
@@ -359,7 +362,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[type="text"]');
       expect(input).toBeInTheDocument();
@@ -375,7 +378,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[type="email"]');
       expect(input).toBeInTheDocument();
@@ -391,7 +394,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[type="password"]');
       expect(input).toBeInTheDocument();
@@ -407,7 +410,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input[type="number"]');
       expect(input).toBeInTheDocument();
@@ -423,7 +426,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       // FormCheckbox component renders elements - check that form was rendered
       expect(container.querySelector('form')).toBeInTheDocument();
@@ -439,7 +442,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       // FormRadio component renders elements - check that form was rendered
       expect(container.querySelector('form')).toBeInTheDocument();
@@ -455,7 +458,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('select[name="options"]')).toBeInTheDocument();
     });
@@ -470,7 +473,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('textarea[name="message"]')).toBeInTheDocument();
     });
@@ -485,7 +488,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('button')).toBeInTheDocument();
     });
@@ -502,7 +505,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('input[name="field-name"]')).toBeInTheDocument();
     });
@@ -517,7 +520,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input') as HTMLInputElement;
       expect(input.placeholder).toBe('Enter text');
@@ -533,7 +536,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input');
       expect(input).toHaveAttribute('required');
@@ -549,7 +552,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input');
       expect(input).toHaveAttribute('disabled');
@@ -565,7 +568,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input') as HTMLInputElement;
       expect(input.value).toBe('initial value');
@@ -581,7 +584,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const input = container.querySelector('input') as HTMLInputElement;
       expect(input.defaultValue).toBe('default');
@@ -611,7 +614,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       expect(container.querySelector('input[name="username"]')).toBeInTheDocument();
       expect(container.querySelector('input[name="email"]')).toBeInTheDocument();
@@ -628,7 +631,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const inputs = container.querySelectorAll('input');
       expect(inputs[0]).toHaveAttribute('name', 'first');
@@ -650,7 +653,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       const radios = container.querySelectorAll('input[type="radio"][name="choice1"]');
       expect(radios.length).toBe(2);
@@ -664,7 +667,7 @@ describe('Form Component', () => {
         ]
       };
       const { container } = render(
-        <FormEngine formData={formData} />
+        <FormEngine formData={formData as any} />
       );
       // If keys are duplicated, React would warn - this test ensures uniqueness
       expect(container.querySelectorAll('input').length).toBe(2);

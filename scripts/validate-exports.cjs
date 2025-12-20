@@ -28,116 +28,181 @@ const tsxFiles = glob.sync('src/components/**/*.tsx', {
   ]
 });
 
+// Combine all component files
+const allComponentFiles = [...tsFiles, ...tsxFiles];
+
+// Analyze each component file to determine if it's client-required or server-safe
+function analyzeComponentFile(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+
+  // Client-side patterns that require the component to run on client
+  const clientPatterns = [
+    /\buseState\b/,
+    /\buseEffect\b/,
+    /\buseContext\b/,
+    /\bcreateContext\b/,
+    /\buseCallback\b/,
+    /\buseMemo\b/,
+    /\buseRef\b/,
+    /\buseReducer\b/,
+    /\buseLayoutEffect\b/,
+    /\bwindow\./,
+    /\bdocument\./,
+    /\blocalStorage\b/,
+    /\bsessionStorage\b/,
+    /\bnavigator\./,
+    /\bonClick\b/,
+    /\bonChange\b/,
+    /\bonSubmit\b/,
+    /\bonMouse\b/,
+    /\bonKey\b/,
+    /\bonFocus\b/,
+    /\bonBlur\b/,
+    /\bonInput\b/,
+    /\baddEventListener\b/,
+    /\bremoveEventListener\b/
+  ];
+
+  // Check if file contains any client-side patterns
+  const isClientRequired = clientPatterns.some(pattern => pattern.test(content)) || content.includes("'use client'");
+
+  return {
+    filePath,
+    isClientRequired,
+    exportPath: filePath.replace('src/', './').replace(/\.tsx?$/, '')
+  };
+}
+
+// Analyze all component files
+const analyzedComponents = allComponentFiles.map(analyzeComponentFile);
+
+// Create arrays of components for each bundle
+const clientRequiredComponents = analyzedComponents.filter(comp => comp.isClientRequired);
+const serverSafeComponents = analyzedComponents.filter(comp => !comp.isClientRequired);
+
 // Read index files
 const indexServer = fs.readFileSync('src/index.server.js', 'utf8');
 const indexClient = fs.readFileSync('src/index.js', 'utf8');
 
+// Helper function to extract exports from index file
+function extractExports(content) {
+  // Remove comments
+  content = content.replace(/\/\*[\s\S]*?\*\//g, '');
+  content = content.replace(/\/\/.*$/gm, '');
+
+  const exports = [];
+
+  // Handle export * from './path' syntax
+  const exportAllRegex = /export\s+\*\s+from\s+['"]([^'"]+)['"]/g;
+  let match;
+
+  while ((match = exportAllRegex.exec(content)) !== null) {
+    exports.push(match[1]);
+  }
+
+  // Handle export { ... } from './path' syntax
+  const exportRegex = /export\s+{\s*([^}]+)\s*}\s+from\s+['"]([^'"]+)['"]/g;
+  while ((match = exportRegex.exec(content)) !== null) {
+    const exportList = match[1];
+    const exportItems = exportList.split(',').map(item => item.trim());
+    exports.push(...exportItems.map(item => match[2])); // Use the from path
+  }
+
+  return exports;
+}
+
+// Extract exports from both index files
+const serverExports = extractExports(indexServer);
+const clientExports = extractExports(indexClient);
+
 const missing = {
   server: [],
-  client: []
+  client: [],
+  files: [] // New: exported paths that don't correspond to existing files
 };
 
-// Check .ts files in index.server.js
-tsFiles.forEach(file => {
-  const exportPath = file.replace('src/', './').replace('.ts', '');
-  if (!indexServer.includes(`from '${exportPath}'`)) {
-    missing.server.push(exportPath);
+const bundleErrors = {
+  server: [], // Client-required components incorrectly in server bundle
+  client: []  // Components missing from client bundle
+};
+
+// Check if exported paths correspond to existing files
+function checkExportPathsExist(exports, bundleName) {
+  exports.forEach(exportPath => {
+    // Convert export path to file path (./components/... -> src/components/...)
+    const filePathBase = exportPath.replace('./', 'src/');
+    const tsFile = `${filePathBase}.ts`;
+    const tsxFile = `${filePathBase}.tsx`;
+    
+    const tsExists = fs.existsSync(tsFile);
+    const tsxExists = fs.existsSync(tsxFile);
+    
+    if (!tsExists && !tsxExists) {
+      missing.files.push(`${bundleName}: ${exportPath} (.ts/.tsx files not found)`);
+    }
+  });
+}
+
+checkExportPathsExist(serverExports, 'server bundle');
+checkExportPathsExist(clientExports, 'client bundle');
+
+// Check for missing exports
+serverSafeComponents.forEach(comp => {
+  if (!serverExports.includes(comp.exportPath)) {
+    missing.server.push(comp.exportPath);
   }
 });
 
-// Check all .ts and .tsx files in index.js
-[...tsFiles, ...tsxFiles].forEach(file => {
+allComponentFiles.forEach(file => {
   const exportPath = file.replace('src/', './').replace(/\.tsx?$/, '');
-  if (!indexClient.includes(`from '${exportPath}'`)) {
+  if (!clientExports.includes(exportPath)) {
     missing.client.push(exportPath);
   }
 });
 
-// Check for exports that point to non-existent files
-const invalidExports = {
-  server: [],
-  client: []
-};
-
-// Remove comments from content before checking exports
-function removeComments(content) {
-  // Remove single-line comments (// ...) 
-  content = content.replace(/\/\/.*$/gm, '');
-  // Remove multi-line comments (/* ... */)
-  content = content.replace(/\/\*[\s\S]*?\*\//g, '');
-  return content;
-}
-
-const indexServerNoComments = removeComments(indexServer);
-const indexClientNoComments = removeComments(indexClient);
-
-// Extract all export paths from index.server.js (excluding comments)
-const serverExportMatches = indexServerNoComments.matchAll(/from\s+['"](\.[^'"]+)['"]/g);
-for (const match of serverExportMatches) {
-  const exportPath = match[1];
-  const filePath = exportPath.replace('./', 'src/');
-  
-  // Check if .ts or .tsx file exists
-  const tsExists = fs.existsSync(`${filePath}.ts`);
-  const tsxExists = fs.existsSync(`${filePath}.tsx`);
-  
-  if (!tsExists && !tsxExists) {
-    invalidExports.server.push(exportPath);
+// Check for bundle contamination errors
+clientRequiredComponents.forEach(comp => {
+  if (serverExports.includes(comp.exportPath)) {
+    bundleErrors.server.push(comp.exportPath);
   }
-}
-
-// Extract all export paths from index.js (excluding comments)
-const clientExportMatches = indexClientNoComments.matchAll(/from\s+['"](\.[^'"]+)['"]/g);
-for (const match of clientExportMatches) {
-  const exportPath = match[1];
-  const filePath = exportPath.replace('./', 'src/');
-  
-  // Check if .ts or .tsx file exists
-  const tsExists = fs.existsSync(`${filePath}.ts`);
-  const tsxExists = fs.existsSync(`${filePath}.tsx`);
-  const jsExists = fs.existsSync(`${filePath}.js`);
-  const jsxExists = fs.existsSync(`${filePath}.jsx`);
-  
-  if (!tsExists && !tsxExists && !jsExists && !jsxExists) {
-    invalidExports.client.push(exportPath);
-  }
-}
+});
 
 // Report results
-let hasErrors = false;
+console.log('📊 Analysis Results:');
+console.log(`   Found ${allComponentFiles.length} component files`);
+console.log(`   ${clientRequiredComponents.length} client-required components`);
+console.log(`   ${serverSafeComponents.length} server-safe components\n`);
 
 if (missing.server.length > 0) {
-  console.error('❌ Missing from index.server.js:');
-  missing.server.forEach(p => console.error(`   ${p}`));
-  console.error('');
-  hasErrors = true;
+  console.log('❌ Missing from server bundle (index.server.js):');
+  missing.server.forEach(path => console.log(`   - ${path}`));
+  console.log('');
 }
 
 if (missing.client.length > 0) {
-  console.error('❌ Missing from index.js:');
-  missing.client.forEach(p => console.error(`   ${p}`));
-  console.error('');
-  hasErrors = true;
+  console.log('❌ Missing from client bundle (index.js):');
+  missing.client.forEach(path => console.log(`   - ${path}`));
+  console.log('');
 }
 
-if (invalidExports.server.length > 0) {
-  console.error('❌ Invalid exports in index.server.js (file does not exist):');
-  invalidExports.server.forEach(p => console.error(`   ${p}`));
-  console.error('');
-  hasErrors = true;
+if (bundleErrors.server.length > 0) {
+  console.log('🚨 Bundle contamination errors:');
+  console.log('   Client-required components incorrectly exported from server bundle:');
+  bundleErrors.server.forEach(path => console.log(`   - ${path}`));
+  console.log('');
 }
 
-if (invalidExports.client.length > 0) {
-  console.error('❌ Invalid exports in index.js (file does not exist):');
-  invalidExports.client.forEach(p => console.error(`   ${p}`));
-  console.error('');
-  hasErrors = true;
+if (missing.files.length > 0) {
+  console.log('❌ Exported paths that don\'t exist:');
+  missing.files.forEach(path => console.log(`   - ${path}`));
+  console.log('');
 }
+
+const hasErrors = missing.server.length > 0 || missing.client.length > 0 || bundleErrors.server.length > 0 || missing.files.length > 0;
 
 if (hasErrors) {
-  console.error('💥 Export validation failed!\n');
+  console.log('❌ Validation failed!');
   process.exit(1);
+} else {
+  console.log('✅ All exports validated successfully!');
 }
-
-console.log('✅ All exports validated\n');
-process.exit(0);

@@ -8,7 +8,7 @@
 				"defaultValue" : "",
 				"autoComplete" : "honorific-prefix",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Title : ",
 				"options" : [
@@ -31,7 +31,7 @@
 				"autoComplete" : "given-name",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "First Name : ",
 				"tooltip" : "Please type in your First Name"
 			}
@@ -46,7 +46,7 @@
 				"autoComplete" : "family-name",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Last Name : "
 			}
 		},
@@ -60,7 +60,7 @@
 				"autoComplete" : "street-address",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Street Address : "
 			}
 		},
@@ -74,7 +74,7 @@
 				"autoComplete" : "address-level2",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "City : "
 			}
 		},
@@ -87,7 +87,7 @@
 				"defaultValue" : ["NJ","SC"],
 				"autoComplete" : "address-level1",
 				"multiple" : "multiple",
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "State : ",
 				"tooltip" : "Please select your State",
@@ -156,7 +156,7 @@
 				"autoComplete" : "postal-code",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Zip Code : ",
 				"validate" : "isValidUSZipCode"
 			}
@@ -171,7 +171,7 @@
 				"autoComplete" : "tel",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Phone Number : ",
 				"validate" : "isValidUSPhoneNumber"
 			}
@@ -186,7 +186,7 @@
 				"autoComplete" : "bday",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Birthday : ",
 				"validate" : "isValidDate"
 			}
@@ -198,7 +198,7 @@
 				"name" : "age",
 				"defaultValue" : "",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Age : ",
 				"options" : [
@@ -223,7 +223,7 @@
 				"name" : "generation",
 				"defaultValue" : null,
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Generation : ",
 				"options" : [
@@ -248,7 +248,7 @@
 				"autoComplete" : "email",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Email Address : ",
 				"validate" : "isValidEmailAddress"
 			}
@@ -261,7 +261,7 @@
 				"autoComplete" : "sex",
 				"label" : "Gender : ",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"validate" : "isOneRadioSelected",
 				"tooltip" : "Please select your gender",
 				"options" : [
@@ -296,7 +296,7 @@
 				"autoComplete" : "organization-title",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Job Title : "
 			}
 		},
@@ -310,7 +310,7 @@
 				"autoComplete" : "organization",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Company : "
 			}
 		},
@@ -326,7 +326,7 @@
 				"min" : "10000",
 				"max" : "1000000",
 				"step" : "1000",
-				"required" : "required",
+				"required": true,
 				"label" : "Salary : "
 			}
 		},
@@ -339,7 +339,7 @@
 				"defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "LinkedIn URL : ",
 				"validate" : "isValidUrl"
 			}
@@ -353,7 +353,7 @@
 				"cols" : "40",
 				"defaultValue" : null,
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Comments : ",
 				"tooltip": "Please enter your comments"
 			}

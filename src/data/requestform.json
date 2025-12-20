@@ -9,7 +9,7 @@
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "First Name : ",
 				"tooltip" : "Please type in your First Name"
             }
@@ -22,7 +22,7 @@
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Last Name : ",
 				"tooltip" : "Please type in your Last Name"
             }
@@ -35,7 +35,7 @@
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Email Address : ",
 				"validate" : "isValidEmailAddress",
 				"tooltip" : "Please type in your Email Address"
@@ -49,7 +49,7 @@
                 "defaultValue" : null,
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Phone : ",
 				"validate" : "isValidUSPhoneNumber",
 				"tooltip" : "Please type in your Phone Number"
@@ -61,7 +61,7 @@
                 "name" : "source",
 				"defaultValue" : "",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Source : ",
 				"options" : [
@@ -84,7 +84,7 @@
                 "cols" : "40",
                 "defaultValue" : null,
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Request Message : ",
 				"tooltip": "Please enter the details of your request"
             }

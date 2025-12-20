@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuAccordionButton, MenuAccordion } from '@/components/menu/menu-accordion';
-import { getAccordionMenuData } from "@/components/seo/metadata";
+import { getAccordionMenuData } from "@/components/seo/metadata.functions";
 import '@/css/pixelated.global.css';
 import myRoutes from '@/data/routes.json';
 const allRoutes = myRoutes.routes;

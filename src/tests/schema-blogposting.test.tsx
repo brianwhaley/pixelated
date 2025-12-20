@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render } from '@testing-library/react';
-import { SchemaBlogPosting, mapWordPressToBlogPosting } from '../components/seo/schema-blogposting';
+import { SchemaBlogPosting } from '../components/seo/schema-blogposting';
+import { mapWordPressToBlogPosting } from '../components/seo/schema-blogposting.functions';
 import type { BlogPostType } from '../components/cms/wordpress.functions';
 
 describe('SchemaBlogPosting Component', () => {

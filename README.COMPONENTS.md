@@ -11,6 +11,7 @@ This guide provides detailed API documentation and usage examples for all Pixela
 - [Modal](#modal)
 - [SidePanel](#sidepanel)
 - [SmartImage](#smartimage)
+- [Tab](#tab)
 - [Table](#table)
 
 ### CMS Integration
@@ -34,6 +35,7 @@ This guide provides detailed API documentation and usage examples for all Pixela
 - [ComponentPropertiesForm](#componentpropertiesform)
 - [ComponentSelector](#componentselector)
 - [ComponentTree](#componenttree)
+- [ConfigBuilder](#configbuilder)
 - [PageBuilderUI](#pagebuilderui)
 - [PageEngine](#pageengine)
 - [SaveLoadSection](#saveloadsection)
@@ -554,7 +556,7 @@ const reviews = [
 
 ### Forms
 
-Dynamic form builder that generates forms from JSON configuration.
+Dynamic form builder that generates forms from JSON configuration with comprehensive validation and event handling.
 
 #### FormEngine
 
@@ -566,21 +568,39 @@ import { FormEngine } from '@pixelated-tech/components';
 const formConfig = {
   fields: [
     {
-      type: 'text',
+      component: 'FormInput',
       props: {
+        type: 'text',
+        id: 'email',
         name: 'email',
         label: 'Email Address',
         placeholder: 'Enter your email',
-        required: true
+        required: 'required',
+        validate: 'email'
       }
     },
     {
-      type: 'textarea',
+      component: 'FormTextarea',
       props: {
+        id: 'message',
         name: 'message',
         label: 'Message',
         placeholder: 'Enter your message',
-        rows: 4
+        rows: '4',
+        required: 'required'
+      }
+    },
+    {
+      component: 'FormSelect',
+      props: {
+        id: 'category',
+        name: 'category',
+        label: 'Category',
+        options: [
+          { text: 'General', value: 'general' },
+          { text: 'Support', value: 'support' },
+          { text: 'Sales', value: 'sales' }
+        ]
       }
     }
   ]
@@ -595,35 +615,170 @@ const formConfig = {
 
 #### Form Components
 
-Individual form field components for custom form building.
+Individual form field components with unified event handling and validation.
+
+##### FormInput
+Text input field with validation and accessibility features.
 
 ```tsx
-import * as FC from '@pixelated-tech/components';
+import { FormInput } from '@pixelated-tech/components';
 
-function CustomForm() {
-  return (
-    <form>
-      <FC.TextInput
-        name="username"
-        label="Username"
-        required={true}
-        placeholder="Enter username"
-      />
-      <FC.EmailInput
-        name="email"
-        label="Email"
-        required={true}
-      />
-      <FC.TextArea
-        name="bio"
-        label="Bio"
-        rows={4}
-        placeholder="Tell us about yourself"
-      />
-    </form>
-  );
-}
+<FormInput
+  type="email"
+  id="email"
+  name="email"
+  label="Email Address"
+  placeholder="Enter your email"
+  required="required"
+  validate="email"
+  display="vertical"
+/>
 ```
+
+**Props:**
+- `type`: Input type (text, email, password, etc.)
+- `id`: Unique identifier
+- `name`: Form field name
+- `label`: Display label
+- `placeholder`: Input placeholder text
+- `required`: Makes field required
+- `validate`: Validation rule name
+- `display`: Layout mode (vertical/horizontal)
+
+##### FormTextarea
+Multi-line text input with validation.
+
+```tsx
+import { FormTextarea } from '@pixelated-tech/components';
+
+<FormTextarea
+  id="description"
+  name="description"
+  label="Description"
+  placeholder="Enter description"
+  rows="4"
+  required="required"
+  display="vertical"
+/>
+```
+
+##### FormSelect
+Dropdown selection with option validation.
+
+```tsx
+import { FormSelect } from '@pixelated-tech/components';
+
+<FormSelect
+  id="category"
+  name="category"
+  label="Category"
+  options={[
+    { text: 'Option 1', value: 'opt1' },
+    { text: 'Option 2', value: 'opt2' }
+  ]}
+  required="required"
+/>
+```
+
+##### FormRadio
+Radio button group with validation.
+
+```tsx
+import { FormRadio } from '@pixelated-tech/components';
+
+<FormRadio
+  id="choice"
+  name="choice"
+  label="Choose an option"
+  options={[
+    { text: 'Option A', value: 'a' },
+    { text: 'Option B', value: 'b' }
+  ]}
+  required="required"
+/>
+```
+
+##### FormCheckbox
+Checkbox group with validation.
+
+```tsx
+import { FormCheckbox } from '@pixelated-tech/components';
+
+<FormCheckbox
+  id="preferences"
+  name="preferences"
+  label="Preferences"
+  options={[
+    { text: 'Email updates', value: 'email' },
+    { text: 'SMS updates', value: 'sms' }
+  ]}
+/>
+```
+
+##### FormButton
+Action button for form submission.
+
+```tsx
+import { FormButton } from '@pixelated-tech/components';
+
+<FormButton
+  type="submit"
+  id="submit-btn"
+  text="Submit Form"
+  onClick={handleSubmit}
+/>
+```
+
+##### FormTooltip
+Unified tooltip and validation message component with mouseover behavior and conditional styling.
+
+```tsx
+import { FormTooltip } from '@pixelated-tech/components';
+
+// Tooltip mode - displays information with black ⓘ icon
+<FormTooltip
+  mode="tooltip"
+  text={['This field is required', 'Please enter a valid email address']}
+/>
+
+// Validation mode - displays errors with red ❌ icon
+<FormTooltip
+  mode="validate"
+  text={['Email format is invalid', 'Please check your input']}
+/>
+```
+
+**Props:**
+- `mode`: Display mode ('tooltip' for info, 'validate' for errors)
+- `text`: Array of strings to display (always use array format)
+
+**Features:**
+- **Conditional Icons**: ⓘ (black) for tooltips, ❌ (red) for validation errors
+- **Mouseover Behavior**: Shows/hides content on hover for both modes
+- **Unified Styling**: Consistent appearance with mode-based color variations
+- **Array-Based Text**: Always accepts text as string array for consistency
+
+#### Form Validation
+
+Built-in validation rules available via the `validate` prop:
+
+- `email`: Email format validation
+- `url`: URL format validation
+- `phone`: Phone number format
+- `zipcode`: US zip code validation
+- `required`: Required field validation
+- Custom validation functions can be added to `formvalidations.tsx`
+
+#### Recent Improvements
+
+**Version 3.2.14+** includes major refactoring for better performance and maintainability:
+
+- **FormTooltip Unification**: Merged FormTooltip and FormValidate into single component with mode-based rendering
+- **Unified Event Handling**: All form components now use consistent `onChange` and `onInput` handlers for better test compatibility
+- **Performance Optimization**: Replaced inefficient `JSON.parse/stringify` with direct object destructuring
+- **Code Deduplication**: Custom `useFormComponent` hook eliminates repetitive validation logic
+- **Circular Reference Prevention**: Fixed memory leaks in option generation for radio/checkbox components
+- **Enhanced Test Coverage**: 2,244 tests passing across 67 test files with comprehensive form component coverage
 
 ### Menu
 
@@ -690,6 +845,29 @@ const menuItems = [
 
 <MenuExpando menuItems={menuItems} />
 ```
+
+### Tab
+
+Configurable tab component with multiple orientations and content areas.
+
+```tsx
+import { Tab } from '@pixelated-tech/components';
+
+const tabs = [
+  { id: 'tab1', label: 'Tab 1', content: <div>Content for Tab 1</div> },
+  { id: 'tab2', label: 'Tab 2', content: <div>Content for Tab 2</div> },
+  { id: 'tab3', label: 'Tab 3', content: <div>Content for Tab 3</div> },
+];
+
+<Tab tabs={tabs} orientation="top" defaultActiveTab="tab1" />
+```
+
+#### Props
+
+- `tabs`: Array of tab objects with `id`, `label`, and `content`
+- `orientation`: 'top' | 'bottom' | 'left' | 'right' (default: 'top')
+- `defaultActiveTab`: ID of the initially active tab
+- `onTabChange`: Callback function called when tab changes
 
 ### Tables
 
@@ -873,6 +1051,87 @@ import { SaveLoadSection } from '@pixelated-tech/components';
 | `onSave` | `function` | - | Save handler |
 | `onLoad` | `function` | - | Load handler |
 | `onNew` | `function` | - | New page handler |
+
+### ConfigBuilder
+
+Tabbed interface for managing site metadata and routes configuration.
+
+```tsx
+import { ConfigBuilder } from '@pixelated-tech/components';
+
+<ConfigBuilder
+  initialConfig={{
+    siteInfo: { name: 'My Site', description: 'Site description' },
+    routes: [
+      { path: '/home', component: 'Home', title: 'Home Page' }
+    ]
+  }}
+  onSave={(config) => console.log('Config saved:', config)}
+/>
+```
+
+#### Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `initialConfig` | `SiteConfig` | - | Initial site configuration |
+| `onSave` | `function` | - | Configuration save handler |
+
+#### SiteConfig Type
+```tsx
+interface SiteConfig {
+  siteInfo: {
+    name: string;
+    author: string;
+    description: string;
+    url: string;
+    email: string;
+    favicon: string;
+    favicon_sizes: string;
+    favicon_type: string;
+    theme_color: string;
+    background_color: string;
+    default_locale: string;
+    display: string;
+    image?: string;
+    image_height?: string;
+    image_width?: string;
+    telephone?: string;
+    address?: {
+      streetAddress: string;
+      addressLocality: string;
+      addressRegion: string;
+      postalCode: string;
+      addressCountry: string;
+    };
+    priceRange?: string;
+    sameAs?: string[];
+    keywords?: string;
+  };
+  routes: Array<{
+    path: string;
+    component: string;
+    title?: string;
+    description?: string;
+  }>;
+}
+```
+
+#### Features
+- **Tabbed Interface**: Organized into "Site Info" and "Routes" tabs
+- **Comprehensive Site Info Management**: Edit all standard site metadata fields including PWA settings, contact info, and address
+- **Route Management**: Add, edit, and remove page routes with component mapping
+- **Real-time Preview**: JSON preview of current configuration
+- **Save Functionality**: Callback-based configuration persistence with form validation enforcement
+- **Form Validation**: Required field validation for essential site information with visual feedback
+
+#### Validation Behavior
+
+The "Save Config" button enforces form validation before allowing configuration saves:
+
+- **Required Fields**: Site name, author, description, URL, and email are mandatory
+- **Visual Feedback**: Invalid fields show validation errors with ❌ indicators
+- **Save Prevention**: Save action is blocked until all required validations pass
+- **Real-time Validation**: Form validates as you type with immediate feedback
 
 ---
 

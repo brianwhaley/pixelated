@@ -11,7 +11,7 @@
 				"autoComplete" : "name",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Name : ",
 				"tooltip" : "Please enter your First and Last Name"
 			}
@@ -26,7 +26,7 @@
 				"autoComplete" : "street-address",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Street Address : ",
 				"tooltip" : "Please enter your Street Address"
 			}
@@ -41,7 +41,7 @@
 				"autoComplete" : "address-level2",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "City : ",
 				"tooltip" : "Please enter your City"
 			}
@@ -55,7 +55,7 @@
 				"placeholder": "State",
 				"autoComplete" : "address-level1",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "State : ",
 				"tooltip" : "Please select your State",
@@ -124,7 +124,7 @@
 				"autoComplete" : "postal-code",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Zip Code : ",
 				"tooltip" : "Please enter your Zip Code",
 				"validate" : "isValidUSZipCode"
@@ -139,7 +139,7 @@
 				"placeholder": "Country",
 				"autoComplete" : "country",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Country : ",
 				"tooltip" : "Please select your Country",
@@ -353,7 +353,7 @@
 				"autoComplete" : "tel",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Phone Number : ",
 				"tooltip" : "Please enter your Phone Number",
 				"validate" : "isValidUSPhoneNumber"
@@ -369,7 +369,7 @@
 				"autoComplete" : "email",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Email Address : ",
 				"tooltip" : "Please enter your Email Address",
 				"validate" : "isValidEmailAddress"
@@ -397,7 +397,7 @@
 				"name" : "shippingMethod",
 				"label" : "Shipping Method : ",
 				"display" : "vertical",
-				"required" : "required",
+				"required": true,
 				"validate" : "isOneRadioSelected",
 				"tooltip" : "Please select your Shipping Method",
 				"options" : [

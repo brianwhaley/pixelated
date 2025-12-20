@@ -1,0 +1,102 @@
+import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
+import * as FC from './formcomponents';
+import { generateKey } from './formutils';
+import { FormValidationProvider, useFormValidation } from './formvalidator';
+import { FormEngineProps } from './formtypes';
+
+const debug = false;
+
+/* ===== FORM ENGINE =====
+Generate all the elements to display a form */
+
+FormEngine.propTypes = {
+	name: PropTypes.string,
+	id: PropTypes.string,
+	method: PropTypes.string,
+	onSubmitHandler: PropTypes.func,
+	formData: PropTypes.object.isRequired
+};
+export type FormEngineType = InferProps<typeof FormEngine.propTypes>;
+
+function FormEngineInner(props: FormEngineProps) {
+	const { validateAllFields } = useFormValidation();
+
+	function generateFormProps(props: any) {
+		// GENERATE PROPS TO RENDER THE FORM CONTAINER, INTERNAL FUNCTION
+		if (debug) console.log("Generating Form Props");
+		const formProps = JSON.parse(JSON.stringify(props));
+		['formData', 'onSubmitHandler'].forEach(e => delete formProps[e]);
+		return formProps;
+	}
+
+	generateNewFields.propTypes = {
+		formData: PropTypes.any.isRequired,
+	};
+	type generateNewFieldsType = InferProps<typeof generateNewFields.propTypes>;
+	function generateNewFields(props: generateNewFieldsType) {
+		// CORE OF THE FORM ENGINE - CONVERT JSON TO COMPONENTS - INTERNAL
+		if (debug) console.log("Generating Form Fields");
+		const newFields = [];
+		const formFields = props.formData.fields;
+		if (props.formData && formFields) {
+			// const thisFields = formFields;
+			for (let field = 0; field < formFields.length; field++) {
+				const thisField = formFields[field];
+				// Shallow clone props to preserve function handlers (JSON stringify drops functions)
+				const newProps: any = { ...thisField.props };
+				newProps.key = thisField.props.id || generateKey();
+
+				// Convert string numeric props to numbers where needed
+				const numericProps = ['maxLength', 'minLength', 'rows', 'cols', 'size', 'step'];
+				numericProps.forEach(prop => {
+					if (
+						newProps[prop] !== undefined &&
+						newProps[prop] !== null &&
+						newProps[prop] !== ''
+					) {
+						// Only convert if the value is not already a number
+						if (typeof newProps[prop] === 'string') {
+							const num = Number(newProps[prop]);
+							if (!isNaN(num)) {
+								newProps[prop] = num;
+							}
+						}
+					}
+				});
+
+				const componentName: string = thisField.component;
+				const newElementType = (FC as Record<string, React.ElementType>)[componentName];
+				const newElement = React.createElement(newElementType, newProps);
+				newFields.push(newElement);
+			}
+		}
+		return newFields;
+	}
+
+	function handleSubmit(event: React.FormEvent) {
+		// HANDLES THE FORM ACTION / FORM SUBMIT - EXPOSED EXTERNAL
+		event.preventDefault();
+
+		// Check if form is valid before submission
+		if (!validateAllFields()) {
+			// Form has validation errors, don't submit
+			return false;
+		}
+
+		if (props.onSubmitHandler) props.onSubmitHandler(event);
+		return true;
+	}
+
+	return (
+		<form {...generateFormProps(props)} onSubmit={(event) => { handleSubmit(event); }} suppressHydrationWarning >{generateNewFields(props)}</form>
+	);
+}
+
+export function FormEngine(props: FormEngineProps) {
+	return (
+		<FormValidationProvider>
+			<FormEngineInner {...props} />
+		</FormValidationProvider>
+	);
+}

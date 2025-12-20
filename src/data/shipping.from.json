@@ -10,7 +10,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Name : "
             }
         },
@@ -24,7 +24,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Street Address : "
             }
         },
@@ -38,7 +38,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "City : "
             }
         },{
@@ -51,7 +51,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "State : "
             }
         },
@@ -65,7 +65,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Zip Code : "
             }
         },
@@ -79,7 +79,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Phone Number : "
             }
         },
@@ -93,7 +93,7 @@
                 "readOnly" : "readOnly",
 				"size" : "40",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Email Address : "
             }
         }

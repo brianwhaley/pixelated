@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ComponentTree } from "../components/pagebuilder/components/ComponentTree";
+import { ComponentTree } from "../components/sitebuilder/page/components/ComponentTree";
 
 describe('ComponentTree', () => {
 	const mockOnSelectComponent = vi.fn();

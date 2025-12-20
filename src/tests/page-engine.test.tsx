@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PageEngine } from "../components/pagebuilder/components/PageEngine";
+import { PageEngine } from "../components/sitebuilder/page/components/PageEngine";
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
 describe('PageEngine', () => {

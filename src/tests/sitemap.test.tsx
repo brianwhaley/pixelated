@@ -15,14 +15,14 @@ vi.mock('../components/cms/wordpress.functions');
 vi.mock('../components/cms/contentful.delivery');
 vi.mock('../components/shoppingcart/ebay.functions');
 vi.mock('../components/config/config');
-vi.mock('../components/seo/metadata');
+vi.mock('../components/seo/metadata.functions');
 
 // Import mocked modules
 import * as wordpressModule from '../components/cms/wordpress.functions';
 import * as contentfulModule from '../components/cms/contentful.delivery';
 import * as ebayModule from '../components/shoppingcart/ebay.functions';
 import * as configModule from '../components/config/config';
-import * as metadataModule from '../components/seo/metadata';
+import * as metadataModule from '../components/seo/metadata.functions';
 
 // Mock fetch globally
 global.fetch = vi.fn();

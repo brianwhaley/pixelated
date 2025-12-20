@@ -12,7 +12,7 @@ import {
 	isValidDate,
 	isValidUrl,
 	isValidDiscountCode,
-} from '../components/pagebuilder/form/formvalidations';
+} from '../components/sitebuilder/form/formfieldvalidations';
 
 // Mock the shoppingcart validateDiscountCode function
 vi.mock('../../components/shoppingcart/shoppingcart.functions', () => ({

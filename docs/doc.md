@@ -27,7 +27,7 @@ npm run lint --fix
 npm run build
 npm version patch --force
 git add * -v
-git commit -m "added siteinfo ro routes.json, new manifest.tsx component, remove low usage functions, full test suite, eslint errors fixed"
+git commit -m "all a11y fixes, refactor form components and validation, new tab component, new config builder, new validate-exports and client vs server import endpoints"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

@@ -1,16 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PageBuilderUI } from "../components/pagebuilder/components/PageBuilderUI";
-import { usePageBuilder } from '../components/pagebuilder/lib/usePageBuilder';
+import { PageBuilderUI } from "../components/sitebuilder/page/components/PageBuilderUI";
+import { usePageBuilder } from '../components/sitebuilder/page/lib/usePageBuilder';
 
 // Mock the usePageBuilder hook
-vi.mock('../components/pagebuilder/lib/usePageBuilder', () => ({
+vi.mock('../components/sitebuilder/page/lib/usePageBuilder', () => ({
 	usePageBuilder: vi.fn()
 }));
 
 // Mock child components
-vi.mock('../components/pagebuilder/components/ComponentSelector', () => ({
+vi.mock('../components/sitebuilder/page/components/ComponentSelector', () => ({
 	ComponentSelector: ({ setEditableComponent, parentPath, editMode }: any) => (
 		<div data-testid="component-selector">
 			ComponentSelector
@@ -20,7 +20,7 @@ vi.mock('../components/pagebuilder/components/ComponentSelector', () => ({
 	)
 }));
 
-vi.mock('../components/pagebuilder/components/ComponentPropertiesForm', () => ({
+vi.mock('../components/sitebuilder/page/components/ComponentPropertiesForm', () => ({
 	ComponentPropertiesForm: ({ editableComponent, onSubmit }: any) => (
 		<div data-testid="component-properties-form">
 			ComponentPropertiesForm
@@ -29,7 +29,7 @@ vi.mock('../components/pagebuilder/components/ComponentPropertiesForm', () => ({
 	)
 }));
 
-vi.mock('../components/pagebuilder/components/PageEngine', () => ({
+vi.mock('../components/sitebuilder/page/components/PageEngine', () => ({
 	PageEngine: ({ pageData, editMode, selectedPath }: any) => (
 		<div data-testid="page-engine">
 			PageEngine
@@ -40,7 +40,7 @@ vi.mock('../components/pagebuilder/components/PageEngine', () => ({
 	)
 }));
 
-vi.mock('../components/pagebuilder/components/SaveLoadSection', () => ({
+vi.mock('../components/sitebuilder/page/components/SaveLoadSection', () => ({
 	SaveLoadSection: vi.fn(({ pageData, onLoad, apiEndpoint }) => (
 		<div data-testid="save-load-section">
 			SaveLoadSection

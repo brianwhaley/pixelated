@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ComponentPropertiesForm } from "../components/pagebuilder/components/ComponentPropertiesForm";
+import { ComponentPropertiesForm } from "../components/sitebuilder/page/components/ComponentPropertiesForm";
 
 describe('ComponentPropertiesForm', () => {
 	it('should render placeholder text when no editableComponent is provided', () => {

@@ -1,6 +1,6 @@
 import PropTypes, { InferProps } from "prop-types";
 import type { MetadataRoute } from 'next';
-import { getAllRoutes } from "./metadata";
+import { getAllRoutes } from "./metadata.functions";
 import { getWordPressItems, getWordPressItemImages } from "../cms/wordpress.functions";
 import { getContentfulFieldValues, getContentfulAssetURLs } from "../cms/contentful.delivery";
 import { getEbayAppToken, getEbayItemsSearch } from "../shoppingcart/ebay.functions";

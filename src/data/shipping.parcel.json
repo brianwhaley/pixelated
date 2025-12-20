@@ -10,7 +10,7 @@
                 "placeholder": "L",
 				"size" : "10",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Length : ",
 				"tooltip" : "Please enter your Parcel Length"
             }
@@ -25,7 +25,7 @@
                 "placeholder": "W",
 				"size" : "10",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Width : ",
 				"tooltip" : "Please enter your Parcel Width"
             }
@@ -40,7 +40,7 @@
                 "placeholder": "H",
 				"size" : "10",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Height : ",
 				"tooltip" : "Please senter your Parcel Height"
             }
@@ -53,7 +53,7 @@
 				"size" : null,
 				"defaultValue" : "",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Distance Unit : ",
 				"tooltip" : "Please select your Parcel Distance Unit",
@@ -74,7 +74,7 @@
                 "placeholder": "W",
 				"size" : "10",
 				"display" : "horizontal",
-				"required" : "required",
+				"required": true,
 				"label" : "Weight : ",
 				"tooltip" : "Please enter your Parcel Weight"
             }
@@ -87,7 +87,7 @@
 				"size" : null,
 				"defaultValue" : "",
 				"multiple" : null,
-				"required" : "required",
+				"required": true,
 				"display" : "horizontal",
 				"label" : "Mass Unit : ",
 				"tooltip" : "Please select your Parcel Mass Unit",

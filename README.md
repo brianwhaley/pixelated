@@ -270,16 +270,16 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 ### Overview
 
-**Current Status**: ✅ 2,210 tests passing across 65 test files
+**Current Status**: ✅ 2,244 tests passing across 67 test files
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 65 |
-| Total Tests | 2,210 |
-| Coverage (Statements) | 77.92% |
-| Coverage (Lines) | 81.09% |
-| Coverage (Functions) | 81.27% |
-| Coverage (Branches) | 67.31% |
+| Test Files | 67 |
+| Total Tests | 2,244 |
+| Coverage (Statements) | 76.59% |
+| Coverage (Lines) | 79.45% |
+| Coverage (Functions) | 78.33% |
+| Coverage (Branches) | 66.79% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -297,52 +297,60 @@ npm run test:run         # Single run (for CI)
 **Component Coverage Summary**
 
 #### Component Coverage (Sorted by Statement Coverage)
-- **config.server.tsx**: 100% statements
-- **modal.tsx**: 100% statements
-- **accordion.tsx**: 100% statements
 - **tiles.tsx**: 100% statements
-- **googlesearch.tsx**: 100% statements
-- **formvalidations.tsx**: 100% statements
-- **buzzwordbingo.tsx**: 100% statements
-- **timeline.tsx**: 100% statements
-- **markdown.tsx**: 100% statements
+- **google.reviews.functions.ts**: 100% statements
+- **config.server.tsx**: 100% statements
+- **accordion.tsx**: 100% statements
+- **modal.tsx**: 100% statements
+- **tab.tsx**: 100% statements
 - **ComponentPropertiesForm.tsx**: 100% statements
 - **ComponentSelector.tsx**: 100% statements
 - **ComponentTree.tsx**: 100% statements
+- **formvalidations.tsx**: 100% statements
+- **componentMetadata.tsx**: 100% statements
+- **googlesearch.tsx**: 100% statements
 - **schema-localbusiness.tsx**: 100% statements
 - **schema-recipe.tsx**: 100% statements
 - **schema-services.tsx**: 100% statements
 - **schema-website.tsx**: 100% statements
-- **google.reviews.functions.ts**: 100% statements
+- **buzzwordbingo.tsx**: 100% statements
+- **markdown.tsx**: 100% statements
+- **timeline.tsx**: 100% statements
 - **sidepanel.tsx**: 97.5% statements
 - **config.ts**: 96.55% statements
 - **google.reviews.components.tsx**: 95.83% statements
-- **schema-blogposting.tsx**: 95.23% statements
+- **schema-blogposting.tsx**: 95.24% statements
 - **recipe.tsx**: 94.59% statements
 - **resume.tsx**: 94.38% statements
 - **contentful.delivery.ts**: 92.5% statements
-- **css.tsx**: 91.42% statements
-- **functions.ts**: 90.9% statements
-- **config.client.tsx**: 90% statements
+- **css.tsx**: 91.43% statements
+- **functions.ts**: 90.91% statements
 - **menu-expando.tsx**: 90.12% statements
+- **config.client.tsx**: 90% statements
+- **loading.tsx**: 85.71% statements
+- **SaveLoadSection.tsx**: 84.85% statements
+- **table.tsx**: 84.48% statements
+- **ConfigBuilder.tsx**: 83.52% statements
 - **cloudinary.ts**: 83.33% statements
+- **formcomponents.tsx**: 83.33% statements
 - **form.tsx**: 83.2% statements
-- **shoppingcart.functions.ts**: 81.69% statements
+- **shoppingcart.functions.ts**: 81.7% statements
 - **callout.tsx**: 80% statements
 - **microinteractions.tsx**: 80% statements
-- **sitemap.ts**: 76.05% statements
+- **cloudinary.image.tsx**: 78.57% statements
+- **sitemap.ts**: 76.06% statements
 - **manifest.tsx**: 75% statements
-- **carousel.tsx**: 71.69% statements
+- **carousel.tsx**: 71.7% statements
 - **nerdjoke.tsx**: 69.44% statements
 - **menu-accordion.tsx**: 68.13% statements
 - **semantic.tsx**: 63.51% statements
-- **flickr.ts**: 51.42% statements
+- **componentMap.tsx**: 60% statements
+- **propTypeIntrospection.tsx**: 60% statements
+- **wordpress.functions.ts**: 51.43% statements
 - **PageEngine.tsx**: 48% statements
-- **SaveLoadSection.tsx**: 84.84% statements
-- **table.tsx**: 84.48% statements
-- **loading.tsx**: 85.71% statements
-- **socialcard.tsx**: 29.5% statements
-- **PageBuilderUI.tsx**: 26.66% statements
+- **componentGeneration.tsx**: 38.89% statements
+- **socialcard.tsx**: 29.51% statements
+- **PageBuilderUI.tsx**: 26.67% statements
 
 ### Testing Next Steps
 
