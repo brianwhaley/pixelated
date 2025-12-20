@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.2.14",
+	"version": "3.3.0",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -77,7 +77,8 @@
 	},
 	"dependencies": {
 		"date-fns": "^4.1.0",
-		"globals": "^16.5.0"
+		"globals": "^16.5.0",
+		"html-entities": "^2.6.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.28.3",
@@ -123,13 +124,13 @@
 		"jsdom": "^27.3.0",
 		"less-loader": "^12.3.0",
 		"mini-css-extract-plugin": "^2.9.4",
-		"next": "^16.0.10",
+		"next": "^16.1.0",
 		"null-loader": "^4.0.1",
 		"prop-types": "^15.8.1",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
 		"react-test-renderer": "^19.2.3",
-		"sass": "^1.97.0",
+		"sass": "^1.97.1",
 		"sass-loader": "^16.0.6",
 		"storybook": "^10.1.10",
 		"style-loader": "^4.0.0",
