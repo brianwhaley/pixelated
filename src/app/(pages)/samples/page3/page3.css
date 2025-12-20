@@ -63,8 +63,6 @@ nav hr {
     }
     .callout-button button {
         background-color: var(--text-color);
-    }
-    .callout-button button a {
         color: var(--bg-color);
     }
 }
@@ -79,8 +77,6 @@ nav hr {
     }
     .callout-button button {
         background-color: var(--bg-color);
-    }
-    .callout-button button a {
         color: var(--text-color);
     }
  }

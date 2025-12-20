@@ -1,4 +1,44 @@
 {
+	"siteInfo": {
+		"name": "Pixelated",
+		"author": "Brian Whaley",
+		"description": "Custom web development and digital design agency specializing in React, Next.js, and modern web technologies",
+		"url": "https://pixelated.tech",
+		"email": "info@pixelated.tech",
+		"telephone": "+1-973-710-8008",
+		"image": "https://pixelated.tech/images/pix/pix-bg-512.gif",
+		"image_height": "512",
+		"image_width": "512",
+		"favicon": "/images/favicon.ico",
+		"favicon_sizes": "64x64 32x32 24x24 16x16",
+		"favicon_type": "image/x-icon",
+		"theme_color": "#000000",
+		"background_color": "#ffffff",
+		"default_locale": "en",
+		"display": "standalone",
+		"address": {
+			"streetAddress": "10 Jade Circle",
+			"addressLocality": "Denville",
+			"addressRegion": "NJ",
+			"postalCode": "07834",
+			"addressCountry": "US"
+		},
+		"openingHours": "Mo-Fr 09:00-18:00",
+		"priceRange": "$",
+		"sameAs": [
+			"https://blog.pixelated.tech",
+			"https://share.google/an1Yqe6CTFA946zZV",
+			"https://www.linkedin.com/company/106825397/",
+			"https://www.reddit.com/r/PixelatedTech/",
+			"https://www.facebook.com/profile.php?id=61577216017129",
+			"https://www.instagram.com/_pixelatedtech_",
+			"http://twitter.com/pixelatedviews",
+			"https://www.yelp.com/user_details?userid=SUFlzBCRMR0OIc3D3nN5pg",
+			"https://www.tumblr.com/pixelatedtech",
+			"https://patch.com/new-jersey/denville-nj/business/listing/558828/pixelated-technologies",
+			"https://www.eventbrite.com/o/brian-whaley-120645314676"
+		]
+	},
 	"routes": [
 		{ 
 			"name": "Home", 

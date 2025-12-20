@@ -116,8 +116,6 @@ main {
     }
     .callout-button button {
         background-color: var(--secondary-color);
-    }
-    .callout-button button a {
         color: #fff;
     }
 }

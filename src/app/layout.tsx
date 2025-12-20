@@ -2,10 +2,9 @@
 
 import { headers } from "next/headers";
 import { getRouteByKey } from "@pixelated-tech/components/server";
-import { generateMetaTags } from "@pixelated-tech/components/server";
-import { PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
-import { LocalBusinessSchema, WebsiteSchema, ServicesSchema, SchemaBlogPosting, mapWordPressToBlogPosting, getWordPressItems } from "@pixelated-tech/components";
-import type { BlogPostType } from "@pixelated-tech/components";
+import { generateMetaTags, PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
+import { LocalBusinessSchema, WebsiteSchema, ServicesSchema, SchemaBlogPosting, mapWordPressToBlogPosting, getWordPressItems } from "@pixelated-tech/components/server";
+import type { BlogPostType, SiteInfo } from "@pixelated-tech/components";
 import myRoutes from "@/app/data/routes.json";
 
 import Header from "@/app/elements/header";
@@ -34,6 +33,9 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	const pathname = path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
 	const metadata = getRouteByKey(myRoutes.routes, "path", pathname);
 
+	// Extract siteinfo from routes.json for schema components
+	const siteInfo = myRoutes.siteInfo;
+
 	// Fetch blog posts once for both schemas and page display
 	// If BLOG_SCHEMA_FETCH_COUNT is undefined, fetches ALL available posts (with auto-pagination)
 	let blogPosts: BlogPostType[] = [];
@@ -57,7 +59,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 				<html lang="en" className="pixelated">
 					<head></head>
 					<body>
-						<PixelatedServerConfigProvider>
+						<PixelatedServerConfigProvider config={{ siteInfo: siteInfo as SiteInfo }}>
 							{children}
 						</PixelatedServerConfigProvider>
 					</body>
@@ -72,67 +74,19 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 			<html lang="en">
 				<head>
 					<LocalBusinessSchema
-						name="Pixelated"
-						streetAddress="10 Jade Circle"
-						addressLocality="Denville"
-						addressRegion="NJ"
-						postalCode="07834"
-						addressCountry="US"
-						telephone="+1-973-710-8008"
-						url="https://pixelated.tech"
-						logo="https://pixelated.tech/images/pix/pix-bg-512.gif"
-						image="https://pixelated.tech/images/pix/pix-bg-512.gif"
-						priceRange="$"
-						description="Custom web development and digital design agency specializing in React, Next.js, and modern web technologies"
-						openingHours="Mo-Fr 09:00-18:00"
-						email="info@pixelated.tech"
-						sameAs={[
-							'https://blog.pixelated.tech',
-							'https://share.google/an1Yqe6CTFA946zZV',
-							'https://www.linkedin.com/company/106825397/',
-							'https://www.reddit.com/r/PixelatedTech/',
-							'https://www.facebook.com/profile.php?id=61577216017129',
-							'https://www.instagram.com/_pixelatedtech_',
-							'http://twitter.com/pixelatedviews',
-							'https://www.yelp.com/user_details?userid=SUFlzBCRMR0OIc3D3nN5pg',
-							'https://www.tumblr.com/pixelatedtech',
-							'https://patch.com/new-jersey/denville-nj/business/listing/558828/pixelated-technologies',
-							'https://www.eventbrite.com/o/brian-whaley-120645314676',
-						]}
+						siteInfo={siteInfo}
 					/>
 					<LocalBusinessSchema
-						name="Pixelated"
+						siteInfo={siteInfo}
 						streetAddress="4 Raymond Court"
 						addressLocality="Bluffton"
 						addressRegion="SC"
 						postalCode="29909"
 						addressCountry="US"
 						telephone="+1-843-699-6611"
-						url="https://pixelated.tech"
-						logo="https://pixelated.tech/images/pix/pix-bg-512.gif"
-						image="https://pixelated.tech/images/pix/pix-bg-512.gif"
-						priceRange="$"
-						description="Custom web development and digital design agency specializing in React, Next.js, and modern web technologies"
-						openingHours="Mo-Fr 09:00-18:00"
-						email="info@pixelated.tech"
-						sameAs={[
-							'https://blog.pixelated.tech',
-							'https://share.google/an1Yqe6CTFA946zZV',
-							'https://www.linkedin.com/company/106825397/',
-							'https://www.reddit.com/r/PixelatedTech/',
-							'https://www.facebook.com/profile.php?id=61577216017129',
-							'https://www.instagram.com/_pixelatedtech_',
-							'http://twitter.com/pixelatedviews',
-							'https://www.yelp.com/user_details?userid=SUFlzBCRMR0OIc3D3nN5pg',
-							'https://www.tumblr.com/pixelatedtech',
-							'https://patch.com/new-jersey/denville-nj/business/listing/558828/pixelated-technologies',
-							'https://www.eventbrite.com/o/brian-whaley-120645314676',
-						]}
 					/>
 					<WebsiteSchema
-						name="Pixelated"
-						url="https://pixelated.tech"
-						description="Custom web development and digital design agency specializing in React, Next.js, and modern web technologies"
+						siteInfo={siteInfo}
 						potentialAction={{
 							'@type': 'SearchAction',
 							target: {
@@ -195,14 +149,14 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						title: metadata?.title ?? "",
 						description: metadata?.description ?? "",
 						keywords: metadata?.keywords ?? "",
-						site_name: "Pixelated Technologies",
-						email: "info@pixelated.tech",
+						site_name: siteInfo?.name ?? "Pixelated Technologies",
+						email: siteInfo?.email ?? "info@pixelated.tech",
 						origin: origin ?? "",
 						url: url ?? "",
-						image: "/images/pix/pix-bg-512.gif",
-						image_height: "512",
-						image_width: "512",
-						favicon: "/images/favicon.ico"
+						image: siteInfo?.image ?? "/images/pix/pix-bg-512.gif",
+						image_height: siteInfo?.image_height ?? "512",
+						image_width: siteInfo?.image_width ?? "512",
+						favicon: siteInfo?.favicon ?? "/images/favicon.ico"
 					}) }
 					<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
@@ -213,7 +167,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
 				</head>
 				<body>
-					<PixelatedServerConfigProvider>
+					<PixelatedServerConfigProvider config={{ siteInfo: siteInfo as SiteInfo }}>
 						<BlogPostsProvider posts={blogPosts}>
 							<header>
 								<div id="page-header" className="fixed-header"><Header /></div>
@@ -225,7 +179,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 								<div id="fixed-header-spacer"></div>
 								<div id="fixed-header-nav-spacer"></div>
 								<div id="page-search" className="no-mobile">
-									<Search id="009500278966481927899:bcssp73qony" />
+									<Search />
 								</div>
 							</header>
 							<nav>

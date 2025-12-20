@@ -118,8 +118,6 @@ main {
         border: none;
         border-radius: 20px;
         cursor: pointer;
-    }
-    .callout-button button a {
         color: white;
     }
 }
