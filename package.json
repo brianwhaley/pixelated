@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.3.3",
+	"version": "3.3.4",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -103,7 +103,7 @@
 		"@types/prop-types": "^15.7.15",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
-		"@typescript-eslint/eslint-plugin": "^8.50.0",
+		"@typescript-eslint/eslint-plugin": "^8.50.1",
 		"@vitejs/plugin-react": "^5.1.2",
 		"@vitest/coverage-v8": "^4.0.16",
 		"@vitest/ui": "^4.0.16",
@@ -126,7 +126,7 @@
 		"jsdom": "^27.3.0",
 		"less-loader": "^12.3.0",
 		"mini-css-extract-plugin": "^2.9.4",
-		"next": "^16.1.0",
+		"next": "^16.1.1",
 		"null-loader": "^4.0.1",
 		"prop-types": "^15.8.1",
 		"react": "^19.2.3",
