@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
-	/* config options here */
 	experimental: {
     	optimizeCss: true,
   	},
@@ -12,25 +10,9 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true,
 	},
 	env: {
-		// Unified pixelated config: prefer supplying the full JSON or base64 blob
 		PIXELATED_CONFIG_JSON: process.env.PIXELATED_CONFIG_JSON,
 		PIXELATED_CONFIG_B64: process.env.PIXELATED_CONFIG_B64,
 	},
-
-	// Allow Cloudinary remote images so Next Image optimizer can fetch/transform them
-	/* 
-	images: {
-		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'res.cloudinary.com',
-				port: '',
-				pathname: '/**',
-			},
-		],
-	},
-	*/
-
 	images: {
     	minimumCacheTTL: 86400, // 1 day 15552000, // 6 months
 		remotePatterns: [
@@ -86,7 +68,6 @@ const nextConfig: NextConfig = {
 	},
 
 	turbopack: {},
-	// webpack5: true,
 	webpack: (config) => {
 		config.resolve.fallback = { 
 			fs: false,
@@ -94,7 +75,6 @@ const nextConfig: NextConfig = {
 		};
 		return config;
 	},
-	// output:'export'
 
 };
 
