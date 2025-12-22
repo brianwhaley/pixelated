@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "refactor font arrays, export preconnects for google fonts"
+git commit -m "fix for generatemetadata and siteinfo integration"
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

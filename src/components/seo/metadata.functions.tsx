@@ -130,18 +130,34 @@ export type GenerateMetaTagsProps = {
 	title: string;
 	description: string;
 	keywords: string;
-	site_name: string;
-	email: string;
 	origin: string;
 	url: string;
-	image: string;
-	image_height: string;
-	image_width: string;
-	favicon: string;
+	site_name?: string;
+	email?: string;
+	image?: string;
+	image_height?: string;
+	image_width?: string;
+	favicon?: string;
+	siteInfo?: {
+		name?: string;
+		email?: string;
+		image?: string;
+		image_height?: string;
+		image_width?: string;
+		favicon?: string;
+	};
 };
 
 export function generateMetaTags(props: GenerateMetaTagsProps) {
-	const { title, description, keywords, site_name, email, origin, url, image, image_height, image_width, favicon } = props;
+	const { title, description, keywords, origin, url, site_name: prop_site_name, email: prop_email, image: prop_image, image_height: prop_image_height, image_width: prop_image_width, favicon: prop_favicon, siteInfo } = props;
+	
+	// Use props if provided, otherwise fall back to siteInfo
+	const site_name = prop_site_name || siteInfo?.name;
+	const email = prop_email || siteInfo?.email;
+	const image = prop_image || siteInfo?.image;
+	const image_height = prop_image_height || siteInfo?.image_height;
+	const image_width = prop_image_width || siteInfo?.image_width;
+	const favicon = prop_favicon || siteInfo?.favicon;
 	return (
 		<>
 			<title>{title}</title>
