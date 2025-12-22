@@ -23,11 +23,11 @@ npm unpublish @brianwhaley/pixelated-components --force
 ## DEPLOYMENT SCRIPT
 npm outdated | awk 'NR>1 {print $1"@"$4}' | xargs npm install --force --save
 npm audit fix --force
-npm run lint --fix
+npm run lint
 npm run build
 npm version patch --force
-git add * -v
-git commit -m "all a11y fixes, refactor form components and validation, new tab component, new config builder, new validate-exports and client vs server import endpoints"
+git add . -v
+git commit -m "use client everywhere, accordion hamburger menu, sitebuilder config includes new visual design section, config engine to render, configbuilder to edit, google fonts integration, cont selector components"
 git push -u pixelated-components dev --tags --force
 git push -u pixelated-components dev:main -f
 npm login

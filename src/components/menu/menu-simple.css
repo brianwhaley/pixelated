@@ -3,13 +3,6 @@
 ============  SIMPLE MENU   ============
 ======================================== */
 
-:root {
-	--primary-color: #369;
-	--secondary-color: #BCD;
-	--accent1-color: #CCC;
-	--accent2-color: #EEE;	
-}
-
 .menu-wrapper {
 	height: 100%;
 }

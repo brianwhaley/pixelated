@@ -1,40 +1,5 @@
 
 /* ========================================
-========  DEFAULT COLOR STYLES   ==========
-======================================== */
-
-:root {
-  --primary-color: #369;
-  --secondary-color: #BCD;
-  --accent1-color: #CCC;
-  --accent2-color: #EEE;	
-  --bg-color: #fff;
-  --font-color: #000;
-}
-body{
-	background-color: var(--bg-color) !important;
-	color: var(--font-color);
-}
-
-
-/* ========================================
-========  DEFAULT FONT STYLES   ===========
-======================================== */
-
-:root {	
-	--header-font: "Montserrat", Verdana, sans-serif;
-	--body-font: "Roboto", Arial, sans-serif;
-}
-body { 
-	font-family: var(--body-font); 
-}
-h1, h2, h3, h4, h5, h6 {
-	line-height: 1.1;
-}
-html { font-size: 1.0rem; /* 16px; */ }
-
-
-/* ========================================
 ===========  DEFAULT STYLES   =============
 ======================================== */
 

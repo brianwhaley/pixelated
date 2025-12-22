@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import { usePixelatedConfig } from '../config/config.client';

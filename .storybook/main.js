@@ -51,11 +51,6 @@ const config = {
                 use: "ts-loader",
             },
             {
-                test: /\.(sa|sc)ss$/,
-                exclude: /node_modules/,
-                use: "sass-loader",
-            },
-            {
                 test: /\.(bmp|gif|jpg|jpeg|png|svg|webp)$/,
                 exclude: /node_modules/,
                 type: "asset/resource",
@@ -80,6 +75,7 @@ const config = {
             ".ctsx"
         );
         config.resolve.extensions.push(".sass", ".scss");
+        config.resolve.extensions.push(".css");
         config.resolve.extensions.push(
             ".bmp",
             ".gif",
@@ -143,7 +139,7 @@ const config = {
                     if (!absPath.startsWith(srcRoot)) return;
                     const rel = path.relative(srcRoot, absPath);
                     const distPath = path.resolve(__dirname, "../dist", rel);
-                    if (fs.existsSync(distPath)) {
+                    if (fs.existsSync(distPath) && !rel.includes('stories')) {
                         resource.request = distPath;
                     }
                 } catch (e) {

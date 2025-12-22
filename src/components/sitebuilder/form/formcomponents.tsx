@@ -1,9 +1,13 @@
 
+'use client';
+
 import React, { useState } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { validateField } from "./formvalidator";
 import { useFormValidation } from "./formvalidator";
 import * as FVF from "./formfieldvalidations";
+import { FontSelector } from "../config/FontSelector";
+import { CompoundFontSelector } from "../config/CompoundFontSelector";
 import "./form.css";
 
 
@@ -442,14 +446,21 @@ FormRadioOption.propTypes = {
 export type FormRadioOptionType = InferProps<typeof FormRadioOption.propTypes>;
 function FormRadioOption(props: FormRadioOptionType) {
 	const inputProps = setupInputProps(props);
+	const isChecked = props.parent.checked === props.value;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (props.parent.onChange) {
+			props.parent.onChange(props.value);
+		}
+	};
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="radio" 
 				id={`${props.parent.name}-${props.value}`} 
 				name={props.parent.name} 
 				value={props.value} 
-				// defaultChecked={!!props.checked}
-				defaultChecked={props.checked}
+				checked={isChecked}
+				onChange={handleChange}
 				required={!!props.parent.required} 
 				{...inputProps} />
 			<label htmlFor={`${props.parent.name}-${props.value}`}>{props.text}</label>
@@ -511,14 +522,29 @@ FormCheckboxOption.propTypes = {
 export type FormCheckboxOptionType = InferProps<typeof FormCheckboxOption.propTypes>;
 function FormCheckboxOption(props: FormCheckboxOptionType) {
 	const inputProps = setupInputProps(props);
+	const isChecked = props.parent.checked ? props.parent.checked.includes(props.value) : false;
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (props.parent.onChange) {
+			const currentChecked = props.parent.checked || [];
+			let newChecked;
+			if (e.target.checked) {
+				newChecked = [...currentChecked, props.value];
+			} else {
+				newChecked = currentChecked.filter((val: string) => val !== props.value);
+			}
+			props.parent.onChange(newChecked);
+		}
+	};
 	return (
 		<span className={ props.parent.display == "vertical" ? "displayVertical" : ""}>
 			<input type="checkbox" 
 				id={props.parent.name + "_" + props.text} 
 				name={props.text} value={props.value} 
+				checked={isChecked}
+				onChange={handleChange}
 				{...inputProps}
 			/>
-			<label htmlFor={props.text}>{props.text}</label>
+			<label htmlFor={props.parent.name + "_" + props.text}>{props.text}</label>
 		</span>
 	);
 }
@@ -589,4 +615,7 @@ export function FormFieldset() {
 		<></>
 	);
 }
+
+// Re-export FontSelector for use in forms
+export { FontSelector, CompoundFontSelector };
 

@@ -1,4 +1,8 @@
 
+/* ========================================
+=============  GRID STYLES   ==============
+======================================== */
+
 @mixin rowBase {
     display: grid ;
     gap: 10px; /* Spacing between grid items */

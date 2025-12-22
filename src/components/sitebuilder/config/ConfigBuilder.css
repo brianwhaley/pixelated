@@ -150,6 +150,17 @@
   margin-bottom: 15px;
 }
 
+.route-headers {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
 .route-item {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr auto;

@@ -2,13 +2,26 @@
 
 This guide provides detailed API documentation and usage examples for all Pixelated Components.
 
-## 📋 Table of Contents
+## � Reference Implementation
+
+For a complete working example of Pixelated Components in action, check out the [pixelated-admin](https://github.com/brianwhaley/pixelated-admin) project. This admin interface demonstrates real-world usage of all components with:
+
+- **Component Integration**: Live examples of component combinations
+- **Configuration Management**: Dynamic site configuration with ConfigBuilder
+- **Page Building**: Visual page construction workflows
+- **Authentication**: Secure admin access patterns
+- **Production Setup**: HTTPS, optimization, and deployment configurations
+
+## �📋 Table of Contents
 
 ### General Components
 - [Accordion](#accordion)
 - [Callout](#callout)
+- [CSS](#css)
 - [Loading](#loading)
+- [MicroInteractions](#microinteractions)
 - [Modal](#modal)
+- [Semantic](#semantic)
 - [SidePanel](#sidepanel)
 - [SmartImage](#smartimage)
 - [Tab](#tab)
@@ -311,6 +324,76 @@ import { SmartImage } from '@pixelated-tech/components';
 | `loading` | `'lazy' \| 'eager'` | `'lazy'` | Loading strategy |
 | `width` | `number` | - | Image width |
 | `height` | `number` | - | Image height |
+
+### CSS
+
+Utility functions for CSS optimization and loading.
+
+```tsx
+import { deferAllCSS, preloadAllCSS } from '@pixelated-tech/components';
+
+// Defer CSS loading for better performance
+deferAllCSS();
+
+// Preload all CSS files
+preloadAllCSS();
+```
+
+#### Functions
+- **`deferAllCSS()`**: Defers loading of all CSS stylesheets for improved page load performance
+- **`preloadAllCSS()`**: Preloads all CSS files with high priority
+
+### MicroInteractions
+
+Component for adding subtle CSS animations and interactions to page elements.
+
+```tsx
+import { MicroInteractions } from '@pixelated-tech/components';
+
+<MicroInteractions
+  buttonring={true}
+  cartpulse={true}
+  formglow={true}
+  imgscale={true}
+  scrollfadeElements=".fade-on-scroll"
+/>
+```
+
+#### Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `buttonring` | `boolean` | - | Add ring animation to buttons |
+| `cartpulse` | `boolean` | - | Pulse animation for cart elements |
+| `formglow` | `boolean` | - | Glow effect for form inputs |
+| `grayscalehover` | `boolean` | - | Grayscale to color transition on hover |
+| `imgscale` | `boolean` | - | Scale animation for images |
+| `imgtwist` | `boolean` | - | Twist animation for images |
+| `imghue` | `boolean` | - | Hue rotation for images |
+| `simplemenubutton` | `boolean` | - | Animation for simple menu buttons |
+| `scrollfadeElements` | `string` | - | CSS selector for elements to fade on scroll |
+
+### Semantic
+
+Semantic HTML layout components for structured content.
+
+```tsx
+import { PageSection, PageTitleHeader, GridContainer } from '@pixelated-tech/components';
+
+<PageSection layoutType="grid" autoFlow="row">
+  <PageTitleHeader title="Welcome" />
+  <GridContainer columns={3} gap="1rem">
+    <div>Content 1</div>
+    <div>Content 2</div>
+    <div>Content 3</div>
+  </GridContainer>
+</PageSection>
+```
+
+#### Components
+- **`PageSection`**: Semantic section with configurable layout
+- **`PageTitleHeader`**: H1 title with optional link
+- **`GridContainer`**: CSS Grid container with responsive columns
+- **`FlexContainer`**: Flexbox container with alignment options
 
 ---
 
@@ -1113,13 +1196,42 @@ interface SiteConfig {
     title?: string;
     description?: string;
   }>;
+  visualdesign?: {
+    'primary-color': string;
+    'secondary-color': string;
+    'accent1-color': string;
+    'accent2-color': string;
+    'bg-color': string;
+    'text-color': string;
+    'header-font-primary': string;
+    'header-font-fallback': string;
+    'header-font-generic': string;
+    'body-font-primary': string;
+    'body-font-fallback': string;
+    'body-font-generic': string;
+    'font-size1-min': string;
+    'font-size1-max': string;
+    'font-size2-min': string;
+    'font-size2-max': string;
+    'font-size3-min': string;
+    'font-size3-max': string;
+    'font-size4-min': string;
+    'font-size4-max': string;
+    'font-size5-min': string;
+    'font-size5-max': string;
+    'font-size6-min': string;
+    'font-size6-max': string;
+    'font-min-screen': string;
+    'font-max-screen': string;
+  };
 }
 ```
 
 #### Features
-- **Tabbed Interface**: Organized into "Site Info" and "Routes" tabs
+- **Tabbed Interface**: Organized into "Site Info", "Routes", and "Visual Design" tabs
 - **Comprehensive Site Info Management**: Edit all standard site metadata fields including PWA settings, contact info, and address
 - **Route Management**: Add, edit, and remove page routes with component mapping
+- **Visual Design Configuration**: Manage design tokens like colors, fonts, and spacing through a form-based interface
 - **Real-time Preview**: JSON preview of current configuration
 - **Save Functionality**: Callback-based configuration persistence with form validation enforcement
 - **Form Validation**: Required field validation for essential site information with visual feedback
@@ -1132,6 +1244,124 @@ The "Save Config" button enforces form validation before allowing configuration 
 - **Visual Feedback**: Invalid fields show validation errors with ❌ indicators
 - **Save Prevention**: Save action is blocked until all required validations pass
 - **Real-time Validation**: Form validates as you type with immediate feedback
+
+#### Visual Design Tab
+
+The Visual Design tab provides a form-based interface for configuring visual design tokens. These tokens are stored in the `visualdesign` object of the site configuration and can be used to maintain consistent theming across your application.
+
+**Supported Design Tokens:**
+- **Colors**: Primary, secondary, accent, text, and background colors
+- **Typography**: Header and body fonts with primary Google Fonts, web-safe fallbacks, and generic family fallbacks
+- **Layout**: Border radius, box shadows, transition durations
+
+**Usage in Components:**
+```tsx
+// Access visual design tokens from config
+const config = useConfig();
+const primaryColor = config.visualdesign?.['primary-color'] || '#369';
+```
+
+### FontSelector
+
+Autocomplete input component for selecting fonts with support for Google Fonts, web-safe fonts, and generic font families.
+
+```tsx
+import { FontSelector } from '@pixelated-tech/components';
+
+<FontSelector
+  id="header-font-primary"
+  name="header-font-primary"
+  label="Header Font (Google Fonts)"
+  fontType="google"
+  value="Montserrat"
+  onChange={(font) => console.log('Selected font:', font)}
+/>
+```
+
+#### Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | - | Unique identifier for the input |
+| `name` | `string` | - | Name attribute for form submission |
+| `label` | `string` | - | Display label for the input |
+| `fontType` | `'google' \| 'websafe' \| 'generic'` | - | Type of fonts to show in autocomplete |
+| `value` | `string` | `''` | Current selected font value |
+| `onChange` | `function` | - | Callback when font selection changes |
+| `required` | `boolean` | `false` | Whether the field is required |
+| `placeholder` | `string` | - | Placeholder text (auto-generated based on fontType) |
+
+#### Font Types
+
+- **`google`**: Shows Google Fonts with live preview links
+- **`websafe`**: Shows common web-safe fonts (Arial, Helvetica, etc.)
+- **`generic`**: Shows CSS generic font families (serif, sans-serif, etc.)
+
+#### Features
+
+- **Autocomplete**: Intelligent font suggestions as you type
+- **Google Fonts Integration**: Direct links to Google Fonts preview pages
+- **Web-safe Fallbacks**: Ensures font availability across devices
+- **Generic Families**: CSS generic font family support
+- **Accessibility**: Proper labeling and keyboard navigation
+
+### ConfigEngine
+
+Components for rendering visual design styles and Google Fonts imports from configuration data.
+
+#### VisualDesignStyles
+
+Renders CSS custom properties from visual design configuration tokens.
+
+```tsx
+import { VisualDesignStyles } from '@pixelated-tech/components';
+
+<VisualDesignStyles visualdesign={{
+  'primary-color': '#007bff',
+  'header-font-primary': 'Montserrat',
+  'header-font-fallback': 'Arial',
+  'header-font-generic': 'sans-serif',
+  'font-size1-min': '14px',
+  'font-size1-max': '18px'
+}} />
+```
+
+**Generated CSS:**
+```css
+:root {
+  --primary-color: #007bff;
+  --header-font-family: "Montserrat", "Arial", "sans-serif";
+  --font-size1: clamp(var(--font-size1-min), calc(var(--font-size1-min) + ((var(--font-size1-max) - var(--font-size1-min)) * ((100vw - var(--font-min-screen)) / (var(--font-max-screen) - var(--font-min-screen))))), var(--font-size1-max));
+}
+h1 { font-size: var(--font-size1); }
+```
+
+#### GoogleFontsImports
+
+Automatically generates Google Fonts link tags for fonts specified in visual design configuration.
+
+```tsx
+import { GoogleFontsImports } from '@pixelated-tech/components';
+
+<GoogleFontsImports visualdesign={{
+  'header-font-primary': 'Montserrat',
+  'body-font-primary': 'Open Sans'
+}} />
+```
+
+**Generated HTML:**
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+```
+
+#### Features
+
+- **Font Stack Generation**: Automatically builds CSS font-family stacks from 3-field font configuration
+- **Responsive Typography**: Generates fluid font sizes using CSS clamp() for responsive design
+- **Google Fonts Integration**: Automatically imports only the Google Fonts used in the design
+- **Web-safe Font Filtering**: Excludes web-safe fonts from Google Fonts imports to reduce loading
+- **Server-safe**: Both components are safe to use in server components and API routes
 
 ---
 

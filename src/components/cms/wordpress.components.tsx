@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from './cloudinary.image';

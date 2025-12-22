@@ -18,7 +18,7 @@
 <h3 align="center">Pixelated Components</h3>
 
   <p align="center">
-    A comprehensive React component library for modern web development, featuring CMS integrations, UI components, and SEO optimization tools.
+    A comprehensive React component library for modern web development, featuring CMS integrations, UI components, SEO optimization tools, and accessibility-first design.
     <br />
     <a href="https://github.com/brianwhaley/pixelated-components"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,6 +60,27 @@ This is a library of components I have found useful to build web sites quickly.
 
 
 
+## ♿ Accessibility
+
+Pixelated Components is committed to creating inclusive web experiences. All components are built with accessibility in mind and include:
+
+- **WCAG 2.1 AA compliance** - Components meet web accessibility guidelines
+- **Keyboard navigation** - Full keyboard support for all interactive elements
+- **Screen reader support** - Proper ARIA labels, roles, and semantic HTML
+- **Focus management** - Clear focus indicators and logical tab order
+- **Color contrast** - High contrast ratios for text and interactive elements
+- **Semantic HTML** - Proper use of headings, landmarks, and structural elements
+
+### Accessibility Features
+- Automatic ARIA label generation
+- Focus trap management for modals and overlays
+- Skip links for keyboard users
+- Reduced motion support for users with vestibular disorders
+- High contrast mode compatibility
+
+
+
+
 ## 📦 Installation & Setup
 
 ### Requirements
@@ -93,53 +114,125 @@ npm install react react-dom prop-types
 
 This library is written in TypeScript and provides full type definitions. No additional setup required.
 
+### Reference Implementation
 
+For a complete working example of Pixelated Components in action, check out the [pixelated-admin](https://github.com/brianwhaley/pixelated-admin) project. This admin interface demonstrates:
 
-## 🧩 Component Categories
+- **Component Integration**: Real-world usage of all major components
+- **Configuration Management**: Dynamic site configuration with ConfigBuilder
+- **Page Building**: Visual page construction with PageBuilderUI
+- **Authentication**: NextAuth.js integration for secure admin access
+- **Deployment Ready**: Production-ready setup with HTTPS and optimized builds
+
+```bash
+# Clone the reference implementation
+git clone https://github.com/brianwhaley/pixelated-admin.git
+cd pixelated-admin
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3006` to explore the admin interface and see components in action.
 
 ### General Components
 Reusable UI components for common patterns:
 - **Accordion** - Expandable content sections using native `<details>` elements
 - **Callout** - Flexible content highlight blocks with image support
-- **Modal** - Dialog overlays and popups
+- **CSS** - Dynamic CSS utilities and styling helpers
+- **Image** - Advanced image component with lazy loading and optimization
 - **Loading** - Progress indicators and loading states
-- **Panel** - Content containers with various layouts
+- **MicroInteractions** - Subtle animations and interaction effects
+- **Modal** - Dialog overlays and popups
+- **Semantic** - Semantic HTML structure components
+- **SidePanel** - Slide-out panel component for additional content
+- **Table** - Data display and table components
 
 ### CMS Integration
 Headless CMS and content management components:
 - **WordPress** - Blog post integration and display with automatic Photon CDN URL processing
-- **Contentful** - Headless CMS components and utilities
+- **Contentful** - Headless CMS components and utilities with delivery and management APIs
 - **PageBuilder** - Dynamic page construction from JSON
 - **PageEngine** - Advanced page rendering with Contentful integration
 
 ### UI Components
 User interface and interaction components:
 - **Carousel** - Image and content sliders (Hero, Reviews, Portfolio)
-- **Forms** - Form builder and validation components
+- **Forms** - Form builder, validation, and emailer components
+- **FormBuilder** - Advanced form construction and configuration
+- **FormComponents** - Individual form field components and utilities
+- **FormEngine** - Form rendering and processing engine
 - **Menu** - Navigation components (Simple, Accordion, Expando)
-- **Tables** - Data display and table components
+- **Tab** - Tabbed interface component for organizing content
 - **Tiles** - Image grid and tile layouts
+
+### Development Tools
+Components for development, configuration, and site building:
+- **ComponentPropertiesForm** - Form for editing component properties
+- **ComponentSelector** - Component selection interface
+- **ComponentTree** - Visual component hierarchy display
+- **ConfigBuilder** - Interactive configuration builder for site settings, metadata, routes, and visual design tokens
+- **PageBuilderUI** - User interface for page building
+- **SaveLoadSection** - Save and load functionality for configurations
 
 ### SEO & Schema
 Search engine optimization and structured data:
+- **404** - Custom 404 error page component
+- **GoogleAnalytics** - Google Analytics integration
+- **GoogleMap** - Interactive Google Maps component
+- **GoogleSearch** - Google Custom Search integration
 - **JSON-LD** - Structured data schemas (LocalBusiness, Recipe, BlogPosting, etc.)
+- **Manifest** - Web app manifest generation
 - **MetaTags** - Dynamic meta tag injection
+- **SchemaBlogPosting** - Blog post structured data
+- **SchemaLocalBusiness** - Local business structured data
+- **SchemaRecipe** - Recipe structured data
+- **SchemaServices** - Services structured data
+- **SchemaWebsite** - Website structured data
 - **Sitemap** - XML sitemap generation
 - **Social Cards** - Open Graph and Twitter card generation
+- **BuzzwordBingo** - Interactive buzzword bingo game
+- **Markdown** - Markdown rendering component
+- **Recipe** - Recipe display component
+- **Resume** - Resume/CV display component
+- **Timeline** - Timeline visualization component
 
 ### Third-Party Integrations
 External service integrations:
 - **Calendly** - Scheduling and appointment booking
 - **Cloudinary** - Image optimization and delivery
+- **GoogleReviews** - Google business reviews integration
+- **Gravatar** - User avatar integration
 - **HubSpot** - CRM and marketing automation
-- **PayPal** - Payment processing
 - **Instagram** - Social media image integration
 - **Flickr** - Photo sharing integration
-- **Gravatar** - User avatar integration
-- **Google** - Analytics, Maps, and Search integration
+- **PayPal** - Payment processing
+- **ShoppingCart** - E-commerce shopping cart functionality
 - **eBay** - Store listings and shopping cart
 - **NerdJokes** - Entertainment content integration
+- **Yelp** - Business reviews and ratings
 
+
+## 🎨 Visual Design Configuration
+
+The ConfigBuilder now includes a **Visual Design** tab that allows users to configure visual design tokens such as colors, fonts, spacing, and other design system variables. These tokens are stored in the `routes.json` file under the `visualdesign` object and can be used throughout your application for consistent theming.
+
+### Features:
+- **Color Management**: Primary, secondary, accent colors with color picker inputs
+- **Typography**: Font family and base font size settings
+- **Spacing & Layout**: Border radius, box shadows, transitions
+- **Form-Based Editing**: User-friendly form interface powered by FormEngine
+- **JSON Storage**: Design tokens stored as flattened key-value pairs in routes.json
+
+### Usage:
+```tsx
+import { ConfigBuilder } from '@pixelated-tech/components';
+
+function MyConfigPage() {
+  return <ConfigBuilder />;
+}
+```
+
+The visual design tokens can be accessed in your components via the config context or directly from the routes.json file.
 
 
 ## � Quick Start
@@ -182,7 +275,7 @@ npm run storybook
 - [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
 - [ ] Zapier Integration
 - [ ] Hero Banner: headline, subtext, CTA, background image/video, overlay.
-- [ ] Accessibility Enhancer: wrapper component that automatically improves accessibility across Pixelated sites by adding ARIA labels, roles, and states to existing components. Includes color contrast checking, keyboard navigation helpers, and alt-text suggestions for images.
+- [ ] Accessibility Enhancer: wrapper component that automatically improves accessibility across Pixelated sites by adding ARIA labels, roles, and states to existing components. Includes color contrast checking, keyboard navigation helpers, alt-text suggestions for images, and automated accessibility audits.
 - [ ] SEO Dashboard with AI Integration: component that analyzes site content, suggests optimizations, integrates with AI for meta descriptions and keyword research.
 
 ### CI / CD Improvements
@@ -197,22 +290,35 @@ npm run storybook
 - [ ] find a better solution than to generate image via build script in amplify for json for sitemap creation
 - [ ] **SocialCards Component**: Fix state initialization to track prop changes properly.
 - [ ] **Modal Component**: Clarify content source pattern (accepts both `modalContent` and `children`).
-- [ ] **Form Components**: Fix validation state reset when input props change.
 - [ ] **Carousel Component**: Fix active card state reset when `props.cards` changes.
 - [ ] **NerdJoke Component**: Add props to useEffect dependencies if endpoint becomes configurable.
 - [ ] **GoogleReviews Component**: Add carousel/grid display modes.
 - [ ] **GoogleReviews Component**: Add API key to config provider instead of hardcoding.
 - [ ] **Instagram Component**: Add accessToken and userId to config provider for centralized API credentials.
+- [ ] **Critters Integration**: Explore adding critters CSS inlining tool for improved page load performance and critical CSS optimization.
 
-### SSR Fixes
-- [ ] **cloudinary.image.tsx** (`SmartImage`): Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **wordpress.components.tsx** (`BlogPostList`, etc.): Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts  
-- [ ] **pagebuilder/form/formcomponents.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **cms/hubspot.components.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **cms/gravatar.components.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **structured/recipe.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **structured/timeline.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
-- [ ] **structured/markdown.tsx**: Add `"use client"` or refactor to avoid `usePixelatedConfig` in server contexts
+### Platform Enhancements
+- [ ] **Project Scaffolding CLI**: Interactive CLI tool that generates complete Next.js projects with pixelated-components pre-configured, including routes.json, layout.tsx, package.json, and basic page structure
+- [ ] **Template Marketplace**: Pre-built industry-specific templates (restaurant, law firm, contractor, etc.) that users can clone and customize
+- [ ] **Configuration Wizard**: Step-by-step setup wizard that collects business info, generates site configuration, and creates initial content structure
+- [ ] **Centralized Site Manager**: Web dashboard for managing multiple pixelated sites, with bulk updates, version control, and deployment status monitoring
+- [ ] **Site Health Monitoring**: Automated monitoring dashboard that checks site performance, broken links, SEO scores, and security vulnerabilities across all sites
+- [ ] **Content Migration Tools**: Automated importers for WordPress, Squarespace, Wix, and other platforms to migrate content to pixelated sites
+- [ ] **A/B Testing Framework**: Built-in experimentation system for testing different layouts, content, and CTAs with automatic winner selection
+- [ ] **Personalization Engine**: Dynamic content delivery based on user behavior, location, and preferences
+- [ ] **Hot Module Replacement for Configs**: Live preview of configuration changes without full rebuilds
+- [ ] **Automated Dependency Updates**: Smart update system that tests component changes across all sites before deployment
+- [ ] **Rollback System**: One-click rollback to previous versions with automatic database and asset restoration
+- [ ] **Performance Budget Tracker**: Automated monitoring of Core Web Vitals with alerts when sites exceed performance budgets
+- [ ] **ConfigBuilder SEO Enhancement**: Upgrade ConfigBuilder with AI-powered meta description generation, keyword optimization suggestions, and automated schema markup
+- [ ] **Conversion Funnel Builder**: Visual funnel creation with automated tracking, A/B testing, and optimization recommendations
+- [ ] **Automated Security Scanner**: Regular security audits with vulnerability detection and automated fixes
+- [ ] **GDPR Compliance Toolkit**: Automated cookie consent, data mapping, and privacy policy generation
+- [ ] **API Gateway**: Unified API management for connecting to CRM, email marketing, payment processors, and other business tools
+- [ ] **Webhook Automation**: Event-driven automation for form submissions, new content, user registrations, and business workflows
+- [ ] **Third-Party Sync Engine**: Bidirectional sync with tools like HubSpot, Mailchimp, QuickBooks, and project management systems
+- [ ] **Documentation Auto-Generator**: Automatically generated API docs, component usage guides, and deployment instructions
+
 
 See the [open issues](https://github.com/brianwhaley/pixelated-components/issues) for a full list of proposed features (and known issues).
 
@@ -270,16 +376,16 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 ### Overview
 
-**Current Status**: ✅ 2,244 tests passing across 67 test files
+**Current Status**: ✅ 2,246 tests passing across 67 test files
 
 | Metric | Value |
 |--------|-------|
 | Test Files | 67 |
-| Total Tests | 2,244 |
-| Coverage (Statements) | 76.59% |
-| Coverage (Lines) | 79.45% |
-| Coverage (Functions) | 78.33% |
-| Coverage (Branches) | 66.79% |
+| Total Tests | 2,246 |
+| Coverage (Statements) | 76.11% |
+| Coverage (Lines) | 78.91% |
+| Coverage (Functions) | 77.95% |
+| Coverage (Branches) | 66.58% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 

@@ -1,8 +1,13 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { Tab } from '../../general/tab';
+import { Accordion } from '../../general/accordion';
 import { FormEngine } from '../form/formengine';
 import siteInfoForm from '../../../data/siteinfo-form.json';
+import visualDesignForm from '../../../data/visualdesignform.json';
+import defaultConfigData from '../../../data/routes.json';
 import './ConfigBuilder.css';
 
 const SiteInfoPropTypes = {
@@ -43,42 +48,171 @@ const RoutePropTypes = {
 };
 type RouteType = InferProps<typeof RoutePropTypes>;
 
+const VisualDesignPropTypes = {
+	'primary-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'secondary-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'accent1-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'accent2-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'bg-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'text-color': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'header-font': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'body-font': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size1-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size1-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size2-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size2-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size3-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size3-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size4-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size4-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size5-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size5-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size6-min': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-size6-max': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-min-screen': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+	'font-max-screen': PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		type: PropTypes.string.isRequired,
+		group: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired
+	}).isRequired,
+};
+type VisualDesignType = InferProps<typeof VisualDesignPropTypes>;
+
 const SiteConfigPropTypes = {
 	siteInfo: PropTypes.shape(SiteInfoPropTypes).isRequired,
 	routes: PropTypes.arrayOf(PropTypes.shape(RoutePropTypes).isRequired).isRequired,
+	visualdesign: PropTypes.shape(VisualDesignPropTypes),
 };
 type SiteConfigType = InferProps<typeof SiteConfigPropTypes>;
+
+type FullConfigType = SiteConfigType;
 
 const ConfigBuilderPropTypes = {
 	initialConfig: PropTypes.shape(SiteConfigPropTypes),
 	onSave: PropTypes.func,
 };
-type ConfigBuilderPropsType = InferProps<typeof ConfigBuilderPropTypes>;
+type ConfigBuilderProps = InferProps<typeof ConfigBuilderPropTypes>;
 
-export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType) {
-	const [config, setConfig] = useState<SiteConfigType>(initialConfig || { 
-		siteInfo: { 
-			name: '', 
-			author: '', 
-			description: '', 
-			url: '', 
-			email: '', 
-			favicon: '/favicon.ico', 
-			favicon_sizes: '64x64 32x32 24x24 16x16', 
-			favicon_type: 'image/x-icon', 
-			theme_color: '#ffffff', 
-			background_color: '#ffffff', 
-			default_locale: 'en', 
-			display: 'standalone',
-			address: {
-				streetAddress: '',
-				addressLocality: '',
-				addressRegion: '',
-				postalCode: '',
-				addressCountry: ''
-			}
-		}, 
-		routes: [] 
+export function ConfigBuilder(props: ConfigBuilderProps) {
+	const { initialConfig, onSave } = props;
+	const defaultConfig: SiteConfigType = {
+		siteInfo: defaultConfigData.siteInfo as SiteInfoType,
+		routes: [], // Start with empty routes, the JSON structure is different
+		visualdesign: defaultConfigData.visualdesign as VisualDesignType
+	};
+
+	const [config, setConfig] = useState<FullConfigType>({
+		...defaultConfig,
+		...initialConfig,
+		siteInfo: { ...defaultConfig.siteInfo, ...initialConfig?.siteInfo },
+		routes: initialConfig?.routes || [],
+		visualdesign: { ...(defaultConfig.visualdesign as VisualDesignType), ...initialConfig?.visualdesign }
 	});
 
 	const [socialLinks, setSocialLinks] = useState<string[]>(initialConfig?.siteInfo?.sameAs || ['']);
@@ -128,9 +262,10 @@ export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType)
 
 	useEffect(() => {
 		if (initialConfig) {
-			setConfig(prev => ({
+			setConfig((prev: any) => ({
 				siteInfo: { ...prev.siteInfo, ...initialConfig.siteInfo },
-				routes: initialConfig.routes || []
+				routes: initialConfig.routes || [],
+				visualdesign: initialConfig.visualdesign || prev.visualdesign || {}
 			}));
 			setSocialLinks(initialConfig.siteInfo?.sameAs || ['']);
 		}
@@ -145,11 +280,32 @@ export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType)
 				value: config.siteInfo[field.props.name as keyof SiteInfoType] || '',
 				defaultValue: config.siteInfo[field.props.name as keyof SiteInfoType] || (field.props as any).defaultValue || '',
 				onChange: (value: any) => {
-					setConfig(prev => ({
+					setConfig((prev: any) => ({
 						...prev,
 						siteInfo: {
 							...prev.siteInfo,
 							[field.props.name]: value
+						}
+					}));
+				}
+			}
+		}))
+	};
+
+	// Visual Design form data
+	const visualFormData = {
+		fields: (visualDesignForm.fields || []).map((field: any) => ({
+			...field,
+			props: {
+				...field.props,
+				value: (config.visualdesign && (config.visualdesign as any)[field.props.name]) ? ((config.visualdesign as any)[field.props.name].value ?? (config.visualdesign as any)[field.props.name]) : '',
+				defaultValue: (config.visualdesign && (config.visualdesign as any)[field.props.name]) ? ((config.visualdesign as any)[field.props.name].value ?? (config.visualdesign as any)[field.props.name]) : (field.props as any).defaultValue || '',
+				onChange: (value: any) => {
+					setConfig((prev: any) => ({
+						...prev,
+						visualdesign: {
+							...(prev.visualdesign || {}),
+							[field.props.name]: { value }
 						}
 					}));
 				}
@@ -339,6 +495,13 @@ export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType)
 						content: (
 							<div className="routes-section">
 								<div className="routes-list">
+									<div className="route-headers">
+										<span>Path</span>
+										<span>Component</span>
+										<span>Title</span>
+										<span>Description</span>
+										<span>Actions</span>
+									</div>
 									{config.routes.map((route, index) => (
 										<div key={index} className="route-item">
 											<input
@@ -373,6 +536,20 @@ export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType)
 							</div>
 						)
 					}
+					,
+					{
+						id: 'visualdesign',
+						label: 'Visual Design',
+						content: (
+							<div className="visual-design-section">
+								<FormEngine
+									formData={visualFormData as any}
+									name="visualdesign"
+									id="visualdesign"
+								/>
+							</div>
+						)
+					}
 				]}
 				orientation="top"
 			/>
@@ -388,7 +565,12 @@ export function ConfigBuilder({ initialConfig, onSave }: ConfigBuilderPropsType)
 					Please fill in all required fields (marked with *) before saving.
 				</div>
 			)}
-			<pre>{JSON.stringify(config, null, 2)}</pre>
+			<Accordion items={[
+				{
+					title: 'Configuration Preview',
+					content: <pre>{JSON.stringify(config, null, 2)}</pre>
+				}
+			]} />
 		</div>
 	);
 }

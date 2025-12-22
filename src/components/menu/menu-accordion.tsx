@@ -4,6 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import './menu-accordion.css';
 
+const hamburgerIcon = "≡"; /* (U+2261) */ /* ||| */
+
 declare global {
 	interface Window {
 		moveMenu: () => void;
@@ -223,7 +225,7 @@ export function MenuAccordionButton() {
 			onClick={slideMobilePanel}
 			suppressHydrationWarning
 		>
-			<span className="hamburger text-outline">|||</span>
+			<span className="hamburger text-outline">{hamburgerIcon}</span>
 			{ /* <img src="/images/icons/mobile-menu2.png" title="Mobile Menu" alt="Mobile Menu"/> */ }
 		</button>
 	);

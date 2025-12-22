@@ -58,9 +58,65 @@ export const ConfigBuilderUI = {
 				{ path: '/services', component: 'ServicesPage', title: 'Services', description: 'What we offer' },
 				{ path: '/contact', component: 'ContactPage', title: 'Contact', description: 'Get in touch' },
 			],
+			visualdesign: {
+				'primary-color': '#369',
+				'secondary-color': '#666',
+				'accent-color': '#f39c12',
+				'text-color': '#333',
+				'background-color': '#fff',
+				'font-family': 'Arial, sans-serif',
+				'font-size-base': '16px',
+				'border-radius': '4px'
+			}
 		},
 		onSave: (config: any) => {
 			downloadJsonFile(config, 'routes.json');
 		}
 	},
+};
+
+export const VisualDesignTab = {
+	args: {
+		initialConfig: {
+			siteInfo: {
+				name: 'Design Focused Site',
+				author: 'Design Team',
+				description: 'A site with custom visual design',
+				url: 'https://designsite.com',
+				email: 'design@designsite.com',
+				favicon: '/favicon.ico',
+				favicon_sizes: '64x64',
+				favicon_type: 'image/x-icon',
+				theme_color: '#369',
+				background_color: '#ffffff',
+				default_locale: 'en',
+				display: 'standalone'
+			},
+			routes: [
+				{ path: '/', component: 'HomePage', title: 'Home' }
+			],
+			visualdesign: {
+				'primary-color': '#369',
+				'secondary-color': '#666',
+				'accent-color': '#f39c12',
+				'text-color': '#333333',
+				'background-color': '#ffffff',
+				'font-family': 'Arial, sans-serif',
+				'font-size-base': '16px',
+				'border-radius': '4px',
+				'box-shadow': '0 2px 4px rgba(0,0,0,0.1)',
+				'transition-duration': '0.3s'
+			}
+		},
+		onSave: (config: any) => {
+			downloadJsonFile(config, 'visualdesign-config.json');
+		}
+	},
+	parameters: {
+		docs: {
+			description: {
+				story: 'Showcases the Visual Design tab where users can configure visual tokens like colors, fonts, and spacing.'
+			}
+		}
+	}
 };

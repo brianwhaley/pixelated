@@ -27,7 +27,7 @@ export default function SidePanel({
 	width = '300px',
 	showOverlay = true,
 	showTab = false,
-	tabIcon,
+	tabIcon /* = "≡" */ ,
 	tabLabel,
 	children,
 	className = ''

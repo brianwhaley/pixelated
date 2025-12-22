@@ -2,6 +2,7 @@ import React from 'react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ConfigBuilder } from '../components/sitebuilder/config/ConfigBuilder';
+import defaultConfigData from '../data/routes.json';
 
 describe('ConfigBuilder Component', () => {
   const mockOnSave = vi.fn();
@@ -60,6 +61,53 @@ describe('ConfigBuilder Component', () => {
       render(<ConfigBuilder />);
       expect(screen.getByText('Site Info')).toBeInTheDocument();
       expect(screen.getByText('Routes')).toBeInTheDocument();
+      expect(screen.getByText('Visual Design')).toBeInTheDocument();
+    });
+  });
+
+  describe('Visual Design Tab Functionality', () => {
+    it('should render visual design form with initial config', () => {
+      const initialConfig = {
+        siteInfo: { 
+          ...defaultConfigData.siteInfo,
+          name: 'Test Site', 
+          author: 'Test Author',
+          description: 'A test site', 
+          url: 'https://test.com',
+          email: 'test@test.com',
+          display: 'standalone',
+          favicon_sizes: '64x64 32x32 24x24 16x16',
+          favicon_type: 'image/x-icon',
+          theme_color: '#ffffff',
+          background_color: '#ffffff',
+          default_locale: 'en'
+        },
+        routes: [],
+        visualdesign: defaultConfigData.visualdesign
+      };
+      render(<ConfigBuilder initialConfig={initialConfig} />);
+      
+      // Switch to Visual Design tab
+      const visualDesignTab = screen.getByText('Visual Design');
+      fireEvent.click(visualDesignTab);
+
+      // Check that form fields are rendered
+      const primaryColorInput = screen.getByLabelText('Primary color');
+      expect(primaryColorInput).toBeInTheDocument();
+    });
+
+    it('should allow editing visual design form fields', () => {
+      render(<ConfigBuilder />);
+      
+      // Switch to Visual Design tab
+      const visualDesignTab = screen.getByText('Visual Design');
+      fireEvent.click(visualDesignTab);
+
+      // Fill out a form field
+      const primaryColorInput = screen.getByLabelText('Primary color');
+      fireEvent.change(primaryColorInput, { target: { value: '#123456' } });
+
+      expect((primaryColorInput as HTMLInputElement).value).toBe('#123456');
     });
   });
 
@@ -271,6 +319,13 @@ describe('ConfigBuilder Component', () => {
       fireEvent.click(routesTab);
       
       expect(screen.getByText('Add Route')).toBeInTheDocument();
+
+      // Switch to Visual Design tab
+      const visualDesignTab = screen.getByText('Visual Design');
+      fireEvent.click(visualDesignTab);
+
+      // Check that Visual Design content is rendered (FormEngine with form fields)
+      expect(screen.getByLabelText('Primary color')).toBeInTheDocument();
     });
 
     it('should maintain tab state', () => {
@@ -305,8 +360,8 @@ describe('ConfigBuilder Component', () => {
     it('should update preview when config changes', async () => {
       render(<ConfigBuilder />);
       
-      // Initially should have empty name
-      expect(screen.getByText((content) => content.includes('"name": ""'))).toBeInTheDocument();
+      // Initially should have default name from imported config
+      expect(screen.getByText((content) => content.includes('"name": "Pixelated Technologies"'))).toBeInTheDocument();
       
       // Update name
       const nameInput = screen.getByLabelText('Site Name') as HTMLInputElement;

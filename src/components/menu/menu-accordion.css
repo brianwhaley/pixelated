@@ -24,6 +24,15 @@
 
 
 .panelMenuButton .hamburger{
+    cursor: pointer;
+   	font-family: Verdana;
+	font-size: 1.5rem;
+    color: #CCC;
+
+}
+
+.panelMenuButton .hamburger2{
+	/* 3 lines instead of unicode hamburger (U+2261) */
     /* the tricks */
 	/* display: block; */
 	/* display inline-block is fine too */
@@ -40,6 +49,7 @@
 	padding-top: 5px;
 
 }
+
 /* hamburger hover style */
 /* .accordionMenu .hamburger:hover {
     color: #FFC75F;

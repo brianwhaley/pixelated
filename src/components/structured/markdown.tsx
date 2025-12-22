@@ -1,4 +1,6 @@
  
+'use client';
+ 
 /* https://randyperkins2k.medium.com/writing-a-simple-markdown-parser-using-javascript-1f2e9449a558 */
 
 import React from "react";
