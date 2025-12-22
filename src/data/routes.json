@@ -3,6 +3,7 @@
 		"name": "Pixelated Technologies",
 		"author": "Brian Whaley",
 		"description": "Custom web development and digital design agency specializing in React, Next.js, and modern web technologies",
+		"keywords": "pixelated, web development, react, next.js, custom websites, digital design, small business",
 		"url": "https://pixelated.tech",
 		"email": "info@pixelated.tech",
 		"favicon": "/favicon.ico",
@@ -28,8 +29,7 @@
 			"https://www.linkedin.com/in/brianwhaley",
 			"https://github.com/brianwhaley",
 			"https://twitter.com/brianwhaley"
-		],
-		"keywords": "pixelated, web development, react, next.js, custom websites, digital design, small business"
+		]
 	},
 	"visualdesign": {
 		"primary-color": { "value": "#369", "type": "color", "group": "palette", "label": "Primary color" },

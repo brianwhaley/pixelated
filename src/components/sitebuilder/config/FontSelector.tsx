@@ -1,56 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { getFontOptions } from './google-fonts';
+import { WEB_SAFE_FONTS, GENERIC_FAMILIES, type FontOption } from './fonts';
 import './FontSelector.css';
 
-interface FontOption {
-  value: string;
-  label: string;
-  category?: string;
-}
-
 interface FontSelectorProps {
-  id: string;
-  name: string;
-  label: string;
-  fontType?: 'google' | 'websafe' | 'generic';
-  required?: boolean;
-  placeholder?: string;
-  value?: string;
-  onChange?: (value: string) => void;
+	id: string;
+	name: string;
+	label: string;
+	fontType: 'google' | 'websafe' | 'generic';
+	required?: boolean;
+	placeholder?: string;
+	value?: string;
+	onChange?: (value: string) => void;
 }
-
-const WEBSafe_FONTS: FontOption[] = [
-	{ value: 'Arial', label: 'Arial' },
-	{ value: 'Bookman', label: 'Bookman' },
-	{ value: 'Comic Sans MS', label: 'Comic Sans MS' },
-	{ value: 'Courier New', label: 'Courier New' },
-	{ value: 'Garamond', label: 'Garamond' },
-	{ value: 'Geneva', label: 'Geneva' },
-	{ value: 'Georgia', label: 'Georgia' },
-	{ value: 'Helvetica', label: 'Helvetica' },
-	{ value: 'Impact', label: 'Impact' },
-	{ value: 'Lucida Console', label: 'Lucida Console' },
-	{ value: 'Monaco', label: 'Monaco' },
-	{ value: 'Palatino', label: 'Palatino' },
-	{ value: 'Tahoma', label: 'Tahoma' },
-	{ value: 'Times New Roman', label: 'Times New Roman' },
-	{ value: 'Trebuchet MS', label: 'Trebuchet MS' },
-	{ value: 'Verdana', label: 'Verdana' },
-];
-
-const GENERIC_FAMILIES: FontOption[] = [
-	{ value: 'cursive', label: 'cursive' },
-	{ value: 'fantasy', label: 'fantasy' },
-	{ value: 'monospace', label: 'monospace' },
-	{ value: 'sans-serif', label: 'sans-serif' },
-	{ value: 'serif', label: 'serif' },
-	{ value: 'system-ui', label: 'system-ui' },
-	{ value: 'ui-monospace', label: 'ui-monospace' },
-	{ value: 'ui-rounded', label: 'ui-rounded' },
-	{ value: 'ui-sans-serif', label: 'ui-sans-serif' },
-	{ value: 'ui-serif', label: 'ui-serif' },
-];
 
 export function FontSelector({
 	id,
@@ -86,7 +49,7 @@ export function FontSelector({
 		case 'google':
 			return googleFonts;
 		case 'websafe':
-			return WEBSafe_FONTS;
+			return WEB_SAFE_FONTS;
 		case 'generic':
 			return GENERIC_FAMILIES;
 		default:

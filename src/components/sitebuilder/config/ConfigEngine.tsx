@@ -1,10 +1,28 @@
 import React from 'react';
 import { generateGoogleFontsUrl } from './google-fonts';
+import { ALL_WEBSAFE_FONTS } from './fonts';
 
 export function VisualDesignStyles({ visualdesign }: { visualdesign?: Record<string, any> }) {
 	const tokens = visualdesign || {};
 
 	const resolveValue = (v: any) => (v && typeof v === 'object' && 'value' in v) ? v.value : v;
+
+	// Check if Google Fonts are being used
+	const hasGoogleFonts = () => {
+		for (const [key, val] of Object.entries(tokens)) {
+			const value = resolveValue(val);
+			if ((key === 'header-font' || key === 'body-font') && typeof value === 'string') {
+				// Check if the font stack contains non-web-safe fonts
+				const fonts = value.split(',').map((f: string) => f.trim().replace(/["']/g, ''));
+				for (const font of fonts) {
+					if (!ALL_WEBSAFE_FONTS.some(f => f.value === font)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	};
 
 	const varLines: string[] = [];
 	// Always include base font sizing first (from pixelated.visualdesign.scss)
@@ -81,7 +99,19 @@ export function VisualDesignStyles({ visualdesign }: { visualdesign?: Record<str
 		...fontLines
 	].join('\n');
 
-	return <style dangerouslySetInnerHTML={{ __html: css }} />;
+	const googleFontsUsed = hasGoogleFonts();
+
+	return (
+		<>
+			{googleFontsUsed && (
+				<>
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				</>
+			)}
+			<style dangerouslySetInnerHTML={{ __html: css }} />
+		</>
+	);
 }
 
 /**
@@ -89,14 +119,14 @@ export function VisualDesignStyles({ visualdesign }: { visualdesign?: Record<str
  */
 export function GoogleFontsImports({ visualdesign }: { visualdesign?: Record<string, any> }) {
 	const tokens = visualdesign || {};
+
 	const fonts: string[] = [];
 
 	// Extract Google font names from the new 3-field font structure
 	for (const [key, val] of Object.entries(tokens)) {
 		if (key.endsWith('-primary') && typeof val === 'string' && val.trim()) {
 			// Only include fonts that are not web-safe (web-safe fonts don't need Google Fonts import)
-			const webSafeFonts = ['Arial', 'Helvetica', 'Times New Roman', 'Times', 'Courier New', 'Courier', 'Georgia', 'Palatino', 'Garamond', 'Bookman', 'Comic Sans MS', 'Trebuchet MS', 'Arial Black', 'Impact', 'Lucida Sans Unicode', 'Lucida Grande', 'MS Sans Serif', 'MS Serif', 'New York', 'System', 'Apple System', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue'];
-			if (!webSafeFonts.includes(val.trim())) {
+			if (!ALL_WEBSAFE_FONTS.some(f => f.value === val.trim())) {
 				fonts.push(val.trim());
 			}
 		}

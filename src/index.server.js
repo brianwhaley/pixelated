@@ -16,6 +16,7 @@ export * from './components/config/config.types';
 
 export * from './components/sitebuilder/config/ConfigEngine';
 export * from './components/sitebuilder/config/google-fonts';
+export * from './components/sitebuilder/config/fonts';
 export * from './components/sitebuilder/form/formutils';
 export * from './components/sitebuilder/form/formtypes';
 export * from './components/sitebuilder/page/lib/componentGeneration';

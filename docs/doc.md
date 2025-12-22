@@ -27,9 +27,9 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "use client everywhere, accordion hamburger menu, sitebuilder config includes new visual design section, config engine to render, configbuilder to edit, google fonts integration, cont selector components"
+git commit -m "refactor font arrays, export preconnects for google fonts"
 git push -u pixelated-components dev --tags --force
-git push -u pixelated-components dev:main -f
+git push pixelated-components dev:main -f
 npm login
 npm publish --access public --otp=000000
 

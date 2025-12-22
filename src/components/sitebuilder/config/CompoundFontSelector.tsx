@@ -62,7 +62,7 @@ export function CompoundFontSelector({
 					required={required}
 					placeholder="Select Google Font"
 					value={fonts.primary}
-					onChange={(val) => handleFontChange('primary', val)}
+					onChange={(val: string) => handleFontChange('primary', val)}
 				/>
 				<FontSelector
 					id={`${id}-fallback`}
@@ -72,7 +72,7 @@ export function CompoundFontSelector({
 					required={false}
 					placeholder="Select web-safe font"
 					value={fonts.fallback}
-					onChange={(val) => handleFontChange('fallback', val)}
+					onChange={(val: string) => handleFontChange('fallback', val)}
 				/>
 				<FontSelector
 					id={`${id}-generic`}
@@ -82,7 +82,7 @@ export function CompoundFontSelector({
 					required={false}
 					placeholder="Select generic family"
 					value={fonts.generic}
-					onChange={(val) => handleFontChange('generic', val)}
+					onChange={(val: string) => handleFontChange('generic', val)}
 				/>
 			</div>
 		</div>

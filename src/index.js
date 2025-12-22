@@ -57,6 +57,7 @@ export * from './components/sitebuilder/config/ConfigBuilder';
 export * from './components/sitebuilder/config/ConfigEngine';
 export * from './components/sitebuilder/config/FontSelector';
 export * from './components/sitebuilder/config/CompoundFontSelector';
+export * from './components/sitebuilder/config/fonts';
 export * from './components/sitebuilder/config/google-fonts';
 export * from './components/sitebuilder/form/formcomponents';
 export * from './components/sitebuilder/form/formtypes';
