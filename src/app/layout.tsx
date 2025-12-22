@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-page-custom-font */
 
 import { headers } from "next/headers";
 import { getRouteByKey } from "@pixelated-tech/components/server";
@@ -70,9 +69,17 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 			<LayoutClient />
 			<html lang="en">
 				<head>
-					<LocalBusinessSchema
-						siteInfo={siteInfo}
-					/>
+
+					{ generateMetaTags({
+						title: metadata?.title ?? "",
+						description: metadata?.description ?? "",
+						keywords: metadata?.keywords ?? "",
+						origin: origin ?? "",
+						url: url ?? ""
+					}) }
+					<LocalBusinessSchema siteInfo={myRoutes.siteInfo} />
+					<VisualDesignStyles visualdesign={myRoutes.visualdesign} />
+
 					<LocalBusinessSchema
 						siteInfo={siteInfo}
 						streetAddress="4 Raymond Court"
@@ -142,28 +149,8 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					{ blogSchemas.map((schema, index) => (
 						<SchemaBlogPosting key={index} post={schema} />
 					)) }
-					{ generateMetaTags({
-						title: metadata?.title ?? "",
-						description: metadata?.description ?? "",
-						keywords: metadata?.keywords ?? "",
-						site_name: siteInfo?.name ?? "Pixelated Technologies",
-						email: siteInfo?.email ?? "info@pixelated.tech",
-						origin: origin ?? "",
-						url: url ?? "",
-						image: siteInfo?.image ?? "/images/pix/pix-bg-512.gif",
-						image_height: siteInfo?.image_height ?? "512",
-						image_width: siteInfo?.image_width ?? "512",
-						favicon: siteInfo?.favicon ?? "/images/favicon.ico"
-					}) }
 					<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
-					
-					<link rel="preconnect" href="https://fonts.googleapis.com" />
-					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-					<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
-					<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
-					{ /* Inject visual design CSS generated from routes.json */ }
-					<VisualDesignStyles visualdesign={myRoutes.visualdesign} />
 				</head>
 				<body>
 					<PixelatedServerConfigProvider config={{ siteInfo: siteInfo as SiteInfo }}>
