@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "fix for generatemetadata and siteinfo integration"
+git commit -m "fix for body font size clamp"
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

@@ -89,6 +89,7 @@ export function VisualDesignStyles({ visualdesign }: { visualdesign?: Record<str
 		'  background-color: var(--bg-color) !important;',
 		'  color: var(--text-color);',
 		'  font-family: var(--body-font);',
+		'  font-size: var(--font-size4);',
 		'}',
 		'h1, h2, h3, h4, h5, h6 {',
 		'  line-height: 1.1;',
