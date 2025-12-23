@@ -55,7 +55,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 				<html lang="en" className="pixelated">
 					<head></head>
 					<body>
-						<PixelatedServerConfigProvider config={{ siteInfo: siteInfo as SiteInfo }}>
+						<PixelatedServerConfigProvider>
 							{children}
 						</PixelatedServerConfigProvider>
 					</body>
@@ -154,7 +154,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
 				</head>
 				<body>
-					<PixelatedServerConfigProvider config={{ siteInfo: siteInfo as SiteInfo }}>
+					<PixelatedServerConfigProvider>
 						<BlogPostsProvider posts={blogPosts}>
 							<header>
 								<div id="page-header" className="fixed-header"><Header /></div>
