@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	experimental: {
-    	optimizeCss: true,
+    	optimizeCss: false,
   	},
 	transpilePackages: ['@pixelated-tech/components'],
 	trailingSlash: false,
