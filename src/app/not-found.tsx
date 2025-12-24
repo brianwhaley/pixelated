@@ -1,14 +1,14 @@
 "use client";
 
-import { FourOhFourLocal } from "@/app/elements/four-oh-four-local";
-import imagesData from "@/app/data/404-data.json";
-const images = imagesData.images;
+import { FourOhFour } from "@pixelated-tech/components";
+import data404 from "../app/data/404-data.json";
+const images = data404.images;
 
 export default function NotFound () {
 	return (
 		<section id="notfound-section">
-			<div className="section-container" style={{ position: "relative" }}>
-				<FourOhFourLocal images={images} />
+			<div className="section-container">
+				<FourOhFour images={images} />
 			</div>
 		</section>
 	);
