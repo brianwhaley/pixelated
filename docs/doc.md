@@ -60,8 +60,8 @@ echo "Updating packages..." && npm outdated | awk 'NR>1 {print $1"@"$4}' | while
 npm run lint
 npm audit fix --force
 npm version patch --force
-git add * -v
-git commit -m "https://www.cve.org/CVERecord?id=CVE-2025-55184"
+git add . -v
+git commit -m "fif for 404 page"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
