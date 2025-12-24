@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes, { InferProps } from "prop-types";
 import type { CarouselCardType } from "../carousel/carousel";
 import { Loading } from "../general/loading";
-import { SmartImage } from "../cms/cloudinary.image";
+import { SmartImage } from "../cms/smartimage";
 import { usePixelatedConfig } from '../config/config.client';
 import "../../css/pixelated.grid.scss";
 import "./tiles.css";

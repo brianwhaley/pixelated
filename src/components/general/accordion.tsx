@@ -7,6 +7,7 @@ import './accordion.css';
 export interface AccordionItem {
   title: string;
   content: string | React.ReactNode;
+  open?: boolean | null;
 }
 
 Accordion.propTypes = {
@@ -14,6 +15,7 @@ Accordion.propTypes = {
 		PropTypes.shape({
 			title: PropTypes.string.isRequired,
 			content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+			open: PropTypes.bool,
 		})
 	).isRequired,
 };
@@ -23,7 +25,7 @@ export function Accordion({ items }: AccordionType) {
 		<div className="accordion">
 			{items?.map((item, index) => (
 				item ? (
-					<details key={index} className="accordion-item">
+					<details key={index} className="accordion-item" open={item.open ?? undefined}>
 						<summary className="accordion-title">
 							<h3 id={`accordion-header-${index}`}>
 								{item.title}

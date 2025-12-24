@@ -11,7 +11,7 @@ import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppi
 import { getCloudinaryRemoteFetchURL as getImg} from "./cloudinary";
 import type { ShoppingCartType } from "../shoppingcart/shoppingcart.functions";
 // import { Loading, ToggleLoading } from "../general/pixelated.loading";	
-import { SmartImage } from "./cloudinary.image";
+import { SmartImage } from "./smartimage";
 import "../../css/pixelated.grid.scss";
 import "./contentful.items.css";
 const debug = false;

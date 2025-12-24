@@ -6,22 +6,22 @@ export * from './components/carousel/carousel.drag';
 export * from './components/carousel/tiles';
 
 export * from './components/cms/calendly';
-export * from './components/cms/cloudinary'; // server-side 
-export * from './components/cms/cloudinary.image';
-export * from './components/cms/contentful.delivery'; // server-side 
-export * from './components/cms/contentful.management'; // server-side 
+export * from './components/cms/cloudinary';
+export * from './components/cms/smartimage';
+export * from './components/cms/contentful.delivery';
+export * from './components/cms/contentful.management';
 export * from './components/cms/contentful.items.components';
-export * from './components/cms/flickr'; // server-side
+export * from './components/cms/flickr';
 export * from './components/cms/google.reviews.components';
-export * from './components/cms/google.reviews.functions'; // server-side
-export * from './components/cms/gravatar.functions'; // server-side 
+export * from './components/cms/google.reviews.functions';
+export * from './components/cms/gravatar.functions';
 export * from './components/cms/gravatar.components';
 export * from './components/cms/hubspot.components';
-export * from './components/cms/instagram.functions'; // server-side 
+export * from './components/cms/instagram.functions';
 export * from './components/cms/instagram.components';
 /* export * from './components/linkedin/linkedin'; */
 export * from './components/cms/wordpress.components';
-export * from './components/cms/wordpress.functions'; // server-side 
+export * from './components/cms/wordpress.functions';
 export * from './components/cms/yelp';
 
 export * from './components/config/config.client';
@@ -68,16 +68,15 @@ export * from './components/sitebuilder/form/formvalidator';
 export * from './components/sitebuilder/form/formengine';
 export * from './components/sitebuilder/form/formbuilder';
 export * from './components/sitebuilder/form/formextractor'; 
-export * from './components/sitebuilder/page/lib/componentGeneration'; // server-side 
-export * from './components/sitebuilder/page/lib/componentMap'; // server-side 
-export * from './components/sitebuilder/page/lib/componentMetadata'; // server-side 
-export * from './components/sitebuilder/page/lib/pageStorageLocal'; // server-side 
-export * from './components/sitebuilder/page/lib/pageStorageContentful'; // server-side 
-export * from './components/sitebuilder/page/lib/pageStorageTypes'; // server-side 
-export * from './components/sitebuilder/page/lib/propTypeIntrospection'; // server-side 
-export * from './components/sitebuilder/page/lib/types'; // server-side 
-export * from './components/sitebuilder/page/lib/usePageBuilder'; // server-side 
-
+export * from './components/sitebuilder/page/lib/componentGeneration';
+export * from './components/sitebuilder/page/lib/componentMap';
+export * from './components/sitebuilder/page/lib/componentMetadata';
+export * from './components/sitebuilder/page/lib/pageStorageLocal';
+export * from './components/sitebuilder/page/lib/pageStorageContentful';
+export * from './components/sitebuilder/page/lib/pageStorageTypes';
+export * from './components/sitebuilder/page/lib/propTypeIntrospection';
+export * from './components/sitebuilder/page/lib/types';
+export * from './components/sitebuilder/page/lib/usePageBuilder';
 
 export * from './components/seo/404';
 export * from './components/seo/googleanalytics';
@@ -92,13 +91,13 @@ export * from './components/seo/schema-blogposting.functions';
 export * from './components/seo/manifest';
 export * from './components/seo/metadata.functions';
 export * from './components/seo/metadata.components';
-export * from './components/seo/sitemap'; // server-side
+export * from './components/seo/sitemap';
 
 export * from './components/shoppingcart/ebay.components';
-export * from './components/shoppingcart/ebay.functions'; // server-side 
+export * from './components/shoppingcart/ebay.functions';
 export * from './components/shoppingcart/paypal';
 export * from './components/shoppingcart/shoppingcart.components';
-export * from './components/shoppingcart/shoppingcart.functions'; // server-side 
+export * from './components/shoppingcart/shoppingcart.functions';
 
 export * from './components/structured/buzzwordbingo';
 export * from './components/structured/markdown';
@@ -107,5 +106,5 @@ export * from './components/structured/resume';
 export * from './components/structured/socialcard';
 export * from './components/structured/timeline';
 
-export * from './components/utilities/functions'; // server-side 
+export * from './components/utilities/functions';
 

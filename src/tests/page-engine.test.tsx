@@ -46,7 +46,7 @@ describe('PageEngine', () => {
 
 	it('should render components without edit UI when editMode is false', () => {
 		render(
-			<PixelatedClientConfigProvider config={{}}>
+			<PixelatedClientConfigProvider config={{ cloudinary: { product_env: 'test' } }}>
 				<PageEngine
 					pageData={mockPageData}
 					editMode={false}
@@ -71,7 +71,7 @@ describe('PageEngine', () => {
 		};
 
 		render(
-			<PixelatedClientConfigProvider config={{}}>
+			<PixelatedClientConfigProvider config={{ cloudinary: { product_env: 'test' } }}>
 				<PageEngine
 					pageData={invalidPageData}
 					editMode={false}

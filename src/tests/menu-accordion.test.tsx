@@ -308,7 +308,7 @@ describe('MenuAccordion Component', () => {
       const { container } = render(<MenuAccordionButton />);
       const hamburger = container.querySelector('.hamburger');
       expect(hamburger).toBeInTheDocument();
-      expect(hamburger?.textContent).toBe('|||');
+      expect(hamburger?.textContent).toBe('≡');
     });
 
     it('should call window.moveMenu when clicked', () => {

@@ -7,7 +7,7 @@ import { ValidationResult, FormValidationContextType } from './formtypes';
  */
 export async function validateField(
 	fieldProps: any,
-	event: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>
+	event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
 ): Promise<ValidationResult> {
 	const errors: string[] = [];
 	let isValid = true;

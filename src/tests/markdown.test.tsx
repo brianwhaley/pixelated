@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { Markdown } from '../components/structured/markdown';
 
 // Mock SmartImage component
-vi.mock('../components/cms/cloudinary.image', () => ({
+vi.mock('../components/cms/smartimage', () => ({
   SmartImage: (props: any) => React.createElement('img', {
     src: props.src,
     alt: props.alt,

@@ -113,3 +113,35 @@ export function attributeMap (oldAttribute: string) {
 	};
 	return (attributes[oldAttribute] ? attributes[oldAttribute] : oldAttribute);
 }
+
+
+
+/**
+	 * Adds a single 'change' event listener to the document and uses event delegation
+	 * to log the event and the value of the target element when a change occurs
+	 * on an input, select, or textarea element.
+	 */
+export function logAllChange() {
+	// Attach a single 'change' event listener to the document
+	document.addEventListener('change', function(event) {
+		// The event.target is the specific element that triggered the event
+		const targetElement = event.target as HTMLElement;
+
+		// Check if the target element is one that typically has a 'change' event (form controls)
+		if (targetElement && 
+			( targetElement.tagName === 'INPUT' || 
+			targetElement.tagName === 'SELECT' || 
+			targetElement.tagName === 'TEXTAREA') ) {
+		
+			console.log('Change event triggered:', event);
+			// For text inputs, the change event only fires when the element loses focus
+			// For checkboxes/radio buttons, event.target.checked provides the value
+			const inputElement = targetElement as HTMLInputElement;
+			const changeValue = inputElement.type === 'checkbox' || inputElement.type === 'radio' ? inputElement.checked : inputElement.value;
+			console.log('Changed value:', changeValue);
+		}
+	});
+}
+// Call the function to activate the listeners once the script is loaded
+// logChangeToAllElements();
+

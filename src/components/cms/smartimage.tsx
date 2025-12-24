@@ -75,6 +75,7 @@ const SMARTIMAGE_PROP_TYPES = {
 	quality: PropTypes.number,
 	placeholder: PropTypes.oneOf(['blur', 'empty']),
 	blurDataURL: PropTypes.string,
+	variant: PropTypes.oneOf(['cloudinary', 'nextjs', 'img']),
 };
 SmartImage.propTypes = SMARTIMAGE_PROP_TYPES;
 export type SmartImageProps = InferProps<typeof SMARTIMAGE_PROP_TYPES> & React.ImgHTMLAttributes<HTMLImageElement>;
@@ -94,6 +95,7 @@ export function SmartImage(props: SmartImageProps) {
 		loading = 'lazy',
 		decoding = 'async',
 		preload = false,
+		variant = 'cloudinary',
 		...imgProps
 	} = props as SmartImageProps;
 
@@ -121,20 +123,22 @@ export function SmartImage(props: SmartImageProps) {
 	newProps.name = newProps.name || newProps.id || sanitizeString(newProps.title) || sanitizeString(newProps.alt) || sanitizeString(imageName);
 	newProps.title = newProps.title || newProps.alt || sanitizeString(imageName);
 
-	// if(Array.isArray(src))
-	const finalSrc = newProps.cloudinaryEnv
-		? buildCloudinaryUrl({ 
+	let finalSrc = String(newProps.src);
+
+	/* ===== CLOUDINARY VARIANT ===== */
+
+	let responsiveSrcSet: string | undefined;
+	let responsiveSizes: string | undefined;
+	if (variant === 'cloudinary' && newProps.cloudinaryEnv) {
+
+		finalSrc = buildCloudinaryUrl({ 
 			src: newProps.src, 
 			productEnv: newProps.cloudinaryEnv, 
 			cloudinaryDomain: newProps.cloudinaryDomain, 
 			quality, 
 			width: newProps.width ?? undefined, 
-			transforms: newProps.cloudinaryTransforms ?? undefined })
-		: String(newProps.src);
+			transforms: newProps.cloudinaryTransforms ?? undefined });
 
-	let responsiveSrcSet: string | undefined;
-	let responsiveSizes: string | undefined;
-	if (newProps.cloudinaryEnv) {
 		if (newProps.width) {
 			const widths = [Math.ceil(newProps.width * 0.5), newProps.width, Math.ceil(newProps.width * 1.5), Math.ceil(newProps.width * 2)];
 			responsiveSrcSet = generateSrcSet(
@@ -158,37 +162,43 @@ export function SmartImage(props: SmartImageProps) {
 				});
 			responsiveSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 		}
-	}
+	} 
+
+	/* ===== NEXTJS VARIANT ===== */
+	/* variant is not cloudinary and not img (ie nextjs)
+	or variant is cloudinary and no cloudinaryEnv */
 
 	const isDecorative = newProps.alt === '';
 	const decorativeProps = isDecorative ? ({ 'aria-hidden': true, role: 'presentation' } as any) : {};
 
-	try {
-		return (
-			<Image
-				{...imgProps}
-				{...decorativeProps}
-				src={finalSrc}
-				alt={newProps.alt}
-				id={newProps.id}
-				name={newProps.name}
-				title={newProps.title}
-				width={newProps.width}
-				height={newProps.height}
-				sizes={imgProps.sizes || responsiveSizes}
-				quality={quality}
-				fetchPriority={newProps.fetchPriority}
-				loading={newProps.loading}
-				decoding={newProps.decoding}
-				preload={newProps.preload}
-			/>
-		);
-	} catch (e) {
-		if (typeof console !== 'undefined') console.warn('next/image unavailable, falling back to <img>', e);
+	if (variant !== 'img') {
+		try {
+			return (
+				<Image
+					{...imgProps}
+					{...decorativeProps}
+					src={finalSrc}
+					alt={newProps.alt}
+					id={newProps.id}
+					name={newProps.name}
+					title={newProps.title}
+					width={newProps.width}
+					height={newProps.height}
+					sizes={imgProps.sizes || responsiveSizes}
+					quality={quality}
+					fetchPriority={newProps.fetchPriority}
+					loading={newProps.loading}
+					decoding={newProps.decoding}
+					preload={newProps.preload}
+				/>
+			);
+		} catch (e) {
+			if (typeof console !== 'undefined') console.warn('next/image unavailable, falling back to <img>', e);
+		}
 	}
 
+	/* ===== IMG VARIANT ===== */
 	const imgRef = React.useRef<HTMLImageElement | null>(null);
-
 	return (
 		<img
 			{...imgProps}
@@ -208,4 +218,5 @@ export function SmartImage(props: SmartImageProps) {
 			decoding={newProps.decoding}
 		/>
 	);
+
 }

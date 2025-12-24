@@ -306,11 +306,26 @@ Optimized image component with lazy loading and responsive features.
 ```tsx
 import { SmartImage } from '@pixelated-tech/components';
 
+// Default Cloudinary variant (with optimizations)
 <SmartImage
   src="/path/to/image.jpg"
   alt="Description"
   aboveFold={false}
   sizes="(max-width: 768px) 100vw, 50vw"
+/>
+
+// Next.js Image variant (without Cloudinary)
+<SmartImage
+  src="/path/to/image.jpg"
+  alt="Description"
+  variant="nextjs"
+/>
+
+// Plain img tag variant (config-independent, for error pages)
+<SmartImage
+  src="/path/to/image.jpg"
+  alt="Description"
+  variant="img"
 />
 ```
 
@@ -319,11 +334,13 @@ import { SmartImage } from '@pixelated-tech/components';
 |------|------|---------|-------------|
 | `src` | `string` | - | Image source URL |
 | `alt` | `string` | - | Alt text |
+| `variant` | `'cloudinary' \| 'nextjs' \| 'img'` | `'cloudinary'` | Rendering variant |
 | `aboveFold` | `boolean` | `false` | Above-the-fold hint for loading |
 | `sizes` | `string` | - | Responsive sizes attribute |
 | `loading` | `'lazy' \| 'eager'` | `'lazy'` | Loading strategy |
 | `width` | `number` | - | Image width |
 | `height` | `number` | - | Image height |
+| `quality` | `number` | `75` | Image quality (1-100) |
 
 ### CSS
 

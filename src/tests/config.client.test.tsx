@@ -48,13 +48,13 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
     it('should handle empty config object', () => {
       const config = {};
 
-      render(
-        <PixelatedClientConfigProvider config={config}>
-          <TestComponent />
-        </PixelatedClientConfigProvider>
-      );
-
-      expect(screen.getByTestId('config-check')).toHaveTextContent('has-config');
+      expect(() => {
+        render(
+          <PixelatedClientConfigProvider config={config}>
+            <TestComponent />
+          </PixelatedClientConfigProvider>
+        );
+      }).toThrow('Pixelated config is empty');
     });
 
     it('should handle partial config', () => {

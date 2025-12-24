@@ -15,7 +15,7 @@ import { Table } from "../general/table";
 import { getCart, getShippingInfo, SetShippingInfo, setDiscountCodes, getRemoteDiscountCodes, getCheckoutData, RemoveFromShoppingCart, ClearShoppingCart, formatAsUSD, getCartItemCount } from "./shoppingcart.functions";
 import type { ShoppingCartType, AddressType, CheckoutType } from "./shoppingcart.functions";
 import { usePixelatedConfig } from '../config/config.client';
-import { SmartImage } from '../cms/cloudinary.image';
+import { SmartImage } from '../cms/smartimage';
 import shippingToData from "../../data/shipping.to.json";
 import "./shoppingcart.css";
 

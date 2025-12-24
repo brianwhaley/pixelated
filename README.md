@@ -317,6 +317,11 @@ npm run storybook
 - [ ] **API Gateway**: Unified API management for connecting to CRM, email marketing, payment processors, and other business tools
 - [ ] **Webhook Automation**: Event-driven automation for form submissions, new content, user registrations, and business workflows
 - [ ] **Third-Party Sync Engine**: Bidirectional sync with tools like HubSpot, Mailchimp, QuickBooks, and project management systems
+- [ ] **Testing Strategy for Config Failure Scenarios**: Comprehensive testing framework for config-dependent components and error handling
+  - Test components with missing config providers
+  - Test error pages without config dependencies  
+  - Test app initialization with invalid environment variables
+  - Include chaos engineering tests that simulate config failures
 - [ ] **Documentation Auto-Generator**: Automatically generated API docs, component usage guides, and deployment instructions
 
 
@@ -380,12 +385,12 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 67 |
-| Total Tests | 2,246 |
-| Coverage (Statements) | 76.11% |
-| Coverage (Lines) | 78.91% |
-| Coverage (Functions) | 77.95% |
-| Coverage (Branches) | 66.58% |
+| Test Files | 71 |
+| Total Tests | 2,291 |
+| Coverage (Statements) | 76.09% |
+| Coverage (Lines) | 78.76% |
+| Coverage (Functions) | 77.11% |
+| Coverage (Branches) | 67.37% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -405,7 +410,6 @@ npm run test:run         # Single run (for CI)
 #### Component Coverage (Sorted by Statement Coverage)
 - **tiles.tsx**: 100% statements
 - **google.reviews.functions.ts**: 100% statements
-- **config.server.tsx**: 100% statements
 - **accordion.tsx**: 100% statements
 - **modal.tsx**: 100% statements
 - **tab.tsx**: 100% statements
@@ -413,16 +417,17 @@ npm run test:run         # Single run (for CI)
 - **ComponentSelector.tsx**: 100% statements
 - **ComponentTree.tsx**: 100% statements
 - **formvalidations.tsx**: 100% statements
-- **componentMetadata.tsx**: 100% statements
 - **googlesearch.tsx**: 100% statements
 - **schema-localbusiness.tsx**: 100% statements
 - **schema-recipe.tsx**: 100% statements
 - **schema-services.tsx**: 100% statements
 - **schema-website.tsx**: 100% statements
+- **schema-blogposting.tsx**: 100% statements
 - **buzzwordbingo.tsx**: 100% statements
 - **markdown.tsx**: 100% statements
 - **timeline.tsx**: 100% statements
 - **sidepanel.tsx**: 97.5% statements
+- **config.server.tsx**: 50% statements
 - **config.ts**: 96.55% statements
 - **google.reviews.components.tsx**: 95.83% statements
 - **schema-blogposting.tsx**: 95.24% statements
@@ -432,7 +437,7 @@ npm run test:run         # Single run (for CI)
 - **css.tsx**: 91.43% statements
 - **functions.ts**: 90.91% statements
 - **menu-expando.tsx**: 90.12% statements
-- **config.client.tsx**: 90% statements
+- **config.client.tsx**: 100% statements
 - **loading.tsx**: 85.71% statements
 - **SaveLoadSection.tsx**: 84.85% statements
 - **table.tsx**: 84.48% statements
@@ -443,12 +448,12 @@ npm run test:run         # Single run (for CI)
 - **shoppingcart.functions.ts**: 81.7% statements
 - **callout.tsx**: 80% statements
 - **microinteractions.tsx**: 80% statements
-- **cloudinary.image.tsx**: 78.57% statements
+- **smartimage.tsx**: 82.75% statements
 - **sitemap.ts**: 76.06% statements
 - **manifest.tsx**: 75% statements
 - **carousel.tsx**: 71.7% statements
 - **nerdjoke.tsx**: 69.44% statements
-- **menu-accordion.tsx**: 68.13% statements
+- **menu-accordion.tsx**: 68.47% statements
 - **semantic.tsx**: 63.51% statements
 - **componentMap.tsx**: 60% statements
 - **propTypeIntrospection.tsx**: 60% statements

@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { PageTitleHeader, PageSection, PageNav, PageFooter, PageSectionBackgroundImage } from '../components/general/semantic';
 
 // Mock SmartImage component
-vi.mock('../components/cms/cloudinary.image', () => ({
+vi.mock('../components/cms/smartimage', () => ({
   SmartImage: (props: any) => React.createElement('img', {
     src: props.src,
     alt: props.alt,

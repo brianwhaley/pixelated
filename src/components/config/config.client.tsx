@@ -22,11 +22,18 @@ export const PixelatedClientConfigProvider = ({
 export const usePixelatedConfig = (): PixelatedConfig => {
 	const ctx = React.useContext(PixelatedConfigContext);
 	if (!ctx) {
-		if (process.env.NODE_ENV !== 'production') {
-			throw new Error('PixelatedClientConfigProvider not found. Wrap your app with PixelatedClientConfigProvider.');
-		}
-		// In production return an empty object typed as PixelatedConfig to avoid runtime crashes
-		return {} as PixelatedConfig;
+		// Always throw error when provider is missing (consistent across dev/prod)
+		// Previously had environment-specific behavior:
+		// if (process.env.NODE_ENV !== 'production') {
+		//   throw new Error('PixelatedClientConfigProvider not found. Wrap your app with PixelatedClientConfigProvider.');
+		// }
+		// // In production return an empty object typed as PixelatedConfig to avoid runtime crashes
+		// return {} as PixelatedConfig;
+		throw new Error('PixelatedClientConfigProvider not found. Wrap your app with PixelatedClientConfigProvider.');
+	}
+	// Also throw if config is empty (no environment config loaded)
+	if (Object.keys(ctx).length === 0) {
+		throw new Error('Pixelated config is empty. Check that PIXELATED_CONFIG_JSON or PIXELATED_CONFIG_B64 environment variables are set.');
 	}
 	return ctx;
 };

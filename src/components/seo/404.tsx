@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from 'prop-types';
 // import { getCloudinaryRemoteFetchURL } from "../cms/cloudinary";
-import { SmartImage } from "../cms/cloudinary.image";
+import { SmartImage } from "../cms/smartimage";
 import { usePixelatedConfig } from "../config/config.client";
 import "./404.css";
 
@@ -39,6 +41,7 @@ export function FourOhFour (props: FourOhFourType) {
 							// src={cloudinaryURL} 
 							title={"Page Not Found - " + images[randomIndex].description} 
 							alt={"Page Not Found - " + images[randomIndex].description} 
+							variant="nextjs"
 							cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
 							cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
 							cloudinaryTransforms={config?.cloudinary?.transforms ?? undefined}

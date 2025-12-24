@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { usePixelatedConfig } from "../config/config.client";
-import { SmartImage } from './cloudinary.image';
+import { SmartImage } from './smartimage';
 import {PageGridItem } from '../general/semantic';
 import type { BlogPostType } from './wordpress.functions';
 import { getWordPressItems } from './wordpress.functions';

@@ -5,7 +5,7 @@ import { Timeline } from '../components/structured/timeline';
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
 // Mock SmartImage
-vi.mock('../components/cms/cloudinary.image', () => ({
+vi.mock('../components/cms/smartimage', () => ({
   SmartImage: (props: any) => {
     const { src, alt, title, className } = props;
     return React.createElement('img', {

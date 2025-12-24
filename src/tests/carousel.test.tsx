@@ -15,7 +15,7 @@ vi.mock('../components/config/config.client', () => ({
 }));
 
 // Mock SmartImage component
-vi.mock('../components/cms/cloudinary.image', () => ({
+vi.mock('../components/cms/smartimage', () => ({
 	SmartImage: ({ src, alt, className }: any) => (
 		<img src={src} alt={alt} className={className} />
 	),

@@ -63,9 +63,10 @@ const useFormComponent = (props: any) => {
 	const { validateField: validateFormField } = useFormValidation();
 
 	// Handle onChange for immediate feedback
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
 		// Determine the value (checkbox vs other)
-		const value = event.target.type === 'checkbox' ? (event.target.checked ? event.target.value : '') : event.target.value;
+		const target = event.target;
+		const value = target.type === 'checkbox' ? ((target as HTMLInputElement).checked ? target.value : '') : event.target.value;
 
 		// Call custom onChange handler synchronously so controlled inputs update immediately
 		const customOnChange = props.onChange || (props.parent && props.parent.onChange);
@@ -79,7 +80,7 @@ const useFormComponent = (props: any) => {
 	};
 
 	// Handle onBlur for full validation
-	const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+	const handleBlur = (event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
 		validateField(props, event).then(result => {
 			setValidationState(result);
 			if (props.id) {
@@ -560,7 +561,7 @@ FormButton.propTypes = {
 	text: PropTypes.string,
 	// ----- for calculations
 	className: PropTypes.string,
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func
 };
 export type FormButtonType = InferProps<typeof FormButton.propTypes>;
 export function FormButton(props: FormButtonType) {
@@ -570,7 +571,7 @@ export function FormButton(props: FormButtonType) {
 				type={props.type as "button" | "submit" | "reset" | undefined} 
 				id={props.id} 
 				className={props.className || ""} 
-				onClick={props.onClick}>{props.text}</button>
+				onClick={props.onClick || undefined}>{props.text}</button>
 		</div>
 	);
 }

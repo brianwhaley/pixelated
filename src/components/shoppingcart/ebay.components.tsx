@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel/carousel';
-import { SmartImage } from "../cms/cloudinary.image";
+import { SmartImage } from "../cms/smartimage";
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./ebay.functions";
 import { AddToShoppingCart } from "./shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "./shoppingcart.components";

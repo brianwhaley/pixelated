@@ -4,7 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Table } from '../components/general/table';
 
 // Mock SmartImage component
-vi.mock('../components/cms/cloudinary.image', () => ({
+vi.mock('../components/cms/smartimage', () => ({
   SmartImage: (props: any) => {
     const { src, alt, title } = props;
     return React.createElement('img', {

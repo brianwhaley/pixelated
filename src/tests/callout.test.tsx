@@ -13,7 +13,7 @@ import {
 import { PixelatedClientConfigProvider } from '../components/config/config.client';
 
 // Mock the SmartImage component before importing Callout
-vi.mock('../cms/cloudinary.image', () => ({
+vi.mock('../cms/smartimage', () => ({
   SmartImage: (props: any) => {
     const { src, alt, title, onClick } = props;
     return React.createElement('img', {
