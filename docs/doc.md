@@ -61,27 +61,9 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add . -v
-git commit -m "fif for 404 page"
+git commit -m "fix for 404 page"
 git push -u pixelated dev --tags
 git push pixelated dev:main
-
-
-## ===== SYNC JSON FILES FROM PRODUCTION
-
-#!/bin/bash
-# scripts/sync-pages-from-prod.sh
-
-PROD_URL="https://yoursite.com/data/pages"
-LOCAL_DIR="public/data/pages"
-
-# Get list of pages from API
-curl -s https://yoursite.com/api/pagebuilder/list | jq -r '.pages[]' | while read page; do
-  echo "Downloading $page..."
-  curl -s "https://yoursite.com/api/pagebuilder/load?name=$page" | jq -r '.data' > "$LOCAL_DIR/$page.json"
-done
-
-echo "✓ All pages synced from production"
-
 
 
 ## ===== Hydration Error =====
