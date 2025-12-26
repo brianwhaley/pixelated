@@ -301,8 +301,7 @@ npm run storybook
 - [ ] **Project Scaffolding CLI**: Interactive CLI tool that generates complete Next.js projects with pixelated-components pre-configured, including routes.json, layout.tsx, package.json, and basic page structure
 - [ ] **Template Marketplace**: Pre-built industry-specific templates (restaurant, law firm, contractor, etc.) that users can clone and customize
 - [ ] **Configuration Wizard**: Step-by-step setup wizard that collects business info, generates site configuration, and creates initial content structure
-- [ ] **Centralized Site Manager**: Web dashboard for managing multiple pixelated sites, with bulk updates, version control, and deployment status monitoring
-- [ ] **Site Health Monitoring**: Automated monitoring dashboard that checks site performance, broken links, SEO scores, and security vulnerabilities across all sites
+- [ IP ] **Site Health Monitoring**: Automated monitoring dashboard that checks site performance, broken links, SEO scores, and security vulnerabilities across all sites
 - [ ] **Content Migration Tools**: Automated importers for WordPress, Squarespace, Wix, and other platforms to migrate content to pixelated sites
 - [ ] **A/B Testing Framework**: Built-in experimentation system for testing different layouts, content, and CTAs with automatic winner selection
 - [ ] **Personalization Engine**: Dynamic content delivery based on user behavior, location, and preferences

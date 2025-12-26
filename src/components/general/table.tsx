@@ -13,6 +13,7 @@ Table.propTypes = {
 	data: PropTypes.array.isRequired,
 	id: PropTypes.string.isRequired,
 	sortable: PropTypes.bool,
+	altRowColor: PropTypes.string,
 };
 export type TableType = InferProps<typeof Table.propTypes>;
 export function Table (props: TableType) {
@@ -30,7 +31,8 @@ export function Table (props: TableType) {
 
 	function getRows (data: Array<{ [key: string]: any }>) {
 		return data.map((obj, i) => {
-			return <tr key={i}>{getCells(obj)}</tr>;
+			const rowStyle = (props.altRowColor && i % 2 === 1) ? { backgroundColor: props.altRowColor } : {};
+			return <tr key={i} style={rowStyle}>{getCells(obj)}</tr>;
 		});
 	}
 

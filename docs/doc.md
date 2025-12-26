@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "smartimage refactor, 404 image nextjs variant, log all change utility function"
+git commit -m "fix to make pixelated config provider optional"
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

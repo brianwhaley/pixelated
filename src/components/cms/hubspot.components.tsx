@@ -32,9 +32,9 @@ export function HubSpotForm({
 }: HubSpotFormType) {
 	const config = usePixelatedConfig();
 	
-	const finalRegion = region || config.hubspot?.region || 'na1';
-	const finalPortalId = portalId || config.hubspot?.portalId || '';
-	const finalFormId = formId || config.hubspot?.formId || '';
+	const finalRegion = region || config?.hubspot?.region || 'na1';
+	const finalPortalId = portalId || config?.hubspot?.portalId || '';
+	const finalFormId = formId || config?.hubspot?.formId || '';
 	
 	const formTarget = target || `#${containerId}`;
 	useEffect(() => {

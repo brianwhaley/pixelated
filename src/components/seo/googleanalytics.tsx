@@ -44,8 +44,7 @@ export function GoogleAnalytics( props: GoogleAnalyticsType ) {
 	const adId = config?.googleAnalytics?.adId;
 	
 	if (!id) {
-		console.warn('Google Analytics ID not provided. Set id prop or googleAnalytics.id in config.');
-		return null;
+		throw new Error('Google Analytics ID not provided. Set id prop or ensure PixelatedServerConfigProvider is configured with googleAnalytics.id.');
 	}
 	
 	if(typeof window === 'undefined'){ return; }

@@ -19,26 +19,32 @@ export const PixelatedClientConfigProvider = ({
  * Hook to get the Pixelated config. This throws in development when the provider is missing to
  * make misconfiguration obvious. If you prefer a non-throwing variant use `useOptionalPixelatedConfig`.
  */
-export const usePixelatedConfig = (): PixelatedConfig => {
+export const usePixelatedConfig = (): PixelatedConfig | null => {
 	const ctx = React.useContext(PixelatedConfigContext);
 	if (!ctx) {
-		// Always throw error when provider is missing (consistent across dev/prod)
-		// Previously had environment-specific behavior:
-		// if (process.env.NODE_ENV !== 'production') {
-		//   throw new Error('PixelatedClientConfigProvider not found. Wrap your app with PixelatedClientConfigProvider.');
-		// }
-		// // In production return an empty object typed as PixelatedConfig to avoid runtime crashes
-		// return {} as PixelatedConfig;
-		throw new Error('PixelatedClientConfigProvider not found. Wrap your app with PixelatedClientConfigProvider.');
+		// Get calling function name from stack trace
+		let caller = 'unknown component';
+		try {
+			const error = new Error();
+			const stack = error.stack?.split('\n')[2]; // Get the caller line
+			if (stack) {
+				const match = stack.match(/at\s+([^\s(]+)/);
+				if (match && match[1]) {
+					caller = match[1].replace(/^use/, '').toLowerCase(); // Remove 'use' prefix and lowercase
+				}
+			}
+		} catch {
+			// Ignore errors in stack parsing
+		}
+
+		// Log warning when provider is missing but continue gracefully
+		console.warn(`PixelatedClientConfigProvider not found when called by ${caller}. Some components may not work as expected. Wrap your app with PixelatedClientConfigProvider for full functionality.`);
+		return null;
 	}
-	// Also throw if config is empty (no environment config loaded)
+	// Also return null if config is empty (no environment config loaded)
 	if (Object.keys(ctx).length === 0) {
-		throw new Error('Pixelated config is empty. Check that PIXELATED_CONFIG_JSON or PIXELATED_CONFIG_B64 environment variables are set.');
+		console.warn('Pixelated config is empty. Check that PIXELATED_CONFIG_JSON or PIXELATED_CONFIG_B64 environment variables are set.');
+		return null;
 	}
 	return ctx;
 };
-
-/** Non-throwing hook — returns null when provider not present */
-/* export const useOptionalPixelatedConfig = (): PixelatedConfig | null => {
-	return React.useContext(PixelatedConfigContext);
-}; */
