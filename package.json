@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.4.1",
+	"version": "3.4.2",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -79,6 +79,7 @@
 		"build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css"
 	},
 	"dependencies": {
+		"@aws-sdk/client-cloudwatch": "^3.958.0",
 		"@aws-sdk/client-route-53": "^3.958.0",
 		"date-fns": "^4.1.0",
 		"globals": "^17.0.0",
