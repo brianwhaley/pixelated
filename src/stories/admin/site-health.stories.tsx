@@ -12,6 +12,7 @@ import { SiteHealthOnSiteSEO } from '../../components/admin/site-health/site-hea
 import { SiteHealthDependencyVulnerabilities } from '../../components/admin/site-health/site-health-dependency-vulnerabilities';
 import { SiteHealthGit } from '../../components/admin/site-health/site-health-github';
 import { SiteHealthUptime } from '../../components/admin/site-health/site-health-uptime';
+import { SiteHealthCloudwatch } from '../../components/admin/site-health/site-health-cloudwatch';
 
 export default {
   title: 'Admin/Site Health',
@@ -682,3 +683,38 @@ export const UptimeHealthCard = () => {
 };
 
 UptimeHealthCard.storyName = 'Uptime Monitoring';
+
+export const CloudwatchHealthCard = () => {
+  const MockCloudwatchComponent = () => {
+    return (
+      <div className="site-health-card">
+        <div className="site-health-header">
+          <h3>CloudWatch Uptime</h3>
+          <div className="site-health-score">
+            <span className="score-value" style={{ color: '#10b981' }}>99.8%</span>
+            <span className="score-label">Excellent</span>
+          </div>
+        </div>
+        <div className="site-health-content">
+          <div className="health-metric">
+            <span className="metric-label">Uptime (24h):</span>
+            <span className="metric-value" style={{ color: '#10b981' }}>99.8%</span>
+          </div>
+          <div className="health-metric">
+            <span className="metric-label">Response Time:</span>
+            <span className="metric-value">180ms</span>
+          </div>
+          <div className="health-chart">
+            <div style={{ width: '100%', height: '200px', background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span>CloudWatch Uptime Chart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return <MockCloudwatchComponent />;
+};
+
+CloudwatchHealthCard.storyName = 'CloudWatch Uptime Monitoring';

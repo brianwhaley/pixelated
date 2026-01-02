@@ -165,6 +165,8 @@ User interface and interaction components:
 - **Menu** - Navigation components (Simple, Accordion, Expando)
 - **Tab** - Tabbed interface component for organizing content
 - **Tiles** - Image grid and tile layouts
+- **FontSelector** - Font selection and Google Fonts integration
+- **CompoundFontSelector** - Advanced font selection with multiple font families
 
 ### Development Tools
 Components for development, configuration, and site building:
@@ -172,6 +174,7 @@ Components for development, configuration, and site building:
 - **ComponentSelector** - Component selection interface
 - **ComponentTree** - Visual component hierarchy display
 - **ConfigBuilder** - Interactive configuration builder for site settings, metadata, routes, and visual design tokens
+- **ConfigEngine** - Configuration processing and validation engine
 - **PageBuilderUI** - User interface for page building
 - **SaveLoadSection** - Save and load functionality for configurations
 
@@ -211,6 +214,23 @@ External service integrations:
 - **eBay** - Store listings and shopping cart
 - **NerdJokes** - Entertainment content integration
 - **Yelp** - Business reviews and ratings
+
+
+### Site Health & Monitoring
+Comprehensive site health monitoring and analytics:
+- **SiteHealthOverview** - Dashboard overview of site health metrics
+- **SiteHealthPerformance** - Performance monitoring and optimization insights
+- **SiteHealthAccessibility** - Accessibility compliance testing with axe-core
+- **SiteHealthSecurity** - Security vulnerability scanning and recommendations
+- **SiteHealthSEO** - On-page SEO analysis and scoring
+- **SiteHealthOnSiteSEO** - Advanced on-page SEO metrics (browser caching, gzip compression, mobile-first indexing, etc.)
+- **SiteHealthGoogleAnalytics** - Google Analytics data integration
+- **SiteHealthGoogleSearchConsole** - Google Search Console integration
+- **SiteHealthCloudwatch** - AWS CloudWatch uptime monitoring
+- **SiteHealthGit** - Git repository health and status
+- **SiteHealthUptime** - Uptime monitoring and alerts
+- **SiteHealthAxeCore** - Automated accessibility testing
+- **SiteHealthDependencyVulnerabilities** - Dependency security scanning
 
 
 ## 🎨 Visual Design Configuration
@@ -302,7 +322,6 @@ npm run storybook
 - [ ] **Project Scaffolding CLI**: Interactive CLI tool that generates complete Next.js projects with pixelated-components pre-configured, including routes.json, layout.tsx, package.json, and basic page structure
 - [ ] **Template Marketplace**: Pre-built industry-specific templates (restaurant, law firm, contractor, etc.) that users can clone and customize
 - [ ] **Configuration Wizard**: Step-by-step setup wizard that collects business info, generates site configuration, and creates initial content structure
-- [ IP ] **Site Health Monitoring**: Automated monitoring dashboard that checks site performance, broken links, SEO scores, and security vulnerabilities across all sites
 - [ ] **Content Migration Tools**: Automated importers for WordPress, Squarespace, Wix, and other platforms to migrate content to pixelated sites
 - [ ] **A/B Testing Framework**: Built-in experimentation system for testing different layouts, content, and CTAs with automatic winner selection
 - [ ] **Personalization Engine**: Dynamic content delivery based on user behavior, location, and preferences
@@ -381,16 +400,16 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 ### Overview
 
-**Current Status**: ✅ 2,370 tests passing across 77 test files
+**Current Status**: ✅ 2,387 tests passing across 79 test files
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 77 |
-| Total Tests | 2,370 |
-| Coverage (Statements) | 76.98% |
-| Coverage (Lines) | 79.55% |
-| Coverage (Functions) | 78.09% |
-| Coverage (Branches) | 67.57% |
+| Test Files | 79 |
+| Total Tests | 2,387 |
+| Coverage (Statements) | 77.13% |
+| Coverage (Lines) | 79.73% |
+| Coverage (Functions) | 77.98% |
+| Coverage (Branches) | 67.55% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -429,8 +448,8 @@ npm run test:run         # Single run (for CI)
 - **buzzwordbingo.tsx**: 100% statements
 - **markdown.tsx**: 100% statements
 - **timeline.tsx**: 100% statements
+- **config.client.tsx**: 100% statements
 - **sidepanel.tsx**: 97.5% statements
-- **config.server.tsx**: 50% statements
 - **config.ts**: 96.55% statements
 - **google.reviews.components.tsx**: 95.83% statements
 - **schema-blogposting.tsx**: 95.24% statements
@@ -440,7 +459,7 @@ npm run test:run         # Single run (for CI)
 - **css.tsx**: 91.43% statements
 - **functions.ts**: 90.91% statements
 - **menu-expando.tsx**: 90.12% statements
-- **config.client.tsx**: 100% statements
+- **site-health-cloudwatch.tsx**: 88% statements
 - **loading.tsx**: 85.71% statements
 - **SaveLoadSection.tsx**: 84.85% statements
 - **table.tsx**: 84.48% statements
@@ -461,6 +480,7 @@ npm run test:run         # Single run (for CI)
 - **componentMap.tsx**: 60% statements
 - **propTypeIntrospection.tsx**: 60% statements
 - **wordpress.functions.ts**: 51.43% statements
+- **config.server.tsx**: 50% statements
 - **PageEngine.tsx**: 48% statements
 - **componentGeneration.tsx**: 38.89% statements
 - **socialcard.tsx**: 29.51% statements

@@ -2001,6 +2001,154 @@ import { Timeline } from '@pixelated-tech/components';
 
 ---
 
+## Admin Components
+
+### Site Health
+
+Comprehensive site monitoring and health check components for performance, security, and SEO analysis.
+
+#### SiteHealthOverview
+
+Displays Core Web Vitals and Lighthouse performance metrics.
+
+```tsx
+import { SiteHealthOverview } from '@pixelated-tech/components';
+
+<SiteHealthOverview siteName="my-site" />
+```
+
+#### SiteHealthAxeCore
+
+Accessibility auditing using axe-core.
+
+```tsx
+import { SiteHealthAxeCore } from '@pixelated-tech/components';
+
+<SiteHealthAxeCore siteName="my-site" />
+```
+
+#### SiteHealthPerformance
+
+Performance monitoring and metrics.
+
+```tsx
+import { SiteHealthPerformance } from '@pixelated-tech/components';
+
+<SiteHealthPerformance siteName="my-site" />
+```
+
+#### SiteHealthSecurity
+
+Security scanning and vulnerability assessment.
+
+```tsx
+import { SiteHealthSecurity } from '@pixelated-tech/components';
+
+<SiteHealthSecurity siteName="my-site" />
+```
+
+#### SiteHealthSEO
+
+SEO analysis and recommendations.
+
+```tsx
+import { SiteHealthSEO } from '@pixelated-tech/components';
+
+<SiteHealthSEO siteName="my-site" />
+```
+
+#### SiteHealthOnSiteSEO
+
+Advanced on-page SEO analysis with Puppeteer rendering.
+
+```tsx
+import { SiteHealthOnSiteSEO } from '@pixelated-tech/components';
+
+<SiteHealthOnSiteSEO siteName="my-site" />
+```
+
+#### SiteHealthCloudwatch
+
+AWS CloudWatch uptime monitoring and availability tracking.
+
+```tsx
+import { SiteHealthCloudwatch } from '@pixelated-tech/components';
+
+<SiteHealthCloudwatch 
+  siteName="my-site" 
+  startDate="2024-01-01" 
+  endDate="2024-01-31" 
+/>
+```
+
+#### SiteHealthGoogleAnalytics
+
+Google Analytics integration and reporting.
+
+```tsx
+import { SiteHealthGoogleAnalytics } from '@pixelated-tech/components';
+
+<SiteHealthGoogleAnalytics siteName="my-site" />
+```
+
+#### SiteHealthGoogleSearchConsole
+
+Google Search Console data and insights.
+
+```tsx
+import { SiteHealthGoogleSearchConsole } from '@pixelated-tech/components';
+
+<SiteHealthGoogleSearchConsole siteName="my-site" />
+```
+
+#### SiteHealthDependencyVulnerabilities
+
+NPM package vulnerability scanning.
+
+```tsx
+import { SiteHealthDependencyVulnerabilities } from '@pixelated-tech/components';
+
+<SiteHealthDependencyVulnerabilities siteName="my-site" />
+```
+
+#### SiteHealthGit
+
+Git repository health and commit analysis.
+
+```tsx
+import { SiteHealthGit } from '@pixelated-tech/components';
+
+<SiteHealthGit siteName="my-site" />
+```
+
+#### SiteHealthUptime
+
+Website uptime monitoring.
+
+```tsx
+import { SiteHealthUptime } from '@pixelated-tech/components';
+
+<SiteHealthUptime siteName="my-site" />
+```
+
+### Sites
+
+Site management and configuration components.
+
+#### Sites Integration
+
+```tsx
+import { loadSitesConfig, saveSitesConfig } from '@pixelated-tech/components';
+
+// Load site configuration
+const sites = loadSitesConfig();
+
+// Save site configuration
+saveSitesConfig(sites);
+```
+
+---
+
 ## Entertainment
 
 ### NerdJoke

@@ -56,7 +56,12 @@ const dataCollectors: Record<string, (html: string, ...args: any[]) => any> = {
 	collectSemanticTagsData,
 	collectTitleTagsData,
 	collectMetaKeywordsData,
-	collectMetaDescriptionsData
+	collectMetaDescriptionsData,
+	collectMobileFirstIndexingData,
+	collectInternationalSEOData,
+	collectFacetedNavigationData,
+	collectBrowserCachingData,
+	collectGzipCompressionData
 };
 
 /**
@@ -66,7 +71,12 @@ const scorers: Record<string, (data: any) => { score: number; displayValue: stri
 	calculateSemanticTagsScore,
 	calculateTitleTagsScore,
 	calculateMetaKeywordsScore,
-	calculateMetaDescriptionsScore
+	calculateMetaDescriptionsScore,
+	calculateMobileFirstIndexingScore,
+	calculateInternationalSEOData,
+	calculateFacetedNavigationScore,
+	calculateBrowserCachingScore,
+	calculateGzipCompressionScore
 };
 
 /**
@@ -285,6 +295,282 @@ function calculateMetaDescriptionsScore(descriptionData: ReturnType<typeof colle
 	};
 }
 
+/**
+ * Mobile-First Indexing Data Collector
+ */
+function collectMobileFirstIndexingData(html: string) {
+	const hasViewport = /<meta[^>]*name=["']viewport["'][^>]*content=["'][^"']*["'][^>]*>/i.test(html);
+	const hasResponsiveMeta = /<meta[^>]*name=["']viewport["'][^>]*content=["'][^"']*width=device-width[^"']*["'][^>]*>/i.test(html);
+	const hasMobileStyles = /@media[^}]*max-width[^}]*mobile|phone|tablet/i.test(html) || /<link[^>]*media=["'][^"']*handheld[^"']*["'][^>]*>/i.test(html);
+
+	return {
+		hasViewport,
+		hasResponsiveMeta,
+		hasMobileStyles,
+		score: (hasViewport && hasResponsiveMeta) ? 1 : 0
+	};
+}
+
+/**
+ * Mobile-First Indexing Scorer
+ */
+function calculateMobileFirstIndexingScore(data: ReturnType<typeof collectMobileFirstIndexingData>) {
+	const score = data.score;
+	const displayValue = score ? 'Mobile-friendly viewport detected' : 'Missing or inadequate viewport configuration';
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'viewport', present: data.hasViewport, optimal: data.hasResponsiveMeta },
+				{ type: 'responsive-styles', present: data.hasMobileStyles }
+			]
+		}
+	};
+}
+
+/**
+ * International SEO Data Collector
+ */
+function collectInternationalSEOData(html: string) {
+	const currencySymbols = html.match(/[£€¥$₹₽₩₦₨₪₫₡₵₺₴₸₼₲₱₭₯₰₳₶₷₹₻₽₾₿]/g) || [];
+	const langAttributes = html.match(/lang=["'][^"']*["']/gi) || [];
+	const localeIndicators = html.match(/(en-US|en-GB|fr-FR|de-DE|es-ES|it-IT|pt-BR|ja-JP|ko-KR|zh-CN|zh-TW|ru-RU|ar-SA|hi-IN)/gi) || [];
+
+	return {
+		currencyCount: currencySymbols.length,
+		langAttributes: langAttributes.length,
+		localeIndicators: localeIndicators.length,
+		hasInternationalElements: currencySymbols.length > 0 || langAttributes.length > 0 || localeIndicators.length > 0
+	};
+}
+
+/**
+ * International SEO Scorer
+ */
+function calculateInternationalSEOData(data: ReturnType<typeof collectInternationalSEOData>) {
+	const score = data.hasInternationalElements ? 1 : 0;
+	const displayValue = score ? `${data.currencyCount} currencies, ${data.langAttributes} lang attributes, ${data.localeIndicators} locale indicators found` : 'No international SEO elements detected';
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'currencies', count: data.currencyCount },
+				{ type: 'lang-attributes', count: data.langAttributes },
+				{ type: 'locale-indicators', count: data.localeIndicators }
+			]
+		}
+	};
+}
+
+/**
+ * Faceted Navigation Data Collector
+ */
+function collectFacetedNavigationData(html: string) {
+	// Look for URL patterns that suggest faceted navigation (query parameters, filters)
+	const filterUrls = html.match(/href=["'][^"']*[?&][^"']*filter[^"']*["']/gi) || [];
+	const sortUrls = html.match(/href=["'][^"']*[?&][^"']*sort[^"']*["']/gi) || [];
+	const categoryUrls = html.match(/href=["'][^"']*[?&][^"']*category[^"']*["']/gi) || [];
+	const cleanUrls = html.match(/href=["'][^"']*\/[^?]*\/[^?]*["']/gi) || [];
+
+	return {
+		filterUrls: filterUrls.length,
+		sortUrls: sortUrls.length,
+		categoryUrls: categoryUrls.length,
+		cleanUrls: cleanUrls.length,
+		hasFacetedNavigation: (filterUrls.length + sortUrls.length + categoryUrls.length) > 0
+	};
+}
+
+/**
+ * Faceted Navigation Scorer
+ */
+function calculateFacetedNavigationScore(data: ReturnType<typeof collectFacetedNavigationData>) {
+	const totalFaceted = data.filterUrls + data.sortUrls + data.categoryUrls;
+	const totalUrls = data.cleanUrls + totalFaceted;
+
+	// Calculate score as percentage of clean URLs vs total URLs
+	// Higher score = more clean URLs (better for SEO)
+	let score = 1; // Default to 100% if no URLs found
+	let displayValue = 'No URLs detected';
+
+	if (totalUrls > 0) {
+		score = data.cleanUrls / totalUrls; // Ratio of clean URLs to total URLs
+		const percentage = Math.round(score * 100);
+
+		if (totalFaceted === 0) {
+			displayValue = `100% clean URLs - excellent for SEO`;
+		} else if (score >= 0.8) {
+			displayValue = `${percentage}% clean URLs (${data.cleanUrls} clean, ${totalFaceted} faceted)`;
+		} else if (score >= 0.5) {
+			displayValue = `${percentage}% clean URLs - consider reducing faceted navigation (${data.cleanUrls} clean, ${totalFaceted} faceted)`;
+		} else {
+			displayValue = `${percentage}% clean URLs - high faceted navigation may hurt SEO (${data.cleanUrls} clean, ${totalFaceted} faceted)`;
+		}
+	}
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'clean-urls', count: data.cleanUrls },
+				{ type: 'filter-urls', count: data.filterUrls },
+				{ type: 'sort-urls', count: data.sortUrls },
+				{ type: 'category-urls', count: data.categoryUrls }
+			]
+		}
+	};
+}
+
+/**
+ * Browser Caching Data Collector
+ */
+function collectBrowserCachingData(response: any) {
+	// Get response headers from Puppeteer response object
+	const headers: Record<string, string> = {};
+	try {
+		const rawHeaders = response.headers();
+		for (const [key, value] of Object.entries(rawHeaders)) {
+			headers[key.toLowerCase()] = value as string;
+		}
+	} catch (error) {
+		console.warn('Failed to get response headers:', error);
+	}
+
+	const cacheControl = headers['cache-control'] || '';
+	const expires = headers['expires'] || '';
+	const lastModified = headers['last-modified'] || '';
+	const etag = headers['etag'] || '';
+	const age = headers['age'] || '';
+
+	return {
+		cacheControl,
+		expires,
+		lastModified,
+		etag,
+		age,
+		hasCachingHeaders: !!(cacheControl || expires || lastModified || etag)
+	};
+}
+
+/**
+ * Browser Caching Scorer
+ */
+function calculateBrowserCachingScore(data: ReturnType<typeof collectBrowserCachingData>) {
+	let score = 0;
+	let displayValue = 'No caching headers detected';
+	const issues: string[] = [];
+	const goodHeaders: string[] = [];
+
+	// Check Cache-Control header
+	if (data.cacheControl) {
+		goodHeaders.push('Cache-Control');
+		// Check for good caching directives
+		if (data.cacheControl.includes('max-age') && !data.cacheControl.includes('no-cache') && !data.cacheControl.includes('no-store')) {
+			score = 1;
+			displayValue = 'Good caching headers found';
+		} else if (data.cacheControl.includes('no-cache') || data.cacheControl.includes('no-store')) {
+			issues.push('Cache-Control prevents caching');
+		}
+	}
+
+	// Check Expires header
+	if (data.expires) {
+		goodHeaders.push('Expires');
+		const expiresDate = new Date(data.expires);
+		const now = new Date();
+		if (expiresDate > now) {
+			if (score === 0) score = 0.5; // Partial credit for expires header
+		}
+	}
+
+	// Check other headers
+	if (data.lastModified) goodHeaders.push('Last-Modified');
+	if (data.etag) goodHeaders.push('ETag');
+	if (data.age) goodHeaders.push('Age');
+
+	if (goodHeaders.length > 0 && score === 0) {
+		score = 0.5; // Partial credit for having some caching headers
+		displayValue = `Basic caching headers found: ${goodHeaders.join(', ')}`;
+	}
+
+	if (issues.length > 0) {
+		displayValue += ` (${issues.join(', ')})`;
+	}
+
+	return {
+		score,
+		displayValue,
+		details: {
+			headers: {
+				'cache-control': data.cacheControl,
+				'expires': data.expires,
+				'last-modified': data.lastModified,
+				'etag': data.etag,
+				'age': data.age
+			}
+		}
+	};
+}
+
+/**
+ * Gzip Compression Data Collector
+ */
+function collectGzipCompressionData(response: any) {
+	// Get response headers from Puppeteer response object
+	const headers: Record<string, string> = {};
+	try {
+		const rawHeaders = response.headers();
+		for (const [key, value] of Object.entries(rawHeaders)) {
+			headers[key.toLowerCase()] = value as string;
+		}
+	} catch (error) {
+		console.warn('Failed to get response headers:', error);
+	}
+
+	const contentEncoding = headers['content-encoding'] || '';
+	const contentLength = headers['content-length'] || '';
+	const transferEncoding = headers['transfer-encoding'] || '';
+
+	return {
+		contentEncoding,
+		contentLength,
+		transferEncoding,
+		isCompressed: contentEncoding.includes('gzip') || contentEncoding.includes('deflate') || transferEncoding.includes('chunked')
+	};
+}
+
+/**
+ * Gzip Compression Scorer
+ */
+function calculateGzipCompressionScore(data: ReturnType<typeof collectGzipCompressionData>) {
+	let score = 0;
+	let displayValue = 'No compression detected';
+
+	if (data.isCompressed) {
+		score = 1;
+		displayValue = `Compression enabled: ${data.contentEncoding || data.transferEncoding}`;
+	} else {
+		displayValue = 'Response not compressed - consider enabling gzip compression';
+	}
+
+	return {
+		score,
+		displayValue,
+		details: {
+			headers: {
+				'content-encoding': data.contentEncoding,
+				'content-length': data.contentLength,
+				'transfer-encoding': data.transferEncoding
+			}
+		}
+	};
+}
+
 export interface OnSiteSEOAudit {
   id: string;
   title: string;
@@ -494,11 +780,17 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 				const scorer = scorers[metric.scorer];
 
 				if (collector && scorer) {
-					const rawData = collector(html, pageData.title);
+					// Pass response object for collectors that need headers (like browser caching and gzip compression)
+					const rawData = (metric.dataCollector === 'collectBrowserCachingData' || metric.dataCollector === 'collectGzipCompressionData')
+						? collector(html, pageData.title, response)
+						: collector(html, pageData.title);
 					const result = scorer(rawData);
 					score = result.score;
 					displayValue = result.displayValue;
 					details = result.details;
+				} else {
+					score = 0;
+					displayValue = `Data collector or scorer not found: ${metric.dataCollector}/${metric.scorer}`;
 				}
 			} else if (metric.pattern) {
 			// Use pattern-based analysis
@@ -506,6 +798,10 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 				score = result.score;
 				displayValue = result.displayValue;
 				details = result.details;
+			} else {
+				// Neither data collector/scorer nor pattern available
+				score = 0;
+				displayValue = 'Configuration incomplete - no pattern or data collector defined';
 			}
 
 			// Override H1 and H2 results with direct DOM counts for accuracy and speed
@@ -633,6 +929,26 @@ async function performSiteWideAudits(baseUrl: string): Promise<OnSiteSEOAudit[]>
 					score = 0;
 					displayValue = 'Manifest.webmanifest not accessible';
 				}
+				break;
+
+			case 'gzip-compression':
+				score = 0; // Placeholder - would need HTTP header analysis
+				displayValue = 'Requires server header analysis';
+				break;
+
+			case 'browser-caching':
+				score = 0; // Placeholder - would need HTTP header analysis
+				displayValue = 'Requires server header analysis';
+				break;
+
+			case 'duplicate-content-detection':
+				score = 0; // Placeholder - would need multi-page content analysis
+				displayValue = 'Requires comprehensive site crawl';
+				break;
+
+			case 'safe-browsing-status':
+				score = 0; // Placeholder - would need external API
+				displayValue = 'Requires Google Safe Browsing API';
 				break;
 
 			default:

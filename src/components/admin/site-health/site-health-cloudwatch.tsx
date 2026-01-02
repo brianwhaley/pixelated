@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ComposedChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { SiteHealthTemplate } from './site-health-template';
 
 interface CloudwatchHealthCheckData {

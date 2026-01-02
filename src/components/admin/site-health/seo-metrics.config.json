@@ -187,6 +187,101 @@
           "countLogic": "count",
           "scoreLogic": "present",
           "displayTemplate": "{{count}} ItemProp tag(s) found"
+        },
+        "robots-meta-directives": {
+          "id": "robots-meta-directives",
+          "title": "Robots Meta Directives",
+          "description": "Checks for robots meta tags (noindex, nofollow, noarchive)",
+          "scoreDisplayMode": "binary",
+          "pattern": "<meta[^>]*name=[\"']robots[\"'][^>]*content=[\"'][^\"']*[\"'][^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} robots meta tag(s) found"
+        },
+        "hreflang-tags": {
+          "id": "hreflang-tags",
+          "title": "Hreflang Tags",
+          "description": "Checks for hreflang link tags for international SEO",
+          "scoreDisplayMode": "binary",
+          "pattern": "<link[^>]*rel=[\"']alternate[\"'][^>]*hreflang=[\"'][^\"']*[\"'][^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} hreflang link(s) found"
+        },
+        "indexability-status": {
+          "id": "indexability-status",
+          "title": "Indexability Status",
+          "description": "Checks for unintended noindex directives",
+          "scoreDisplayMode": "binary",
+          "pattern": "<meta[^>]*name=[\"']?robots[\"']?[^>]*content=[\"']?[^\"']*noindex[^\"']*[\"']?[^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "exact",
+          "expectedCount": 0,
+          "displayTemplate": "{{count}} noindex directive(s) found"
+        },
+        "image-optimization": {
+          "id": "image-optimization",
+          "title": "Image Optimization",
+          "description": "Checks for lazy loading and modern image formats",
+          "scoreDisplayMode": "binary",
+          "pattern": "<img[^>]*loading=[\"']lazy[\"'][^>]*>|<img[^>]*\\.(webp|avif)[^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} optimized image(s) found"
+        },
+        "pagination-structure": {
+          "id": "pagination-structure",
+          "title": "Pagination Structure",
+          "description": "Checks for proper rel='next/prev' pagination links",
+          "scoreDisplayMode": "binary",
+          "pattern": "<link[^>]*rel=[\"']?(next|prev)[\"']?[^>]*href=[\"']?[^\"']*[\"']?[^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} pagination link(s) found"
+        },
+        "local-seo-elements": {
+          "id": "local-seo-elements",
+          "title": "Local SEO Elements",
+          "description": "Checks for local business schema markup",
+          "scoreDisplayMode": "binary",
+          "pattern": "(<script[^>]*type=[\"']application/ld\\+json[\"'][^>]*>[^<]*\"@type\"[^<]*\"LocalBusiness\"[^<]*</script>)|(<[^>]*itemtype=[\"'][^\"']*LocalBusiness[^\"']*[\"'][^>]*>)",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} local business schema element(s) found"
+        },
+        "amp-validation": {
+          "id": "amp-validation",
+          "title": "AMP Validation",
+          "description": "Checks for Accelerated Mobile Pages implementation",
+          "scoreDisplayMode": "binary",
+          "pattern": "<html[^>]*amp[^>]*>|<script[^>]*src=[\"']?[^\"']*cdn\\.ampproject\\.org[^\"']*[\"']?[^>]*>",
+          "countLogic": "count",
+          "scoreLogic": "present",
+          "displayTemplate": "{{count}} AMP element(s) found"
+        },
+        "mobile-first-indexing": {
+          "id": "mobile-first-indexing",
+          "title": "Mobile-First Indexing",
+          "description": "Checks for mobile-friendly viewport and responsive design",
+          "scoreDisplayMode": "binary",
+          "dataCollector": "collectMobileFirstIndexingData",
+          "scorer": "calculateMobileFirstIndexingScore"
+        },
+        "international-seo": {
+          "id": "international-seo",
+          "title": "International SEO",
+          "description": "Checks for currency and locale detection elements",
+          "scoreDisplayMode": "binary",
+          "dataCollector": "collectInternationalSEOData",
+          "scorer": "calculateInternationalSEOData"
+        },
+        "faceted-navigation": {
+          "id": "faceted-navigation",
+          "title": "Faceted Navigation",
+          "description": "Checks for SEO-friendly filter and navigation URLs",
+          "scoreDisplayMode": "numeric",
+          "dataCollector": "collectFacetedNavigationData",
+          "scorer": "calculateFacetedNavigationScore"
         }
       }
     },
@@ -258,6 +353,22 @@
           "scoreDisplayMode": "binary",
           "dataCollector": null,
           "scorer": null
+        },
+        "gzip-compression": {
+          "id": "gzip-compression",
+          "title": "Gzip Compression",
+          "description": "Checks for server compression verification (requires HTTP headers analysis)",
+          "scoreDisplayMode": "binary",
+          "dataCollector": "collectGzipCompressionData",
+          "scorer": "calculateGzipCompressionScore"
+        },
+        "browser-caching": {
+          "id": "browser-caching",
+          "title": "Browser Caching",
+          "description": "Checks cache headers for static assets (requires HTTP headers analysis)",
+          "scoreDisplayMode": "binary",
+          "dataCollector": "collectBrowserCachingData",
+          "scorer": "calculateBrowserCachingScore"
         }
       }
     }
