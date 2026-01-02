@@ -62,7 +62,6 @@ const FlickrTiles = () => {
 			await FlickrWrapper(props);
 		}
 		fetchGallery();
-		console.log('FlickrTiles:', flickrCards);
 	}, [flickrCards]); 
 	return (
 		<>

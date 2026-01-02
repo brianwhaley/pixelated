@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "addition of admin components and functions for pixelated admin site features, improve validate-exports, update documentation, move json into component folders"
+git commit -m "fix for storybook, new deployment page, onpage seo fix with puppeteer"
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

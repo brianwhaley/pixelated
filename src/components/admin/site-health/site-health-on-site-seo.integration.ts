@@ -9,6 +9,12 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import puppeteer from 'puppeteer';
+import {
+	EXCLUDED_URL_PATTERNS,
+	EXCLUDED_FILE_EXTENSIONS,
+	EXCLUDED_DIRECTORY_NAMES
+} from './seo-constants';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -348,8 +354,16 @@ async function crawlSite(baseUrl: string, maxPages: number = 10): Promise<string
 						const href = match[1];
 						const absoluteUrl = new URL(href, currentUrl).toString();
 
-						// Only include same domain links
-						if (new URL(absoluteUrl).hostname === baseDomain && !visited.has(absoluteUrl) && !toVisit.includes(absoluteUrl)) {
+						// Only include same domain links that look like pages
+						const urlObj = new URL(absoluteUrl);
+						const pathname = urlObj.pathname.toLowerCase();
+						
+						// Exclude common non-page directories and files
+						const isExcluded = EXCLUDED_URL_PATTERNS.some(pattern => pathname.includes(pattern)) ||
+							pathname.match(EXCLUDED_FILE_EXTENSIONS) ||
+							EXCLUDED_DIRECTORY_NAMES.some(dir => pathname.endsWith(`/${dir}`));
+						
+						if (urlObj.hostname === baseDomain && !visited.has(absoluteUrl) && !toVisit.includes(absoluteUrl) && !isExcluded) {
 							toVisit.push(absoluteUrl);
 						}
 					} catch {
@@ -368,31 +382,102 @@ async function crawlSite(baseUrl: string, maxPages: number = 10): Promise<string
 }
 
 /**
- * Analyze a single page for on-page SEO elements using configuration
+ * Analyze a single page for on-page SEO elements using Puppeteer for full rendering
  */
 async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
+	let browser;
 	try {
-		const response = await fetch(url, {
-			headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SEO Analysis Bot)' }
-		});
-
-		if (!response.ok) {
-			// Return a basic analysis for non-200 responses
-			return {
-				url,
-				title: undefined,
-				statusCode: response.status,
-				audits: [],
-				crawledAt: new Date().toISOString()
-			};
+		// Reuse browser instance if available, otherwise create new one
+		browser = (globalThis as any).__seoBrowser;
+		if (!browser || browser.isConnected() === false) {
+			browser = await puppeteer.launch({
+				headless: true,
+				args: [
+					'--no-sandbox',
+					'--disable-setuid-sandbox',
+					'--disable-dev-shm-usage',
+					'--disable-accelerated-2d-canvas',
+					'--no-first-run',
+					'--no-zygote',
+					'--disable-gpu',
+					'--disable-web-security',
+					'--disable-features=VizDisplayCompositor',
+					'--disable-extensions',
+					'--disable-plugins',
+					'--disable-default-apps',
+					'--disable-background-timer-throttling',
+					'--disable-backgrounding-occluded-windows',
+					'--disable-renderer-backgrounding'
+				]
+			});
+			(globalThis as any).__seoBrowser = browser;
 		}
 
-		const html = await response.text();
-		const audits: OnSiteSEOAudit[] = [];
+		const page = await browser.newPage();
 
-		// Extract page title for title tag analysis
-		const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
-		const pageTitle = titleMatch ? titleMatch[1].trim() : undefined;
+		// Block unnecessary resources for faster loading while preserving SEO-relevant content
+		await page.setRequestInterception(true);
+		page.on('request', (request: any) => {
+			const resourceType = request.resourceType();
+			const url = request.url();
+
+			// Block heavy resources that slow down loading but aren't needed for HTML structure
+			if (resourceType === 'image' ||
+				resourceType === 'media' ||
+				url.includes('.jpg') ||
+				url.includes('.jpeg') ||
+				url.includes('.png') ||
+				url.includes('.gif') ||
+				url.includes('.webp') ||
+				url.includes('google-analytics.com') ||
+				url.includes('googletagmanager.com') ||
+				url.includes('facebook.com/tr') ||
+				url.includes('doubleclick.net')) {
+				request.abort();
+			} else {
+				request.continue();
+			}
+		});
+
+		// Set smaller viewport for faster rendering
+		await page.setViewport({ width: 800, height: 600 });
+
+		// Set user agent to avoid bot detection
+		await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+
+		// Navigate to the page with faster waiting strategy
+		const response = await page.goto(url, {
+			waitUntil: 'domcontentloaded', // Wait for DOM instead of all network requests
+			timeout: 15000 // Reduced timeout
+		});
+
+		// Wait for H1 elements to be rendered (if any) with a short timeout
+		try {
+			await page.waitForSelector('h1', { timeout: 2000 });
+		} catch {
+			// H1 not found within timeout, continue anyway
+		}
+
+		// Get title and heading counts directly from DOM for speed
+		const pageData = await page.evaluate(() => {
+			return {
+				title: document.title,
+				h1Count: document.querySelectorAll('h1').length,
+				h2Count: document.querySelectorAll('h2').length,
+				h1Elements: Array.from(document.querySelectorAll('h1')).map(h1 => ({
+					text: h1.textContent?.trim() || ''
+				})),
+				h2Elements: Array.from(document.querySelectorAll('h2')).map(h2 => ({
+					text: h2.textContent?.trim() || ''
+				}))
+			};
+		});
+
+		// Get the rendered HTML for other pattern-based checks
+		const html = await page.content();
+		await page.close();
+
+		const audits: OnSiteSEOAudit[] = [];
 
 		// Process on-page metrics from configuration
 		const config = seoMetricsConfig as SEOConfig;
@@ -409,7 +494,7 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 				const scorer = scorers[metric.scorer];
 
 				if (collector && scorer) {
-					const rawData = collector(html, titleMatch);
+					const rawData = collector(html, pageData.title);
 					const result = scorer(rawData);
 					score = result.score;
 					displayValue = result.displayValue;
@@ -421,6 +506,17 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 				score = result.score;
 				displayValue = result.displayValue;
 				details = result.details;
+			}
+
+			// Override H1 and H2 results with direct DOM counts for accuracy and speed
+			if (metric.id === 'h1-tags') {
+				score = pageData.h1Count === (metric.expectedCount || 1) ? 1 : 0;
+				displayValue = `${pageData.h1Count} H1 tag(s) found`;
+				details = { items: pageData.h1Elements.map((h1: any) => ({ tag: 'h1', text: h1.text })) };
+			} else if (metric.id === 'h2-tags') {
+				score = pageData.h2Count > 0 ? 1 : 0;
+				displayValue = `${pageData.h2Count} H2 tag(s) found`;
+				details = { items: pageData.h2Elements.map((h2: any) => ({ tag: 'h2', text: h2.text })) };
 			}
 
 			audits.push({
@@ -436,8 +532,8 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 
 		return {
 			url,
-			title: pageTitle,
-			statusCode: response.status,
+			title: pageData.title,
+			statusCode: response.status(),
 			audits,
 			crawledAt: new Date().toISOString()
 		};
@@ -451,6 +547,10 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 			audits: [],
 			crawledAt: new Date().toISOString()
 		};
+	} finally {
+		if (browser) {
+			await browser.close();
+		}
 	}
 }
 async function performSiteWideAudits(baseUrl: string): Promise<OnSiteSEOAudit[]> {
@@ -582,14 +682,17 @@ async function getUrlsFromSitemap(baseUrl: string): Promise<string[]> {
 			// Only include URLs from the same domain and that look like valid page URLs
 			try {
 				const urlObj = new URL(url);
-				if (urlObj.hostname === baseUrlObj.hostname && 
-					!url.includes('/images/') && 
-					!url.includes('/css/') && 
-					!url.includes('/js/') &&
-					!url.includes('/wp-content/') &&
-					!url.includes('/wp-includes/') &&
-					!url.match(/\.(jpg|jpeg|png|gif|svg|ico|css|js|woff|woff2|ttf|eot)$/i)) {
-					urls.push(url);
+				if (urlObj.hostname === baseUrlObj.hostname) {
+					const pathname = urlObj.pathname.toLowerCase();
+					
+					// Exclude common non-page directories and files
+					const isExcluded = EXCLUDED_URL_PATTERNS.some(pattern => pathname.includes(pattern)) ||
+						pathname.match(EXCLUDED_FILE_EXTENSIONS) ||
+						EXCLUDED_DIRECTORY_NAMES.some(dir => pathname.endsWith(`/${dir}`));
+					
+					if (!isExcluded) {
+						urls.push(url);
+					}
 				}
 			} catch {
 				// Invalid URL, skip

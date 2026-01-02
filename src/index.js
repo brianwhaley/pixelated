@@ -100,6 +100,7 @@ export * from './components/admin/site-health/site-health-github';
 export * from './components/admin/site-health/site-health-google-analytics';
 export * from './components/admin/site-health/site-health-google-search-console';
 export * from './components/admin/site-health/site-health-on-site-seo';
+export * from './components/admin/site-health/seo-constants';
 export * from './components/admin/site-health/site-health-overview';
 export * from './components/admin/site-health/site-health-performance';
 export * from './components/admin/site-health/site-health-security';

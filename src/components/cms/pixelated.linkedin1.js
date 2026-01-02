@@ -38,27 +38,16 @@ export function LinkedIn() {
 	const fullRecommendsURL = proxyURL + LinkedInApi.recommendUrl + "?" + recommendParams.toString();
 
 	async function fetchOAuth() {
-		console.log("Fetching LinkedIn oAuth Token");
 		try {
-			console.log("OAuth URL : ", fullOAuthURL);
-			// const oAuthPromise = await fetch(fullOAuthURL, { method: 'GET' });
-			// const oAuthPromise = await fetch(LinkedInApi.oAuthUrl + "?" + oAuthParams.toString(), { method: 'GET' });
-
 			window.location.href = fullOAuthURL;
-
-			// console.log(await oAuthPromise);
-			// const response = await oAuthPromise.response;
-			// console.log(await response);
 		} catch (err) {
 			console.log("Error : ", err);
 		}
 	}
 
 	async function fetchAccessToken() {
-		console.log("Fetching LinkedIn Access Token");
 		try {
 			const fullTokenURL = proxyURL + LinkedInApi.tokenUrl ;
-			console.log("Access Token URL : ", fullTokenURL);
 			const tokenPromise = await fetch(fullTokenURL, { 
 				method: 'POST',
 				headers: {
@@ -71,24 +60,15 @@ export function LinkedIn() {
 					'client_secret' : LinkedInApi.clientSecret
 				}
 			});
-			console.log(tokenPromise);
-			const response = await tokenPromise.response;
-			console.log(await response);
-			console.log("Access Token : " , await response.data);
 		} catch (err) {
 			console.log("Error : ", err);
 		}
 	}
 
 	async function fetchRecommendations() {
-		console.log("Fetching LinkedIn Recommendations");
 		try {
-			console.log(fullRecommendsURL);
 			const recommendPromise = await fetch(fullRecommendsURL, { method: 'GET' });
-			console.log(await recommendPromise);
 			const response = await recommendPromise.response;
-			console.log(await response);
-			console.log(await response.body);
 			setData(await response.body);
 		} catch (err) {
 			console.log("Error : ", err);
@@ -97,7 +77,6 @@ export function LinkedIn() {
 
 	useEffect(() => {
 		if(codeParam) { 
-			console.log("Access Token Is Present");
 			fetchAccessToken()
 				.then(fetchRecommendations());
 		} else {

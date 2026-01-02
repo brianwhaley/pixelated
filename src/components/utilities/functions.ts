@@ -1,3 +1,6 @@
+
+const debug = false; 
+
 export function html2dom (str: string) {
 	if (window.DOMParser) {
 		 
@@ -133,12 +136,12 @@ export function logAllChange() {
 			targetElement.tagName === 'SELECT' || 
 			targetElement.tagName === 'TEXTAREA') ) {
 		
-			console.log('Change event triggered:', event);
+			if (debug) console.log('Change event triggered:', event);
 			// For text inputs, the change event only fires when the element loses focus
 			// For checkboxes/radio buttons, event.target.checked provides the value
 			const inputElement = targetElement as HTMLInputElement;
 			const changeValue = inputElement.type === 'checkbox' || inputElement.type === 'radio' ? inputElement.checked : inputElement.value;
-			console.log('Changed value:', changeValue);
+			if (debug) console.log('Changed value:', changeValue);
 		}
 	});
 }

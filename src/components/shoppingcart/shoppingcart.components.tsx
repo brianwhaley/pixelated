@@ -147,7 +147,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 			'orderData' : JSON.stringify(orderData, null, 2),
 		};
 		const sendMailResponse = emailJSON(json);
-		console.log("SendMail Response:", sendMailResponse);
+		if (debug) console.log("SendMail Response:", sendMailResponse);
 
 		// ========== THANK YOU ==========
 		const pmt = orderData.purchase_units[0].payments.captures[0];

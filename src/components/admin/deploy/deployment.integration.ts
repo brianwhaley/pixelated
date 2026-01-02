@@ -59,26 +59,17 @@ async function executeScript(
 	const sourceBranch = 'dev'; // Always deploy from dev branch
 
 	try {
-		// Change to the site directory
-		process.chdir(localPath);
-
 		// Get current branch and ensure we're on dev
-		const { stdout: currentBranch } = await execAsync('git branch --show-current');
+		const { stdout: currentBranch } = await execAsync('git branch --show-current', { cwd: localPath });
 		if (currentBranch.trim() !== sourceBranch) {
 			throw new Error(`Must be on ${sourceBranch} branch to deploy. Current branch: ${currentBranch.trim()}`);
 		}
 
-		// Check for uncommitted changes
-		const { stdout: status } = await execAsync('git status --porcelain');
-		if (status.trim()) {
-			throw new Error('There are uncommitted changes. Please commit or stash them before deploying.');
-		}
-
 		// Pull latest changes
-		await execAsync('git pull origin dev');
+		await execAsync(`git pull ${remote} dev`, { cwd: localPath });
 
 		// Run prep commands
-		const prepResult = await runPrepCommands(siteName, versionType, commitMessage);
+		const prepResult = await runPrepCommands(siteName, versionType, commitMessage, localPath);
 
 		// Deploy to each environment
 		const environmentResults: { [key: string]: string } = {};
@@ -103,21 +94,21 @@ async function executeScript(
 /**
  * Run preparation commands before deployment
  */
-async function runPrepCommands(siteName: string, versionType: string, commitMessage: string): Promise<string> {
+async function runPrepCommands(siteName: string, versionType: string, commitMessage: string, localPath: string): Promise<string> {
 	const results: string[] = [];
 
 	try {
 		// Update packages first
 		results.push('Updating packages...');
 		try {
-			const { stdout: outdatedOutput } = await execAsync('npm outdated --json', { timeout: 60000 });
+			const { stdout: outdatedOutput } = await execAsync('npm outdated --json', { timeout: 60000, cwd: localPath });
 			const outdated = JSON.parse(outdatedOutput);
 			const packagesToUpdate = Object.keys(outdated).map(pkg => `${pkg}@${outdated[pkg].latest}`);
 
 			if (packagesToUpdate.length > 0) {
 				for (const pkg of packagesToUpdate.slice(0, 10)) { // Limit to 10 packages to avoid timeouts
 					try {
-						await execAsync(`npm install --save ${pkg}`, { timeout: 120000 });
+						await execAsync(`npm install --save ${pkg}`, { timeout: 120000, cwd: localPath });
 						results.push(`Updated ${pkg}`);
 					} catch (error) {
 						results.push(`Failed to update ${pkg}: ${(error as Error).message}`);
@@ -132,7 +123,7 @@ async function runPrepCommands(siteName: string, versionType: string, commitMess
 
 		// Run linting
 		try {
-			await execAsync('npm run lint', { timeout: 120000 });
+			await execAsync('npm run lint', { timeout: 120000, cwd: localPath });
 			results.push('Linting passed');
 		} catch (error) {
 			results.push(`Linting failed: ${(error as Error).message}`);
@@ -140,7 +131,7 @@ async function runPrepCommands(siteName: string, versionType: string, commitMess
 
 		// Run audit fix
 		try {
-			await execAsync('npm audit fix --force', { timeout: 120000 });
+			await execAsync('npm audit fix --force', { timeout: 120000, cwd: localPath });
 			results.push('Security audit fixes applied');
 		} catch (error) {
 			results.push(`Audit fix failed: ${(error as Error).message}`);
@@ -148,27 +139,27 @@ async function runPrepCommands(siteName: string, versionType: string, commitMess
 
 		// Update version based on type
 		if (versionType === 'patch') {
-			await execAsync('npm version patch --no-git-tag-version');
+			await execAsync('npm version patch --no-git-tag-version', { cwd: localPath });
 			results.push('Updated patch version');
 		} else if (versionType === 'minor') {
-			await execAsync('npm version minor --no-git-tag-version');
+			await execAsync('npm version minor --no-git-tag-version', { cwd: localPath });
 			results.push('Updated minor version');
 		} else if (versionType === 'major') {
-			await execAsync('npm version major --no-git-tag-version');
+			await execAsync('npm version major --no-git-tag-version', { cwd: localPath });
 			results.push('Updated major version');
 		}
 
 		// Build the project
-		await execAsync('npm run build', { timeout: 300000 });
+		await execAsync('npm run build', { timeout: 300000, cwd: localPath });
 		results.push('Built project successfully');
 
 		// Commit changes
-		await execAsync(`git add . -v`, { timeout: 60000 });
-		await execAsync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, { timeout: 60000 });
+		await execAsync(`git add . -v`, { timeout: 60000, cwd: localPath });
+		await execAsync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, { timeout: 60000, cwd: localPath });
 		results.push(`Committed changes: ${commitMessage}`);
 
 		// Get the new version
-		const { stdout: version } = await execAsync('node -p "require(\'./package.json\').version"');
+		const { stdout: version } = await execAsync('node -p "require(\'./package.json\').version"', { cwd: localPath });
 		results.push(`New version: ${version.trim()}`);
 
 		return results.join('\n');
