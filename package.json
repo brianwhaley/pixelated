@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.4.2",
+	"version": "3.4.3",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -66,7 +66,7 @@
 		"copy2pixelatedadmin": "rm -rf ../pixelated-admin/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated-admin/node_modules/@pixelated-tech/components/",
 		"copy2all": "npm run copy2brianwhaley && npm run copy2informationfocus && npm run copy2oaktreelandscaping && npm run copy2palmettoepoxy && npm run copy2pixelated && npm run copy2pixelvivid && npm run copy2pixelatedtest && npm run copy2template && npm run copy2pixelatedadmin",
 		"storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
-		"buildStorybook": "rm -rf node_modules/.cache && storybook build",
+		"buildStorybook": "rm -rf node_modules/.cache && NODE_OPTIONS=\"--max-old-space-size=4096\" storybook build",
 		"test": "vitest",
 		"test:ui": "vitest --ui",
 		"test:coverage": "vitest run --coverage",
