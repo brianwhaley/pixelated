@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import "../../css/pixelated.grid.scss";
 import './buzzwordbingo.css';
+import { buzzwords as defaultBuzzwords } from './buzzwordbingo.words';
 
 function getBingoWords(arr: Array<string>, x: number){
 	var myBingoWords =[...arr].sort(() => Math.random() - 0.5); // Shuffle the array
@@ -11,11 +12,11 @@ function getBingoWords(arr: Array<string>, x: number){
 }
 
 BuzzwordBingo.propTypes = {
-	buzzwords: PropTypes.array.isRequired,
+	buzzwords: PropTypes.array,
 };
 export type BuzzwordBingoType = InferProps<typeof BuzzwordBingo.propTypes>;
 export function BuzzwordBingo(props: BuzzwordBingoType){
-	const buzzwords = props.buzzwords;
+	const buzzwords = props.buzzwords || defaultBuzzwords;
 	const myBingoHeaders = ["B", "I", "N", "G", "O"];
 	const [bingoWords, setBingoWords] = useState <string[]> ([]);
 	useEffect(() => { 

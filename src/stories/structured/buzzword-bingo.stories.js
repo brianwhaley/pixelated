@@ -1,5 +1,5 @@
 import { BuzzwordBingo } from '@/components/structured/buzzwordbingo';
-import { buzzwords } from "@/data/buzzwords";
+import { buzzwords } from "@/components/structured/buzzwordbingo.words";
 import '@/css/pixelated.global.css';
 
 export default {

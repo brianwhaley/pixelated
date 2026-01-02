@@ -5,10 +5,18 @@ import PropTypes, { InferProps } from 'prop-types';
 import { Tab } from '../../general/tab';
 import { Accordion } from '../../general/accordion';
 import { FormEngine } from '../form/formengine';
-import siteInfoForm from '../../../data/siteinfo-form.json';
-import visualDesignForm from '../../../data/visualdesignform.json';
+import siteInfoForm from './siteinfo-form.json';
+import visualDesignForm from './visualdesignform.json';
 import defaultConfigData from '../../../data/routes.json';
 import './ConfigBuilder.css';
+
+const RoutePropTypes = {
+	path: PropTypes.string.isRequired,
+	component: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	description: PropTypes.string,
+};
+type RouteType = InferProps<typeof RoutePropTypes>;
 
 const SiteInfoPropTypes = {
 	name: PropTypes.string.isRequired,
@@ -40,154 +48,42 @@ const SiteInfoPropTypes = {
 };
 type SiteInfoType = InferProps<typeof SiteInfoPropTypes>;
 
-const RoutePropTypes = {
-	path: PropTypes.string.isRequired,
-	component: PropTypes.string.isRequired,
-	title: PropTypes.string,
-	description: PropTypes.string,
+const VisualDesignVariable = {
+	value: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
+	group: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired
 };
-type RouteType = InferProps<typeof RoutePropTypes>;
-
 const VisualDesignPropTypes = {
-	'primary-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'secondary-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'accent1-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'accent2-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'bg-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'text-color': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'header-font': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'body-font': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size1-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size1-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size2-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size2-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size3-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size3-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size4-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size4-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size5-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size5-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size6-min': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-size6-max': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-min-screen': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
-	'font-max-screen': PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		group: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired
-	}).isRequired,
+	'primary-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'secondary-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'accent1-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'accent2-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'bg-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'text-color': PropTypes.shape(VisualDesignVariable).isRequired,
+	'header-font': PropTypes.shape(VisualDesignVariable).isRequired,
+	'body-font': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size1-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size1-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size2-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size2-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size3-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size3-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size4-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size4-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size5-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size5-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size6-min': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-size6-max': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-min-screen': PropTypes.shape(VisualDesignVariable).isRequired,
+	'font-max-screen': PropTypes.shape(VisualDesignVariable).isRequired,
 };
 type VisualDesignType = InferProps<typeof VisualDesignPropTypes>;
 
 const SiteConfigPropTypes = {
 	siteInfo: PropTypes.shape(SiteInfoPropTypes).isRequired,
 	routes: PropTypes.arrayOf(PropTypes.shape(RoutePropTypes).isRequired).isRequired,
-	visualdesign: PropTypes.shape(VisualDesignPropTypes),
+	visualdesign: PropTypes.shape(VisualDesignPropTypes).isRequired,
 };
 type SiteConfigType = InferProps<typeof SiteConfigPropTypes>;
 

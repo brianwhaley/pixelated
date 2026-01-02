@@ -57,6 +57,7 @@ const clientConfig = {
       { from: 'src/components/**/*.scss', to: 'components/[path][name][ext]', context: 'src/components' },
       { from: 'src/css/pixelated.global.css', to: 'css/pixelated.global.css' },
       { from: 'src/css/pixelated.grid.scss', to: 'css/pixelated.grid.scss' },
+      { from: 'src/css/site-health.css', to: 'css/site-health.css' },
       { from: 'src/index.js', to: 'index.js', transform(content) {
         // rewrite re-exports to point at ./components/.. .js
         const s = content.toString();

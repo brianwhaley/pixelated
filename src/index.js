@@ -26,7 +26,6 @@ export * from './components/cms/yelp';
 
 export * from './components/config/config.client';
 export * from './components/config/config.server';
-export * from './components/config/config';
 export * from './components/config/config.types';
 
 export * from './components/general/css';
@@ -58,7 +57,6 @@ export * from './components/sitebuilder/config/ConfigEngine';
 export * from './components/sitebuilder/config/FontSelector';
 export * from './components/sitebuilder/config/CompoundFontSelector';
 export * from './components/sitebuilder/config/fonts';
-export * from './components/sitebuilder/config/google-fonts';
 export * from './components/sitebuilder/form/formcomponents';
 export * from './components/sitebuilder/form/formtypes';
 export * from './components/sitebuilder/form/formutils';
@@ -71,7 +69,7 @@ export * from './components/sitebuilder/form/formextractor';
 export * from './components/sitebuilder/page/lib/componentGeneration';
 export * from './components/sitebuilder/page/lib/componentMap';
 export * from './components/sitebuilder/page/lib/componentMetadata';
-export * from './components/sitebuilder/page/lib/pageStorageLocal';
+
 export * from './components/sitebuilder/page/lib/pageStorageContentful';
 export * from './components/sitebuilder/page/lib/pageStorageTypes';
 export * from './components/sitebuilder/page/lib/propTypeIntrospection';
@@ -92,6 +90,23 @@ export * from './components/seo/manifest';
 export * from './components/seo/metadata.functions';
 export * from './components/seo/metadata.components';
 export * from './components/seo/sitemap';
+
+export * from './components/admin/site-health/site-health-indicators';
+export * from './components/admin/site-health/site-health-accessibility';
+export * from './components/admin/site-health/site-health-axe-core';
+export * from './components/admin/site-health/site-health-cache';
+export * from './components/admin/site-health/site-health-dependency-vulnerabilities';
+export * from './components/admin/site-health/site-health-github';
+export * from './components/admin/site-health/site-health-google-analytics';
+export * from './components/admin/site-health/site-health-google-search-console';
+export * from './components/admin/site-health/site-health-on-site-seo';
+export * from './components/admin/site-health/site-health-overview';
+export * from './components/admin/site-health/site-health-performance';
+export * from './components/admin/site-health/site-health-security';
+export * from './components/admin/site-health/site-health-seo';
+export * from './components/admin/site-health/site-health-template';
+export * from './components/admin/site-health/site-health-types';
+export * from './components/admin/site-health/site-health-uptime';
 
 export * from './components/shoppingcart/ebay.components';
 export * from './components/shoppingcart/ebay.functions';

@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ConfigBuilder } from '../components/sitebuilder/config/ConfigBuilder';
 import defaultConfigData from '../data/routes.json';
+import testConfigData from './configbuilder.test.json';
 
 describe('ConfigBuilder Component', () => {
   const mockOnSave = vi.fn();
@@ -19,23 +20,9 @@ describe('ConfigBuilder Component', () => {
 
     it('should render with initial config', async () => {
       const initialConfig = {
-        siteInfo: { 
-          name: 'Test Site', 
-          author: 'Test Author',
-          description: 'A test site', 
-          url: 'https://test.com',
-          email: 'test@test.com',
-          favicon: '/favicon.ico',
-          favicon_sizes: '64x64 32x32 24x24 16x16',
-          favicon_type: 'image/x-icon',
-          theme_color: '#ffffff',
-          background_color: '#ffffff',
-          default_locale: 'en',
-          display: 'standalone'
-        },
-        routes: [
-          { path: '/home', component: 'Home', title: 'Home Page' }
-        ]
+        siteInfo: testConfigData.siteInfo,
+        routes: testConfigData.routes,
+        visualdesign: testConfigData.visualdesign
       };
       render(<ConfigBuilder initialConfig={initialConfig} />);
       
@@ -207,19 +194,9 @@ describe('ConfigBuilder Component', () => {
 
     it('should render address fields with initial values', () => {
       const initialConfig = {
-        siteInfo: { 
-          name: 'Test', author: 'Test', description: 'Test', url: 'https://test.com', email: 'test@test.com',
-          favicon: '/favicon.ico', favicon_sizes: '64x64', favicon_type: 'image/x-icon', 
-          theme_color: '#fff', background_color: '#fff', default_locale: 'en', display: 'standalone',
-          address: {
-            streetAddress: '456 Oak St',
-            addressLocality: 'Springfield',
-            addressRegion: 'IL',
-            postalCode: '62701',
-            addressCountry: 'USA'
-          }
-        },
-        routes: []
+        siteInfo: testConfigData.siteInfoWithAddress,
+        routes: testConfigData.emptyRoutes,
+        visualdesign: testConfigData.visualdesign
       };
       
       render(<ConfigBuilder initialConfig={initialConfig} />);
@@ -270,13 +247,9 @@ describe('ConfigBuilder Component', () => {
 
     it('should render social links with initial values', () => {
       const initialConfig = {
-        siteInfo: { 
-          name: 'Test', author: 'Test', description: 'Test', url: 'https://test.com', email: 'test@test.com',
-          favicon: '/favicon.ico', favicon_sizes: '64x64', favicon_type: 'image/x-icon', 
-          theme_color: '#fff', background_color: '#fff', default_locale: 'en', display: 'standalone',
-          sameAs: ['https://twitter.com/test', 'https://github.com/test']
-        },
-        routes: []
+        siteInfo: testConfigData.siteInfoWithSocial,
+        routes: testConfigData.emptyRoutes,
+        visualdesign: testConfigData.visualdesign
       };
       
       render(<ConfigBuilder initialConfig={initialConfig} />);
@@ -382,12 +355,9 @@ describe('ConfigBuilder Component', () => {
   describe('Edge Cases and Error Handling', () => {
     it('should handle empty initial config', () => {
       render(<ConfigBuilder initialConfig={{ 
-        siteInfo: { 
-          name: '', author: '', description: '', url: '', email: '',
-          favicon: '/favicon.ico', favicon_sizes: '64x64', favicon_type: 'image/x-icon', 
-          theme_color: '#fff', background_color: '#fff', default_locale: 'en', display: 'standalone'
-        }, 
-        routes: [] 
+        siteInfo: testConfigData.emptySiteInfo, 
+        routes: testConfigData.emptyRoutes,
+        visualdesign: testConfigData.visualdesign
       }} />);
       
       expect(screen.getByText('Config Builder')).toBeInTheDocument();
@@ -395,12 +365,9 @@ describe('ConfigBuilder Component', () => {
 
     it('should handle malformed route data', () => {
       const initialConfig = {
-        siteInfo: { 
-          name: 'Test', author: 'Test', description: 'Test', url: 'https://test.com', email: 'test@test.com',
-          favicon: '/favicon.ico', favicon_sizes: '64x64', favicon_type: 'image/x-icon', 
-          theme_color: '#fff', background_color: '#fff', default_locale: 'en', display: 'standalone'
-        },
-        routes: [{ invalidField: 'value' }] as any
+        siteInfo: testConfigData.siteInfo,
+        routes: testConfigData.malformedRoutes as any,
+        visualdesign: testConfigData.visualdesign
       };
       
       render(<ConfigBuilder initialConfig={initialConfig} />);

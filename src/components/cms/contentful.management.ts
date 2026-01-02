@@ -378,3 +378,170 @@ export async function deleteEntry(
 		};
 	}
 }
+
+
+
+
+
+/****************************************
+ * Contentful Integration Services
+ * Server-side utilities for Contentful CMS operations
+ ****************************************/
+
+export interface ContentfulCredentials {
+  spaceId: string;
+  accessToken: string;
+  environment?: string;
+}
+
+export interface ContentType {
+  sys: {
+    id: string;
+    type: string;
+  };
+  name: string;
+  description?: string;
+  fields: Array<{
+    id: string;
+    name: string;
+    type: string;
+    required: boolean;
+  }>;
+}
+
+/**
+ * Validate Contentful credentials by attempting to access the space
+ */
+export async function validateContentfulCredentials(credentials: ContentfulCredentials): Promise<{ valid: boolean; error?: string }> {
+	try {
+		const response = await fetch(
+			`https://api.contentful.com/spaces/${credentials.spaceId}`,
+			{
+				method: 'GET',
+				headers: {
+					'Authorization': `Bearer ${credentials.accessToken}`,
+					'Content-Type': 'application/vnd.contentful.management.v1+json',
+				},
+			}
+		);
+
+		if (!response.ok) {
+			return { valid: false, error: 'Failed to access space' };
+		}
+
+		return { valid: true };
+	} catch (error) {
+		return { valid: false, error: (error as Error).message };
+	}
+}
+
+/**
+ * Get all content types from a Contentful space
+ */
+export async function getContentTypes(credentials: ContentfulCredentials): Promise<ContentType[]> {
+	const { spaceId, accessToken } = credentials;
+
+	// First get space info to find the default environment
+	const spaceResponse = await fetch(
+		`https://api.contentful.com/spaces/${spaceId}`,
+		{
+			method: 'GET',
+			headers: {
+				'Authorization': `Bearer ${accessToken}`,
+				'Content-Type': 'application/vnd.contentful.management.v1+json',
+			},
+		}
+	);
+
+	if (!spaceResponse.ok) {
+		throw new Error('Failed to access space');
+	}
+
+	// Try different environment names - Contentful uses 'master' for older spaces, 'main' for newer ones
+	const environmentsToTry = ['master', 'main'];
+	let contentTypesResponse = null;
+	let lastError = null;
+
+	for (const env of environmentsToTry) {
+		try {
+			const response = await fetch(
+				`https://api.contentful.com/spaces/${spaceId}/environments/${env}/content_types`,
+				{
+					method: 'GET',
+					headers: {
+						'Authorization': `Bearer ${accessToken}`,
+						'Content-Type': 'application/vnd.contentful.management.v1+json',
+					},
+				}
+			);
+
+			if (response.ok) {
+				contentTypesResponse = response;
+				break;
+			}
+		} catch (error) {
+			lastError = error;
+		}
+	}
+
+	if (!contentTypesResponse) {
+		throw new Error(`Failed to fetch content types: ${lastError}`);
+	}
+
+	const contentTypesData = await contentTypesResponse.json();
+	return contentTypesData.items || [];
+}
+
+/**
+ * Migrate a content type from source to destination space
+ */
+export async function migrateContentType(
+	sourceCredentials: ContentfulCredentials,
+	destCredentials: ContentfulCredentials,
+	contentTypeId: string
+): Promise<{ success: boolean; error?: string }> {
+	try {
+		// Get content type from source
+		const sourceEnv = sourceCredentials.environment || 'master';
+		const sourceResponse = await fetch(
+			`https://api.contentful.com/spaces/${sourceCredentials.spaceId}/environments/${sourceEnv}/content_types/${contentTypeId}`,
+			{
+				method: 'GET',
+				headers: {
+					'Authorization': `Bearer ${sourceCredentials.accessToken}`,
+					'Content-Type': 'application/vnd.contentful.management.v1+json',
+				},
+			}
+		);
+
+		if (!sourceResponse.ok) {
+			throw new Error('Failed to fetch content type from source');
+		}
+
+		const contentType = await sourceResponse.json();
+
+		// Create content type in destination
+		const destEnv = destCredentials.environment || 'master';
+		const createResponse = await fetch(
+			`https://api.contentful.com/spaces/${destCredentials.spaceId}/environments/${destEnv}/content_types`,
+			{
+				method: 'POST',
+				headers: {
+					'Authorization': `Bearer ${destCredentials.accessToken}`,
+					'Content-Type': 'application/vnd.contentful.management.v1+json',
+					'X-Contentful-Version': '1',
+				},
+				body: JSON.stringify(contentType),
+			}
+		);
+
+		if (!createResponse.ok) {
+			const errorData = await createResponse.json();
+			throw new Error(`Failed to create content type: ${errorData.message}`);
+		}
+
+		return { success: true };
+	} catch (error) {
+		return { success: false, error: (error as Error).message };
+	}
+}

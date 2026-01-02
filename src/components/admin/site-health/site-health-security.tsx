@@ -1,0 +1,288 @@
+'use client';
+
+import React, { useCallback } from 'react';
+import { SiteHealthTemplate } from './site-health-template';
+import type { SiteHealthData } from './site-health-types';
+import { getScoreIndicator } from './site-health-indicators';
+
+interface SecurityResponse {
+  success: boolean;
+  data?: SiteHealthData[];
+}
+
+interface CombinedSecurityData {
+  psiData?: SiteHealthData[];
+}
+
+interface SiteHealthSecurityProps {
+  siteName: string;
+}
+
+export function SiteHealthSecurity({ siteName }: SiteHealthSecurityProps) {
+	const fetchSecurityData = useCallback(async (site: string): Promise<CombinedSecurityData> => {
+		// Fetch PSI data for best practices security audits
+		const psiResponse = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
+		const psiResult: SecurityResponse = await psiResponse.json();
+
+		return {
+			psiData: psiResult.success ? psiResult.data : undefined
+		};
+	}, []);
+
+	return (
+		<SiteHealthTemplate<CombinedSecurityData>
+			siteName={siteName}
+			title="PageSpeed - Site Security"
+			fetchData={fetchSecurityData}
+		>
+			{(data) => {
+				const getScoreColor = (score: number | null) => {
+					return getScoreIndicator(score).color;
+				};
+
+				const getAuditScoreIcon = (score: number | null) => {
+					return getScoreIndicator(score).icon;
+				};
+
+				// Helper function to display audit item details
+				const formatAuditItem = (item: Record<string, unknown>, auditTitle?: string): string => {
+					// Handle URLs
+					if (item.url && typeof item.url === 'string') {
+						return item.url;
+					}
+
+					// Handle sources (like JavaScript files)
+					if (item.source && typeof item.source === 'string') {
+						return item.source;
+					}
+
+					// Handle text descriptions
+					if (item.text && typeof item.text === 'string') {
+						return item.text;
+					}
+
+					// Handle entities (like "Google Tag Manager")
+					if (item.entity && typeof item.entity === 'string') {
+						return item.entity;
+					}
+
+					// Handle nodes with selectors
+					if (item.node && typeof item.node === 'object' && 'selector' in item.node) {
+						return `Element: ${(item.node as { selector: string }).selector}`;
+					}
+
+					// Handle nodes with snippets
+					if (item.node && typeof item.node === 'object' && 'snippet' in item.node) {
+						const snippet = (item.node as { snippet: string }).snippet;
+						return `Element: ${snippet.length > 50 ? snippet.substring(0, 50) + '...' : snippet}`;
+					}
+
+					// Handle origins (like domains)
+					if (item.origin && typeof item.origin === 'string') {
+						return item.origin;
+					}
+
+					// Handle labels
+					if (item.label && typeof item.label === 'string') {
+						return item.label;
+					}
+
+					// Handle numeric values with units
+					if (item.value && typeof item.value === 'object' && 'type' in item.value && (item.value as { type: string }).type === 'numeric') {
+						const value = item.value as unknown as { value: number; granularity?: number };
+						return `${value.value}${item.unit || ''}`;
+					}
+
+					// Handle statistics
+					if (item.statistic && typeof item.statistic === 'string' && item.value) {
+						if (typeof item.value === 'object' && 'type' in item.value && (item.value as { type: string }).type === 'numeric') {
+							const value = item.value as unknown as { value: number };
+							return `${item.statistic}: ${value.value}`;
+						}
+						return item.statistic;
+					}
+
+					// Handle timing data with more context
+					if (item.duration && typeof item.duration === 'number') {
+						const duration = item.duration;
+						let context = '';
+						if (item.url && typeof item.url === 'string') {
+							context = ` for ${item.url}`;
+						} else if (item.source && typeof item.source === 'string') {
+							context = ` for ${item.source}`;
+						} else if (item.name && typeof item.name === 'string') {
+							context = ` for ${item.name}`;
+						}
+						return `${duration.toFixed(2)}ms${context}`;
+					}
+
+					// Handle response times
+					if (item.responseTime && typeof item.responseTime === 'number') {
+						const url = (item.url && typeof item.url === 'string') ? ` (${item.url})` : '';
+						return `${item.responseTime.toFixed(2)}ms response time${url}`;
+					}
+
+					// Handle start/end times
+					if ((item.startTime || item.endTime) && typeof (item.startTime || item.endTime) === 'number') {
+						const start = item.startTime && typeof item.startTime === 'number' ? item.startTime.toFixed(2) : '?';
+						const end = item.endTime && typeof item.endTime === 'number' ? item.endTime.toFixed(2) : '?';
+						const url = (item.url && typeof item.url === 'string') ? ` for ${item.url}` : '';
+						return `${start}ms - ${end}ms${url}`;
+					}
+
+					// Handle transfer size with timing
+					if (item.transferSize && typeof item.transferSize === 'number' && item.duration && typeof item.duration === 'number') {
+						const size = (item.transferSize / 1024).toFixed(1);
+						const time = item.duration.toFixed(2);
+						const url = (item.url && typeof item.url === 'string') ? ` (${item.url})` : '';
+						return `${size} KB in ${time}ms${url}`;
+					}
+
+					// Handle main thread time
+					if (item.mainThreadTime && typeof item.mainThreadTime === 'number') {
+						return `${item.mainThreadTime.toFixed(1)}ms`;
+					}
+
+					// For other objects, try to find a meaningful display
+					if (item.group && typeof item.group === 'string') {
+						return item.group;
+					}
+
+					if (item.type && typeof item.type === 'string') {
+						return item.type;
+					}
+
+					// If we can't find anything meaningful, provide a generic description
+					// This handles raw timing data that might be from various performance metrics
+					if (typeof item === 'number') {
+						let context = '';
+						if (auditTitle) {
+							if (auditTitle.toLowerCase().includes('server') || auditTitle.toLowerCase().includes('backend')) {
+								context = ' server response';
+							} else if (auditTitle.toLowerCase().includes('network') || auditTitle.toLowerCase().includes('request')) {
+								context = ' network request';
+							} else if (auditTitle.toLowerCase().includes('render') || auditTitle.toLowerCase().includes('blocking')) {
+								context = ' render blocking';
+							} else if (auditTitle.toLowerCase().includes('javascript') || auditTitle.toLowerCase().includes('js')) {
+								context = ' JavaScript';
+							} else if (auditTitle.toLowerCase().includes('image') || auditTitle.toLowerCase().includes('media')) {
+								context = ' media resource';
+							}
+						}
+						return `${(item as number).toFixed(2)}ms${context}`;
+					}
+
+					if (item.value && typeof item.value === 'number') {
+						const unit = item.unit || 'ms';
+						let context = '';
+						if (auditTitle && unit === 'ms') {
+							if (auditTitle.toLowerCase().includes('server')) {
+								context = ' server time';
+							} else if (auditTitle.toLowerCase().includes('network')) {
+								context = ' network time';
+							}
+						}
+						return `${item.value.toFixed(2)}${unit}${context}`;
+					}
+
+					return 'Details available';
+				};
+
+				const psiData = data?.psiData?.[0];
+
+				if (!psiData) {
+					return (
+						<p style={{ color: '#6b7280' }}>No security data available for this site.</p>
+					);
+				}
+
+				if (psiData.status === 'error') {
+					return (
+						<p style={{ color: '#ef4444', fontSize: '0.875rem' }}>
+              Error: {psiData.error}
+						</p>
+					);
+				}
+
+				return (
+					<>
+						<h4 className="health-site-name">
+							{siteName.replace('-', ' ')}
+						</h4>
+						<p className="health-site-url">
+              URL: {psiData.url}
+						</p>
+
+						{/* Best Practices Score */}
+						{psiData.scores['best-practices'] !== null && (
+							<div className="health-score-container">
+								<div className="health-score-item">
+									<div className="health-score-label">Best Practices Score</div>
+									<div className="health-score-value" style={{ color: getScoreColor(psiData.scores['best-practices']) }}>
+										{Math.round((psiData.scores['best-practices'] || 0) * 100)}%
+									</div>
+									<div className="health-score-bar">
+										<div
+											className="health-score-fill"
+											style={{
+												width: `${(psiData.scores['best-practices'] || 0) * 100}%`,
+												backgroundColor: getScoreColor(psiData.scores['best-practices'])
+											}}
+										/>
+									</div>
+								</div>
+							</div>
+						)}
+
+						{/* Security Best Practices Audits */}
+						{psiData.categories['best-practices'] && psiData.categories['best-practices'].audits.length > 0 && (
+							<div>
+								<h5 style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '1rem' }}>
+                  Security Best Practices
+								</h5>
+								<div className="space-y-2">
+									{psiData.categories['best-practices'].audits
+										.filter(audit => audit.scoreDisplayMode !== 'notApplicable')
+										.sort((a, b) => (b.score || 0) - (a.score || 0))
+										.slice(0, 20)
+										.map((audit) => (
+											<div key={audit.id} className="health-audit-item">
+												<span className="health-audit-icon">
+													{getAuditScoreIcon(audit.score)}
+												</span>
+												<div className="health-audit-content">
+													<span className="health-audit-title">
+                          ({Math.round((audit.score || 0) * 100)}%) {audit.title}
+													</span>
+													{audit.displayValue && (
+														<p className="health-audit-description">
+															{audit.displayValue}
+														</p>
+													)}
+													{(audit.details as any)?.items && Array.isArray((audit.details as any).items) && (audit.details as any).items.length > 0 && (audit.score || 0) < 0.9 && (
+														<div className="health-audit-details">
+															<div style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.25rem' }}>
+																{(audit.details as any).items.map((item: Record<string, unknown>, idx: number) => (
+																	<div key={idx} style={{ marginBottom: '0.125rem' }}>
+																		{formatAuditItem(item, audit.title)}
+																	</div>
+																))}
+															</div>
+														</div>
+													)}
+												</div>
+											</div>
+										))}
+								</div>
+							</div>
+						)}
+
+						<p className="health-timestamp">
+              Last checked: {new Date(psiData.timestamp).toLocaleString()}
+						</p>
+					</>
+				);
+			}}
+		</SiteHealthTemplate>
+	);
+}

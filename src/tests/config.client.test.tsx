@@ -47,14 +47,18 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
 
     it('should handle empty config object', () => {
       const config = {};
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-      expect(() => {
-        render(
-          <PixelatedClientConfigProvider config={config}>
-            <TestComponent />
-          </PixelatedClientConfigProvider>
-        );
-      }).toThrow('Pixelated config is empty');
+      render(
+        <PixelatedClientConfigProvider config={config}>
+          <TestComponent />
+        </PixelatedClientConfigProvider>
+      );
+
+      expect(consoleSpy).toHaveBeenCalledWith('Pixelated config is empty. Check that PIXELATED_CONFIG_JSON or PIXELATED_CONFIG_B64 environment variables are set.');
+      expect(screen.getByTestId('config-check')).toHaveTextContent('no-config');
+
+      consoleSpy.mockRestore();
     });
 
     it('should handle partial config', () => {
@@ -107,14 +111,13 @@ describe('PixelatedClientConfigProvider & usePixelatedConfig', () => {
     });
 
     it('should throw error when provider not present in development', () => {
-      // In development mode without provider, usePixelatedConfig should throw
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      // In development mode without provider, usePixelatedConfig should log warning and return null
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-      // This test documents the behavior - the error happens at module load time
-      // during development when PixelatedClientConfigProvider is not found
-      expect(() => {
-        render(<TestComponent />);
-      }).toThrow('PixelatedClientConfigProvider not found');
+      render(<TestComponent />);
+
+      expect(consoleSpy).toHaveBeenCalledWith('PixelatedClientConfigProvider not found when called by testcomponent. Some components may not work as expected. Wrap your app with PixelatedClientConfigProvider for full functionality.');
+      expect(screen.getByTestId('config-check')).toHaveTextContent('no-config');
 
       consoleSpy.mockRestore();
     });

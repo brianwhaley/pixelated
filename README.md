@@ -4,6 +4,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Coverage][coverage-shield]][coverage-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -380,16 +381,16 @@ Project Link: [https://github.com/brianwhaley/pixelated-components](https://gith
 
 ### Overview
 
-**Current Status**: ✅ 2,246 tests passing across 67 test files
+**Current Status**: ✅ 2,370 tests passing across 77 test files
 
 | Metric | Value |
 |--------|-------|
-| Test Files | 71 |
-| Total Tests | 2,291 |
-| Coverage (Statements) | 76.09% |
-| Coverage (Lines) | 78.76% |
-| Coverage (Functions) | 77.11% |
-| Coverage (Branches) | 67.37% |
+| Test Files | 77 |
+| Total Tests | 2,370 |
+| Coverage (Statements) | 76.98% |
+| Coverage (Lines) | 79.55% |
+| Coverage (Functions) | 78.09% |
+| Coverage (Branches) | 67.57% |
 | Test Framework | Vitest 4.x |
 | Testing Library | @testing-library/react + jsdom |
 
@@ -407,6 +408,9 @@ npm run test:run         # Single run (for CI)
 **Component Coverage Summary**
 
 #### Component Coverage (Sorted by Statement Coverage)
+- **site-health-cache.ts**: 100% statements *(new shared caching utility)*
+- **sites.integration.ts**: 100% statements *(new site management functions)*
+- **site-health-indicators.ts**: 100% statements
 - **tiles.tsx**: 100% statements
 - **google.reviews.functions.ts**: 100% statements
 - **accordion.tsx**: 100% statements
@@ -518,6 +522,9 @@ npm run test:run         # Single run (for CI)
 
 [license-shield]: https://img.shields.io/github/license/brianwhaley/pixelated-components.svg?style=for-the-badge
 [license-url]: https://github.com/brianwhaley/pixelated-components/blob/master/LICENSE.txt
+
+[coverage-shield]: https://img.shields.io/badge/coverage-77%25-brightgreen?style=for-the-badge
+[coverage-url]: https://github.com/brianwhaley/pixelated-components
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/brianwhaley

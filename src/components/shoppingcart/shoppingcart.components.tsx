@@ -16,7 +16,7 @@ import { getCart, getShippingInfo, SetShippingInfo, setDiscountCodes, getRemoteD
 import type { ShoppingCartType, AddressType, CheckoutType } from "./shoppingcart.functions";
 import { usePixelatedConfig } from '../config/config.client';
 import { SmartImage } from '../cms/smartimage';
-import shippingToData from "../../data/shipping.to.json";
+import shippingToData from "./shipping.to.json";
 import "./shoppingcart.css";
 
 

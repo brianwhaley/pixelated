@@ -12,7 +12,7 @@ const tsFiles = glob.sync('src/components/**/*.ts', {
     '**/*.stories.ts',
     '**/documentation/**',
     '**/examples/**',
-    '**/*.example.*',
+    '**/*.example.*'
   ]
 });
 
@@ -35,40 +35,65 @@ const allComponentFiles = [...tsFiles, ...tsxFiles];
 function analyzeComponentFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
 
-  // Client-side patterns that require the component to run on client
-  const clientPatterns = [
-    /\buseState\b/,
-    /\buseEffect\b/,
-    /\buseContext\b/,
-    /\bcreateContext\b/,
-    /\buseCallback\b/,
-    /\buseMemo\b/,
-    /\buseRef\b/,
-    /\buseReducer\b/,
-    /\buseLayoutEffect\b/,
-    /\bwindow\./,
-    /\bdocument\./,
-    /\blocalStorage\b/,
-    /\bsessionStorage\b/,
-    /\bnavigator\./,
-    /\bonClick\b/,
-    /\bonChange\b/,
-    /\bonSubmit\b/,
-    /\bonMouse\b/,
-    /\bonKey\b/,
-    /\bonFocus\b/,
-    /\bonBlur\b/,
-    /\bonInput\b/,
-    /\baddEventListener\b/,
-    /\bremoveEventListener\b/
+  // Server-only patterns that indicate this should only be on server (not client)
+  const serverOnlyPatterns = [
+    /["']use server["']/,  // Server directive
+    /\b__dirname\b/,
+    /\b__filename\b/,
+    /@aws-sdk/,
+    /\bchild_process\b/,
+    /\bexec\b/,
+    /\bexecAsync\b/,
+    /\bfs\b/,
+    /\bfs\.readFileSync\b/, // do we need this
+    /\bfs\.existsSync\b/, // do we need this
+    /\bgoogleapis\b/,
+    /\bpath\b/,
+    /\bprocess\.cwd\(\)/,
+    /\bprocess\.env\b/,
+    /\brequire\.resolve\b/,
+    /\butil\b/
   ];
 
-  // Check if file contains any client-side patterns
-  const isClientRequired = clientPatterns.some(pattern => pattern.test(content)) || content.includes("'use client'");
+  // Client-only patterns that require the component to run on client
+  const clientOnlyPatterns = [
+    /\baddEventListener\b/,
+    /\bcreateContext\b/,
+    /\bdocument\./,
+    /\blocalStorage\b/,
+    /\bnavigator\./,
+    /\bonBlur\b/,
+    /\bonChange\b/,
+    /\bonClick\b/,
+    /\bonFocus\b/,
+    /\bonInput\b/,
+    /\bonKey\b/,
+    /\bonMouse\b/,
+    /\bonSubmit\b/,
+    /\bremoveEventListener\b/,
+    /\bsessionStorage\b/,
+    /\buseCallback\b/,
+    /\buseContext\b/,
+    /\buseEffect\b/,
+    /\buseLayoutEffect\b/,
+    /\buseMemo\b/,
+    /\buseReducer\b/,
+    /\buseRef\b/,
+    /\buseState\b/,
+    /\bwindow\./,
+    /["']use client["']/  // Client directive
+  ];
+
+  // Check if file contains any server-only patterns
+  const isServerOnly = serverOnlyPatterns.some(pattern => pattern.test(content));
+
+  // Check if file contains any client-only patterns
+  const isClientOnly = clientOnlyPatterns.some(pattern => pattern.test(content));
 
   return {
     filePath,
-    isClientRequired,
+    isClientOnly,
+    isServerOnly,
     exportPath: filePath.replace('src/', './').replace(/\.tsx?$/, '')
   };
 }
@@ -77,8 +102,9 @@ function analyzeComponentFile(filePath) {
 const analyzedComponents = allComponentFiles.map(analyzeComponentFile);
 
 // Create arrays of components for each bundle
-const clientRequiredComponents = analyzedComponents.filter(comp => comp.isClientRequired);
-const serverSafeComponents = analyzedComponents.filter(comp => !comp.isClientRequired);
+const clientOnlyComponents = analyzedComponents.filter(comp => comp.isClientOnly && !comp.isServerOnly);
+const serverOnlyComponents = analyzedComponents.filter(comp => comp.isServerOnly);
+const clientAndServerSafeComponents = analyzedComponents.filter(comp => !comp.isClientOnly && !comp.isServerOnly);
 
 // Read index files
 const indexServer = fs.readFileSync('src/index.server.js', 'utf8');
@@ -122,8 +148,8 @@ const missing = {
 };
 
 const bundleErrors = {
-  server: [], // Client-required components incorrectly in server bundle
-  client: []  // Components missing from client bundle
+  server: [], // Client-only components incorrectly in server bundle
+  client: []  // Server-only components incorrectly in client bundle
 };
 
 // Check if exported paths correspond to existing files
@@ -147,21 +173,32 @@ checkExportPathsExist(serverExports, 'server bundle');
 checkExportPathsExist(clientExports, 'client bundle');
 
 // Check for missing exports
-serverSafeComponents.forEach(comp => {
+clientAndServerSafeComponents.forEach(comp => {
   if (!serverExports.includes(comp.exportPath)) {
     missing.server.push(comp.exportPath);
   }
 });
 
-allComponentFiles.forEach(file => {
-  const exportPath = file.replace('src/', './').replace(/\.tsx?$/, '');
-  if (!clientExports.includes(exportPath)) {
-    missing.client.push(exportPath);
+serverOnlyComponents.forEach(comp => {
+  if (!serverExports.includes(comp.exportPath)) {
+    missing.server.push(comp.exportPath);
+  }
+});
+
+clientOnlyComponents.forEach(comp => {
+  if (!clientExports.includes(comp.exportPath)) {
+    missing.client.push(comp.exportPath);
+  }
+});
+
+clientAndServerSafeComponents.forEach(comp => {
+  if (!clientExports.includes(comp.exportPath)) {
+    missing.client.push(comp.exportPath);
   }
 });
 
 // Check for bundle contamination errors
-clientRequiredComponents.forEach(comp => {
+clientOnlyComponents.forEach(comp => {
   if (serverExports.includes(comp.exportPath)) {
     bundleErrors.server.push(comp.exportPath);
   }
@@ -170,9 +207,9 @@ clientRequiredComponents.forEach(comp => {
 // Report results
 console.log('📊 Analysis Results:');
 console.log(`   Found ${allComponentFiles.length} component files`);
-console.log(`   ${clientRequiredComponents.length} client-required components`);
-console.log(`   ${serverSafeComponents.length} server-safe components\n`);
-
+console.log(`   ${clientOnlyComponents.length} client-only components`);
+console.log(`   ${clientAndServerSafeComponents.length} client-and-server-safe components`);
+console.log(`   ${serverOnlyComponents.length} server-only components`);
 if (missing.server.length > 0) {
   console.log('❌ Missing from server bundle (index.server.js):');
   missing.server.forEach(path => console.log(`   - ${path}`));
@@ -192,13 +229,20 @@ if (bundleErrors.server.length > 0) {
   console.log('');
 }
 
+if (bundleErrors.client.length > 0) {
+  console.log('🚨 Bundle contamination errors:');
+  console.log('   Server-only components incorrectly exported from client bundle:');
+  bundleErrors.client.forEach(path => console.log(`   - ${path}`));
+  console.log('');
+}
+
 if (missing.files.length > 0) {
   console.log('❌ Exported paths that don\'t exist:');
   missing.files.forEach(path => console.log(`   - ${path}`));
   console.log('');
 }
 
-const hasErrors = missing.server.length > 0 || missing.client.length > 0 || bundleErrors.server.length > 0 || missing.files.length > 0;
+const hasErrors = missing.server.length > 0 || missing.client.length > 0 || bundleErrors.server.length > 0 || bundleErrors.client.length > 0 || missing.files.length > 0;
 
 if (hasErrors) {
   console.log('❌ Validation failed!');

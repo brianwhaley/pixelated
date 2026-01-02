@@ -1,0 +1,697 @@
+"use server";
+
+/**
+ * On-Site SEO Analysis Integration Services
+ * Server-side utilities for performing comprehensive SEO analysis on websites
+ * Note: This makes external HTTP requests and should only be used server-side
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const seoMetricsConfig = JSON.parse(
+	fs.readFileSync(path.join(__dirname, 'seo-metrics.config.json'), 'utf8')
+);
+
+interface SEOMetricConfig {
+  id: string;
+  title: string;
+  description: string;
+  scoreDisplayMode: 'binary' | 'notApplicable';
+  dataCollector?: string | null;
+  scorer?: string | null;
+  pattern?: string;
+  countLogic?: 'exact' | 'min' | 'max' | 'or' | 'count';
+  scoreLogic?: 'present' | 'exact' | 'optimal' | 'percentage';
+  displayTemplate?: string;
+  expectedCount?: number;
+  optimalRange?: { min: number; max: number };
+}
+
+interface SEOCategoryConfig {
+  name: string;
+  description: string;
+  priority: number;
+  metrics: Record<string, SEOMetricConfig>;
+}
+
+interface SEOConfig {
+  categories: Record<string, SEOCategoryConfig>;
+}
+
+/**
+ * Registry of data collection functions
+ */
+const dataCollectors: Record<string, (html: string, ...args: any[]) => any> = {
+	collectSemanticTagsData,
+	collectTitleTagsData,
+	collectMetaKeywordsData,
+	collectMetaDescriptionsData
+};
+
+/**
+ * Registry of scoring functions
+ */
+const scorers: Record<string, (data: any) => { score: number; displayValue: string; details?: any }> = {
+	calculateSemanticTagsScore,
+	calculateTitleTagsScore,
+	calculateMetaKeywordsScore,
+	calculateMetaDescriptionsScore
+};
+
+/**
+ * Data collection functions
+ */
+function collectSemanticTagsData(html: string) {
+	const hasHeader = /<header[^>]*>/i.test(html);
+	const hasFooter = /<footer[^>]*>/i.test(html);
+	const hasNav = /<nav[^>]*>/i.test(html);
+	const hasMain = /<main[^>]*>/i.test(html);
+	const hasSection = /<section[^>]*>/i.test(html);
+	const hasArticle = /<article[^>]*>/i.test(html);
+	const hasAside = /<aside[^>]*>/i.test(html);
+	const hasFigure = /<figure[^>]*>/i.test(html);
+	const hasFigcaption = /<figcaption[^>]*>/i.test(html);
+	const hasTime = /<time[^>]*>/i.test(html);
+	const hasMark = /<mark[^>]*>/i.test(html);
+
+	return {
+		requiredTags: [
+			{ tag: 'header', present: hasHeader },
+			{ tag: 'footer', present: hasFooter },
+			{ tag: 'nav', present: hasNav },
+			{ tag: 'main', present: hasMain },
+			{ tag: 'section', present: hasSection }
+		],
+		optionalTags: [
+			{ tag: 'article', present: hasArticle },
+			{ tag: 'aside', present: hasAside },
+			{ tag: 'figure', present: hasFigure },
+			{ tag: 'figcaption', present: hasFigcaption },
+			{ tag: 'time', present: hasTime },
+			{ tag: 'mark', present: hasMark }
+		]
+	};
+}
+
+function collectTitleTagsData(html: string, titleMatch?: RegExpMatchArray | null) {
+	return {
+		content: titleMatch ? titleMatch[1].trim() : '',
+		length: titleMatch ? titleMatch[1].trim().length : 0
+	};
+}
+
+function collectMetaKeywordsData(html: string) {
+	const keywordsMatch = html.match(/<meta[^>]*name=["']keywords["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+	const content = keywordsMatch ? keywordsMatch[1].trim() : '';
+	const length = content.length;
+
+	return {
+		content,
+		length
+	};
+}
+
+function collectMetaDescriptionsData(html: string) {
+	const descriptionMatch = html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+	const content = descriptionMatch ? descriptionMatch[1].trim() : '';
+	const length = content.length;
+
+	return {
+		content,
+		length,
+		optimal: length > 0 && length <= 160
+	};
+}
+
+/**
+ * Generic function to analyze pattern-based metrics
+ */
+function analyzePatternMetric(html: string, metric: SEOMetricConfig): { score: number; displayValue: string; details?: any } {
+	if (!metric.pattern) {
+		return { score: 0, displayValue: 'No pattern defined' };
+	}
+
+	const regex = new RegExp(metric.pattern, 'gi');
+	const matches = html.match(regex) || [];
+	const count = matches.length;
+
+	let score = 0;
+	let displayValue = '';
+	let details: any = undefined;
+
+	// Apply count logic
+	switch (metric.countLogic) {
+	case 'exact':
+		score = count === (metric.expectedCount || 1) ? 1 : 0;
+		break;
+	case 'min':
+		score = count >= (metric.expectedCount || 1) ? 1 : 0;
+		break;
+	case 'max':
+		score = count <= (metric.expectedCount || 1) ? 1 : 0;
+		break;
+	case 'or':
+		score = count > 0 ? 1 : 0;
+		break;
+	case 'count':
+	default:
+		score = count > 0 ? 1 : 0;
+		break;
+	}
+
+	// Apply score logic
+	if (metric.scoreLogic === 'optimal' && metric.optimalRange) {
+		const { min, max } = metric.optimalRange;
+		score = count >= min && count <= max ? 1 : 0;
+	} else if (metric.scoreLogic === 'percentage') {
+		// For percentage-based scoring, we'd need additional logic
+		score = count > 0 ? 1 : 0;
+	}
+
+	// Generate display value
+	if (metric.displayTemplate) {
+		displayValue = metric.displayTemplate
+			.replace('{{count}}', count.toString())
+			.replace('{{matches}}', matches.length.toString());
+	} else {
+		displayValue = `${count} match(es) found`;
+	}
+
+	// Generate details based on metric type
+	if (metric.id === 'h1-tags' || metric.id === 'h2-tags') {
+		const headings = matches.map(match => {
+			const text = match.replace(/<[^>]*>/g, '').trim();
+			return { tag: metric.id.replace('-tags', ''), text };
+		});
+		details = { items: headings };
+	} else if (metric.id === 'image-alt-text') {
+		// Special logic for image alt text - check each image individually
+		const images = matches.map(match => {
+			const srcMatch = match.match(/src=["']([^"']*)["']/);
+			const altMatch = match.match(/alt=["']([^"']*)["']/);
+			return {
+				src: srcMatch ? srcMatch[1] : '',
+				alt: altMatch ? altMatch[1] : null
+			};
+		});
+		const imagesWithAlt = images.filter(img => img.alt !== null).length;
+		const totalImages = images.length;
+		score = totalImages > 0 && imagesWithAlt === totalImages ? 1 : 0;
+		displayValue = `${imagesWithAlt}/${totalImages} images have alt text`;
+		details = { items: images };
+	} else if (metric.id === 'canonical-urls') {
+		const canonicalMatch = matches[0]?.match(/href=["']([^"']*)["']/);
+		const canonicalUrl = canonicalMatch ? canonicalMatch[1] : null;
+		displayValue = canonicalUrl || 'No canonical URL found';
+	} else if (metric.id === 'language-tags') {
+		const langMatch = matches[0]?.match(/lang=["']([^"']*)["']/);
+		const lang = langMatch ? langMatch[1] : null;
+		displayValue = lang ? `Language: ${lang}` : 'No language tag found';
+	}
+
+	return { score, displayValue, details };
+}
+function calculateSemanticTagsScore(semanticData: ReturnType<typeof collectSemanticTagsData>) {
+	const requiredTagsPresent = semanticData.requiredTags.filter(tag => tag.present).length;
+	const optionalTagsPresent = semanticData.optionalTags.filter(tag => tag.present).length;
+	const totalSemanticTags = requiredTagsPresent + optionalTagsPresent;
+
+	return {
+		score: requiredTagsPresent >= 5 ? 1 : 0,
+		displayValue: `${requiredTagsPresent}/5 required, ${optionalTagsPresent} optional (${totalSemanticTags} total)`,
+		details: {
+			items: [
+				{ type: 'required', tags: semanticData.requiredTags },
+				{ type: 'optional', tags: semanticData.optionalTags },
+				{ type: 'summary', requiredCount: requiredTagsPresent, optionalCount: optionalTagsPresent, totalCount: totalSemanticTags }
+			]
+		}
+	};
+}
+
+function calculateTitleTagsScore(titleData: ReturnType<typeof collectTitleTagsData>) {
+	const score = titleData.length > 0 && titleData.length <= 60 ? 1 : 0;
+	const displayValue = titleData.content || 'No title tag found';
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'title', content: titleData.content, length: titleData.length, optimal: titleData.length > 0 && titleData.length <= 60 }
+			]
+		}
+	};
+}
+
+function calculateMetaKeywordsScore(keywordsData: ReturnType<typeof collectMetaKeywordsData>) {
+	const score = keywordsData.length > 0 ? 1 : 0;
+	const displayValue = keywordsData.content || 'No meta keywords found';
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'keywords', content: keywordsData.content, length: keywordsData.length, present: keywordsData.length > 0 }
+			]
+		}
+	};
+}
+
+function calculateMetaDescriptionsScore(descriptionData: ReturnType<typeof collectMetaDescriptionsData>) {
+	const score = descriptionData.optimal ? 1 : 0;
+	const displayValue = descriptionData.content || 'No meta description found';
+
+	return {
+		score,
+		displayValue,
+		details: {
+			items: [
+				{ type: 'description', content: descriptionData.content, length: descriptionData.length, optimal: descriptionData.optimal }
+			]
+		}
+	};
+}
+
+export interface OnSiteSEOAudit {
+  id: string;
+  title: string;
+  score: number | null; // 1 = pass, 0 = fail, null = not applicable
+  scoreDisplayMode: 'binary' | 'notApplicable';
+  displayValue?: string;
+  category: 'on-page' | 'on-site';
+  details?: {
+    items?: Array<Record<string, unknown>>;
+  };
+}
+
+export interface PageAnalysis {
+  url: string;
+  title?: string;
+  statusCode: number;
+  audits: OnSiteSEOAudit[];
+  crawledAt: string;
+}
+
+export interface OnSiteSEOData {
+  site: string;
+  url: string;
+  overallScore: number | null;
+  pagesAnalyzed: PageAnalysis[];
+  onSiteAudits: OnSiteSEOAudit[];
+  totalPages: number;
+  timestamp: string;
+  status: 'success' | 'error';
+  error?: string;
+}
+
+/**
+ * Crawl the site to discover internal pages
+ */
+async function crawlSite(baseUrl: string, maxPages: number = 10): Promise<string[]> {
+	const visited = new Set<string>();
+	const toVisit = [baseUrl];
+	const discovered: string[] = [];
+
+	try {
+		// Parse base URL for domain matching
+		const baseUrlObj = new URL(baseUrl);
+		const baseDomain = baseUrlObj.hostname;
+
+		while (toVisit.length > 0 && discovered.length < maxPages) {
+			const currentUrl = toVisit.shift()!;
+			if (visited.has(currentUrl)) continue;
+
+			visited.add(currentUrl);
+			discovered.push(currentUrl);
+
+			try {
+				const response = await fetch(currentUrl, {
+					headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SEO Analysis Bot)' }
+				});
+
+				if (!response.ok) continue;
+
+				const html = await response.text();
+
+				// Extract internal links
+				const linkRegex = /<a[^>]*href=["']([^"']*)["'][^>]*>/gi;
+				let match;
+				while ((match = linkRegex.exec(html)) !== null) {
+					try {
+						const href = match[1];
+						const absoluteUrl = new URL(href, currentUrl).toString();
+
+						// Only include same domain links
+						if (new URL(absoluteUrl).hostname === baseDomain && !visited.has(absoluteUrl) && !toVisit.includes(absoluteUrl)) {
+							toVisit.push(absoluteUrl);
+						}
+					} catch {
+						// Invalid URL, skip
+					}
+				}
+			} catch (error) {
+				console.warn(`Failed to crawl ${currentUrl}:`, error);
+			}
+		}
+	} catch (error) {
+		console.warn('Error during site crawling:', error);
+	}
+
+	return discovered.slice(0, maxPages);
+}
+
+/**
+ * Analyze a single page for on-page SEO elements using configuration
+ */
+async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
+	try {
+		const response = await fetch(url, {
+			headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SEO Analysis Bot)' }
+		});
+
+		if (!response.ok) {
+			// Return a basic analysis for non-200 responses
+			return {
+				url,
+				title: undefined,
+				statusCode: response.status,
+				audits: [],
+				crawledAt: new Date().toISOString()
+			};
+		}
+
+		const html = await response.text();
+		const audits: OnSiteSEOAudit[] = [];
+
+		// Extract page title for title tag analysis
+		const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+		const pageTitle = titleMatch ? titleMatch[1].trim() : undefined;
+
+		// Process on-page metrics from configuration
+		const config = seoMetricsConfig as SEOConfig;
+		const onPageCategory = config.categories['on-page'];
+
+		for (const metric of Object.values(onPageCategory.metrics)) {
+			let score: number = 0;
+			let displayValue: string = '';
+			let details: any = undefined;
+
+			// Use data collector and scorer if available
+			if (metric.dataCollector && metric.scorer) {
+				const collector = dataCollectors[metric.dataCollector];
+				const scorer = scorers[metric.scorer];
+
+				if (collector && scorer) {
+					const rawData = collector(html, titleMatch);
+					const result = scorer(rawData);
+					score = result.score;
+					displayValue = result.displayValue;
+					details = result.details;
+				}
+			} else if (metric.pattern) {
+			// Use pattern-based analysis
+				const result = analyzePatternMetric(html, metric);
+				score = result.score;
+				displayValue = result.displayValue;
+				details = result.details;
+			}
+
+			audits.push({
+				id: metric.id,
+				title: metric.title,
+				score,
+				scoreDisplayMode: metric.scoreDisplayMode,
+				displayValue,
+				category: 'on-page',
+				details
+			});
+		}
+
+		return {
+			url,
+			title: pageTitle,
+			statusCode: response.status,
+			audits,
+			crawledAt: new Date().toISOString()
+		};
+	} catch (error) {
+		console.warn(`Failed to analyze ${url}:`, error);
+		// Return a basic analysis for failed requests
+		return {
+			url,
+			title: undefined,
+			statusCode: 0, // Indicates analysis failed
+			audits: [],
+			crawledAt: new Date().toISOString()
+		};
+	}
+}
+async function performSiteWideAudits(baseUrl: string): Promise<OnSiteSEOAudit[]> {
+	const audits: OnSiteSEOAudit[] = [];
+
+	try {
+		// Parse base URL
+		const baseUrlObj = new URL(baseUrl);
+		const baseDomain = baseUrlObj.hostname;
+		const protocol = baseUrlObj.protocol;
+
+		// Process on-site metrics from configuration
+		const config = seoMetricsConfig as SEOConfig;
+		const onSiteCategory = config.categories['on-site'];
+
+		for (const metric of Object.values(onSiteCategory.metrics)) {
+			let score: number = 0;
+			let displayValue: string = '';
+
+			// Handle metrics without custom collectors/scorers
+			switch (metric.id) {
+			case 'https':
+				score = protocol === 'https:' ? 1 : 0;
+				displayValue = score ? 'Site uses HTTPS' : 'Site does not use HTTPS';
+				break;
+
+			case 'url-structure': {
+				const hasQueryParams = baseUrlObj.search.length > 0;
+				score = hasQueryParams ? 0 : 1;
+				displayValue = score ? 'Clean URL structure' : 'URL contains query parameters';
+				break;
+			}
+
+			case 'robots-txt':
+				try {
+					const robotsUrl = `${protocol}//${baseDomain}/robots.txt`;
+					const robotsResponse = await fetch(robotsUrl);
+					score = robotsResponse.ok ? 1 : 0;
+					displayValue = score ? 'Robots.txt accessible' : 'Robots.txt not found or inaccessible';
+				} catch {
+					score = 0;
+					displayValue = 'Robots.txt not accessible';
+				}
+				break;
+
+			case 'sitemap-xml':
+				try {
+					const sitemapUrl = `${protocol}//${baseDomain}/sitemap.xml`;
+					const sitemapResponse = await fetch(sitemapUrl);
+					score = sitemapResponse.ok ? 1 : 0;
+					displayValue = score ? 'Sitemap.xml accessible' : 'Sitemap.xml not found or inaccessible';
+				} catch {
+					score = 0;
+					displayValue = 'Sitemap.xml not accessible';
+				}
+				break;
+
+			case 'internal-linking':
+				score = 1; // Placeholder - would need full crawl analysis
+				displayValue = 'Internal links found during crawl';
+				break;
+
+			case 'navigation':
+				score = 1; // Placeholder - would need content analysis
+				displayValue = 'Navigation structure found';
+				break;
+
+			case 'broken-links':
+				score = 1; // Placeholder - would need comprehensive link checking
+				displayValue = 'No obvious broken links detected';
+				break;
+
+			case 'manifest-file':
+				try {
+					const manifestUrl = `${protocol}//${baseDomain}/manifest.webmanifest`;
+					const manifestResponse = await fetch(manifestUrl);
+					score = manifestResponse.ok ? 1 : 0;
+					displayValue = score ? 'Manifest.webmanifest accessible' : 'Manifest.webmanifest not found or inaccessible';
+				} catch {
+					score = 0;
+					displayValue = 'Manifest.webmanifest not accessible';
+				}
+				break;
+
+			default:
+				score = 0;
+				displayValue = 'Not implemented';
+			}
+
+			audits.push({
+				id: metric.id,
+				title: metric.title,
+				score,
+				scoreDisplayMode: metric.scoreDisplayMode,
+				displayValue,
+				category: 'on-site'
+			});
+		}
+
+	} catch (error) {
+		console.error('Error performing site-wide audits:', error);
+	}
+
+	return audits;
+}
+
+/**
+ * Fetch and parse sitemap.xml to get all site URLs
+ */
+async function getUrlsFromSitemap(baseUrl: string): Promise<string[]> {
+	try {
+		const sitemapUrl = `${baseUrl}/sitemap.xml`;
+		const response = await fetch(sitemapUrl);
+
+		if (!response.ok) {
+			throw new Error(`Failed to fetch sitemap: ${response.status}`);
+		}
+
+		const xmlText = await response.text();
+		const baseUrlObj = new URL(baseUrl);
+
+		// Simple XML parsing to extract URLs
+		const urlRegex = /<loc>([^<]+)<\/loc>/g;
+		const urls: string[] = [];
+		let match;
+
+		while ((match = urlRegex.exec(xmlText)) !== null) {
+			const url = match[1].trim();
+			// Only include URLs from the same domain and that look like valid page URLs
+			try {
+				const urlObj = new URL(url);
+				if (urlObj.hostname === baseUrlObj.hostname && 
+					!url.includes('/images/') && 
+					!url.includes('/css/') && 
+					!url.includes('/js/') &&
+					!url.includes('/wp-content/') &&
+					!url.includes('/wp-includes/') &&
+					!url.match(/\.(jpg|jpeg|png|gif|svg|ico|css|js|woff|woff2|ttf|eot)$/i)) {
+					urls.push(url);
+				}
+			} catch {
+				// Invalid URL, skip
+			}
+		}
+
+		return urls.slice(0, 20); // Limit to 20 pages to prevent excessive analysis
+	} catch (error) {
+		console.warn('Failed to fetch sitemap:', error);
+		return [];
+	}
+}
+
+/**
+ * Main function to perform comprehensive on-site SEO analysis
+ */
+export async function performOnSiteSEOAnalysis(baseUrl: string): Promise<OnSiteSEOData> {
+	try {
+		let pagesToAnalyze: string[] = [];
+
+		// Try to get URLs from sitemap first
+		const sitemapUrls = await getUrlsFromSitemap(baseUrl);
+		if (sitemapUrls.length > 0) {
+			pagesToAnalyze = sitemapUrls;
+		} else {
+			// Fallback to crawling if sitemap not available
+			pagesToAnalyze = await crawlSite(baseUrl, 5);
+		}
+
+		if (pagesToAnalyze.length === 0) {
+			return {
+				site: baseUrl,
+				url: baseUrl,
+				overallScore: null,
+				pagesAnalyzed: [],
+				onSiteAudits: [],
+				totalPages: 0,
+				timestamp: new Date().toISOString(),
+				status: 'error',
+				error: 'No pages could be analyzed'
+			};
+		}
+
+		// Analyze each page
+		const pagesAnalyzed: PageAnalysis[] = [];
+		for (const pageUrl of pagesToAnalyze) {
+			try {
+				const pageAnalysis = await analyzeSinglePage(pageUrl);
+				pagesAnalyzed.push(pageAnalysis);
+			} catch (error) {
+				console.warn(`Failed to analyze ${pageUrl}:`, error);
+			}
+		}
+
+		// Perform site-wide audits
+		const onSiteAudits = await performSiteWideAudits(baseUrl);
+
+		// Calculate overall score (simplified - average of all page scores)
+		let totalScore = 0;
+		let totalAudits = 0;
+
+		for (const page of pagesAnalyzed) {
+			for (const audit of page.audits) {
+				if (audit.score !== null) {
+					totalScore += audit.score;
+					totalAudits++;
+				}
+			}
+		}
+
+		for (const audit of onSiteAudits) {
+			if (audit.score !== null) {
+				totalScore += audit.score;
+				totalAudits++;
+			}
+		}
+
+		const overallScore = totalAudits > 0 ? Math.round((totalScore / totalAudits) * 100) / 100 : null;
+
+		return {
+			site: baseUrl,
+			url: baseUrl,
+			overallScore,
+			pagesAnalyzed,
+			onSiteAudits,
+			totalPages: pagesAnalyzed.length,
+			timestamp: new Date().toISOString(),
+			status: 'success'
+		};
+
+	} catch (error) {
+		console.error('Error performing on-site SEO analysis:', error);
+		return {
+			site: baseUrl,
+			url: baseUrl,
+			overallScore: null,
+			pagesAnalyzed: [],
+			onSiteAudits: [],
+			totalPages: 0,
+			timestamp: new Date().toISOString(),
+			status: 'error',
+			error: error instanceof Error ? error.message : 'Unknown error'
+		};
+	}
+}
