@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "fix for storybook, new deployment page, onpage seo fix with puppeteer"
+git commit -m "fix for storybook, fix for 500 error on new deployment page, onpage seo fix with puppeteer, new cloudwatch uptime component"
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

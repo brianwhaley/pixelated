@@ -15,6 +15,7 @@ export * from './components/admin/site-health/site-health-google-analytics.integ
 export * from './components/admin/site-health/site-health-google-search-console.integration';
 export * from './components/admin/site-health/site-health-indicators';
 export * from './components/admin/site-health/site-health-on-site-seo.integration';
+export * from './components/admin/site-health/site-health-cloudwatch.integration';
 export * from './components/admin/site-health/seo-constants';
 export * from './components/admin/site-health/site-health-security.integration';
 export * from './components/admin/site-health/site-health-performance';
