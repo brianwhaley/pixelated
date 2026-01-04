@@ -20,7 +20,7 @@ Timeline.propTypes = {
 		})
 	).isRequired
 };
-export type TimelineType = InferProps<typeof Timeline.propTypes> & { [key: string]: unknown };
+export type TimelineType = InferProps<typeof Timeline.propTypes>;
 export function Timeline(props: TimelineType) {
 
 	return (

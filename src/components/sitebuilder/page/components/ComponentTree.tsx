@@ -18,9 +18,7 @@ ComponentTree.propTypes = {
 	selectedPath: PropTypes.string,
 	editPath: PropTypes.string,
 };
-
-type ComponentTreeProps = InferProps<typeof ComponentTree.propTypes>;
-
+export type ComponentTreeType = InferProps<typeof ComponentTree.propTypes>;
 export function ComponentTree({ 
 	components, 
 	onSelectComponent, 
@@ -30,7 +28,7 @@ export function ComponentTree({
 	onMoveDown,
 	selectedPath, 
 	editPath 
-}: ComponentTreeProps) {
+}: ComponentTreeType) {
 	function renderTreeNode(component: any, index: number, path: string) {
 		const isLayout = layoutComponents.includes(component.component);
 		const currentPath = `${path}[${index}]`;

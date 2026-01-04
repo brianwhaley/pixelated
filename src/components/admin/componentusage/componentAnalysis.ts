@@ -95,13 +95,17 @@ export async function checkComponentUsage(sitePath: string, componentName: strin
 
 			for (const file of files) {
 				const content = await fs.readFile(file, 'utf-8');
-				if (content.includes('@pixelated-tech/components')) {
+				if (content.includes('@pixelated-tech/components') ||
+            content.includes('@pixelated-tech/components/adminclient') ||
+            content.includes('@pixelated-tech/components/adminserver')) {
 					// Check if any semantic export is imported (case insensitive)
 					for (const exportName of semanticExports) {
 						const contentLower = content.toLowerCase();
 						const exportNameLower = exportName.toLowerCase();
 						if (contentLower.includes(exportNameLower) ||
-                new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components`, 'i').test(content)) {
+                new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components`, 'i').test(content) ||
+                new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components/adminclient`, 'i').test(content) ||
+                new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components/adminserver`, 'i').test(content)) {
 							return true;
 						}
 					}
@@ -118,9 +122,13 @@ export async function checkComponentUsage(sitePath: string, componentName: strin
 			// Check for import statements - look for the actual export name (case insensitive)
 			const contentLower = content.toLowerCase();
 			const exportNameLower = exportName.toLowerCase();
-			if (content.includes('@pixelated-tech/components') &&
+			if ((content.includes('@pixelated-tech/components') ||
+           content.includes('@pixelated-tech/components/adminclient') ||
+           content.includes('@pixelated-tech/components/adminserver')) &&
           (contentLower.includes(exportNameLower) ||
-           new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components`, 'i').test(content))) {
+           new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components`, 'i').test(content) ||
+           new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components/adminclient`, 'i').test(content) ||
+           new RegExp(`import.*${exportNameLower}.*from.*@pixelated-tech/components/adminserver`, 'i').test(content))) {
 				return true;
 			}
 		}

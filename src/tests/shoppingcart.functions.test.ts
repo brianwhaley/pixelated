@@ -9,11 +9,11 @@ import {
 	getIndexInCart,
 	getCartItemCount,
 	getCartSubTotal,
-	AddToShoppingCart,
-	RemoveFromShoppingCart,
-	ClearShoppingCart,
+	addToShoppingCart,
+	removeFromShoppingCart,
+	clearShoppingCart,
 	getShippingInfo,
-	SetShippingInfo,
+	setShippingInfo,
 	getShippingCost,
 	getLocalDiscountCodes,
 	setDiscountCodes,
@@ -286,7 +286,7 @@ describe('Shopping Cart Functions', () => {
 
 	// ========== ADD/REMOVE FROM CART ==========
 
-	describe('AddToShoppingCart', () => {
+	describe('addToShoppingCart', () => {
 		it('should add new item to cart', () => {
 			const item: ShoppingCartType = {
 				itemID: '1',
@@ -294,7 +294,7 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 5,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
+			addToShoppingCart(item);
 			const cart = getCart();
 			expect(cart.length).toBe(1);
 			expect(cart[0].itemID).toBe('1');
@@ -308,8 +308,8 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 5,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
-			AddToShoppingCart(item);
+			addToShoppingCart(item);
+			addToShoppingCart(item);
 			const cart = getCart();
 			expect(cart.length).toBe(1);
 			expect(cart[0].itemQuantity).toBe(2);
@@ -322,7 +322,7 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
+			addToShoppingCart(item);
 			expect(window.dispatchEvent).toHaveBeenCalledWith(new Event('storage'));
 		});
 
@@ -333,15 +333,15 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 2,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
-			AddToShoppingCart(item);
-			AddToShoppingCart(item);
+			addToShoppingCart(item);
+			addToShoppingCart(item);
+			addToShoppingCart(item);
 			const cart = getCart();
 			expect(cart[0].itemQuantity).toBe(2);
 		});
 	});
 
-	describe('RemoveFromShoppingCart', () => {
+	describe('removeFromShoppingCart', () => {
 		it('should remove item from cart', () => {
 			const item: ShoppingCartType = {
 				itemID: '1',
@@ -349,8 +349,8 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
-			RemoveFromShoppingCart(item);
+			addToShoppingCart(item);
+			removeFromShoppingCart(item);
 			const cart = getCart();
 			expect(cart.length).toBe(0);
 		});
@@ -368,9 +368,9 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 20,
 			};
-			AddToShoppingCart(item1);
-			AddToShoppingCart(item2);
-			RemoveFromShoppingCart(item1);
+			addToShoppingCart(item1);
+			addToShoppingCart(item2);
+			removeFromShoppingCart(item1);
 			const cart = getCart();
 			expect(cart.length).toBe(1);
 			expect(cart[0].itemID).toBe('2');
@@ -383,8 +383,8 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
-			RemoveFromShoppingCart(item);
+			addToShoppingCart(item);
+			removeFromShoppingCart(item);
 			expect(window.dispatchEvent).toHaveBeenCalled();
 		});
 
@@ -395,11 +395,11 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 10,
 			};
-			expect(() => RemoveFromShoppingCart(item)).not.toThrow();
+			expect(() => removeFromShoppingCart(item)).not.toThrow();
 		});
 	});
 
-	describe('ClearShoppingCart', () => {
+	describe('clearShoppingCart', () => {
 		it('should clear cart and shipping info', () => {
 			const item: ShoppingCartType = {
 				itemID: '1',
@@ -407,16 +407,16 @@ describe('Shopping Cart Functions', () => {
 				itemQuantity: 1,
 				itemCost: 10,
 			};
-			AddToShoppingCart(item);
-			SetShippingInfo({ name: 'John' });
-			ClearShoppingCart();
+			addToShoppingCart(item);
+			setShippingInfo({ name: 'John' });
+			clearShoppingCart();
 
 			expect(localStorage.getItem(shoppingCartKey)).toBeNull();
 			expect(localStorage.getItem(shippingInfoKey)).toBeNull();
 		});
 
 		it('should dispatch storage event', () => {
-			ClearShoppingCart();
+			clearShoppingCart();
 			expect(window.dispatchEvent).toHaveBeenCalled();
 		});
 	});
@@ -437,13 +437,13 @@ describe('Shopping Cart Functions', () => {
 				state: 'IL',
 				zip: '62701',
 			};
-			SetShippingInfo(shippingData);
+			setShippingInfo(shippingData);
 			const result = getShippingInfo();
 			expect(result).toEqual(shippingData);
 		});
 	});
 
-	describe('SetShippingInfo', () => {
+	describe('setShippingInfo', () => {
 		it('should set shipping info in localStorage', () => {
 			const shippingData: AddressType = {
 				name: 'John Doe',
@@ -453,13 +453,13 @@ describe('Shopping Cart Functions', () => {
 				zip: '62701',
 				country: 'USA',
 			};
-			SetShippingInfo(shippingData);
+			setShippingInfo(shippingData);
 			const stored = JSON.parse(localStorage.getItem(shippingInfoKey) || '{}');
 			expect(stored).toEqual(shippingData);
 		});
 
 		it('should dispatch storage event', () => {
-			SetShippingInfo({ name: 'John' });
+			setShippingInfo({ name: 'John' });
 			expect(window.dispatchEvent).toHaveBeenCalledWith(new Event('storage'));
 		});
 	});
@@ -471,19 +471,19 @@ describe('Shopping Cart Functions', () => {
 		});
 
 		it('should return correct cost for valid shipping method', () => {
-			SetShippingInfo({ shippingMethod: 'USPS-GA' });
+			setShippingInfo({ shippingMethod: 'USPS-GA' });
 			const cost = getShippingCost();
 			expect(cost).toBe(9.99);
 		});
 
 		it('should return 0 for invalid shipping method', () => {
-			SetShippingInfo({ shippingMethod: 'INVALID' });
+			setShippingInfo({ shippingMethod: 'INVALID' });
 			const cost = getShippingCost();
 			expect(cost).toBe(0);
 		});
 
 		it('should handle multiple shipping options', () => {
-			SetShippingInfo({ shippingMethod: 'USPS-PMX-I' });
+			setShippingInfo({ shippingMethod: 'USPS-PMX-I' });
 			const cost = getShippingCost();
 			expect(cost).toBe(69.98);
 		});
@@ -605,7 +605,7 @@ describe('Shopping Cart Functions', () => {
 				},
 			];
 			setDiscountCodes(codes);
-			SetShippingInfo({ discountCode: 'SAVE10' });
+			setShippingInfo({ discountCode: 'SAVE10' });
 			const discount = getCartSubtotalDiscount(cart);
 			expect(discount).toBe(10);
 		});
@@ -625,7 +625,7 @@ describe('Shopping Cart Functions', () => {
 				},
 			];
 			setDiscountCodes(codes);
-			SetShippingInfo({ discountCode: 'SAVE5' });
+			setShippingInfo({ discountCode: 'SAVE5' });
 			const discount = getCartSubtotalDiscount(cart);
 			expect(discount).toBe(5);
 		});
@@ -651,7 +651,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 1, itemCost: 100 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-GA' });
+			setShippingInfo({ shippingMethod: 'USPS-GA' });
 			const tax = getSalesTax();
 			// (100 + 9.99 + 3.99) * 0.06675 = 7.60
 			expect(tax).toBeGreaterThan(7);
@@ -675,7 +675,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 1, itemCost: 100 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-GA' });
+			setShippingInfo({ shippingMethod: 'USPS-GA' });
 			const total = getCheckoutTotal();
 			// Subtotal: 100, Shipping: 9.99, Handling: 3.99, Tax: ~7.60
 			expect(total).toBeGreaterThan(120);
@@ -686,7 +686,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 1, itemCost: 100 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-GA' });
+			setShippingInfo({ shippingMethod: 'USPS-GA' });
 			const totalWithoutDiscount = getCheckoutTotal();
 
 			const codes: DiscountCodeType[] = [
@@ -700,7 +700,7 @@ describe('Shopping Cart Functions', () => {
 				},
 			];
 			setDiscountCodes(codes);
-			SetShippingInfo({ shippingMethod: 'USPS-GA', discountCode: 'SAVE10' });
+			setShippingInfo({ shippingMethod: 'USPS-GA', discountCode: 'SAVE10' });
 			const totalWithDiscount = getCheckoutTotal();
 
 			expect(totalWithDiscount).toBeLessThan(totalWithoutDiscount);
@@ -713,7 +713,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 2, itemCost: 50 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-GA', name: 'John Doe' });
+			setShippingInfo({ shippingMethod: 'USPS-GA', name: 'John Doe' });
 
 			const checkout = getCheckoutData();
 
@@ -729,7 +729,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 1, itemCost: 50 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-GA' });
+			setShippingInfo({ shippingMethod: 'USPS-GA' });
 
 			const checkout = getCheckoutData();
 
@@ -748,7 +748,7 @@ describe('Shopping Cart Functions', () => {
 				{ itemID: '1', itemTitle: 'Item 1', itemQuantity: 1, itemCost: 100 },
 			];
 			setCart(cart);
-			SetShippingInfo({ shippingMethod: 'USPS-PM' });
+			setShippingInfo({ shippingMethod: 'USPS-PM' });
 
 			const checkout = getCheckoutData();
 			const expectedSubtotal = 100;
@@ -779,8 +779,8 @@ describe('Shopping Cart Functions', () => {
 				itemCost: 15.50,
 			};
 
-			AddToShoppingCart(item1);
-			AddToShoppingCart(item2);
+			addToShoppingCart(item1);
+			addToShoppingCart(item2);
 
 			let cart = getCart();
 			expect(cart.length).toBe(2);
@@ -788,7 +788,7 @@ describe('Shopping Cart Functions', () => {
 			expect(getCartSubTotal(cart)).toBeCloseTo(25.99 + 15.50, 1);
 
 			// Set shipping
-			SetShippingInfo({
+			setShippingInfo({
 				name: 'Jane Doe',
 				street1: '456 Elm St',
 				city: 'Shelbyville',
@@ -811,7 +811,7 @@ describe('Shopping Cart Functions', () => {
 					codeValue: 0.15,
 				},
 			]);
-			SetShippingInfo({
+			setShippingInfo({
 				name: 'Jane Doe',
 				street1: '456 Elm St',
 				city: 'Shelbyville',
@@ -829,13 +829,13 @@ describe('Shopping Cart Functions', () => {
 			expect(checkout.total).toBeGreaterThan(0);
 
 			// Remove an item
-			RemoveFromShoppingCart(item1);
+			removeFromShoppingCart(item1);
 			cart = getCart();
 			expect(cart.length).toBe(1);
 			expect(cart[0].itemID).toBe('2');
 
 			// Clear cart
-			ClearShoppingCart();
+			clearShoppingCart();
 			cart = getCart();
 			expect(cart.length).toBe(0);
 		});

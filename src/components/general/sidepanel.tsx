@@ -3,22 +3,29 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes, { InferProps } from 'prop-types';
 import './sidepanel.css';
 
-export interface SidePanelProps {
-	isOpen: boolean;
-	onClose: () => void;
-	onToggle?: () => void;
-	position?: 'left' | 'right';
-	width?: string;
-	showOverlay?: boolean;
-	showTab?: boolean;
-	tabIcon?: React.ReactNode;
-	tabLabel?: string;
-	children?: React.ReactNode;
-	className?: string;
-}
+// Define const arrays for options - used by both PropTypes and form generation
+export const positions = ['left', 'right'] as const;
 
+// TypeScript types from the const arrays
+export type PositionType = typeof positions[number];
+
+SidePanel.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	onClose: PropTypes.func.isRequired,
+	onToggle: PropTypes.func,
+	position: PropTypes.oneOf([...positions]),
+	width: PropTypes.string,
+	showOverlay: PropTypes.bool,
+	showTab: PropTypes.bool,
+	tabIcon: PropTypes.node,
+	tabLabel: PropTypes.string,
+	children: PropTypes.node,
+	className: PropTypes.string,
+};
+export type SidePanelType = InferProps<typeof SidePanel.propTypes>;
 export default function SidePanel({
 	isOpen,
 	onClose,
@@ -31,7 +38,7 @@ export default function SidePanel({
 	tabLabel,
 	children,
 	className = ''
-}: SidePanelProps) {
+}: SidePanelType) {
 	const portalRootRef = useRef<HTMLElement | null>(null);
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const [hasMounted, setHasMounted] = useState(false);

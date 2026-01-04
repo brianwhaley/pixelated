@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { ComposedChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { SiteHealthTemplate } from './site-health-template';
 
@@ -12,13 +13,13 @@ interface CloudwatchHealthCheckData {
   successRate: number;
 }
 
-interface SiteHealthCloudwatchProps {
-  siteName: string;
-  startDate?: string;
-  endDate?: string;
-}
-
-export function SiteHealthCloudwatch({ siteName, startDate, endDate }: SiteHealthCloudwatchProps) {
+SiteHealthCloudwatch.propTypes = {
+	siteName: PropTypes.string.isRequired,
+	startDate: PropTypes.string,
+	endDate: PropTypes.string,
+};
+export type SiteHealthCloudwatchType = InferProps<typeof SiteHealthCloudwatch.propTypes>;
+export function SiteHealthCloudwatch({ siteName, startDate, endDate }: SiteHealthCloudwatchType) {
 	const fetchCloudwatchData = async (site: string) => {
 		const params = new URLSearchParams({ siteName: site });
 		if (startDate) params.append('startDate', startDate);
@@ -59,7 +60,7 @@ export function SiteHealthCloudwatch({ siteName, startDate, endDate }: SiteHealt
 				}
 
 				// Check if all data points have zero checks (no actual data)
-				const hasActualData = data.some(point => point.totalChecks > 0);
+				const hasActualData = data.some((point: any) => point.totalChecks > 0);
 
 				if (!hasActualData) {
 					return (

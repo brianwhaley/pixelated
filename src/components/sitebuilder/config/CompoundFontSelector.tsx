@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import { FontSelector } from './FontSelector';
 import './CompoundFontSelector.css';
 
-interface CompoundFontSelectorProps {
-  id: string;
-  name: string;
-  label: string;
-  required?: boolean;
-  value?: string;
-  onChange?: (value: string) => void;
-}
-
-export function CompoundFontSelector({
-	id,
-	name,
-	label,
-	required = false,
-	value = '',
-	onChange
-}: CompoundFontSelectorProps) {
+CompoundFontSelector.propTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	required: PropTypes.bool,
+	value: PropTypes.string,
+	onChange: PropTypes.func,
+};
+export type CompoundFontSelectorType = InferProps<typeof CompoundFontSelector.propTypes>;
+export function CompoundFontSelector(props: CompoundFontSelectorType) {
+	const { id, name, label, required = false, value = '', onChange } = props;
 	// Parse the compound value into primary, fallback, generic parts
 	const parseCompoundValue = (val: string) => {
 		const parts = val.split(',').map(s => s.trim());
@@ -30,11 +24,11 @@ export function CompoundFontSelector({
 		};
 	};
 
-	const [fonts, setFonts] = useState(parseCompoundValue(value));
+	const [fonts, setFonts] = useState(parseCompoundValue(value || ''));
 
 	// Update fonts when value changes externally
 	useEffect(() => {
-		setFonts(parseCompoundValue(value));
+		setFonts(parseCompoundValue(value || ''));
 	}, [value]);
 
 	// Combine fonts into a single font stack value
@@ -59,7 +53,7 @@ export function CompoundFontSelector({
 					name={`${name}-primary`}
 					label="Primary Font"
 					fontType="google"
-					required={required}
+					required={!!required}
 					placeholder="Select Google Font"
 					value={fonts.primary}
 					onChange={(val: string) => handleFontChange('primary', val)}

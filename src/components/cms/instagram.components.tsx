@@ -1,19 +1,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { getInstagramTiles } from './instagram.functions';
 import { Tiles } from '../carousel/tiles';
 import type { CarouselCardType } from '../carousel/carousel';
 
-export function InstagramTiles(props: {
-	accessToken?: string;
-	userId?: string;
-	limit?: number;
-	rowCount?: number;
-	useThumbnails?: boolean;
-	includeVideos?: boolean;
-	includeCaptions?: boolean;
-}) {
+InstagramTiles.propTypes = {
+	accessToken: PropTypes.string,
+	userId: PropTypes.string,
+	limit: PropTypes.number,
+	rowCount: PropTypes.number,
+	useThumbnails: PropTypes.bool,
+	includeVideos: PropTypes.bool,
+	includeCaptions: PropTypes.bool,
+};
+export type InstagramTilesType = InferProps<typeof InstagramTiles.propTypes>;
+export function InstagramTiles(props: InstagramTilesType) {
 	const [tiles, setTiles] = useState<CarouselCardType[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -22,12 +25,12 @@ export function InstagramTiles(props: {
 		(async () => {
 			try {
 				const result = await getInstagramTiles({
-					accessToken: props.accessToken,
-					userId: props.userId,
+					accessToken: props.accessToken ?? undefined,
+					userId: props.userId ?? undefined,
 					limit: props.limit ?? 12,
-					useThumbnails: props.useThumbnails,
-					includeVideos: props.includeVideos,
-					includeCaptions: props.includeCaptions,
+					useThumbnails: props.useThumbnails ?? undefined,
+					includeVideos: props.includeVideos ?? undefined,
+					includeCaptions: props.includeCaptions ?? undefined,
 				});
 				setTiles(result);
 				setLoading(false);

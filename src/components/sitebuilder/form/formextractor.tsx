@@ -4,7 +4,6 @@ import * as FC from './formcomponents';
 import * as FVF from './formfieldvalidations';
 import { capitalize, attributeMap, debug } from './formutils';
 import { FormEngine } from './formengine';
-import { FormExtractorProps, FormExtractEngineProps, FormExtractUIProps } from './formtypes';
 
 /*
 ===== FORM EXTRACT =====
@@ -17,7 +16,7 @@ FormExtractor.propTypes = {
 	htmlPaste: PropTypes.string
 };
 export type FormExtractorType = InferProps<typeof FormExtractor.propTypes>;
-export function FormExtractor(props: FormExtractorProps) {
+export function FormExtractor(props: FormExtractorType) {
 
 	const [ url, setURL ] = useState<string>(props.url || "");
 	const [ htmlPaste, setHtmlPaste ] = useState<string>(props.htmlPaste || "");
@@ -63,7 +62,8 @@ export function FormExtractor(props: FormExtractorProps) {
 FormExtractUI.propTypes = {
 	setParentState: PropTypes.func.isRequired
 };
-export function FormExtractUI(props: FormExtractUIProps) {
+export type FormExtractUIType = InferProps<typeof FormExtractUI.propTypes>;
+export function FormExtractUI(props: FormExtractUIType) {
 	const [url, setURL] = useState();
 	const [htmlPaste, setHtmlPaste] = useState();
 
@@ -105,7 +105,8 @@ FormExtractEngine.propTypes = {
 	htmlPaste: PropTypes.string,
 	setFormData: PropTypes.func.isRequired
 };
-export function FormExtractEngine(props: FormExtractEngineProps) {
+export type FormExtractEngineType = InferProps<typeof FormExtractEngine.propTypes>;
+export function FormExtractEngine(props: FormExtractEngineType) {
 	const proxy = 'https://proxy.pixelated.tech/prod/proxy?url=';
 	// const proxy = "https://x3cf4kv0nk.execute-api.us-east-2.amazonaws.com/prod/proxy?url=";
 	// const proxy = "https://thingproxy.freeboard.io/fetch/";

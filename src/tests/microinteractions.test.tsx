@@ -510,7 +510,7 @@ describe('MicroInteractions Edge Cases', () => {
     MicroInteractions({ 
       unknownProp: true as any,
       buttonring: true 
-    });
+    } as any);
 
     expect(document.body.classList.contains('unknownProp')).toBe(true);
     expect(document.body.classList.contains('buttonring')).toBe(true);

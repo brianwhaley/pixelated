@@ -1,5 +1,5 @@
 import React from 'react';
-import { SmartImage, SmartImageProps } from '@/components/cms/smartimage';
+import { SmartImage, SmartImageType } from '@/components/cms/smartimage';
 import { PixelatedClientConfigProvider } from '@/components/config/config.client';
 import type { PixelatedConfig } from '@/components/config/config.types';
 
@@ -49,7 +49,7 @@ export default {
 	}
 };
 
-const Template: React.FC<SmartImageProps> = (args) => (
+const Template: React.FC<SmartImageType & React.ImgHTMLAttributes<HTMLImageElement>> = (args) => (
 	<PixelatedClientConfigProvider config={{
 		cloudinary: {
 			product_env: 'demo'

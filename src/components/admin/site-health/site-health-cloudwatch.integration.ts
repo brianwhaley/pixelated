@@ -60,8 +60,6 @@ export async function getCloudwatchHealthCheckData(
 		const endTimePlusOne = new Date(endTime);
 		endTimePlusOne.setDate(endTimePlusOne.getDate() + 1);
 
-		console.log(`CloudWatch: Fetching data for health check ${config.healthCheckId} from ${startTime.toISOString()} to ${endTimePlusOne.toISOString()}`);
-
 		const metricDataQuery = {
 			MetricDataQueries: [
 				{
@@ -90,10 +88,7 @@ export async function getCloudwatchHealthCheckData(
 		const command = new GetMetricDataCommand(metricDataQuery);
 		const response = await cloudWatchClient.send(command);
 
-		console.log(`CloudWatch: Received ${response.MetricDataResults?.[0]?.Timestamps?.length || 0} data points`);
-
 		if (!response.MetricDataResults || response.MetricDataResults.length === 0) {
-			console.log(`CloudWatch: No metric data found for health check ${config.healthCheckId}`);
 			return {
 				success: false,
 				error: 'No health check metric data found'
@@ -102,7 +97,6 @@ export async function getCloudwatchHealthCheckData(
 
 		const metricResult = response.MetricDataResults[0];
 		if (!metricResult.Timestamps || !metricResult.Values) {
-			console.log(`CloudWatch: No timestamps or values in metric data`);
 			return {
 				success: false,
 				error: 'No health check metric data available'
@@ -142,8 +136,6 @@ export async function getCloudwatchHealthCheckData(
 				};
 			})
 			.sort((a, b) => a.date.localeCompare(b.date));
-
-		console.log(`CloudWatch: Processed ${data.length} date groups with data`);
 
 		// Fill in the date range with data points for each day
 		let filledData: HealthCheckDataPoint[] = [];

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes /* , { InferProps } */ from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import { SmartImage } from '../cms/smartimage';
 import { usePixelatedConfig } from '../config/config.client';
 import { DragHandler } from './carousel.drag';
@@ -38,18 +38,26 @@ function capitalize(str: string) {
 
 /* ========== CAROUSEL ========== */
 Carousel.propTypes = {
-	cards: PropTypes.array.isRequired,
+	cards: PropTypes.arrayOf(
+		PropTypes.shape({
+			index: PropTypes.number.isRequired,
+			cardIndex: PropTypes.number.isRequired,
+			cardLength: PropTypes.number.isRequired,
+			link: PropTypes.string,
+			linkTarget: PropTypes.string,
+			image: PropTypes.string.isRequired,
+			imageAlt: PropTypes.string,
+			imgFit: PropTypes.oneOf(['contain', 'cover', 'fill']),
+			headerText: PropTypes.string,
+			subHeaderText: PropTypes.string,
+			bodyText: PropTypes.string,
+		})
+	).isRequired,
 	draggable: PropTypes.bool,
 	imgFit: PropTypes.oneOf(['contain', 'cover', 'fill'])
 };
-// export type CarouselType = InferProps<typeof Carousel.propTypes>;
-export function Carousel(
-	props: { 
-		cards: CarouselCardType[],
-		draggable?: boolean,
-		imgFit?: 'contain' | 'cover' | 'fill' ,
-	}) {
-
+export type CarouselType = InferProps<typeof Carousel.propTypes>;
+export function Carousel(props: CarouselType) {
 	const debug = false;
 	let timer = useRef<ReturnType<typeof setTimeout>>(null);
 	const [ cardIndex, setcardIndex ] = useState(0);
@@ -105,7 +113,7 @@ export function Carousel(
 		return (
 			<div className="carousel-container">
 				<div className="carousel-cards-container">
-					{ props.cards.map((card: CarouselCardType, i: number) => (
+					{ (props.cards as CarouselCardType[]).map((card, i) => (
 						<CarouselCard
 							key={i}
 							index={i}
@@ -115,7 +123,7 @@ export function Carousel(
 							linkTarget={card.linkTarget || '_self'}
 							image={card.image}
 							imageAlt={card.imageAlt}
-							imgFit={props.imgFit ? props.imgFit : 'fill'}	
+							imgFit={(props.imgFit || 'fill') as 'contain' | 'cover' | 'fill'}	
 							headerText={card.headerText} 	
 							subHeaderText={card.subHeaderText} 
 							bodyText={card.bodyText}

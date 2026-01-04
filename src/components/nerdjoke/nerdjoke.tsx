@@ -11,7 +11,7 @@ const TIME_LIMIT = 15;
 
 NerdJoke.propTypes = {};
 export type NerdJokeType = InferProps<typeof NerdJoke.propTypes>;
-export function NerdJoke( /* props: NerdJokeType */ ) {
+export function NerdJoke(props: NerdJokeType) {
 	const [joke, setJoke] = useState({ question: "", answer: "" });
 	const timerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const jokeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);

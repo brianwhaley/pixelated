@@ -13,7 +13,7 @@ export function html2dom (str: string) {
 	return dom;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 export function mergeDeep (a: any, b: any) {
 	// first is default vals, all other objects overwrite
 	const extended: { [key: string]: any } = {};
@@ -148,3 +148,89 @@ export function logAllChange() {
 // Call the function to activate the listeners once the script is loaded
 // logChangeToAllElements();
 
+/* ===== CLIENT COMPONENT DETECTION ===== */
+/**
+ * Regex patterns that identify client-only code requiring browser execution
+ * Used by both ESLint rules and build scripts to determine client vs server components
+ */
+export const CLIENT_ONLY_PATTERNS = [
+	/\baddEventListener\b/,
+	/\bcreateContext\b/,
+	/\bdocument\./,
+	/\blocalStorage\b/,
+	/\bnavigator\./,
+	/\bonBlur\b/,
+	/\bonChange\b/,
+	/\bonClick\b/,
+	/\bonFocus\b/,
+	/\bonInput\b/,
+	/\bonKey\b/,
+	/\bonMouse\b/,
+	/\bonSubmit\b/,
+	/\bremoveEventListener\b/,
+	/\bsessionStorage\b/,
+	/\buseCallback\b/,
+	/\buseContext\b/,
+	/\buseEffect\b/,
+	/\buseLayoutEffect\b/,
+	/\buseMemo\b/,
+	/\buseReducer\b/,
+	/\buseRef\b/,
+	/\buseState\b/,
+	/\bwindow\./,
+	/["']use client["']/  // Client directive
+];
+
+/**
+ * Determines if a component file contains client-only code that requires browser execution
+ * @param fileContent - The source code content of the file
+ * @returns true if the file contains client-only patterns
+ */
+export function isClientComponent(fileContent: string): boolean {
+	return CLIENT_ONLY_PATTERNS.some(pattern => pattern.test(fileContent));
+}
+
+/* ===== COMPONENT FILE DETECTION ===== */
+/**
+ * Glob patterns for finding component files
+ */
+export const TS_FILE_IGNORE_PATTERNS = [
+	'**/*.d.ts',
+	'**/*.test.ts',
+	'**/*.spec.ts',
+	'**/*.stories.ts',
+	'**/documentation/**',
+	'**/examples/**',
+	'**/*.example.*'
+];
+
+export const TSX_FILE_IGNORE_PATTERNS = [
+	'**/*.test.tsx',
+	'**/*.spec.tsx',
+	'**/*.stories.tsx',
+	'**/documentation/**',
+	'**/examples/**',
+	'**/*.example.*'
+];
+
+/* ===== SERVER COMPONENT DETECTION ===== */
+/**
+ * Regex patterns that identify server-only code that should not run on client
+ */
+export const SERVER_ONLY_PATTERNS = [
+	/["']use server["']/,  // Server directive
+	/\b__dirname\b/,
+	/\b__filename\b/,
+	/@aws-sdk/,
+	/\bchild_process\b/,
+	/\bexec\b/,
+	/\bexecAsync\b/,
+	/\bfs\b/,
+	/\bfs\.readFileSync\b/,
+	/\bfs\.existsSync\b/,
+	/\bimport.*googleapis\b|\brequire.*googleapis\b/,  // Actual import of googleapis
+	/\bimport.*path\b|\brequire.*path\b/,  // Actual import of path module
+	/\bprocess\.cwd\(\)/,
+	/\brequire\.resolve\b/,
+	/\butil\b/
+];

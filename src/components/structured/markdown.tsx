@@ -14,7 +14,7 @@ Markdown.propTypes = {
 	markdowndata: PropTypes.string.isRequired,
 };
 export type MarkdownType = InferProps<typeof Markdown.propTypes>;
-export function Markdown(props: { markdowndata: any; }) {	
+export function Markdown(props: MarkdownType) {	
 	function markdownParser (text: any) {
 		const config = usePixelatedConfig();
 		const toHTML = text

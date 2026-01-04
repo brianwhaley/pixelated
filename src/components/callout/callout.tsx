@@ -177,16 +177,6 @@ CalloutButton.propTypes = {
 	target: PropTypes.string
 };
 export type CalloutButtonType = InferProps<typeof CalloutButton.propTypes>;
-/* export function CalloutButton( { title, url, target } : CalloutButtonType) {
-	return (
-		<div className="callout-button">
-			{ (url) 
-				? <button type="button" className="callout-button"><a href={url || ""} target={target || ""} rel={target=="_blank" ? "noopener noreferrer" : ""}>{title}</a></button>
-				: null
-			}
-		</div>
-	);
-} */
 export function CalloutButton( { title, url, target } : CalloutButtonType) {
 	const handleClick = () => {
 		if (target === '_blank') {

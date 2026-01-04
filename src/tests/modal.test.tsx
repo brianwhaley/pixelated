@@ -80,84 +80,73 @@ describe('Modal Component', () => {
   });
 
   describe('Close Button Interaction', () => {
-    it('should hide modal when close button is clicked', () => {
-      render(<Modal modalContent={<p>Test</p>} />);
-      const modal = document.getElementById('myModal');
+    it('should call handleCloseEvent when close button is clicked', () => {
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
+      
       const closeBtn = document.getElementById('myModalClose');
-
-      // Manually set display to block to simulate open modal
-      if (modal) modal.style.display = 'block';
-      expect(modal).toHaveStyle('display: block');
-
-      // Click close button
       fireEvent.click(closeBtn!);
-      expect(modal).toHaveStyle('display: none');
+      
+      expect(mockClose).toHaveBeenCalled();
     });
 
-    it('should hide modal when close button with custom ID is clicked', () => {
-      render(<Modal modalContent={<p>Test</p>} modalID="custom" />);
-      const modal = document.getElementById('myModalcustom');
+    it('should call handleCloseEvent when close button with custom ID is clicked', () => {
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} modalID="custom" isOpen={true} handleCloseEvent={mockClose} />);
+      
       const closeBtn = document.getElementById('myModalClosecustom');
-
-      if (modal) modal.style.display = 'block';
       fireEvent.click(closeBtn!);
-      expect(modal).toHaveStyle('display: none');
+      
+      expect(mockClose).toHaveBeenCalled();
     });
 
-    it('should have aria-hidden attribute on close button', () => {
+    it('should have aria-label attribute on close button', () => {
       render(<Modal modalContent={<p>Test</p>} />);
       const closeBtn = document.getElementById('myModalClose');
-      expect(closeBtn).toHaveAttribute('aria-hidden', 'true');
+      expect(closeBtn).toHaveAttribute('aria-label', 'Close modal');
     });
 
     it('should handle multiple close button clicks', () => {
-      render(<Modal modalContent={<p>Test</p>} />);
-      const modal = document.getElementById('myModal');
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
+      
       const closeBtn = document.getElementById('myModalClose');
-
-      if (modal) modal.style.display = 'block';
       fireEvent.click(closeBtn!);
-      expect(modal).toHaveStyle('display: none');
-
-      // Open again
-      if (modal) modal.style.display = 'block';
-      expect(modal).toHaveStyle('display: block');
-
       fireEvent.click(closeBtn!);
-      expect(modal).toHaveStyle('display: none');
+      
+      expect(mockClose).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('Backdrop Click Handling', () => {
-    it('should hide modal when clicking on backdrop', () => {
-      render(<Modal modalContent={<p>Test</p>} />);
+    it('should call handleCloseEvent when clicking on backdrop', () => {
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
+      
       const modal = document.getElementById('myModal');
-
-      if (modal) modal.style.display = 'block';
-      expect(modal).toHaveStyle('display: block');
-
-      // Click on the modal backdrop
       fireEvent.click(modal!);
-      expect(modal).toHaveStyle('display: none');
+      
+      expect(mockClose).toHaveBeenCalled();
     });
 
-    it('should not hide modal when clicking on modal content', () => {
-      render(<Modal modalContent={<div id="test-content">Test</div>} />);
-      const modal = document.getElementById('myModal');
+    it('should not call handleCloseEvent when clicking on modal content', () => {
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<div id="test-content">Test</div>} isOpen={true} handleCloseEvent={mockClose} />);
+      
       const content = document.querySelector('.modal-content');
-
-      if (modal) modal.style.display = 'block';
       fireEvent.click(content!);
-      expect(modal).toHaveStyle('display: block');
+      
+      expect(mockClose).not.toHaveBeenCalled();
     });
 
-    it('should hide modal when clicking outside content area', () => {
-      render(<Modal modalContent={<p>Test</p>} />);
+    it('should call handleCloseEvent when clicking outside content area', () => {
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
+      
       const modal = document.getElementById('myModal');
-
-      if (modal) modal.style.display = 'block';
       fireEvent.click(modal!);
-      expect(modal).toHaveStyle('display: none');
+      
+      expect(mockClose).toHaveBeenCalled();
     });
   });
 
@@ -248,15 +237,12 @@ describe('Modal Component', () => {
     });
 
     it('should attach close button listener on mount', () => {
-      const { unmount } = render(<Modal modalContent={<p>Test</p>} />);
+      const mockClose = vi.fn();
+      const { unmount } = render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
       const closeBtn = document.getElementById('myModalClose');
 
-      // Manually open modal
-      const modal = document.getElementById('myModal');
-      if (modal) modal.style.display = 'block';
-
       fireEvent.click(closeBtn!);
-      expect(modal).toHaveStyle('display: none');
+      expect(mockClose).toHaveBeenCalled();
 
       unmount();
     });
@@ -264,12 +250,17 @@ describe('Modal Component', () => {
 
   describe('Open/Close Cycle', () => {
     it('should handle complete open/close cycle', () => {
-      render(
-        <div>
-          <button onClick={(e) => handleModalOpen(e as any)}>Open</button>
-          <Modal modalContent={<p>Test Content</p>} />
-        </div>
-      );
+      const TestComponent = () => {
+        const [isOpen, setIsOpen] = React.useState(false);
+        return (
+          <div>
+            <button onClick={() => setIsOpen(true)}>Open</button>
+            <Modal modalContent={<p>Test Content</p>} isOpen={isOpen} handleCloseEvent={() => setIsOpen(false)} />
+          </div>
+        );
+      };
+
+      render(<TestComponent />);
 
       const modal = document.getElementById('myModal');
       const openBtn = screen.getByRole('button', { name: /open/i });
@@ -292,12 +283,17 @@ describe('Modal Component', () => {
     });
 
     it('should handle rapid open/close clicks', () => {
-      render(
-        <div>
-          <button onClick={(e) => handleModalOpen(e as any)}>Open</button>
-          <Modal modalContent={<p>Test</p>} />
-        </div>
-      );
+      const TestComponent = () => {
+        const [isOpen, setIsOpen] = React.useState(false);
+        return (
+          <div>
+            <button onClick={() => setIsOpen(true)}>Open</button>
+            <Modal modalContent={<p>Test</p>} isOpen={isOpen} handleCloseEvent={() => setIsOpen(false)} />
+          </div>
+        );
+      };
+
+      render(<TestComponent />);
 
       const modal = document.getElementById('myModal');
       const openBtn = screen.getByRole('button', { name: /open/i });
@@ -363,8 +359,8 @@ describe('Modal Component', () => {
       expect(modal).toBeInTheDocument();
     });
 
-    it('should handle null content gracefully', () => {
-      render(<Modal modalContent={null} />);
+    it('should handle empty content', () => {
+      render(<Modal modalContent={<></>} />);
       const modal = document.getElementById('myModal');
       expect(modal).toBeInTheDocument();
     });
@@ -395,15 +391,15 @@ describe('Modal Component', () => {
     });
 
     it('should handle clicking on modal multiple times in succession', () => {
-      render(<Modal modalContent={<p>Test</p>} />);
+      const mockClose = vi.fn();
+      render(<Modal modalContent={<p>Test</p>} isOpen={true} handleCloseEvent={mockClose} />);
       const modal = document.getElementById('myModal');
 
-      if (modal) modal.style.display = 'block';
       fireEvent.click(modal!);
       fireEvent.click(modal!);
       fireEvent.click(modal!);
 
-      expect(modal).toHaveStyle('display: none');
+      expect(mockClose).toHaveBeenCalledTimes(3);
     });
 
     it('should handle nested elements within modal content', () => {
@@ -435,10 +431,10 @@ describe('Modal Component', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have aria-hidden on close button', () => {
+    it('should have aria-label on close button', () => {
       render(<Modal modalContent={<p>Test</p>} />);
       const closeBtn = document.getElementById('myModalClose');
-      expect(closeBtn).toHaveAttribute('aria-hidden', 'true');
+      expect(closeBtn).toHaveAttribute('aria-label', 'Close modal');
     });
 
     it('should be keyboard accessible when modal content has focusable elements', () => {
@@ -481,10 +477,12 @@ describe('Modal Component', () => {
     });
 
     it('should independently manage close buttons for multiple modals', () => {
+      const mockClose1 = vi.fn();
+      const mockClose2 = vi.fn();
       render(
         <div>
-          <Modal modalContent={<p>Modal 1</p>} modalID="1" />
-          <Modal modalContent={<p>Modal 2</p>} modalID="2" />
+          <Modal modalContent={<p>Modal 1</p>} modalID="1" isOpen={true} handleCloseEvent={mockClose1} />
+          <Modal modalContent={<p>Modal 2</p>} modalID="2" isOpen={true} handleCloseEvent={mockClose2} />
         </div>
       );
 
@@ -493,15 +491,12 @@ describe('Modal Component', () => {
       const closeBtn1 = document.getElementById('myModalClose1');
       const closeBtn2 = document.getElementById('myModalClose2');
 
-      if (modal1) modal1.style.display = 'block';
-      if (modal2) modal2.style.display = 'block';
-
       fireEvent.click(closeBtn1!);
-      expect(modal1).toHaveStyle('display: none');
-      expect(modal2).toHaveStyle('display: block');
+      expect(mockClose1).toHaveBeenCalled();
+      expect(mockClose2).not.toHaveBeenCalled();
 
       fireEvent.click(closeBtn2!);
-      expect(modal2).toHaveStyle('display: none');
+      expect(mockClose2).toHaveBeenCalled();
     });
   });
 });

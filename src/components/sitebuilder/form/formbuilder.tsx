@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, JSX } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import * as FC from './formcomponents';
 import { mapTypeToComponent, generateTypeField, debug } from './formutils';
@@ -10,7 +10,9 @@ import { FormEngine } from './formengine';
 Display all the components for a Form Builder -
 Element Buttons, Element Details, and the Form */
 
-export function FormBuilder() {
+FormBuilder.propTypes = {};
+export type FormBuilderType = InferProps<typeof FormBuilder.propTypes>;
+export function FormBuilder(): JSX.Element {
 	// const [ url, setURL ] = useState('');
 	// const [ htmlPaste, setHtmlPaste ] = useState('');
 	type FormFieldsType = { fields: any[] } & { [key: string]: any }
@@ -83,7 +85,7 @@ the JSON to create a form via FormEngine
 FormBuild.propTypes = {
 	setFormData: PropTypes.func.isRequired,
 };
-type FormBuildType = InferProps<typeof FormBuild.propTypes>;
+export type FormBuildType = InferProps<typeof FormBuild.propTypes>;
 export function FormBuild(props: FormBuildType) {
 
 	function generateFieldJSON (component: string, type: string) {

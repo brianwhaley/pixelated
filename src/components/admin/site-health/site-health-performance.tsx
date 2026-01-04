@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { CoreWebVitalsResponse } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
 
-interface SiteHealthPerformanceProps {
-  siteName: string;
-}
-
-export function SiteHealthPerformance({ siteName }: SiteHealthPerformanceProps) {
+SiteHealthPerformance.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthPerformanceType = InferProps<typeof SiteHealthPerformance.propTypes>;
+export function SiteHealthPerformance({ siteName }: SiteHealthPerformanceType) {
 	const fetchCWVData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
 		const result: CoreWebVitalsResponse = await response.json();

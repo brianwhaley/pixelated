@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { AxeCoreResponse, AxeViolation, AxeNode } from './site-health-types';
 import { getImpactIndicator, getIncompleteIndicator, getPassingIndicator } from './site-health-indicators';
 
-interface SiteHealthAxeCoreProps {
-  siteName: string;
-}
-
-export function SiteHealthAxeCore({ siteName }: SiteHealthAxeCoreProps) {
+SiteHealthAxeCore.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthAxeCoreType = InferProps<typeof SiteHealthAxeCore.propTypes>;
+export function SiteHealthAxeCore({ siteName }: SiteHealthAxeCoreType) {
 	const fetchAxeCoreData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/axe-core?siteName=${encodeURIComponent(site)}`);
 		const result: AxeCoreResponse = await response.json();
@@ -146,9 +147,9 @@ export function SiteHealthAxeCore({ siteName }: SiteHealthAxeCoreProps) {
 								</h5>
 								<div className="space-y-2">
 									{result.violations
-										.sort((a, b) => {
+										.sort((a: any, b: any) => {
 											const impactOrder = { critical: 4, serious: 3, moderate: 2, minor: 1 };
-											return impactOrder[b.impact] - impactOrder[a.impact];
+											return impactOrder[b.impact as keyof typeof impactOrder] - impactOrder[a.impact as keyof typeof impactOrder];
 										})
 										.slice(0, 20)
 										.map((violation: AxeViolation) => (
@@ -212,7 +213,7 @@ export function SiteHealthAxeCore({ siteName }: SiteHealthAxeCoreProps) {
 								</h5>
 								<div className="space-y-2">
 									{result.incomplete
-										.sort((a, b) => a.id.localeCompare(b.id))
+										.sort((a: any, b: any) => a.id.localeCompare(b.id))
 										.slice(0, 10)
 										.map((incomplete: AxeViolation) => (
 											<div key={incomplete.id} className="health-audit-item">

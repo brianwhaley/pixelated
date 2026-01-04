@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SidePanel, SidePanelProps } from '@/components/general/sidepanel';
+import { SidePanel, SidePanelType } from '@/components/general/sidepanel';
 import { MenuAccordion } from '@/components/menu/menu-accordion';
 
 export default {
@@ -81,7 +81,7 @@ const PageContent = ({ title, desc, onOpen }: { title?: string, desc?: string[],
 
 // --- Story Wrapper ---
 
-const StoryLayout = (args: SidePanelProps & { 
+const StoryLayout = (args: SidePanelType & { 
 	pageTitle?: string; 
 	pageDesc?: string[]; 
 	panelContent?: React.ReactNode;

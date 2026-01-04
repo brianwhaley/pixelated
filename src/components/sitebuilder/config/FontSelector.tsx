@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import { getFontOptions } from './google-fonts';
 import { WEB_SAFE_FONTS, GENERIC_FAMILIES, type FontOption } from './fonts';
 import './FontSelector.css';
@@ -15,16 +15,19 @@ interface FontSelectorProps {
 	onChange?: (value: string) => void;
 }
 
-export function FontSelector({
-	id,
-	name,
-	label,
-	fontType,
-	required = false,
-	placeholder,
-	value = '',
-	onChange
-}: FontSelectorProps) {
+FontSelector.propTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	fontType: PropTypes.oneOf(['google', 'websafe', 'generic']).isRequired,
+	required: PropTypes.bool,
+	placeholder: PropTypes.string,
+	value: PropTypes.string,
+	onChange: PropTypes.func,
+};
+export type FontSelectorType = InferProps<typeof FontSelector.propTypes>;
+export function FontSelector(props: FontSelectorType) {
+	const { id, name, label, fontType, required = false, placeholder, value = '', onChange } = props;
 	const [inputValue, setInputValue] = useState(value);
 	const [googleFonts, setGoogleFonts] = useState<FontOption[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -115,12 +118,12 @@ export function FontSelector({
 					type="text"
 					id={id}
 					name={name}
-					value={inputValue}
+					value={inputValue ?? ''}
 					onChange={handleInputChange}
 					onFocus={handleFocus}
 					onBlur={handleBlur}
-					placeholder={placeholder}
-					required={required}
+					placeholder={placeholder ?? undefined}
+					required={required ?? false}
 					autoComplete="off"
 					className="font-selector-input"
 				/>

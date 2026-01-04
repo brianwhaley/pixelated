@@ -1,11 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import './menu-expando.css';
 
-export function MenuExpando(props: any) {
+MenuExpando.propTypes = {
+	menuItems: PropTypes.oneOfType([
+		PropTypes.objectOf(PropTypes.string),
+		PropTypes.arrayOf(PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			path: PropTypes.string.isRequired,
+			routes: PropTypes.array,
+		}))
+	]).isRequired
+};
+export type MenuExpandoType = InferProps<typeof MenuExpando.propTypes>;
+export function MenuExpando(props: MenuExpandoType) {
 	const detailsRef = useRef<HTMLDetailsElement>(null);
 	const ulRef = useRef<HTMLUListElement>(null);
 
@@ -97,7 +108,7 @@ export function MenuExpando(props: any) {
 		if (Array.isArray(props.menuItems)) {
 			// Array format like MenuAccordion
 			for (const item of props.menuItems) {
-				if (item.routes && item.routes.length > 0) {
+				if (item && item.routes && item.routes.length > 0) {
 					// Item has nested routes - create expandable submenu
 					myItems.push(
 						<li key={item.name}>
@@ -115,7 +126,7 @@ export function MenuExpando(props: any) {
 							</details>
 						</li>
 					);
-				} else {
+				} else if (item) {
 					// Regular item without nested routes
 					myItems.push(
 						<MenuExpandoItem 
@@ -129,13 +140,16 @@ export function MenuExpando(props: any) {
 		} else {
 			// Object format
 			for (const itemKey in props.menuItems) {
-				myItems.push(
-					<MenuExpandoItem 
-						key={itemKey} 
-						name={itemKey} 
-						href={props.menuItems[itemKey]} 
-					/>
-				);
+				const href = props.menuItems[itemKey];
+				if (typeof href === 'string') {
+					myItems.push(
+						<MenuExpandoItem 
+							key={itemKey} 
+							name={itemKey} 
+							href={href} 
+						/>
+					);
+				}
 			}
 		}
 		return myItems;
@@ -153,29 +167,21 @@ export function MenuExpando(props: any) {
 	);
 }
 
-MenuExpando.propTypes = {
-	menuItems: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.arrayOf(PropTypes.shape({
-			name: PropTypes.string.isRequired,
-			path: PropTypes.string.isRequired,
-			routes: PropTypes.array,
-		}))
-	]).isRequired
+MenuExpandoItem.propTypes = {
+	name: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired
 };
-
-export function MenuExpandoItem(props: any) {
+export type MenuExpandoItemType = InferProps<typeof MenuExpandoItem.propTypes>;
+export function MenuExpandoItem(props: MenuExpandoItemType) {
 	return (
 		<li><a href={props.href}>{props.name}</a></li>
 	);
 }
 
-MenuExpandoItem.propTypes = {
-	name: PropTypes.string.isRequired,
-	href: PropTypes.string.isRequired
-};
 
-export function MenuExpandoButton() {
+MenuExpandoButton.propTypes = {};
+export type MenuExpandoButtonType = InferProps<typeof MenuExpandoButton.propTypes>;
+export function MenuExpandoButton(props: MenuExpandoButtonType) {  
 	function handleMenuExpandoButtonClick(event: React.MouseEvent<HTMLDivElement>) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -204,5 +210,3 @@ export function MenuExpandoButton() {
 		</div>
 	);
 }
-
-MenuExpandoButton.propTypes = {};

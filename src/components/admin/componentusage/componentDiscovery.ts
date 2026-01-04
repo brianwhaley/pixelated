@@ -49,7 +49,7 @@ function getPixelatedComponentsPath(): string {
 }
 
 /**
- * Discover components dynamically by parsing the pixelated-components index
+ * Discover components dynamically by parsing the pixelated-components index files
  * This runs on the server side during API calls
  */
 export async function discoverComponentsFromLibrary(): Promise<string[]> {
@@ -57,14 +57,30 @@ export async function discoverComponentsFromLibrary(): Promise<string[]> {
 		// Get the pixelated-components package path
 		const pixelatedPath = getPixelatedComponentsPath();
     
-		// Look for the built dist/index.js file
-		const indexPath = path.join(pixelatedPath, 'dist', 'index.js');
+		const componentNames: string[] = [];
     
-		// Read and parse the index.js file
-		const indexContent = fs.readFileSync(indexPath, 'utf-8');
-		const componentNames = parseComponentExports(indexContent);
+		// Read from main index.js
+		const indexPath = path.join(pixelatedPath, 'dist', 'index.js');
+		if (fs.existsSync(indexPath)) {
+			const indexContent = fs.readFileSync(indexPath, 'utf-8');
+			componentNames.push(...parseComponentExports(indexContent));
+		}
+    
+		// Read from adminclient index
+		const adminClientPath = path.join(pixelatedPath, 'dist', 'index.adminclient.js');
+		if (fs.existsSync(adminClientPath)) {
+			const adminClientContent = fs.readFileSync(adminClientPath, 'utf-8');
+			componentNames.push(...parseComponentExports(adminClientContent));
+		}
+    
+		// Read from adminserver index
+		const adminServerPath = path.join(pixelatedPath, 'dist', 'index.adminserver.js');
+		if (fs.existsSync(adminServerPath)) {
+			const adminServerContent = fs.readFileSync(adminServerPath, 'utf-8');
+			componentNames.push(...parseComponentExports(adminServerContent));
+		}
 
-		return componentNames;
+		return [...new Set(componentNames)].sort(); // Remove duplicates and sort alphabetically
 	} catch (error) {
 		console.error('Error in dynamic component discovery:', error);
 		// Return empty array if discovery fails

@@ -52,7 +52,7 @@ interface SEOConfig {
 /**
  * Registry of data collection functions
  */
-const dataCollectors: Record<string, (html: string, ...args: any[]) => any> = {
+const dataCollectors: Record<string, (...args: any[]) => any> = {
 	collectSemanticTagsData,
 	collectTitleTagsData,
 	collectMetaKeywordsData,
@@ -429,38 +429,66 @@ function calculateFacetedNavigationScore(data: ReturnType<typeof collectFacetedN
 /**
  * Browser Caching Data Collector
  */
-function collectBrowserCachingData(response: any) {
-	// Get response headers from Puppeteer response object
-	const headers: Record<string, string> = {};
+async function collectBrowserCachingData(url: string) {
 	try {
-		const rawHeaders = response.headers();
-		for (const [key, value] of Object.entries(rawHeaders)) {
-			headers[key.toLowerCase()] = value as string;
+		const response = await fetch(url, {
+			method: 'HEAD', // Use HEAD to get headers without downloading the full content
+			headers: {
+				'User-Agent': 'Mozilla/5.0 (compatible; SEO Analysis Bot)'
+			}
+		});
+
+		if (!response.ok) {
+			return {
+				cacheControl: '',
+				expires: '',
+				lastModified: '',
+				etag: '',
+				age: '',
+				hasCachingHeaders: false,
+				error: `HTTP ${response.status}: ${response.statusText}`
+			};
 		}
-	} catch (error) {
-		console.warn('Failed to get response headers:', error);
+
+		const cacheControl = response.headers.get('cache-control') || '';
+		const expires = response.headers.get('expires') || '';
+		const lastModified = response.headers.get('last-modified') || '';
+		const etag = response.headers.get('etag') || '';
+		const age = response.headers.get('age') || '';
+
+		return {
+			cacheControl,
+			expires,
+			lastModified,
+			etag,
+			age,
+			hasCachingHeaders: !!(cacheControl || expires || lastModified || etag)
+		};
+	} catch {
+		return {
+			cacheControl: '',
+			expires: '',
+			lastModified: '',
+			etag: '',
+			age: '',
+			hasCachingHeaders: false,
+			error: 'Could not access response headers - network error or server unavailable'
+		};
 	}
-
-	const cacheControl = headers['cache-control'] || '';
-	const expires = headers['expires'] || '';
-	const lastModified = headers['last-modified'] || '';
-	const etag = headers['etag'] || '';
-	const age = headers['age'] || '';
-
-	return {
-		cacheControl,
-		expires,
-		lastModified,
-		etag,
-		age,
-		hasCachingHeaders: !!(cacheControl || expires || lastModified || etag)
-	};
 }
 
 /**
  * Browser Caching Scorer
  */
-function calculateBrowserCachingScore(data: ReturnType<typeof collectBrowserCachingData>) {
+function calculateBrowserCachingScore(data: Awaited<ReturnType<typeof collectBrowserCachingData>>) {
+	if (data.error) {
+		return {
+			score: 0,
+			displayValue: 'Requires server header analysis',
+			details: { error: data.error }
+		};
+	}
+
 	let score = 0;
 	let displayValue = 'No caching headers detected';
 	const issues: string[] = [];
@@ -520,34 +548,59 @@ function calculateBrowserCachingScore(data: ReturnType<typeof collectBrowserCach
 /**
  * Gzip Compression Data Collector
  */
-function collectGzipCompressionData(response: any) {
-	// Get response headers from Puppeteer response object
-	const headers: Record<string, string> = {};
+async function collectGzipCompressionData(url: string) {
 	try {
-		const rawHeaders = response.headers();
-		for (const [key, value] of Object.entries(rawHeaders)) {
-			headers[key.toLowerCase()] = value as string;
+		const response = await fetch(url, {
+			method: 'GET', // Changed from HEAD to GET to properly detect compression
+			headers: {
+				'User-Agent': 'Mozilla/5.0 (compatible; SEO Analysis Bot)',
+				'Accept-Encoding': 'gzip, deflate' // Added Accept-Encoding like browsers
+			}
+		});
+
+		if (!response.ok) {
+			return {
+				contentEncoding: '',
+				contentLength: '',
+				transferEncoding: '',
+				isCompressed: false,
+				error: `HTTP ${response.status}: ${response.statusText}`
+			};
 		}
-	} catch (error) {
-		console.warn('Failed to get response headers:', error);
+
+		const contentEncoding = response.headers.get('content-encoding') || '';
+		const contentLength = response.headers.get('content-length') || '';
+		const transferEncoding = response.headers.get('transfer-encoding') || '';
+
+		return {
+			contentEncoding,
+			contentLength,
+			transferEncoding,
+			isCompressed: contentEncoding.includes('gzip') || contentEncoding.includes('deflate')
+		};
+	} catch {
+		return {
+			contentEncoding: '',
+			contentLength: '',
+			transferEncoding: '',
+			isCompressed: false,
+			error: 'Could not access response headers - network error or server unavailable'
+		};
 	}
-
-	const contentEncoding = headers['content-encoding'] || '';
-	const contentLength = headers['content-length'] || '';
-	const transferEncoding = headers['transfer-encoding'] || '';
-
-	return {
-		contentEncoding,
-		contentLength,
-		transferEncoding,
-		isCompressed: contentEncoding.includes('gzip') || contentEncoding.includes('deflate') || transferEncoding.includes('chunked')
-	};
 }
 
 /**
  * Gzip Compression Scorer
  */
-function calculateGzipCompressionScore(data: ReturnType<typeof collectGzipCompressionData>) {
+function calculateGzipCompressionScore(data: Awaited<ReturnType<typeof collectGzipCompressionData>>) {
+	if (data.error) {
+		return {
+			score: 0,
+			displayValue: 'Requires server header analysis',
+			details: { error: data.error }
+		};
+	}
+
 	let score = 0;
 	let displayValue = 'No compression detected';
 
@@ -671,6 +724,7 @@ async function crawlSite(baseUrl: string, maxPages: number = 10): Promise<string
  * Analyze a single page for on-page SEO elements using Puppeteer for full rendering
  */
 async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
+
 	let browser;
 	try {
 		// Reuse browser instance if available, otherwise create new one
@@ -734,12 +788,18 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 		// Navigate to the page with faster waiting strategy
 		const response = await page.goto(url, {
 			waitUntil: 'domcontentloaded', // Wait for DOM instead of all network requests
-			timeout: 15000 // Reduced timeout
+			timeout: 10000 // Reduced timeout from 15000 to 10000
 		});
+
+		// Check if navigation failed
+		if (!response) {
+			console.warn(`Failed to load page: ${url} - no response received`);
+			// Continue with analysis using available data, but mark header-dependent metrics as unavailable
+		}
 
 		// Wait for H1 elements to be rendered (if any) with a short timeout
 		try {
-			await page.waitForSelector('h1', { timeout: 2000 });
+			await page.waitForSelector('h1', { timeout: 1000 }); // Reduced from 2000 to 1000
 		} catch {
 			// H1 not found within timeout, continue anyway
 		}
@@ -761,7 +821,8 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 
 		// Get the rendered HTML for other pattern-based checks
 		const html = await page.content();
-		await page.close();
+		// Don't close the page here - let it be reused or closed by caller
+		// await page.close();
 
 		const audits: OnSiteSEOAudit[] = [];
 
@@ -780,10 +841,13 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 				const scorer = scorers[metric.scorer];
 
 				if (collector && scorer) {
-					// Pass response object for collectors that need headers (like browser caching and gzip compression)
-					const rawData = (metric.dataCollector === 'collectBrowserCachingData' || metric.dataCollector === 'collectGzipCompressionData')
-						? collector(html, pageData.title, response)
-						: collector(html, pageData.title);
+					// Pass URL for collectors that need headers (like browser caching and gzip compression)
+					let rawData;
+					if (metric.dataCollector === 'collectBrowserCachingData' || metric.dataCollector === 'collectGzipCompressionData') {
+						rawData = await collector(url);
+					} else {
+						rawData = collector(html, pageData.title);
+					}
 					const result = scorer(rawData);
 					score = result.score;
 					displayValue = result.displayValue;
@@ -826,6 +890,9 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 			});
 		}
 
+		// Close the page after analysis
+		await page.close();
+
 		return {
 			url,
 			title: pageData.title,
@@ -843,11 +910,8 @@ async function analyzeSinglePage(url: string): Promise<PageAnalysis> {
 			audits: [],
 			crawledAt: new Date().toISOString()
 		};
-	} finally {
-		if (browser) {
-			await browser.close();
-		}
 	}
+	// Don't close browser here - keep it alive for reuse
 }
 async function performSiteWideAudits(baseUrl: string): Promise<OnSiteSEOAudit[]> {
 	const audits: OnSiteSEOAudit[] = [];
@@ -932,13 +996,27 @@ async function performSiteWideAudits(baseUrl: string): Promise<OnSiteSEOAudit[]>
 				break;
 
 			case 'gzip-compression':
-				score = 0; // Placeholder - would need HTTP header analysis
-				displayValue = 'Requires server header analysis';
+				try {
+					const gzipData = await collectGzipCompressionData(baseUrl);
+					const gzipResult = calculateGzipCompressionScore(gzipData);
+					score = gzipResult.score;
+					displayValue = gzipResult.displayValue;
+				} catch {
+					score = 0;
+					displayValue = 'Error analyzing compression headers';
+				}
 				break;
 
 			case 'browser-caching':
-				score = 0; // Placeholder - would need HTTP header analysis
-				displayValue = 'Requires server header analysis';
+				try {
+					const cachingData = await collectBrowserCachingData(baseUrl);
+					const cachingResult = calculateBrowserCachingScore(cachingData);
+					score = cachingResult.score;
+					displayValue = cachingResult.displayValue;
+				} catch {
+					score = 0;
+					displayValue = 'Error analyzing caching headers';
+				}
 				break;
 
 			case 'duplicate-content-detection':
@@ -1035,7 +1113,7 @@ export async function performOnSiteSEOAnalysis(baseUrl: string): Promise<OnSiteS
 			pagesToAnalyze = sitemapUrls;
 		} else {
 			// Fallback to crawling if sitemap not available
-			pagesToAnalyze = await crawlSite(baseUrl, 5);
+			pagesToAnalyze = await crawlSite(baseUrl, 2); // Reduced from 5 to 2 pages
 		}
 
 		if (pagesToAnalyze.length === 0) {

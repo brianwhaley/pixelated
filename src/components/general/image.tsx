@@ -24,7 +24,7 @@
 
 
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 function isInViewport(el: Element) {
 	const rect = el.getBoundingClientRect();
 	return (

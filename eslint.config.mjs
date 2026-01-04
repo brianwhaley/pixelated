@@ -6,6 +6,7 @@ import reactPlugin from 'eslint-plugin-react';
 // import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
 import a11yPlugin from 'eslint-plugin-jsx-a11y';
+import pixelatedRules from './eslint-rules/index.js';
 
 export default [
 	{
@@ -26,6 +27,7 @@ export default [
 			react: reactPlugin,
 			import: importPlugin,
 			'jsx-a11y': a11yPlugin,
+			'pixelated': pixelatedRules,
 		},
 		rules: {
 			...js.configs.recommended.rules,
@@ -36,6 +38,10 @@ export default [
 			"semi": ["error", "always"],
 			// '@typescript-eslint/explicit-function-return-type': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
+			// Disable rules that conflict with propTypes + InferProps pattern
+			'@typescript-eslint/no-unused-vars': 'off', // Allow unused props in function signatures and exported types
+			'react/prop-types': 'off', // We use our own propTypes system
+			'pixelated/prop-types-inferprops': 'error',
 
 		},
 		settings: {
@@ -59,6 +65,7 @@ export default [
 			"*.config.*",
 			"**/*example*",
 			"**/*Example*",
+			"eslint-rules/",
 		],
 	}
 ];

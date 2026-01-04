@@ -11,14 +11,11 @@ import "./tiles.css";
 
 
 Tiles.propTypes = {
-	cards: PropTypes.object.isRequired,
+	cards: PropTypes.array.isRequired,
 	rowCount: PropTypes.number,
 };
-export function Tiles(
-	props: { 
-		cards: CarouselCardType[],
-		rowCount?: number,
-	}) {
+export type TilesType = InferProps<typeof Tiles.propTypes>;
+export function Tiles(props: TilesType) {
 	const rowCount = props.rowCount ?? 2;
 	if (props.cards && props.cards.length > 0) {
 		return (

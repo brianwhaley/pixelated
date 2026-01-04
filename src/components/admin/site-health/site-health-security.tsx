@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { SiteHealthData } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
@@ -14,11 +15,11 @@ interface CombinedSecurityData {
   psiData?: SiteHealthData[];
 }
 
-interface SiteHealthSecurityProps {
-  siteName: string;
-}
-
-export function SiteHealthSecurity({ siteName }: SiteHealthSecurityProps) {
+SiteHealthSecurity.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthSecurityType = InferProps<typeof SiteHealthSecurity.propTypes>;
+export function SiteHealthSecurity({ siteName }: SiteHealthSecurityType) {
 	const fetchSecurityData = useCallback(async (site: string): Promise<CombinedSecurityData> => {
 		// Fetch PSI data for best practices security audits
 		const psiResponse = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
@@ -242,10 +243,10 @@ export function SiteHealthSecurity({ siteName }: SiteHealthSecurityProps) {
 								</h5>
 								<div className="space-y-2">
 									{psiData.categories['best-practices'].audits
-										.filter(audit => audit.scoreDisplayMode !== 'notApplicable')
-										.sort((a, b) => (b.score || 0) - (a.score || 0))
+										.filter((audit: any) => audit.scoreDisplayMode !== 'notApplicable')
+										.sort((a: any, b: any) => (b.score || 0) - (a.score || 0))
 										.slice(0, 20)
-										.map((audit) => (
+										.map((audit: any) => (
 											<div key={audit.id} className="health-audit-item">
 												<span className="health-audit-icon">
 													{getAuditScoreIcon(audit.score)}

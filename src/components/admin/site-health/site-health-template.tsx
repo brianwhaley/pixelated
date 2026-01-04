@@ -1,25 +1,25 @@
 'use client';
 
 import React, { useEffect, useState, ReactNode } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { PageGridItem } from '../../general/semantic';
 
-interface SiteHealthTemplateProps<T> {
-  siteName: string;
-  title?: string;
-  children: (data: T | null) => ReactNode;
-  fetchData: (siteName: string, cache?: boolean) => Promise<T>;
-  enableCacheControl?: boolean;
-  columnSpan?: number;
-}
-
-export function SiteHealthTemplate<T>({
-	siteName,
-	title,
-	children,
-	fetchData,
-	enableCacheControl = false,
-	columnSpan = 1
-}: SiteHealthTemplateProps<T>) {
+SiteHealthTemplate.propTypes = {
+	siteName: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	children: PropTypes.func.isRequired,
+	fetchData: PropTypes.func.isRequired,
+	enableCacheControl: PropTypes.bool,
+	columnSpan: PropTypes.number,
+};
+export type SiteHealthTemplateType = InferProps<typeof SiteHealthTemplate.propTypes>;
+export function SiteHealthTemplate<T>(
+	props: SiteHealthTemplateType
+) {
+	const typedProps = props as SiteHealthTemplateType & {
+		children: (data: T | null) => ReactNode;
+		fetchData: (siteName: string, cache?: boolean) => Promise<T>;
+	};
 	const [data, setData] = useState<T | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -28,7 +28,7 @@ export function SiteHealthTemplate<T>({
 		let isMounted = true;
 
 		const loadData = async () => {
-			if (!siteName) {
+			if (!typedProps.siteName) {
 				if (isMounted) {
 					setData(null);
 					setLoading(false);
@@ -46,9 +46,9 @@ export function SiteHealthTemplate<T>({
 				// Check for cache control from URL query parameters
 				const urlParams = new URLSearchParams(window.location.search);
 				const cacheParam = urlParams.get('cache');
-				const useCache = enableCacheControl ? (cacheParam !== 'false') : true;
+				const useCache = typedProps.enableCacheControl ? (cacheParam !== 'false') : true;
 
-				const result = await fetchData(siteName, useCache);
+				const result = await typedProps.fetchData(typedProps.siteName, useCache);
 				if (isMounted) {
 					setData(result);
 					setError(null);
@@ -70,18 +70,18 @@ export function SiteHealthTemplate<T>({
 		return () => {
 			isMounted = false;
 		};
-	}, [siteName, fetchData]);
+	}, [typedProps.siteName, typedProps.fetchData]);
 
 	// If no site selected, show nothing
-	if (!siteName) {
+	if (!typedProps.siteName) {
 		return null;
 	}
 
 	// If title is provided, render the complete card structure
-	if (title) {
+	if (typedProps.title) {
 		return (
-			<PageGridItem className="health-card" columnSpan={columnSpan}>
-				<h2 className="health-card-title">{title}</h2>
+			<PageGridItem className="health-card" columnSpan={typedProps.columnSpan}>
+				<h2 className="health-card-title">{typedProps.title}</h2>
 				<div className="health-card-content">
 					{loading ? (
 						<div className="health-loading">
@@ -93,7 +93,7 @@ export function SiteHealthTemplate<T>({
 							<p className="health-error-text">Error: {error}</p>
 						</div>
 					) : (
-						children(data)
+						typedProps.children(data)
 					)}
 				</div>
 			</PageGridItem>
@@ -113,7 +113,7 @@ export function SiteHealthTemplate<T>({
 					<p className="health-error-text">Error: {error}</p>
 				</div>
 			) : (
-				children(data)
+				typedProps.children(data)
 			)}
 		</>
 	);

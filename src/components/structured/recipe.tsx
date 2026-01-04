@@ -121,6 +121,12 @@ type RecipeType = {
 
 
 
+type RecipeDataType = {
+	items: RecipeType[];
+};
+
+
+
 /* ========== RECIPE BOOK ========== */
 RecipeBook.propTypes = {
 	recipeData: PropTypes.shape({
@@ -128,14 +134,7 @@ RecipeBook.propTypes = {
 	}).isRequired,
 	recipeCategories: PropTypes.array.isRequired
 };
-type RecipeDataType = {
-	items: RecipeType[];
-};
-export type RecipeBookType = {
-	recipeData: RecipeDataType;
-	recipeCategories: string[];
-};
-// export type RecipeBookType = InferProps<typeof RecipeBook.propTypes>;
+export type RecipeBookType = InferProps<typeof RecipeBook.propTypes>;
 export function RecipeBook(props: RecipeBookType) {
 	
 	const [ recipeElems ] = useState( generateMyElems() );
@@ -350,6 +349,8 @@ export function RecipePickList(props: RecipePickListType) {
 }
 
 /* ========== RECIPE BACK TO TOP ========== */
+BackToTop.propTypes = {};
+export type BackToTopType = InferProps<typeof BackToTop.propTypes>;
 export function BackToTop() {
 	function scrollToTop(){
 		window.scroll({

@@ -15,13 +15,7 @@ GoogleReviewsCard.propTypes = {
 	apiKey: PropTypes.string,
 };
 export type GoogleReviewsCardType = InferProps<typeof GoogleReviewsCard.propTypes>;
-export function GoogleReviewsCard(props: {
-	placeId: string;
-	language?: string;
-	maxReviews?: number;
-	proxyBase?: string;
-	apiKey?: string;
-}) {
+export function GoogleReviewsCard(props: GoogleReviewsCardType) {
 	const [place, setPlace] = useState<GooglePlaceSummary | undefined>();
 	const [reviews, setReviews] = useState<GoogleReview[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -32,9 +26,9 @@ export function GoogleReviewsCard(props: {
 			try {
 				const result = await getGoogleReviewsByPlaceId({
 					placeId: props.placeId,
-					language: props.language,
-					maxReviews: props.maxReviews,
-					proxyBase: props.proxyBase,
+					language: props.language ?? undefined,
+					maxReviews: props.maxReviews ?? undefined,
+					proxyBase: props.proxyBase ?? undefined,
 					apiKey: props.apiKey || GOOGLE_MAPS_API_KEY,
 				});
 				setPlace(result.place);

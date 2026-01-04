@@ -2,7 +2,6 @@
 import PropTypes, { InferProps } from 'prop-types';
 import { mergeDeep } from '../utilities/functions';
 import type { CarouselCardType } from '../carousel/carousel';
-import type { FlickrConfig } from '../config/config.types';
 
 type FlickrApiType = {
     baseURL: string;
@@ -68,11 +67,12 @@ function getFlickrSize (size: string) {
 
 
 
-GetFlickrData.PropTypes = {
+GetFlickrData.propTypes = {
 	flickr: PropTypes.object,
 	config: PropTypes.object,
 };
-export function GetFlickrData( props: { flickr?: any, config?: FlickrConfig } ) {
+export type GetFlickrDataType = InferProps<typeof GetFlickrData.propTypes>;
+export function GetFlickrData( props: GetFlickrDataType ) {
 
 	const debug = false;
 	

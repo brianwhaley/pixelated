@@ -32,6 +32,39 @@
 ## Project Overview
 Pixelated Components is a comprehensive React component library built for Next.js applications, specializing in CMS integrations, UI components, SEO optimization, and accessibility-first design. The library provides production-ready components for building modern web applications with integrations for Contentful, WordPress, Cloudinary, and other services.
 
+## Related Projects
+
+### Pixelated Admin
+A Next.js application for managing Pixelated CMS sites with AI-powered content optimization:
+- **AI Integration**: Google Gemini API for intelligent SEO recommendations
+- **Dynamic Forms**: ConfigBuilder with JSON schema-driven form generation
+- **Modal UI**: User-friendly recommendation acceptance with individual checkboxes
+- **Authentication**: NextAuth.js with Google and Apple OAuth providers
+
+### Development Workflow Across Projects
+- **Shared Standards**: All projects follow the coding conventions in `../docs/coding-conventions.md`
+- **Component Reuse**: Build new features using existing components from this library
+- **Iterative Development**: Small iterations with regular linting, testing, building, and Storybook validation
+- **Cross-Project Consistency**: Maintain consistent patterns and standards across all Pixelated projects
+
+## Coding Conventions & Standards
+
+**📋 Important**: This project follows specific coding conventions documented in [docs/coding-conventions.md](../docs/coding-conventions.md). Please review these standards before implementing new features.
+
+### Key Standards to Follow:
+- **PropTypes & TypeScript**: Use `PropTypes` with `InferProps<typeof Component.propTypes>` for type safety
+- **API Services**: Create thin service classes in `utilities/` directory with proper error handling
+- **Component Structure**: Functional components with hooks, named exports, kebab-case file names
+- **File Organization**: Group related components, co-locate CSS, use index files for clean imports
+- **Error Handling**: Try/catch blocks, typed error responses, graceful degradation
+
+### Before implementing:
+1. Check existing patterns in the codebase
+2. Follow the established conventions
+3. Add appropriate TypeScript types and PropTypes
+4. Include comprehensive error handling
+5. Update documentation
+
 ## Architecture & Key Concepts
 
 ### Component Organization

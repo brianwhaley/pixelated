@@ -1,18 +1,17 @@
 import React from 'react';
-import type { ReactNode } from 'react';
-import type { PixelatedConfig } from './config.types';
+import PropTypes, { InferProps } from 'prop-types';
 import { getClientOnlyPixelatedConfig } from './config';
 
 // Server wrapper: reads server env blob and sanitizes it, then mounts the client provider.
 // Important: do NOT import client components at module scope — dynamically import
 // the client provider inside the function so this module remains server-safe.
-export async function PixelatedServerConfigProvider({
-	config,
-	children,
-}: {
-	config?: PixelatedConfig;
-	children: ReactNode;
-}) {
+PixelatedServerConfigProvider.propTypes = {
+	config: PropTypes.object,
+	children: PropTypes.node.isRequired,
+};
+export type PixelatedServerConfigProviderType = InferProps<typeof PixelatedServerConfigProvider.propTypes>;
+export async function PixelatedServerConfigProvider(props: PixelatedServerConfigProviderType) {
+	const { config, children } = props;
 	const cfg = config ?? getClientOnlyPixelatedConfig();
 	const mod = await import('./config.client');
 	const Provider = mod.PixelatedClientConfigProvider;

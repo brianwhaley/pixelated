@@ -1,5 +1,5 @@
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 function isPartialMatchInArray(searchString: string, array: string[]): boolean {
 	// Convert both the search string and array items to lowercase for case-insensitive matching
 	const lowerCaseSearchString = searchString.toLowerCase();

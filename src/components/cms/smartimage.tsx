@@ -78,8 +78,8 @@ const SMARTIMAGE_PROP_TYPES = {
 	variant: PropTypes.oneOf(['cloudinary', 'nextjs', 'img']),
 };
 SmartImage.propTypes = SMARTIMAGE_PROP_TYPES;
-export type SmartImageProps = InferProps<typeof SMARTIMAGE_PROP_TYPES> & React.ImgHTMLAttributes<HTMLImageElement>;
-export function SmartImage(props: SmartImageProps) {
+export type SmartImageType = InferProps<typeof SmartImage.propTypes> & React.ImgHTMLAttributes<HTMLImageElement>;
+export function SmartImage(props: SmartImageType) {
 	const {
 		src,
 		alt,
@@ -97,7 +97,7 @@ export function SmartImage(props: SmartImageProps) {
 		preload = false,
 		variant = 'cloudinary',
 		...imgProps
-	} = props as SmartImageProps;
+	} = props;
 
 	const newProps = { ...props };
 	const config = usePixelatedConfig();
@@ -105,17 +105,17 @@ export function SmartImage(props: SmartImageProps) {
 	newProps.cloudinaryEnv = safeString(cloudinaryEnv ?? cloudCfg?.product_env);
 	newProps.cloudinaryDomain = safeString(cloudCfg?.baseUrl ?? cloudinaryDomain);
 	newProps.cloudinaryTransforms = safeString(cloudinaryTransforms ?? cloudCfg?.transforms);
-	newProps.fetchPriority = aboveFold ? 'high' : fetchPriority;
-	newProps.loading = aboveFold ? 'eager' : loading;
-	newProps.decoding = aboveFold ? 'sync' : decoding;
+	newProps.fetchPriority = aboveFold ? 'high' : (fetchPriority as any);
+	newProps.loading = aboveFold ? 'eager' : (loading as any);
+	newProps.decoding = aboveFold ? 'sync' : (decoding as any);
 	newProps.preload = aboveFold ? true : preload;
 	newProps.src = safeString(src) ?? (src as any) ?? undefined;
 	newProps.id = safeString(id);
 	newProps.name = safeString(name);
 	newProps.title = safeString(title);
 	newProps.alt = safeString(alt) ?? '';
-	newProps.width = parseNumber(width) || 500;
-	newProps.height = parseNumber(height) || 500;
+	newProps.width = parseNumber(width ?? undefined) ?? 500;
+	newProps.height = parseNumber(height ?? undefined) ?? 500;
 
 	const filename = (newProps.src).split('/').pop()?.split('?')[0] || '';
 	const imageName = filename.replace(/\.[^.]+$/, '');

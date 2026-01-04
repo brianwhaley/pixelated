@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { SiteHealthTemplate } from './site-health-template';
 
@@ -10,13 +11,13 @@ interface GoogleAnalyticsData {
   previousPageViews: number;
 }
 
-interface SiteHealthGoogleAnalyticsProps {
-  siteName: string;
-  startDate?: string;
-  endDate?: string;
-}
-
-export function SiteHealthGoogleAnalytics({ siteName, startDate, endDate }: SiteHealthGoogleAnalyticsProps) {
+SiteHealthGoogleAnalytics.propTypes = {
+	siteName: PropTypes.string.isRequired,
+	startDate: PropTypes.string,
+	endDate: PropTypes.string,
+};
+export type SiteHealthGoogleAnalyticsType = InferProps<typeof SiteHealthGoogleAnalytics.propTypes>;
+export function SiteHealthGoogleAnalytics({ siteName, startDate, endDate }: SiteHealthGoogleAnalyticsType) {
 	const fetchAnalyticsData = async (site: string) => {
 		const params = new URLSearchParams({ siteName: site });
 		if (startDate) params.append('startDate', startDate);

@@ -92,6 +92,10 @@ describe('ConfigBuilder Component', () => {
 
       // Fill out a form field
       const primaryColorInput = screen.getByLabelText('Primary color');
+      
+      // Check initial value - should be the default from config
+      expect((primaryColorInput as HTMLInputElement).value).toBe('#336699');
+      
       fireEvent.change(primaryColorInput, { target: { value: '#123456' } });
 
       expect((primaryColorInput as HTMLInputElement).value).toBe('#123456');
@@ -318,7 +322,7 @@ describe('ConfigBuilder Component', () => {
       
       // Switch back to Routes - route should still be there
       fireEvent.click(routesTab);
-      expect(screen.getAllByPlaceholderText('Path')).toHaveLength(1);
+      expect(screen.getAllByPlaceholderText('e.g., /')).toHaveLength(1);
     });
   });
 

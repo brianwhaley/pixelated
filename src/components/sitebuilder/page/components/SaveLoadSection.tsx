@@ -9,10 +9,8 @@ SaveLoadSection.propTypes = {
 	onLoad: PropTypes.func.isRequired,
 	apiEndpoint: PropTypes.string,
 };
-
-type SaveLoadSectionProps = InferProps<typeof SaveLoadSection.propTypes>;
-
-export function SaveLoadSection({ pageData, onLoad, apiEndpoint = '/api/pagebuilder' }: SaveLoadSectionProps) {
+export type SaveLoadSectionType = InferProps<typeof SaveLoadSection.propTypes>;
+export function SaveLoadSection({ pageData, onLoad, apiEndpoint = '/api/pagebuilder' }: SaveLoadSectionType) {
 	const [pageName, setPageName] = useState('');
 	const [savedPages, setSavedPages] = useState<string[]>([]);
 	const [message, setMessage] = useState('');

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 
 // CONFIG: Replace with your values
 const CLIENT_ID = '78sh51y6nl3xe8';
@@ -8,7 +9,9 @@ const STATE = '96573480'; // Any random string
 const SCOPES = 'r_liteprofile';
 const proxyUrl = 'https://proxy.pixelated.tech/prod/proxy?url=';
 
-export function LinkedInAuthRecommendations() {
+LinkedInAuthRecommendations.propTypes = {};
+export type LinkedInAuthRecommendationsType = InferProps<typeof LinkedInAuthRecommendations.propTypes>;
+export function LinkedInAuthRecommendations(props: LinkedInAuthRecommendationsType) {
 
 	const debug = true ;
 

@@ -12,12 +12,18 @@ declare global {
 	}
 }
 
-export type MenuItem = { 
-	name: string,
-	path: string,
-	target?: string,
-	routes?: MenuItem[],
-}
+const menuItemShape = PropTypes.shape({
+	name: PropTypes.string.isRequired,
+	path: PropTypes.string,
+	target: PropTypes.string,
+	routes: PropTypes.array, // Will be refined after function declaration
+	hidden: PropTypes.bool,
+});
+
+export type MenuItem = MenuAccordionType['menuItems'][0];
+
+// Update the recursive reference after the shape is defined
+(menuItemShape as any).routes = PropTypes.arrayOf(menuItemShape);
 
 function generateMenuItems({menuData, state = "hide"}: {menuData: { [x: string]: any; }, state: string}) {
 	const myItems: React.ReactNode[] = [];
@@ -47,9 +53,8 @@ function generateMenuItems({menuData, state = "hide"}: {menuData: { [x: string]:
 	return myItems;
 }
 
-/* ========== MENU ========== */
 MenuAccordion.propTypes = {
-	menuItems: PropTypes.any.isRequired,
+	menuItems: PropTypes.arrayOf(menuItemShape).isRequired,
 	showHidden: PropTypes.bool,
 };
 export type MenuAccordionType = InferProps<typeof MenuAccordion.propTypes>;
@@ -166,7 +171,10 @@ export function MenuAccordion(props: MenuAccordionType) {
 
 /* ========== MENU GROUP ========== */
 MenuAccordionGroup.propTypes = {
-	menuItems: PropTypes.object.isRequired,
+	menuItems: PropTypes.oneOfType([
+		menuItemShape,
+		PropTypes.arrayOf(menuItemShape)
+	]).isRequired,
 	state: PropTypes.string,
 };
 export type MenuAccordionGroupType = InferProps<typeof MenuAccordionGroup.propTypes>;
@@ -207,10 +215,9 @@ export function MenuAccordionItem(props: MenuAccordionItemType) {
 /* 
 https://www.unclebigbay.com/blog/building-the-world-simplest-hamburger-with-html-and-css
 */
-MenuAccordionButton.propTypes = {
-};
+MenuAccordionButton.propTypes = {};
 export type MenuAccordionButtonType = InferProps<typeof MenuAccordionButton.propTypes>;
-export function MenuAccordionButton() {
+export function MenuAccordionButton(props: MenuAccordionButtonType) {  
 	function slideMobilePanel() {
 		if (typeof window !== 'undefined' && window.moveMenu) {
 			window.moveMenu();

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 
 /* 
 TODO #6 Finish LinkedIn Integration to show recommendations
@@ -18,7 +19,9 @@ https://reintech.io/blog/integrating-linkedin-testimonials-on-your-website
 
 */
 
-export function LinkedIn() {
+LinkedIn.propTypes = {};
+export type LinkedInType = InferProps<typeof LinkedIn.propTypes>;
+export function LinkedIn(props: LinkedInType) {
 
 	const debug = true ;
 	

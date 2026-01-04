@@ -1,31 +1,17 @@
 const fs = require('fs');
 const glob = require('glob');
+const { CLIENT_ONLY_PATTERNS, TS_FILE_IGNORE_PATTERNS, TSX_FILE_IGNORE_PATTERNS, SERVER_ONLY_PATTERNS } = require('../src/components/utilities/functions.ts');
 
 console.log('🔍 Validating exports...\n');
 
 // Find all .ts files (excluding .d.ts, test files, stories, examples, types.ts)
 const tsFiles = glob.sync('src/components/**/*.ts', {
-  ignore: [
-    '**/*.d.ts',
-    '**/*.test.ts',
-    '**/*.spec.ts',
-    '**/*.stories.ts',
-    '**/documentation/**',
-    '**/examples/**',
-    '**/*.example.*'
-  ]
+  ignore: TS_FILE_IGNORE_PATTERNS
 });
 
 // Find all .tsx files (excluding test files, stories, examples)
 const tsxFiles = glob.sync('src/components/**/*.tsx', {
-  ignore: [
-    '**/*.test.tsx',
-    '**/*.spec.tsx',
-    '**/*.stories.tsx',
-    '**/documentation/**',
-    '**/examples/**',
-    '**/*.example.*'
-  ]
+  ignore: TSX_FILE_IGNORE_PATTERNS
 });
 
 // Combine all component files
@@ -36,59 +22,16 @@ function analyzeComponentFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
 
   // Server-only patterns that indicate this should only be on server (not client)
-  const serverOnlyPatterns = [
-    /["']use server["']/,  // Server directive
-    /\b__dirname\b/,
-    /\b__filename\b/,
-    /@aws-sdk/,
-    /\bchild_process\b/,
-    /\bexec\b/,
-    /\bexecAsync\b/,
-    /\bfs\b/,
-    /\bfs\.readFileSync\b/, // do we need this
-    /\bfs\.existsSync\b/, // do we need this
-    /\bgoogleapis\b/,
-    /\bpath\b/,
-    /\bprocess\.cwd\(\)/,
-    /\bprocess\.env\b/,
-    /\brequire\.resolve\b/,
-    /\butil\b/
-  ];
+  // (Imported from shared utilities)
 
   // Client-only patterns that require the component to run on client
-  const clientOnlyPatterns = [
-    /\baddEventListener\b/,
-    /\bcreateContext\b/,
-    /\bdocument\./,
-    /\blocalStorage\b/,
-    /\bnavigator\./,
-    /\bonBlur\b/,
-    /\bonChange\b/,
-    /\bonClick\b/,
-    /\bonFocus\b/,
-    /\bonInput\b/,
-    /\bonKey\b/,
-    /\bonMouse\b/,
-    /\bonSubmit\b/,
-    /\bremoveEventListener\b/,
-    /\bsessionStorage\b/,
-    /\buseCallback\b/,
-    /\buseContext\b/,
-    /\buseEffect\b/,
-    /\buseLayoutEffect\b/,
-    /\buseMemo\b/,
-    /\buseReducer\b/,
-    /\buseRef\b/,
-    /\buseState\b/,
-    /\bwindow\./,
-    /["']use client["']/  // Client directive
-  ];
+  // (Imported from shared utilities)
 
   // Check if file contains any server-only patterns
-  const isServerOnly = serverOnlyPatterns.some(pattern => pattern.test(content));
+  const isServerOnly = SERVER_ONLY_PATTERNS.some(pattern => pattern.test(content));
 
   // Check if file contains any client-only patterns
-  const isClientOnly = clientOnlyPatterns.some(pattern => pattern.test(content));
+  const isClientOnly = CLIENT_ONLY_PATTERNS.some(pattern => pattern.test(content));
 
   return {
     filePath,
@@ -101,14 +44,21 @@ function analyzeComponentFile(filePath) {
 // Analyze all component files
 const analyzedComponents = allComponentFiles.map(analyzeComponentFile);
 
-// Create arrays of components for each bundle
-const clientOnlyComponents = analyzedComponents.filter(comp => comp.isClientOnly && !comp.isServerOnly);
-const serverOnlyComponents = analyzedComponents.filter(comp => comp.isServerOnly);
-const clientAndServerSafeComponents = analyzedComponents.filter(comp => !comp.isClientOnly && !comp.isServerOnly);
+// Separate admin and non-admin components
+const adminComponents = analyzedComponents.filter(comp => comp.exportPath.startsWith('./components/admin/'));
+const nonAdminComponents = analyzedComponents.filter(comp => !comp.exportPath.startsWith('./components/admin/'));
+
+// Create arrays of components for each bundle (non-admin only)
+// If a component has server-only patterns, it's server-only; if client-only and not server-only, client-only; else safe
+const serverOnlyComponents = nonAdminComponents.filter(comp => comp.isServerOnly);
+const clientOnlyComponents = nonAdminComponents.filter(comp => comp.isClientOnly && !comp.isServerOnly);
+const clientAndServerSafeComponents = nonAdminComponents.filter(comp => !comp.isClientOnly && !comp.isServerOnly);
 
 // Read index files
 const indexServer = fs.readFileSync('src/index.server.js', 'utf8');
 const indexClient = fs.readFileSync('src/index.js', 'utf8');
+const indexAdminServer = fs.readFileSync('src/index.adminserver.js', 'utf8');
+const indexAdminClient = fs.readFileSync('src/index.adminclient.js', 'utf8');
 
 // Helper function to extract exports from index file
 function extractExports(content) {
@@ -137,19 +87,25 @@ function extractExports(content) {
   return exports;
 }
 
-// Extract exports from both index files
+// Extract exports from all index files
 const serverExports = extractExports(indexServer);
 const clientExports = extractExports(indexClient);
+const adminServerExports = extractExports(indexAdminServer);
+const adminClientExports = extractExports(indexAdminClient);
 
 const missing = {
   server: [],
   client: [],
+  adminServer: [],
+  adminClient: [],
   files: [] // New: exported paths that don't correspond to existing files
 };
 
 const bundleErrors = {
   server: [], // Client-only components incorrectly in server bundle
-  client: []  // Server-only components incorrectly in client bundle
+  client: [], // Server-only components incorrectly in client bundle
+  adminServer: [], // Client-only components incorrectly in admin server bundle
+  adminClient: [] // Server-only components incorrectly in admin client bundle
 };
 
 // Check if exported paths correspond to existing files
@@ -171,6 +127,8 @@ function checkExportPathsExist(exports, bundleName) {
 
 checkExportPathsExist(serverExports, 'server bundle');
 checkExportPathsExist(clientExports, 'client bundle');
+checkExportPathsExist(adminServerExports, 'admin server bundle');
+checkExportPathsExist(adminClientExports, 'admin client bundle');
 
 // Check for missing exports
 clientAndServerSafeComponents.forEach(comp => {
@@ -197,6 +155,35 @@ clientAndServerSafeComponents.forEach(comp => {
   }
 });
 
+// Check admin components - separate server and client bundles
+const serverRelevantAdmin = adminComponents.filter(comp => comp.isServerOnly || !comp.isClientOnly);
+const clientRelevantAdmin = adminComponents.filter(comp => comp.isClientOnly || !comp.isServerOnly);
+
+serverRelevantAdmin.forEach(comp => {
+  if (!adminServerExports.includes(comp.exportPath)) {
+    missing.adminServer.push(comp.exportPath);
+  }
+  if (serverExports.includes(comp.exportPath) && !comp.isServerOnly) {
+    bundleErrors.server.push(comp.exportPath + ' (admin component in server bundle)');
+  }
+  if (clientExports.includes(comp.exportPath) && !comp.isServerOnly) {
+    bundleErrors.client.push(comp.exportPath + ' (admin component in client bundle)');
+  }
+});
+
+clientRelevantAdmin.forEach(comp => {
+  if (!adminClientExports.includes(comp.exportPath)) {
+    missing.adminClient.push(comp.exportPath);
+  }
+  if (serverExports.includes(comp.exportPath) && comp.isClientOnly) {
+    bundleErrors.server.push(comp.exportPath + ' (client-only admin component in server bundle)');
+  }
+  // Allow client-only components in adminserver if they are also server-only (both)
+  if (adminServerExports.includes(comp.exportPath) && comp.isClientOnly && !comp.isServerOnly) {
+    bundleErrors.adminServer.push(comp.exportPath + ' (client-only admin component in admin server bundle)');
+  }
+});
+
 // Check for bundle contamination errors
 clientOnlyComponents.forEach(comp => {
   if (serverExports.includes(comp.exportPath)) {
@@ -210,6 +197,7 @@ console.log(`   Found ${allComponentFiles.length} component files`);
 console.log(`   ${clientOnlyComponents.length} client-only components`);
 console.log(`   ${clientAndServerSafeComponents.length} client-and-server-safe components`);
 console.log(`   ${serverOnlyComponents.length} server-only components`);
+console.log(`   ${adminComponents.length} admin components`);
 if (missing.server.length > 0) {
   console.log('❌ Missing from server bundle (index.server.js):');
   missing.server.forEach(path => console.log(`   - ${path}`));
@@ -222,6 +210,18 @@ if (missing.client.length > 0) {
   console.log('');
 }
 
+if (missing.adminServer.length > 0) {
+  console.log('❌ Missing from admin server bundle (index.adminserver.js):');
+  missing.adminServer.forEach(path => console.log(`   - ${path}`));
+  console.log('');
+}
+
+if (missing.adminClient.length > 0) {
+  console.log('❌ Missing from admin client bundle (index.adminclient.js):');
+  missing.adminClient.forEach(path => console.log(`   - ${path}`));
+  console.log('');
+}
+
 if (bundleErrors.server.length > 0) {
   console.log('🚨 Bundle contamination errors:');
   console.log('   Client-required components incorrectly exported from server bundle:');
@@ -229,10 +229,17 @@ if (bundleErrors.server.length > 0) {
   console.log('');
 }
 
-if (bundleErrors.client.length > 0) {
+if (bundleErrors.adminServer.length > 0) {
   console.log('🚨 Bundle contamination errors:');
-  console.log('   Server-only components incorrectly exported from client bundle:');
-  bundleErrors.client.forEach(path => console.log(`   - ${path}`));
+  console.log('   Client-required components incorrectly exported from admin server bundle:');
+  bundleErrors.adminServer.forEach(path => console.log(`   - ${path}`));
+  console.log('');
+}
+
+if (bundleErrors.adminClient.length > 0) {
+  console.log('🚨 Bundle contamination errors:');
+  console.log('   Server-only components incorrectly exported from admin client bundle:');
+  bundleErrors.adminClient.forEach(path => console.log(`   - ${path}`));
   console.log('');
 }
 
@@ -242,7 +249,7 @@ if (missing.files.length > 0) {
   console.log('');
 }
 
-const hasErrors = missing.server.length > 0 || missing.client.length > 0 || bundleErrors.server.length > 0 || bundleErrors.client.length > 0 || missing.files.length > 0;
+const hasErrors = missing.server.length > 0 || missing.client.length > 0 || missing.adminServer.length > 0 || missing.adminClient.length > 0 || bundleErrors.server.length > 0 || bundleErrors.client.length > 0 || bundleErrors.adminServer.length > 0 || bundleErrors.adminClient.length > 0 || missing.files.length > 0;
 
 if (hasErrors) {
   console.log('❌ Validation failed!');

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { usePixelatedConfig } from "../config/config.client";
 import { SmartImage } from './smartimage';
 import {PageGridItem } from '../general/semantic';
@@ -19,7 +20,15 @@ function decodeString(str: string){
 }
 
 
-export function BlogPostList(props: { site?: string; baseURL?: string; count?: number; posts?: BlogPostType[]; showCategories?: boolean }) {
+BlogPostList.propTypes = {
+	site: PropTypes.string,
+	baseURL: PropTypes.string,
+	count: PropTypes.number,
+	posts: PropTypes.array,
+	showCategories: PropTypes.bool,
+};
+export type BlogPostListType = InferProps<typeof BlogPostList.propTypes>;
+export function BlogPostList(props: BlogPostListType) {
 	
 	const { site: propSite, baseURL: propBaseURL, count, posts: cachedPosts, showCategories = true } = props;
 	const config = usePixelatedConfig();
@@ -44,7 +53,10 @@ export function BlogPostList(props: { site?: string; baseURL?: string; count?: n
 		// Otherwise, fetch from WordPress
 		ToggleLoading({show: true});
 		(async () => {
-			const data = (await getWordPressItems({ site, count, baseURL })) ?? [];
+			const params: { site: string; count?: number; baseURL?: string } = { site };
+			if (count !== null && count !== undefined) params.count = count;
+			if (baseURL !== null && baseURL !== undefined) params.baseURL = baseURL;
+			const data = (await getWordPressItems(params)) ?? [];
 			const sorted = data.sort((a: BlogPostType, b: BlogPostType) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
 			setPosts(sorted);
 			ToggleLoading({show: false});
@@ -72,26 +84,36 @@ export function BlogPostList(props: { site?: string; baseURL?: string; count?: n
 	);
 }
 
-
-export function BlogPostSummary(props: BlogPostType & { showCategories?: boolean }) {
-	const myCategoryImages = Object.entries(props.categories).map(
-		([category, index]) => [category.trim().toLowerCase().replace(/[ /]+/g, '-'), index]
-	).sort();
+BlogPostSummary.propTypes = {
+	ID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	title: PropTypes.string,
+	date: PropTypes.string,
+	excerpt: PropTypes.string,
+	URL: PropTypes.string,
+	categories: PropTypes.object,
+	featured_image: PropTypes.string,
+	showCategories: PropTypes.bool,
+};
+export type BlogPostSummaryType = InferProps<typeof BlogPostSummary.propTypes>;
+export function BlogPostSummary(props: BlogPostSummaryType) {
+	const myCategoryImages = props.categories ? Object.entries(props.categories).map(
+		([category, index]) => [category?.trim().toLowerCase().replace(/[ /]+/g, '-'), index]
+	).sort() : [];
 	const config = usePixelatedConfig();
-	const myExcerpt = decodeString(props.excerpt).replace(/\[…\]/g, '<a href="' + props.URL + '" target="_blank" rel="noopener noreferrer">[…]</a>');
+	const myExcerpt = props.excerpt ? decodeString(props.excerpt).replace(/\[…\]/g, '<a href="' + (props.URL || '') + '" target="_blank" rel="noopener noreferrer">[…]</a>') : '';
 	return (
 		<div className="blog-post-summary" key={props.ID}>
 			<article className="h-entry">
 				<h2 className="p-name">
-					<a className="u-url blog-post-url" href={props.URL} target="_blank" rel="noopener noreferrer">
-						{decodeString(props.title)}
+					<a className="u-url blog-post-url" href={props.URL || ''} target="_blank" rel="noopener noreferrer">
+						{props.title ? decodeString(props.title) : ''}
 					</a>
 				</h2>
-				<div className="dt-published">Published: {new Date(props.date).toLocaleDateString()}</div>
+				<div className="dt-published">Published: {props.date ? new Date(props.date).toLocaleDateString() : ''}</div>
 				{ props.featured_image ? (
 					<div className="article-body row-12col">
 						<div className="article-featured-image grid-s1-e4">
-							<SmartImage className="u-photo" src={props.featured_image} alt={decodeString(props.title)} title={decodeString(props.title)}
+							<SmartImage className="u-photo" src={props.featured_image} alt={props.title ? decodeString(props.title) : ''} title={props.title ? decodeString(props.title) : ''}
 								style={{}}
 								cloudinaryEnv={config?.cloudinary?.product_env ?? undefined}
 								cloudinaryDomain={config?.cloudinary?.baseUrl ?? undefined}
@@ -126,15 +148,19 @@ export function BlogPostSummary(props: BlogPostType & { showCategories?: boolean
 
 
 
-export function BlogPostCategories(props: { categories: string[] }) {
+BlogPostCategories.propTypes = {
+	categories: PropTypes.arrayOf(PropTypes.string),
+};
+export type BlogPostCategoriesType = InferProps<typeof BlogPostCategories.propTypes>;
+export function BlogPostCategories(props: BlogPostCategoriesType) {
 	if(!props.categories || props.categories.length === 0) {
 		return null;
 	}
 	const myCategoryImages = props.categories.map(
-		(category) => (category !== "Uncategorized") 
+		(category) => (category && category !== "Uncategorized") 
 			? category.trim().toLowerCase().replace(/[ /]+/g, '-') 
 			: undefined
-	).sort();
+	).filter(Boolean).sort();
 	const config = usePixelatedConfig();
 	return (
 		<div className="blogPostCategories">

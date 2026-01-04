@@ -8,7 +8,8 @@
         "name": "name",
         "label": "Site Name",
         "required": true,
-        "placeholder": "Enter site name"
+        "placeholder": "Enter site name",
+        "size": "40"
       }
     },
     {
@@ -19,7 +20,8 @@
         "name": "author",
         "label": "Author",
         "required": true,
-        "placeholder": "Enter author name"
+        "placeholder": "Enter author name",
+        "size": "40"
       }
     },
     {
@@ -41,7 +43,8 @@
         "name": "url",
         "label": "Site URL",
         "required": true,
-        "placeholder": "https://example.com"
+        "placeholder": "https://example.com",
+        "size": "40"
       }
     },
     {
@@ -52,7 +55,8 @@
         "name": "email",
         "label": "Email",
         "required": true,
-        "placeholder": "contact@example.com"
+        "placeholder": "contact@example.com",
+        "size": "40"
       }
     },
     {
@@ -63,7 +67,8 @@
         "name": "favicon",
         "label": "Favicon",
         "required": true,
-        "placeholder": "/favicon.ico"
+        "placeholder": "/favicon.ico",
+        "size": "40"
       }
     },
     {
@@ -74,7 +79,8 @@
         "name": "favicon_sizes",
         "label": "Favicon Sizes",
         "required": true,
-        "placeholder": "64x64 32x32 24x24 16x16"
+        "placeholder": "64x64 32x32 24x24 16x16",
+        "size": "40"
       }
     },
     {
@@ -85,7 +91,8 @@
         "name": "favicon_type",
         "label": "Favicon Type",
         "required": true,
-        "placeholder": "image/x-icon"
+        "placeholder": "image/x-icon",
+        "size": "40"
       }
     },
     {
@@ -118,7 +125,8 @@
         "name": "default_locale",
         "label": "Default Locale",
         "required": true,
-        "placeholder": "en"
+        "placeholder": "en",
+        "size": "40"
       }
     },
     {
@@ -143,7 +151,8 @@
         "id": "image",
         "name": "image",
         "label": "Site Image",
-        "placeholder": "/images/site-image.jpg"
+        "placeholder": "/images/site-image.jpg",
+        "size": "40"
       }
     },
     {
@@ -153,7 +162,8 @@
         "id": "image_height",
         "name": "image_height",
         "label": "Image Height",
-        "placeholder": "512"
+        "placeholder": "512",
+        "size": "40"
       }
     },
     {
@@ -163,7 +173,8 @@
         "id": "image_width",
         "name": "image_width",
         "label": "Image Width",
-        "placeholder": "512"
+        "placeholder": "512",
+        "size": "40"
       }
     },
     {
@@ -173,7 +184,8 @@
         "id": "telephone",
         "name": "telephone",
         "label": "Telephone",
-        "placeholder": "+1-555-123-4567"
+        "placeholder": "+1-555-123-4567",
+        "size": "40"
       }
     },
     {
@@ -183,7 +195,8 @@
         "id": "priceRange",
         "name": "priceRange",
         "label": "Price Range",
-        "placeholder": "$$"
+        "placeholder": "$$",
+        "size": "40"
       }
     },
     {
@@ -193,7 +206,8 @@
         "id": "keywords",
         "name": "keywords",
         "label": "Keywords",
-        "placeholder": "web development, design, services"
+        "placeholder": "web development, design, services",
+        "size": "40"
       }
     }
   ]

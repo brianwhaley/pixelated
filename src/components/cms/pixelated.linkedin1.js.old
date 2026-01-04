@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 
-export function LinkedIn() {
+LinkedIn.propTypes = {};
+export type LinkedInType = InferProps<typeof LinkedIn.propTypes>;
+export function LinkedIn(props: LinkedInType) {
 
 	const [data, setData] = useState(null);
 	const proxyURL = 'https://proxy.pixelated.tech/prod/proxy?url=';

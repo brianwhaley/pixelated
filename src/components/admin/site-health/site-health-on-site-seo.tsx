@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import { getScoreIndicator } from './site-health-indicators';
 
@@ -146,7 +147,11 @@ async function fetchOnSiteSEOData(siteName: string): Promise<OnSiteSEOData> {
 	}
 }
 
-export function SiteHealthOnSiteSEO({ siteName }: { siteName: string }) {
+SiteHealthOnSiteSEO.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthOnSiteSEOType = InferProps<typeof SiteHealthOnSiteSEO.propTypes>;
+export function SiteHealthOnSiteSEO({ siteName }: SiteHealthOnSiteSEOType) {
 	return (
 		<SiteHealthTemplate
 			siteName={siteName}

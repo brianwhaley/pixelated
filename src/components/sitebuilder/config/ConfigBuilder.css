@@ -162,8 +162,6 @@
 }
 
 .route-item {
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr auto;
   gap: 10px;
   align-items: center;
   padding: 10px;
@@ -172,11 +170,18 @@
   margin-bottom: 10px;
 }
 
-.route-item input {
+.route-item input,
+.route-item select,
+.route-item textarea {
   padding: 6px 8px;
   border: 1px solid #ddd;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: var(--font-size5);
+}
+
+.route-item label {
+  font-size: var(--font-size5);
+  font-weight: bold;
 }
 
 .route-item button {
@@ -274,4 +279,188 @@
   font-size: 14px;
   margin-top: 8px;
   font-weight: 500;
+}
+/* AI Recommendations Modal */
+.ai-recommendations-modal {
+  max-width: 600px;
+}
+
+.ai-recommendations-modal h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.ai-loading {
+  text-align: center;
+  padding: 20px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007acc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ai-error {
+  color: #dc3545;
+  padding: 10px;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.ai-recommendations {
+  margin: 20px 0;
+}
+
+.recommendation-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #007acc;
+}
+
+.recommendation-item label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.recommendation-item input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #007acc;
+}
+
+.recommendation-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.recommendation-item label:hover {
+  background-color: #f0f8ff;
+}
+
+.recommendation-content {
+  margin-left: 20px;
+}
+
+.current-value {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.suggested-value {
+  color: #007acc;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal-actions button:hover {
+  background-color: #f8f9fa;
+}
+
+.accept-button {
+  background-color: #28a745 !important;
+  color: white !important;
+  border-color: #28a745 !important;
+}
+
+.accept-button:hover {
+  background-color: #218838 !important;
+}
+
+.accept-button:disabled {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  cursor: not-allowed;
+  color: white !important;
+}
+
+/* Route management buttons */
+.route-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.route-button {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #495057;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.route-button:hover {
+  background-color: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.route-button.ai-recommend {
+  background-color: #4285f4;
+  color: #fff;
+  border-color: #4285f4;
+}
+
+.route-button.ai-recommend:hover {
+  background-color: #3367d6;
+  border-color: #3367d6;
+}
+
+.route-button.remove {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.route-button.remove:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+.ai-icon {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
 }

@@ -9,7 +9,7 @@
 		"favicon": "/favicon.ico",
 		"favicon_sizes": "64x64 32x32 24x24 16x16",
 		"favicon_type": "image/x-icon",
-		"theme_color": "#369",
+		"theme_color": "#336699",
 		"background_color": "#ffffff",
 		"default_locale": "en",
 		"display": "standalone",
@@ -32,10 +32,10 @@
 		]
 	},
 	"visualdesign": {
-		"primary-color": { "value": "#369", "type": "color", "group": "palette", "label": "Primary color" },
-		"secondary-color": { "value": "#BCD", "type": "color", "group": "palette", "label": "Secondary color" },
-		"accent1-color": { "value": "#CCC", "type": "color", "group": "palette", "label": "Accent color 1" },
-		"accent2-color": { "value": "#EEE", "type": "color", "group": "palette", "label": "Accent color 2" },
+		"primary-color": { "value": "#336699", "type": "color", "group": "palette", "label": "Primary color" },
+		"secondary-color": { "value": "#BBCCDD", "type": "color", "group": "palette", "label": "Secondary color" },
+		"accent1-color": { "value": "#CCCCCC", "type": "color", "group": "palette", "label": "Accent color 1" },
+		"accent2-color": { "value": "#EEEEEE", "type": "color", "group": "palette", "label": "Accent color 2" },
 		"bg-color": { "value": "#ffffff", "type": "color", "group": "palette", "label": "Background color" },
 		"text-color": { "value": "#000000", "type": "color", "group": "palette", "label": "Font color" },
 		"header-font": { "value": "\"Montserrat\", Verdana, sans-serif", "type": "font", "group": "typography", "label": "Header font" },

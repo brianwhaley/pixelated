@@ -32,11 +32,11 @@ function removeDeadHrefs(element: string) {
 	return doc.body.innerHTML;
 }
 
+/* ========== SOCIALCARD ========== */
 SocialCards.propTypes = {
 	sources: PropTypes.object.isRequired
 };
 export type SocialCardsType = InferProps<typeof SocialCards.propTypes>;
-/* ========== SOCIALCARDS ========== */
 export function SocialCards(props: SocialCardsType) {
 	const debug = false ;
 	const [ state, setState ] = useState({
@@ -269,7 +269,6 @@ SocialCard.propTypes = {
 	card: PropTypes.any.isRequired
 };
 export type SocialCardType = InferProps<typeof SocialCard.propTypes>;
-/* ========== SOCIALCARD ========== */
 export function SocialCard(props: SocialCardType) {
 	const config = usePixelatedConfig();
 	return (
@@ -294,6 +293,8 @@ export function SocialCard(props: SocialCardType) {
 }
 
 /* ========== SPINNER ========== */
+SocialCardsLoading.propTypes = {};
+export type SocialCardsLoadingType = InferProps<typeof SocialCardsLoading.propTypes>;
 export function SocialCardsLoading() {
 	return (
 		<div className="cardsLoading">

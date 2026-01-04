@@ -1,14 +1,15 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { UptimeData } from './site-health-types';
 
-interface SiteHealthUptimeProps {
-  siteName: string;
-}
-
-export function SiteHealthUptime({ siteName }: SiteHealthUptimeProps) {
+SiteHealthUptime.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthUptimeType = InferProps<typeof SiteHealthUptime.propTypes>;
+export function SiteHealthUptime({ siteName }: SiteHealthUptimeType) {
 	const fetchUptimeData = async (site: string) => {
 		const response = await fetch(`/api/site-health/uptime?siteName=${encodeURIComponent(site)}`);
 		const result: UptimeData = await response.json();

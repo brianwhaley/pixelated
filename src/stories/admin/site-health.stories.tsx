@@ -148,10 +148,10 @@ export const AxeCoreHealthCard = () => {
         const summary = {
           violations: data.violations.length,
           passes: data.passes,
-          critical: data.violations.filter(v => v.impact === 'critical').length,
-          serious: data.violations.filter(v => v.impact === 'serious').length,
-          moderate: data.violations.filter(v => v.impact === 'moderate').length,
-          minor: data.violations.filter(v => v.impact === 'minor').length
+          critical: data.violations.filter((v: any) => v.impact === 'critical').length,
+          serious: data.violations.filter((v: any) => v.impact === 'serious').length,
+          moderate: data.violations.filter((v: any) => v.impact === 'moderate').length,
+          minor: data.violations.filter((v: any) => v.impact === 'minor').length
         };
 
         const getImpactColor = (impact: string) => {

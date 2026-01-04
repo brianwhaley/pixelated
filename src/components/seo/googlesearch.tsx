@@ -28,7 +28,7 @@ GoogleSearch.propTypes = {
 export type GoogleSearchType = InferProps<typeof GoogleSearch.propTypes>;
 export function GoogleSearch(props: GoogleSearchType) {
 	if(typeof document !== 'undefined'){
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		 
 		const gsearch = (function () {
 			const gcse = document.createElement("script");
 			gcse.type = "text/javascript";

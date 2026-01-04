@@ -43,9 +43,9 @@ export interface FormValidationContextType extends FormValidationState {
 }
 
 export interface FormEngineProps {
-  name?: string;
-  id?: string;
-  method?: string;
+  name?: string | null;
+  id?: string | null;
+  method?: string | null;
   onSubmitHandler?: (event: React.FormEvent) => void;
   formData: FormData;
 }

@@ -19,10 +19,8 @@ ComponentSelector.propTypes = {
 		props: PropTypes.object
 	}),
 };
-
-type ComponentSelectorProps = InferProps<typeof ComponentSelector.propTypes>;
-
-export function ComponentSelector(props: ComponentSelectorProps) {
+export type ComponentSelectorType = InferProps<typeof ComponentSelector.propTypes>;
+export function ComponentSelector(props: ComponentSelectorType) {
 	const { setEditableComponent, parentPath, editMode } = props;
 	const [lastEditMode, setLastEditMode] = useState<string>('');
 	const [selectedValue, setSelectedValue] = useState<string>('');

@@ -239,7 +239,9 @@ describe('MenuAccordion Component', () => {
           ],
         },
       ];
-      (menuWithHiddenNested[0].routes![1] as any).hidden = true;
+      if (menuWithHiddenNested[0] && menuWithHiddenNested[0].routes && menuWithHiddenNested[0].routes[1]) {
+        (menuWithHiddenNested[0].routes[1] as any).hidden = true;
+      }
 
       render(<MenuAccordion menuItems={menuWithHiddenNested} showHidden={true} />);
       expect(screen.getByText('Visible Service')).toBeInTheDocument();

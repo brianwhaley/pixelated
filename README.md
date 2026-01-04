@@ -268,7 +268,7 @@ npm install @pixelated-tech/components
 import { Accordion, Callout } from '@pixelated-tech/components';
 ```
 
-For detailed usage examples and API documentation, see the [Component Reference Guide](README.COMPONENTS.md).
+For detailed usage examples and API documentation, see the [Component Reference Guide](docs/components.md).
 
 ### Storybook Interactive Demos
 
@@ -282,71 +282,22 @@ npm run storybook
 **Access locally at:** `http://localhost:6006`
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-### New Components
-- [ ] **IN PROGRESS** - Testimonial Block (Nextdoor/Yelp/Google): ingest review feeds + render carousel/grid.
-- [ ] **ON HOLD** LinkedIn Recommendations Integration (Not possible with current LinkedIn API)
-- [ ] **ON HOLD** eBay Feedback Integration - requires user OAuth login
-- [ ] **ON HOLD** Yelp Recommendations integration (Cost Prohibitive)
-- [ ] Instagram Image Integration for Carousels
-- [ ] Shopify Integration
-- [ ] Quickbooks Integration
-- [ ] Buffer Integration (or Sendible, Sprout Social, Hootsuite)
-- [ ] Zapier Integration
-- [ ] Hero Banner: headline, subtext, CTA, background image/video, overlay.
-- [ ] Accessibility Enhancer: wrapper component that automatically improves accessibility across Pixelated sites by adding ARIA labels, roles, and states to existing components. Includes color contrast checking, keyboard navigation helpers, alt-text suggestions for images, and automated accessibility audits.
-- [ ] SEO Dashboard with AI Integration: component that analyzes site content, suggests optimizations, integrates with AI for meta descriptions and keyword research.
-
-### CI / CD Improvements
-- [ ] Add CI workflow to run tests and lints on pull requests.
-
-### Component Improvements
-- [ ] Implement minimal `createContentfulImageURLs` with single `/images` sitemap entry.
-- [ ] Review Contentful helper functions for per-page mapping capability.
-- [ ] Implement `createContentfulImageURLs` per-page mapping with `contentType` & `pageField` config.
-- [ ] Align typography to `--font-sizeN` clamp variables.
-- [ ] Provide Cloudinary transforms presets for image components.
-- [ ] find a better solution than to generate image via build script in amplify for json for sitemap creation
-- [ ] **SocialCards Component**: Fix state initialization to track prop changes properly.
-- [ ] **Modal Component**: Clarify content source pattern (accepts both `modalContent` and `children`).
-- [ ] **Carousel Component**: Fix active card state reset when `props.cards` changes.
-- [ ] **NerdJoke Component**: Add props to useEffect dependencies if endpoint becomes configurable.
-- [ ] **GoogleReviews Component**: Add carousel/grid display modes.
-- [ ] **GoogleReviews Component**: Add API key to config provider instead of hardcoding.
-- [ ] **Instagram Component**: Add accessToken and userId to config provider for centralized API credentials.
-- [ ] **Critters Integration**: Explore adding critters CSS inlining tool for improved page load performance and critical CSS optimization.
-
-### Platform Enhancements
-- [ ] **Project Scaffolding CLI**: Interactive CLI tool that generates complete Next.js projects with pixelated-components pre-configured, including routes.json, layout.tsx, package.json, and basic page structure
-- [ ] **Template Marketplace**: Pre-built industry-specific templates (restaurant, law firm, contractor, etc.) that users can clone and customize
-- [ ] **Configuration Wizard**: Step-by-step setup wizard that collects business info, generates site configuration, and creates initial content structure
-- [ ] **Content Migration Tools**: Automated importers for WordPress, Squarespace, Wix, and other platforms to migrate content to pixelated sites
-- [ ] **A/B Testing Framework**: Built-in experimentation system for testing different layouts, content, and CTAs with automatic winner selection
-- [ ] **Personalization Engine**: Dynamic content delivery based on user behavior, location, and preferences
-- [ ] **Hot Module Replacement for Configs**: Live preview of configuration changes without full rebuilds
-- [ ] **Automated Dependency Updates**: Smart update system that tests component changes across all sites before deployment
-- [ ] **Rollback System**: One-click rollback to previous versions with automatic database and asset restoration
-- [ ] **Performance Budget Tracker**: Automated monitoring of Core Web Vitals with alerts when sites exceed performance budgets
-- [ ] **ConfigBuilder SEO Enhancement**: Upgrade ConfigBuilder with AI-powered meta description generation, keyword optimization suggestions, and automated schema markup
-- [ ] **Conversion Funnel Builder**: Visual funnel creation with automated tracking, A/B testing, and optimization recommendations
-- [ ] **Automated Security Scanner**: Regular security audits with vulnerability detection and automated fixes
-- [ ] **GDPR Compliance Toolkit**: Automated cookie consent, data mapping, and privacy policy generation
-- [ ] **API Gateway**: Unified API management for connecting to CRM, email marketing, payment processors, and other business tools
-- [ ] **Webhook Automation**: Event-driven automation for form submissions, new content, user registrations, and business workflows
-- [ ] **Third-Party Sync Engine**: Bidirectional sync with tools like HubSpot, Mailchimp, QuickBooks, and project management systems
-- [ ] **Testing Strategy for Config Failure Scenarios**: Comprehensive testing framework for config-dependent components and error handling
-  - Test components with missing config providers
-  - Test error pages without config dependencies  
-  - Test app initialization with invalid environment variables
-  - Include chaos engineering tests that simulate config failures
-- [ ] **Documentation Auto-Generator**: Automatically generated API docs, component usage guides, and deployment instructions
-
-
 See the [open issues](https://github.com/brianwhaley/pixelated-components/issues) for a full list of proposed features (and known issues).
 
 
+
+
+
+<!-- ROADMAP -->
+## 🚀 Roadmap
+
+See our detailed [Roadmap](docs/roadmap.md) for planned improvements and refactoring initiatives.
+
+
+<!-- TESTING -->
+## 🧪 Testing
+
+See our comprehensive [Testing Documentation](docs/testing.md) for test coverage, setup, and strategies.
 
 
 <!-- CONTRIBUTING -->
@@ -391,136 +342,6 @@ Brian Whaley - [@brianwhaley](https://twitter.com/@brianwhaley) - brian.whaley@g
 
 Project Link: [https://github.com/brianwhaley/pixelated-components](https://github.com/brianwhaley/pixelated-components)
 
-
-
-
-
-
-## 🧪 Testing
-
-### Overview
-
-**Current Status**: ✅ 2,387 tests passing across 79 test files
-
-| Metric | Value |
-|--------|-------|
-| Test Files | 79 |
-| Total Tests | 2,387 |
-| Coverage (Statements) | 77.13% |
-| Coverage (Lines) | 79.73% |
-| Coverage (Functions) | 77.98% |
-| Coverage (Branches) | 67.55% |
-| Test Framework | Vitest 4.x |
-| Testing Library | @testing-library/react + jsdom |
-
-### Quick Start
-
-```bash
-npm run test              # Watch mode
-npm run test:ui          # Interactive UI dashboard
-npm run test:coverage    # Generate coverage reports
-npm run test:run         # Single run (for CI)
-```
-
-### Component Coverage
-
-**Component Coverage Summary**
-
-#### Component Coverage (Sorted by Statement Coverage)
-- **site-health-cache.ts**: 100% statements *(new shared caching utility)*
-- **sites.integration.ts**: 100% statements *(new site management functions)*
-- **site-health-indicators.ts**: 100% statements
-- **tiles.tsx**: 100% statements
-- **google.reviews.functions.ts**: 100% statements
-- **accordion.tsx**: 100% statements
-- **modal.tsx**: 100% statements
-- **tab.tsx**: 100% statements
-- **ComponentPropertiesForm.tsx**: 100% statements
-- **ComponentSelector.tsx**: 100% statements
-- **ComponentTree.tsx**: 100% statements
-- **formvalidations.tsx**: 100% statements
-- **googlesearch.tsx**: 100% statements
-- **schema-localbusiness.tsx**: 100% statements
-- **schema-recipe.tsx**: 100% statements
-- **schema-services.tsx**: 100% statements
-- **schema-website.tsx**: 100% statements
-- **schema-blogposting.tsx**: 100% statements
-- **buzzwordbingo.tsx**: 100% statements
-- **markdown.tsx**: 100% statements
-- **timeline.tsx**: 100% statements
-- **config.client.tsx**: 100% statements
-- **sidepanel.tsx**: 97.5% statements
-- **config.ts**: 96.55% statements
-- **google.reviews.components.tsx**: 95.83% statements
-- **schema-blogposting.tsx**: 95.24% statements
-- **recipe.tsx**: 94.59% statements
-- **resume.tsx**: 94.38% statements
-- **contentful.delivery.ts**: 92.5% statements
-- **css.tsx**: 91.43% statements
-- **functions.ts**: 90.91% statements
-- **menu-expando.tsx**: 90.12% statements
-- **site-health-cloudwatch.tsx**: 88% statements
-- **loading.tsx**: 85.71% statements
-- **SaveLoadSection.tsx**: 84.85% statements
-- **table.tsx**: 84.48% statements
-- **ConfigBuilder.tsx**: 83.52% statements
-- **cloudinary.ts**: 83.33% statements
-- **formcomponents.tsx**: 83.33% statements
-- **form.tsx**: 83.2% statements
-- **shoppingcart.functions.ts**: 81.7% statements
-- **callout.tsx**: 80% statements
-- **microinteractions.tsx**: 80% statements
-- **smartimage.tsx**: 82.75% statements
-- **sitemap.ts**: 76.06% statements
-- **manifest.tsx**: 75% statements
-- **carousel.tsx**: 71.7% statements
-- **nerdjoke.tsx**: 69.44% statements
-- **menu-accordion.tsx**: 68.47% statements
-- **semantic.tsx**: 63.51% statements
-- **componentMap.tsx**: 60% statements
-- **propTypeIntrospection.tsx**: 60% statements
-- **wordpress.functions.ts**: 51.43% statements
-- **config.server.tsx**: 50% statements
-- **PageEngine.tsx**: 48% statements
-- **componentGeneration.tsx**: 38.89% statements
-- **socialcard.tsx**: 29.51% statements
-- **PageBuilderUI.tsx**: 26.67% statements
-
-### Testing Next Steps
-
-#### Integration Testing Gaps
-- [ ] **Cross-component interactions** - Test how components work together (e.g., forms with validation, carousels with loading states)
-- [ ] **Form validation edge cases** - Test URL validation, required fields, and complex validation rules under various conditions
-- [ ] **CMS API integrations** - Test API failures, rate limiting, authentication errors, and network timeouts
-- [ ] **Responsive design breakpoints** - Test component behavior across different screen sizes and device types
-- [ ] **Accessibility (a11y) compliance** - Test keyboard navigation, screen reader compatibility, and ARIA attributes
-
-### Test Configuration
-
-
-**Coverage Targets** (configured in `vitest.config.ts`):
-- **Statements**: 70% threshold
-- **Lines**: 70% threshold
-- **Functions**: 70% threshold
-- **Branches**: 60% threshold
-
-**Coverage Thresholds in vitest.config.ts**:
-- Lines: 70% threshold
-- Functions: 70% threshold
-- Branches: 60% threshold
-- Statements: 70% threshold
-
-**Test Environment**: jsdom with @testing-library/react  
-**Test Pattern**: Data-focused validation + behavioral testing
-
-### Tools & Dependencies
-
-| Tool | Purpose |
-|------|---------|
-| Vitest 4.x | Test runner |
-| @testing-library/react | Component testing utilities |
-| jsdom | DOM environment for tests |
-| v8 | Coverage reporting |
 
 
 

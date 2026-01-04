@@ -6,7 +6,7 @@ import { Carousel } from '../carousel/carousel';
 import type { CarouselCardType } from "../carousel/carousel";
 import { getContentfulEntriesByType, getContentfulEntryByEntryID } from "./contentful.delivery";
 import { usePixelatedConfig } from '../config/config.client';
-import { AddToShoppingCart  } from "../shoppingcart/shoppingcart.functions";
+import { addToShoppingCart  } from "../shoppingcart/shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "../shoppingcart/shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "./cloudinary";
 import type { ShoppingCartType } from "../shoppingcart/shoppingcart.functions";
@@ -202,7 +202,7 @@ export function ContentfulListItem(props: ContentfulListItemType) {
 				<br />
 				<div className="contentful-item-addtocart">
 					<ViewItemDetails href={"/store"} itemID={thisItem.sys.id} />
-					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
+					<AddToCartButton handler={addToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 					{ /* <GoToCartButton href={"/cart"} itemID={thisItem.sys.id} /> */}
 				</div>
 			</div>
@@ -247,7 +247,7 @@ ContentfulItemDetail.propTypes = {
 export type ContentfulItemDetailType = InferProps<typeof ContentfulItemDetail.propTypes>;
 export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 	const [ item, setItem ] = useState({});
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	 
 	const [ assets, setAssets ] = useState({});
 	const [ cards, setCards ] = useState<CarouselCardType[]>([]);
 
@@ -365,7 +365,7 @@ export function ContentfulItemDetail(props: ContentfulItemDetailType)  {
 						</div>
 						<br />
 						<div className="contentful-item-addtocart">
-							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
+							<AddToCartButton handler={addToShoppingCart} item={shoppingCartItem} itemID={thisItem.sys.id} />
 						</div>
 
 					</div>

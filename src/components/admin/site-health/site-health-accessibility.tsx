@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { SiteHealthData } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
@@ -12,11 +13,11 @@ interface AccessibilityResponse {
   details?: string;
 }
 
-interface SiteHealthAccessibilityProps {
-  siteName: string;
-}
-
-export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityProps) {
+SiteHealthAccessibility.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthAccessibilityType = InferProps<typeof SiteHealthAccessibility.propTypes>;
+export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityType) {
 	const fetchAccessibilityData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
 		const result: AccessibilityResponse = await response.json();
@@ -191,8 +192,8 @@ export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityPro
 								</h5>
 								<div className="space-y-2">
 									{siteData.categories.accessibility.audits
-										.filter(audit => audit.scoreDisplayMode !== 'notApplicable')
-										.sort((a, b) => {
+										.filter((audit: any) => audit.scoreDisplayMode !== 'notApplicable')
+										.sort((a: any, b: any) => {
 											// Prioritize specific important accessibility audits
 											const priorityAudits = [
 												'color-contrast',
@@ -228,7 +229,7 @@ export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityPro
 											return (b.score || 0) - (a.score || 0);
 										})
 										.slice(0, 20)
-										.map((audit) => (
+										.map((audit: any) => (
 											<div key={audit.id} className="health-audit-item">
 												<span className="health-audit-icon">
 													{getAuditScoreIcon(audit.score)}

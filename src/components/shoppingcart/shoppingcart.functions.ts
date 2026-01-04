@@ -36,23 +36,23 @@ export type ShoppingCartType = {
     itemCost: number,
 }
 
-export type ShoppingCartItemType = {
+/* export type ShoppingCartItemType = {
     itemID: string,
     itemURL?: string,
     itemTitle: string,
-    itemDescription: string,
+    itemQuantity: number,
     itemCost: number,
+    itemDescription: string,
     itemCategory?: string,
     itemCondition?: string,
     itemProperties?: { [key: string]: any },
     itemImageThumbnail? : string,
     itemImages?: string[],
-    itemQuantity: number,
     itemSeller?: string,
     itemBuyingFormat?: string,
     itemLocation?: string,
     itemListingDate: string, 
-}
+} */
 
 export type AddressType = {
     name: string,
@@ -231,7 +231,7 @@ export function getCartSubTotal(cart: ShoppingCartType[]) {
 }
 
 
-export function AddToShoppingCart(thisItem: ShoppingCartType) {
+export function addToShoppingCart(thisItem: ShoppingCartType) {
 	let cart: ShoppingCartType[] = getCart();
 	if(alreadyInCart(cart, thisItem.itemID)){
 		const index = getIndexInCart(cart, thisItem.itemID);
@@ -254,7 +254,7 @@ export function AddToShoppingCart(thisItem: ShoppingCartType) {
 }
 
 
-export function RemoveFromShoppingCart(thisItem: ShoppingCartType) { 
+export function removeFromShoppingCart(thisItem: ShoppingCartType) { 
 	let cart: ShoppingCartType[] = getCart();
 	if(alreadyInCart(cart, thisItem.itemID)){
 		cart.splice(getIndexInCart(cart, thisItem.itemID), 1);
@@ -264,7 +264,7 @@ export function RemoveFromShoppingCart(thisItem: ShoppingCartType) {
 }
 
 
-export function ClearShoppingCart() { 
+export function clearShoppingCart() { 
 	localStorage.removeItem( shoppingCartKey );
 	localStorage.removeItem( shippingInfoKey );
 	window.dispatchEvent(new Event('storage'));
@@ -280,7 +280,7 @@ export function getShippingInfo(){
 }
 
 
-export function SetShippingInfo(shippingFormData: any) { 
+export function setShippingInfo(shippingFormData: any) { 
 	localStorage.setItem(shippingInfoKey, JSON.stringify(shippingFormData) );
 	window.dispatchEvent(new Event('storage'));
 }

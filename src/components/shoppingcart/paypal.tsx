@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from "react-dom"
 import PropTypes, { InferProps } from 'prop-types';
-import type { ShoppingCartType, CheckoutType } from "./shoppingcart.components";
+import type { ShoppingCartType, CheckoutType } from "./shoppingcart.functions";
 const debug = false;
 
 function isScriptSrc(scriptSrc) {

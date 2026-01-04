@@ -5,7 +5,7 @@ import PropTypes, { InferProps } from "prop-types";
 import { Carousel } from '../carousel/carousel';
 import { SmartImage } from "../cms/smartimage";
 import { defaultEbayProps, ebaySunglassCategory, getEbayItems, getEbayItem, getShoppingCartItem } from "./ebay.functions";
-import { AddToShoppingCart } from "./shoppingcart.functions";
+import { addToShoppingCart } from "./shoppingcart.functions";
 import { AddToCartButton, /* GoToCartButton */ ViewItemDetails } from "./shoppingcart.components";
 import { getCloudinaryRemoteFetchURL as getImg} from "../cms/cloudinary";
 import { Loading , ToggleLoading } from "../general/loading";
@@ -241,7 +241,7 @@ export function EbayListItem(props: EbayListItemType) {
 				<br />
 				<div className="ebayItemAddToCart">
 					<ViewItemDetails href={"/store"} itemID={thisItem.legacyItemId} />
-					<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
+					<AddToCartButton handler={addToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
 					{ /* <GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} /> */}
 				</div>
 			</div>
@@ -347,7 +347,7 @@ export function EbayItemDetail(props: EbayItemDetailType)  {
 						</div>
 						<br />
 						<div className="ebayItemAddToCart">
-							<AddToCartButton handler={AddToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
+							<AddToCartButton handler={addToShoppingCart} item={shoppingCartItem} itemID={thisItem.legacyItemId} />
 							{ /* <GoToCartButton href={"/cart"} itemID={thisItem.legacyItemId} /> */}
 						</div>
 

@@ -1,4 +1,7 @@
+"use client";
+
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import * as FVF from './formfieldvalidations';
 import { ValidationResult, FormValidationContextType } from './formtypes';
 
@@ -64,7 +67,11 @@ export function useFormValidation() {
 	return context;
 }
 
-export function FormValidationProvider({ children }: { children: React.ReactNode }) {
+FormValidationProvider.propTypes = {
+	children: PropTypes.node.isRequired
+};
+export type FormValidationProviderType = InferProps<typeof FormValidationProvider.propTypes>;
+export function FormValidationProvider({ children }: FormValidationProviderType) {
 	const [fieldValidity, setFieldValidity] = useState<Record<string, boolean>>({});
 	const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
 

@@ -29,9 +29,7 @@ PageEngine.propTypes = {
 	onMoveUp: PropTypes.func,
 	onMoveDown: PropTypes.func,
 };
-
 export type PageEngineType = InferProps<typeof PageEngine.propTypes>;
-
 export function PageEngine(props: PageEngineType) {
 	const { editMode = false, selectedPath, onEditComponent, onSelectComponent, onDeleteComponent, onMoveUp, onMoveDown } = props;
 	

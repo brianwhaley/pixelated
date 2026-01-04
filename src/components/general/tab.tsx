@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import './tab.css';
@@ -15,8 +17,7 @@ Tab.propTypes = {
 	defaultActiveTab: PropTypes.string,
 	onTabChange: PropTypes.func,
 };
-type TabType = InferProps<typeof Tab.propTypes>;
-
+export type TabType = InferProps<typeof Tab.propTypes>;
 export function Tab({
 	tabs,
 	orientation = 'top',

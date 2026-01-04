@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { CoreWebVitalsResponse } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
 
-interface SiteHealthPerformanceProps {
-  siteName: string;
-}
-
-export function SiteHealthOverview({ siteName }: SiteHealthPerformanceProps) {
+SiteHealthOverview.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthOverviewType = InferProps<typeof SiteHealthOverview.propTypes>;
+export function SiteHealthOverview({ siteName }: SiteHealthOverviewType) {
 	const fetchCWVData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
 		const result: CoreWebVitalsResponse = await response.json();
@@ -93,25 +94,28 @@ export function SiteHealthOverview({ siteName }: SiteHealthPerformanceProps) {
 						<div className="health-score-container">
 							{Object.entries(siteData.scores)
 								.filter(([, score]) => score !== null)
-								.map(([category, score]) => (
-									<div key={category} className="health-score-item">
-										<div className="health-score-label">
-											{category.replace('-', ' ')}
+								.map(([category, score]) => {
+									const numScore = score as number | null;
+									return (
+										<div key={category} className="health-score-item">
+											<div className="health-score-label">
+												{category.replace('-', ' ')}
+											</div>
+											<div className="health-score-value" style={{ color: getScoreColor(numScore) }}>
+												{formatScore(numScore)}
+											</div>
+											<div className="health-score-bar">
+												<div
+													className="health-score-fill"
+													style={{
+														width: numScore !== null ? `${numScore * 100}%` : '0%',
+														backgroundColor: numScore !== null ? getScoreColor(numScore) : '#6b7280'
+													}}
+												/>
+											</div>
 										</div>
-										<div className="health-score-value" style={{ color: getScoreColor(score) }}>
-											{formatScore(score)}
-										</div>
-										<div className="health-score-bar">
-											<div
-												className="health-score-fill"
-												style={{
-													width: score !== null ? `${score * 100}%` : '0%',
-													backgroundColor: score !== null ? getScoreColor(score) : '#6b7280'
-												}}
-											/>
-										</div>
-									</div>
-								))}
+									);
+								})}
 						</div>
 
 						{/* Core Web Vitals Section */}

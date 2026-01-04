@@ -24,6 +24,7 @@ export * from './components/cms/wordpress.components';
 export * from './components/cms/wordpress.functions';
 export * from './components/cms/yelp';
 
+export * from './components/config/config';
 export * from './components/config/config.client';
 export * from './components/config/config.server';
 export * from './components/config/config.types';
@@ -57,6 +58,7 @@ export * from './components/sitebuilder/config/ConfigEngine';
 export * from './components/sitebuilder/config/FontSelector';
 export * from './components/sitebuilder/config/CompoundFontSelector';
 export * from './components/sitebuilder/config/fonts';
+export * from './components/sitebuilder/config/google-fonts';
 export * from './components/sitebuilder/form/formcomponents';
 export * from './components/sitebuilder/form/formtypes';
 export * from './components/sitebuilder/form/formutils';
@@ -91,25 +93,6 @@ export * from './components/seo/metadata.functions';
 export * from './components/seo/metadata.components';
 export * from './components/seo/sitemap';
 
-export * from './components/admin/site-health/site-health-indicators';
-export * from './components/admin/site-health/site-health-accessibility';
-export * from './components/admin/site-health/site-health-axe-core';
-export * from './components/admin/site-health/site-health-cache';
-export * from './components/admin/site-health/site-health-dependency-vulnerabilities';
-export * from './components/admin/site-health/site-health-github';
-export * from './components/admin/site-health/site-health-google-analytics';
-export * from './components/admin/site-health/site-health-google-search-console';
-export * from './components/admin/site-health/site-health-on-site-seo';
-export * from './components/admin/site-health/site-health-cloudwatch';
-export * from './components/admin/site-health/seo-constants';
-export * from './components/admin/site-health/site-health-overview';
-export * from './components/admin/site-health/site-health-performance';
-export * from './components/admin/site-health/site-health-security';
-export * from './components/admin/site-health/site-health-seo';
-export * from './components/admin/site-health/site-health-template';
-export * from './components/admin/site-health/site-health-types';
-export * from './components/admin/site-health/site-health-uptime';
-
 export * from './components/shoppingcart/ebay.components';
 export * from './components/shoppingcart/ebay.functions';
 export * from './components/shoppingcart/paypal';
@@ -124,4 +107,6 @@ export * from './components/structured/socialcard';
 export * from './components/structured/timeline';
 
 export * from './components/utilities/functions';
+export * from './components/utilities/gemini-api.client';
+export * from './components/utilities/gemini-api.server';
 

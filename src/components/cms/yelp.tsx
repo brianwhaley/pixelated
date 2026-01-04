@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import PropTypes, { InferProps } from 'prop-types';
 
 /* 
 NOTE : development has stopped for this component 
@@ -18,7 +19,12 @@ https://helloputnam.medium.com/easiest-way-to-include-business-reviews-on-a-web-
 */
 
 
-export function YelpReviews(props: { businessID: string, key: string }) {
+YelpReviews.propTypes = {
+	businessID: PropTypes.string.isRequired,
+	key: PropTypes.string,
+};
+export type YelpReviewsType = InferProps<typeof YelpReviews.propTypes>;
+export function YelpReviews(props: YelpReviewsType) {
 	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<Error>();

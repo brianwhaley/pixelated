@@ -26,7 +26,7 @@ HubSpotForm.propTypes = {
 	target: PropTypes.string,
 	containerId: PropTypes.string,
 };
-type HubSpotFormType = InferProps<typeof HubSpotForm.propTypes>;
+export type HubSpotFormType = InferProps<typeof HubSpotForm.propTypes>;
 export function HubSpotForm({
 	region, portalId, formId, target, containerId = 'hubspot-form-container'
 }: HubSpotFormType) {

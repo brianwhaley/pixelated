@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { ServicesSchema, type ServicesSchemaProps } from '../components/seo/schema-services';
+import { ServicesSchema, type ServicesSchemaType } from '../components/seo/schema-services';
 
 describe('ServicesSchema', () => {
-	const defaultProps: ServicesSchemaProps = {
+	const defaultProps: ServicesSchemaType = {
 		provider: {
 			name: 'Test Agency',
 			url: 'https://testagency.com'
@@ -61,7 +61,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include provider logo when provided', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			provider: {
 				...defaultProps.provider,
@@ -76,7 +76,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include provider telephone when provided', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			provider: {
 				...defaultProps.provider,
@@ -91,7 +91,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include provider email when provided', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			provider: {
 				...defaultProps.provider,
@@ -106,7 +106,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include service URL when provided', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			services: [
 				{
@@ -124,7 +124,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include service image when provided', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			services: [
 				{
@@ -142,7 +142,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include service areaServed as string', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			services: [
 				{
@@ -160,7 +160,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should include service areaServed as array', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			services: [
 				{
@@ -179,7 +179,7 @@ describe('ServicesSchema', () => {
 	});
 
 	it('should handle multiple services', () => {
-		const props: ServicesSchemaProps = {
+		const props: ServicesSchemaType = {
 			...defaultProps,
 			services: [
 				{ name: 'Service 1', description: 'Description 1' },

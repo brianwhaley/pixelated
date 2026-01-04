@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import * as FC from './formcomponents';
@@ -10,6 +12,7 @@ const debug = false;
 /* ===== FORM ENGINE =====
 Generate all the elements to display a form */
 
+
 FormEngine.propTypes = {
 	name: PropTypes.string,
 	id: PropTypes.string,
@@ -18,6 +21,14 @@ FormEngine.propTypes = {
 	formData: PropTypes.object.isRequired
 };
 export type FormEngineType = InferProps<typeof FormEngine.propTypes>;
+export function FormEngine(props: FormEngineType) {
+	return (
+		<FormValidationProvider>
+			<FormEngineInner {...(props as any)} />
+		</FormValidationProvider>
+	);
+}
+
 
 function FormEngineInner(props: FormEngineProps) {
 	const { validateAllFields } = useFormValidation();
@@ -25,8 +36,8 @@ function FormEngineInner(props: FormEngineProps) {
 	function generateFormProps(props: any) {
 		// GENERATE PROPS TO RENDER THE FORM CONTAINER, INTERNAL FUNCTION
 		if (debug) console.log("Generating Form Props");
-		const formProps = JSON.parse(JSON.stringify(props));
-		['formData', 'onSubmitHandler'].forEach(e => delete formProps[e]);
+		// Create a clean copy without non-serializable properties
+		const { formData, onSubmitHandler, ...formProps } = props;
 		return formProps;
 	}
 
@@ -90,13 +101,5 @@ function FormEngineInner(props: FormEngineProps) {
 
 	return (
 		<form {...generateFormProps(props)} onSubmit={(event) => { handleSubmit(event); }} suppressHydrationWarning >{generateNewFields(props)}</form>
-	);
-}
-
-export function FormEngine(props: FormEngineProps) {
-	return (
-		<FormValidationProvider>
-			<FormEngineInner {...props} />
-		</FormValidationProvider>
 	);
 }

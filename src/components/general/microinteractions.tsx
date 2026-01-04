@@ -15,15 +15,15 @@ MicroInteractions.propTypes = {
 	simplemenubutton: PropTypes.bool,
 	scrollfadeElements: PropTypes.string,
 };
-export type MicroInteractionsType = InferProps<typeof MicroInteractions.propTypes> & { [key: string]: unknown };
+export type MicroInteractionsType = InferProps<typeof MicroInteractions.propTypes>;
 export function MicroInteractions(props: MicroInteractionsType) {
 	// const debug = true ;
 	const body = document.body;
 	for (const propName in props) {
 		if (Object.prototype.hasOwnProperty.call(props, propName)) {
-			if (props[propName] === true) {
+			if ((props as any)[propName] === true) {
 				body.classList.add(propName);
-			} else if (props[propName] === false) {
+			} else if ((props as any)[propName] === false) {
 				body.classList.remove(propName);
 			}
 		}
@@ -32,7 +32,7 @@ export function MicroInteractions(props: MicroInteractionsType) {
 }
 
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 function isElementInViewport(el: Element) {
 	const rect = el.getBoundingClientRect();
 	return (

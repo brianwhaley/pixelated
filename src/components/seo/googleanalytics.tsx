@@ -33,7 +33,6 @@ function isGA() {
 }
 
 
-
 GoogleAnalytics.propTypes = {
 	id: PropTypes.string,
 };
@@ -77,9 +76,6 @@ ${adId ? `window.gtag('config', '${adId}');` : ''}
 		<div className="ga" suppressHydrationWarning />
 	);
 }
-
-
-
 GoogleAnalyticsEvent.propTypes = {
 	event_name: PropTypes.string.isRequired,
 	event_parameters: PropTypes.object.isRequired,

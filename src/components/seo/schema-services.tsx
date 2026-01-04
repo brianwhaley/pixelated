@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 
 /**
  * Services Schema Component
@@ -14,28 +15,32 @@ export interface ServiceItem {
 	areaServed?: string | string[];
 }
 
-export interface ServicesSchemaProps {
-	provider: {
-		name: string;
-		url: string;
-		logo?: string;
-		telephone?: string;
-		email?: string;
-	};
-	services: ServiceItem[];
-}
-
-export function ServicesSchema ({
-	provider,
-	services
-}: ServicesSchemaProps) {
-	const serviceObjects = services.map(service => ({
+ServicesSchema.propTypes = {
+	provider: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		url: PropTypes.string.isRequired,
+		logo: PropTypes.string,
+		telephone: PropTypes.string,
+		email: PropTypes.string,
+	}).isRequired,
+	services: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired,
+		url: PropTypes.string,
+		image: PropTypes.string,
+		areaServed: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+	})).isRequired,
+};
+export type ServicesSchemaType = InferProps<typeof ServicesSchema.propTypes>;
+export function ServicesSchema(props: ServicesSchemaType) {
+	const { provider, services } = props;
+	const serviceObjects = services.map((service) => ({
 		'@type': 'Service',
-		name: service.name,
-		description: service.description,
-		...(service.url && { url: service.url }),
-		...(service.image && { image: service.image }),
-		...(service.areaServed && { areaServed: service.areaServed }),
+		name: service!.name,
+		description: service!.description,
+		...(service!.url && { url: service!.url }),
+		...(service!.image && { image: service!.image }),
+		...(service!.areaServed && { areaServed: service!.areaServed }),
 		provider: {
 			'@type': 'LocalBusiness',
 			name: provider.name,

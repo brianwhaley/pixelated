@@ -11,7 +11,9 @@ https://www.andreaverlicchi.eu/blog/css-3-only-spinning-loading-animation/
 */
 
 /* ========== MARKDOWN ========== */
-export function Loading() {	
+Loading.propTypes = {};
+export type LoadingType = InferProps<typeof Loading.propTypes>;
+export function Loading(props: LoadingType) {	 
 	return (
 		<>
 			<div id="loadingSpinner" className="loading">

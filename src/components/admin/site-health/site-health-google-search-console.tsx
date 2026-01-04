@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { SiteHealthTemplate } from './site-health-template';
 
@@ -12,13 +13,13 @@ interface GoogleSearchConsoleData {
   previousClicks: number;
 }
 
-interface SiteHealthGoogleSearchConsoleProps {
-  siteName: string;
-  startDate?: string;
-  endDate?: string;
-}
-
-export function SiteHealthGoogleSearchConsole({ siteName, startDate, endDate }: SiteHealthGoogleSearchConsoleProps) {
+SiteHealthGoogleSearchConsole.propTypes = {
+	siteName: PropTypes.string.isRequired,
+	startDate: PropTypes.string,
+	endDate: PropTypes.string,
+};
+export type SiteHealthGoogleSearchConsoleType = InferProps<typeof SiteHealthGoogleSearchConsole.propTypes>;
+export function SiteHealthGoogleSearchConsole({ siteName, startDate, endDate }: SiteHealthGoogleSearchConsoleType) {
 	const fetchSearchConsoleData = async (site: string) => {
 		const params = new URLSearchParams({ siteName: site });
 		if (startDate) params.append('startDate', startDate);

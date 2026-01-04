@@ -8,7 +8,7 @@
 				"name": "primary-color",
 				"label": "Primary color",
 				"required": true,
-				"placeholder": "#369"
+				"placeholder": "#336699"
 			}
 		},
 		{
@@ -19,7 +19,7 @@
 				"name": "secondary-color",
 				"label": "Secondary color",
 				"required": true,
-				"placeholder": "#BCD"
+				"placeholder": "#BBCCDD"
 			}
 		},
 		{
@@ -30,7 +30,7 @@
 				"name": "accent1-color",
 				"label": "Accent color 1",
 				"required": true,
-				"placeholder": "#CCC"
+				"placeholder": "#CCCCCC"
 			}
 		},
 		{
@@ -41,7 +41,7 @@
 				"name": "accent2-color",
 				"label": "Accent color 2",
 				"required": true,
-				"placeholder": "#EEE"
+				"placeholder": "#EEEEEE"
 			}
 		},
 		{

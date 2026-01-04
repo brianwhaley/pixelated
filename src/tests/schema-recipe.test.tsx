@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { RecipeSchema, type RecipeSchemaProps } from '../components/seo/schema-recipe';
+import { RecipeSchema, type RecipeSchemaType } from '../components/seo/schema-recipe';
 
 describe('RecipeSchema', () => {
-	const defaultRecipe: RecipeSchemaProps['recipe'] = {
+	const defaultRecipe: RecipeSchemaType['recipe'] = {
 		'@context': 'https://schema.org',
 		'@type': 'Recipe',
 		name: 'Test Recipe',
@@ -130,7 +130,7 @@ describe('RecipeSchema', () => {
 	});
 
 	it('should handle minimal recipe data', () => {
-		const minimalRecipe: RecipeSchemaProps['recipe'] = {
+		const minimalRecipe: RecipeSchemaType['recipe'] = {
 			'@context': 'https://schema.org',
 			'@type': 'Recipe',
 			name: 'Simple Recipe'

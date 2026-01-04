@@ -1,17 +1,18 @@
 'use client';
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { Table } from '@pixelated-tech/components';
 import { SiteHealthTemplate } from './site-health-template';
 import type { GitData } from './site-health-types';
 
-interface SiteHealthGitProps {
-  siteName: string;
-  startDate?: string;
-  endDate?: string;
-}
-
-export function SiteHealthGit({ siteName, startDate, endDate }: SiteHealthGitProps) {
+SiteHealthGit.propTypes = {
+	siteName: PropTypes.string.isRequired,
+	startDate: PropTypes.string,
+	endDate: PropTypes.string,
+};
+export type SiteHealthGitType = InferProps<typeof SiteHealthGit.propTypes>;
+export function SiteHealthGit({ siteName, startDate, endDate }: SiteHealthGitType) {
 	const fetchGitData = async (site: string): Promise<GitData> => {
 		const params = new URLSearchParams({ site: encodeURIComponent(site) });
 		if (startDate) params.append('startDate', startDate);
@@ -46,7 +47,7 @@ export function SiteHealthGit({ siteName, startDate, endDate }: SiteHealthGitPro
 				}
 
 				// Prepare table data
-				const tableData = (data.commits || []).map((commit) => ({
+				const tableData = (data.commits || []).map((commit: any) => ({
 					Date: new Date(commit.date).toLocaleDateString(),
 					Message: <span className="max-w-xs truncate inline-block" title={commit.message}>{commit.message}</span>,
 					Version: commit.version ? (

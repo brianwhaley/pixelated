@@ -13,10 +13,8 @@ ComponentPropertiesForm.propTypes = {
 	editableComponent: PropTypes.object,
 	onSubmit: PropTypes.func.isRequired,
 };
-
-type ComponentPropertiesFormProps = InferProps<typeof ComponentPropertiesForm.propTypes>;
-
-export function ComponentPropertiesForm({ editableComponent, onSubmit }: ComponentPropertiesFormProps) {
+export type ComponentPropertiesFormType = InferProps<typeof ComponentPropertiesForm.propTypes>;
+export function ComponentPropertiesForm({ editableComponent, onSubmit }: ComponentPropertiesFormType) {
 	return (
 		<>
 			{ /* <PageSectionHeader title="Component Properties" /> */ }

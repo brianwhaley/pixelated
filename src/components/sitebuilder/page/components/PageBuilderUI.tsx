@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { PageSectionHeader } from '../../../general/semantic';
 import { usePageBuilder } from '../lib/usePageBuilder';
 import { ComponentSelector } from '../components/ComponentSelector';
@@ -16,7 +17,11 @@ import './pagebuilder.scss';
  * Composes all sub-components and manages layout with inline editing
  */
 
-export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: { apiEndpoint?: string } = {}) {
+PageBuilderUI.propTypes = {
+	apiEndpoint: PropTypes.string,
+};
+export type PageBuilderUIType = InferProps<typeof PageBuilderUI.propTypes>;
+export function PageBuilderUI({ apiEndpoint = '/api/pagebuilder' }: PageBuilderUIType) {
 	const {
 		pageJSON,
 		setPageJSON,

@@ -1,47 +1,107 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import './modal.css';
 
-/* 
+/*
 https://www.w3schools.com/howto/howto_css_modals.asp
 */
 
-export function Modal(props: { modalContent: React.ReactNode, modalID?: string }) {
+Modal.propTypes = {
+	modalContent: PropTypes.node.isRequired,
+	modalID: PropTypes.string,
+	isOpen: PropTypes.bool,
+	handleCloseEvent: PropTypes.func,
+};
+export type ModalType = InferProps<typeof Modal.propTypes>;
+export function Modal({ modalContent, modalID, isOpen = false, handleCloseEvent }: ModalType) {
 
-	const myModalID = "myModal" + (props.modalID ?? '');
-	const myModalCloseID = "myModalClose" + (props.modalID ?? '');
+	const myModalID = "myModal" + (modalID ?? '');
+	const myModalCloseID = "myModalClose" + (modalID ?? '');
+	const modalRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
+		// Only use DOM event listeners for backward compatibility when handleCloseEvent is not provided
+		if (!handleCloseEvent) {
+			const handleModalClose = (event: MouseEvent) => {
+				event.preventDefault();
+				const myModal = document.getElementById(myModalID);
+				if (myModal) { myModal.style.display = 'none'; }
+			};
+			const myModalClose = document.getElementById(myModalCloseID);
+			if (myModalClose) { myModalClose.addEventListener('click', handleModalClose); } ;
 
-		const handleModalClose = (event: MouseEvent) => {
+			const handleWindowOnClick = (event: MouseEvent) => {
+				const myModal = document.getElementById(myModalID);
+				if (event.target == myModal) {
+					if (myModal) { myModal.style.display = 'none'; }
+				}
+			};
+			window.addEventListener('click', handleWindowOnClick);
+
+			return () => {
+				window.removeEventListener('click', handleWindowOnClick);
+				if (myModalClose) { myModalClose.removeEventListener('click', handleModalClose); } ;
+			};
+		} else {
+			// For React approach, add escape key listener
+			const handleEscape = (event: KeyboardEvent) => {
+				if (event.key === 'Escape') {
+					handleCloseEvent();
+				}
+			};
+			document.addEventListener('keydown', handleEscape);
+			return () => {
+				document.removeEventListener('keydown', handleEscape);
+			};
+		}
+	}, [myModalID, myModalCloseID, handleCloseEvent]);
+
+	const handleCloseClick = handleCloseEvent ? (event: React.MouseEvent) => {
+		event.preventDefault();
+		handleCloseEvent();
+	} : undefined;
+
+	const handleCloseKeyDown = handleCloseEvent ? (event: React.KeyboardEvent) => {
+		if (event.key === 'Enter' || event.key === ' ') {
 			event.preventDefault();
-			const myModal = document.getElementById(myModalID);
-			if (myModal) { myModal.style.display = 'none'; }
-		};
-		const myModalClose = document.getElementById(myModalCloseID);
-		if (myModalClose) { myModalClose.addEventListener('click', handleModalClose); } ;
+			handleCloseEvent();
+		}
+	} : undefined;
 
-		const handleWindowOnClick = (event: MouseEvent) => {
-			const myModal = document.getElementById(myModalID);
-			if (event.target == myModal) {
-				if (myModal) { myModal.style.display = "none"; } ;
-			}
-		};
-		window.addEventListener('click', handleWindowOnClick);
+	const handleModalClick = handleCloseEvent ? (event: React.MouseEvent) => {
+		if (event.target === modalRef.current) {
+			handleCloseEvent();
+		}
+	} : undefined;
 
-		return () => {
-			window.removeEventListener('click', handleWindowOnClick);
-			if (myModalClose) { myModalClose.removeEventListener('click', handleModalClose); } ;
-		};
-
-	}, []);
+	const handleModalKeyDown = handleCloseEvent ? (event: React.KeyboardEvent) => {
+		if (event.key === 'Escape' && event.target === modalRef.current) {
+			handleCloseEvent();
+		}
+	} : undefined;
 
 	return (
-		<div id={myModalID} className="modal" style={{display: 'none'}}>
-			<div className="modal-content">
-				<span id={myModalCloseID} className="modal-close" aria-hidden="true">&times;</span>
-				{ props.modalContent }
+		<div
+			id={myModalID}
+			className="modal"
+			style={{display: isOpen ? 'block' : 'none'}}
+			ref={modalRef}
+			onClick={handleModalClick}
+		>
+			<div className="modal-content" role="dialog" aria-modal="true">
+				<button
+					id={myModalCloseID}
+					className="modal-close"
+					aria-label="Close modal"
+					onClick={handleCloseClick}
+					onKeyDown={handleCloseKeyDown}
+					type="button"
+				>
+					&times;
+				</button>
+				{ modalContent }
 			</div>
 		</div>
 	);

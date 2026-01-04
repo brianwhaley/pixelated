@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
 import type { DependencyData } from './site-health-types';
 
-interface SiteHealthDependencyVulnerabilitiesProps {
-  siteName: string;
-}
-
-export function SiteHealthDependencyVulnerabilities({ siteName }: SiteHealthDependencyVulnerabilitiesProps) {
+SiteHealthDependencyVulnerabilities.propTypes = {
+	siteName: PropTypes.string.isRequired,
+};
+export type SiteHealthDependencyVulnerabilitiesType = InferProps<typeof SiteHealthDependencyVulnerabilities.propTypes>;
+export function SiteHealthDependencyVulnerabilities({ siteName }: SiteHealthDependencyVulnerabilitiesType) {
 	const fetchDependencyData = useCallback(async (site: string): Promise<DependencyData> => {
 		const response = await fetch(`/api/site-health/security?siteName=${encodeURIComponent(site)}`);
 		const result: DependencyData = await response.json();
@@ -95,7 +96,7 @@ export function SiteHealthDependencyVulnerabilities({ siteName }: SiteHealthDepe
                   Vulnerabilities ({data.summary.total})
 								</h5>
 								<div className="space-y-2">
-									{data.vulnerabilities.map((vuln, index) => (
+									{data.vulnerabilities.map((vuln: any, index: any) => (
 										<div key={index} className={`health-vulnerability-item health-vulnerability-${vuln.severity}`}>
 											<div className="health-vulnerability-header">
 												<span className="health-vulnerability-severity">

@@ -12,14 +12,12 @@ import '../sitebuilder/form/form.css';
 import { MicroInteractions } from '../general/microinteractions';
 import { Modal, handleModalOpen } from '../general/modal';
 import { Table } from "../general/table";
-import { getCart, getShippingInfo, SetShippingInfo, setDiscountCodes, getRemoteDiscountCodes, getCheckoutData, RemoveFromShoppingCart, ClearShoppingCart, formatAsUSD, getCartItemCount } from "./shoppingcart.functions";
-import type { ShoppingCartType, AddressType, CheckoutType } from "./shoppingcart.functions";
+import { getCart, getShippingInfo, setShippingInfo, setDiscountCodes, getRemoteDiscountCodes, getCheckoutData, removeFromShoppingCart, clearShoppingCart, formatAsUSD, getCartItemCount } from "./shoppingcart.functions";
+import type { ShoppingCartType as CartItemType, AddressType, CheckoutType } from "./shoppingcart.functions";
 import { usePixelatedConfig } from '../config/config.client';
 import { SmartImage } from '../cms/smartimage';
 import shippingToData from "./shipping.to.json";
 import "./shoppingcart.css";
-
-
 
 
 
@@ -29,11 +27,15 @@ const debug = false;
 /* ========== SHOPPING CART UI COMPONENT ========== */
 /* ================================================ */
 
-export function ShoppingCart( props: {payPalClientID: string} ) {
+ShoppingCart.propTypes = {
+	payPalClientID: PropTypes.string.isRequired,
+};
+export type ShoppingCartType = InferProps<typeof ShoppingCart.propTypes>;
+export function ShoppingCart( props: ShoppingCartType ) {
 
-	const [ shoppingCart, setShoppingCart ] = useState<ShoppingCartType[]>();
-	const [ shippingInfo, setShippingInfo ] = useState<AddressType[]>();
-	const [ checkoutInfo, setCheckoutInfo ] = useState<CheckoutType>();
+	const [ shoppingCart, setShoppingCart ] = useState<CartItemType[]>();
+	const [ shippingData, setShippingData ] = useState<AddressType[]>();
+	const [ checkoutData, setcheckoutData ] = useState<CheckoutType>();
 	const [ orderData, setOrderData ] = useState() as any;
 	const [ progressStep, setProgressStep ] = useState<ProgressStepType>("EmptyCart");
 
@@ -67,7 +69,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	}, [shoppingCart]); */
 
 	/* useEffect(() => {
-		// UPDATE LOCALSTORAGE IF SHIPPINGINFO STATE CHANGES
+		// UPDATE LOCALSTORAGE IF SHIPPINGDATA STATE CHANGES
 		setShippingInfo(shippingInfo);
 	}, [shippingInfo]); */
 
@@ -76,11 +78,11 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 		(async () => {
 			setDiscountCodes(await getRemoteDiscountCodes());
 		})();
-		// UPDATE SHOPPINGCART AND SHIPPINGINFO STATES IF LOCALSTORAGE CHANGES
+		// UPDATE SHOPPINGCART AND SHIPPINGDATA STATES IF LOCALSTORAGE CHANGES
 		function handleStorageChange(){
 			setShoppingCart( getCart() );
-			setShippingInfo( getShippingInfo() );
-			setCheckoutInfo( getCheckoutData() );
+			setShippingData( getShippingInfo() );
+			setcheckoutData( getCheckoutData() );
 			SetProgressStep();
 		}
 		window.addEventListener('storage', handleStorageChange);
@@ -93,11 +95,11 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	useEffect(() => {
 		// LOAD THE SHIPPING INFO FORM WITH VALUES IF SHIPPING INFO HAS ALREADY BEEN SAVED
   		const form: HTMLFormElement = document.getElementById("address_to") as HTMLFormElement;
-		if( shippingInfo && form ) {
-			for (const key in shippingInfo) {
+		if( shippingData && form ) {
+			for (const key in shippingData) {
 				const input = form.elements[key] as HTMLInputElement;
 				if (input) { // Check if the form element exists
-					input.value = shippingInfo[key].toString();
+					input.value = shippingData[key].toString();
 				}
   			}
 		}
@@ -106,11 +108,11 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	paintCartItems.PropTypes = {
 		items: PropTypes.array.isRequired
 	};
-	function paintCartItems(items: ShoppingCartType[]){
+	function paintCartItems(items: CartItemType[]){
 		if (debug) console.log("Painting Shopping Cart Items");
 		let newItems = [];
 		for (let key in items) {
-			const myItem: ShoppingCartType = items[key];
+			const myItem: CartItemType = items[key];
 			const newItem = <ShoppingCartItem item={myItem} key={myItem.itemID}  />;
 			newItems.push(newItem);
 		}
@@ -122,7 +124,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 		const formElement = document.getElementById(formID) as HTMLFormElement;
 		const formData = new FormData(formElement);
 		const formObject = Object.fromEntries(formData);
-		SetShippingInfo(formObject);
+		setShippingInfo(formObject);
 	}
 
 	handleOnApprove.propTypes = {
@@ -131,9 +133,9 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 	type handleOnApproveType = InferProps<typeof handleOnApprove.propTypes>;
 	function handleOnApprove(props: handleOnApproveType ){
 		if (debug) console.log("Handling onApprove");
-		// eslint-disable-next-line react/prop-types
+		 
 		setOrderData(props.data);
-		ClearShoppingCart();
+		clearShoppingCart();
 		// SetProgressStep();
 		SetProgressStep("ThankYou");
 	}
@@ -171,7 +173,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 		return (
 			<div className="pixCart">
 				<CalloutHeader title="Checkout Summary : " />
-				{ checkoutInfo && <CheckoutItems checkoutData={checkoutInfo} /> }
+				{ checkoutData && <CheckoutItems {...checkoutData} /> }
 				<br />
 				<FormButton className="pixCartButton" type="button" id="backToCart" text="<= Back To Cart"
 					onClick={() => SetProgressStep("ShippingInfo")} />
@@ -191,7 +193,7 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 				<br />
 				<div>
 					<FormButton className="pixCartButton" type="button" id="backToCart" text="Clear Cart"
-						onClick={() => ClearShoppingCart()} />
+						onClick={() => clearShoppingCart()} />
 				</div>
 				<br /><br /><hr /><br /><br />
 				<div>
@@ -215,10 +217,18 @@ export function ShoppingCart( props: {payPalClientID: string} ) {
 }
 
 
-ShoppingCartItem.PropTypes = {
-	item: PropTypes.object.isRequired
+ShoppingCartItem.propTypes = {
+	item: PropTypes.shape({
+		itemID: PropTypes.string.isRequired,
+		itemURL: PropTypes.string,
+		itemTitle: PropTypes.string.isRequired,
+		itemImageURL: PropTypes.string,
+		itemQuantity: PropTypes.number.isRequired,
+		itemCost: PropTypes.number.isRequired,
+	}).isRequired
 };
-export function ShoppingCartItem(props: {item: ShoppingCartType}) {
+export type ShoppingCartItemType = InferProps<typeof ShoppingCartItem.propTypes>;
+export function ShoppingCartItem(props: ShoppingCartItemType) {
 	const thisItem = props.item;
 	const thisItemTarget = "_self"; // "_blank"
 	const config = usePixelatedConfig();
@@ -254,7 +264,7 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 					<br />
 					<div>
 						<FormButton className="pixCartButton" type="button" id={`btn-rm-${thisItem.itemID}`} text="Remove Item From Cart"
-							onClick={()=>RemoveFromShoppingCart(thisItem)} />
+							onClick={()=>removeFromShoppingCart(thisItem as CartItemType)} />
 					</div>
 				</div>
 			</div>
@@ -269,30 +279,52 @@ export function ShoppingCartItem(props: {item: ShoppingCartType}) {
 
 
 
-export function CheckoutItems(props: { checkoutData: CheckoutType }) {
-	const items = props.checkoutData.items.map((item: ShoppingCartType, /* i: number */) => (
-		<div key={item.itemID}>{item.itemQuantity} X - {item.itemTitle} ( {formatAsUSD(item.itemCost)} )</div> 		
-	));
-	const to = props.checkoutData.shippingTo;
+CheckoutItems.propTypes = {
+	items: PropTypes.arrayOf(PropTypes.shape({
+		itemID: PropTypes.string.isRequired,
+		itemURL: PropTypes.string,
+		itemTitle: PropTypes.string.isRequired,
+		itemImageURL: PropTypes.string,
+		itemQuantity: PropTypes.number.isRequired,
+		itemCost: PropTypes.number.isRequired,
+	})).isRequired,
+	shippingTo: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		street1: PropTypes.string.isRequired,
+		city: PropTypes.string.isRequired,
+		state: PropTypes.string.isRequired,
+		zip: PropTypes.string.isRequired,
+	}).isRequired,
+	subtotal_discount: PropTypes.number.isRequired,
+	subtotal: PropTypes.number.isRequired,
+	shippingCost: PropTypes.number.isRequired,
+	handlingFee: PropTypes.number.isRequired,
+	salesTax: PropTypes.number.isRequired,
+	total: PropTypes.number.isRequired,
+};
+export type CheckoutItemsType = InferProps<typeof CheckoutItems.propTypes>;
+export function CheckoutItems(props: CheckoutItemsType) {
+	const { items, shippingTo, subtotal_discount, subtotal, shippingCost, handlingFee, salesTax, total } = props;
+	const to = shippingTo;
 	const addr = <><div>{to.name}</div><div>{to.street1}</div><div>{to.city}, {to.state} {to.zip}</div></> ;
 	let checkoutTableData = [{
 		"Name": "Shopping Cart Items : ",
 		"Value": items,
 	}, {
 		"Name": "Subtotal Discount : ",
-		"Value": formatAsUSD(props.checkoutData.subtotal_discount),
+		"Value": formatAsUSD(subtotal_discount),
 	}, {
 		"Name": "Subtotal : ",
-		"Value": formatAsUSD(props.checkoutData.subtotal),
+		"Value": formatAsUSD(subtotal),
 	},{
 		"Name": "Shipping Address : ",
 		"Value": addr,
 	},{
 		"Name": "Shipping Cost : ",
-		"Value": formatAsUSD(props.checkoutData.shippingCost),
+		"Value": formatAsUSD(shippingCost),
 	},{
 		"Name": "Handling Fee : ",
-		"Value": formatAsUSD(props.checkoutData.handlingFee),
+		"Value": formatAsUSD(handlingFee),
 	}, /* {
 		"Name": "Insurance Cost : ",
 		"Value": formatAsUSD(checkoutData.insuranceCost ?? 0),
@@ -301,13 +333,13 @@ export function CheckoutItems(props: { checkoutData: CheckoutType }) {
 		"Value": formatAsUSD(checkoutData.shipping_discount ?? 0),
 	}, */{
 		"Name": "Sales Tax : ",
-		"Value": formatAsUSD(props.checkoutData.salesTax),
+		"Value": formatAsUSD(salesTax),
 	},{
 		"Name": "TOTAL : ",
-		"Value": formatAsUSD(props.checkoutData.total),
+		"Value": formatAsUSD(total),
 	}];
 
-	if (props.checkoutData.subtotal_discount == 0) {
+	if (subtotal_discount == 0) {
 		checkoutTableData = checkoutTableData.filter(obj => obj.Name !== "Subtotal Discount : ");
 	}
 	return (
@@ -316,7 +348,11 @@ export function CheckoutItems(props: { checkoutData: CheckoutType }) {
 }
 
 
-export function CartButton(props: {href: string}) {
+CartButton.propTypes = {
+	href: PropTypes.string.isRequired,
+};
+export type CartButtonType = InferProps<typeof CartButton.propTypes>;
+export function CartButton(props: CartButtonType) {
 	const config = usePixelatedConfig();
 	const [ cartCount, setCartCount ] = useState(0);
 	useEffect(() => {
@@ -353,7 +389,12 @@ export function CartButton(props: {href: string}) {
 }
 
 
-export function ViewItemDetails(props: {href: string, itemID: string}){
+ViewItemDetails.propTypes = {
+	href: PropTypes.string.isRequired,
+	itemID: PropTypes.string.isRequired,
+};
+export type ViewItemDetailsType = InferProps<typeof ViewItemDetails.propTypes>;
+export function ViewItemDetails(props: ViewItemDetailsType){
 	return (
 		<div>
 			<FormButton className="pixCartButton" type="button" 
@@ -364,7 +405,13 @@ export function ViewItemDetails(props: {href: string, itemID: string}){
 }
 
 
-export function AddToCartButton(props: {handler: any, item: ShoppingCartType, itemID: string}){
+AddToCartButton.propTypes = {
+	handler: PropTypes.func.isRequired,
+	item: PropTypes.object.isRequired,
+	itemID: PropTypes.string.isRequired,
+};
+export type AddToCartButtonType = InferProps<typeof AddToCartButton.propTypes>;
+export function AddToCartButton(props: AddToCartButtonType){
 	const [modalContent, setModalContent] = useState<React.ReactNode>();
 	useEffect(() => {
 		const myContent = <div className="centered"><br /><br />Item {props.itemID} has been added to your cart.<br /><br />{GoToCartButton({href: "/cart", itemID: props.itemID})}<br /><br /></div>;
@@ -379,13 +426,18 @@ export function AddToCartButton(props: {handler: any, item: ShoppingCartType, it
 			<FormButton className="pixCartButton" type="button" 
 				id={`btn-add-${props.itemID}`} text="Add to Shopping Cart"
 				onClick={(e)=>handleClick(e)} />
-			<Modal modalContent={modalContent} modalID={"-" + props.itemID} />
+			{modalContent && <Modal modalContent={modalContent} modalID={"-" + props.itemID} />}
 		</div>
 	);
 }
 
 
-export function GoToCartButton(props: {href: string, itemID: string}){
+GoToCartButton.propTypes = {
+	href: PropTypes.string.isRequired,
+	itemID: PropTypes.string.isRequired,
+};
+export type GoToCartButtonType = InferProps<typeof GoToCartButton.propTypes>;
+export function GoToCartButton(props: GoToCartButtonType){
 	return (
 		<div>
 			<FormButton className="pixCartButton" type="button" 

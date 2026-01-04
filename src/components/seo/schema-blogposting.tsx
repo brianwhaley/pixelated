@@ -1,11 +1,12 @@
 import React from 'react';
-import type { BlogPostingSchema } from './schema-blogposting.functions';
+import PropTypes, { InferProps } from 'prop-types';
 
-interface SchemaBlogPostingProps {
-	post: BlogPostingSchema;
-}
-
-export function SchemaBlogPosting({ post }: SchemaBlogPostingProps) {
+SchemaBlogPosting.propTypes = {
+	post: PropTypes.object.isRequired,
+};
+export type SchemaBlogPostingType = InferProps<typeof SchemaBlogPosting.propTypes>;
+export function SchemaBlogPosting(props: SchemaBlogPostingType) {
+	const { post } = props;
 	return (
 		<script
 			type="application/ld+json"

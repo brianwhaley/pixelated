@@ -72,7 +72,7 @@ const useFormComponent = (props: any) => {
 		const customOnChange = props.onChange || (props.parent && props.parent.onChange);
 		if (customOnChange) {
 			try {
-				customOnChange(value);
+				customOnChange(event);
 			} catch {
 				// swallow handler errors to avoid breaking validation flow
 			}
@@ -448,7 +448,7 @@ export type FormRadioOptionType = InferProps<typeof FormRadioOption.propTypes>;
 function FormRadioOption(props: FormRadioOptionType) {
 	const inputProps = setupInputProps(props);
 	const isChecked = props.parent.checked === props.value;
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (props.parent.onChange) {
 			props.parent.onChange(props.value);
@@ -611,7 +611,7 @@ export function FormDataList(props: FormDataListType) {
 FormFieldset.propTypes = {
 };
 export type FormFieldsetType = InferProps<typeof FormFieldset.propTypes>;
-export function FormFieldset() {
+export function FormFieldset(props: FormFieldsetType) {
 	return (
 		<></>
 	);
