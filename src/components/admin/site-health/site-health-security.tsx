@@ -3,16 +3,11 @@
 import React, { useCallback } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
-import type { SiteHealthData } from './site-health-types';
+import type { CoreWebVitalsResponse } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
 
-interface SecurityResponse {
-  success: boolean;
-  data?: SiteHealthData[];
-}
-
 interface CombinedSecurityData {
-  psiData?: SiteHealthData[];
+  psiData?: CoreWebVitalsResponse;
 }
 
 SiteHealthSecurity.propTypes = {
@@ -23,10 +18,10 @@ export function SiteHealthSecurity({ siteName }: SiteHealthSecurityType) {
 	const fetchSecurityData = useCallback(async (site: string): Promise<CombinedSecurityData> => {
 		// Fetch PSI data for best practices security audits
 		const psiResponse = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
-		const psiResult: SecurityResponse = await psiResponse.json();
+		const psiResult: CoreWebVitalsResponse = await psiResponse.json();
 
 		return {
-			psiData: psiResult.success ? psiResult.data : undefined
+			psiData: psiResult.success ? psiResult : undefined
 		};
 	}, []);
 
@@ -189,7 +184,7 @@ export function SiteHealthSecurity({ siteName }: SiteHealthSecurityType) {
 					return 'Details available';
 				};
 
-				const psiData = data?.psiData?.[0];
+				const psiData = data?.psiData?.data?.[0];
 
 				if (!psiData) {
 					return (

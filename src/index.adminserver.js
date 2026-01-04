@@ -1,7 +1,3 @@
-// Admin entry point - server-side integrations and utilities for admin functionality
-// This entry requires optional dependencies: recharts, googleapis, puppeteer, @aws-sdk/*, etc.
-// Sites using admin features should import server functions from 'pixelated-components/admin'
-
 export * from './components/admin/componentusage/componentDiscovery';
 export * from './components/admin/componentusage/componentAnalysis';
 export * from './components/admin/deploy/deployment.integration';
@@ -20,3 +16,4 @@ export * from './components/admin/site-health/site-health-security.integration';
 export * from './components/admin/site-health/site-health-types';
 export * from './components/admin/site-health/site-health-uptime.integration';
 export * from './components/admin/sites/sites.integration';
+export * from './components/cms/contentful.management';

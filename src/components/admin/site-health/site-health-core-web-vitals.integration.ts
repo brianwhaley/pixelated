@@ -121,7 +121,7 @@ async function fetchPSIData(url: string): Promise<any> {
 		throw new Error('GOOGLE_API_KEY environment variable is not set');
 	}
 
-	const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${apiKey}&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa`;
+	const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${apiKey}&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo`;
 
 	const fetchWithRetry = async (url: string, maxRetries = 2): Promise<Response> => {
 		for (let attempt = 0; attempt <= maxRetries; attempt++) {
@@ -138,13 +138,13 @@ async function fetchPSIData(url: string): Promise<any> {
 				clearTimeout(timeoutId);
 				return response;
 			} catch (error) {
-				if (attempt === maxRetries || error instanceof Error && error.name === 'AbortError') {
+				if (attempt === maxRetries) {
 					const errorMessage = error instanceof Error && error.name === 'AbortError'
 						? 'PSI API request timed out after 60 seconds'
 						: `PSI API request failed: ${error instanceof Error ? error.message : 'Unknown error'}`;
 					throw new Error(errorMessage);
 				}
-				// Wait before retry (exponential backoff)
+				// Wait before retry (exponential backoff) - retry on both network errors and timeouts
 				await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
 			}
 		}

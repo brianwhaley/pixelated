@@ -3,15 +3,8 @@
 import React, { useCallback } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
-import type { SiteHealthData } from './site-health-types';
+import type { CoreWebVitalsResponse } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
-
-interface AccessibilityResponse {
-  success: boolean;
-  data?: SiteHealthData[];
-  error?: string;
-  details?: string;
-}
 
 SiteHealthAccessibility.propTypes = {
 	siteName: PropTypes.string.isRequired,
@@ -20,7 +13,7 @@ export type SiteHealthAccessibilityType = InferProps<typeof SiteHealthAccessibil
 export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityType) {
 	const fetchAccessibilityData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
-		const result: AccessibilityResponse = await response.json();
+		const result: CoreWebVitalsResponse = await response.json();
 
 		if (!result.success) {
 			throw new Error(result.error || 'Failed to fetch accessibility data');
@@ -30,7 +23,7 @@ export function SiteHealthAccessibility({ siteName }: SiteHealthAccessibilityTyp
 	}, []);
 
 	return (
-		<SiteHealthTemplate<AccessibilityResponse>
+		<SiteHealthTemplate<CoreWebVitalsResponse>
 			siteName={siteName}
 			title="PageSpeed - Accessibility"
 			fetchData={fetchAccessibilityData}

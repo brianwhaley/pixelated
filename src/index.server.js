@@ -26,6 +26,7 @@ export * from './components/seo/manifest';
 export * from './components/seo/metadata.functions';
 export * from './components/seo/schema-blogposting';
 export * from './components/seo/schema-blogposting.functions';
+export * from './components/seo/schema-faq';
 export * from './components/seo/schema-localbusiness';
 export * from './components/seo/schema-recipe';
 export * from './components/seo/schema-services';

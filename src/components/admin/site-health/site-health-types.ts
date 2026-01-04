@@ -25,6 +25,9 @@ export interface PSIScores {
   pwa: number | null;
 }
 
+// OLD INTERFACES - No longer used after core-web-vitals consolidation
+// All components now use CoreWebVitalsData and CoreWebVitalsResponse
+/*
 export interface SiteHealthData {
   site: string;
   url: string;
@@ -47,6 +50,7 @@ export interface SiteHealthResponse {
   error?: string;
   details?: string;
 }
+*/
 
 // Dependency vulnerability types
 export interface Vulnerability {

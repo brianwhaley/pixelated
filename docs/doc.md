@@ -27,7 +27,7 @@ npm run lint
 npm run build
 npm version patch --force
 git add . -v
-git commit -m "all client components use proptypes and inferprops for build time and run time typing with a custom eslint rule; enhanced documentation; admin components from pixelated-admin + 2 enw entrypoints for admin apps; added gemini integration for configbuilder; minor changes to formengine, modals, shopping cart;move json to local component folders "
+git commit -m "added faq accordion component, schema faq component, fixed site health components for pixelated admin,adjustments to validate-exports "
 git push -u pixelated-components dev --tags --force
 git push pixelated-components dev:main -f
 npm login

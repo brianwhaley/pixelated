@@ -88,6 +88,8 @@ export * from './components/seo/schema-services';
 export * from './components/seo/schema-website';
 export * from './components/seo/schema-blogposting';
 export * from './components/seo/schema-blogposting.functions';
+export * from './components/seo/schema-faq';
+export * from './components/seo/faq-accordion';
 export * from './components/seo/manifest';
 export * from './components/seo/metadata.functions';
 export * from './components/seo/metadata.components';
@@ -108,5 +110,11 @@ export * from './components/structured/timeline';
 
 export * from './components/utilities/functions';
 export * from './components/utilities/gemini-api.client';
-export * from './components/utilities/gemini-api.server';
+
+export * from './components/admin/site-health/site-health-overview';
+export * from './components/admin/site-health/site-health-template';
+export * from './components/admin/site-health/site-health-accessibility';
+export * from './components/admin/site-health/site-health-performance';
+export * from './components/admin/site-health/site-health-security';
+export * from './components/admin/site-health/site-health-seo';
 

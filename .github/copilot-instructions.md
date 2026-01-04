@@ -42,14 +42,14 @@ A Next.js application for managing Pixelated CMS sites with AI-powered content o
 - **Authentication**: NextAuth.js with Google and Apple OAuth providers
 
 ### Development Workflow Across Projects
-- **Shared Standards**: All projects follow the coding conventions in `../docs/coding-conventions.md`
+- **Shared Standards**: All projects follow the coding conventions in /docs/coding-conventions.md
 - **Component Reuse**: Build new features using existing components from this library
 - **Iterative Development**: Small iterations with regular linting, testing, building, and Storybook validation
 - **Cross-Project Consistency**: Maintain consistent patterns and standards across all Pixelated projects
 
 ## Coding Conventions & Standards
 
-**📋 Important**: This project follows specific coding conventions documented in [docs/coding-conventions.md](../docs/coding-conventions.md). Please review these standards before implementing new features.
+**📋 Important**: This project follows specific coding conventions documented in /docs/coding-conventions.md. Please review these standards before implementing new features.
 
 ### Key Standards to Follow:
 - **PropTypes & TypeScript**: Use `PropTypes` with `InferProps<typeof Component.propTypes>` for type safety

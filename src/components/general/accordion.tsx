@@ -14,18 +14,24 @@ Accordion.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string.isRequired,
-			content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+			content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 			open: PropTypes.bool,
 		})
 	).isRequired,
+	onToggle: PropTypes.func,
 };
 export type AccordionType = InferProps<typeof Accordion.propTypes>;
-export function Accordion({ items }: AccordionType) {
+export function Accordion({ items, onToggle }: AccordionType) {
 	return (
 		<div className="accordion">
 			{items?.map((item, index) => (
 				item ? (
-					<details key={index} className="accordion-item" open={item.open ?? undefined}>
+					<details 
+						key={index} 
+						className="accordion-item" 
+						open={item.open ?? undefined}
+						onToggle={onToggle ? (e) => onToggle(index, (e.target as HTMLDetailsElement).open) : undefined}
+					>
 						<summary className="accordion-title">
 							<h3 id={`accordion-header-${index}`}>
 								{item.title}

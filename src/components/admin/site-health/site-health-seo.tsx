@@ -3,15 +3,8 @@
 import React, { useCallback } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { SiteHealthTemplate } from './site-health-template';
-import type { SiteHealthData } from './site-health-types';
+import type { CoreWebVitalsResponse } from './site-health-types';
 import { getScoreIndicator } from './site-health-indicators';
-
-interface SEOResponse {
-  success: boolean;
-  data?: SiteHealthData[];
-  error?: string;
-  details?: string;
-}
 
 SiteHealthSEO.propTypes = {
 	siteName: PropTypes.string.isRequired,
@@ -20,7 +13,7 @@ export type SiteHealthSEOType = InferProps<typeof SiteHealthSEO.propTypes>;
 export function SiteHealthSEO({ siteName }: SiteHealthSEOType) {
 	const fetchSEOData = useCallback(async (site: string) => {
 		const response = await fetch(`/api/site-health/core-web-vitals?siteName=${encodeURIComponent(site)}`);
-		const result: SEOResponse = await response.json();
+		const result: CoreWebVitalsResponse = await response.json();
 
 		if (!result.success) {
 			throw new Error(result.error || 'Failed to fetch SEO data');
@@ -30,7 +23,7 @@ export function SiteHealthSEO({ siteName }: SiteHealthSEOType) {
 	}, []);
 
 	return (
-		<SiteHealthTemplate<SEOResponse>
+		<SiteHealthTemplate<CoreWebVitalsResponse>
 			siteName={siteName}
 			title="PageSpeed - SEO"
 			fetchData={fetchSEOData}

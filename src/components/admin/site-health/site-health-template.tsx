@@ -3,6 +3,7 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { PageGridItem } from '../../general/semantic';
+import "./site-health.css";
 
 SiteHealthTemplate.propTypes = {
 	siteName: PropTypes.string.isRequired,

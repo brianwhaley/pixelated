@@ -14,10 +14,10 @@ SiteHealthGit.propTypes = {
 export type SiteHealthGitType = InferProps<typeof SiteHealthGit.propTypes>;
 export function SiteHealthGit({ siteName, startDate, endDate }: SiteHealthGitType) {
 	const fetchGitData = async (site: string): Promise<GitData> => {
-		const params = new URLSearchParams({ site: encodeURIComponent(site) });
+		const params = new URLSearchParams({ siteName: encodeURIComponent(site) });
 		if (startDate) params.append('startDate', startDate);
 		if (endDate) params.append('endDate', endDate);
-		const response = await fetch(`/api/site-health/git?${params.toString()}`);
+		const response = await fetch(`/api/site-health/github?${params.toString()}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch git data');
 		}

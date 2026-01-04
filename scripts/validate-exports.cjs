@@ -44,6 +44,14 @@ function analyzeComponentFile(filePath) {
 // Analyze all component files
 const analyzedComponents = allComponentFiles.map(analyzeComponentFile);
 
+// Special handling for utilities/functions.ts - it's safe for both client and server despite containing pattern definitions
+analyzedComponents.forEach(comp => {
+  if (comp.exportPath === './components/utilities/functions') {
+    comp.isClientOnly = false;
+    comp.isServerOnly = false;
+  }
+});
+
 // Separate admin and non-admin components
 const adminComponents = analyzedComponents.filter(comp => comp.exportPath.startsWith('./components/admin/'));
 const nonAdminComponents = analyzedComponents.filter(comp => !comp.exportPath.startsWith('./components/admin/'));
@@ -191,6 +199,12 @@ clientOnlyComponents.forEach(comp => {
   }
 });
 
+serverOnlyComponents.forEach(comp => {
+  if (clientExports.includes(comp.exportPath)) {
+    bundleErrors.client.push(comp.exportPath + ' (server-only component in client bundle)');
+  }
+});
+
 // Report results
 console.log('📊 Analysis Results:');
 console.log(`   Found ${allComponentFiles.length} component files`);
@@ -226,6 +240,13 @@ if (bundleErrors.server.length > 0) {
   console.log('🚨 Bundle contamination errors:');
   console.log('   Client-required components incorrectly exported from server bundle:');
   bundleErrors.server.forEach(path => console.log(`   - ${path}`));
+  console.log('');
+}
+
+if (bundleErrors.client.length > 0) {
+  console.log('🚨 Bundle contamination errors:');
+  console.log('   Server-required components incorrectly exported from client bundle:');
+  bundleErrors.client.forEach(path => console.log(`   - ${path}`));
   console.log('');
 }
 
