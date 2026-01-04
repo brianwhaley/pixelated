@@ -61,7 +61,7 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add . -v
-git commit -m "fix for 404 page"
+git commit -m "bump version"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 

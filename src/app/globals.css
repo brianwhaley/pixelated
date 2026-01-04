@@ -12,11 +12,6 @@
     padding: 0;
 }
 
-.panelMenuButton .hamburger {
-	font-size: unset;
-	letter-spacing: 2px;
-}
-
 #page-header-nav {
     color: white;
     z-index: 2000;

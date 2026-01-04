@@ -126,6 +126,20 @@
 			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
 			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
+			"name": "FAQs", 
+			"hidden": true,
+			"path": "/faqs", 
+			"title": "Pixelated Technologies - FAQs",
+			"description": "Frequently Asked Questions about Pixelated Technologies",
+			"keywords": "pixelated, faqs, frequently asked questions" 
+		} , {
+			"name": "Cost", 
+			"hidden": true,
+			"path": "/cost", 
+			"title": "Pixelated Technologies - Cost",
+			"description": "Pixelated Technologies Cost Information",
+			"keywords": "pixelated, cost, pricing, web development, small business" 
+		} , {
 			"name": "Legal", 
 			"path": "/legal", 
 			"title": "Pixelated Technologies - Legal",

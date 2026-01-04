@@ -75,7 +75,7 @@ export default function Home() {
 
 
 			
-			<PageSection id="social-section" columns={1} maxWidth="768px" background="var(--secondary-color)" >
+			<PageSection id="social-section" columns={1} background="var(--secondary-color)" >
 				<SocialTags />
 				<PageSectionHeader title="Read Our Most Recent Blog Post" />
 				<BlogPostList site={wpSite} count={1} />

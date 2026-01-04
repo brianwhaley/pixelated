@@ -1,0 +1,147 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Pixelated Technologies FAQs",
+  "description": "Frequently asked questions about Pixelated Technologies' web design, development, and digital services.",
+  "author": {
+    "@type": "Organization",
+    "name": "Pixelated Technologies",
+    "url": "https://pixelated.tech"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pixelated Technologies",
+    "url": "https://pixelated.tech"
+  },
+  "datePublished": "2023-10-01",
+  "dateModified": "2026-01-04",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Pixelated Technologies",
+    "url": "https://pixelated.tech"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pixelated.tech/faqs"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why should I choose Pixelated Technologies? What makes you different?",
+      "category": "Getting Started",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We combine technical expertise with creative design thinking, delivering websites that not only look great but drive real business results. Unlike DIY platforms that require you to learn new tools, create your own content, and manage ongoing maintenance, we offer an all-inclusive service that bundles custom web development, graphic design, content creation, SEO optimization, and ongoing support. We act as an extension of your team, handling everything from business strategy and competitive analysis to technical implementation and performance monitoring. Our transparent pricing eliminates hidden costs, and our focus on long-term partnerships ensures your website grows with your business rather than becoming outdated. While platforms like WordPress or Wix provide basic tools with customer service phone numbers, we deliver professional-grade solutions with years of experience across industries, ensuring your site is fast, secure, accessible, and optimized for conversions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long will it take to build my website?",
+      "category": "Process & Timeline",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Website development timelines vary based on project complexity and scope. Simple brochure sites typically take 2-3 weeks from concept to launch, while complex e-commerce platforms or custom web applications may require 4-8 weeks. Our agile development process ensures regular progress updates and milestones. During the discovery phase, we provide a detailed timeline estimate tailored to your specific project. Learn more about our development process at <a href='/process'>pixelated.tech/process</a>."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's your development process?",
+      "category": "Process & Timeline",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our proven development process includes: 1) Discovery & Planning (requirements gathering, goal setting, and project scoping), 2) Design (wireframes, mockups, and user experience design), 3) Development (coding with modern technologies and best practices), 4) Testing (quality assurance, performance optimization, and cross-browser compatibility), and 5) Launch & Training (deployment, handover, and user training). We maintain transparent communication throughout, with weekly updates and client feedback at every stage. View our detailed process at <a href='/process'>pixelated.tech/process</a>."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the site myself and what CMS do you use?",
+      "category": "Content & Management",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We build websites using user-friendly content management systems (CMS) like Contentful and WordPress for flexible content sites, Shopify for e-commerce, or custom headless CMS solutions for web applications. This gives you the power to easily update content, add blog posts, modify images, and manage your site without technical skills. We offer comprehensive training sessions and detailed documentation for whichever platform best fits your needs. For clients who prefer not to manage content themselves, we offer ongoing maintenance packages that include content updates as part of our service. Our CMS choices prioritize ease of use while maintaining professional functionality and security."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer ongoing maintenance?  What if I need more pages later?",
+      "category": "Support & Maintenance",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide comprehensive and competitive maintenance packages including security updates, performance monitoring, backup management, content updates, and technical support. Regular maintenance ensures your site stays secure, fast, and compatible with the latest web standards. We offer flexible plans from basic security monitoring to full content management services. We design websites with scalability and future growth in mind.Adding new pages, sections, or features is straightforward and cost-effective compared to building from scratch. Our modular approach means we can easily integrate new content areas, blog functionality, or additional services. During the initial planning phase, we discuss potential future needs to ensure your site can grow with your business. "
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the site SEO-friendly?",
+      "category": "Technical Details",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO is fundamental to our development approach. Every website we build includes: fast loading speeds, mobile-first responsive design, semantic HTML structure, proper heading hierarchy, alt text for images, meta descriptions, and schema markup. We implement technical SEO best practices and can provide ongoing SEO audits, keyword optimization, and performance monitoring. Our portfolio showcases sites that consistently rank well in search results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it work on mobile (responsive)?",
+      "category": "Technical Details",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, mobile responsiveness is non-negotiable in modern web design. All our websites are built with a mobile-first approach, ensuring optimal performance across all devices - from large desktop screens to smartphones. We test extensively on various devices and browsers, implementing fluid layouts, touch-friendly navigation, and optimized loading speeds for mobile users. With over 60% of web traffic coming from mobile devices, this ensures your site reaches your entire audience effectively."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build e-commerce sites?",
+      "category": "Services",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, e-commerce is one of our specialties. We build robust online stores using platforms like Shopify, WooCommerce, or custom solutions. Our e-commerce sites include secure payment processing (Stripe, PayPal), inventory management, customer accounts, order tracking, and integration with shipping providers. We also implement conversion optimization techniques to maximize sales. Check out our e-commerce portfolio at <a href='/portfolio'>pixelated.tech/portfolio</a> for examples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about website hosting?",
+      "category": "Ownership & Legal",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend using our hosting partner, Amazon Web Services (AWS), for your hosting needs. This allows us to offer fast and cost effective solutions with high reliability and scalability.  We ensure your hosting includes SSL certificates, regular backups, CDN integration for global speed, and security monitoring. Our Essential maintenance package offers hands-off management and fully managed hosting that include server maintenance, updates, and performance optimization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my site breaks?",
+      "category": "Support & Maintenance",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We stand behind our work with reliable support options. Our maintenance packages include priority response times, with emergency fixes available within hours for critical issues. For clients without maintenance plans, we offer emergency support services. Regular maintenance and proactive monitoring help prevent most issues before they occur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you show me examples of your work?",
+      "category": "Getting Started",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! Our portfolio showcases diverse projects across industries including e-commerce, professional services, healthcare, and creative businesses. Each case study includes project details, technologies used, and results achieved. Visit <a href='/portfolio'>pixelated.tech/portfolio</a> to explore our work and see how we've helped businesses like yours succeed online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help with digital marketing?",
+      "category": "Services",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer comprehensive digital marketing services including SEO optimization, Google Ads management, social media marketing, email campaigns, and conversion rate optimization. A beautiful website is just the foundation - we help you attract, engage, and convert visitors into customers. Our data-driven approach ensures measurable results and ROI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a website cost?",
+      "category": "Getting Started",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Website costs vary significantly based on complexity, features, and scope. Our pricing scales from cost-effective simple brochure sites to complex e-commerce platforms or custom web applications. We provide free assessments with transparent, detailed estimates after working with you to understand your specific needs. For a comprehensive breakdown of our pricing structure and what's included, visit our detailed cost guide at <a href='/cost'>pixelated.tech/cost</a>."
+      }
+    }
+  ]
+}
