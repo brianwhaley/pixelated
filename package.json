@@ -1,6 +1,6 @@
 {
 	"name": "@pixelated-tech/components",
-	"version": "3.4.3",
+	"version": "3.5.0",
 	"private": false,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -27,6 +27,16 @@
 			"types": "./dist/types/index.server.d.ts",
 			"import": "./dist/index.server.js",
 			"default": "./dist/index.server.js"
+		},
+		"./adminserver": {
+			"types": "./dist/types/index.adminserver.d.ts",
+			"import": "./dist/index.adminserver.js",
+			"default": "./dist/index.adminserver.js"
+		},
+		"./adminclient": {
+			"types": "./dist/types/index.adminclient.d.ts",
+			"import": "./dist/index.adminclient.js",
+			"default": "./dist/index.adminclient.js"
 		},
 		"./dist/components/*": "./dist/components/*",
 		"./css/*": "./dist/css/*"
@@ -64,7 +74,7 @@
 		"copy2pixelatedtest": "rm -rf ../pixelated-test/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated-test/node_modules/@pixelated-tech/components/",
 		"copy2template": "rm -rf ../pixelated-template/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated-template/node_modules/@pixelated-tech/components/",
 		"copy2pixelatedadmin": "rm -rf ../pixelated-admin/node_modules/@pixelated-tech/components/dist && cp -r dist ../pixelated-admin/node_modules/@pixelated-tech/components/",
-		"copy2all": "npm run copy2brianwhaley && npm run copy2informationfocus && npm run copy2oaktreelandscaping && npm run copy2palmettoepoxy && npm run copy2pixelated && npm run copy2pixelvivid && npm run copy2pixelatedtest && npm run copy2template && npm run copy2pixelatedadmin",
+		"copy2all": "npm run copy2brianwhaley && npm run copy2informationfocus && npm run copy2oaktreelandscaping && npm run copy2palmettoepoxy && npm run copy2pixelated && npm run copy2pixelvivid && npm run copy2template && npm run copy2pixelatedadmin",
 		"storybook": "rm -rf node_modules/.cache && storybook dev -p 6006",
 		"buildStorybook": "rm -rf node_modules/.cache && NODE_OPTIONS=\"--max-old-space-size=4096\" storybook build",
 		"test": "vitest",
@@ -79,14 +89,9 @@
 		"build-webpack-rsync": "rsync -a --include='*' --include='*/' src/css dist/css"
 	},
 	"dependencies": {
-		"@aws-sdk/client-cloudwatch": "^3.958.0",
-		"@aws-sdk/client-route-53": "^3.958.0",
 		"date-fns": "^4.1.0",
 		"globals": "^17.0.0",
-		"googleapis": "^169.0.0",
-		"html-entities": "^2.6.0",
-		"puppeteer": "^24.34.0",
-		"recharts": "^3.6.0"
+		"html-entities": "^2.6.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.28.3",
@@ -158,7 +163,12 @@
 		"react-dom": "^19.2.0"
 	},
 	"optionalDependencies": {
-		"md5": "^2.3.0"
+		"@aws-sdk/client-cloudwatch": "^3.962.0",
+		"@aws-sdk/client-route-53": "^3.962.0",
+		"googleapis": "^169.0.0",
+		"md5": "^2.3.0",
+		"puppeteer": "^24.34.0",
+		"recharts": "^3.6.0"
 	},
 	"type": "module"
 }
