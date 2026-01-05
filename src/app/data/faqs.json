@@ -32,7 +32,7 @@
       "category": "Getting Started",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We combine technical expertise with creative design thinking, delivering websites that not only look great but drive real business results. Unlike DIY platforms that require you to learn new tools, create your own content, and manage ongoing maintenance, we offer an all-inclusive service that bundles custom web development, graphic design, content creation, SEO optimization, and ongoing support. We act as an extension of your team, handling everything from business strategy and competitive analysis to technical implementation and performance monitoring. Our transparent pricing eliminates hidden costs, and our focus on long-term partnerships ensures your website grows with your business rather than becoming outdated. While platforms like WordPress or Wix provide basic tools with customer service phone numbers, we deliver professional-grade solutions with years of experience across industries, ensuring your site is fast, secure, accessible, and optimized for conversions."
+        "text": [ "We combine technical expertise with creative design thinking, delivering websites that not only look great but drive real business results. Unlike Do-It-Yourself platforms like Wordpress, Wix, or Godaddy that require you to learn new tools, create your own content, and manage ongoing maintenance, we offer an all-inclusive service that bundles custom web development, graphic design, content creation, SEO optimization, and ongoing support.", "We act as an extension of your team, handling everything from business strategy and competitive analysis to technical implementation and performance monitoring.", "Our transparent pricing eliminates hidden costs, and our focus on long-term partnerships ensures your website grows with your business rather than becoming outdated. While platforms like WordPress, Wix, or Godaddy provide basic tools with customer service phone numbers, we deliver professional-grade solutions with years of experience across industries, ensuring your site is fast, secure, accessible, and optimized for conversions." ]
       }
     },
     {
@@ -41,7 +41,7 @@
       "category": "Process & Timeline",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Website development timelines vary based on project complexity and scope. Simple brochure sites typically take 2-3 weeks from concept to launch, while complex e-commerce platforms or custom web applications may require 4-8 weeks. Our agile development process ensures regular progress updates and milestones. During the discovery phase, we provide a detailed timeline estimate tailored to your specific project. Learn more about our development process at <a href='/process'>pixelated.tech/process</a>."
+        "text": [ "Website development timelines vary based on project complexity and scope. Simple brochure sites typically take 2-3 weeks from concept to launch, while complex e-commerce platforms or custom web applications may require 4-8 weeks. Our agile development process ensures regular progress updates and milestones.", "During the discovery phase, we provide a detailed timeline estimate tailored to your specific project. Learn more about our development process at <a href='/process'>pixelated.tech/process</a>." ]
       }
     },
     {
@@ -50,7 +50,7 @@
       "category": "Process & Timeline",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our proven development process includes: 1) Discovery & Planning (requirements gathering, goal setting, and project scoping), 2) Design (wireframes, mockups, and user experience design), 3) Development (coding with modern technologies and best practices), 4) Testing (quality assurance, performance optimization, and cross-browser compatibility), and 5) Launch & Training (deployment, handover, and user training). We maintain transparent communication throughout, with weekly updates and client feedback at every stage. View our detailed process at <a href='/process'>pixelated.tech/process</a>."
+        "text": [ "Our proven development process includes: 1) Discovery & Planning (requirements gathering, goal setting, and project scoping), 2) Design (wireframes, mockups, and user experience design), 3) Development (coding with modern technologies and best practices), 4) Testing (quality assurance, performance optimization, and cross-browser compatibility), and 5) Launch & Training (deployment, handover, and user training).", "We maintain transparent communication throughout, with weekly updates and client feedback at every stage. View our detailed process at <a href='/process'>pixelated.tech/process</a>." ]
       }
     },
     {
@@ -59,7 +59,7 @@
       "category": "Content & Management",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely! We build websites using user-friendly content management systems (CMS) like Contentful and WordPress for flexible content sites, Shopify for e-commerce, or custom headless CMS solutions for web applications. This gives you the power to easily update content, add blog posts, modify images, and manage your site without technical skills. We offer comprehensive training sessions and detailed documentation for whichever platform best fits your needs. For clients who prefer not to manage content themselves, we offer ongoing maintenance packages that include content updates as part of our service. Our CMS choices prioritize ease of use while maintaining professional functionality and security."
+        "text": [ "Absolutely! We build websites using user-friendly content management systems (CMS) like Contentful and WordPress for flexible content sites, Shopify for e-commerce, or custom headless CMS solutions for web applications. This gives you the power to easily update content, add blog posts, modify images, and manage your site without technical skills. We offer comprehensive training sessions and detailed documentation for whichever platform best fits your needs.", "For clients who prefer not to manage content themselves, we offer ongoing maintenance packages that include content updates as part of our service. Our CMS choices prioritize ease of use while maintaining professional functionality and security." ]
       }
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "@type": "Question",
-      "name": "Will it work on mobile (responsive)?",
+      "name": "Will my web site work on mobile ( i.e. - responsive layout)?",
       "category": "Technical Details",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -100,7 +100,7 @@
     },
     {
       "@type": "Question",
-      "name": "What about website hosting?",
+      "name": "How will my web site be hosted?",
       "category": "Ownership & Legal",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -131,7 +131,7 @@
       "category": "Services",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, we offer comprehensive digital marketing services including SEO optimization, Google Ads management, social media marketing, email campaigns, and conversion rate optimization. A beautiful website is just the foundation - we help you attract, engage, and convert visitors into customers. Our data-driven approach ensures measurable results and ROI."
+        "text": "Yes, we offer comprehensive digital marketing services including SEO optimization, Google Ads management, social media marketing, email campaigns, and conversion rate optimization. A polished website is just the foundation - we help you attract, engage, and convert visitors into customers. Our data-driven approach ensures measurable results and ROI."
       }
     },
     {
@@ -140,7 +140,16 @@
       "category": "Getting Started",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Website costs vary significantly based on complexity, features, and scope. Our pricing scales from cost-effective simple brochure sites to complex e-commerce platforms or custom web applications. We provide free assessments with transparent, detailed estimates after working with you to understand your specific needs. For a comprehensive breakdown of our pricing structure and what's included, visit our detailed cost guide at <a href='/cost'>pixelated.tech/cost</a>."
+        "text": "Website costs vary significantly based on complexity, features, and scope. Our pricing scales from cost-effective brochure sites to complex e-commerce platforms or custom web applications. We provide free assessments with transparent, detailed estimates after working with you to understand your specific needs. For a comprehensive breakdown of our pricing structure and what's included, visit our detailed cost guide at <a href='/cost'>pixelated.tech/cost</a>."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you provide references?",
+      "category": "Getting Started",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are happy to provide references upon request. Our portfolio includes a diverse range of clients across various industries, and we can connect you with previous clients who can share their experiences working with us. Please contact us directly to discuss your specific needs and we will provide relevant references to help you make an informed decision."
       }
     }
   ]

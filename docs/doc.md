@@ -61,7 +61,7 @@ npm run lint
 npm audit fix --force
 npm version patch --force
 git add . -v
-git commit -m "bump version"
+git commit -m "faqs.json update, add amplify.yaml"
 git push -u pixelated dev --tags
 git push pixelated dev:main
 
