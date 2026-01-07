@@ -114,6 +114,19 @@
 
 
 
+
+/* ========================================
+    CUSTOM PIXELATED BLOG SUMMARY Styles
+ ======================================== */
+
+.blog-post-summary .article-featured-image img {
+    border: 5px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+
+
+
 /* ========================================
     PAGE SPECIFIC Pixelated Styles
  ======================================== */

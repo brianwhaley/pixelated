@@ -48,11 +48,11 @@
 			"description": "Pixelated Technologies offers a wide varity of products and services, including custom web development for small businesses, stock photography, touchup services, home design and remodeling, and more.",
 			"keywords": "pixelated, web development, small business, stock photography, home redesign, remodeling, social media"  
 		} , { 
-			"name": "Our Process", 
-			"path": "/process", 
-			"title": "Pixelated Technologies - Our Process",
-			"description": "Pixelated Technologies offers a proven process to get results for you and your customer gather information, develop a strategy, implement, measure outcomes, refine results, and support. ",
-			"keywords": "pixelated, web development, small business, process, strategy, implement, measure, refine, support"  
+			"name": "Schedule Assessment", 
+			"path": "/schedule", 
+			"title": "Pixelated Technologies - Schedule your free Digital Assessment",
+			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
+			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , { 
 			"name": "Portfolio", 
 			"path": "/portfolio", 
@@ -60,11 +60,29 @@
 			"description": "Examples of web development and design work delivered by our team members over the years.  ",
 			"keywords": "pixelated, web development, design, small business, delivery, portfolio"  
 		} , { 
+			"name": "Blog", 
+			"path": "/blog", 
+			"title": "Pixelated Technologies - Blog Posts",
+			"description": "Read the latest blog posts from Pixelated Technologies.",
+			"keywords": "pixelated, blog, web development, small business"  
+		} , {
+			"name": "FAQs", 
+			"path": "/faqs", 
+			"title": "Pixelated Technologies - FAQs",
+			"description": "Frequently Asked Questions about Pixelated Technologies",
+			"keywords": "pixelated, faqs, frequently asked questions" 
+		} , { 
 			"name": "Samples", 
 			"path": "/samples", 
 			"title": "Pixelated Technologies - Samples",
 			"description": "Examples of web development and design work for different industries and styles.  ",
 			"keywords": "pixelated, web development, design, small business, delivery, samples, "  
+		} , {
+			"name": "Legal", 
+			"path": "/legal", 
+			"title": "Pixelated Technologies - Legal",
+			"description": "Pixelated Technologies Terms of Service and Privacy Policy",
+			"keywords": "pixelated, terms of service, privacy policy" 
 		} , {
 			"name": "Samples Pages",
 			"hidden": true,
@@ -113,57 +131,25 @@
 					"keywords": "pixelated technologies, web design sample page 5" 
 				} 
 			]
-		} , { 
-			"name": "Blog", 
-			"path": "/blog", 
-			"title": "Pixelated Technologies - Blog Posts",
-			"description": "Read the latest blog posts from Pixelated Technologies.",
-			"keywords": "pixelated, blog, web development, small business"  
-		} , { 
-			"name": "Schedule Assessment", 
-			"path": "/schedule", 
-			"title": "Pixelated Technologies - Schedule your free Digital Assessment",
-			"description": "Schedule a your free Digital Assessment with Pixelated Technologies and receive a full report of your digital presence and what you should do to improve - web development, social media mearketing, search engine optimization, and small business modernization." ,
-			"keywords": "pixelated, brian whaley, schedule an assessment, schedule a meeting, web development, search engine optimization, seo, social media marketing, small business modernization" 
 		} , {
-			"name": "FAQs", 
-			"hidden": true,
-			"path": "/faqs", 
-			"title": "Pixelated Technologies - FAQs",
-			"description": "Frequently Asked Questions about Pixelated Technologies",
-			"keywords": "pixelated, faqs, frequently asked questions" 
-		} , {
-			"name": "Cost", 
-			"hidden": true,
-			"path": "/cost", 
-			"title": "Pixelated Technologies - Cost",
-			"description": "Pixelated Technologies Cost Information",
-			"keywords": "pixelated, cost, pricing, web development, small business" 
-		} , {
-			"name": "Legal", 
-			"path": "/legal", 
-			"title": "Pixelated Technologies - Legal",
-			"description": "Pixelated Technologies Terms of Service and Privacy Policy",
-			"keywords": "pixelated, terms of service, privacy policy" 
-		} , {
-			"name": "Terms", 
-			"hidden": true,
-			"path": "/terms", 
-			"title": "Pixelated Technologies - Terms of Service",
-			"description": "Pixelated Technologies Terms of Service",
-			"keywords": "pixelated, terms of service" 
-		} , { 
-			"name": "Privacy Policy", 
-			"hidden": true,
-			"path": "/privacy", 
-			"title": "Pixelated Technologies - Privacy Policy",
-			"description": "Pixelated Technologies Privacy Policy",
-			"keywords": "pixelated, privacy policy, data retention"  
-		} , {
-			"name": "Sandbox",
+			"name": "Hidden",
 			"hidden": true,
 			"routes": [
 				{ 
+					"name": "Our Process", 
+					"path": "/process", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Our Process",
+					"description": "Pixelated Technologies offers a proven process to get results for you and your customer gather information, develop a strategy, implement, measure outcomes, refine results, and support. ",
+					"keywords": "pixelated, web development, small business, process, strategy, implement, measure, refine, support"  
+				} , {
+					"name": "Cost", 
+					"hidden": true,
+					"path": "/cost", 
+					"title": "Pixelated Technologies - Cost",
+					"description": "Pixelated Technologies Cost Information",
+					"keywords": "pixelated, cost, pricing, web development, small business" 
+				} , { 
 					"name": "NerdJokes", 
 					"path": "/nerdjokes", 
 					"hidden": true,
@@ -179,27 +165,20 @@
 					"keywords": "" 
 
 				} , {
-					"name": "Form", 
-					"path": "/form", 
+					"name": "Terms", 
 					"hidden": true,
-					"title": "Pixelated Technologies - Form",
-					"description": "Test my Form Builder, Form Components, and Form Validations",
-					"keywords": "" 
+					"path": "/terms", 
+					"title": "Pixelated Technologies - Terms of Service",
+					"description": "Pixelated Technologies Terms of Service",
+					"keywords": "pixelated, terms of service" 
 				} , { 
-					"name": "Form Build", 
-					"path": "/form/build", 
+					"name": "Privacy Policy", 
 					"hidden": true,
-					"title": "Pixelated Technologies - Form Builder",
-					"description": "Build your own form with my Form Builder",
-					"keywords": ""  
-				} , { 
-					"name": "Form Extract", 
-					"path": "/form/extract", 
-					"hidden": true,
-					"title": "Pixelated Technologies - Form Extract",
-					"description": "Extract the JSON needed from a live site to use my Form Builder",
-					"keywords": ""  
-				}
+					"path": "/privacy", 
+					"title": "Pixelated Technologies - Privacy Policy",
+					"description": "Pixelated Technologies Privacy Policy",
+					"keywords": "pixelated, privacy policy, data retention"  
+				} 
 			]
 		} , {
 			"name": "Admin",

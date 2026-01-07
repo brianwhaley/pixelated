@@ -1,9 +1,9 @@
-import { PageTitleHeader } from "@pixelated-tech/components";
+import { PageSectionHeader } from "@pixelated-tech/components";
 
 export default function Privacy() {
 	return (
 		<>
-			<PageTitleHeader title="Privacy Policy" />
+			<PageSectionHeader title="Privacy Policy" />
 			<div className="callout-body">
                 All applications created by Pixelated Technologies are privacy respecting applications. We go out of our way to keep as little information about users as possible.<br/>
 				<br/>
