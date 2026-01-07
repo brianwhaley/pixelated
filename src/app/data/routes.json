@@ -92,43 +92,43 @@
 					"hidden": true,
 					"path": "/samples", 
 					"title": "Pixelated Technologies - Samples Home",
-					"description": "Samples Home",
-					"keywords": "pixelated technologies, web design samples home" 
+					"description": "Pixelated Technologies - Samples Home",
+					"keywords": "pixelated technologies, web design samples home, samples, indistries" 
 				} , { 
 					"name": "Sample Page 1", 
 					"hidden": true,
 					"path": "/samples/page1", 
 					"title": "Pixelated Technologies - Sample Page 1",
-					"description": "Sample Page 1",
-					"keywords": "pixelated technologies, web design sample page 1" 
+					"description": "Pixelated Technologies - Sample Page 1 - Professional Landscaping, Hardscaping & Masonry Services",
+					"keywords": "pixelated technologies, web design sample page 1, Professional Landscaping, Hardscaping & Masonry Services" 
 				} , { 
 					"name": "Sample Page 2", 
 					"hidden": true,
 					"path": "/samples/page2", 
 					"title": "Pixelated Technologies - Sample Page 2",
-					"description": "Sample Page 2",
-					"keywords": "pixelated technologies, web design sample page 2" 
+					"description": "Pixelated Technologies - Sample Page 2 - Wedding Photography for the Artful Soul",
+					"keywords": "pixelated technologies, web design sample page 2, Wedding Photography for the Artful Soul" 
 				} , { 
 					"name": "Sample Page 3", 
 					"hidden": true,
 					"path": "/samples/page3", 
 					"title": "Pixelated Technologies - Sample Page 3",
-					"description": "Sample Page 3",
-					"keywords": "pixelated technologies, web design sample page 3" 
+					"description": "Pixelated Technologies - Sample Page 3 - Farm to Table Modern European Cuisine",
+					"keywords": "pixelated technologies, web design sample page 3, Farm to Table, Modern European Cuisine" 
 				} , { 
 					"name": "Sample Page 4", 
 					"hidden": true,
 					"path": "/samples/page4", 
 					"title": "Pixelated Technologies - Sample Page 4",
-					"description": "Sample Page 4",
-					"keywords": "pixelated technologies, web design sample page 4" 
+					"description": "Pixelated Technologies - Sample Page 4 - Passionate About Cycling and Community",
+					"keywords": "pixelated technologies, web design sample page 4, Passionate About Cycling and Community" 
 				} , { 
 					"name": "Sample Page 5", 
 					"hidden": true,
 					"path": "/samples/page5", 
 					"title": "Pixelated Technologies - Sample Page 5",
-					"description": "Sample Page 5",
-					"keywords": "pixelated technologies, web design sample page 5" 
+					"description": "Pixelated Technologies - Sample Page 5 - Street Tacos - Fresh, Fast, Fantastic!",
+					"keywords": "pixelated technologies, web design sample page 5, Street Tacos, Fresh Fast Fantastic!" 
 				} 
 			]
 		} , {

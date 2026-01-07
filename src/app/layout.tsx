@@ -46,23 +46,35 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	}
 
 	// Minimal layout for /samples routes - no CSS, no header/nav/footer
-	// if (pathname.startsWith('/samples/')) {
 	const regexPattern = /^\/samples\/.+$/;
-	if (regexPattern.test(pathname)) {
-		return (
-			<>
-				<LayoutClient />
-				<html lang="en" className="pixelated">
-					<head></head>
-					<body>
-						<PixelatedServerConfigProvider>
-							{children}
-						</PixelatedServerConfigProvider>
-					</body>
-				</html>
-			</>
-		);
-	}
+	const samplesBody = children;
+	const pixelatedBody = (
+		<>
+			<header>
+				<div id="page-header" className="fixed-header"><Header /></div>
+				<div id="page-header-nav" className="fixed-header-nav">
+					<div className="section-container">
+						<HeaderNav />
+					</div>
+				</div>
+				<div id="fixed-header-spacer"></div>
+				<div id="fixed-header-nav-spacer"></div>
+				<div id="page-search" className="no-mobile">
+					<Search />
+				</div>
+			</header>
+			<nav>
+				<Nav />
+			</nav>
+			<main>{children}</main>
+			<footer>
+				<Footer />
+			</footer>
+		</>
+	) ;
+
+	const layoutBody = (regexPattern.test(pathname)) ? samplesBody : pixelatedBody;
+
 	return (
 
 		<>
@@ -156,29 +168,11 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 				<body>
 					<PixelatedServerConfigProvider>
 						<BlogPostsProvider posts={blogPosts}>
-							<header>
-								<div id="page-header" className="fixed-header"><Header /></div>
-								<div id="page-header-nav" className="fixed-header-nav">
-									<div className="section-container">
-										<HeaderNav />
-									</div>
-								</div>
-								<div id="fixed-header-spacer"></div>
-								<div id="fixed-header-nav-spacer"></div>
-								<div id="page-search" className="no-mobile">
-									<Search />
-								</div>
-							</header>
-							<nav>
-								<Nav />
-							</nav>
-							<main>{children}</main>
-							<footer>
-								<Footer />
-							</footer>
+							{ layoutBody }
 						</BlogPostsProvider>
 					</PixelatedServerConfigProvider>
 				</body>
 			</html></>
 	);
 }
+
