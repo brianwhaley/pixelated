@@ -90,9 +90,10 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						url: url ?? "",
 						siteInfo: myRoutes.siteInfo
 					}) }
+					<WebsiteSchema siteInfo={siteInfo} />
 					<LocalBusinessSchema siteInfo={myRoutes.siteInfo} />
+					<ServicesSchema siteInfo={siteInfo} />
 					<VisualDesignStyles visualdesign={myRoutes.visualdesign} />
-
 					<LocalBusinessSchema
 						siteInfo={siteInfo}
 						streetAddress="4 Raymond Court"
@@ -101,63 +102,6 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						postalCode="29909"
 						addressCountry="US"
 						telephone="+1-843-699-6611"
-					/>
-					<WebsiteSchema
-						siteInfo={siteInfo}
-						potentialAction={{
-							'@type': 'SearchAction',
-							target: {
-								'@type': 'EntryPoint',
-								urlTemplate: 'https://pixelated.tech/search?q={search_term}'
-							}
-						}}
-					/>
-					<ServicesSchema
-						provider={{
-							name: "Pixelated",
-							url: "https://pixelated.tech",
-							logo: "https://pixelated.tech/images/pix/pix-bg-512.gif",
-							telephone: "+1-973-710-8008",
-							email: "info@pixelated.tech"
-						}}
-						services={[
-							{
-								name: "Web Development",
-								description: "Pixelated Technologies can be your Virtual Technology Department, providing custom web development solutions tailored to your business needs. We specialize in creating responsive, user-friendly websites and web applications that help small businesses succeed online.",
-								url: "https://pixelated.tech",
-								areaServed: ["New Jersey", "South Carolina"]
-							},
-							{
-								name: "Social Media Marketing",
-								description: "Let Pixelated Technologies help you develop a comprehensive social media strategy that aligns with your business goals. We can help you create and manage your social media accounts, produce engaging content, and analyze performance metrics to optimize your social media presence.",
-								url: "https://pixelated.tech",
-								areaServed: ["New Jersey", "South Carolina"]
-							},
-							{
-								name: "Search Engine Optimization (SEO)",
-								description: "Pixelated Technologies can help you improve your websites visibility and ranking on popular search engines. We can conduct a thorough SEO audit of your website, identify areas for improvement, and implement on-page and off-page SEO strategies to boost your search engine performance.",
-								url: "https://pixelated.tech",
-								areaServed: ["United States"]
-							},
-							{
-								name: "Content Management",
-								description: "Pixelated Technologies can help you implement a content management system (CMS) that allows you to easily update and manage your website content. We can help you choose the right CMS at the right cost for your business needs, set it up, and provide training and support to ensure you can manage your website effectively.",
-								url: "https://pixelated.tech",
-								areaServed: ["United States"]
-							},
-							{
-								name: "E-Commerce Solutions",
-								description: "Pixelated Technologies can help you set up and manage an eCommerce platform that meets your business needs. We can help you choose the right eCommerce solution, set it up, and provide ongoing support to ensure your online store runs smoothly.",
-								url: "https://pixelated.tech",
-								areaServed: ["United States"]
-							},
-							{
-								name: "Small Business Modernization",
-								description: "Pixelated Technologies can help you develop custom business solutions that streamline your operations and improve your efficiency. We can work with you to understand your business processes, identify areas for improvement, and develop custom software solutions that meet your specific needs.",
-								url: "https://pixelated.tech",
-								areaServed: ["United States"]
-							},
-						]}
 					/>
 					{ blogSchemas.map((schema, index) => (
 						<SchemaBlogPosting key={index} post={schema} />

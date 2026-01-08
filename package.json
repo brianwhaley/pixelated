@@ -1,6 +1,6 @@
 {
   "name": "pixelatedtech",
-  "version": "4.4.2",
+  "version": "4.4.6",
   "private": true,
   "author": {
     "name": "Pixelated Technologies",
@@ -13,13 +13,16 @@
     "lint": "eslint --fix",
     "clean": "rm -rf .next && rm -rf out",
     "generate-site-images": "node ./node_modules/@pixelated-tech/components/dist/scripts/generate-site-images.js",
+    "config:vault": "npx tsx ./node_modules/@pixelated-tech/components/dist/scripts/config-vault.ts",
+    "config:encrypt": "npm run config:vault -- encrypt src/app/config/pixelated.config.json",
+    "config:decrypt": "npm run config:vault -- decrypt src/app/config/pixelated.config.json",
     "release": "./node_modules/@pixelated-tech/components/dist/scripts/release.sh"
   },
   "scripts-unused": {
     "dev": "next dev --turbopack"
   },
   "dependencies": {
-    "@pixelated-tech/components": "^3.7.3",
+    "@pixelated-tech/components": "^3.7.9",
     "date-fns": "^4.1.0",
     "globals": "^17.0.0",
     "html-entities": "^2.6.0",

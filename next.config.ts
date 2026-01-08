@@ -10,8 +10,7 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true,
 	},
 	env: {
-		PIXELATED_CONFIG_JSON: process.env.PIXELATED_CONFIG_JSON,
-		PIXELATED_CONFIG_B64: process.env.PIXELATED_CONFIG_B64,
+		PIXELATED_CONFIG_KEY: process.env.PIXELATED_CONFIG_KEY,
 	},
 	images: {
     	minimumCacheTTL: 86400, // 1 day 15552000, // 6 months
