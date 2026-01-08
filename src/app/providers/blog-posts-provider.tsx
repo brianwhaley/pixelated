@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext } from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 import type { BlogPostType } from '@pixelated-tech/components';
 
 interface BlogPostsContextType {
@@ -9,13 +10,15 @@ interface BlogPostsContextType {
 
 const BlogPostsContext = createContext<BlogPostsContextType | undefined>(undefined);
 
+BlogPostsProvider.propTypes = {
+	children: PropTypes.node.isRequired,
+	posts: PropTypes.array.isRequired
+};
+export type BlogPostsProviderType = InferProps<typeof BlogPostsProvider.propTypes>;
 export function BlogPostsProvider({ 
 	children, 
 	posts 
-}: { 
-	children: React.ReactNode; 
-	posts: BlogPostType[];
-}) {
+}: BlogPostsProviderType) {
 	return (
 		<BlogPostsContext.Provider value={{ posts }}>
 			{children}

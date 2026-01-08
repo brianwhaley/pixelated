@@ -4,7 +4,7 @@ import { getRouteByKey } from "@pixelated-tech/components/server";
 import { generateMetaTags, PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
 import { LocalBusinessSchema, WebsiteSchema, ServicesSchema, SchemaBlogPosting, mapWordPressToBlogPosting, getWordPressItems } from "@pixelated-tech/components/server";
 import { VisualDesignStyles } from "@pixelated-tech/components/server";
-import type { BlogPostType } from "@pixelated-tech/components";
+import type { BlogPostType, SiteInfo } from "@pixelated-tech/components";
 import { LayoutClient } from "@/app/elements/layoutclient";
 import Header from "@/app/elements/header";
 import HeaderNav from "@/app/elements/headernav";
@@ -88,9 +88,9 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						keywords: metadata?.keywords ?? "",
 						origin: origin ?? "",
 						url: url ?? "",
-						siteInfo: myRoutes.siteInfo
+						siteInfo: siteInfo
 					}) }
-					<WebsiteSchema siteInfo={siteInfo} />
+					<WebsiteSchema siteInfo={siteInfo as SiteInfo} />
 					<LocalBusinessSchema siteInfo={myRoutes.siteInfo} />
 					<ServicesSchema siteInfo={siteInfo} />
 					<VisualDesignStyles visualdesign={myRoutes.visualdesign} />

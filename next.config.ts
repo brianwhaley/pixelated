@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
 	experimental: {
     	optimizeCss: false,
   	},
+	outputFileTracingIncludes: {
+		'/**': ['./src/app/config/pixelated.config.json'],
+	},
 	transpilePackages: ['@pixelated-tech/components'],
 	trailingSlash: false,
 	typescript: {
