@@ -47,7 +47,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 
 	// Minimal layout for /samples routes - no CSS, no header/nav/footer
 	const regexPattern = /^\/samples\/.+$/;
-	const samplesBody = children;
+	const samplesBody = <>{children}</>;
 	const pixelatedBody = (
 		<>
 			<header>
@@ -76,7 +76,6 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	const layoutBody = (regexPattern.test(pathname)) ? samplesBody : pixelatedBody;
 
 	return (
-
 		<>
 			<LayoutClient />
 			<html lang="en">
@@ -88,7 +87,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						keywords: metadata?.keywords ?? "",
 						origin: origin ?? "",
 						url: url ?? "",
-						siteInfo: siteInfo
+						siteInfo: siteInfo as SiteInfo,
 					}) }
 					<WebsiteSchema siteInfo={siteInfo as SiteInfo} />
 					<LocalBusinessSchema siteInfo={myRoutes.siteInfo} />

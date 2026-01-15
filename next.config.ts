@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     	optimizeCss: false,
   	},
 	outputFileTracingIncludes: {
-		'/**': ['./src/app/config/pixelated.config.json'],
+		'/**': ['./src/app/config/pixelated.config.json.enc'],
 	},
 	transpilePackages: ['@pixelated-tech/components'],
 	trailingSlash: false,

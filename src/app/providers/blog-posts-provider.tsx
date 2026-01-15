@@ -15,10 +15,9 @@ BlogPostsProvider.propTypes = {
 	posts: PropTypes.array.isRequired
 };
 export type BlogPostsProviderType = InferProps<typeof BlogPostsProvider.propTypes>;
-export function BlogPostsProvider({ 
-	children, 
-	posts 
-}: BlogPostsProviderType) {
+export function BlogPostsProvider(props: BlogPostsProviderType) {
+	/* { children, posts }: { children: React.ReactNode; posts: any[] } */
+	const { children, posts } = props;
 	return (
 		<BlogPostsContext.Provider value={{ posts }}>
 			{children}
