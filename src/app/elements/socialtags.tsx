@@ -10,7 +10,7 @@ export default function SocialTags() {
 	return (
 		<>
 			<PageSectionHeader url="" title="Follow us on Social Media" />
-			<PageSection columns={11} padding={"0px"}>
+			<PageSection id="socialtag-section"columns={11} padding={"0px"}>
 				<PageGridItem>
 					<Callout variant="full" imgShape="squircle" layout="vertical" 
 						url="http://blog.pixelated.tech" 

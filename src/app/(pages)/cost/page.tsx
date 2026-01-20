@@ -157,11 +157,12 @@ export default function Cost() {
 					<div>
 					This package includes the basics to keep your site running smoothly:
 						<ul style={{marginTop: '0px'}}>
-							<li>Site hosting on Amazon Web Services, using AWS Amplify and NextJS</li>
+							<li>Site hosting, storage, and deployment management on Amazon Web Services, using AWS Amplify and NextJS</li>
 							<li>Annual cost for domain registration and SSL certificate via AWS Route53</li>
+							<li>Monthly cost for Content Delivery Network usage via AWS CloudFront</li>
 							<li>Active logging and monitoring for uptime and performance using AWS CloudWatch</li>
 							<li>Licenses for stock photography and images, as needed</li>
-							<li>Basic security monitoring and malware scans</li>
+							<li>Basic security monitoring and malware scans, including resolving security vulnerabilities</li>
 							<li>Email support for minor issues and questions</li>
 							<li>Search engine optimization (SEO) monitoring and basic updates</li>
 							<li>Analytics monitoring and monthly reports</li>
@@ -172,10 +173,12 @@ export default function Cost() {
 					<div>
 					This package includes everything in the Essential package, plus:
 						<ul style={{marginTop: '0px'}}>
-							<li>One (1) website content update per month</li>
-							<li>One (1) Blog Post or News Update per month</li>
+							<li>Maintenance of Cloudinary Image Content Delivery Network and Contentful Content Management System</li>
+							<li>Maintenance of Wordpress Blog Site, Wordpress Themes and Plugins, and Gravatar Profile, as applicable</li>
+							<li>One (1) website content update per month, as needed</li>
+							<li>One (1) Blog Post or News Update per month, as needed</li>
 							<li>A content calendar outlining monthly blog topics and posting schedule</li>
-							<li>Two (2) social media content updates per month across platforms.</li>
+							<li>Two (2) social media content updates per month across platforms, as needed</li>
 							<li>Content update topics include blog post announcements, new projects, shared photos, 
 								customer profiles, company announcements, relevant news articles, seasonal content, 
 								updates and offers, staff spotlights, and more.</li>
@@ -188,9 +191,9 @@ export default function Cost() {
 					<div>
 					This package includes everything in the Essential and Standard package, plus:
 						<ul style={{marginTop: '0px'}}>
-							<li>Two (2) additional website content updates per month</li>
-							<li>Three (3) additional Blog Posts or News Updates per month</li>
-							<li>Four (4) additional social media content updates per month across platforms</li>
+							<li>Two (2) additional website content updates per month, as needed</li>
+							<li>Three (3) additional Blog Posts or News Updates per month, as needed</li>
+							<li>Two (2) additional social media content updates per month across platforms, as needed</li>
 							<li>Monthly strategy calls to discuss site performance and improvements</li>
 						</ul>
 					</div>

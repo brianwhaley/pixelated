@@ -9,11 +9,9 @@ export default function FAQs() {
 	return (
 		<>
 			<SchemaFAQ faqsData={faqsData} />
-			<PageTitleHeader
-				title="Frequently Asked Questions"
-				subtitle="Find answers to common questions about our web design and development services"
-			/>
-			<PageSection columns={1} maxWidth="1024px">
+			<PageTitleHeader title="Frequently Asked Questions" />
+			<PageSection id="faq-section" columns={1} maxWidth="1024px">
+				<p style={{ margin: "0 auto"}}>Find answers to common questions about our web design and development services</p>
 				<FAQAccordion faqsData={faqsData} />
 			</PageSection>
 		</>
