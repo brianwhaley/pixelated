@@ -75,6 +75,13 @@
 				"label" : "Request : ",
 				"tooltip": "Please enter the details of your request"
             }
-        }
+        },
+		{
+			"component" : "FormHoneypot",
+			"props" : {
+				"id": "winnie",
+				"name" : "website"
+			}
+		}
     ]
 }
