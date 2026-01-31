@@ -54,28 +54,28 @@ section {
     font-size: 2.0em !important;
 }
 
-.panelMenuButton, #panelMenuButton {
+.panel-menu-button, #panel-menu-button {
     position: absolute;
     top: 5px;
     left: 5px;
 }
 
-.panelMenuButton .hamburger {
+.panel-menu-button .hamburger {
     font-family: Verdana;
     letter-spacing: normal;
 }
 
-.accordionMenuWrapper, .accordionDown, .accordionUp {
+.accordion-menu-wrapper, .accordionDown, .accordionUp {
     top: 40px;
     background-color: var(--primary-color);
 }
-.accordionMenu > ul > li > a {
+.accordion-menu > ul > li > a {
     background-blend-mode: normal;
     background-color: #ffffff;
     background-image: none;
 }
 
-.accordionMenu > ul > li > a:hover {
+.accordion-menu > ul > li > a:hover {
     background-color: var(--primary-color);
     color: #fff;
 }
@@ -88,10 +88,10 @@ section {
     .menu-wrapper {
         display: none;
     }
-    .panelMenuButton, #panelMenuButton {
+    .panel-menu-button, #panel-menu-button {
         display: block;
     }
-	.panelMenuButton .hamburger {
+	.panel-menu-button .hamburger {
 		font-size: unset;
 		margin: 5px 10px;
 	}

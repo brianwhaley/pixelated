@@ -61,7 +61,7 @@ export default function SamplePage4() {
 				<PageSectionHeader title="Featured Bicycles" />
 				<PageSection id="featured-section" columns={1} maxWidth="100%" padding="20px">
 					<div className="row-3col">
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								aboveFold={true}
 								layout="vertical"
@@ -71,7 +71,7 @@ export default function SamplePage4() {
 								content="Experience the perfect blend of speed, comfort, and cutting-edge technology with the Trek Domane SL 7 eTap. This endurance road bike features a lightweight carbon frame, advanced IsoSpeed technology for a smooth ride, and SRAM's wireless eTap shifting system for precise gear changes. Whether you're tackling long rides or challenging terrains, the Domane SL 7 eTap is designed to elevate your cycling experience."
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								aboveFold={true}
 								layout="vertical"
@@ -81,7 +81,7 @@ export default function SamplePage4() {
 								content="Discover the joy of effortless commuting and weekend adventures with the Specialized Turbo Vado SL 4.0 EQ. This lightweight electric bike combines a sleek design with powerful performance, featuring a Specialized SL 1.1 motor that provides smooth pedal assistance up to 28 mph. Equipped with integrated lights, fenders, and a rear rack, the Turbo Vado SL 4.0 EQ is your perfect companion for urban exploration and beyond."
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								aboveFold={true}
 								layout="vertical"
@@ -97,7 +97,7 @@ export default function SamplePage4() {
 
 				<PageSection id="services-section" columns={1} maxWidth="100%" padding="20px">
 					<div className="row-3col">
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								imgShape="bevel"
@@ -107,7 +107,7 @@ export default function SamplePage4() {
 								content="Explore our wide selection of bikes, accessories, and apparel from top brands. Our knowledgeable staff is here to help you find the perfect gear for your cycling adventures."
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								imgShape="bevel"
@@ -117,7 +117,7 @@ export default function SamplePage4() {
 								content="Let's build your dream bike together! Choose your frame, components, and accessories to create a custom ride that fits your style and needs."
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								imgShape="bevel"
@@ -157,7 +157,7 @@ export default function SamplePage4() {
 				<PageSectionHeader title="Authorized Reseller" />
 				<PageSection id="reseller-section" columns={1} maxWidth="1024px" padding="20px">
 					<div className="row-4col">
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								layout="vertical"
 								imgShape="bevel"
@@ -167,7 +167,7 @@ export default function SamplePage4() {
 								content=""
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								layout="vertical"
 								imgShape="bevel"
@@ -176,7 +176,7 @@ export default function SamplePage4() {
 								subtitle="Giant"
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								layout="vertical"
 								imgShape="bevel"
@@ -186,7 +186,7 @@ export default function SamplePage4() {
 								content=""
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								layout="vertical"
 								imgShape="bevel"
@@ -209,7 +209,7 @@ export default function SamplePage4() {
 
 				<PageSection id="footer-details-section" columns={1}>
 					<div className="row-3col">
-						<div className="gridItem" style={{ textAlign: 'center' }}>
+						<div className="grid-item" style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Location" />
 							<div>Velocity Cycling</div>
 							<div>Malvern Courtyard Shopping Centre</div>
@@ -220,7 +220,7 @@ export default function SamplePage4() {
 							<div>Email: info@velocitycycling.com</div>
 						</div>
 
-						<div className="gridItem">
+						<div className="grid-item">
 							<iframe 
 								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12219.643371209297!2d-75.52584077225562!3d40.03276997376298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6ed451790a5e9%3A0x9bba4ec3f14ecc64!2sMalvern%2C%20PA%2019355!5e0!3m2!1sen!2sus!4v1764015906891!5m2!1sen!2sus" 
 								width="100%" 
@@ -232,7 +232,7 @@ export default function SamplePage4() {
 							</iframe>
 						</div>
 						
-						<div className="gridItem"  style={{ textAlign: 'center' }}>
+						<div className="grid-item"  style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Hours" />
 							<div>Mon: 8AM - 6PM</div>
 							<div>Tue: 8AM - 6PM</div>

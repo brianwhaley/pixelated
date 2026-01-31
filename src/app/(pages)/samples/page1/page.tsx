@@ -155,7 +155,7 @@ export default function SamplePage1() {
 					</PageGridItem>
 					<PageGridItem columnStart={2} columnEnd={12}>
 						<div className="row-4col">
-							<div className="gridItem">
+							<div className="grid-item">
 								<Callout 
 									layout="vertical"
 									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_lawn-maintenance.png"
@@ -163,7 +163,7 @@ export default function SamplePage1() {
 									subtitle="Lawn Maintenance"
 								/>
 							</div>
-							<div className="gridItem">
+							<div className="grid-item">
 								<Callout 
 									layout="vertical"
 									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_landscape-design.png"
@@ -171,7 +171,7 @@ export default function SamplePage1() {
 									subtitle="Landscape Design"
 								/>
 							</div>
-							<div className="gridItem">
+							<div className="grid-item">
 								<Callout 
 									layout="vertical"
 									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_hardscaping.png"
@@ -179,7 +179,7 @@ export default function SamplePage1() {
 									subtitle="Masonry & Hardscaping"
 								/>
 							</div>
-							<div className="gridItem">
+							<div className="grid-item">
 								<Callout 
 									layout="vertical"
 									img="https://www.bednarlandscape.com/wp-content/uploads/2023/12/icon_snow-removal.png"

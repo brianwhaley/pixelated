@@ -1,6 +1,6 @@
 {
   "name": "pixelatedtech",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "private": true,
   "author": {
     "name": "Pixelated Technologies",
@@ -16,7 +16,8 @@
     "config:vault": "npx tsx ./node_modules/@pixelated-tech/components/dist/scripts/config-vault.ts",
     "config:encrypt": "npm run config:vault -- encrypt src/app/config/pixelated.config.json",
     "config:decrypt": "npm run config:vault -- decrypt src/app/config/pixelated.config.json.enc",
-    "release": "./node_modules/@pixelated-tech/components/dist/scripts/release.sh"
+    "release": "./node_modules/@pixelated-tech/components/dist/scripts/release.sh",
+    "update": "UPDATES=$(npm outdated | awk 'NR>1 {print $1\"@\"$4}' || true); if [ -n \"$UPDATES\" ]; then echo \"Updating the following packages: $UPDATES\"; echo \"$UPDATES\" | xargs npm install --force --save 2>/dev/null || true; echo \"✅ Successfully updated: $UPDATES\"; else echo \"✅ No dependency updates needed.\"; fi; npm audit fix 2>/dev/null || true"
   },
   "scripts-unused": {
     "dev": "next dev --turbopack"
@@ -34,7 +35,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
-    "@eslint/json": "^0.14.0",
+    "@eslint/json": "^1.0.0",
     "@next/eslint-plugin-next": "^16.1.6",
     "@next/third-parties": "^16.1.6",
     "@types/node": "^25.0.10",
@@ -52,5 +53,10 @@
     "style-loader": "^4.0.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0"
+  },
+  "overrides": {
+    "@aws-sdk/xml-builder": {
+      "fast-xml-parser": "^5.3.4"
+    }
   }
 }

@@ -271,14 +271,20 @@
 					"title": "Pixelated Technologies - By The Way Font",
 					"description": "By The Way Font",
 					"keywords": "pixelated technologies, custom font, by the way, by the way font" 
-				}  , { 
+				} , { 
 					"name": "Humans Txt", 
 					"path": "/humans.txt", 
 					"hidden": true,
 					"title": "Pixelated Technologies - Humans Txt",
 					"description": "Humans Txt",
 					"keywords": "pixelated technologies, humans txt" 
-				} 
+				} , {
+					"name": "Security Txt",
+					"hidden": true,
+					"path": "/security.txt",
+					"title": "Pixelated Technologies - Security Txt",
+					"description": "Security contact and vulnerability disclosure information.",
+					"keywords": ["pixelated technologies","security txt","security"]				} 
 			]
 		}
 	],

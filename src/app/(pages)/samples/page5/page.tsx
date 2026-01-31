@@ -185,7 +185,7 @@ export default function SamplePage4() {
 
 				<PageSection maxWidth="100%" id="footer-details-section" columns={1}>
 					<div className="row-3col">
-						<div className="gridItem" style={{ textAlign: 'center' }}>
+						<div className="grid-item" style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Location" />
 							<div>Holy Guacamole Taco Truck</div>
 							<div>123 William Hilton Parkway</div>
@@ -195,7 +195,7 @@ export default function SamplePage4() {
 							<div>Email: info@holyguacamoletacotruck.com</div>
 						</div>
 
-						<div className="gridItem">
+						<div className="grid-item">
 							<iframe 
 								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d78716.94846046132!2d-80.80423213107764!3d32.19532746066251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fc772555555555%3A0x62e1985f256e5c96!2sCoastal%20Discovery%20Museum!5e0!3m2!1sen!2sus!4v1764299846597!5m2!1sen!2sus" 
 								width="100%" 
@@ -207,7 +207,7 @@ export default function SamplePage4() {
 							</iframe>
 						</div>
 						
-						<div className="gridItem"  style={{ textAlign: 'center' }}>
+						<div className="grid-item"  style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Hours" />
 							<div>CLOSED</div>
 							<div>Tue: 11AM - 8PM</div>

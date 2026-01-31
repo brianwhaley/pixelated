@@ -22,7 +22,7 @@ export default function Nav() {
 			transform: translateY(-150%);
 		}`;
 	const fullMenuCSS = `
-		.panelMenuButton, #panelMenuButton {
+		.panel-menu-button, #panel-menu-button {
     		display: block;
 		}`;
 	return fullMenu ? (

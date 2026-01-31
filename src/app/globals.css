@@ -7,7 +7,7 @@
     background-image: url(/images/pix/pix-bg.gif);
 }
 
-.panelMenuButton {
+.panel-menu-button {
 	margin: 0;
     padding: 0;
 }
@@ -78,36 +78,36 @@
  ======================================== */
 
  /* only for fullMenu QS param */
-.accordionMenuWrapper,
-.accordionDown, 
-.accordionUp {
+.accordion-menu-wrapper,
+.accordion-down, 
+.accordion-up {
 	top: 100px;
 }
 
-.panelMenuButton,
-#panelMenuButton {
+.panel-menu-button,
+#panel-menu-button {
     display: none;
 }
 
-.accordionMenu > ul > li > a,
-.accordionMenu > ul > ul > li > a {
+.accordion-menu > ul > li > a,
+.accordion-menu > ul > ul > li > a {
     background-image: url(/images/pix/pix-bg-bw.gif);
     background-color: rgba(255, 255, 255, 0.5);
     background-blend-mode: overlay;
 }
-.accordionMenu > ul > li > a:hover,
-.accordionMenu > ul > ul > li > a:hover {
+.accordion-menu > ul > li > a:hover,
+.accordion-menu > ul > ul > li > a:hover {
 	background: #96befab3;
 }
 
 @media screen and (max-width: 480px) {
-    .accordionMenuWrapper,
-    .accordionDown, 
-    .accordionUp {
+    .accordion-menu-wrapper,
+    .accordion-down, 
+    .accordion-up {
         top: 60px;
     }
-    .panelMenuButton,
-    #panelMenuButton {
+    .panel-menu-button,
+    #panel-menu-button {
         display: block;
     }
 }

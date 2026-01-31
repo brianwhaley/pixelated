@@ -32,13 +32,13 @@ nav hr {
     border-color: var(--text-color);
 }
 
-.logoContainer {
+.logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.logoContainer img {
+.logo-container img {
     height: 130px !important;
     width: auto;
     filter: grayscale(60%);

@@ -10,6 +10,11 @@ interface BlogPostsContextType {
 
 const BlogPostsContext = createContext<BlogPostsContextType | undefined>(undefined);
 
+/**
+ * BlogPostsProvider - Context provider for blog posts
+ * @param children - React children components
+ * @param posts - Array of blog post objects
+ */
 BlogPostsProvider.propTypes = {
 	children: PropTypes.node.isRequired,
 	posts: PropTypes.array.isRequired

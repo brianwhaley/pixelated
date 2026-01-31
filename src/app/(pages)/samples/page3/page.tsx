@@ -45,7 +45,7 @@ export default function SamplePage3() {
 		
 
 			<header>
-				<div className="logoContainer">
+				<div className="logo-container">
 					<img src="/images/samples/the-linen-table.jpg" alt="logo" />
 				</div>
 				<nav>
@@ -94,7 +94,7 @@ export default function SamplePage3() {
 
 				<section id="tiles-section" className="">
 					<div className="row-3col">
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								layout="vertical"
@@ -104,7 +104,7 @@ export default function SamplePage3() {
 								buttonText="RESERVE NOW"
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								layout="vertical"
@@ -114,7 +114,7 @@ export default function SamplePage3() {
 								buttonText="SCHEDULE NOW"
 							/>
 						</div>
-						<div className="gridItem">
+						<div className="grid-item">
 							<Callout 
 								variant="overlay"
 								layout="vertical"
@@ -140,7 +140,7 @@ export default function SamplePage3() {
 
 					<div className="details-container row-3col">
 
-						<div className="gridItem" style={{ textAlign: 'center' }}>
+						<div className="grid-item" style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Location" />
 							<div>The Linen Table</div>
 							<div>1234 Robert Way</div>
@@ -150,7 +150,7 @@ export default function SamplePage3() {
 							<div>Email: tom@thelinentable.com</div>
 						</div>
 
-						<div className="gridItem">
+						<div className="grid-item">
 							<iframe 
 								src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d18077.1874323106!2d-84.48602569271873!3d42.7242724449086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sMos%20Eisley%20Spaceport%2C%20East%20Lansing!5e0!3m2!1sen!2sus!4v1763350624811!5m2!1sen!2sus" 
 								width="100%" 
@@ -162,7 +162,7 @@ export default function SamplePage3() {
 							</iframe>
 						</div>
 						
-						<div className="gridItem"  style={{ textAlign: 'center' }}>
+						<div className="grid-item"  style={{ textAlign: 'center' }}>
 							<PageSectionHeader title="Hours" />
 							<div>Mon: Closed</div>
 							<div>Tue: 12PM - 8:30PM</div>

@@ -9,6 +9,10 @@ import { preloadAllCSS } from "@pixelated-tech/components";
 import { preloadImages } from "@pixelated-tech/components";
 import { InferProps } from 'prop-types';
 
+/**
+ * LayoutClient - Client-side layout setup for micro-interactions and preloading assets
+ * @param none
+ */
 LayoutClient.propTypes = {};
 export type LayoutClientType = InferProps<typeof LayoutClient.propTypes>;
 export function LayoutClient() {

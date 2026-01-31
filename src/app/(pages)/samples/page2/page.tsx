@@ -172,7 +172,7 @@ export default function SamplePage2() {
 			<footer>
 				<section id="footer-callout-section">
 
-					<div className="socialContainer row-12col">
+					<div className="social-container row-12col">
 						<div className="grid-s3-e11">
 							<SocialTags />
 						</div>
