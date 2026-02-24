@@ -258,12 +258,26 @@
 					"description": "Pixelated Technologies web manifest",
 					"keywords": "pixelated technologies, web manifest"
 				} , { 
+					"name": "Partners", 
+					"path": "/partners", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Partners",
+					"description": "Partners",
+					"keywords": "pixelated technologies, partners" 
+				} , { 
 					"name": "Style Guide", 
 					"path": "/styleguide", 
 					"hidden": true,
 					"title": "Pixelated Technologies - Style Guide",
 					"description": "Style Guide",
 					"keywords": "pixelated technologies, style guide" 
+				} , { 
+					"name": "Blog Calendar", 
+					"path": "/blogcalendar", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Blog Calendar",
+					"description": "Blog Calendar",
+					"keywords": "pixelated technologies, blog calendar" 
 				} , { 
 					"name": "By The Way Font", 
 					"path": "/bytheway", 

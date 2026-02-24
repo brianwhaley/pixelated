@@ -15,7 +15,8 @@ export function scheduleAppointment(props: CalloutLibraryType) {
 			layout={props.layout || 'vertical'}
 			direction={props.direction || undefined}
 			url='/schedule' 
-			img='/images/icons/calendar-icon.png'
+			// img='/images/icons/calendar-icon.png'
+			img='/images/pix-icons/calendar.jpg'
 			imgShape='squircle'
 			title='Schedule Your Free Digital Assessment'
 			content='Sign up for your free personalized consultations to understand your 

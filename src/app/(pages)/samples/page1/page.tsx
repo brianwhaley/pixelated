@@ -10,16 +10,17 @@ import { MenuSimple } from "@pixelated-tech/components";
 import { Callout, CalloutButton } from "@pixelated-tech/components";
 import { Tiles } from "@pixelated-tech/components";
 import { MicroInteractions } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import "@pixelated-tech/components/css/pixelated.global.css";
 import "@pixelated-tech/components/css/pixelated.grid.scss";
 import "./page1.css";
 
 const menuItems = [
-	{ "name": "About Us", "path": "./", } ,
-	{ "name": "Services", "path": "./", } ,
-	{ "name": "Our Portfolio", "path": "./", } ,
-	{ "name": "Contact Us", "path": "./", } ,
+	{ "name": "About Us", "path": "/samples", } ,
+	{ "name": "Services", "path": "/samples", } ,
+	{ "name": "Our Portfolio", "path": "/samples", } ,
+	{ "name": "Contact Us", "path": "/samples", } ,
 ];
 
 const flickrCards = [
@@ -61,7 +62,7 @@ export default function SamplePage1() {
 							
 							<div id="header-logo-row">
 								<div className="logo-image pull-left">
-									<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHtcizoFKcMO4UrSvmGeznuQSamg9FOV0Os03Wj9Ofkv6p63citEUpT-z871IEQW-fb8&usqp=CAU" alt="Tom's Landscape Services Logo" />
+									<SmartImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHtcizoFKcMO4UrSvmGeznuQSamg9FOV0Os03Wj9Ofkv6p63citEUpT-z871IEQW-fb8&usqp=CAU" alt="Tom's Landscape Services Logo" />
 								</div>
 								<div className="logo-text pull-left">
 									<h1>Tom's<br />Landscape<br />Services</h1>

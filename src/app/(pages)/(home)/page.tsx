@@ -1,16 +1,35 @@
 "use client";
 
-import React, { /* useState, useEffect */ } from "react";
+import React, { useState, useEffect } from "react";
 import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
 import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
-import { BlogPostList } from "@pixelated-tech/components";
+import { getWordPressItems, BlogPostList, mapWordPressToBlogPosting, SchemaBlogPosting, type BlogPostType } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
+import { ToggleLoading } from "@pixelated-tech/components";
 
 const wpSite = "blog.pixelated.tech";
 
 export default function Home() {
+
+	const [ wpPosts, setWpPosts ] = useState<BlogPostType[]>([]);
+	const [ wpSchemas, setWpSchemas ] = useState<any[]>([]);
+
+	useEffect(() => {
+		async function fetchPosts() {
+			ToggleLoading({show: true});
+			const posts = (await getWordPressItems({ site: wpSite, count: 1 })) ?? [];
+			if(posts) { 
+				const myPosts = posts.sort((a, b) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
+				setWpPosts(myPosts);
+				setWpSchemas(myPosts.map(post => mapWordPressToBlogPosting(post, false)));
+				ToggleLoading({show: false});
+			}
+		}
+		fetchPosts();
+	}, []); 
+
 
 	return (
 		<>
@@ -34,17 +53,24 @@ export default function Home() {
 			</PageSection>
 
 
-			<PageSection columns={3} maxWidth="1024px"id="spotlight-section">
-
+			<PageSection columns={1} maxWidth="1024px" id="home-schedule-section" >
 				<PageGridItem>
-					<CalloutLibrary.scheduleAppointment />
+					<CalloutLibrary.scheduleAppointment 
+						variant='boxed grid'
+						layout='horizontal'
+					/>
 				</PageGridItem>
+			</PageSection>
+
+
+			<PageSection columns={2} maxWidth="1024px"id="spotlight-section">
 
 				<PageGridItem>
 					<Callout
 						layout='vertical'
 						url='/portfolio'
-						img='/images/icons/portfolio.png'
+						// img='/images/icons/portfolio.png'
+						img='/images/pix-icons/portfolio.jpg'
 						imgAlt='Portfolio'
 						imgShape='bevel'
 						title='View Our Work Portfolio'
@@ -62,7 +88,8 @@ export default function Home() {
 					<Callout
 						layout='vertical'
 						url='/samples'
-						img='/images/icons/mockup-icon.png'
+						// img='/images/icons/samples.png'
+						img='/images/pix-icons/samples.jpg'
 						imgAlt='Samples'
 						imgShape='bevel'
 						title='View Some Samples'
@@ -78,7 +105,11 @@ export default function Home() {
 			<PageSection id="social-section" columns={1} background="var(--secondary-color)" >
 				<SocialTags />
 				<PageSectionHeader title="Read Our Most Recent Blog Post" />
-				<BlogPostList site={wpSite} count={1} />
+				{ /* <BlogPostList site={wpSite} count={1} /> */ }
+				{ wpSchemas.map((schema, index) => (
+					<SchemaBlogPosting key={index} post={schema} />
+				)) }
+				<BlogPostList site={wpSite} posts={wpPosts} count={1} />
 			</PageSection>
 
 
@@ -91,7 +122,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="left"
-						img='/images/icons/webdev.png'
+						// img='/images/icons/webdev.png'
+						img='/images/pix-icons/webdev.jpg'
 						imgAlt='Web Development'
 						imgShape="squircle" 
 						title='Web Development'
@@ -109,7 +141,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="right"
-						img='/images/icons/socialmedia.png'
+						// img='/images/icons/socialmedia.png'
+						img='/images/pix-icons/socialmedia.jpg'
 						imgAlt='Social Media Marketing'
 						imgShape="squircle" 
 						title='Social Media Marketing'
@@ -126,7 +159,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="left"
-						img='/images/icons/seo-2.png'
+						// img='/images/icons/seo-2.png'
+						img='/images/pix-icons/seo.jpg'
 						imgAlt='Search Engine Optimization'
 						imgShape="squircle" 
 						title='Search Engine Optimization'
@@ -142,7 +176,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="right"
-						img='/images/icons/content.png'
+						// img='/images/icons/content.png'
+						img='/images/pix-icons/content.jpg'
 						imgAlt='Content Management'
 						imgShape="squircle"
 						title='Content Management'
@@ -159,7 +194,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="left"
-						img='/images/icons/ecommerce.png'
+						// img='/images/icons/ecommerce.png'
+						img='/images/pix-icons/ecommerce.jpg'
 						imgAlt='eCommerce Solutions'
 						imgShape="squircle" 
 						title='eCommerce Solutions'
@@ -176,7 +212,8 @@ export default function Home() {
 						variant="boxed"
 						layout='horizontal' 
 						direction="right"
-						img='/images/icons/custom.png'
+						// img='/images/icons/custom.png'
+						img='/images/pix-icons/modernization.jpg'
 						imgAlt='Small Business Modernization'
 						imgShape="squircle" 
 						title='Small Business Modernization'

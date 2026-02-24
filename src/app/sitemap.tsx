@@ -11,13 +11,15 @@ export default async function SiteMapXML(): Promise<MetadataRoute.Sitemap> {
 	const origin = await getOriginFromNextHeaders();
 	
 	const config: SitemapConfig = {
+		routes: myRoutes.routes,
 		createPageURLs: true,
+		createImageURLsFromJSON: true,
+		
+		createContentfulURLs: false,
+
+		wordpress: { site: wpSite },
 		createWordPressURLs: true,
 		createWordPressImageURLs: true,
-		createImageURLsFromJSON: true,
-		createContentfulURLs: false,
-		wordpress: { site: wpSite },
-		routes: myRoutes.routes,
 	};
 	const sitemap = await generateSitemap(config, origin);
 	return sitemap;

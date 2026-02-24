@@ -11,20 +11,21 @@ import { MenuSimple } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
 import { Tiles } from "@pixelated-tech/components";
 import { MicroInteractions } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page2.css";
 import SocialTags from "@/app/elements/socialtags";
 
 const menuItems1 = [
-	{ "name": "About Us", "path": "./", } ,
-	{ "name": "Services", "path": "./", } ,
-	{ "name": "Our Portfolio", "path": "./", } ,
+	{ "name": "About Us", "path": "/samples", } ,
+	{ "name": "Services", "path": "/samples", } ,
+	{ "name": "Our Portfolio", "path": "/samples", } ,
 ];
 
 const menuItems2 = [
-	{ "name": "Availability", "path": "./", } ,
-	{ "name": "Blog", "path": "./", } ,
-	{ "name": "Contact Us", "path": "./", } ,
+	{ "name": "Availability", "path": "/samples", } ,
+	{ "name": "Blog", "path": "/samples", } ,
+	{ "name": "Contact Us", "path": "/samples", } ,
 ];
 
 const flickrCards = [
@@ -65,7 +66,7 @@ export default function SamplePage2() {
 		
 			<header>
 
-				<img className="header-bg" src="https://christophersstudio.net/wp-content/uploads/2024/07/first-look-photos-scaled.jpg" />
+				<SmartImage className="header-bg" src="https://christophersstudio.net/wp-content/uploads/2024/07/first-look-photos-scaled.jpg" alt="Header Background" />
 
 				<nav>
 					<div className="pull-left">
@@ -75,7 +76,7 @@ export default function SamplePage2() {
 						<MenuSimple menuItems={menuItems2} />
 					</div>
 					<div className="logo centered">
-						<img src="/images/samples/momento-studios.png" alt="Logo" className="pull-left logo-image" />
+						<SmartImage src="/images/samples/momento-studios.png" alt="Logo" className="pull-left logo-image" />
 					</div>
 				</nav>
 
@@ -145,7 +146,7 @@ export default function SamplePage2() {
 
 				<section id="services-section">
 
-					<img className="section-bg" src="https://katelynbradleyphotography.com/wp-content/uploads/2025/03/CarolineWillWeddingNorfolkCTKatelynBradleyPhotography918.jpg" />
+					<SmartImage className="section-bg" src="https://katelynbradleyphotography.com/wp-content/uploads/2025/03/CarolineWillWeddingNorfolkCTKatelynBradleyPhotography918.jpg" alt="Services Background" />
 
 					<div className="row-12col">
 						<div className="grid-s2-e12">
@@ -179,7 +180,7 @@ export default function SamplePage2() {
 					</div>
 					
 					<div className="logo centered">
-						<img src="/images/samples/momento-studios.png" alt="Logo" className="pull-left logo-image" />
+						<SmartImage src="/images/samples/momento-studios.png" alt="Logo" className="pull-left logo-image" />
 					</div>
 
 					<hr />

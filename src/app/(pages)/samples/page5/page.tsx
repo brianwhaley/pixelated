@@ -8,17 +8,18 @@ import { MenuSimple, MenuAccordion, MenuAccordionButton } from "@pixelated-tech/
 import { PageSection } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
 import { PageSectionHeader } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page5.css";
 
 const menuItems = [
-	{ "name": "Menu", "path": "./", } ,
-	{ "name": "Event Calendar", "path": "./", } ,
-	{ "name": "Catering", "path": "./", } ,
-	{ "name": "Gallery", "path": "./", } ,
-	{ "name": "About Us", "path": "./", } ,
-	{ "name": "Contact", "path": "./", } ,
+	{ "name": "Menu", "path": "/samples", } ,
+	{ "name": "Event Calendar", "path": "/samples", } ,
+	{ "name": "Catering", "path": "/samples", } ,
+	{ "name": "Gallery", "path": "/samples", } ,
+	{ "name": "About Us", "path": "/samples", } ,
+	{ "name": "Contact", "path": "/samples", } ,
 ];
 // social media
 // online orders
@@ -50,7 +51,7 @@ export default function SamplePage4() {
 			<header>
 				<div className="row-12col">
 					<div className="logo grid-s1-e5">
-						<img src="/images/samples/HolyGuacamole.png" alt="Velocity Cycling Logo"/>
+						<SmartImage src="/images/samples/HolyGuacamole.png" alt="Velocity Cycling Logo"/>
 					</div>
 					<div className="menu grid-s5-e13">
 						<nav>

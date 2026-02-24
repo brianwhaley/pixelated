@@ -10,20 +10,21 @@ import { MicroInteractions } from "@pixelated-tech/components";
 import { MenuSimple } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
 import { PageSectionHeader } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page3.css";
 
 const menuItems = [
-	{ "name": "Menu", "path": "./", } ,
-	{ "name": "Wine & Spirits", "path": "./", } ,
-	{ "name": "Reservations", "path": "./", } ,
-	{ "name": "Orders", "path": "./", } ,
-	{ "name": "Catering", "path": "./", } ,
-	{ "name": "Events", "path": "./", } ,
-	{ "name": "Weddings", "path": "./", } ,
-	{ "name": "About Us", "path": "./", } ,
-	{ "name": "Contact", "path": "./", } ,
+	{ "name": "Menu", "path": "/samples", } ,
+	{ "name": "Wine & Spirits", "path": "/samples", } ,
+	{ "name": "Reservations", "path": "/samples", } ,
+	{ "name": "Orders", "path": "/samples", } ,
+	{ "name": "Catering", "path": "/samples", } ,
+	{ "name": "Events", "path": "/samples", } ,
+	{ "name": "Weddings", "path": "/samples", } ,
+	{ "name": "About Us", "path": "/samples", } ,
+	{ "name": "Contact", "path": "/samples", } ,
 ];
 
 export default function SamplePage3() {
@@ -46,7 +47,7 @@ export default function SamplePage3() {
 
 			<header>
 				<div className="logo-container">
-					<img src="/images/samples/the-linen-table.jpg" alt="logo" />
+					<SmartImage src="/images/samples/the-linen-table.jpg" alt="logo" />
 				</div>
 				<nav>
 					<hr />

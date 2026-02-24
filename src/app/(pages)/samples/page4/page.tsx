@@ -16,13 +16,13 @@ import "@pixelated-tech/components/css/pixelated.global.css";
 import "./page4.css";
 
 const menuItems = [
-	{ "name": "Shop", "path": "./", } ,
-	{ "name": "Build Your Bike", "path": "./", } ,
-	{ "name": "Repairs", "path": "./", } ,
-	{ "name": "Coaching", "path": "./", } ,
-	{ "name": "Locations", "path": "./", } ,
-	{ "name": "About Us", "path": "./", } ,
-	{ "name": "Contact", "path": "./", } ,
+	{ "name": "Shop", "path": "/samples", } ,
+	{ "name": "Build Your Bike", "path": "/samples", } ,
+	{ "name": "Repairs", "path": "/samples", } ,
+	{ "name": "Coaching", "path": "/samples", } ,
+	{ "name": "Locations", "path": "/samples", } ,
+	{ "name": "About Us", "path": "/samples", } ,
+	{ "name": "Contact", "path": "/samples", } ,
 ];
 
 export default function SamplePage4() {

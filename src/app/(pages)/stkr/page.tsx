@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { PageTitleHeader } from "@pixelated-tech/components";
 import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { CalloutHeader } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
 
@@ -20,7 +21,7 @@ function UseQuery() {
 	const no = (
 		<div className="centered">
 			<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1058509925568&scope=chat:write,commands,files:read,im:write,users:read">
-				<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+				<SmartImage alt="Add to Slack" height={40} width={139} src="https://platform.slack-edge.com/img/add_to_slack.png" /></a>
 		</div>
 	);
 	return ( isInstalled && isInstalled === "true" ? yes : no );
@@ -60,10 +61,10 @@ export default function Stkr() {
 					</div>
 					<div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_10.png" alt="Set your workspace settings" />
+							<SmartImage src="/images/stkr/stkr_screenshot_10.png" alt="Set your workspace settings" />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_11.png" alt="Workspace settings have been set" />
+							<SmartImage src="/images/stkr/stkr_screenshot_11.png" alt="Workspace settings have been set" />
 						</div>
 					</div>
 						
@@ -78,13 +79,13 @@ export default function Stkr() {
 					</div>
 					<div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_01.png" alt="Upload a JPG or PNG" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_01.png" alt="Upload a JPG or PNG" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_02.png" alt="Approve the upload" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_02.png" alt="Approve the upload" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_03.png" alt="There is a maximum of 50 per workspace" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_03.png" alt="There is a maximum of 50 per workspace" /><br /><br />
 						</div>
 					</div>
 					<div>
@@ -95,10 +96,10 @@ export default function Stkr() {
 					</div>
 					<div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_12.png" alt="Add URL links" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_12.png" alt="Add URL links" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_13.png" alt="URL Links added" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_13.png" alt="URL Links added" /><br /><br />
 						</div>
 					</div>
 						
@@ -114,13 +115,13 @@ export default function Stkr() {
 					</div>
 					<div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_04.png" alt="Stkr slash command" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_04.png" alt="Stkr slash command" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_05.png" alt="Select a stkr to display" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_05.png" alt="Select a stkr to display" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_06.png" alt="Share the stkr selected" />
+							<SmartImage src="/images/stkr/stkr_screenshot_06.png" alt="Share the stkr selected" />
 						</div>
 					</div>
 						
@@ -132,13 +133,13 @@ export default function Stkr() {
 					</div>
 					<div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_07.png" alt="Stkrdelete slash command" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_07.png" alt="Stkrdelete slash command" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_08.png" alt="Choose a stkr to delete" /><br /><br />
+							<SmartImage src="/images/stkr/stkr_screenshot_08.png" alt="Choose a stkr to delete" /><br /><br />
 						</div>
 						<div className="bigpad">
-							<img src="/images/stkr/stkr_screenshot_09.png" alt="Keep your stkr count at 50 or less" />
+							<SmartImage src="/images/stkr/stkr_screenshot_09.png" alt="Keep your stkr count at 50 or less" />
 						</div>
 					</div>
 						

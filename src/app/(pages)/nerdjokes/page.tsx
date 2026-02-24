@@ -6,6 +6,7 @@ import { PageGridItem, PageTitleHeader } from "@pixelated-tech/components";
 import { PageSection } from "@pixelated-tech/components";
 import { CalloutHeader } from "@pixelated-tech/components";
 import { NerdJoke } from "@pixelated-tech/components";
+import { SmartImage } from "@pixelated-tech/components";
 import Terms from "@/app/elements/terms";
 import Privacy from "@/app/elements/privacy";
 
@@ -20,8 +21,7 @@ function UseQuery() {
 	const no = (
 		<div className="slackbutton centered">
 			<a href="https://slack.com/oauth/v2/authorize?client_id=1058085085824.1093097617364&scope=chat:write,chat:write.public,commands,im:write">
-				<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" 
-					srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+				<SmartImage alt="Add to Slack" height={40} width={139} src="https://platform.slack-edge.com/img/add_to_slack.png" /></a>
 			<br />
 		</div>
 	);
@@ -67,10 +67,10 @@ export default function NerdJokes() {
 						<li> Type &#39;/nerdjokes&#39; or &#39;/nerdjokes getjoke&#39; to get a random joke to immediately share with your teammates.</li><br /><br />
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_01a.png" alt="NerdJokes Joke Question" /><br></br>
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_01a.png" alt="NerdJokes Joke Question" /><br></br>
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_01b.png" alt="NerdJokes Joke Answer" />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_01b.png" alt="NerdJokes Joke Answer" />
 					</div>
 					
 					<div><hr /></div>
@@ -81,10 +81,10 @@ export default function NerdJokes() {
 						<li> Type &#39;/nerdjokes deleteschedule&#39; to delete a schedule for delivering jokes to the current channel. </li>
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_02a.png" alt="NerdJokes Add Joke Schedule" /><br /><br />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_02a.png" alt="NerdJokes Add Joke Schedule" /><br /><br />
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_02b.png" alt="NerdJokes Delete Joke Schedule" /><br /><br />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_02b.png" alt="NerdJokes Delete Joke Schedule" /><br /><br />
 					</div>
 					
 					<div><hr /></div>
@@ -94,7 +94,7 @@ export default function NerdJokes() {
 						<li> Type &#39;/nerdjokes addjoke&#39; to recommend a new joke to be added to the collection.</li>
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_03.png" alt="NerdJokes Add Joke" /><br /><br />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_03.png" alt="NerdJokes Add Joke" /><br /><br />
 					</div>
 					
 					<div><hr /></div>
@@ -106,10 +106,10 @@ export default function NerdJokes() {
 						<li> Type &#39;/nerdjokes support&#39; to get more information on how to reach out for support. </li>
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_04a.png" alt="NerdJokes Help" /><br /><br />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_04a.png" alt="NerdJokes Help" /><br /><br />
 					</div>
 					<div className="bigpad">
-						<img src="/images/nerdjokes/nerdjokes_step_04b.png" alt="NerdJokes Bugs and Support" /><br /><br />
+						<SmartImage src="/images/nerdjokes/nerdjokes_step_04b.png" alt="NerdJokes Bugs and Support" /><br /><br />
 					</div>
 					
 					<div><hr /></div>
