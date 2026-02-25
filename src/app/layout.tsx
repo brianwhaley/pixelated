@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { getRouteByKey } from "@pixelated-tech/components/server";
 import { generateMetaTags, PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
 import { LocalBusinessSchema, WebsiteSchema, ServicesSchema } from "@pixelated-tech/components/server";
-// import { SchemaBlogPosting, mapWordPressToBlogPosting, getWordPressItems } from "@pixelated-tech/components/server";
+import { SchemaBlogPosting, mapWordPressToBlogPosting, getWordPressItems } from "@pixelated-tech/components/server";
 import { VisualDesignStyles } from "@pixelated-tech/components/server";
 import type { /* BlogPostType, */ SiteInfo } from "@pixelated-tech/components";
 import { LayoutClient } from "@/app/elements/layoutclient";
@@ -18,9 +18,6 @@ import "@pixelated-tech/components/css/pixelated.global.css";
 import "@pixelated-tech/components/css/pixelated.grid.scss";
 import "./globals.css";
 
-// const BLOG_SCHEMA_FETCH_COUNT: number | undefined = undefined;
-// const WORDPRESS_SITE = "blog.pixelated.tech";
-
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 
 	const reqHeaders: Headers = await (headers() as Promise<Headers>);
@@ -33,19 +30,13 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	// Extract siteinfo from routes.json for schema components
 	const siteInfo = myRoutes.siteInfo;
 
-	// Fetch blog posts once for both schemas and page display
-	// If BLOG_SCHEMA_FETCH_COUNT is undefined, fetches ALL available posts (with auto-pagination)
-	/* let blogPosts: BlogPostType[] = [];
 	let blogSchemas: any[] = [];
 	if (pathname === "/blog") {
-		try {
-			blogPosts = (await getWordPressItems({ site: WORDPRESS_SITE, count: BLOG_SCHEMA_FETCH_COUNT })) ?? [];
-			blogSchemas = blogPosts.map(post => mapWordPressToBlogPosting(post, false));
-		} catch (error) {
-			console.error("Error fetching blog posts:", error);
-		}
-	} */
-
+		const blogSite = "blog.pixelated.tech";
+		const blogPosts = (await getWordPressItems({ site: blogSite })) ?? [];
+		blogSchemas = (await blogPosts ?? []).map(post => mapWordPressToBlogPosting(post, false));
+	}
+		
 	// Minimal layout for /samples routes - no CSS, no header/nav/footer
 	const regexPattern = /^\/samples\/.+$/;
 	const samplesBody = <>{children}</>;
@@ -103,17 +94,15 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						addressCountry="US"
 						telephone="+1-843-699-6611"
 					/>
-					{ /* blogSchemas.map((schema, index) => (
+					{ blogSchemas.map((schema, index) => (
 						<SchemaBlogPosting key={index} post={schema} />
-					)) */ }
+					)) }
 					<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
 				</head>
 				<body>
 					<PixelatedServerConfigProvider>
-						{ /* <BlogPostsProvider posts={blogPosts}> */ }
 						{ layoutBody }
-						{ /* </BlogPostsProvider> */ }
 					</PixelatedServerConfigProvider>
 				</body>
 			</html></>

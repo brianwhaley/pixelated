@@ -1,6 +1,6 @@
 {
 	"name": "pixelatedtech",
-	"version": "4.5.3",
+	"version": "4.5.4",
 	"private": true,
 	"author": {
 		"name": "Pixelated Technologies",
@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "npm run clean && NODE_OPTIONS='--inspect' next dev  -p 3004 --experimental-https",
 		"build": "npm run clean && NODE_ENV=production next build",
-		"start": "npm run clean && next build && next start",
+		"start": "npm run clean && next build && next start -p 3004",
 		"lint": "eslint --fix",
 		"clean": "rm -rf .next && rm -rf out",
 		"generate-site-images": "node ./node_modules/@pixelated-tech/components/dist/scripts/generate-site-images.js",
@@ -25,7 +25,7 @@
 		"update-all": "npm run update && UPDATES=$(npm outdated --dev | awk 'NR>1 {print $1\"@\"$3}') && [ -n \"$UPDATES\" ] && echo \"$UPDATES\" | xargs npm install --force --save-dev; UPDATES=$(npm outdated --optional | awk 'NR>1 {print $1\"@\"$3}') && [ -n \"$UPDATES\" ] && echo \"$UPDATES\" | xargs npm install --force --save-optional; npm audit fix"
 	},
 	"dependencies": {
-		"@pixelated-tech/components": "^3.13.7",
+		"@pixelated-tech/components": "^3.13.8",
 		"date-fns": "^4.1.0",
 		"globals": "^17.3.0",
 		"html-entities": "^2.6.0",

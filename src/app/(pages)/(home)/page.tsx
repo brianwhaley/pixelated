@@ -8,6 +8,7 @@ import { getWordPressItems, BlogPostList, mapWordPressToBlogPosting, SchemaBlogP
 import SocialTags from "@/app/elements/socialtags";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { ToggleLoading } from "@pixelated-tech/components";
+import { Hero } from "@pixelated-tech/components";
 
 const wpSite = "blog.pixelated.tech";
 
@@ -33,6 +34,13 @@ export default function Home() {
 
 	return (
 		<>
+
+			<Hero 
+				variant="video"
+				video="/videos/GettyImages-1251562713.mp4"
+				height="40vh"
+			/>
+
 			<PageTitleHeader title="Pixelated Technologies" />
 			<PageSection id="pixelated-section" maxWidth="768px" columns={1}>
 				<PageGridItem>
