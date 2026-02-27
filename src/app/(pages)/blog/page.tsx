@@ -10,6 +10,7 @@ import { ToggleLoading } from '@pixelated-tech/components';
 import { getCachedWordPressItems } from '@pixelated-tech/components';
 
 const wpSite = "blog.pixelated.tech";
+
 export default function Blog() {
 
 	const [ wpCategories, setWpCategories ] = useState<string[]>([]);

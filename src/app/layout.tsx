@@ -30,12 +30,12 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 	// Extract siteinfo from routes.json for schema components
 	const siteInfo = myRoutes.siteInfo;
 
-	let blogSchemas: any[] = [];
-	if (pathname === "/blog") {
-		const blogSite = "blog.pixelated.tech";
-		const blogPosts = (await getWordPressItems({ site: blogSite })) ?? [];
-		blogSchemas = (await blogPosts ?? []).map(post => mapWordPressToBlogPosting(post, false));
-	}
+	// let blogSchemas: any[] = [];
+	// if (pathname === "/blog") {
+	const blogSite = "blog.pixelated.tech";
+	const blogPosts = (await getWordPressItems({ site: blogSite })) ?? [];
+	const blogSchemas = (await blogPosts ?? []).map(post => mapWordPressToBlogPosting(post, false));
+	// }
 		
 	// Minimal layout for /samples routes - no CSS, no header/nav/footer
 	const regexPattern = /^\/samples\/.+$/;
