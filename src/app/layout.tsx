@@ -2,7 +2,7 @@
 import { headers } from "next/headers";
 import { getRouteByKey } from "@pixelated-tech/components/server";
 import { generateMetaTags, PixelatedServerConfigProvider } from "@pixelated-tech/components/server";
-import { LocalBusinessSchema, WebsiteSchema, ServicesSchema } from "@pixelated-tech/components";
+import { LocalBusinessSchema, WebsiteSchema, ServicesSchema, BreadcrumbListSchema } from "@pixelated-tech/components";
 import { VisualDesignStyles } from "@pixelated-tech/components/server";
 import type { /* BlogPostType, */ SiteInfo } from "@pixelated-tech/components";
 import { LayoutClient } from "@/app/elements/layoutclient";
@@ -73,6 +73,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 						url: url ?? "",
 						siteInfo: siteInfo as SiteInfo,
 					}) }
+					<BreadcrumbListSchema routes={myRoutes.routes} currentPath={pathname} siteUrl={siteInfo.url} />
 					<WebsiteSchema siteInfo={siteInfo as SiteInfo} />
 					<LocalBusinessSchema siteInfo={myRoutes.siteInfo} />
 					<ServicesSchema siteInfo={siteInfo} />
@@ -88,6 +89,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 					/>
 					<meta name="google-site-verification" content="t2yy9wL1bXPiPQjBqDee2BTgpiGQjwVldlfa4X5CQkU" />
 					<meta name="google-site-verification" content="l7D0Y_JsgtACBKNCeFAXPe-UWqo13fPTUCWhkmHStZ4" />
+					<meta name="blogarama-site-verification" content="blogarama-255c1bbf-7596-49bc-9d50-91af781055c2" />
 				</head>
 				<body>
 					<PixelatedServerConfigProvider>

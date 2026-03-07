@@ -37,6 +37,12 @@ const sampleTiles = [
 		image: "https://img.freepik.com/free-photo/vegetarian-taco-with-beans-guacamole-wooden-table_123827-36208.jpg",
 		imageAlt: "Holy Guacamole Food Truck",
 	}, 
+	{
+		index: 5, cardIndex: 5, cardLength: 3,
+		link: "/samples/page6",
+		image: "/images/samples/law/closeup-judge-gavel-with-symbolizing-foreclosure-proceedings.jpg",
+		imageAlt: "McKenzie & Brackman Law Firm",
+	}, 
 ];
 
 export default function Samples() {

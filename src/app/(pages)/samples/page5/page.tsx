@@ -32,7 +32,7 @@ const menuItems = [
 // hours
 // team bios
 
-export default function SamplePage4() {
+export default function SamplePage5() {
 
 	useEffect(() => {
 		MicroInteractions({ 
@@ -51,7 +51,7 @@ export default function SamplePage4() {
 			<header>
 				<div className="row-12col">
 					<div className="logo grid-s1-e5">
-						<SmartImage src="/images/samples/HolyGuacamole.png" alt="Velocity Cycling Logo"/>
+						<SmartImage src="/images/samples/foodtruck/HolyGuacamole.png" alt="Velocity Cycling Logo"/>
 					</div>
 					<div className="menu grid-s5-e13">
 						<nav>

@@ -10,11 +10,16 @@ export default function SocialTags() {
 	return (
 		<>
 			<PageSectionHeader url="" title="Follow us on Social Media" />
-			<PageSection id="socialtag-section"columns={11} padding={"0px"}>
+			<PageSection id="socialtag-section"columns={7} padding={"0px"}>
 				<PageGridItem>
 					<Callout variant="full" imgShape="squircle" layout="vertical" 
-						url="http://blog.pixelated.tech" 
+						url="https://blog.pixelated.tech" 
 						img="/images/icons/blog-icon.jpg" imgAlt="Pixelated Technologies Blog" />
+				</PageGridItem>
+				<PageGridItem>
+					<Callout variant="full" imgShape="squircle" layout="vertical" 
+						url="https://open.spotify.com/show/68EPDLNTLd804NiOL6w6ot" 
+						img="/images/icons/podcast-icon.png" imgAlt="The Pixelated Podcast" />
 				</PageGridItem>
 				<PageGridItem>
 					<Callout variant="full" imgShape="squircle" layout="vertical" 
@@ -45,6 +50,11 @@ export default function SocialTags() {
 					<Callout variant="full" imgShape="squircle" layout="vertical" 
 						url="http://twitter.com/pixelatedviews" 
 						img="/images/logos/twitter-logo.png" imgAlt="Twitter" />
+				</PageGridItem>
+				<PageGridItem>
+					<Callout variant="full" imgShape="squircle" layout="vertical" 
+						url="https://creators.spotify.com/pod/profile/pixelated-technologies/" 
+						img="/images/logos/spotify-logo.png" imgAlt="Spotify" />
 				</PageGridItem>
 				<PageGridItem>
 					<Callout variant="full" imgShape="squircle" layout="vertical" 

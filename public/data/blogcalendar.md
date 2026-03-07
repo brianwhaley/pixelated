@@ -29,19 +29,19 @@ Many business owners have Google Analytics installed but never look at the dashb
 ## [ X ] Week 7: Competing with Site Builders: Why Templates Limit Your Growth
 Wix and Squarespace are tempting, but they often lead to a "feature ceiling." We compare these builders against custom-coded solutions, focusing on speed and scalability. A one-second delay in mobile load time can increase bounce rates by 123%, a common issue with bloated template sites. Custom development allows for specific integrations with CRMs or specialized booking software that site builders simply can't handle. We position Pixelated Tech as the partner for businesses that have outgrown "cookie-cutter" options and need a tool designed for their specific business logic.
 
-## [  ] Week 8: The Power of Referral Programs in the Digital Age
+## [ X ] Week 8: The Power of Referral Programs in the Digital Age
 Word-of-mouth is still the strongest marketing tool, but it needs a digital engine. We discuss how to create an automated referral program that rewards your most loyal customers for spreading the word. By integrating these programs into your website, you turn your client base into a lead-generation machine. We look at local success stories in the NJ/SC area where simple digital incentives led to a 20% increase in warm leads. It’s about leveraging the community trust you’ve already built and scaling it through technology.
 
-## [  ] Week 9: Traditional Marketing in a Digital World: Mailers & QR Codes
+## [ X ] Week 9: Traditional Marketing in a Digital World: Mailers & QR Codes
 Traditional marketing isn't dead; it's evolving. We explore how Denville and Bluffton businesses can use physical mailers or newspaper ads effectively by bridging them with digital tools. A well-designed mailer with a QR code can lead directly to a specific landing page, allowing you to track the exact ROI of a print campaign. This "Phygital" (Physical + Digital) approach captures audiences who might be offline but brings them into your digital ecosystem. We show how to track these interactions to see which neighborhoods are most responsive to your brand.
 
 ## [  ] Week 10: Designing for Accessibility: Why ADA Compliance Matters
 Web accessibility isn't just a trend; it's a legal necessity and a moral imperative. Many small business sites are currently vulnerable to lawsuits because they don't meet WCAG standards for screen readers. We explain the basics of alt-text, color contrast, and keyboard navigation. Beyond legal protection, accessible design opens your business to the millions of people with disabilities who are currently excluded from your site. We demonstrate how Pixelated Tech builds inclusivity into the foundation of every project, ensuring your Bluffton or Denville shop is open to everyone.
 
-## [  ] Week 11: Hosting Matters: The Speed and Security Connection
+## [ X ] Week 11: Hosting Matters: The Speed and Security Connection
 Where your website "lives" is just as important as how it looks. Cheap shared hosting is often the culprit behind slow speeds and frequent downtime. We discuss the benefits of modern cloud hosting and Content Delivery Networks (CDNs) that ensure your site loads instantly, whether the visitor is in New Jersey or halfway across the world. Speed is a major Google ranking factor, and a faster site directly leads to higher conversion rates. We break down the technical jargon to explain why "managed hosting" is a wise investment for small businesses.
 
-## [  ] Week 12: Using Giveaways to Build a Warm Lead List
+## [ X ] Week 12: Using Giveaways to Build a Warm Lead List
 Everyone loves a contest, but the real value is the data you collect. We discuss how to run a digital giveaway that requires an email or phone number for entry, effectively building a "warm" marketing list. We focus on high-intent prizes that filter for your target audience, rather than generic items. For example, a local Bluffton HVAC company might give away a free smart thermostat. We explain how to nurture these leads after the contest ends so that today's "contest seekers" become tomorrow's paying customers through strategic email marketing.
 
 ## [  ] Week 13: The E-commerce Shift: Selling Your Service Like a Product
@@ -50,16 +50,16 @@ You don't need a warehouse to benefit from e-commerce. Service-based businesses 
 ## [  ] Week 14: Next.js and the Future of Web Performance
 In this technical authority post, we explain why Pixelated Tech utilizes the Next.js framework. We break down "Server-Side Rendering" and "Static Site Generation" in simple terms, explaining how these technologies make websites significantly faster and more SEO-friendly than traditional WordPress sites. We show how this technical edge translates to a better user experience and higher search rankings. This demonstrates our innovation and commitment to using "cutting-edge" tools rather than relying on outdated industry standards. It positions the client’s site as a modern, future-proofed business tool.
 
-## [  ] Week 15: Social Media Strategy: Quality Over Quantity
+## [ X ] Week 15: Social Media Strategy: Quality Over Quantity
 Many small business owners feel overwhelmed by the need to be on every social platform. We argue for a "fewer, better" approach—focusing on the one or two platforms where your local Denville or Bluffton customers actually spend time. We discuss the role of social media as a "top-of-funnel" driver that should always point back to your website, which you own and control. By creating a content calendar and using scheduling tools, you can maintain a professional presence without it becoming a full-time job.
 
-## [  ] Week 16: The True Cost of a "Cheap" Website
+## [ X ] Week 16: The True Cost of a "Cheap" Website
 This post addresses the "low-cost" offshore or budget agencies that often overpromise and underdeliver. We discuss the long-term expenses of fixing poor code, broken links, and bad SEO that often accompany these "deals." For a small business, a $500 website that doesn't generate leads is more expensive than a $5,000 site that pays for itself in three months. We emphasize the value of local accountability and having a developer who understands the South Carolina and New Jersey business climates. Investing in quality upfront saves thousands in the long run.
 
-## [  ] Week 17: Tech for Non-Profits: Boosting Donations Digitally
+## [ X ] Week 17: Tech for Non-Profits: Boosting Donations Digitally
 Non-profits in our local communities have unique digital needs. We discuss how a well-designed website can streamline donor management, event registration, and storytelling to drive more contributions. We look at features like recurring donation buttons and integrated social proof. By demonstrating our work with local organizations, we connect Pixelated Tech to the community while showing our ability to handle specialized integrations. This demonstrates subject matter expertise in a sector where trust and transparency are the primary drivers of success.
 
-## [  ] Week 18: Mobile-First is the Only Way to Design
+## [ X ] Week 18: Mobile-First is the Only Way to Design
 With over 60% of web traffic now on mobile devices, "mobile-friendly" is no longer enough—it must be "mobile-first." We discuss how users interact with sites differently on a phone versus a desktop, focusing on thumb-reach, font size, and load speed on cellular networks. A bad mobile experience is a fast way to lose a Bluffton customer who is searching for services on the go. We explain our responsive design process and why we test every site across a dozens of devices to ensure a seamless experience for every visitor.
 
 ## [  ] Week 19: The Importance of SSL: Why Google Flags "Not Secure" Sites

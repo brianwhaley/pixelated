@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
 import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import { Callout } from "@pixelated-tech/components";
-import { getWordPressItems, BlogPostList, mapWordPressToBlogPosting, SchemaBlogPosting, type BlogPostType } from "@pixelated-tech/components";
+import { getWordPressItems, BlogPostList, type BlogPostType } from "@pixelated-tech/components";
 import SocialTags from "@/app/elements/socialtags";
 import * as CalloutLibrary from "@/app/elements/calloutlibrary";
 import { ToggleLoading } from "@pixelated-tech/components";
@@ -14,30 +14,39 @@ const wpSite = "blog.pixelated.tech";
 
 export default function Home() {
 
-	const [ wpPosts, setWpPosts ] = useState<BlogPostType[]>([]);
-	const [ wpSchemas, setWpSchemas ] = useState<any[]>([]);
+	const videos = [
+		"/videos/0_Animation_Network_Connection.mp4",
+		"/videos/0_People_Animation.mp4",
+		"/videos/1294192_app_application.mp4",
+		"videos/GettyImages-675750094.mp4",
+		"videos/GettyImages-1251562713.mp4",
+	];
+	const [heroVideo, setHeroVideo] = useState<string>();
+	useEffect(() => {
+		setHeroVideo(videos[Math.floor(Math.random() * videos.length)]);
+	}, []);
 
+
+	const [ wpPosts, setWpPosts ] = useState<BlogPostType[]>([]);
 	useEffect(() => {
 		async function fetchPosts() {
 			ToggleLoading({show: true});
 			const posts = (await getWordPressItems({ site: wpSite, count: 1 })) ?? [];
 			if(posts) { 
-				const myPosts = posts.sort((a, b) => ((a.date ?? '') < (b.date ?? '')) ? 1 : -1);
-				setWpPosts(myPosts);
-				setWpSchemas(myPosts.map(post => mapWordPressToBlogPosting(post, false)));
+				setWpPosts(posts);
 				ToggleLoading({show: false});
 			}
 		}
 		fetchPosts();
 	}, []); 
 
-
 	return (
 		<>
 
 			<Hero 
 				variant="video"
-				video="/videos/GettyImages-1251562713.mp4"
+				// video="/videos/GettyImages-1251562713.mp4"
+				video={heroVideo}
 				height="40vh"
 			/>
 
@@ -113,10 +122,6 @@ export default function Home() {
 			<PageSection id="social-section" columns={1} background="var(--secondary-color)" >
 				<SocialTags />
 				<PageSectionHeader title="Read Our Most Recent Blog Post" />
-				{ /* <BlogPostList site={wpSite} count={1} /> */ }
-				{ wpSchemas.map((schema, index) => (
-					<SchemaBlogPosting key={index} post={schema} />
-				)) }
 				<BlogPostList site={wpSite} posts={wpPosts} count={1} />
 			</PageSection>
 
