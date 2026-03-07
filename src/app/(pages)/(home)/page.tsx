@@ -15,11 +15,11 @@ const wpSite = "blog.pixelated.tech";
 export default function Home() {
 
 	const videos = [
-		"/videos/0_Animation_Network_Connection.mp4",
-		"/videos/0_People_Animation.mp4",
-		"/videos/1294192_app_application.mp4",
-		"videos/GettyImages-675750094.mp4",
-		"videos/GettyImages-1251562713.mp4",
+		"https://videos.ctfassets.net/ank9sh265hdu/4rxGU5MYRZtZcfD0b7nq1j/1a4a9f7a7f8f4f5e6de7aae53796f024/0_Animation_Network_Connection.mp4",
+		"https://videos.ctfassets.net/ank9sh265hdu/4rukYNzKrmBTrM7r2AWcxw/eca6e2aa323209ce3949593a7a1c1a50/0_People_Animation.mp4",
+		"https://videos.ctfassets.net/ank9sh265hdu/7kdjRW4ARgZpk2Zuslt2bN/e81d09990e04c660612462e3466c0383/1294192_App_Application.mp4",
+		"https://videos.ctfassets.net/ank9sh265hdu/5CfnOgx8k1Gqq0xXDlyJpd/108a865ae94f4c521fe4cfbd63cdd9b0/GettyImages-1251562713.mp4",
+		"https://videos.ctfassets.net/ank9sh265hdu/6kj4wZu4VRAupq78sYhA9D/f2c378598ba552197884be5e29e1e0c3/GettyImages-675750094.mp4",
 	];
 	const [heroVideo, setHeroVideo] = useState<string>();
 	useEffect(() => {
