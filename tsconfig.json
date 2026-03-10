@@ -23,6 +23,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "../pixelated-components/src/components/integrations/spotify.components.tsx", "../pixelated-components/src/components/integrations/spotify.functions.ts"  ],
   "exclude": ["node_modules"]
 }

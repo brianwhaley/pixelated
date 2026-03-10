@@ -37,7 +37,7 @@ export default function SamplePage6() {
 			<header>
 				<div className="row-12col">
 					<div className="logo grid-s1-e5">
-						<SmartImage src="/images/samples/law/m&b.png" alt="McKenzie & Brackman"/>
+						<SmartImage src="/images/samples/law/m-b.png" alt="McKenzie & Brackman"/>
 					</div>
 					<div className="menu grid-s5-e13">
 						<nav>

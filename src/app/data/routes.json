@@ -202,6 +202,13 @@
 					"description": "Pixelated Technologies Cost Information",
 					"keywords": "pixelated technologies, cost, pricing, web development, small business" 
 				} , { 
+					"name": "Podcast", 
+					"path": "/podcast", 
+					"hidden": true,
+					"title": "Pixelated Technologies - Podcast",
+					"description": "Pixelated Technologies Podcast",
+					"keywords": "pixelated technologies, podcast, spotify, episodes"  
+				} , { 
 					"name": "NerdJokes", 
 					"path": "/nerdjokes", 
 					"hidden": true,
