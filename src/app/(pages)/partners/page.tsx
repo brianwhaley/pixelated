@@ -19,18 +19,13 @@ export default function Partners() {
 	
 	return (
 		<>
-
-			<style
-				id="dynamic-styles" // Adding an ID can help manage the tag
-				dangerouslySetInnerHTML={{ __html: cssContent }}
-			/>
-
+			<style id="dynamic-styles" dangerouslySetInnerHTML={{ __html: cssContent }} />
 			<PageTitleHeader title="Pixelated Technologies Partners" />
 			<br />
-
 			<PageSectionHeader title="Find us on these platforms" />
 			<PageSection columns={12} maxWidth="1024px" id="partners-section">
 				{ partnerData.partners.map((partner, index) => {
+					if (!partner.url) return null;
 					return (
 						<PageGridItem key={index}>
 							<PartnersBadge name={partner.name} url={partner.url} img={partner.img ?? ''} />
@@ -38,77 +33,6 @@ export default function Partners() {
 					);
 				})}
 			</PageSection>
-
-
-			{ /* <PageSectionHeader title="Find us on these platforms soon!" />
-					<ul>
-						https://topdevelopers.co/
-						https://itfirms.co/
-						https://njbiz.com/
-						https://themanifest.com/
-						https://rutgersfoundation.org/alumni-owned-business-marketplace-directory
-						https://www.bingplaces.com/
-						https://www.morristown-nj.org/
-						https://www.downtownmorrisplains.org/directory
-						https://citylocalpro.com/add-your-business
-						https://njbusinessdirectory.org/
-						https://localpages.com/business-listing/edit?id=171366
-						https://www.macraesbluebook.com/UserCenter/login.cfm
-						http://www.myhuckleberry.com/signin.aspx
-
-						https://guidetosouthcarolina.com/denville/business-consulting/pixelated-technologies
-						https://www.bbb.org/get-listed
-						https://hhibusiness.com/listings/create/
-						https://www.yellowpages.com/claim-your-listing
-						https://scbizdev.sccommerce.com/suppliers/become-part-sourcesc
-
-					</ul> */ }
-
-			{ /* <PageSectionHeader title="To Do" /> 
-
-						https://www.allpages.com/about/listings-modification.html
-						https://www.bbb.org/
-						https://www.bbb.org/get-accredited 
-						https://www.bestofnj.com/
-						https://www.callupcontact.com/active/register/register.php?
-						https://www.cloudtango.net/providers/get-listed/
-						https://brands.consumeraffairs.com/
-						https://www.corfacts.com/
-						https://corporation.directory/register
-						https://local-listings.data-axle.com/search // CITYSEARCH
-						https://elioplus.com/free-sign-up
-						https://www.expertise.com/
-						https://www.expressbusinessdirectory.com/
-						https://www.g2.com/review
-						https://www.gartner.com/en/digital-markets/capterra-provider-signup
-						https://www.hiltonheadchamber.org/
-						https://itrate.co/
-						https://www.morrischamber.org/
-						https://business.nj.gov/pages/sbe
-						https://www.njbusinesslist.com/
-						https://www.njchamber.com/
-						https://www.shccnj.com/
-						https://agencies.semrush.com/list/web-development/new-jersey/small-business/
-						https://www.statewidechambers.com/
-						https://www.truefirms.co/free-listing
-						https://solutions.trustradius.com/claim-your-profile/
-						https://www.whitepages.com/business-pricing
-						https://yplocal.us/add-your-business/
-						https://signup.zoominfo.com/#/
-
-					*/ }
-						
-			{ /* PAID SERVICES
-						https://countywebsite.com/
-						https://www.judysbook.com/BusinessCenter/ClaimBusiness.aspx
-						https://www.kompass.com/
-						https://mspaa.net/member-registration/#join 
-						https://www.smartguy.com/
-						https://uscity.net/
-						http://www.usdirectory.com/
-						https://www.yext.com/
-					*/ }
-
 		</>
 	);
 }
