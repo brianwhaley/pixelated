@@ -34,7 +34,7 @@ frontend:
         headers:
           - key: 'Cache-Control'
             value: 'public, max-age=31536000, s-maxage=31536000, immutable'
-      - pattern: '/**/*.{css,gif,ico,jpg,jpeg,png,svg,webp,woff,woff2,ttf,eot,json,js}'
+      - pattern: '/**/*.{css,eot,gif,ico,jpg,jpeg,js,json,mp4,ogg,otf,png,svg,ttf,webm,webp,woff,woff2,xml,xsl,zip}'
         headers:
           - key: 'Cache-Control'
             value: 'public, max-age=31536000, s-maxage=31536000, immutable'
