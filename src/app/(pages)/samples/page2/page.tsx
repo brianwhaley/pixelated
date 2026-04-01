@@ -54,19 +54,19 @@ export default function SamplePage2() {
 			formglow: true,
 			imgscale: true,
 			grayscalehover: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile, .scrollFadeElement',
 		});
 	}, []);
 
 	return (
 		<>
-			<link rel="preconnect" href="https://fonts.googleapis.com" />
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" />
+			<link rel="preconnect" fetchPriority="high" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" fetchPriority="high" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+			<link rel="stylesheet" fetchPriority="high" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" />
 		
 			<header>
 
-				<SmartImage className="header-bg" src="https://christophersstudio.net/wp-content/uploads/2024/07/first-look-photos-scaled.jpg" alt="Header Background" />
+				<SmartImage className="header-bg" src="https://christophersstudio.net/wp-content/uploads/2024/07/first-look-photos-scaled.jpg" aboveFold={true} alt="Header Background" />
 
 				<nav>
 					<div className="pull-left">

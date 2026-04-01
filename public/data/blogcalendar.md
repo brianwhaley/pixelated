@@ -8,6 +8,15 @@
 * Add links to other blog posts or other content on pixelated.tech
 * Use a tone of empthy, understanding as a small business owner myself, an expert in the field of web and marketing, and straightforward language
 
+## Criteria for Blog Post to Podcast Conversion
+* Making the minimum amount of changes possible, Write a podcast-friendly script for this blog post.
+* Change or remove titles to be conversational, while keeping as close to the original content as possible. 
+* Change bulleted lists to be conversational, while keeping as close to the original content as possible. 
+* change tables to be conversational, while keeping as close to the original content as possible. 
+* Keep the rest of the blog post exactly the same. 
+* End with a short plug to schedule a free assessment now at pixelated.com/schedule. 
+* Here are the exact words from the original blog post.
+
 ## [ x ] Week 1: The Digital Storefront: Why a Website is No Longer Optional
 In 2026, your website is your first and most important impression. According to Forbes, 81% of shoppers research online before buying, and 84% of consumers find businesses with websites more credible than those with only social media. For small businesses in Denville and Bluffton, a site is the foundation of modern trust. Without a site, you are invisible to the 31% of the population who avoid businesses they cannot find via search. This post explores the "Credibility Gap" and why a professional web presence is your only 24/7 salesperson.
 

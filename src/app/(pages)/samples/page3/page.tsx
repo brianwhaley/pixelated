@@ -34,20 +34,20 @@ export default function SamplePage3() {
 			buttonring: true,
 			formglow: true,
 			imgscale: true,
-			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile-container, .tile',
+			scrollfadeElements: '.callout , .calloutSmall , .carousel-container, .timeline-container, .tile-container, .tile, .scrollFadeElement',
 		});
 	}, []);
 
 	return (
 		<>
-			<link rel="preconnect" href="https://fonts.googleapis.com" />
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-			<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Great+Vibes&display=swap" rel="stylesheet" />
+			<link rel="preconnect" fetchPriority="high" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" fetchPriority="high" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+			<link rel="stylesheet" fetchPriority="high" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Great+Vibes&display=swap" />
 		
 
 			<header>
 				<div className="logo-container">
-					<SmartImage src="/images/samples/the-linen-table.jpg" alt="logo" />
+					<SmartImage src="/images/samples/the-linen-table.jpg" aboveFold={true} alt="logo" />
 				</div>
 				<nav>
 					<hr />
@@ -65,6 +65,7 @@ export default function SamplePage3() {
 						direction="left"
 						url="./" 
 						img="https://t3.ftcdn.net/jpg/15/88/13/22/360_F_1588132217_cexuZsTtfLkhp9GCJdN3nN4cKeCcEYyZ.jpg" 
+						aboveFold={true}
 						title="Our Menu" 
 						content="Explore our diverse menu featuring gourmet dishes 
 						crafted from the freshest ingredients, designed to 

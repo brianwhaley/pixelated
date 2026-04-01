@@ -11,7 +11,7 @@ export default function ByTheWay() {
 	
 	return ( 
 		<>
-			<link rel="stylesheet" href="/fonts/bytheway/bytheway.css" />
+			<link rel="stylesheet" fetchPriority="high" href="/fonts/bytheway/bytheway.css" />
 
 			<PageTitleHeader title="By The Way - Font Sample" />
 			<PageSection columns={12} id="portfolio-section">

@@ -15,7 +15,7 @@ import Footer from '@/app/elements/footer';
 import myRoutes from "@/app/data/routes.json";
 import "@pixelated-tech/components/css/pixelated.global.css";
 import "@pixelated-tech/components/css/pixelated.grid.scss";
-import "./globals.css";
+import "@/app/styles/globals.css";
 
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
 

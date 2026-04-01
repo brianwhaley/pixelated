@@ -24,6 +24,7 @@ export default function Podcast() {
 			const series = await getSpotifySeries({ rssURL: podSite });
 			setSeries(await series ?? null);
 			const episodes = await getSpotifyEpisodes({ rssURL: podSite });
+			episodes?.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 			setEpisodes(await episodes ?? []);
 			ToggleLoading({show: false});
 		})();
@@ -31,7 +32,7 @@ export default function Podcast() {
 	
 	useEffect(() => {
 		MicroInteractions({ 
-			scrollfadeElements: '.tile , .blogPostSummary',
+			scrollfadeElements: '.tile , .blogPostSummary, .scrollFadeElement',
 		});
 	}, [episodes]); 
 

@@ -136,3 +136,13 @@
 #social-section .blog-post-summary { 
 	border: 1px solid #999; 
 }
+
+
+
+/* ========================================
+	CURATOR.IO Styles
+ ======================================== */
+
+.crt-feed div[data-position="2"] {
+	display: none;
+}

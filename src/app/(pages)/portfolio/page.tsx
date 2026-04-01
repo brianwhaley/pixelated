@@ -8,12 +8,14 @@ import { FlickrWrapper } from "@pixelated-tech/components";
 import type { CarouselCardType } from "@pixelated-tech/components";
 import { MicroInteractions } from "@pixelated-tech/components";
 import { Tiles } from "@pixelated-tech/components";
+import { usePixelatedConfig } from '@pixelated-tech/components';
 
 export default function Portfolio() {
 	const [ flickrCards, setFlickrCards ] = useState<CarouselCardType[]>([]);
+	const config = usePixelatedConfig();
 	const props = { 
-		api_key: '882cab5548d53c9e6b5fb24d59cc321d',
-		user_id: '15473210@N04',
+		api_key: config?.flickr?.urlProps.api_key,
+		user_id: config?.flickr?.urlProps.user_id,
 		tags: "", // "workportfolio"
 		method: "flickr.photosets.getPhotos", 
 		photoset_id: "72177720326903710",
@@ -26,13 +28,13 @@ export default function Portfolio() {
 	}
 	useEffect(() => {
 		async function fetchGallery() {
-			await FlickrWrapper(props);
+			await FlickrWrapper(props as any);
 		}
 		fetchGallery();
 	}, []); 
 	useEffect(() => {
 		MicroInteractions({ 
-			scrollfadeElements: '.tile',
+			scrollfadeElements: '.tile, .scrollFadeElement',
 		});
 	}, [flickrCards]); 
 	return ( 

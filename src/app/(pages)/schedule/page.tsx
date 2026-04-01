@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { PageTitleHeader, PageSectionHeader } from "@pixelated-tech/components";
 import { PageSection, PageGridItem } from "@pixelated-tech/components";
 import SocialTags from '@/app/elements/socialtags';
+import routes from "@/app/data/routes.json";
+const siteInfo = (routes as any).siteInfo;
 
 export default function Schedule() {
     
@@ -42,8 +44,8 @@ export default function Schedule() {
 						Or you can contact us via email or phone to discuss your needs and set up a meeting.
 						</p>
 						<PageSectionHeader title="Contact Information:" />
-						<h3>Email: <a href="mailto:info@pixelated.tech">info@pixelated.tech</a></h3>
-						<h3>Phone: (973) 710-8008</h3>
+						<h3>Email: <a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a></h3>
+						<h3>Phone: {siteInfo.telephone}</h3>
 					</div>
 				</PageGridItem>
 				<PageGridItem columnStart={1} columnEnd={13}>
