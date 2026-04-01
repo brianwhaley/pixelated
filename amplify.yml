@@ -25,26 +25,35 @@ frontend:
     files:
       - '**/*'
     customHeaders:
-      # Static assets: images, fonts, scripts, styles, videos, docs (alpha order)
-      # Cache at edge and browser for 1 year, immutable
-        - pattern: '**/*.{css,gif,ico,jpg,js,json,md,mp4,png,scss,svg,txt,webm,webp,woff2,xml}'
-          headers:
-            - key: 'Cache-Control'
-              value: 'public, max-age=31536000, s-maxage=31536000, immutable'
-      # HTML files: cache at edge for 1 day, browser for 1 week
-        - pattern: '**/*.html'
-          headers:
-            - key: 'Cache-Control'
-              value: 'public, max-age=86400, s-maxage=604800, must-revalidate'
-        # Extensionless files (homepage, etc.)
-        - pattern: '/'
-          headers:
-            - key: 'Cache-Control'
-              value: 'public, max-age=86400, s-maxage=604800, must-revalidate'
-        - pattern: '*'
-          headers:
-            - key: 'Cache-Control'
-              value: 'public, max-age=86400, s-maxage=604800, must-revalidate'
+      # Static _next assets and routed static files: 1 year cache edge + browser
+      - pattern: '/_next/static/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable'
+      - pattern: '/_next/image/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable'
+      - pattern: '/**/*.{css,gif,ico,jpg,jpeg,png,svg,webp,woff,woff2,ttf,eot,json,js}'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable'
+
+      # HTML pages: 1 week edge + browser; stale-while-revalidate for quick updates
+      - pattern: '/**/*.html'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=604800, s-maxage=604800, stale-while-revalidate=86400'
+      - pattern: '/'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=604800, s-maxage=604800, stale-while-revalidate=86400'
+
+      # API and dynamic content should use short edge TTL, allow stale while revalidate
+      - pattern: '/api/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=30'
   cache:
     paths:
       - .next/cache/**/*

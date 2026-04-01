@@ -73,6 +73,40 @@ const nextConfig: NextConfig = {
 
 	turbopack: {},
 
+	async headers() {
+		return [
+			{
+				source: '/_next/static/:all*',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
+				]
+			},
+			{
+				source: '/_next/image/:all*',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
+				]
+			},
+			{
+				source: '/',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=604800, s-maxage=604800, stale-while-revalidate=86400' }
+				]
+			},
+			{
+				source: '/:path*',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=604800, s-maxage=604800, stale-while-revalidate=86400' }
+				]
+			},
+			{
+				source: '/api/:all*',
+				headers: [
+					{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=30' }
+				]
+			}
+		];
+	},
 	webpack: (config: any) => {
 		config.resolve.fallback = {
 			fs: false,
