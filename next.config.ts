@@ -73,69 +73,6 @@ const nextConfig: NextConfig = {
 
 	turbopack: {},
 
-	async headers() {
-		return [
-			{
-				source: '/_next/static/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/_next/image/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/public/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/images/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/fonts/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{	source: '/:all*.(css|eot|gif|htm|html|ico|jpg|jpeg|js|json|md|mp4|ogg|otf|png|svg|ttf|webm|webp|woff|woff2|xml|xsl|zip)',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/:path*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=31536000, s-maxage=31536000, immutable' }
-				]
-			},
-			{
-				source: '/api/:all*',
-				headers: [
-					{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=30' }
-				]
-			}
-		];
-	},
 	webpack: (config: any) => {
 		config.resolve.fallback = {
 			fs: false,
