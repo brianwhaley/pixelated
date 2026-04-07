@@ -51,17 +51,19 @@ export default function Samples() {
 		<>
 			<PageTitleHeader title="Sample Page Designs" /><PageSection columns={2} maxWidth="1024px" id="samples-tiles-section">
 				{/* <Tiles cards={sampleTiles} rowCount={3}/> */}
-				{sampleTiles.map(tile => (
-					<Callout
+				{ sampleTiles.map((tile,index) => {
+					const above = (index === 0) ? true : undefined ;
+					return <Callout
 						key={tile.index}
 						variant="overlay"
 						boxShape="squircle"
 						url={tile.link}
 						img={tile.image}
 						imgAlt={tile.imageAlt}
+						aboveFold={above}
 						subtitle={tile.imageAlt}
-						buttonText={"View Sample"} />
-				))}
+						buttonText={"View Sample"} />;
+				})}
 			</PageSection>
 		</>
 	);

@@ -16,9 +16,10 @@ const nextConfig: NextConfig = {
 	env: {
 		PIXELATED_CONFIG_KEY: process.env.PIXELATED_CONFIG_KEY,
 	},
+	productionBrowserSourceMaps: true,
 	images: {
-    	minimumCacheTTL: 86400, // 1 day 15552000, // 6 months
-    	qualities: [25, 50, 75, 100],
+    	minimumCacheTTL: 2592000, // 1 month
+	   	qualities: [25, 50, 75, 100],
 		remotePatterns: [
 			{
 				protocol: 'https', // Or 'http' if needed, but 'https' is recommended
